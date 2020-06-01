@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "name": "npm",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "9.7.6",
+    "browser-sync": "2.26.7",
+    "clean-css-cli": "4.3.0",
+    "node-sass": "4.13.1",
+    "postcss-cli": "7.1.0",
+    "postcss-value-parser": "4.0.3",
+    "stylelint": "13.3.2",
+    "stylelint-order": "4.0.0",
+    "typescript": "3.8.3",
+    "uglify-js": "3.9.0",
+    "watch": "1.0.2"
+  },
+  "scripts": {
+    "version": "npm --version && node --version",
+    "bundle": "npm run bundle:css && npm run bundle:js",
+    "postcss": "npm run compile:scss && postcss wwwroot/CSS/style.css --config Resources/postcss.config.js -o wwwroot/CSS/style.css",
+    "bundle:css": "npm run stylelint && npm run compile:scss && postcss wwwroot/CSS/style.css --config Resources/postcss.config.js | cleancss -o wwwroot/CSS/style.min.css",
+    "bundle:js": "npm run compile:ts && uglifyjs -o wwwroot/JS/app.min.js -c -m -- wwwroot/JS/app.js",
+    "compile:scss": "node-sass --source-map=true Resources/Stylesheets/SCSS/style.scss wwwroot/CSS/style.css",
+    "compile:ts": "tsc -p Resources",
+    "stylelint": "stylelint --fix Resources/Stylesheets/SCSS/**/*.scss",
+    "watch": "npm run watch:scss",
+    "watch:scss": "npm run bundle:css & watch \"npm run bundle:css\" Resources/Stylesheets/SCSS",
+    "watch:ts": "npm run compile:ts -- -w && npm run bundle:js",
+    "browser-sync": "browser-sync start --proxy https://localhost:44302/ --files=\"wwwroot/css/*.css\" \"wwwroot/js/*.js\""
+  },
+  "-vs-binding": {
+    "ProjectOpened": []
+  },
+  "stylelint": {
+    "enabled": true,
+    "rules": "Resources/.stylelintrc.json",
+    "fileExtensions": "scss"
+  },
+  "main": "Resources/postcss.config.js",
+  "dependencies": {},
+  "keywords": [],
+  "author": "Pantegy Software s.r.o.",
+  "license": "ISC",
+  "description": ""
+}
