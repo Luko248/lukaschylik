@@ -7,6 +7,7 @@
     "browser-sync": "2.26.7",
     "clean-css-cli": "4.3.0",
     "node-sass": "4.13.1",
+    "nunjucks": "^3.2.1",
     "postcss-cli": "7.1.0",
     "postcss-value-parser": "4.0.3",
     "stylelint": "13.3.2",
