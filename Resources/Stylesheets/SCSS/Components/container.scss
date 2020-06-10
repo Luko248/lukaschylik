@@ -1,13 +1,12 @@
 @import "../base/global";
 
 .container {
-    width: 65%;
-    min-width: 115rem;
-    max-width: $width-laptop-l;
+    width: 80%;
+    min-width: $width-laptop-l;
     margin: 0 auto;
 
     @include res-max-laptop-l {
-        width: 80%;
+        min-width: $width-laptop-s;
     }
 
     @include res-max-laptop-m {

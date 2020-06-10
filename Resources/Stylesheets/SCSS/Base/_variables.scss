@@ -2,20 +2,17 @@
 $color-black: hsla(0, 0%, 0%, 1);
 $color-white: hsla(0, 0%, 100%, 1);
 $color-trans: hsla(0, 0%, 0%, 0);
-$color-nav: hsla(0, 0%, 100%, .9);
-$color-primary: #DAA520;
-$color-primary--hover: #DAA520;
-$color-secondary: #DEDEDE;
+$color-primary: hsla(0, 0%, 87%,1);
+$color-secondary: hsla(43, 74%, 49%, 1);
 
 $trans-time: .25s;
-$animate-all: all ease-in-out var($trans-time);
-$pad-m: .8rem;
-$pad-s: ($pad-m / 2);
-$pad-l: ($pad-m * 2);
-$pad-xl: ($pad-m * 3);
-$pad-xxl: ($pad-m * 4);
-$font-text: 'Open Sans', sans-serif;
-$font-title: $font-text;
+$border-width: .1rem;
+$gap-m: .8rem;
+$gap-s: ($gap-m / 2);
+$gap-l: ($gap-m * 2);
+$gap-xl: ($gap-m * 3);
+$gap-xxl: ($gap-m * 4);
+$font-family: rama-gothic-e, sans-serif;
 
 // All devices width for MediaQuery
 $width-mobile-s: 320px;

@@ -1,43 +1,46 @@
 @import "../Base/global";
 
-h1 {
-    margin-bottom: 2rem;
-    font-size: xx-large;
+h1,
+h2,
+h3,
+p {
+    margin: 0;
 }
 
-h2 {
-    margin-bottom: 2rem;
-    font-size: x-large;
+h1 {
+    @include font;
+    font-size: 12vh;
+    line-height: 12vh;
+    color: var(--color-primary);
 }
 
 h3 {
-    font-size: large;
+    @include font;
+    font-size: 5.6vh;
+    color: var(--color-secondary);
 }
 
-h4 {
-    font-size: medium;
+h2,
+strong {
+    @include font;
+    font-size: 7vh;
+    line-height: 7vh;
+    color: var(--color-secondary);
 }
 
-h5 {
-    font-size: small;
-}
-
-h6 {
-    font-size: x-small;
-}
-
-span, a {
-    font-size: medium;
-
-    @include res-max-mobile-l {
-        font-size: small;
-    }
+h2 {
+    margin-bottom: 4vh;
 }
 
 p {
-    font-size: medium;
+    @include font;
+    font-size: 5.6vh;
+    color: var(--color-primary);
 }
 
-small {
-    font-size: xx-small;
+.references {
+    @include font;
+    color: $color-primary;
+    font-size: 4vh;
+    word-spacing: var(--gap-l);
 }

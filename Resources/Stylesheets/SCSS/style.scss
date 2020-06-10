@@ -1,16 +1,16 @@
 ﻿
 // Base
 @import "base/root";
+@import url("https://use.typekit.net/ffh7kkn.css");
 @import "base/fonts";
 @import "Base/default";
 @import "base/layout";
 @import "base/typography";
 
 // Components
-
 @import "components/container";
 @import "components/link";
 @import "components/section";
 
-// Modules
-@import "modules/contact";
+// Views
+@import "views/contact";

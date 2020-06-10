@@ -1,8 +1,3 @@
-:root {
-    --color-border: rgba(0,0,0,1);
-    --border-width: .1rem;
-}
-
 @mixin border($var-direction: "def", $var-width: var(--border-width), $var-color: var(--color-border)) {
     @if $var-direction == 'def' {
         border: $var-width solid $var-color;

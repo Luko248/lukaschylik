@@ -1,6 +1,25 @@
-@import "../base/global";
-.link{
-    &--secondary{
+@import "../Base/global";
 
+.link {
+    --color-link: var(--color-primary);
+
+    &--secondary {
+        --color-link: var(--color-secondary);
     }
+}
+
+.link {
+    @include font;
+    color: var(--color-link);
+    font-size: 5.6vh;
+    transform: scale(1, 1);
+    transition: transform var(--trans-time) ease-in-out;
+
+    &:hover{
+        transform: scale(1.05, 1.05);
+    }
+}
+
+p .link{
+font-size: 1em;
 }

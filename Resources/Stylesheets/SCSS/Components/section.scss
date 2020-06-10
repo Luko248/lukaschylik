@@ -1,4 +1,6 @@
 @import "../base/global";
 section{
-    
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
 }
