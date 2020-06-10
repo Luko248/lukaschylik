@@ -3,9 +3,9 @@ $color-black: hsla(0, 0%, 0%, 1);
 $color-white: hsla(0, 0%, 100%, 1);
 $color-trans: hsla(0, 0%, 0%, 0);
 $color-nav: hsla(0, 0%, 100%, .9);
-$color-primary: hsla(136, 61%, 45%, 1);
-$color-primary--hover: hsla(136, 61%, 45%, .8);
-$color-secondary: hsla(120, 2%, 17%, 1);
+$color-primary: #DAA520;
+$color-primary--hover: #DAA520;
+$color-secondary: #DEDEDE;
 
 $trans-time: .25s;
 $animate-all: all ease-in-out var($trans-time);

@@ -4,15 +4,13 @@
 @import "base/fonts";
 @import "Base/default";
 @import "base/layout";
-@import "Base/shared-classes";
 @import "base/typography";
 
 // Components
-@import "Components/burger";
+
 @import "components/container";
-@import "Components/logo";
+@import "components/link";
+@import "components/section";
 
 // Modules
-@import "modules/footer";
-@import "Modules/header";
-@import "modules/nav";
+@import "modules/contact";
