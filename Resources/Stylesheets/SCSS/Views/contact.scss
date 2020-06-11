@@ -1,31 +1,72 @@
 @import "../base/global";
 
-
 .contact {
     display: grid;
     align-items: stretch;
     justify-content: space-between;
     grid-template-columns: 8fr 5fr;
 
+    @include res-max-laptop-l {
+        grid-template-columns: 1fr;
+        grid-gap: 8rem;
+    }
+
+    >div:first-of-type {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     &__social {
         display: grid;
         grid-gap: var(--gap-l);
-        grid-template-columns: repeat(4, minmax(4rem, 4vh));
+        grid-template-columns: repeat(4, minmax(3.2rem, 4vh));
         margin: 5.6vh 0;
 
         >a {
+            position: relative;
             display: block;
             text-decoration: none;
             width: 4vh;
             height: 4vh;
-            min-width: 4rem;
-            min-height: 4rem;
+            min-width: 3.2rem;
+            min-height: 3.2rem;
+
+            &:before {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                display: block;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-shadow);
+                border-radius: 50%;
+                transform: translate(-50%, 50%) rotateX(75deg) scale(0, 0);
+                transition: transform var(--trans-time) ease-in-out;
+                z-index: 5;
+            }
+
+            &:hover,
+            &:focus {
+                &:before {
+                    transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1);
+                }
+
+                >svg {
+                    transform: translateY(-20%);
+                }
+            }
+
         }
 
         svg {
             width: 100%;
             height: 100%;
             fill: var(--color-primary);
+            transform: translateY(0);
+            transition: transform var(--trans-time) ease-in-out;
+            z-index: 10;
         }
     }
 }

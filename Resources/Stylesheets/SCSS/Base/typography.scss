@@ -17,6 +17,8 @@ h1 {
 h3 {
     @include font;
     font-size: 5.6vh;
+    text-transform: uppercase;
+    margin-bottom: var(--gap-l);
     color: var(--color-secondary);
 }
 
@@ -25,6 +27,7 @@ strong {
     @include font;
     font-size: 7vh;
     line-height: 7vh;
+    text-transform: uppercase;
     color: var(--color-secondary);
 }
 
@@ -40,7 +43,17 @@ p {
 
 .references {
     @include font;
-    color: $color-primary;
+    color: var(--color-primary);
     font-size: 4vh;
+    line-height: 1.5;
     word-spacing: var(--gap-l);
+    margin-bottom: var(--gap-xl);
+}
+
+.preferences {
+    @include font;
+    color: var(--color-primary);
+    font-size: 4vh;
+    line-height: 1.5;
+    word-spacing: var(--gap-s);
 }

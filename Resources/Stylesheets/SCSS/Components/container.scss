@@ -12,6 +12,10 @@
     @include res-max-laptop-m {
         width: 100%;
         min-width: 0;
-        padding: 0 var(--pad-base);
+        padding: 0 var(--gap-xxl);
+    }
+
+    @include res-max-mobile-l{
+        padding: 0 var(--gap-l);
     }
 }

@@ -3,4 +3,7 @@ section{
     min-height: 100vh;
     display: grid;
     align-items: center;
+    @include res-max-tablet{
+        padding: 3rem 0;
+    }
 }

@@ -6,6 +6,7 @@ html {
     margin: 0;
     font-size: 62.5%;
     scroll-behavior: smooth;
+    font-display: fallback;
     *{
         box-sizing: border-box;
     }
@@ -14,9 +15,24 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background-image: url("./wwwroot/images/backgrounds/background_1920.jpg");
+   
     background-repeat: no-repeat;
     background-position: center;
     font-family: var(--font-text);
     background-size: cover;
+    @include res-min-laptop-xl{
+        background-image: url("./wwwroot/images/backgrounds/background_1920.jpg");
+    }
+
+    @include res-max-laptop-xl{
+        background-image: url("./wwwroot/images/backgrounds/background_1440.jpg");
+    }
+
+    @include res-max-laptop-l{
+        background-image: url("./wwwroot/images/backgrounds/background_1366.jpg");
+    }
+
+    @include res-max-laptop-s{
+        background-image: url("./wwwroot/images/backgrounds/background_1024.jpg");
+    }
 }

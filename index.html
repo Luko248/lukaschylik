@@ -36,217 +36,232 @@
     <link rel="mask-icon" href="./wwwroot/images/favicons/safari-pinned-tab.svg" color="#000000">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="theme-color" content="#000000">
-    <!-- <link rel="stylesheet" href="./wwwroot/CSS/style.css" /> -->
 
     <style amp-custom>
         @import url("https://use.typekit.net/ffh7kkn.css");
+:root {
+  --color-black: black;
+  --color-white: white;
+  --color-trans: rgba(0, 0, 0, 0);
+  --color-primary: #dedede;
+  --color-secondary: #d9a520;
+  --color-shadow: #8f8f8f;
+  --trans-time: 0.25s;
+  --gap-xxl: 3.2rem;
+  --gap-xl: 2.4rem;
+  --gap-l: 1.6rem;
+  --gap-m: 0.8rem;
+  --gap-s: 0.4rem;
+  --font-family: rama-gothic-e, sans-serif;
+  --color-border: black;
+  --border-width: 0.1rem; }
 
-        :root {
-                --color-black: black;
-                --color-white: white;
-                --color-trans: rgba(0, 0, 0, 0);
-                --color-primary: #dedede;
-                --color-secondary: #d9a520;
-                --trans-time: 0.25s;
-                --gap-xxl: 3.2rem;
-                --gap-xl: 2.4rem;
-                --gap-l: 1.6rem;
-                --gap-m: 0.8rem;
-                --gap-s: 0.4rem;
-                --font-family: rama-gothic-e, sans-serif;
-                --color-border: black;
-                --border-width: 0.1rem;
-            }
-            
-            html {
-                height: 100%;
-                padding: 0;
-                margin: 0;
-                font-size: 62.5%;
-                scroll-behavior: smooth;
-            }
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-display: fallback; }
+  html * {
+    box-sizing: border-box; }
 
-            html * {
-                box-sizing: border-box;
-            }
+body {
+  padding: 0;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: var(--font-text);
+  background-size: cover; }
+  @media only screen and (min-width: 1921px) {
+    body {
+      background-image: url("./wwwroot/images/backgrounds/background_1920.jpg"); } }
+  @media only screen and (max-width: 1920px) {
+    body {
+      background-image: url("./wwwroot/images/backgrounds/background_1440.jpg"); } }
+  @media only screen and (max-width: 1440px) {
+    body {
+      background-image: url("./wwwroot/images/backgrounds/background_1366.jpg"); } }
+  @media only screen and (max-width: 1024px) {
+    body {
+      background-image: url("./wwwroot/images/backgrounds/background_1024.jpg"); } }
 
-            body {
-                padding: 0;
-                margin: 0;
-                background-image: url("./wwwroot/images/backgrounds/background_1920.jpg");
-                background-repeat: no-repeat;
-                background-position: center;
-                font-family: var(--font-text);
-                background-size: cover;
-            }
+body {
+  display: flex;
+  flex-flow: column wrap; }
+  body nav {
+    flex: none; }
+  body header {
+    flex: 0 0 auto;
+    width: 100%; }
+  body main {
+    flex: 1 1 auto;
+    width: 100%; }
+  body footer {
+    flex: 0 0 auto;
+    width: 100%; }
 
-            body {
-                display: flex;
-                flex-flow: column wrap;
-            }
+h1,
+h2,
+h3,
+p {
+  margin: 0; }
 
-            body nav {
-                flex: none;
-            }
+h1 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12vh;
+  line-height: 12vh;
+  color: var(--color-primary); }
 
-            body header {
-                flex: 0 0 auto;
-                width: 100%;
-            }
+h3 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5.6vh;
+  text-transform: uppercase;
+  margin-bottom: var(--gap-l);
+  color: var(--color-secondary); }
 
-            body main {
-                flex: 1 1 auto;
-                width: 100%;
-            }
+h2,
+strong {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 7vh;
+  line-height: 7vh;
+  text-transform: uppercase;
+  color: var(--color-secondary); }
 
-            body footer {
-                flex: 0 0 auto;
-                width: 100%;
-            }
+h2 {
+  margin-bottom: 4vh; }
 
-            h1,
-            h2,
-            h3,
-            p {
-                margin: 0;
-            }
+p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5.6vh;
+  color: var(--color-primary); }
 
-            h1 {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                font-size: 12vh;
-                line-height: 12vh;
-                color: var(--color-primary);
-            }
+.references {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-primary);
+  font-size: 4vh;
+  line-height: 1.5;
+  word-spacing: var(--gap-l);
+  margin-bottom: var(--gap-xl); }
 
-            h3 {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                font-size: 5.6vh;
-                color: var(--color-secondary);
-            }
+.preferences {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-primary);
+  font-size: 4vh;
+  line-height: 1.5;
+  word-spacing: var(--gap-s); }
 
-            h2,
-            strong {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                font-size: 7vh;
-                line-height: 7vh;
-                color: var(--color-secondary);
-            }
+.container {
+  width: 80%;
+  min-width: 1440px;
+  margin: 0 auto; }
+  @media only screen and (max-width: 1440px) {
+    .container {
+      min-width: 1024px; } }
+  @media only screen and (max-width: 1360px) {
+    .container {
+      width: 100%;
+      min-width: 0;
+      padding: 0 var(--gap-xxl); } }
+  @media only screen and (max-width: 425px) {
+    .container {
+      padding: 0 var(--gap-l); } }
 
-            h2 {
-                margin-bottom: 4vh;
-            }
+.link {
+  --color-link: var(--color-primary); }
+  .link--secondary {
+    --color-link: var(--color-secondary); }
 
-            p {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                font-size: 5.6vh;
-                color: var(--color-primary);
-            }
+.link {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-link);
+  font-size: 5.6vh;
+  text-decoration-color: var(--color-primary);
+  transition: text-decoration-color var(--trans-time) ease-in-out; }
+  .link:hover {
+    text-decoration-color: var(--color-secondary); }
+  .link--secondary {
+    text-decoration-color: var(--color-secondary); }
+    .link--secondary:hover {
+      text-decoration-color: var(--color-primary); }
 
-            .references {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                color: #dedede;
-                font-size: 4vh;
-                word-spacing: var(--gap-l);
-            }
+p .link {
+  font-size: 1em; }
 
-            .container {
-                width: 80%;
-                min-width: 1440px;
-                margin: 0 auto;
-            }
+section {
+  min-height: 100vh;
+  display: grid;
+  align-items: center; }
+  @media only screen and (max-width: 768px) {
+    section {
+      padding: 3rem 0; } }
 
-            @media only screen and (max-width: 1440px) {
-                .container {
-                    min-width: 1024px;
-                }
-            }
+.contact {
+  display: grid;
+  align-items: stretch;
+  justify-content: space-between;
+  grid-template-columns: 8fr 5fr; }
+  @media only screen and (max-width: 1440px) {
+    .contact {
+      grid-template-columns: 1fr;
+      grid-gap: 8rem; } }
+  .contact > div:first-of-type {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+  .contact__social {
+    display: grid;
+    grid-gap: var(--gap-l);
+    grid-template-columns: repeat(4, minmax(3.2rem, 4vh));
+    margin: 5.6vh 0; }
+    .contact__social > a {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      width: 4vh;
+      height: 4vh;
+      min-width: 3.2rem;
+      min-height: 3.2rem; }
+      .contact__social > a:before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-shadow);
+        border-radius: 50%;
+        transform: translate(-50%, 50%) rotateX(75deg) scale(0, 0);
+        transition: transform var(--trans-time) ease-in-out;
+        z-index: 5; }
+      .contact__social > a:hover:before, .contact__social > a:focus:before {
+        transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1); }
+      .contact__social > a:hover > svg, .contact__social > a:focus > svg {
+        transform: translateY(-20%); }
+    .contact__social svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--color-primary);
+      transform: translateY(0);
+      transition: transform var(--trans-time) ease-in-out;
+      z-index: 10; }
 
-            @media only screen and (max-width: 1360px) {
-                .container {
-                    width: 100%;
-                    min-width: 0;
-                    padding: 0 var(--pad-base);
-                }
-            }
-
-            .link {
-                --color-link: var(--color-primary);
-            }
-
-            .link--secondary {
-                --color-link: var(--color-secondary);
-            }
-
-            .link {
-                font-family: var(--font-family);
-                font-weight: 400;
-                font-style: normal;
-                font-display: fallback;
-                color: var(--color-link);
-                font-size: 5.6vh;
-                transform: scale(1, 1);
-                transition: transform var(--trans-time) ease-in-out;
-            }
-
-            .link:hover {
-                transform: scale(1.05, 1.05);
-            }
-
-            p .link {
-                font-size: 1em;
-            }
-
-            section {
-                min-height: 100vh;
-                display: grid;
-                align-items: center;
-            }
-
-            .contact {
-                display: grid;
-                align-items: stretch;
-                justify-content: space-between;
-                grid-template-columns: 8fr 5fr;
-            }
-
-            .contact__social {
-                display: grid;
-                grid-gap: var(--gap-l);
-                grid-template-columns: repeat(4, minmax(4rem, 4vh));
-                margin: 5.6vh 0;
-            }
-
-            .contact__social>a {
-                display: block;
-                text-decoration: none;
-                width: 4vh;
-                height: 4vh;
-                min-width: 4rem;
-                min-height: 4rem;
-            }
-
-            .contact__social svg {
-                width: 100%;
-                height: 100%;
-                fill: var(--color-primary);
-            }
-
-            /*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map */
     </style>
     <style amp-boilerplate>
         body {
@@ -359,7 +374,7 @@
             <div class="container contact">
                 <div>
                     <h1>Lukáš Chylík</h1>
-                    <strong>CREATIVE FRONTEND DEVELOPER</strong>
+                    <strong>Creative forntend developer</strong>
                     <div class="contact__social">
                         <a href="https://twitter.com/lukas_chylik" target="_blank" aria-label="Twitter link"
                             rel="noreferer">
@@ -388,16 +403,23 @@
                         <a class="link link--secondary" href="tel:+420 721459889">phone</a></p>
                 </div>
                 <div>
-                    <h2>MY WORK</h2>
-                    <div class="references">
-                        <a href="https://pantegysoftware.com/" class="link" target="_blank"
-                            class="link">pantegysoftware.com</a>
-                        <a href="https://www.krossbau.cz/" class="link" target="_blank" class="link">krossbau.cz</a>
-                        <a href="https://brand-design.cz/" class="link" target="_blank" class="link">brand-design.cz</a>
-                        <a href="https://ivpaokna.sk/" class="link" target="_blank" class="link">ivpaokna.sk</a>
-                        <a href="https://filtrenamlieko.sk/" class="link" target="_blank"
-                            class="link">filtrenamlieko.sk</a>
-                    </div>
+                    <h2>My work</h2>
+                        <div class="references">
+                            <a href="https://pantegysoftware.com/" class="link" target="_blank"
+                                class="link">pantegysoftware.com</a>
+                            <a href="https://www.krossbau.cz/" class="link" target="_blank" class="link">krossbau.cz</a>
+                            <a href="https://brand-design.cz/" class="link" target="_blank"
+                                class="link">brand-design.cz</a>
+                            <a href="https://ivpaokna.sk/" class="link" target="_blank" class="link">ivpaokna.sk</a>
+                            <a href="https://filtrenamlieko.sk/" class="link" target="_blank"
+                                class="link">filtrenamlieko.sk</a>
+                        </div>
+                        <br><br>
+                        <h3>I focus on web</h3>
+                        <div class="preferences">
+                            <span>design, UI-UX design, development, performence, accessibility, analytics and
+                                SEO</span>
+                        </div>
                 </div>
             </div>
         </section>

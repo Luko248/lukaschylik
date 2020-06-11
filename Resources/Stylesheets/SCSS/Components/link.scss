@@ -12,14 +12,22 @@
     @include font;
     color: var(--color-link);
     font-size: 5.6vh;
-    transform: scale(1, 1);
-    transition: transform var(--trans-time) ease-in-out;
+    text-decoration-color: var(--color-primary);
+    transition: text-decoration-color var(--trans-time) ease-in-out;
 
-    &:hover{
-        transform: scale(1.05, 1.05);
+    &:hover {
+        text-decoration-color: var(--color-secondary);
+    }
+
+    &--secondary {
+        text-decoration-color: var(--color-secondary);
+
+        &:hover {
+            text-decoration-color: var(--color-primary);
+        }
     }
 }
 
-p .link{
-font-size: 1em;
+p .link {
+    font-size: 1em;
 }
