@@ -37,7 +37,7 @@
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="theme-color" content="#000000">
 
-    <link rel="stylesheet" href="https://use.typekit.net/ffh7kkn.css">
+    <link rel="preload" href="https://use.typekit.net/ffh7kkn.css" as="css" crossorigin>
     <style amp-custom>
         :root {
             --color-black: black;
@@ -62,12 +62,12 @@
             padding: 0;
             margin: 0;
             font-size: 62.5%;
-            scroll-behavior: smooth;
-            font-display: fallback;
+            scroll-behavior: smooth;       
         }
 
         html * {
             box-sizing: border-box;
+            font-display: swap;
         }
 
         body {
