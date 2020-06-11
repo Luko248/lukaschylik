@@ -47,8 +47,7 @@
                 z-index: 5;
             }
 
-            &:hover,
-            &:focus {
+            &:hover{
                 &:before {
                     transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1);
                 }
