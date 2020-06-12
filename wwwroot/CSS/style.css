@@ -6,6 +6,9 @@
   --color-secondary: #d9a520;
   --color-shadow: #8f8f8f;
   --color-bg: #141414;
+  --color-border: black;
+  --border-width: 0.1rem;
+  --letter-spacing: 0.05em;
   --trans-time: 0.25s;
   --gap-xxl: 3.2rem;
   --gap-xl: 2.4rem;
@@ -13,10 +16,7 @@
   --gap-m: 0.8rem;
   --gap-s: 0.4rem;
   --font-family--text: ramagothice-regular, sans-serif;
-  --font-family--title: ramagothice-semibold, sans-serif;
-  --color-border: black;
-  --border-width: 0.1rem;
-  --letter-spacing: 0.05em; }
+  --font-family--title: ramagothice-semibold, sans-serif; }
 
 @font-face {
   font-family: 'ramagothice-regular';

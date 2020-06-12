@@ -8,6 +8,9 @@
     --color-secondary: #{$color-secondary};
     --color-shadow: #{$color-shadow};
     --color-bg: #{$color-bg};
+    --color-border: #{$color-black};
+    --border-width: #{$border-width};
+    --letter-spacing: #{$letter-spacing};
     --trans-time: #{$trans-time};
     --gap-xxl: #{$gap-xxl};
     --gap-xl: #{$gap-xl};
@@ -16,7 +19,4 @@
     --gap-s: #{$gap-s};
     --font-family--text: #{$font-family--text};
     --font-family--title: #{$font-family--title};
-    --color-border: #{$color-black};
-    --border-width: #{$border-width};
-    --letter-spacing: #{$letter-spacing};
 }
