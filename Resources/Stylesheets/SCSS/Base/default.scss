@@ -15,25 +15,22 @@ html {
 body {
     padding: 0;
     margin: 0;
+    background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--color-bg);
     font-family: var(--font-family--text);
     background-size: cover;
 
-    @include res-min-laptop-xl {
-        background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
-    }
-
-    @include res-max-laptop-xl {
+    @include res-max-laptop-m {
         background-image: url("./wwwroot/images/backgrounds/background_1440.webp");
     }
 
-    @include res-max-laptop-l {
+    @include res-max-laptop-s {
         background-image: url("./wwwroot/images/backgrounds/background_1366.webp");
     }
 
-    @include res-max-laptop-s {
+    @include res-max-tablet {
         background-image: url("./wwwroot/images/backgrounds/background_1024.webp");
     }
 }
