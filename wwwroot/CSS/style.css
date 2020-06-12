@@ -158,7 +158,7 @@ p {
   transition: text-decoration-color var(--trans-time) ease-in-out;
   text-decoration-color: var(--color-primary); }
   .link:hover {
-    text-decoration-color: var(--color-secondary--darken); }
+    text-decoration-color: var(--color-secondary); }
   .link--secondary {
     text-decoration-color: var(--color-secondary--darken); }
     .link--secondary:hover {
