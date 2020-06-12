@@ -44,12 +44,15 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
+  background-image: url("./wwwroot/images/backgrounds/background.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-color: var(--color-bg);
   font-family: var(--font-family--text);
   background-size: cover; }
+  @media only screen and (max-width: 1440px) {
+    body {
+      background-image: url("./wwwroot/images/backgrounds/background_1920.webp"); } }
   @media only screen and (max-width: 1360px) {
     body {
       background-image: url("./wwwroot/images/backgrounds/background_1440.webp"); } }
