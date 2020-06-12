@@ -2,428 +2,506 @@
 <html ⚡ lang="en-US">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Lukáš Chylík | CREATIVE FRONTEND DEVELOPER</title>
-    <meta name="description" content="My personal portfolio website." />
-    <link rel="canonical" href="https://lukaschylik.sk/" />
-    <meta name="author" content="Lukáš Chylík" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover" />
-    <meta name="keywords"
-        content="web development, UI-UX design, web design, SEO, web accessibility, web performence, web analytics" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="google-site-verification" content="RSOngNTpkzU_EAVAxNroEC9A8b4lvmhpl4k7PVEPjgA" />
+  <meta charset="utf-8" />
+  <title>Lukáš Chylík | CREATIVE FRONTEND DEVELOPER</title>
+  <meta name="description" content="My personal portfolio website." />
+  <link rel="canonical" href="https://lukaschylik.sk/" />
+  <meta name="author" content="Lukáš Chylík" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover" />
+  <meta name="keywords"
+    content="web development, UI-UX design, web design, SEO, web accessibility, web performence, web analytics" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="google-site-verification" content="RSOngNTpkzU_EAVAxNroEC9A8b4lvmhpl4k7PVEPjgA" />
 
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
-    <meta itemprop="description" content="My personal portfolio website." />
-    <meta itemprop="image" content="./wwwroot/images/meta/meta-image.jpg" />
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
+  <meta itemprop="description" content="My personal portfolio website." />
+  <meta itemprop="image" content="./wwwroot/images/meta/meta-image.jpg" />
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
-    <meta property="og:description" content="My personal portfolio website." />
-    <meta property="og:url" content="https://lukaschylik.sk/" />
-    <meta property="og:image" content="./wwwroot/images/meta/meta-image.jpg" />
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
+  <meta property="og:description" content="My personal portfolio website." />
+  <meta property="og:url" content="https://lukaschylik.sk/" />
+  <meta property="og:image" content="./wwwroot/images/meta/meta-image.jpg" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:title" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
-    <meta name="twitter:description" content="My personal portfolio website." />
-    <meta name="twitter:image" content="./wwwroot/images/meta/meta-image.jpg" />
+  <!-- Twitter Card data -->
+  <meta name="twitter:title" content="Lukáš Chylík | CREATIVE FRONTEND DEVELOPER" />
+  <meta name="twitter:description" content="My personal portfolio website." />
+  <meta name="twitter:image" content="./wwwroot/images/meta/meta-image.jpg" />
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./wwwroot/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./wwwroot/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./wwwroot/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="./manifest.json">
-    <link rel="mask-icon" href="./wwwroot/images/favicons/safari-pinned-tab.svg" color="#000000">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="theme-color" content="#000000">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./wwwroot/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./wwwroot/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./wwwroot/images/favicons/favicon-16x16.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="mask-icon" href="./wwwroot/images/favicons/safari-pinned-tab.svg" color="#000000">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="theme-color" content="#000000">
 
-    <style amp-custom>
-       :root {
-  --color-black: black;
-  --color-white: white;
-  --color-trans: rgba(0, 0, 0, 0);
-  --color-primary: #dedede;
-  --color-secondary: #d9a520;
-  --color-shadow: #8f8f8f;
-  --trans-time: 0.25s;
-  --gap-xxl: 3.2rem;
-  --gap-xl: 2.4rem;
-  --gap-l: 1.6rem;
-  --gap-m: 0.8rem;
-  --gap-s: 0.4rem;
-  --font-family--text: ramagothice-regular, sans-serif;
-  --font-family--title: ramagothice-semibold, sans-serif;
-  --color-border: black;
-  --border-width: 0.1rem;
-  --letter-spacing: 0.05em; }
+  <style amp-custom>
+    :root {
+      --color-black: black;
+      --color-white: white;
+      --color-trans: rgba(0, 0, 0, 0);
+      --color-primary: #dedede;
+      --color-secondary: #d9a520;
+      --color-shadow: #8f8f8f;
+      --color-bg: #141414;
+      --trans-time: 0.25s;
+      --gap-xxl: 3.2rem;
+      --gap-xl: 2.4rem;
+      --gap-l: 1.6rem;
+      --gap-m: 0.8rem;
+      --gap-s: 0.4rem;
+      --font-family--text: ramagothice-regular, sans-serif;
+      --font-family--title: ramagothice-semibold, sans-serif;
+      --color-border: black;
+      --border-width: 0.1rem;
+      --letter-spacing: 0.05em;
+    }
 
-@font-face {
-  font-family: 'ramagothice-regular';
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-  src: url("./wwwroot/fonts/rama-gothic/ramagothice-regular.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.woff2") format("woff2"); }
+    @font-face {
+      font-family: 'ramagothice-regular';
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
+      src: url("./wwwroot/fonts/rama-gothic/ramagothice-regular.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-regular.woff2") format("woff2");
+    }
 
-@font-face {
-  font-family: 'ramagothice-semibold';
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-  src: url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff2") format("woff2"); }
+    @font-face {
+      font-family: 'ramagothice-semibold';
+      font-weight: 700;
+      font-display: swap;
+      font-style: normal;
+      src: url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff2") format("woff2");
+    }
 
-html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font-size: 62.5%;
-  scroll-behavior: smooth; }
-  html * {
-    box-sizing: border-box; }
+    html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
 
-body {
-  padding: 0;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  font-family: var(--font-family--text);
-  background-size: cover; }
-  @media only screen and (min-width: 1921px) {
+    html * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-image: url("./wwwroot/images/backgrounds/background_1920.jpg"); } }
-  @media only screen and (max-width: 1920px) {
+      padding: 0;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: var(--color-bg);
+      font-family: var(--font-family--text);
+      background-size: cover;
+    }
+
+    @media only screen and (min-width: 1921px) {
+      body {
+        background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
+      }
+    }
+
+    @media only screen and (max-width: 1920px) {
+      body {
+        background-image: url("./wwwroot/images/backgrounds/background_1440.webp");
+      }
+    }
+
+    @media only screen and (max-width: 1440px) {
+      body {
+        background-image: url("./wwwroot/images/backgrounds/background_1366.webp");
+      }
+    }
+
+    @media only screen and (max-width: 1024px) {
+      body {
+        background-image: url("./wwwroot/images/backgrounds/background_1024.webp");
+      }
+    }
+
     body {
-      background-image: url("./wwwroot/images/backgrounds/background_1440.jpg"); } }
-  @media only screen and (max-width: 1440px) {
-    body {
-      background-image: url("./wwwroot/images/backgrounds/background_1366.jpg"); } }
-  @media only screen and (max-width: 1024px) {
-    body {
-      background-image: url("./wwwroot/images/backgrounds/background_1024.jpg"); } }
+      display: flex;
+      flex-flow: column wrap;
+    }
 
-body {
-  display: flex;
-  flex-flow: column wrap; }
-  body nav {
-    flex: none; }
-  body header {
-    flex: 0 0 auto;
-    width: 100%; }
-  body main {
-    flex: 1 1 auto;
-    width: 100%; }
-  body footer {
-    flex: 0 0 auto;
-    width: 100%; }
+    body nav {
+      flex: none;
+    }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0; }
-
-h1 {
-  font-family: var(--font-family--title);
-  font-size: 12vh;
-  line-height: 12vh;
-  color: var(--color-primary); }
-
-h3 {
-  margin-bottom: var(--gap-l);
-  font-size: 5.6vh;
-  letter-spacing: var(--letter-spacing);
-  color: var(--color-secondary);
-  text-transform: uppercase; }
-
-h2,
-strong {
-  font-size: 7vh;
-  line-height: 7vh;
-  letter-spacing: var(--letter-spacing);
-  color: var(--color-secondary);
-  text-transform: uppercase; }
-
-h2 {
-  margin-bottom: 4vh; }
-
-p {
-  font-size: 5.6vh;
-  color: var(--color-primary); }
-
-.references {
-  margin-bottom: var(--gap-xl);
-  font-size: 4vh;
-  line-height: 1.5;
-  color: var(--color-primary);
-  word-spacing: var(--gap-l); }
-
-.preferences {
-  font-size: 4vh;
-  line-height: 1.5;
-  color: var(--color-primary);
-  word-spacing: var(--gap-s); }
-
-.container {
-  width: 80%;
-  min-width: 1440px;
-  margin: 0 auto; }
-  @media only screen and (max-width: 1440px) {
-    .container {
-      min-width: 1024px; } }
-  @media only screen and (max-width: 1360px) {
-    .container {
+    body header {
+      flex: 0 0 auto;
       width: 100%;
-      min-width: 0;
-      padding: 0 var(--gap-xxl); } }
-  @media only screen and (max-width: 425px) {
+    }
+
+    body main {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+
+    body footer {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-family: var(--font-family--title);
+      font-size: 12vh;
+      line-height: 12vh;
+      color: var(--color-primary);
+    }
+
+    h3 {
+      margin-bottom: var(--gap-l);
+      font-size: 5.6vh;
+      letter-spacing: var(--letter-spacing);
+      color: var(--color-secondary);
+      text-transform: uppercase;
+    }
+
+    h2,
+    strong {
+      font-size: 7vh;
+      line-height: 7vh;
+      letter-spacing: var(--letter-spacing);
+      color: var(--color-secondary);
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 4vh;
+    }
+
+    p {
+      font-size: 5.6vh;
+      color: var(--color-primary);
+    }
+
+    .references {
+      margin-bottom: var(--gap-xl);
+      font-size: 4vh;
+      line-height: 1.5;
+      color: var(--color-primary);
+      word-spacing: var(--gap-l);
+    }
+
+    .preferences {
+      font-size: 4vh;
+      line-height: 1.5;
+      color: var(--color-primary);
+      word-spacing: var(--gap-s);
+    }
+
     .container {
-      padding: 0 var(--gap-l); } }
+      width: 80%;
+      min-width: 1440px;
+      margin: 0 auto;
+    }
 
-.link {
-  --color-link: var(--color-primary); }
-  .link--secondary {
-    --color-link: var(--color-secondary); }
+    @media only screen and (max-width: 1440px) {
+      .container {
+        min-width: 1024px;
+      }
+    }
 
-.link {
-  font-size: 5.6vh;
-  color: var(--color-link);
-  transition: text-decoration-color var(--trans-time) ease-in-out;
-  text-decoration-color: var(--color-primary); }
-  .link:hover {
-    text-decoration-color: var(--color-secondary); }
-  .link--secondary {
-    text-decoration-color: var(--color-secondary); }
+    @media only screen and (max-width: 1360px) {
+      .container {
+        width: 100%;
+        min-width: 0;
+        padding: 0 var(--gap-xxl);
+      }
+    }
+
+    @media only screen and (max-width: 425px) {
+      .container {
+        padding: 0 var(--gap-l);
+      }
+    }
+
+    .link {
+      --color-link: var(--color-primary);
+    }
+
+    .link--secondary {
+      --color-link: var(--color-secondary);
+    }
+
+    .link {
+      font-size: 5.6vh;
+      color: var(--color-link);
+      transition: text-decoration-color var(--trans-time) ease-in-out;
+      text-decoration-color: var(--color-primary);
+    }
+
+    .link:hover {
+      text-decoration-color: var(--color-secondary);
+    }
+
+    .link--secondary {
+      text-decoration-color: var(--color-secondary);
+    }
+
     .link--secondary:hover {
-      text-decoration-color: var(--color-primary); }
+      text-decoration-color: var(--color-primary);
+    }
 
-p .link {
-  font-size: 1em; }
+    p .link {
+      font-size: 1em;
+    }
 
-section {
-  display: grid;
-  align-items: center;
-  min-height: 100vh; }
-  @media only screen and (max-width: 768px) {
     section {
-      padding: 3rem 0; } }
+      display: grid;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-.contact {
-  display: grid;
-  align-items: stretch;
-  justify-content: space-between;
-  grid-template-columns: 8fr 5fr; }
-  @media only screen and (max-width: 1440px) {
+    @media only screen and (max-width: 768px) {
+      section {
+        padding: 3rem 0;
+      }
+    }
+
     .contact {
-      grid-gap: 8rem;
-      grid-template-columns: 1fr; } }
-  .contact > div:first-of-type {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-  .contact__social {
-    display: grid;
-    margin: 5.6vh 0;
-    grid-gap: var(--gap-l);
-    grid-template-columns: repeat(4, minmax(3.2rem, 4vh)); }
-    .contact__social > a {
+      display: grid;
+      align-items: stretch;
+      justify-content: space-between;
+      grid-template-columns: 8fr 5fr;
+    }
+
+    @media only screen and (max-width: 1440px) {
+      .contact {
+        grid-gap: 8rem;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact>div:first-of-type {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact__social {
+      display: grid;
+      margin: 5.6vh 0;
+      grid-gap: var(--gap-l);
+      grid-template-columns: repeat(4, minmax(3.2rem, 4vh));
+    }
+
+    .contact__social>a {
       position: relative;
       display: block;
       width: 4vh;
       min-width: 3.2rem;
       height: 4vh;
       min-height: 3.2rem;
-      text-decoration: none; }
-      .contact__social > a:before {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        display: block;
-        content: "";
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-shadow);
-        border-radius: 50%;
-        transform: translate(-50%, 50%) rotateX(75deg) scale(0, 0);
-        transition: transform var(--trans-time) ease-in-out;
-        z-index: 5; }
-      .contact__social > a:hover:before {
-        transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1); }
-      .contact__social > a:hover > svg {
-        transform: translateY(-20%); }
+      text-decoration: none;
+    }
+
+    .contact__social>a:before {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-shadow);
+      border-radius: 50%;
+      transform: translate(-50%, 50%) rotateX(75deg) scale(0, 0);
+      transition: transform var(--trans-time) ease-in-out;
+      z-index: 5;
+    }
+
+    .contact__social>a:hover:before {
+      transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1);
+    }
+
+    .contact__social>a:hover>svg {
+      transform: translateY(-20%);
+    }
+
     .contact__social svg {
       width: 100%;
       height: 100%;
       transform: translateY(0);
       transition: transform var(--trans-time) ease-in-out;
       z-index: 10;
-      fill: var(--color-primary); }
+      fill: var(--color-primary);
+    }
 
-/*# sourceMappingURL=style.css.map */
-    </style>
+    /*# sourceMappingURL=style.css.map */
+  </style>
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+  </style>
+  <noscript>
     <style amp-boilerplate>
-        body {
-            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            animation: -amp-start 8s steps(1, end) 0s 1 normal both
-        }
-
-        @-webkit-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-moz-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-ms-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-o-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
     </style>
-    <noscript>
-        <style amp-boilerplate>
-            body {
-                -webkit-animation: none;
-                -moz-animation: none;
-                -ms-animation: none;
-                animation: none
-            }
-        </style>
-    </noscript>
+  </noscript>
 
-    <!--AMP Scripts-->
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <!--AMP Scripts-->
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 
 <body>
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-            <symbol id="icon-codepen" viewBox="0 0 32 32">
-                <path
-                    d="M0.607 22.016l14.625 9.752c0.499 0.307 1.032 0.311 1.536 0l14.625-9.752c0.375-0.249 0.607-0.696 0.607-1.143v-9.749c0-0.447-0.232-0.893-0.607-1.143l-14.625-9.751c-0.499-0.307-1.032-0.309-1.536 0l-14.625 9.751c-0.375 0.249-0.607 0.696-0.607 1.143v9.749c0 0.447 0.232 0.893 0.607 1.143zM14.625 28.053l-10.768-7.179 4.804-3.215 5.964 3.983zM17.375 28.053v-6.411l5.964-3.983 4.804 3.215zM29.251 18.301l-3.447-2.303 3.447-2.304zM17.375 3.945l10.768 7.179-4.804 3.215-5.964-3.983zM16 12.748l4.857 3.251-4.857 3.251-4.857-3.251zM14.625 3.945v6.411l-5.964 3.983-4.804-3.215zM2.751 13.697v-0.001l3.447 2.304-3.447 2.304z">
-                </path>
-            </symbol>
-            <symbol id="icon-github" viewBox="0 0 32 32">
-                <path
-                    d="M28.583 13.418c0.119-0.751 0.193-1.575 0.211-2.499-0.007-3.961-1.903-5.363-2.268-6.020 0.537-3.001-0.089-4.367-0.38-4.834-1.074-0.381-3.738 0.984-5.194 1.946-2.373-0.695-7.388-0.627-9.268 0.18-3.47-2.485-5.305-2.106-5.305-2.106s-1.186 2.127-0.314 5.24c-1.142 1.455-1.993 2.483-1.993 5.212 0 0.653 0.041 1.271 0.109 1.865 0.983 5.169 5.079 7.4 9.103 7.784-0.605 0.46-1.332 1.331-1.433 2.34-0.761 0.492-2.291 0.654-3.481 0.28-1.667-0.527-2.306-3.829-4.803-3.358-0.54 0.101-0.433 0.457 0.035 0.761 0.761 0.493 1.477 1.107 2.029 2.419 0.424 1.008 1.316 2.807 4.137 2.807 1.12 0 1.904-0.132 1.904-0.132s0.021 2.568 0.021 3.569c0 1.153-1.555 1.476-1.555 2.029 0 0.22 0.515 0.241 0.929 0.241 0.818 0 2.519-0.681 2.519-1.879 0-0.952 0.015-4.151 0.015-4.711 0-1.224 0.656-1.614 0.656-1.614s0.080 6.534-0.158 7.41c-0.279 1.030-0.785 0.884-0.785 1.342 0 0.684 2.045 0.167 2.724-1.33 0.525-1.17 0.29-7.577 0.29-7.577l0.547-0.012c0 0 0.006 2.935-0.013 4.275-0.020 1.389-0.163 3.144 0.662 3.973 0.541 0.545 2.2 1.501 2.2 0.627 0-0.506-1.161-0.925-1.161-2.297v-6.32c0.706 0 0.851 2.077 0.851 2.077l0.254 3.86c0 0-0.169 1.408 1.521 1.996 0.597 0.209 1.873 0.266 1.933-0.085s-1.537-0.872-1.552-1.962c-0.008-0.664 0.030-1.052 0.030-3.94 0-2.886-0.388-3.954-1.739-4.805 3.918-0.402 7.988-2.152 8.721-6.753z">
-                </path>
-            </symbol>
-            <symbol id="icon-twitter" viewBox="0 0 32 32">
-                <path
-                    d="M32 6.078c-1.19 0.522-2.458 0.868-3.78 1.036 1.36-0.812 2.398-2.088 2.886-3.626-1.268 0.756-2.668 1.29-4.16 1.588-1.204-1.282-2.92-2.076-4.792-2.076-3.632 0-6.556 2.948-6.556 6.562 0 0.52 0.044 1.020 0.152 1.496-5.454-0.266-10.28-2.88-13.522-6.862-0.566 0.982-0.898 2.106-0.898 3.316 0 2.272 1.17 4.286 2.914 5.452-1.054-0.020-2.088-0.326-2.964-0.808 0 0.020 0 0.046 0 0.072 0 3.188 2.274 5.836 5.256 6.446-0.534 0.146-1.116 0.216-1.72 0.216-0.42 0-0.844-0.024-1.242-0.112 0.85 2.598 3.262 4.508 6.13 4.57-2.232 1.746-5.066 2.798-8.134 2.798-0.538 0-1.054-0.024-1.57-0.090 2.906 1.874 6.35 2.944 10.064 2.944 12.072 0 18.672-10 18.672-18.668 0-0.29-0.010-0.57-0.024-0.848 1.302-0.924 2.396-2.078 3.288-3.406z">
-                </path>
-            </symbol>
-            <symbol id="icon-linkedin" viewBox="0 0 32 32">
-                <path
-                    d="M1.039 30.616h4.16c0.574 0 1.039-0.465 1.039-1.039v-18.183c0-0.574-0.465-1.039-1.039-1.039h-4.16c-0.574 0-1.039 0.465-1.039 1.039v18.183c0 0.574 0.465 1.039 1.039 1.039z">
-                </path>
-                <path
-                    d="M1.039 7.157h4.16c0.574 0 1.039-0.465 1.039-1.039v-3.694c0-0.574-0.465-1.039-1.039-1.039h-4.16c-0.574 0-1.039 0.465-1.039 1.039v3.694c0 0.574 0.465 1.039 1.039 1.039z">
-                </path>
-                <path
-                    d="M30.435 12.463c-0.585-0.769-1.447-1.402-2.586-1.898s-2.398-0.744-3.774-0.744c-2.794 0-5.162 1.066-7.103 3.2-0.386 0.424-0.667 0.332-0.667-0.242v-1.385c0-0.574-0.465-1.039-1.039-1.039h-3.716c-0.574 0-1.039 0.465-1.039 1.039v18.183c0 0.574 0.465 1.039 1.039 1.039h4.16c0.574 0 1.039-0.465 1.039-1.039v-6.324c0-2.634 0.159-4.44 0.477-5.417s0.907-1.761 1.765-2.353c0.858-0.592 1.828-0.888 2.908-0.888 0.844 0 1.565 0.207 2.165 0.622s1.032 0.995 1.299 1.743c0.267 0.747 0.4 2.394 0.4 4.94v7.678c0 0.574 0.465 1.039 1.039 1.039h4.16c0.574 0 1.039-0.465 1.039-1.039v-10.298c0-1.82-0.115-3.219-0.344-4.196s-0.636-1.85-1.221-2.62z">
-                </path>
-            </symbol>
-        </defs>
-    </svg>
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <symbol id="icon-codepen" viewBox="0 0 32 32">
+        <path
+          d="M0.607 22.016l14.625 9.752c0.499 0.307 1.032 0.311 1.536 0l14.625-9.752c0.375-0.249 0.607-0.696 0.607-1.143v-9.749c0-0.447-0.232-0.893-0.607-1.143l-14.625-9.751c-0.499-0.307-1.032-0.309-1.536 0l-14.625 9.751c-0.375 0.249-0.607 0.696-0.607 1.143v9.749c0 0.447 0.232 0.893 0.607 1.143zM14.625 28.053l-10.768-7.179 4.804-3.215 5.964 3.983zM17.375 28.053v-6.411l5.964-3.983 4.804 3.215zM29.251 18.301l-3.447-2.303 3.447-2.304zM17.375 3.945l10.768 7.179-4.804 3.215-5.964-3.983zM16 12.748l4.857 3.251-4.857 3.251-4.857-3.251zM14.625 3.945v6.411l-5.964 3.983-4.804-3.215zM2.751 13.697v-0.001l3.447 2.304-3.447 2.304z">
+        </path>
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 32 32">
+        <path
+          d="M28.583 13.418c0.119-0.751 0.193-1.575 0.211-2.499-0.007-3.961-1.903-5.363-2.268-6.020 0.537-3.001-0.089-4.367-0.38-4.834-1.074-0.381-3.738 0.984-5.194 1.946-2.373-0.695-7.388-0.627-9.268 0.18-3.47-2.485-5.305-2.106-5.305-2.106s-1.186 2.127-0.314 5.24c-1.142 1.455-1.993 2.483-1.993 5.212 0 0.653 0.041 1.271 0.109 1.865 0.983 5.169 5.079 7.4 9.103 7.784-0.605 0.46-1.332 1.331-1.433 2.34-0.761 0.492-2.291 0.654-3.481 0.28-1.667-0.527-2.306-3.829-4.803-3.358-0.54 0.101-0.433 0.457 0.035 0.761 0.761 0.493 1.477 1.107 2.029 2.419 0.424 1.008 1.316 2.807 4.137 2.807 1.12 0 1.904-0.132 1.904-0.132s0.021 2.568 0.021 3.569c0 1.153-1.555 1.476-1.555 2.029 0 0.22 0.515 0.241 0.929 0.241 0.818 0 2.519-0.681 2.519-1.879 0-0.952 0.015-4.151 0.015-4.711 0-1.224 0.656-1.614 0.656-1.614s0.080 6.534-0.158 7.41c-0.279 1.030-0.785 0.884-0.785 1.342 0 0.684 2.045 0.167 2.724-1.33 0.525-1.17 0.29-7.577 0.29-7.577l0.547-0.012c0 0 0.006 2.935-0.013 4.275-0.020 1.389-0.163 3.144 0.662 3.973 0.541 0.545 2.2 1.501 2.2 0.627 0-0.506-1.161-0.925-1.161-2.297v-6.32c0.706 0 0.851 2.077 0.851 2.077l0.254 3.86c0 0-0.169 1.408 1.521 1.996 0.597 0.209 1.873 0.266 1.933-0.085s-1.537-0.872-1.552-1.962c-0.008-0.664 0.030-1.052 0.030-3.94 0-2.886-0.388-3.954-1.739-4.805 3.918-0.402 7.988-2.152 8.721-6.753z">
+        </path>
+      </symbol>
+      <symbol id="icon-twitter" viewBox="0 0 32 32">
+        <path
+          d="M32 6.078c-1.19 0.522-2.458 0.868-3.78 1.036 1.36-0.812 2.398-2.088 2.886-3.626-1.268 0.756-2.668 1.29-4.16 1.588-1.204-1.282-2.92-2.076-4.792-2.076-3.632 0-6.556 2.948-6.556 6.562 0 0.52 0.044 1.020 0.152 1.496-5.454-0.266-10.28-2.88-13.522-6.862-0.566 0.982-0.898 2.106-0.898 3.316 0 2.272 1.17 4.286 2.914 5.452-1.054-0.020-2.088-0.326-2.964-0.808 0 0.020 0 0.046 0 0.072 0 3.188 2.274 5.836 5.256 6.446-0.534 0.146-1.116 0.216-1.72 0.216-0.42 0-0.844-0.024-1.242-0.112 0.85 2.598 3.262 4.508 6.13 4.57-2.232 1.746-5.066 2.798-8.134 2.798-0.538 0-1.054-0.024-1.57-0.090 2.906 1.874 6.35 2.944 10.064 2.944 12.072 0 18.672-10 18.672-18.668 0-0.29-0.010-0.57-0.024-0.848 1.302-0.924 2.396-2.078 3.288-3.406z">
+        </path>
+      </symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 32 32">
+        <path
+          d="M1.039 30.616h4.16c0.574 0 1.039-0.465 1.039-1.039v-18.183c0-0.574-0.465-1.039-1.039-1.039h-4.16c-0.574 0-1.039 0.465-1.039 1.039v18.183c0 0.574 0.465 1.039 1.039 1.039z">
+        </path>
+        <path
+          d="M1.039 7.157h4.16c0.574 0 1.039-0.465 1.039-1.039v-3.694c0-0.574-0.465-1.039-1.039-1.039h-4.16c-0.574 0-1.039 0.465-1.039 1.039v3.694c0 0.574 0.465 1.039 1.039 1.039z">
+        </path>
+        <path
+          d="M30.435 12.463c-0.585-0.769-1.447-1.402-2.586-1.898s-2.398-0.744-3.774-0.744c-2.794 0-5.162 1.066-7.103 3.2-0.386 0.424-0.667 0.332-0.667-0.242v-1.385c0-0.574-0.465-1.039-1.039-1.039h-3.716c-0.574 0-1.039 0.465-1.039 1.039v18.183c0 0.574 0.465 1.039 1.039 1.039h4.16c0.574 0 1.039-0.465 1.039-1.039v-6.324c0-2.634 0.159-4.44 0.477-5.417s0.907-1.761 1.765-2.353c0.858-0.592 1.828-0.888 2.908-0.888 0.844 0 1.565 0.207 2.165 0.622s1.032 0.995 1.299 1.743c0.267 0.747 0.4 2.394 0.4 4.94v7.678c0 0.574 0.465 1.039 1.039 1.039h4.16c0.574 0 1.039-0.465 1.039-1.039v-10.298c0-1.82-0.115-3.219-0.344-4.196s-0.636-1.85-1.221-2.62z">
+        </path>
+      </symbol>
+    </defs>
+  </svg>
 
-    <main>
-        <section>
-            <div class="container contact">
-                <div>
-                    <h1>Lukáš Chylík</h1>
-                    <strong>Creative frontend developer</strong>
-                    <div class="contact__social">
-                        <a href="https://twitter.com/lukas_chylik" target="_blank" aria-label="Twitter link"
-                            rel="noopener">
-                            <svg class="icon icon-twitter">
-                                <use xlink:href="#icon-twitter"></use>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/luk%C3%A1%C5%A1-chyl%C3%ADk-b48094138/" target="_blank"
-                            aria-label="LinkedIn link" rel="noopener">
-                            <svg class="icon icon-linkedin">
-                                <use xlink:href="#icon-linkedin"></use>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/Luko248" target="_blank" aria-label="GitHub link" rel="noopener">
-                            <svg class="icon icon-github">
-                                <use xlink:href="#icon-github"></use>
-                            </svg>
-                        </a>
-                        <a href="https://codepen.io/luko248" target="_blank" aria-label="CodePen link" rel="noopener">
-                            <svg class="icon icon-codepen">
-                                <use xlink:href="#icon-codepen"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <p>Contact me by <a class="link link--secondary" href="mailto:chylik.lukas@gmail.com">email</a> or
-                        <a class="link link--secondary" href="tel:+420 721459889">phone</a></p>
-                </div>
-                <div>
-                    <h2>My work</h2>
-                    <div class="references">
-                        <a href="https://pantegysoftware.com/" class="link" target="_blank" rel="noopener"
-                            class="link">pantegysoftware.com</a>
-                        <a href="https://www.krossbau.cz/" class="link" target="_blank" rel="noopener"
-                            class="link">krossbau.cz</a>
-                        <a href="https://brand-design.cz/" class="link" target="_blank" rel="noopener"
-                            class="link">brand-design.cz</a>
-                        <a href="https://ivpaokna.sk/" class="link" target="_blank" rel="noopener"
-                            class="link">ivpaokna.sk</a>
-                        <a href="https://filtrenamlieko.sk/" class="link" target="_blank" rel="noopener"
-                            class="link">filtrenamlieko.sk</a>
-                    </div>
-                    <br><br>
-                    <h3>focus on web</h3>
-                    <div class="preferences">
-                        <span>UI-UX design, development, performance, accessibility, analytics and SEO</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main>
+    <section>
+      <div class="container contact">
+        <div>
+          <h1>Lukáš Chylík</h1>
+          <strong>Creative frontend developer</strong>
+          <div class="contact__social">
+            <a href="https://twitter.com/lukas_chylik" target="_blank" aria-label="Twitter link" rel="noopener">
+              <svg class="icon icon-twitter">
+                <use xlink:href="#icon-twitter"></use>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/luk%C3%A1%C5%A1-chyl%C3%ADk-b48094138/" target="_blank"
+              aria-label="LinkedIn link" rel="noopener">
+              <svg class="icon icon-linkedin">
+                <use xlink:href="#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a href="https://github.com/Luko248" target="_blank" aria-label="GitHub link" rel="noopener">
+              <svg class="icon icon-github">
+                <use xlink:href="#icon-github"></use>
+              </svg>
+            </a>
+            <a href="https://codepen.io/luko248" target="_blank" aria-label="CodePen link" rel="noopener">
+              <svg class="icon icon-codepen">
+                <use xlink:href="#icon-codepen"></use>
+              </svg>
+            </a>
+          </div>
+          <p>Contact me by <a class="link link--secondary" href="mailto:chylik.lukas@gmail.com">email</a> or
+            <a class="link link--secondary" href="tel:+420 721459889">phone</a></p>
+        </div>
+        <div>
+          <h2>My work</h2>
+          <div class="references">
+            <a href="https://pantegysoftware.com/" class="link" target="_blank" rel="noopener"
+              class="link">pantegysoftware.com</a>
+            <a href="https://www.krossbau.cz/" class="link" target="_blank" rel="noopener" class="link">krossbau.cz</a>
+            <a href="https://brand-design.cz/" class="link" target="_blank" rel="noopener"
+              class="link">brand-design.cz</a>
+            <a href="https://ivpaokna.sk/" class="link" target="_blank" rel="noopener" class="link">ivpaokna.sk</a>
+            <a href="https://filtrenamlieko.sk/" class="link" target="_blank" rel="noopener"
+              class="link">filtrenamlieko.sk</a>
+          </div>
+          <br><br>
+          <h3>focus on web</h3>
+          <div class="preferences">
+            <span>UI-UX design, development, performance, accessibility, analytics and SEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <footer></footer>
+  <footer></footer>
 </body>
 
 </html>

@@ -17,22 +17,23 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: var(--color-bg);
     font-family: var(--font-family--text);
     background-size: cover;
 
     @include res-min-laptop-xl {
-        background-image: url("./wwwroot/images/backgrounds/background_1920.jpg");
+        background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
     }
 
     @include res-max-laptop-xl {
-        background-image: url("./wwwroot/images/backgrounds/background_1440.jpg");
+        background-image: url("./wwwroot/images/backgrounds/background_1440.webp");
     }
 
     @include res-max-laptop-l {
-        background-image: url("./wwwroot/images/backgrounds/background_1366.jpg");
+        background-image: url("./wwwroot/images/backgrounds/background_1366.webp");
     }
 
     @include res-max-laptop-s {
-        background-image: url("./wwwroot/images/backgrounds/background_1024.jpg");
+        background-image: url("./wwwroot/images/backgrounds/background_1024.webp");
     }
 }
