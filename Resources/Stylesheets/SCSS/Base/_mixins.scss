@@ -8,3 +8,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@mixin gradient-text{
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-secondary--darken) 15%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

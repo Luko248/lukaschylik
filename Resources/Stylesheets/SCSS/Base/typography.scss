@@ -15,24 +15,20 @@ h1 {
 }
 
 h3 {
-    margin-bottom: var(--gap-l);
+    @include gradient-text;
     font-size: 5.6vh;
     letter-spacing: var(--letter-spacing);
-    color: var(--color-secondary);
-    text-transform: uppercase;
+    text-transform: uppercase; 
 }
 
 h2,
 strong {
+    @include gradient-text;
     font-size: 7vh;
     line-height: 7vh;
     letter-spacing: var(--letter-spacing);
     color: var(--color-secondary);
     text-transform: uppercase;
-}
-
-h2 {
-    margin-bottom: 4vh;
 }
 
 p {
@@ -41,6 +37,7 @@ p {
 }
 
 .references {
+    margin-top: 4vh;
     margin-bottom: var(--gap-xl);
     font-size: 4vh;
     line-height: 1.5;
@@ -49,6 +46,7 @@ p {
 }
 
 .preferences {
+    margin-top: var(--gap-l);
     font-size: 4vh;
     line-height: 1.5;
     color: var(--color-primary);

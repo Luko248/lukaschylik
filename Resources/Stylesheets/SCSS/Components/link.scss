@@ -4,7 +4,7 @@
     --color-link: var(--color-primary);
 
     &--secondary {
-        --color-link: var(--color-secondary);
+        --color-link: var(--color-secondary--darken);
     }
 }
 
@@ -15,11 +15,11 @@
     text-decoration-color: var(--color-primary);
 
     &:hover {
-        text-decoration-color: var(--color-secondary);
+        text-decoration-color: var(--color-secondary--darken);
     }
 
     &--secondary {
-        text-decoration-color: var(--color-secondary);
+        text-decoration-color: var(--color-secondary--darken);
 
         &:hover {
             text-decoration-color: var(--color-primary);
