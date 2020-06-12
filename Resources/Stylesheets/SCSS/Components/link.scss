@@ -9,11 +9,10 @@
 }
 
 .link {
-    @include font;
-    color: var(--color-link);
     font-size: 5.6vh;
-    text-decoration-color: var(--color-primary);
+    color: var(--color-link);
     transition: text-decoration-color var(--trans-time) ease-in-out;
+    text-decoration-color: var(--color-primary);
 
     &:hover {
         text-decoration-color: var(--color-secondary);

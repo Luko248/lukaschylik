@@ -8,27 +8,27 @@ p {
 }
 
 h1 {
-    @include font;
+    font-family: var(--font-family--title);
     font-size: 12vh;
     line-height: 12vh;
     color: var(--color-primary);
 }
 
 h3 {
-    @include font;
-    font-size: 5.6vh;
-    text-transform: uppercase;
     margin-bottom: var(--gap-l);
+    font-size: 5.6vh;
+    letter-spacing: var(--letter-spacing);
     color: var(--color-secondary);
+    text-transform: uppercase;
 }
 
 h2,
 strong {
-    @include font;
     font-size: 7vh;
     line-height: 7vh;
-    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
     color: var(--color-secondary);
+    text-transform: uppercase;
 }
 
 h2 {
@@ -36,24 +36,21 @@ h2 {
 }
 
 p {
-    @include font;
     font-size: 5.6vh;
     color: var(--color-primary);
 }
 
 .references {
-    @include font;
-    color: var(--color-primary);
+    margin-bottom: var(--gap-xl);
     font-size: 4vh;
     line-height: 1.5;
+    color: var(--color-primary);
     word-spacing: var(--gap-l);
-    margin-bottom: var(--gap-xl);
 }
 
 .preferences {
-    @include font;
-    color: var(--color-primary);
     font-size: 4vh;
     line-height: 1.5;
+    color: var(--color-primary);
     word-spacing: var(--gap-s);
 }

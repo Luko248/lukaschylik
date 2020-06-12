@@ -1,8 +1,8 @@
 @import "../base/global";
 section{
-    min-height: 100vh;
     display: grid;
     align-items: center;
+    min-height: 100vh;
     @include res-max-tablet{
         padding: 3rem 0;
     }

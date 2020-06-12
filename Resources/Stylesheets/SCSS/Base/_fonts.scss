@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'ramagothice-regular';
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+    src: url('./wwwroot/fonts/rama-gothic/ramagothice-regular.otf') format('opentype'), url('./wwwroot/fonts/rama-gothic/ramagothice-regular.ttf') format('truetype'), url('./wwwroot/fonts/rama-gothic/ramagothice-regular.woff') format('woff'), url('./wwwroot/fonts/rama-gothic/ramagothice-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'ramagothice-semibold';
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+    src: url('./wwwroot/fonts/rama-gothic/ramagothice-semibold.otf') format('opentype'), url('./wwwroot/fonts/rama-gothic/ramagothice-semibold.ttf') format('truetype'), url('./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff') format('woff'), url('./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff2') format('woff2');
+}

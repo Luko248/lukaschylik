@@ -13,7 +13,9 @@
     --gap-l: #{$gap-l};
     --gap-m: #{$gap-m};
     --gap-s: #{$gap-s};
-    --font-family: #{$font-family};
+    --font-family--text: #{$font-family--text};
+    --font-family--title: #{$font-family--title};
     --color-border: #{$color-black};
     --border-width: #{$border-width};
+    --letter-spacing: #{$letter-spacing};
 }

@@ -13,7 +13,9 @@ $gap-s: ($gap-m / 2);
 $gap-l: ($gap-m * 2);
 $gap-xl: ($gap-m * 3);
 $gap-xxl: ($gap-m * 4);
-$font-family: rama-gothic-e, sans-serif;
+$font-family--text: 'ramagothice-regular', sans-serif;
+$font-family--title: 'ramagothice-semibold', sans-serif;
+$letter-spacing: .05em;
 
 // All devices width for MediaQuery
 $width-mobile-s: 320px;

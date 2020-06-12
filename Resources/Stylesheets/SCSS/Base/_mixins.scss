@@ -8,10 +8,3 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-@mixin font($var-font-weight: 400){
-    font-family: var(--font-family);
-    font-weight: $var-font-weight;
-    font-style: normal;
-   
-}

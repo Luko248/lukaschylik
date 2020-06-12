@@ -17,7 +17,7 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: var(--font-text);
+    font-family: var(--font-family--text);
     background-size: cover;
 
     @include res-min-laptop-xl {
