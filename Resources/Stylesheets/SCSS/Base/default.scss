@@ -40,7 +40,7 @@ body {
 }
 
 .no-mobile{
-    @include res-min-mobile-l{
+    @include res-max-mobile-l{
         display: none;
     }
 }
