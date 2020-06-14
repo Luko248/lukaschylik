@@ -4,6 +4,7 @@
     display: grid;
     align-items: stretch;
     justify-content: space-between;
+    grid-gap: 4vw;
     grid-template-columns: 8fr 5fr;
 
     @include res-max-laptop-l {
@@ -14,12 +15,13 @@
     >div:first-of-type {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         justify-content: center;
     }
 
     &__social {
         display: grid;
-        margin: 5.6vh 0;
+        margin: 5.6vh 0 7.2vh;
         grid-gap: var(--gap-l);
         grid-template-columns: repeat(4, minmax(3.2rem, 4vh));
 
@@ -47,13 +49,22 @@
                 z-index: 5;
             }
 
-            &:hover{
+            &:hover {
                 &:before {
                     transform: translate(-50%, 50%) rotateX(75deg) scale(1, 1);
+
+                    @include res-max-tablet {
+                        transform: translate(-50%, 50%) rotateX(75deg) scale(0, 0);
+                    }
                 }
 
                 >svg {
                     transform: translateY(-20%);
+                    fill: var(--color-secondary--darken);
+
+                    @include res-max-tablet {
+                        transform: translateY(0);
+                    }
                 }
             }
 
@@ -63,7 +74,7 @@
             width: 100%;
             height: 100%;
             transform: translateY(0);
-            transition: transform var(--trans-time) ease-in-out;
+            transition: transform var(--trans-time) ease-in-out, fill var(--trans-time) ease-in-out;
             z-index: 10;
             fill: var(--color-primary);
         }

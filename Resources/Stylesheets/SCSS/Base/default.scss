@@ -38,3 +38,9 @@ body {
         background-image: url("./wwwroot/images/backgrounds/background_1024.webp");
     }
 }
+
+.no-mobile{
+    @include res-min-mobile-l{
+        display: none;
+    }
+}
