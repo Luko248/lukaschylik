@@ -159,6 +159,7 @@ p {
   color: var(--color-primary);
   transform: rotate(0deg);
   transition: transform var(--trans-time) ease-in-out;
+  -webkit-font-smoothing: antialiased;
   text-decoration-color: var(--color-primary); }
   .link:hover {
     transform: rotate(-5deg);
