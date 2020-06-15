@@ -1,6 +1,7 @@
 @import "../Base/global";
 
 .link {
+    font-family: var(--font-family--link);
     font-size: 5.6vh;
     color: var(--color-primary);
     transform: rotate(0deg);
@@ -21,8 +22,8 @@
     &--secondary {
         @include gradient-text;
         position: relative;
+        font-family: var(--font-family--text);
         text-decoration: none;
-
         &:after {
             position: absolute;
             top: 85%;

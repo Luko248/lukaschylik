@@ -39,7 +39,7 @@
   <meta name="theme-color" content="#000000">
 
   <style amp-custom>
-    :root {
+   :root {
   --color-black: black;
   --color-white: white;
   --color-trans: rgba(0, 0, 0, 0);
@@ -58,7 +58,8 @@
   --gap-m: 0.8rem;
   --gap-s: 0.4rem;
   --font-family--text: ramagothice-regular, sans-serif;
-  --font-family--title: ramagothice-semibold, sans-serif; }
+  --font-family--title: ramagothice-semibold, sans-serif;
+  --font-family--link: ramagothice-light, sans-serif; }
 
 @font-face {
   font-family: 'ramagothice-regular';
@@ -73,6 +74,13 @@
   font-display: swap;
   font-style: normal;
   src: url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-semibold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'ramagothice-light';
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  src: url("./wwwroot/fonts/rama-gothic/ramagothice-light.otf") format("opentype"), url("./wwwroot/fonts/rama-gothic/ramagothice-light.ttf") format("truetype"), url("./wwwroot/fonts/rama-gothic/ramagothice-light.woff") format("woff"), url("./wwwroot/fonts/rama-gothic/ramagothice-light.woff2") format("woff2"); }
 
 html {
   height: 100%;
@@ -196,6 +204,7 @@ p {
       padding: 0 var(--gap-l); } }
 
 .link {
+  font-family: var(--font-family--link);
   font-size: 5.6vh;
   color: var(--color-primary);
   transform: rotate(0deg);
@@ -215,6 +224,7 @@ p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
+    font-family: var(--font-family--text);
     text-decoration: none; }
     .link--secondary:after {
       position: absolute;
