@@ -9,7 +9,13 @@
 
 <url>
   <loc>https://lukaschylik.sk/</loc>
-  <lastmod>2020-06-11T04:41:09+00:00</lastmod>
+  <lastmod>2020-06-15T07:30:40+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://lukaschylik.sk/Luk%C3%A1%C5%A1_Chyl%C3%ADk_CV.pdf</loc>
+  <lastmod>2020-06-15T07:30:40+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
