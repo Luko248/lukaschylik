@@ -114,6 +114,9 @@ h3 {
   h3 a {
     text-decoration: underline;
     text-decoration-color: var(--color-secondary--darken); }
+  h3.subtitle {
+    margin-top: .16em;
+    font-size: 4vh; }
 
 h2,
 strong {
@@ -226,7 +229,7 @@ section {
     justify-content: center; }
   .contact__social {
     display: grid;
-    margin: 5.6vh 0 7.2vh;
+    margin: 3.2vh 0 7.2vh 0;
     grid-gap: var(--gap-l);
     grid-template-columns: repeat(5, minmax(3.2rem, 4vh)); }
     .contact__social > a {

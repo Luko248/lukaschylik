@@ -23,6 +23,10 @@ h3 {
         text-decoration: underline;
         text-decoration-color: var(--color-secondary--darken);
     }
+    &.subtitle{
+        margin-top: .16em;
+        font-size: 4vh;
+    }
 }
 
 h2,
@@ -40,6 +44,8 @@ p {
     font-size: 5.6vh;
     color: var(--color-primary);
 }
+
+
 
 .references {
     margin: 2.4vh 0 4vh;
