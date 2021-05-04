@@ -4,3 +4,6 @@
 
 node_modules
 package-lock.json
+wwwroot/CSS/style.css
+wwwroot/CSS/style.css.map
+wwwroot/CSS/style.min.css

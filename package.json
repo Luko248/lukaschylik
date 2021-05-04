@@ -12,6 +12,7 @@
     "clean-css-cli": "^5.3.0",
     "node-sass": "^5.0.0",
     "nunjucks": "^3.2.1",
+    "postcss": "8.2.13",
     "postcss-cli": "^8.3.1",
     "postcss-value-parser": "^4.1.0",
     "stylelint": "^13.12.0",
