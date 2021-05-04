@@ -2,6 +2,6 @@
     map: context.options.map,
     parser: context.options.parser,
     plugins: [
-        require('autoprefixer')({ browsers: "last 3 versions", grid: true })
+        require('autoprefixer')({ grid: true, flex: true })
     ]
 })

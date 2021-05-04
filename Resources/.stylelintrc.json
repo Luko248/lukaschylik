@@ -5,8 +5,8 @@
   "defaultSeverity": "warning",
   "rules": {
     "order/order": [
-      "declarations",
-      "custom-properties"
+      "custom-properties",
+      "declarations" 
     ],
     "order/properties-order": [
       [
