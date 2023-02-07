@@ -18,9 +18,9 @@ body {
     background-image: url("./wwwroot/images/backgrounds/background.webp");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     background-color: var(--color-bg);
     font-family: var(--font-family--text);
-    background-size: cover;
 
     @include res-max-laptop-l {
         background-image: url("./wwwroot/images/backgrounds/background_1920.webp");

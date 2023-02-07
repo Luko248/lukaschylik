@@ -1,12 +1,12 @@
 @import "../Base/global";
 
 .link {
+    backface-visibility: hidden;
     font-family: var(--font-family--link);
     font-size: 5.6vh;
     color: var(--color-primary);
     transform: rotate(0deg) translateZ(0);
     transition: transform var(--trans-time) ease-in-out;
-    backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     text-decoration-color: var(--color-primary);
 
@@ -35,8 +35,8 @@
             width: 100%;
             height: .09em;
             background: linear-gradient(135deg, var(--color-secondary--darken) 15%, var(--color-secondary) 100%);
-            transform: translateX(-50%);
             backface-visibility: hidden;
+            transform: translateX(-50%);
         }
     }
 }

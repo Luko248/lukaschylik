@@ -2,14 +2,14 @@
 
 .contact {
     display: grid;
+    grid-template-columns: 8fr 5fr;
     align-items: stretch;
     justify-content: space-between;
     grid-gap: 4vw;
-    grid-template-columns: 8fr 5fr;
 
     @include res-max-laptop-l {
-        grid-gap: 8rem;
         grid-template-columns: 1fr;
+        grid-gap: 8rem;
     }
 
     >div:first-of-type {
@@ -21,9 +21,9 @@
 
     &__social {
         display: grid;
+        grid-template-columns: repeat(5, minmax(3.2rem, 4vh));
         margin: 3.2vh 0 7.2vh 0;
         grid-gap: var(--gap-l);
-        grid-template-columns: repeat(5, minmax(3.2rem, 4vh));
 
         >a {
             position: relative;
