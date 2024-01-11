@@ -1,54 +1,45 @@
 {
-  "version": "2.0.0",
-  "name": "lukas_chylik_portfolio",
-  "description": "NPM confiwg with stylelint. Updated on 7.2.2023",
+  "name": "my-qwik-empty-starter",
+  "description": "App with Routing built-in ready to create your app",
+  "engines": {
+    "node": ">=15.0.0"
+  },
   "private": true,
-  "main": "./postcss.config.js",
-  "author": "Lukáš Chylík",
-  "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "browser-sync": "^2.27.11",
-    "clean-css-cli": "^5.6.2",
-    "node-sass": "^8.0.0",
-    "nunjucks": "^3.2.3",
-    "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0",
-    "postcss-loader": "^7.0.2",
-    "postcss-scss": "^4.0.6",
-    "postcss-value-parser": "^4.2.0",
-    "stylelint": "^14.16.1",
-    "stylelint-order": "^6.0.1",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.5",
-    "uglify-js": "^3.17.4",
-    "watch": "^1.0.2"
-  },
-  "browserslist": {
-    "production": [
-      "defaults",
-      "IE 11",
-      "not IE_Mob 11"
-    ],
-    "development": [
-      "defaults"
-    ]
-  },
-  "stylelint": {
-    "enabled": true,
-    "rules": "Resources/.stylelintrc.json",
-    "fileExtensions": "scss"
-  },
+  "trustedDependencies": [
+    "sharp"
+  ],
+  "type": "module",
   "scripts": {
-    "bundle": "npm run bundle:css && npm run bundle:js",
-    "postcss": "npm run compile:scss && postcss wwwroot/CSS/style.css --config ./postcss.config.js -o wwwroot/CSS/style.css",
-    "bundle:css": "npm run stylelint && npm run compile:scss && postcss wwwroot/CSS/style.css --config ./postcss.config.js | cleancss -o wwwroot/CSS/style.min.css",
-    "bundle:js": "npm run compile:ts && uglifyjs -o wwwroot/JS/app.min.js -c -m -- wwwroot/JS/app.js",
-    "compile:scss": "node-sass --source-map=true Resources/Stylesheets/SCSS/style.scss wwwroot/CSS/style.css",
-    "compile:ts": "tsc -p Resources",
-    "stylelint": "stylelint --fix Resources/Stylesheets/SCSS/**/*.scss --custom-syntax postcss-scss",
-    "watch": "npm run watch:scss",
-    "watch:scss": "npm run bundle:css & watch \"npm run bundle:css\" Resources/Stylesheets/SCSS",
-    "watch:ts": "npm run compile:ts -- -w && npm run bundle:js"
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.types": "tsc --incremental --noEmit",
+    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "qwik build preview && vite preview --open",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "^1.3.4",
+    "@builder.io/qwik-city": "^1.3.4",
+    "@types/eslint": "^8.56.2",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-qwik": "^1.3.4",
+    "prettier": "^3.1.1",
+    "typescript": "5.3.3",
+    "undici": "^6.3.0",
+    "vite": "^5.0.11",
+    "vite-tsconfig-paths": "^4.2.3"
+  },
+  "dependencies": {
+    "tailwind": "^4.0.0"
   }
 }
