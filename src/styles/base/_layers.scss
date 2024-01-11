@@ -1,0 +1,28 @@
+﻿@use "font-faces" as *;
+@use "reset" as *;
+@use "root" as *;
+@use "classes" as *;
+@use "typography" as *;
+@use "../abstracts/variables/bp" as *;
+@use "../components/_index" as *;
+
+@mixin create-layers {
+    @at-root {
+        @include create-font-faces;
+        @include create-root;
+        @layer tailwind, base, components, utils;
+
+        @layer base {
+            @include reset;
+            @include create-typography;
+        }
+
+        @layer components {
+            @include create-components;
+        }
+
+        @layer utils {
+            @include create-classes;
+        }
+    }
+}

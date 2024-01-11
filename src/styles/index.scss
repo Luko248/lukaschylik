@@ -1,0 +1,9 @@
+﻿@use './base/layers' as *;
+
+@include create-layers;
+
+@layer tailwind{
+    @import 'tailwindcss/base';
+    @import 'tailwindcss/components';
+    @import 'tailwindcss/utilities';
+}

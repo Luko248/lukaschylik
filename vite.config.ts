@@ -1,20 +1,39 @@
-import { defineConfig, type UserConfig } from "vite";
+import { defineConfig } from 'vite'
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
 
-export default defineConfig((): UserConfig => {
-  return {
-    plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
-    server: {
-      headers: {
-        "Cache-Control": "public, max-age=0",
-      },
+export default defineConfig({
+  plugins: [
+    qwikCity(),
+    qwikVite(),
+    tsconfigPaths(),
+  ],
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss,
+        autoprefixer,
+        postcssPresetEnv({ 
+          stage: 1,
+          features: {
+            "cascade-layers": true
+          }
+        }),
+      ],
     },
-    preview: {
-      headers: {
-        "Cache-Control": "public, max-age=600",
-      },
+  },
+  server: {
+    headers: {
+      "Cache-Control": "public, max-age=0",
     },
-  };
-});
+  },
+  preview: {
+    headers: {
+      "Cache-Control": "public, max-age=600",
+    },
+  },
+})

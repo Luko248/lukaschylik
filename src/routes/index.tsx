@@ -1,15 +1,18 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import '../styles/index.scss';
+
 
 export default component$(() => {
   return (
     <>
-      <h1>Hi 👋</h1>
+      <h1>Lukáš Chylík</h1>
       <p>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
+       Portfolio
       </p>
+      <button class="bg-green-500">
+        Click me
+      </button>
     </>
   );
 });
