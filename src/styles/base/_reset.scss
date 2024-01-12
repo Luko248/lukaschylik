@@ -6,13 +6,4 @@
     html {
         scroll-behavior: smooth;
     }
-
-    body {
-        min-block-size: 100svb;
-        margin: 0;
-        font-family: var(--font-family-text);
-        font-weight: var(--font-weight);
-        line-height: var(--line-height);
-        overflow-x: clip;
-    }
 }

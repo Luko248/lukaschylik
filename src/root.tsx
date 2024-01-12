@@ -37,7 +37,7 @@ export default component$(() => {
 const styles = stylex.create({
   body: {
     margin: 0,
-    padding: 0,
+    minblockSize: "100svb",
     color: color.textLight,
     overflowX: "clip",
   },
