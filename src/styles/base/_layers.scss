@@ -8,7 +8,7 @@
 
 @mixin create-layers {
     @at-root {
-        @include create-font-faces;
+        // @include create-font-faces;
         @include create-root;
         @layer base, components, utils;
 
