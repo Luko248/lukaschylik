@@ -9,7 +9,7 @@ import * as stylex from "@stylexjs/stylex";
 import "./styles/index.scss";
 
 import "virtual:stylex.css";
-import { colors } from "./vars.stylex";
+import { color } from "./vars.stylex";
 
 export default component$(() => {
   /**
@@ -38,7 +38,7 @@ const styles = stylex.create({
   body: {
     margin: 0,
     padding: 0,
-    color: colors.lightText,
+    color: color.textLight,
     overflowX: "clip",
   },
 });

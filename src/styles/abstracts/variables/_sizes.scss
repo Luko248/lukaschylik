@@ -26,11 +26,11 @@ $shadow-radius-m: 2em;
 $shadow-radius-l: 2.5em;
 $shadow-radius-xl: 3em;
 
-//others
+//animation
 $trans-time: .25s;
 $trans-fnc: ease-in-out;
 
-//media-query widths
+//media
 $width-mobile-s: 320px;
 $width-mobile-m: 375px;
 $width-mobile-l: 425px;
@@ -43,7 +43,7 @@ $width-desktop-full-hd: 1920px;
 $width-desktop-2k: 2048px;
 $width-desktop-4k: 3840px;
 
-@mixin generate-sizes {
+@mixin generate-gap-sizes {
     --gap: #{$gap};
     --gap-xs: #{$gap-xs};
     --gap-s: #{$gap-s};
@@ -52,6 +52,9 @@ $width-desktop-4k: 3840px;
     --gap-xl: #{$gap-xl};
     --gap-2xl: #{$gap-2xl};
     --gap-3xl: #{$gap-3xl};
+}
+
+@mixin generate-border-sizes {
     --border-width: #{$border-width};
     --border-width-l: #{$border-width-l};
     --radius-s: #{$radius-s};
@@ -59,6 +62,9 @@ $width-desktop-4k: 3840px;
     --radius-l: #{$radius-l};
     --radius-none: #{$radius-none};
     --radius-circle: #{$radius-circle};
+}
+
+@mixin generate-box-shadow-sizes {
     --shadow-x: #{$shadow-x};
     --shadow-y: #{$shadow-y};
     --shadow-radius-xs: #{$shadow-radius-xs};
@@ -66,6 +72,27 @@ $width-desktop-4k: 3840px;
     --shadow-radius-m: #{$shadow-radius-m};
     --shadow-radius-l: #{$shadow-radius-l};
     --shadow-radius-xl: #{$shadow-radius-xl};
+}
+
+@mixin generate-animation-sizes {
     --trans-time: #{$trans-time};
     --trans-fnc: #{$trans-fnc};
+}
+
+@mixin generate-media-sizes {
+    --width-mobile-s: #{$width-mobile-s};
+    --width-mobile-m: #{$width-mobile-m};
+    --width-mobile-l: #{$width-mobile-l};
+    --width-mobile-xl: #{$width-mobile-xl};
+    --width-tablet: #{$width-tablet};
+    --width-desktop-s: #{$width-desktop-s};
+    --width-desktop-l: #{$width-desktop-l};
+}
+
+@mixin generate-sizes {
+    @include generate-gap-sizes;
+    @include generate-border-sizes;
+    @include generate-box-shadow-sizes;
+    @include generate-animation-sizes;
+    @include generate-media-sizes;
 }
