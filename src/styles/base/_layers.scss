@@ -10,7 +10,7 @@
     @at-root {
         @include create-font-faces;
         @include create-root;
-        @layer tailwind, base, components, utils;
+        @layer base, components, utils;
 
         @layer base {
             @include reset;

@@ -1,12 +1,12 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import '../styles/index.scss';
+import { attrs, create } from "@stylexjs/stylex";
 
-
+import { colors } from "../vars.stylex";
 export default component$(() => {
   return (
     <>
-      <h1>Lukáš Chylík</h1>
+      <h1 {...attrs(styles.heading)}>Lukáš Chylík</h1>
       <p>
        Portfolio
       </p>
@@ -26,3 +26,17 @@ export const head: DocumentHead = {
     },
   ],
 };
+
+
+const styles = create({
+  heading: {
+    color: "red"
+  },
+  link: {
+    textDecoration: { default: "none", ":hover": "underline" },
+    color: colors.lightBlue,
+  },
+  li: {
+    lineHeight: 2.5,
+  },
+});
