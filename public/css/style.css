@@ -13,7 +13,6 @@
   --color-font: hsl(0, 0%, 100%);
   --trans-time: 0.25s;
   --trans-fnc: ease-in-out;
-  --animate-all: all ease-in-out var(0.25s);
   --gap-xxl: 3.2rem;
   --gap-xl: 2.4rem;
   --gap-l: 1.6rem;

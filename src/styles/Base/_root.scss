@@ -16,7 +16,6 @@
     --color-font: #{$color-font};
     --trans-time: #{$trans-time};
     --trans-fnc: ease-in-out;
-    --animate-all: #{$animate-all};
     --gap-xxl: #{$gap-xxl};
     --gap-xl: #{$gap-xl};
     --gap-l: #{$gap-l};
@@ -27,11 +26,11 @@
     --border-width: 1px;
     --nav-height: 8rem;
 
-    @include res-max-laptop-s{
+    @include res-max-laptop-s {
         --nav-height: 7rem;
     }
 
-    @include res-max-tablet{
+    @include res-max-tablet {
         --nav-height: 5rem;
     }
 }
