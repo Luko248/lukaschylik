@@ -19,7 +19,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://lukaschylik.sk/
+      url: http://lukaschylik.sk/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
