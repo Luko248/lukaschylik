@@ -44,9 +44,12 @@ const { description } = Astro.props;
     <link rel="stylesheet" href="https://use.typekit.net/mcf8cbw.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
-    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <style lang="scss">
+      @import "../styles/style.scss";
+    </style>
     <meta name="generator" content={Astro.generator} />
   </head>
+
   <body>
     <IconSet />
     <slot />
