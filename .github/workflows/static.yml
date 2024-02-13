@@ -45,5 +45,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUBACTIONS_ACCESS_TOKEN }}
-          publish_dir: ./
+          publish_dir: ${{ github.workspace }}/dist
         if: success()
