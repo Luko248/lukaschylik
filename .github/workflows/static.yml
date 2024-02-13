@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -34,10 +34,10 @@ jobs:
         run: pnpm i
 
       - name: Run SCSS
-        run: npm run scss
+        run: pnpm run scss
 
       - name: Build
-        run: astro check && astro build
+        run: npx astro check && npx astro build
         if: success()
 
       - name: List directory contents

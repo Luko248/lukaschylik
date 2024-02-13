@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "pnpm run dev",
-    "build": "astro check && astro build",
+    "build": "pnpm run scss && pnpm run astro:build",
+    "astro:build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "scss": "sass src/styles/style.scss public/css/style.css",
