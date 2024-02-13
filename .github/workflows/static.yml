@@ -1,20 +1,3 @@
-name: Deploy static content to Pages
-
-on:
-  push:
-    branches: ["master"]
-
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,8 +16,11 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
+      - name: Run SCSS
+        run: npm run scss
+
       - name: Build
-        run: pnpm build
+        run: astro check && astro build
         if: success()
 
       - name: List directory contents
