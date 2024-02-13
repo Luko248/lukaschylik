@@ -19,7 +19,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://anewstyle.cz/
+      url: https://lukaschylik.sk/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,16 +42,6 @@ jobs:
 
       - name: List directory contents
         run: ls -la
-
-      - name: Archive files
-        run: zip -r dist.zip ./
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: ./dist.zip
-        if: success()
 
       - name: Deploy to GitHub Pages
         id: deployment
