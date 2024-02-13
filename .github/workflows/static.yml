@@ -17,6 +17,17 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.2
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Run SCSS
+        run: pnpm run scss
+
       - name: Install, build, and upload your site
         uses: withastro/action@v1
    
@@ -29,4 +40,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
