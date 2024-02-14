@@ -1,0 +1,9 @@
+@import "../base/global";
+section{
+    display: grid;
+    align-items: center;
+    min-height: 100vh;
+    @include res-max-tablet{
+        padding: 3rem 0;
+    }
+}

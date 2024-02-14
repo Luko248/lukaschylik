@@ -1,0 +1,21 @@
+@import "../base/global";
+
+.container {
+    width: 80%;
+    min-width: $width-laptop-l;
+    margin: 0 auto;
+
+    @include res-max-laptop-l {
+        min-width: $width-laptop-s;
+    }
+
+    @include res-max-laptop-m {
+        width: 100%;
+        min-width: 0;
+        padding: 0 var(--gap-xxl);
+    }
+
+    @include res-max-mobile-l{
+        padding: 0 var(--gap-l);
+    }
+}

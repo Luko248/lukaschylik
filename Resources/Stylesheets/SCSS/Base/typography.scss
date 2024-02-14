@@ -1,0 +1,64 @@
+@import "../Base/global";
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1 {
+    font-family: var(--font-family--title);
+    font-size: 12vh;
+    line-height: 12vh;
+    color: var(--color-primary);
+}
+
+h3 {
+    @include gradient-text;
+    font-size: 5.6vh;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase; 
+    a{
+        text-decoration: underline;
+        text-decoration-color: var(--color-secondary--darken);
+    }
+    &.subtitle{
+        margin-top: .16em;
+        font-size: 4vh;
+    }
+}
+
+h2,
+strong {
+    @include gradient-text;
+    font-size: 7.2vh;
+    line-height: 7.2vh;
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-secondary);
+    text-transform: uppercase;
+}
+
+p {
+    margin-top: 5.6vh;
+    font-size: 5.6vh;
+    color: var(--color-primary);
+}
+
+
+
+.references {
+    margin: 2.4vh 0 4vh;
+    font-size: 4vh;
+    line-height: 1.5;
+    color: var(--color-primary);
+    word-spacing: var(--gap-l);
+}
+
+.preferences {
+    margin-top: 1.6vh;
+    font-size: 4vh;
+    line-height: 1.5;
+    color: var(--color-primary);
+    word-spacing: var(--gap-s);
+}

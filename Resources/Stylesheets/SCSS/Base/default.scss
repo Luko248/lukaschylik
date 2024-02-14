@@ -1,0 +1,46 @@
+@import "global";
+
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("./wwwroot/images/backgrounds/background.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--color-bg);
+    font-family: var(--font-family--text);
+
+    @include res-max-laptop-l {
+        background-image: url("./wwwroot/images/backgrounds/background_1920.webp");
+    }
+
+    @include res-max-laptop-m {
+        background-image: url("./wwwroot/images/backgrounds/background_1440.webp");
+    }
+
+    @include res-max-laptop-s {
+        background-image: url("./wwwroot/images/backgrounds/background_1366.webp");
+    }
+
+    @include res-max-tablet {
+        background-image: url("./wwwroot/images/backgrounds/background_1024.webp");
+    }
+}
+
+.no-mobile{
+    @include res-max-mobile-l{
+        display: none;
+    }
+}

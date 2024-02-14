@@ -1,0 +1,32 @@
+﻿//colors
+$color-black: hsla(0, 0%, 0%, 1);
+$color-white: hsla(0, 0%, 100%, 1);
+$color-trans: hsla(0, 0%, 0%, 0);
+$color-primary: hsla(0, 0%, 87%,1);
+$color-secondary: hsl(43, 63%, 65%);
+$color-secondary--darken: hsl(43, 63%, 45%);
+$color-shadow: hsla(0, 0%, 56%, 1);
+$color-bg: hsla(0, 0%, 8%, 1);
+
+$trans-time: .25s;
+$border-width: .1rem;
+$gap-m: .8rem;
+$gap-s: ($gap-m / 2);
+$gap-l: ($gap-m * 2);
+$gap-xl: ($gap-m * 3);
+$gap-xxl: ($gap-m * 4);
+$font-family--text: 'ramagothice-regular', sans-serif;
+$font-family--title: 'ramagothice-semibold', sans-serif;
+$font-family--link: 'ramagothice-light', sans-serif;
+$letter-spacing: .05em;
+
+// All devices width for MediaQuery
+$width-mobile-s: 320px;
+$width-mobile-m: 375px;
+$width-mobile-l: 425px;
+$width-tablet: 768px;
+$width-laptop-s: 1024px;
+$width-laptop-m: 1360px;
+$width-laptop-l: 1440px;
+$width-laptop-xl: 1920px;
+$width-4k: 2560px;
