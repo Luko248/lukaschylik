@@ -3,8 +3,11 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { attrs, create } from "@stylexjs/stylex";
 
 import { color, gap, media } from "../vars.stylex";
+import Intro from "~/components/intro/intro";
 export default component$(() => {
   return (
+    <>
+    <Intro />
     <section {...attrs(styles.section)}>
       <h1 {...attrs(styles.heading)}>Qwik + Vite + StyleX + SCSS template</h1>
       <p {...attrs(styles.desc)}>
@@ -12,6 +15,7 @@ export default component$(() => {
         and SCSS.
       </p>
     </section>
+    </>
   );
 });
 
