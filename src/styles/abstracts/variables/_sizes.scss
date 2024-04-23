@@ -1,5 +1,5 @@
 ﻿//gap
-$gap: .5rem;
+$gap: 0.5rem;
 $gap-xs: calc($gap / 4);
 $gap-s: calc($gap / 2);
 $gap-m: $gap;
@@ -27,7 +27,7 @@ $shadow-radius-l: 2.5em;
 $shadow-radius-xl: 3em;
 
 //animation
-$trans-time: .25s;
+$trans-time: 0.25s;
 $trans-fnc: ease-in-out;
 
 //media
@@ -87,6 +87,10 @@ $width-desktop-4k: 3840px;
     --width-tablet: #{$width-tablet};
     --width-desktop-s: #{$width-desktop-s};
     --width-desktop-l: #{$width-desktop-l};
+    --width-desktop-hd: #{$width-desktop-hd};
+    --width-desktop-full-hd: #{$width-desktop-full-hd};
+    --width-desktop-2k: #{$width-desktop-2k};
+    --width-desktop-4k: #{$width-desktop-4k};
 }
 
 @mixin generate-sizes {

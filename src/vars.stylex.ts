@@ -26,6 +26,7 @@ export const gap = stylex.defineVars({
   xl: "var(--gap-xl)",
   xxl: "var(--gap-2xl)",
   xxxl: "var(--gap-3xl)",
+  auto: "auto"
 });
 
 export const border = stylex.defineVars({

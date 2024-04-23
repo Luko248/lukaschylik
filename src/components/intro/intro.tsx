@@ -10,7 +10,7 @@ const styles = create({
 
 const Intro = component$(() => {
   return <header {...attrs(styles.header)}>
-    <Container>
+    <Container size="sm">
       <h1>Welcome to my website</h1>
     </Container>
   </header>

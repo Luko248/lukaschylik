@@ -7,14 +7,14 @@ import Intro from "~/components/intro/intro";
 export default component$(() => {
   return (
     <>
-    <Intro />
-    <section {...attrs(styles.section)}>
-      <h1 {...attrs(styles.heading)}>Qwik + Vite + StyleX + SCSS template</h1>
-      <p {...attrs(styles.desc)}>
-        This is a template for creating a new Qwik website using Vite, StyleX
-        and SCSS.
-      </p>
-    </section>
+      <Intro />
+      <section {...attrs(styles.section)}>
+        <h1 {...attrs(styles.heading)}>Qwik + Vite + StyleX + SCSS template</h1>
+        <p {...attrs(styles.desc)}>
+          This is a template for creating a new Qwik website using Vite, StyleX
+          and SCSS.
+        </p>
+      </section>
     </>
   );
 });
