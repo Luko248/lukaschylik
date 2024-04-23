@@ -4,10 +4,13 @@ import * as stylex from "@stylexjs/stylex";
 import { ContainerProps } from "./container.types";
 import { gap, media } from "../../vars.stylex";
 
-const CONT_STYLES = stylex.create({
+const BASE = stylex.create({
   default: {
     marginInline: gap.auto,
-  },
+  }
+});
+
+const SIZES = stylex.create({
   sm: {
     inlineSize: `min(calc(${media.widthDesktopS} - 2rem), 100%)`
   },
@@ -20,7 +23,7 @@ const CONT_STYLES = stylex.create({
 });
 
 const Container = component$<ContainerProps>(({ size = "md" }) => {
-  return <div {...stylex.props(CONT_STYLES.default, CONT_STYLES[size])}>
+  return <div {...stylex.props(BASE.default, SIZES[size])}>
     <Slot />
   </div>
 });
