@@ -62,6 +62,7 @@ $width-desktop-4k: 3840px;
     --radius-l: #{$radius-l};
     --radius-none: #{$radius-none};
     --radius-circle: #{$radius-circle};
+    --radius-full: 100vmax;
 }
 
 @mixin generate-box-shadow-sizes {

@@ -18,6 +18,7 @@ $color-text-dark: hsl(0 0% 100%);
     --color-white: #{$color-white};
     --color-transparent: #{$color-transparent};
     --color-primary: #{$color-primary};
+    --color-primary--hover: #{darken($color-primary, 10%)};
     --color-secondary: #{$color-secondary};
     --color-info: #{$color-info};
     --color-success: #{$color-success};

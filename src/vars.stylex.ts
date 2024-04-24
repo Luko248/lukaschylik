@@ -5,6 +5,7 @@ export const color = stylex.defineVars({
   white: "var(--color-white)",
   transparent: "var(--color-transparent)",
   primary: "var(--color-primary)",
+  primaryHover: "var(--color-primary--hover)",
   secondary: "var(--color-secondary)",
   info: "var(--color-info)",
   success: "var(--color-success)",
@@ -40,6 +41,7 @@ export const borderRradius = stylex.defineVars({
   l: "var(--radius-l)",
   none: "var(--radius-none)",
   circle: "var(--radius-circle)",
+  full: "var(--radius-full)",
 });
 
 export const boxShadow = stylex.defineVars({

@@ -22,8 +22,8 @@ const SIZES = stylex.create({
   }
 });
 
-const Container = component$<ContainerProps>(({ size = "md" }) => {
-  return <div {...stylex.props(BASE.default, SIZES[size])}>
+const Container = component$<ContainerProps>(({ size = "md", styles }) => {
+  return <div {...stylex.props(BASE.default, SIZES[size], styles)}>
     <Slot />
   </div>
 });
