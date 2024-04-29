@@ -24,7 +24,6 @@ const STYLES = create({
   },
 });
 
-
 const Intro = component$(() => {
   return <header {...attrs(STYLES.header)}>
     <Container size="lg">
@@ -32,7 +31,7 @@ const Intro = component$(() => {
         <div>
           <h1 {...attrs(STYLES.h1)}>Welcome to my website</h1>
           <Button
-            onClick$={qrl('.fnc/showAlert', 'showAlert')}
+            onClick$={() => { alert("Clicked") }}
             variant="primary"
             size="md">
             Get Started

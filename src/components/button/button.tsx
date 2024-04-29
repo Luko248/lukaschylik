@@ -42,14 +42,14 @@ const VARIANTS = stylex.create({
 const Button = component$<ButtonProps>(({
     size = "md",
     variant = "primary",
-    onClick,
+    onClick$,
     disabled,
     ariaLabel,
     title,
     styles }) => {
 
     return <button
-        onClick$={onClick}
+        onClick$={onClick$}
         disabled={disabled}
         aria-disabled={disabled}
         aria-label={ariaLabel}
