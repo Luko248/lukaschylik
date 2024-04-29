@@ -1,8 +1,9 @@
-import { component$, qrl } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { attrs, create } from "@stylexjs/stylex";
 import Container from '../container/container';
 import { color, gap } from '../../vars.stylex';
 import Button from '../button/button';
+import { numNeg } from '../../utils';
 
 const STYLES = create({
   header: {
@@ -21,6 +22,8 @@ const STYLES = create({
     textTransform: "uppercase",
     textWrap: "pretty",
     lineHEight: "1.5",
+    textShadow: `3px 3px 0 #ff9cea, -3px -3px 0 #4dffef`,
+    letterSpacing: "0.1em",
   },
 });
 
