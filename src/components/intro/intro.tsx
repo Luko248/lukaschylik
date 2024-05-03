@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { attrs, create } from "@stylexjs/stylex";
 import Container from '../container/container';
-import { color, gap } from '../../vars.stylex';
+import { color, gap, mq } from '../../vars.stylex';
 import Button from '../button/button';
 import { numNeg } from '../../utils';
 
@@ -10,14 +10,21 @@ const STYLES = create({
     paddingBlock: "8svb",
     minBlockSize: "100svb",
     backgroundColor: color.secondary,
-    color: color.white,
+    color: color.white
   },
   grid: {
     display: "grid",
     gridTemplateColumns: "5fr 8fr",
   },
   h1: {
-    fontSize: `clamp(${gap.xxl}, 8svb, 6rem)`,
+    fontSize: {
+      default: `clamp(${gap.xxl}, 8svb, 6rem)`,
+      "@media (width <= 768px)": 50,
+      "@media (width <= 560px)": 25,
+      "@media (hover: hover)": {
+        ":hover": 70,
+      }
+    },
     fontWeight: "bold",
     textTransform: "uppercase",
     textWrap: "pretty",

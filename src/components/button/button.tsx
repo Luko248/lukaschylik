@@ -18,9 +18,12 @@ const SIZES = stylex.create({
         fontSize: "12px",
     },
     md: {
-        paddingInline: gap.l,
-        paddingBlock: gap.m,
+        paddingInline: gap.xl,
+        paddingBlock: gap.l,
         fontSize: "1rem",
+        fontWeight: "bold",
+        border: "none",
+        textTransform: "uppercase",
     }
 });
 
