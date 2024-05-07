@@ -4,26 +4,35 @@ import Container from '../container/container';
 import { color, gap, mq } from '../../vars.stylex';
 import Button from '../button/button';
 import { numNeg } from '../../utils';
+import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const STYLES = create({
   header: {
-    paddingBlock: "8svb",
-    minBlockSize: "100svb",
+
     backgroundColor: color.secondary,
     color: color.white
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "5fr 8fr",
+    paddingBlock: "8svb",
+    minBlockSize: "100svb",
+    gridTemplateColumns: `minmax(${gap.xl}, 8fr) minmax(${gap.xl}, 5fr)`,
+    alignItems: "center",
+  },
+  container: {
+    display: "contents"
+  },
+  strong: {
+    display: "block",
+    marginBlockEnd: gap.l,
+    letterSpacing: "0.1em",
+    fontSize: {
+      default: `clamp(${gap.xl}, 3.5svb, ${gap.xxxl})`
+    },
   },
   h1: {
     fontSize: {
-      default: `clamp(${gap.xxl}, 8svb, 6rem)`,
-      "@media (width <= 768px)": 50,
-      "@media (width <= 560px)": 25,
-      "@media (hover: hover)": {
-        ":hover": 70,
-      }
+      default: `clamp(${gap.xxl}, 10svb, 8rem)`
     },
     fontWeight: "bold",
     textTransform: "uppercase",
@@ -39,17 +48,18 @@ const Intro = component$(() => {
     <Container size="lg">
       <div {...attrs(STYLES.grid)}>
         <div>
-          <h1 {...attrs(STYLES.h1)}>Welcome to my website</h1>
-          <Button
+          <strong {...attrs(STYLES.strong)}>Creative web developer</strong>
+          <h1 {...attrs(STYLES.h1)}>Lukáš Chylík</h1>
+          {/* <Button
             onClick$={() => { alert("Clicked") }}
             variant="primary"
             size="md">
             Get Started
-          </Button>
+          </Button> */}
         </div>
       </div>
     </Container>
-  </header>
+  </header >
 });
 
 export default Intro;
