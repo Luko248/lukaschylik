@@ -21,8 +21,16 @@ export default component$(() => {
         text: "Home"
       },
       {
+        href: "#skills",
+        text: "Skills"
+      },
+      {
+        href: "#reference",
+        text: "Reference"
+      },
+      {
         href: "/contact",
-        text: "Contact"
+        text: "Kontakt"
       }
     ]} />
     <main>

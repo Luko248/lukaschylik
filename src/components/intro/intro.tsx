@@ -4,9 +4,8 @@ import Container from '../container/container';
 import { color, gap } from '../../vars.stylex';
 import Button from '../button/button';
 
-const STYLES = create({
+const STYLE = create({
   header: {
-
     backgroundColor: color.secondary,
     color: color.white
   },
@@ -42,12 +41,12 @@ const STYLES = create({
 });
 
 const Intro = component$(() => {
-  return <header {...attrs(STYLES.header)}>
+  return <header {...attrs(STYLE.header)}>
     <Container size="lg">
-      <div {...attrs(STYLES.grid)}>
+      <div {...attrs(STYLE.grid)}>
         <div>
-          <strong {...attrs(STYLES.strong)}>Creative web developer</strong>
-          <h1 {...attrs(STYLES.h1)}>Lukáš Chylík</h1>
+          <strong {...attrs(STYLE.strong)}>Creative web developer</strong>
+          <h1 {...attrs(STYLE.h1)}>Lukáš Chylík</h1>
           <Button
             onClick$={() => { alert("Clicked") }}
             variant="primary"
