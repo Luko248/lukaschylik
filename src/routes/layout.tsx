@@ -1,5 +1,6 @@
 import { component$, Slot } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import Navigation from "../components/navigation/navigation";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,7 +14,19 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <main>
-    <Slot />
-  </main>;
+  return <>
+    <Navigation small links={[
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/contact",
+        text: "Contact"
+      }
+    ]} />
+    <main>
+      <Slot />
+    </main>
+  </>
 });

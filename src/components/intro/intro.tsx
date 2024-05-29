@@ -1,10 +1,8 @@
 import { component$ } from '@builder.io/qwik';
 import { attrs, create } from "@stylexjs/stylex";
 import Container from '../container/container';
-import { color, gap, mq } from '../../vars.stylex';
+import { color, gap } from '../../vars.stylex';
 import Button from '../button/button';
-import { numNeg } from '../../utils';
-import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const STYLES = create({
   header: {
@@ -50,12 +48,13 @@ const Intro = component$(() => {
         <div>
           <strong {...attrs(STYLES.strong)}>Creative web developer</strong>
           <h1 {...attrs(STYLES.h1)}>Lukáš Chylík</h1>
-          {/* <Button
+          <Button
             onClick$={() => { alert("Clicked") }}
             variant="primary"
             size="md">
             Get Started
-          </Button> */}
+          </Button>
+          <br />
         </div>
       </div>
     </Container>

@@ -63,7 +63,7 @@ const Button = component$<ButtonProps>(({
             VARIANTS[variant],
             styles)}>
         <Slot />
-    </button>;
+    </button>
 });
 
 export default Button;
