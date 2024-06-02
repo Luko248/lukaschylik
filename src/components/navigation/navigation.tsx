@@ -13,6 +13,7 @@ const STYLE = create({
     inlineSize: "100%",
     translate: "-50%",
     color: color.white,
+    zIndex: 1000,
   },
   menu: {
     display: "inline-flex",
@@ -26,7 +27,7 @@ const STYLE = create({
     paddingInline: gap.xxl,
     borderRadius: borderRradius.full,
     backgroundColor: "hsla(0, 0%, 30%, 0.5)",
-    backdropFilter: "blur(10px)",
+    backdropFilter: "blur(8px)",
   },
   li: {
     paddingInline: gap.m,

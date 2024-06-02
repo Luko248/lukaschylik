@@ -38,6 +38,15 @@ const STYLE = create({
     textShadow: `3px 3px 0 #ff9cea, -3px -3px 0 #4dffef`,
     letterSpacing: "0.1em",
   },
+  img: {
+    display: "block",
+    maxInlineSize: "100%",
+    blockSize: "auto",
+    borderRadius: "50%",
+    boxShadow: "0 0 10px rgba(0,0,0,0.5)",
+    filter: "grayscale(100%)",
+    opacity: "0.8",
+  }
 });
 
 const Intro = component$(() => {
@@ -54,6 +63,9 @@ const Intro = component$(() => {
             Get Started
           </Button>
           <br />
+        </div>
+        <div>
+          <img src="https://lukaschylik.sk/wwwroot/images/meta/meta-image.jpg" alt="Profile photo of me" {...attrs(STYLE.img)} width="1600" height="1600" />
         </div>
       </div>
     </Container>
