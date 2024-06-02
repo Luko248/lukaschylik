@@ -28,10 +28,25 @@ const STYLE = create({
     backgroundColor: "hsla(0, 0%, 30%, 0.5)",
     backdropFilter: "blur(10px)",
   },
-  link: {
-    color: color.white,
+  li: {
     paddingInline: gap.m,
     textDecoration: "none",
+    transition: "scale 0.3s",
+    ":hover": {
+      scale: "1.1",
+    }
+  },
+  link: {
+    color: color.white,
+    textDecoration: "none",
+    textDecorationThickness: ".15em",
+    textDecorationColor: "#4dffef",
+    textDecorationStyle: "solid",
+    textUnderlineOffset: ".25em",
+    textTransform: "uppercase",
+    ":hover": {
+      textDecoration: "underline",
+    }
   }
 });
 const Navigation = component$<NavigationProps>(({ small, links }) => {
@@ -40,7 +55,7 @@ const Navigation = component$<NavigationProps>(({ small, links }) => {
   return <nav {...stylex.props(STYLE.nav)} data-small={small}>
     <ul {...stylex.props(STYLE.menu)}>
       {links && links.map(link =>
-        <li>
+        <li {...stylex.props(STYLE.li)}>
           <Link href={link.href} {...stylex.props(STYLE.link)}> {link.text}</Link>
         </li>
       )}

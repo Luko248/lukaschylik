@@ -6,7 +6,6 @@ import * as stylex from "@stylexjs/stylex";
 const BASE = stylex.create({
     default: {
         lineHeight: "1",
-        borderRadius: borderRradius.full,
         cursor: "pointer",
     }
 });
@@ -29,16 +28,19 @@ const SIZES = stylex.create({
 
 const VARIANTS = stylex.create({
     primary: {
+        color: color.white,
         backgroundColor: {
-            default: color.primary,
-            ":hover": color.primaryHover,
-        }
+            default: color.transparent,
+            ":hover": color.transparent,
+        },
+        border: color.white + " solid " + gap.xs,
     },
     secondary: {
+        color: color.black,
         backgroundColor: {
             default: "green",
             ":hover": "darkgreen",
-        }
+        },
     }
 });
 
