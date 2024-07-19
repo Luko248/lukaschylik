@@ -1,5 +1,4 @@
-import { StyleXStyles, StyleXStylesWithout } from "@stylexjs/stylex";
-import { gap, media } from "../../vars.stylex";
+import { StyleXStylesWithout } from "@stylexjs/stylex";
 
 export interface ContainerProps {
   size?: "sm" | "md" | "lg";

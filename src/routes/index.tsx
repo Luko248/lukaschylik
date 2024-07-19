@@ -3,6 +3,7 @@ import Intro from "~/components/intro/intro";
 import Container from "~/components/container/container";
 import stylex, { create } from '@stylexjs/stylex';
 import { color } from '../vars.stylex';
+import Card from "~/components/card/card";
 
 const moveToTop = stylex.keyframes({
   'from': { translate: '-50% calc(-50svb + 100%)' },
@@ -24,7 +25,7 @@ const STYLE = create({
     textTransform: "uppercase",
     fontWeight: "900",
     letterSpacing: "0.1em",
-    color: color.black,
+    color: `hsl(from ${color.black} h s l / .15)`,
     opacity: 0,
     translate: "-50% calc(-50svb + 100%)",
     animationName: moveToTop,
@@ -49,6 +50,10 @@ export default component$(() => {
       <section id="reference" {...stylex.props(STYLE.section)}>
         <Container>
           <h2 {...stylex.props(STYLE.sectionTitle)}>Reference</h2>
+          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
+          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
+          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
+          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
         </Container>
       </section>
     </>
