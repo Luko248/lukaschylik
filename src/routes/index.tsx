@@ -1,14 +1,14 @@
 import { component$ } from "@builder.io/qwik";
 import Intro from "~/components/intro/intro";
 import Container from "~/components/container/container";
-import stylex, { create } from '@stylexjs/stylex';
-import { color } from '../vars.stylex';
+import stylex, { create } from "@stylexjs/stylex";
+import { color } from "../vars.stylex";
 import Card from "~/components/card/card";
 
 const moveToTop = stylex.keyframes({
-  'from': { translate: '-50% calc(-50svb + 100%)' },
-  '30%, 70%': { opacity: 1 },
-  'to': { translate: '-50% calc(50svb - 100%)' },
+  from: { translate: "-50% calc(-50svb + 100%)" },
+  "30%, 70%": { opacity: 1 },
+  to: { translate: "-50% calc(50svb - 100%)" },
 });
 
 const STYLE = create({
@@ -17,6 +17,7 @@ const STYLE = create({
     position: "relative",
     color: color.black,
     borderBlock: "1px solid #000",
+    paddingBlock: "clamp(2rem, 10svb, 8rem)",
   },
   sectionTitle: {
     position: "absolute",
@@ -25,7 +26,7 @@ const STYLE = create({
     textTransform: "uppercase",
     fontWeight: "900",
     letterSpacing: "0.1em",
-    color: `hsl(from ${color.black} h s l / .15)`,
+    color: `hsl(from ${color.black} h s l / 1)`,
     opacity: 0,
     translate: "-50% calc(-50svb + 100%)",
     animationName: moveToTop,
@@ -35,8 +36,13 @@ const STYLE = create({
     animationTimeline: "view()",
     animationRangeStart: "contain",
     animationRangeEnd: "contain",
-  }
-})
+  },
+  cardGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(5, minmax(20rem, 1fr))",
+    gap: "clamp(1rem, 4svi, 3rem)",
+  },
+});
 
 export default component$(() => {
   return (
@@ -46,14 +52,37 @@ export default component$(() => {
         <Container>
           <h2 {...stylex.props(STYLE.sectionTitle)}>Skills</h2>
         </Container>
-      </section >
+      </section>
       <section id="reference" {...stylex.props(STYLE.section)}>
-        <Container>
+        <Container size="lg">
           <h2 {...stylex.props(STYLE.sectionTitle)}>Reference</h2>
-          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
-          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
-          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
-          <Card src="sdsd" title="Title" description="lorem10 lorem10 lorem10 lorem10 lorem10lorem10 lorem10"/>
+          <div {...stylex.props(STYLE.cardGrid)}>
+            <Card
+              src="/images/logos/references/logo-riganti.svg"
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+            />
+             <Card
+              src="/images/logos/references/logo-riganti.svg"
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+            />
+             <Card
+              src="/images/logos/references/logo-riganti.svg"
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+            />
+             <Card
+              src="/images/logos/references/logo-riganti.svg"
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+            />
+             <Card
+              src="/images/logos/references/logo-riganti.svg"
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+            />
+          </div>
         </Container>
       </section>
     </>

@@ -7,6 +7,8 @@ import { gap, media } from "../../vars.stylex";
 const BASE = stylex.create({
   default: {
     marginInline: gap.auto,
+    position: "relative",
+    isolation: "isolate",
   }
 });
 
