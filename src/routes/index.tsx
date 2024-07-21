@@ -1,9 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import Intro from "~/components/intro/intro";
 import Container from "~/components/container/container";
+import Reference from "~/components/reference/reference";
 import stylex, { create } from "@stylexjs/stylex";
 import { color } from "../vars.stylex";
-import Card from "~/components/card/card";
+import Intro from "~/sections/intro/intro";
 
 const moveToTop = stylex.keyframes({
   from: { translate: "-50% calc(-50svb + 100%)" },
@@ -18,6 +18,7 @@ const STYLE = create({
     color: color.black,
     borderBlock: "1px solid #000",
     paddingBlock: "clamp(2rem, 10svb, 8rem)",
+    backgroundColor: color.black,
   },
   sectionTitle: {
     position: "absolute",
@@ -26,7 +27,7 @@ const STYLE = create({
     textTransform: "uppercase",
     fontWeight: "900",
     letterSpacing: "0.1em",
-    color: `hsl(from ${color.black} h s l / 1)`,
+    color: `hsl(from ${color.white} h s l / 0)`,
     opacity: 0,
     translate: "-50% calc(-50svb + 100%)",
     animationName: moveToTop,
@@ -37,11 +38,19 @@ const STYLE = create({
     animationRangeStart: "contain",
     animationRangeEnd: "contain",
   },
-  cardGrid: {
+  references: {
     display: "grid",
-    gridTemplateColumns: "repeat(5, minmax(20rem, 1fr))",
+    gridTemplateColumns: "5fr 8fr",
     gap: "clamp(1rem, 4svi, 3rem)",
+    backgroundColor: color.black,
+    isolation: "isolate",
   },
+  referenceLIst: {
+    backgroundColor: color.black,
+    listStyle: "none",
+    padding: 0,
+    margin: 0,
+  }
 });
 
 export default component$(() => {
@@ -56,32 +65,40 @@ export default component$(() => {
       <section id="reference" {...stylex.props(STYLE.section)}>
         <Container size="lg">
           <h2 {...stylex.props(STYLE.sectionTitle)}>Reference</h2>
-          <div {...stylex.props(STYLE.cardGrid)}>
-            <Card
+          <div {...stylex.props(STYLE.references)}>
+            <div></div>
+            <ul {...stylex.props(STYLE.referenceLIst)}>
+            <Reference
+              src="/images/logos/references/logo-riganti.svg"
+              title="updateconference.net"
+              webURL="https://www.updateconference.net/en/"
+              year="2018"
+            />
+            <Reference
+              src="/images/logos/references/logo-riganti.svg"
+              title="thelucie.ink"
+              webURL="https://thelucie.ink/"
+              year="2022"
+            />
+            <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="Riganti"
               webURL="https://www.riganti.cz/"
+              year="2021"
             />
-             <Card
+            <Reference
               src="/images/logos/references/logo-riganti.svg"
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
+              title="Brand Design"
+              webURL="https://brand-design.cz/"
+              year="2017"
             />
-             <Card
+            <Reference
               src="/images/logos/references/logo-riganti.svg"
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
+              title="IVPA Okná"
+              webURL="https://ivpaokna.sk/"
+              year="2018"
             />
-             <Card
-              src="/images/logos/references/logo-riganti.svg"
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
-            />
-             <Card
-              src="/images/logos/references/logo-riganti.svg"
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
-            />
+            </ul>
           </div>
         </Container>
       </section>

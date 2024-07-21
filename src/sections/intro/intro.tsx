@@ -1,8 +1,8 @@
 import { component$ } from '@builder.io/qwik';
 import { attrs, create } from "@stylexjs/stylex";
-import Container from '../container/container';
+import Container from '../../components/container/container';
 import { color, gap } from '../../vars.stylex';
-import Button from '../button/button';
+import Button from '../../components/button/button';
 
 const STYLE = create({
   header: {
