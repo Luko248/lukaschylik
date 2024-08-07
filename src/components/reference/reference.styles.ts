@@ -1,4 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
+import { VARIABLES } from "./variables.stylex";
 
 const STYLE = stylex.create({
   reference: {
@@ -14,8 +15,9 @@ const STYLE = stylex.create({
     ":first-child": {
       borderBlockStart: "1px solid #fff",
     },
-    ":hover": {
-    // TODO display: block on url and picture 
+    [VARIABLES.contentDisplay]: {
+      default: "none",
+      ":hover": "block",
     }
   },
   title: {
@@ -33,10 +35,10 @@ const STYLE = stylex.create({
   },
   url: {
     fontSize: "1rem",
-    display: "none",
+    display: VARIABLES.contentDisplay,
   },
   picture: {
-    display: "none",
+    display: VARIABLES.contentDisplay,
   },
 });
 
