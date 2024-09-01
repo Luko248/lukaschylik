@@ -43,7 +43,7 @@ $width-desktop-full-hd: 1920px;
 $width-desktop-2k: 2048px;
 $width-desktop-4k: 3840px;
 
-@mixin generate-gap-space-4izes {
+@mixin generate-gap-sizes {
     --gap: #{$gap};
     --gap-space-2: #{$gap-space-2};
     --gap-space-4: #{$gap-space-4};
@@ -94,7 +94,7 @@ $width-desktop-4k: 3840px;
 }
 
 @mixin generate-sizes {
-    @include generate-gap-space-4izes;
+    @include generate-gap-sizes;
     @include generate-border-sizes;
     @include generate-box-shadow-sizes;
     @include generate-animation-sizes;
