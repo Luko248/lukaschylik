@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";
 import stylex, { create } from "@stylexjs/stylex";
-import { color } from "../vars.stylex";
+import { color } from "../styleX/vars.stylex";
 import Intro from "~/sections/intro/intro";
 
 const moveToTop = stylex.keyframes({
@@ -72,31 +72,31 @@ export default component$(() => {
               src="/images/logos/references/logo-riganti.svg"
               title="updateconference.net"
               webURL="https://www.updateconference.net/en/"
-              year="2018"
+              year={2018}
             />
             <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="thelucie.ink"
               webURL="https://thelucie.ink/"
-              year="2022"
+              year={2022}
             />
             <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="Riganti"
               webURL="https://www.riganti.cz/"
-              year="2021"
+              year={2021}
             />
             <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="Brand Design"
               webURL="https://brand-design.cz/"
-              year="2017"
+              year={2017}
             />
             <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="IVPA Okná"
               webURL="https://ivpaokna.sk/"
-              year="2018"
+              year={2018}
             />
             </ul>
           </div>

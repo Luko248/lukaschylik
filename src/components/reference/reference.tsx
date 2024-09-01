@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import * as stylex from "@stylexjs/stylex";
 import { ReferenceProps } from "./reference.types";
-import STYLE from "./reference.styles";
+import STYLE from "./styles/reference.styles";
 
 const Reference = component$<ReferenceProps>(
   ({ src, title, webURL, year, styles }) => {

@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { VARIABLES } from "./variables.stylex";
-import {gap,  border, color } from "../../vars.stylex";
+import {gap,  border, color } from "../../../styleX/vars.stylex";
 
 const STYLE = stylex.create({
   reference: {

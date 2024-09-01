@@ -9,7 +9,7 @@ import * as stylex from "@stylexjs/stylex";
 import "./styles/index.scss";
 
 import "virtual:stylex.css";
-import { color } from "./vars.stylex";
+import { color } from "./styleX/vars.stylex";
 
 export default component$(() => {
   /**
