@@ -3,7 +3,6 @@
 @use "root" as *;
 @use "classes" as *;
 @use "typography" as *;
-@use "../abstracts/variables/bp" as *;
 
 @mixin create-layers {
     @at-root {

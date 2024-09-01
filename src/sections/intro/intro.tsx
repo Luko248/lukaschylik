@@ -13,7 +13,7 @@ const STYLE = create({
     display: "grid",
     paddingBlock: "8svb",
     minBlockSize: "100svb",
-    gridTemplateColumns: `minmax(${gap.xl}, 8fr) minmax(${gap.xl}, 5fr)`,
+    gridTemplateColumns: `minmax(${gap.space24}, 8fr) minmax(${gap.space24}, 5fr)`,
     alignItems: "center",
   },
   container: {
@@ -21,15 +21,15 @@ const STYLE = create({
   },
   strong: {
     display: "block",
-    marginBlockEnd: gap.l,
+    marginBlockEnd: gap.space16,
     letterSpacing: "0.1em",
     fontSize: {
-      default: `clamp(${gap.xl}, 3.5svb, ${gap.xxxl})`
+      default: `clamp(${gap.space24}, 3.5svb, ${gap.space40})`
     },
   },
   h1: {
     fontSize: {
-      default: `clamp(${gap.xxl}, 10svb, 8rem)`
+      default: `clamp(${gap.space32}, 10svb, 8rem)`
     },
     fontWeight: "bold",
     textTransform: "uppercase",

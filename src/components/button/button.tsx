@@ -1,6 +1,6 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import { ButtonProps } from "./button.types";
-import { gap, color, borderRradius } from "../../vars.stylex";
+import { gap, color } from "../../vars.stylex";
 import * as stylex from "@stylexjs/stylex";
 
 const BASE = stylex.create({
@@ -12,13 +12,13 @@ const BASE = stylex.create({
 
 const SIZES = stylex.create({
     sm: {
-        paddingInline: gap.m,
-        paddingBlock: gap.s,
+        paddingInline: gap.space8,
+        paddingBlock: gap.space4,
         fontSize: "12px",
     },
     md: {
-        paddingInline: gap.xl,
-        paddingBlock: gap.l,
+        paddingInline: gap.space24,
+        paddingBlock: gap.space16,
         fontSize: "1rem",
         fontWeight: "bold",
         border: "none",
@@ -33,7 +33,7 @@ const VARIANTS = stylex.create({
             default: color.transparent,
             ":hover": color.transparent,
         },
-        border: color.white + " solid " + gap.xs,
+        border: color.white + " solid " + gap.space2,
     },
     secondary: {
         color: color.black,

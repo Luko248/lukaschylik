@@ -17,11 +17,11 @@
     }
 }
 
-@mixin margin-set-x($gap) {
+@mixin margin-set-inline($gap) {
     margin-inline: $gap;
 }
 
-@mixin margin-set-y($gap) {
+@mixin margin-set-block($gap) {
     margin-block: $gap;
 }
 

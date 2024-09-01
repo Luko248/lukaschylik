@@ -1,11 +1,11 @@
 @use "../variables/sizes" as *;
 
 $shadowRadiusList: (
-    xs: $shadow-radius-xs,
-    s: $shadow-radius-s,
-    m: $shadow-radius-m,
-    l: $shadow-radius-l,
-    xl: $shadow-radius-xl,
+    2: $shadow-radius-2,
+    4: $shadow-radius-4,
+    8: $shadow-radius-8,
+    16: $shadow-radius-16,
+    24: $shadow-radius-24,
 );
 
 @mixin box-shadow-set($radius: m, $x: $shadow-x, $y: $shadow-y, $alpha: .15) {

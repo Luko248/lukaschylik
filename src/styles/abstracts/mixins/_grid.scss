@@ -1,4 +1,4 @@
-@mixin grid-columns($display: grid, $template: repeat(1, minmax($gap-m, 1fr)), $gap: 0, $align-items: flex-start, $justify-content: flex-start, $align-content: flex-start) {
+@mixin grid-columns($display: grid, $template: repeat(1, minmax($gap-space-8, 1fr)), $gap: 0, $align-items: flex-start, $justify-content: flex-start, $align-content: flex-start) {
     display: $display;
     grid-template-columns: $template;
     @if $gap != 0 {

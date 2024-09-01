@@ -20,38 +20,36 @@ export const color = stylex.defineVars({
 
 export const gap = stylex.defineVars({
   default: "var(--gap)",
-  xs: "var(--gap-xs)",
-  s: "var(--gap-s)",
-  m: "var(--gap-m)",
-  l: "var(--gap-l)",
-  xl: "var(--gap-xl)",
-  xxl: "var(--gap-2xl)",
-  xxxl: "var(--gap-3xl)",
-  auto: "auto"
+  space2: "var(--gap-space-2)",
+  space4: "var(--gap-space-4)",
+  space8: "var(--gap-space-8)",
+  space16: "var(--gap-space-16)",
+  space24: "var(--gap-space-24)",
+  space32: "var(--gap-space-32)",
+  space40: "var(--gap-space-40)",
+  auto: "auto",
 });
 
 export const border = stylex.defineVars({
-  width: "var(--border-width)",
-  widthL: "var(--border-width-l)",
-});
-
-export const borderRradius = stylex.defineVars({
-  s: "var(--radius-s)",
-  m: "var(--radius-m)",
-  l: "var(--radius-l)",
-  none: "var(--radius-none)",
-  circle: "var(--radius-circle)",
-  full: "var(--radius-full)",
+  width1: "var(--border-width-1)",
+  width2: "var(--border-width-2)",
+  radius2: "var(--radius-2)",
+  radius4: "var(--radius-4)",
+  radius8: "var(--radius-8)",
+  radius16: "var(--radius-16)",
+  radiusNone: "var(--radius-none)",
+  radiusCircle: "var(--radius-circle)",
+  radiusFull: "var(--radius-full)",
 });
 
 export const boxShadow = stylex.defineVars({
   x: "var(--shadow-x)",
   y: "var(--shadow-y)",
-  radiusXs: "var(--shadow-radius-xs)",
-  radiusS: "var(--shadow-radius-s)",
-  radiusM: "var(--shadow-radius-m)",
-  radiusL: "var(--shadow-radius-l)",
-  radiusXl: "var(--shadow-radius-xl)",
+  radius2: "var(--shadow-radius-2)",
+  radius4: "var(--shadow-radius-4)",
+  radius8: "var(--shadow-radius-8)",
+  radius16: "var(--shadow-radius-16)",
+  radius24: "var(--shadow-radius-24)",
 });
 
 export const animation = stylex.defineVars({
@@ -60,10 +58,8 @@ export const animation = stylex.defineVars({
 });
 
 export const media = stylex.defineVars({
-  widthMobileS: "var(--width-mobile-s)",
-  widthMobileM: "var(--width-mobile-m)",
-  widthMobileL: "var(--width-mobile-l)",
-  widthMobileXl: "var(--width-mobile-xl)",
+  widthMobileS: "var(--width-mobile-m)",
+  widthMobile: "var(--width-mobile-xl)",
   widthTablet: "var(--width-tablet)",
   widthDesktopS: "var(--width-desktop-s)",
   widthDesktopL: "var(--width-desktop-l)",

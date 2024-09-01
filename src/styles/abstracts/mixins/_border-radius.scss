@@ -1,6 +1,14 @@
 @use "../variables/sizes" as *;
 
-$radiusList: (circle: $radius-circle, s: $radius-s, m: $radius-m, l: $radius-l, full: 100vmax);
+$radiusList: (
+    2: $radius-2, 
+    4: $radius-4, 
+    8: $radius-8, 
+    16: $radius-16, 
+    circle: $radius-circle, 
+    full: $radius-full, 
+    no: $radius-none
+);
 
 @mixin border-radius($size) {
     @if map_has_key($radiusList, $size) {

@@ -9,12 +9,12 @@
     text-overflow: ellipsis;
 }
 
-@mixin text-multi-truncate($selected-line) {
+@mixin text-line-clamp($lineNo: 1) {
     display: -webkit-box;
     white-space: pre-wrap;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: $selected-line;
+    -webkit-line-clamp: $lineNo;
 }
 
 @mixin input-placeholder {

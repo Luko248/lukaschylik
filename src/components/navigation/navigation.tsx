@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Link, useNavigate } from '@builder.io/qwik-city';
 import { NavigationProps } from './navigatioin.types';
-import { color, gap, borderRradius } from '../../vars.stylex';
+import { color, gap, border } from '../../vars.stylex';
 import stylex, { create } from '@stylexjs/stylex';
 
 const STYLE = create({
@@ -18,19 +18,19 @@ const STYLE = create({
   menu: {
     display: "inline-flex",
     justifyContent: "center",
-    gap: gap.l,
+    gap: gap.space16,
     listStyle: "none",
     margin: 0,
     translate: "0 5svb",
     padding: 0,
-    paddingBlock: gap.xl,
-    paddingInline: gap.xxl,
-    borderRadius: borderRradius.full,
+    paddingBlock: gap.space24,
+    paddingInline: gap.space32,
+    borderRadius: border.radiusFull,
     backgroundColor: "hsla(0, 0%, 30%, 0.5)",
     backdropFilter: "blur(8px)",
   },
   li: {
-    paddingInline: gap.m,
+    paddingInline: gap.space8,
     textDecoration: "none",
     transition: "scale 0.3s",
     ":hover": {
