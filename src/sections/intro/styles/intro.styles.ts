@@ -1,9 +1,9 @@
 import { create } from '@stylexjs/stylex';
-import {gap, color } from "../../../styleX/vars.stylex";
+import {gap, color, boxShadow } from "../../../styleX/vars.stylex";
 
 export const STYLE = create({
     header: {
-      backgroundColor: color.secondary,
+      backgroundColor: color.bg,
       color: color.white
     },
     grid: {
@@ -32,7 +32,9 @@ export const STYLE = create({
       textTransform: "uppercase",
       textWrap: "pretty",
       lineHEight: "1.5",
-      textShadow: `3px 3px 0 #ff9cea, -3px -3px 0 #4dffef`,
+      textShadow: 
+        `${boxShadow.radius3} ${boxShadow.radius3} 0 ${color.shadowPink}, 
+        calc(-1 * ${boxShadow.radius3}) calc(-1 * ${boxShadow.radius3}) 0 ${color.shadowTorquoise}`,
       letterSpacing: "0.1em",
     },
     img: {

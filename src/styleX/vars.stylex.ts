@@ -11,11 +11,11 @@ export const color = stylex.defineVars({
   success: "var(--color-success)",
   warning: "var(--color-warning)",
   error: "var(--color-error)",
-  grey: "var(--color-grey)",
-  border: "var(--color-border)",
-  background: "var(--color-background)",
+  bg: "var(--color-bg)",
   textLight: "var(--color-text-light)",
-  textDark: "var(--color-text-dark)"
+  textDark: "var(--color-text-dark)",
+  shadowPink: "var(--color-shadow-pink)",
+  shadowTorquoise: "var(--color-shadow-torquoise)"
 });
 
 export const gap = stylex.defineVars({
@@ -46,6 +46,7 @@ export const boxShadow = stylex.defineVars({
   x: "var(--shadow-x)",
   y: "var(--shadow-y)",
   radius2: "var(--shadow-radius-2)",
+  radius3: "var(--shadow-radius-3)",
   radius4: "var(--shadow-radius-4)",
   radius8: "var(--shadow-radius-8)",
   radius16: "var(--shadow-radius-16)",
