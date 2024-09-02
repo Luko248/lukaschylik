@@ -54,8 +54,13 @@ export const boxShadow = stylex.defineVars({
 });
 
 export const animation = stylex.defineVars({
-  time: "var(--trans-time)",
-  function: "var(--trans-fnc)",
+  duration: "var(--trans-time)",
+  fnc: "var(--trans-fnc)",
+});
+
+export const transition = stylex.defineVars({
+  duration: "var(--trans-time)",
+  fnc: "var(--trans-fnc)",
 });
 
 export const media = stylex.defineVars({

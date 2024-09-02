@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { VARIABLES } from "./variables.stylex";
-import {gap,  border, color } from "../../../styleX/vars.stylex";
+import {gap,  border, color, transition} from "../../../styleX/vars.stylex";
+import { z } from "@builder.io/qwik-city";
 
 const STYLE = stylex.create({
   reference: {
@@ -14,20 +15,49 @@ const STYLE = stylex.create({
     paddingBlock: ".8rem",
     borderBlockEnd: `${border.width1} solid ${color.white}`,
     textTransform: "uppercase",
+    isolation: "isolate",
+    
+    ":hover": {
+      zIndex: 1,
+    }
+    ,
     ":first-child": {
       borderBlockStart: `${border.width1} solid ${color.white}`,
     },
-    [VARIABLES.contentDisplay]: {
-      default: "none",
-      ":hover": "block",
+    [VARIABLES.pictureOpacity]: {
+      default: "0",
+      ":hover": "1",
+    },
+    [VARIABLES.urlOpacity]: {
+      default: "0",
+      ":hover": "1",
+    },
+    [VARIABLES.titlePseudoTranslateY]: {
+      default: "0",
+      ":hover": "-100%",
     },
   },
-  title: {
+  titleWrrapper: {
     fontSize: "2rem",
     display: "flex",
     gap: gap.space8,
     fontWeight: "500",
     lineHeight: "1.5",
+    maxBlockSize: "3rem",
+    overflow: "hidden",
+    zIndex: 2,
+    position: "relative",
+  },
+  title:{
+    ":before, :after": {
+      content: "attr(aria-label)",
+      display: "flex",
+      flexflow: "column",
+      fontSize: "1em",
+      color: color.white,
+      transition: `translate ${transition.duration} ${transition.fnc}`,
+      translate: `0 ${VARIABLES.titlePseudoTranslateY}`,
+    },
   },
   year: {
     fontSize: ".5em",
@@ -37,13 +67,25 @@ const STYLE = stylex.create({
   },
   url: {
     fontSize: "1rem",
-    display: VARIABLES.contentDisplay,
+    opacity: VARIABLES.urlOpacity,
+  },
+  pictureWrapper: {
+    position: "absolute",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    opacity: VARIABLES.pictureOpacity,
+    inset: "50% auto auto 0",
+    translate: "-80% -50%",
+    backgroundColor: "hsl(from #55550f h s l)",
+    padding: "10svb",
+    aspectRatio: "1",
+    borderRadius: border.radiusFull,
+    isolation: "isolate",
+    zIndex: 1,
   },
   picture: {
-    display: VARIABLES.contentDisplay,
-    position: "absolute",
-    inset: "50% auto auto 0",
-    translate: "-100% -50%",
+   display: "block",
   },
 });
 
