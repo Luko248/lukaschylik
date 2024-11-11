@@ -1,7 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { VARIABLES } from "./variables.stylex";
 import {gap,  border, color, transition} from "../../../styleX/vars.stylex";
-import { z } from "@builder.io/qwik-city";
 
 const STYLE = stylex.create({
   reference: {
@@ -24,16 +22,16 @@ const STYLE = stylex.create({
     ":first-child": {
       borderBlockStart: `${border.width1} solid ${color.white}`,
     },
-    [VARIABLES.pictureOpacity]: {
-      default: "0",
-      ":hover": "1",
+    "--picture_opacity": {
+      default: 0,
+      ":hover": 1,
     },
-    [VARIABLES.urlOpacity]: {
-      default: "0",
-      ":hover": "1",
+    "--url_opacity": {
+      default: 0,
+      ":hover": 1,
     },
-    [VARIABLES.titlePseudoTranslateY]: {
-      default: "0",
+    "--title-pseudo_translate-y": {
+      default: "0%",
       ":hover": "-100%",
     },
   },
@@ -56,7 +54,7 @@ const STYLE = stylex.create({
       fontSize: "1em",
       color: color.white,
       transition: `translate ${transition.duration} ${transition.fnc}`,
-      translate: `0 ${VARIABLES.titlePseudoTranslateY}`,
+      translate: `0 var(--title-pseudo_translate-y)`,
     },
   },
   year: {
@@ -67,14 +65,14 @@ const STYLE = stylex.create({
   },
   url: {
     fontSize: "1rem",
-    opacity: VARIABLES.urlOpacity,
+    opacity: "var(--url_opacity)",
   },
   pictureWrapper: {
     position: "absolute",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    opacity: VARIABLES.pictureOpacity,
+    opacity: "var(--picture_opacity)",
     inset: "50% auto auto 0",
     translate: "-80% -50%",
     backgroundColor: "hsl(from #55550f h s l)",
