@@ -1,5 +1,4 @@
-import { PropFunction } from "@builder.io/qwik";
-import { StyleXStylesWithout } from "@stylexjs/stylex";
+import type { PropFunction } from "@builder.io/qwik";
 
 export interface ButtonProps {
     onClick$?: PropFunction<() => void>;
@@ -9,5 +8,4 @@ export interface ButtonProps {
     icon?: string;
     title?: string;
     ariaLabel?: string;
-    styles?: StyleXStylesWithout<{ backgroundColor?: unknown }>
 }

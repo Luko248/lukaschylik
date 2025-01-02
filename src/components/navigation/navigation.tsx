@@ -1,21 +1,19 @@
 import { component$ } from '@builder.io/qwik';
-import { Link, useNavigate } from '@builder.io/qwik-city';
-import { NavigationProps } from './navigatioin.types';
-import stylex from '@stylexjs/stylex';
-import STYLE from './styles/navigation.styles';
+import { Link, type LinkProps } from '@builder.io/qwik-city';
+import type { NavigationProps } from './navigatioin.types';
 
 const Navigation = component$<NavigationProps>(({ small, links }) => {
-  const nav = useNavigate();
-
-  return <nav {...stylex.props(STYLE.nav)} data-small={small}>
-    <ul {...stylex.props(STYLE.menu)}>
-      {links && links.map(link =>
-        <li {...stylex.props(STYLE.li)}>
-          <Link href={link.href} {...stylex.props(STYLE.link)}> {link.text}</Link>
-        </li>
-      )}
-    </ul>
-  </nav >
+  return (
+    <nav data-small={small}>
+      <ul>
+        {links && links.map((link: LinkProps, index: number) => (
+          <li key={index}>
+            <Link href={link.href}>{link.text}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 });
 
 export default Navigation;

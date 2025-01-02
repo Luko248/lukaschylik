@@ -1,5 +1,5 @@
 
-import { LinkProps } from '@builder.io/qwik-city';
+import type { LinkProps } from '@builder.io/qwik-city';
 
 export interface NavigationProps {
     small?: boolean;

@@ -1,10 +1,10 @@
 import { Slot, component$ } from "@builder.io/qwik";
-import * as stylex from "@stylexjs/stylex";
-import { ContainerProps } from "./container.types";
-import { STYLE, SIZES } from "./styles/container.styles";
+import type { ContainerProps } from "./container.types";
 
-const Container = component$<ContainerProps>(({ size = "md", styles }) => {
-  return <div {...stylex.props(STYLE.default, SIZES[size], styles)}>
+const Container = component$<ContainerProps>(({ 
+  size = "md" 
+}) => {
+  return <div data-size={size}>
     <Slot />
   </div>
 });

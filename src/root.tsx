@@ -5,11 +5,9 @@ import {
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
-import * as stylex from "@stylexjs/stylex";
-import "./styles/index.scss";
+import { isDev } from "@builder.io/qwik/build";
 
-import "virtual:stylex.css";
-import { color } from "./styleX/vars.stylex";
+import "./global.css";
 
 export default component$(() => {
   /**
@@ -22,23 +20,19 @@ export default component$(() => {
   return (
     <QwikCityProvider>
       <head>
-        <meta charSet="utf-8" />
-        <link rel="manifest" href="/manifest.json" />
+        <meta charset="utf-8" />
+        {!isDev && (
+          <link
+            rel="manifest"
+            href={`${import.meta.env.BASE_URL}manifest.json`}
+          />
+        )}
         <RouterHead />
-        <ServiceWorkerRegister />
       </head>
-      <body {...stylex.attrs(styles.body)} lang="en">
+      <body lang="en">
         <RouterOutlet />
+        {!isDev && <ServiceWorkerRegister />}
       </body>
     </QwikCityProvider>
   );
-});
-
-const styles = stylex.create({
-  body: {
-    margin: 0,
-    minBlockSize: "100svb",
-    color: color.textLight,
-    overflowX: "clip",
-  },
 });
