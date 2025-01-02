@@ -7,7 +7,7 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik/build";
 
-import "./global.css";
+import "./styles/css/tailwind.css"; 
 
 export default component$(() => {
   /**
