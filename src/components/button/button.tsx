@@ -2,12 +2,22 @@ import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
 
 const Button = component$<ButtonProps>(({
-    // size = "md",
-    // variant = "primary",
+    size = "md",
+    variant = "primary",
     onClick$,
     disabled,
     ariaLabel,
     title,}) => {
+
+    const sizeClasses = {
+        sm: "px-2 py-1 text-xs",
+        md: "px-6 py-4 text-m font-bold uppercase",
+    };
+
+    const variantClasses = {
+        primary: "text-white bg-transparent hover:bg-transparent border border-white",
+        secondary: "text-black bg-green-500 hover:bg-green-700",
+    };
 
     return <button
         onClick$={onClick$}
@@ -15,7 +25,7 @@ const Button = component$<ButtonProps>(({
         aria-disabled={disabled}
         aria-label={ariaLabel}
         title={title}
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 disabled:bg-gray-400">
+        class={`line-height-1 cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} disabled:bg-gray-400`}>
         <Slot />
     </button>
 });
