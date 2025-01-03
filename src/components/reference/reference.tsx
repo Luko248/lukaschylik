@@ -5,7 +5,7 @@ const Reference = component$<ReferenceProps>(({ src, title, webURL, year }) => {
   return (
     <li class="relative flex justify-between items-center gap-2 text-white py-2 border-b border-white uppercase isolate hover:z-10 first:border-t">
       <a href={webURL} target="_blank" rel="noreferer" class="flex justify-between items-center gap-2 text-white no-underline">
-        <strong class="flex gap-2 font-medium text-2xl leading-[1.5] max-h-12 overflow-hidden relative z-20">
+        <strong class="flex gap-2 font-medium text-2xl leading-normal max-h-12 overflow-hidden relative z-20">
           <span aria-label={title} class="before:content-[attr(aria-label)] before:flex before:flex-col before:text-white before:transition-transform before:duration-300 before:ease-in-out before:translate-y-0 hover:before:translate-y-[-100%]">
             {title}
           </span>
