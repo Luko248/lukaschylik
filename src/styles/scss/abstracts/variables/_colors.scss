@@ -16,21 +16,3 @@ $color-text-dark: hsl(0 0% 100%);
 
 $color-shadow-pink: hsl(313 100% 81%);
 $color-shadow-torquoise: hsl(175 100% 65%);
-
-@mixin generate-colors {
-    --color-black: #{$color-black};
-    --color-white: #{$color-white};
-    --color-transparent: #{$color-transparent};
-    --color-primary: #{$color-primary};
-    --color-primary--hover: hsl(from #{$color-primary} h s 90%);
-    --color-secondary: #{$color-secondary};
-    --color-info: #{$color-info};
-    --color-success: #{$color-success};
-    --color-warning: #{$color-warning};
-    --color-error: #{$color-error};
-    --color-bg: #{$color-bg};
-    --color-text-light: #{$color-text-light};
-    --color-text-dark: #{$color-text-dark};
-    --color-shadow-pink: #{$color-shadow-pink};
-    --color-shadow-torquoise: #{$color-shadow-torquoise};
-}

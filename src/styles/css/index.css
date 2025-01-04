@@ -1,0 +1,35 @@
+@layer my-base, my-components, my-utils;
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-block-size: 100svb;
+  max-inline-size: 100svi;
+  overflow-x: clip;
+}
+
+@layer my-base {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+  address {
+    font-style: normal;
+  }
+  textarea {
+    font-family: inherit;
+    font-size: medium;
+    resize: vertical;
+  }
+}
+@layer my-components {
+  .intro__title {
+    text-shadow: 3px 3px 0 hsl(313, 100%, 81%), -3px -3px 0 hsl(175, 100%, 65%);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

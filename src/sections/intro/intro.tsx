@@ -1,6 +1,6 @@
-import { component$ } from '@builder.io/qwik';
-import Container from '../../components/container/container';
-import Button from '../../components/button/button';
+import { component$ } from "@builder.io/qwik";
+import Container from "../../components/container/container";
+import Button from "../../components/button/button";
 
 const Intro = component$(() => {
   return (
@@ -8,15 +8,21 @@ const Intro = component$(() => {
       <Container size="lg">
         <div class="grid py-[8svb] min-h-screen grid-cols-[minmax(1.5rem,8fr)_minmax(1.5rem,5fr)] items-center">
           <div>
-            <strong class="block mb-4 tracking-widest text-[clamp(1.5rem,3.5svb,2.5rem)]">Creative web developer</strong>
-            <h1 class="text-[clamp(2rem,10svb,8rem)] font-bold uppercase leading-[1.5] text-shadow-[0_0_3px_hsl(313_100%_81%),-1px_-1px_0_hsl(175_100%_65%)] tracking-widest">Lukáš Chylík</h1>
+            <strong class="block mb-4 tracking-widest text-[clamp(1.5rem,3.5svb,2.5rem)]">
+              Creative web developer
+            </strong>
+            <h1 class="text-[clamp(2rem,10svb,8rem)] font-bold uppercase leading-medium tracking-widest intro__title">
+              Lukáš Chylík
+            </h1>
             <Button
-              onClick$={() => { alert("Clicked") }}
+              onClick$={() => {
+                alert("Clicked");
+              }}
               variant="primary"
-              size="md">
+              size="md"
+            >
               Get Started
             </Button>
-            <br />
           </div>
           <div>
             <img

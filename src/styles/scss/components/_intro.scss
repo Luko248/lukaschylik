@@ -1,0 +1,9 @@
+@use '../abstracts/variables/_index' as *;
+
+@mixin create-intro{
+  .intro{
+    &__title{
+      text-shadow: 3px 3px 0 $color-shadow-pink, -3px -3px 0 $color-shadow-torquoise;
+    }
+  }
+}

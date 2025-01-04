@@ -1,0 +1,5 @@
+@use './intro' as *;
+
+@mixin create-components {
+  @include create-intro;
+}

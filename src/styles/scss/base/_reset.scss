@@ -6,4 +6,10 @@
     html {
         scroll-behavior: smooth;
     }
+
+    body {
+        min-block-size: 100svb;
+        max-inline-size: 100svi;
+        overflow-x: clip;
+    }
 }

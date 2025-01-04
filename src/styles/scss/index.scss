@@ -1,3 +1,16 @@
-﻿@use './base/layers' as *;
+﻿@use "./base/font-faces" as *;
+@use "./base/reset" as *;
+@use "./base/typography" as *;
+@use "./components/_index" as *;
 
-@include create-layers;
+@include reset;
+
+@layer my-base, my-components, my-utils;
+
+@layer my-base {
+    @include create-typography;
+}
+
+@layer my-components {
+  @include create-components;
+}
