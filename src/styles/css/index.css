@@ -10,7 +10,6 @@ body {
   min-block-size: 100svb;
   max-inline-size: 100svi;
   overflow-x: clip;
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>') 12 12, auto;
 }
 
 ::selection {
@@ -39,7 +38,7 @@ body {
   header:before, header:after {
     content: "";
     position: absolute;
-    block-size: 92svb;
+    block-size: 135svb;
     inline-size: 100svi;
     will-change: translate;
     z-index: 1;
@@ -57,14 +56,43 @@ body {
     translate: 0 100%;
   }
   .intro__title {
-    -webkit-text-stroke: 1px hsl(0, 0%, 100%);
+    -webkit-text-stroke: 2px hsl(0, 0%, 100%);
+    scale: 0.75;
+    opacity: 0;
+    animation: show-title 0.5s ease-out 0.35s forwards;
+  }
+  .intro__subtitle {
+    letter-spacing: 0.25em;
+    translate: 0 -25%;
+    opacity: 0;
+    animation: show-subtitle 0.5s ease-out 0.7s forwards;
   }
   .intro__btn {
-    translate: 0 200%;
+    translate: 0 225%;
+    opacity: 0;
+    animation: show-button 0.5s ease-out 0.7s forwards;
   }
   @keyframes show-triangle {
     to {
       translate: 0 0;
+    }
+  }
+  @keyframes show-title {
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  @keyframes show-subtitle {
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  @keyframes show-button {
+    to {
+      opacity: 1;
+      translate: 0 200%;
     }
   }
 }

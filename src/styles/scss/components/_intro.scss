@@ -6,7 +6,7 @@
     &:before, &:after{
       content: "";
       position: absolute;
-      block-size: 92svb;
+      block-size: 135svb;
       inline-size: 100svi;
       will-change: translate;
       z-index: 1;
@@ -30,17 +30,50 @@
   .intro{
     &__title{
       // text-shadow: $gap-space-4 $gap-space-4 0 $color-pink, num-neg($gap-space-4) num-neg($gap-space-4) 0 $color-torquoise;
-      -webkit-text-stroke: $border-width-1 $color-white;
+      -webkit-text-stroke: $border-width-2 $color-white;
+      scale: .75;
+      opacity: 0;
+      animation: show-title .5s ease-out .35s forwards;
+    }
+
+    &__subtitle{
+      letter-spacing: .25em;
+      translate: 0 -25%;
+      opacity: 0;
+      animation: show-subtitle .5s ease-out .7s forwards;
     }
 
     &__btn{
-     translate: 0 200%;
+     translate: 0 225%;
+     opacity: 0;
+     animation: show-button .5s ease-out .7s forwards;
     }
   }
 
   @keyframes show-triangle{
     to{
       translate: 0 0;
+    }
+  }
+
+  @keyframes show-title{
+    to{
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+  @keyframes show-subtitle{
+    to{
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes show-button{
+    to{
+      opacity: 1;
+      translate: 0 200%;
     }
   }
 }
