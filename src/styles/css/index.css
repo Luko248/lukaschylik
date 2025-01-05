@@ -1,4 +1,3 @@
-@layer my-base, my-components, my-utils;
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -13,6 +12,7 @@ body {
   overflow-x: clip;
 }
 
+@layer my-base, my-components, my-utils;
 @layer my-base {
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -27,8 +27,34 @@ body {
   }
 }
 @layer my-components {
+  header:before, header:after {
+    content: "";
+    position: absolute;
+    block-size: 60svb;
+    inline-size: 100svi;
+    will-change: translate;
+  }
+  header:before {
+    inset: 0 0 auto 0;
+    background-color: hsl(from hsl(313, 100%, 81%) h s l/0.5);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    translate: 0 -100%;
+    animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+  header:after {
+    inset: auto 0 0 0;
+    background-color: hsl(from hsl(175, 100%, 65%) h s l/0.5);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    translate: 0 100%;
+    animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+  }
   .intro__title {
     text-shadow: 3px 3px 0 hsl(313, 100%, 81%), -3px -3px 0 hsl(175, 100%, 65%);
+  }
+  @keyframes show-triangle {
+    to {
+      translate: 0 0;
+    }
   }
 }
 

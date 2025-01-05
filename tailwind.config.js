@@ -14,10 +14,8 @@ export default {
         warning: 'hsl(45 100% 42%)',
         error: 'hsl(354 70% 54%)',
         bg: 'hsl(0 0% 8%)',
-        'text-light': 'hsl(0 0% 0%)',
-        'text-dark': 'hsl(0 0% 100%)',
-        'shadow-pink': 'hsl(313 100% 81%)',
-        'shadow-torquoise': 'hsl(175 100% 65%)',
+        pink: 'hsl(313 100% 81%)',
+        torquoise: 'hsl(175 100% 65%)',
       },
       fontFamily: {
         text: ['open-sans', 'sans-serif'],
@@ -31,15 +29,6 @@ export default {
         'xl': '1.5rem',    // 24px
         '2xl': '2rem',     // 32px
         '3xl': '2.5rem',   // 40px
-      },
-      lineHeight: {
-        normal: '1.5',
-      },
-      fontWeight: {
-        normal: '400',
-      },
-      fontStyle: {
-        normal: 'normal',
       },
       spacing: {
         '2': '.125rem', // 2px
@@ -64,15 +53,16 @@ export default {
         'none': '0',
       },
       boxShadow: {
-        '2': '0 0 2px',
-        '3': '0 0 3px',
-        '4': '0 0 4px',
-        '8': '0 0 8px',
-        '16': '0 0 16px',
-        '24': '0 0 24px',
+        '2': '0 0 .125rem',  // 2px
+        '3': '0 0 .1875rem', // 3px
+        '4': '0 0 .25rem',   // 4px
+        '8': '0 0 .5rem',    // 8px
+        '16': '0 0 1rem',     // 16px
+        '24': '0 0 1.5rem',   // 24px
       },
       transitionDuration: {
         'default': '.25s',
+        '500': '.5s',
       },
       transitionTimingFunction: {
         'default': 'ease-in-out',

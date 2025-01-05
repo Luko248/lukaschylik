@@ -4,8 +4,8 @@ import Button from "../../components/button/button";
 
 const Intro = component$(() => {
   return (
-    <header class="bg-bg text-white">
-      <Container size="lg">
+    <header class="bg-bg text-white relative h-svh overflow-clip">
+      {/* <Container size="lg">
         <div class="grid py-[8svb] min-h-screen grid-cols-[minmax(1.5rem,8fr)_minmax(1.5rem,5fr)] items-center">
           <div>
             <strong class="block mb-4 tracking-widest text-[clamp(1.5rem,3.5svb,2.5rem)]">
@@ -35,7 +35,7 @@ const Intro = component$(() => {
             />
           </div>
         </div>
-      </Container>
+      </Container> */}
     </header>
   );
 });
