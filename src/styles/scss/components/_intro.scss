@@ -1,36 +1,36 @@
 @use '../abstracts/variables/_index' as *;
+@use '../abstracts/functions/_index' as *;
 
 @mixin create-intro{
    header{
     &:before, &:after{
       content: "";
       position: absolute;
-      block-size: 60svb;
+      block-size: 100svb;
       inline-size: 100svi;
       will-change: translate;
+      z-index: 1;
+      background-color: hsl(from #{$color-black} h s l / 0.5);
+      animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     }
 
     &:before{
       inset: 0 0 auto 0;
-      background-color: hsl(from #{$color-pink} h s l / 0.5);
       clip-path: polygon(50% 100%, 0 0, 100% 0);
       translate: 0 -100%;
-      animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-
     }
 
     &:after{
       inset: auto 0 0 0;
-      background-color: hsl(from #{$color-torquoise} h s l / 0.5);
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       translate: 0 100%;
-      animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
     }
    }
 
   .intro{
     &__title{
-      text-shadow: 3px 3px 0 $color-pink, -3px -3px 0 $color-torquoise;
+      // text-shadow: $gap-space-4 $gap-space-4 0 $color-pink, num-neg($gap-space-4) num-neg($gap-space-4) 0 $color-torquoise;
+      -webkit-text-stroke: $gap-space-2 $color-white;
     }
   }
 

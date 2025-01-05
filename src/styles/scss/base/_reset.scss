@@ -1,3 +1,5 @@
+@use '../abstracts/variables/_index' as *;
+
 @mixin reset {
     *, *:before, *:after {
         box-sizing: border-box;
@@ -12,4 +14,9 @@
         max-inline-size: 100svi;
         overflow-x: clip;
     }
+
+    ::selection {
+        background-color: $color-yellow; 
+        color: $color-black; 
+      }
 }

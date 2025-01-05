@@ -10,8 +10,8 @@ const Button = component$<ButtonProps>(({
     title,}) => {
 
     const sizeClasses = {
-        sm: "px-2 py-1 text-xs",
-        md: "px-6 py-4 text-m font-bold uppercase",
+        sm: "px-16 py-8 text-s",
+        md: "px-24 py-16 text-m font-bold uppercase",
     };
 
     const variantClasses = {

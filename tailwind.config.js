@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         black: 'hsl(0 0% 0%)',
+        "black-900": 'hsl(0 0% 3%)',
         white: 'hsl(0 0% 100%)',
         transparent: 'hsl(0 0% 0% / 0%)',
         primary: 'hsl(0 0% 100%)',
@@ -13,9 +14,9 @@ export default {
         success: 'hsl(134 61% 41%)',
         warning: 'hsl(45 100% 42%)',
         error: 'hsl(354 70% 54%)',
-        bg: 'hsl(0 0% 8%)',
         pink: 'hsl(313 100% 81%)',
         torquoise: 'hsl(175 100% 65%)',
+        yellow: ' hsl(51 100% 53%)',
       },
       fontFamily: {
         text: ['open-sans', 'sans-serif'],
@@ -31,13 +32,18 @@ export default {
         '3xl': '2.5rem',   // 40px
       },
       spacing: {
-        '2': '.125rem', // 2px
-        '4': '.25rem',  // 4px
-        '8': '.5rem',   // 8px
-        '16': '1rem',   // 16px
-        '24': '1.5rem', // 24px
-        '32': '2rem',   // 32px
-        '40': '2.5rem', // 40px
+        '2': '.125rem',  // 2px
+        '4': '.25rem',   // 4px
+        '8': '.5rem',    // 8px
+        '16': '1rem',    // 16px
+        '24': '1.5rem',  // 24px
+        '32': '2rem',    // 32px
+        '40': '2.5rem',  // 40px
+        '48': '3rem',    // 48px
+        '56': '3.5rem',  // 56px
+        '64': '4rem',    // 64px
+        '72': '4.5rem',  // 72px
+        '80': '5rem',    // 80px
       },
       borderWidth: {
         '1': '1px',

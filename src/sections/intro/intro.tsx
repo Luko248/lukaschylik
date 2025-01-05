@@ -4,16 +4,18 @@ import Button from "../../components/button/button";
 
 const Intro = component$(() => {
   return (
-    <header class="bg-bg text-white relative h-svh overflow-clip">
-      {/* <Container size="lg">
-        <div class="grid py-[8svb] min-h-screen grid-cols-[minmax(1.5rem,8fr)_minmax(1.5rem,5fr)] items-center">
-          <div>
-            <strong class="block mb-4 tracking-widest text-[clamp(1.5rem,3.5svb,2.5rem)]">
+    <header class="bg-black-900 text-white relative h-svh overflow-clip">
+      <Container size="lg" className="relative z-10 isolate">
+        <div class="intro grid grid-rows-2 min-h-svh text-center">
+          <div class="grid place-items-center content-center">
+            <h1 class="intro__title text-[clamp(3rem,12svb,12rem)] font-extrabold uppercase leading-tight text-black tracking-widest">
+              Lukáš<br />Chylík
+            </h1>
+          </div>
+          <div class="grid place-items-center content-center gap-16">
+          <strong class="intro__subtitle block mb-4 tracking-widest text-[clamp(1.5rem,3.5svb,2.5rem)]">
               Creative web developer
             </strong>
-            <h1 class="text-[clamp(2rem,10svb,8rem)] font-bold uppercase leading-normal tracking-widest intro__title">
-              Lukáš Chylík
-            </h1>
             <Button
               onClick$={() => {
                 alert("Clicked");
@@ -21,21 +23,11 @@ const Intro = component$(() => {
               variant="primary"
               size="md"
             >
-              Get Started
+              Let's talk
             </Button>
           </div>
-          <div>
-            <img
-              src="https://lukaschylik.sk/wwwroot/images/meta/meta-image.jpg"
-              alt="Profile photo of Lukáš Chylík"
-              title="Profile photo of Lukáš Chylík"
-              width="1600"
-              height="1600"
-              class="block max-w-full h-auto rounded-full shadow-[0_0_10px_rgba(0,0,0,0.5)] grayscale opacity-80"
-            />
-          </div>
         </div>
-      </Container> */}
+      </Container>
     </header>
   );
 });
