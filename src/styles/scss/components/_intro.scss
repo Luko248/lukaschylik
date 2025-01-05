@@ -6,7 +6,7 @@
     &:before, &:after{
       content: "";
       position: absolute;
-      block-size: 100svb;
+      block-size: 92svb;
       inline-size: 100svi;
       will-change: translate;
       z-index: 1;
@@ -30,7 +30,11 @@
   .intro{
     &__title{
       // text-shadow: $gap-space-4 $gap-space-4 0 $color-pink, num-neg($gap-space-4) num-neg($gap-space-4) 0 $color-torquoise;
-      -webkit-text-stroke: $gap-space-2 $color-white;
+      -webkit-text-stroke: $border-width-1 $color-white;
+    }
+
+    &__btn{
+     translate: 0 200%;
     }
   }
 

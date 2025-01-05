@@ -8,4 +8,5 @@ export interface ButtonProps {
     icon?: string;
     title?: string;
     ariaLabel?: string;
+    className?: string;
 }

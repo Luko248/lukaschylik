@@ -1,0 +1,8 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+
+@mixin create-button {
+  .btn {
+    min-inline-size: px-to-rem(180px);
+  }
+}

@@ -1,5 +1,6 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
+import { classNames } from "~/utils/classNames";
 
 const Button = component$<ButtonProps>(({
     size = "md",
@@ -7,6 +8,7 @@ const Button = component$<ButtonProps>(({
     onClick$,
     disabled,
     ariaLabel,
+    className,
     title,}) => {
 
     const sizeClasses = {
@@ -25,7 +27,12 @@ const Button = component$<ButtonProps>(({
         aria-disabled={disabled}
         aria-label={ariaLabel}
         title={title}
-        class={`line-height-1 cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} disabled:bg-gray-400`}>
+        class={classNames(
+            'btn line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
+            sizeClasses[size],
+            variantClasses[variant],
+            className
+        )}>
         <Slot />
     </button>
 });

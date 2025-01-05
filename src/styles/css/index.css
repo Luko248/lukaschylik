@@ -10,6 +10,7 @@ body {
   min-block-size: 100svb;
   max-inline-size: 100svi;
   overflow-x: clip;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>') 12 12, auto;
 }
 
 ::selection {
@@ -32,10 +33,13 @@ body {
   }
 }
 @layer my-components {
+  .btn {
+    min-inline-size: 11.25rem;
+  }
   header:before, header:after {
     content: "";
     position: absolute;
-    block-size: 100svb;
+    block-size: 92svb;
     inline-size: 100svi;
     will-change: translate;
     z-index: 1;
@@ -53,7 +57,10 @@ body {
     translate: 0 100%;
   }
   .intro__title {
-    -webkit-text-stroke: 0.125rem hsl(0, 0%, 100%);
+    -webkit-text-stroke: 1px hsl(0, 0%, 100%);
+  }
+  .intro__btn {
+    translate: 0 200%;
   }
   @keyframes show-triangle {
     to {
