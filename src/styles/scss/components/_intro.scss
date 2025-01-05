@@ -4,6 +4,7 @@
 
 @mixin create-intro {
   header {
+    overflow-clip-margin: content-box 35svb;
     &:before,
     &:after {
       content: "";

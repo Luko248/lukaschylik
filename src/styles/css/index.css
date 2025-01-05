@@ -81,6 +81,9 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
+  header {
+    overflow-clip-margin: content-box 35svb;
+  }
   header:before, header:after {
     content: "";
     position: absolute;
