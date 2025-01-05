@@ -16,21 +16,16 @@ const Button = component$<ButtonProps>(({
         md: "px-24 py-16 text-m font-bold uppercase",
     };
 
-    const variantClasses = {
-        primary: "text-transparent border border-white",
-        secondary: "text-black bg-green-500 hover:bg-green-700",
-    };
-
     return <button
         onClick$={onClick$}
         disabled={disabled}
         aria-disabled={disabled}
         aria-label={ariaLabel}
+        data-variant={variant}
         title={title}
         class={classNames(
-            'btn relative overflow-clip line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
+            'btn relative overflow-clip line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none "text-transparent border border-white',
             sizeClasses[size],
-            variantClasses[variant],
             className
         )}>
         <Slot />

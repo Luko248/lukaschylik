@@ -1,7 +1,17 @@
 ﻿@use "sass:map";
 @use "../variables/sizes" as *;
 
-$breakpoints: ("mobile-s": $width-mobile-s, "mobile": $width-mobile, "tablet": $width-tablet, "desktop-small": $width-desktop-s, "desktop-large": $width-desktop-l, "desktop-hd": $width-desktop-hd, "desktop-full-hd": $width-desktop-full-hd, "desktop-2k": $width-desktop-2k, "desktop-4k": $width-desktop-4k) !default;
+$breakpoints: (
+    "mobile-s": $width-mobile-s,
+    "mobile": $width-mobile,
+    "tablet": $width-tablet,
+    "desktop-small": $width-desktop-s,
+    "desktop-large": $width-desktop-l,
+    "desktop-hd": $width-desktop-hd,
+    "desktop-full-hd": $width-desktop-full-hd,
+    "desktop-2k": $width-desktop-2k,
+    "desktop-4k": $width-desktop-4k
+) !default;
 
 @mixin mq-responsive($width, $type: max) {
     @if map.has-key($breakpoints, $width) {
@@ -11,14 +21,11 @@ $breakpoints: ("mobile-s": $width-mobile-s, "mobile": $width-mobile, "tablet": $
             @media screen and (width <= $width) {
                 @content;
             }
-        }
-        
-        @else{
+        } @else {
             @media screen and (width > $width) {
                 @content;
             }
         }
-        
     }
 }
 
@@ -35,5 +42,11 @@ $breakpoints: ("mobile-s": $width-mobile-s, "mobile": $width-mobile, "tablet": $
         &:hover {
             @content;
         }
+    }
+}
+
+@mixin mq-reduce-motion($value: reduce) {
+    @media (prefers-reduced-motion: $value) {
+        @content;
     }
 }

@@ -16,7 +16,8 @@ const Intro = component$(() => {
             <strong class="intro__subtitle block font-medium text-[clamp(1rem,3.8svb,3.5rem)]">
               Creative web developer
             </strong>
-            <Button
+           <div class="inline-flex gap-32 place-items-center content-center">
+           <Button
               onClick$={() => {
                 alert("Clicked");
               }}
@@ -26,6 +27,7 @@ const Intro = component$(() => {
               className="intro__btn">
               Let's talk
             </Button>
+           </div>
           </div>
         </div>
       </Container>

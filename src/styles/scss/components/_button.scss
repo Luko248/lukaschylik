@@ -11,11 +11,11 @@
 
   .btn {
     min-inline-size: px-to-rem(180px);
-    background-image: linear-gradient(
+    background-image: var(--btn_gradient, linear-gradient(
       160deg,
       $color-white var(--btn_gradient-length),
       $color-black var(--btn_gradient-length)
-    ) !important;
+    )) !important;
     transition: --btn_gradient-length $trans-time $trans-fnc;
 
     @include mq-hover {
@@ -32,15 +32,29 @@
       content: attr(title);
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(
+      background-image: var(--btn-after_gradient, linear-gradient(
         160deg,
         $color-black var(--btn_gradient-length),
         $color-white var(--btn_gradient-length)
-      ) !important;
+      ));
       padding: inherit;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: --btn_gradient-length $trans-time $trans-fnc;
+    }
+
+    &[data-variant="secondary"] {
+      --btn_gradient: linear-gradient(
+        160deg,
+        #{$color-black} var(--btn_gradient-length),
+        #{$color-white} var(--btn_gradient-length)
+      );
+  
+      --btn-after_gradient: linear-gradient(
+        160deg,
+        #{$color-white} var(--btn_gradient-length),
+        #{$color-black} var(--btn_gradient-length)
+      );
     }
   }
 }

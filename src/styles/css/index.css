@@ -13,7 +13,7 @@ body {
 }
 
 ::selection {
-  background-color: hsl(51, 100%, 53%);
+  background-color: hsl(50, 100%, 56%);
   color: hsl(0, 0%, 0%);
 }
 
@@ -39,7 +39,7 @@ body {
   }
   .btn {
     min-inline-size: 11.25rem;
-    background-image: linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length)) !important;
+    background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
     transition: --btn_gradient-length 0.25s ease-in-out;
   }
   @media (hover: hover) {
@@ -56,11 +56,23 @@ body {
     content: attr(title);
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)) !important;
+    background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
     padding: inherit;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: --btn_gradient-length 0.25s ease-in-out;
+  }
+  .btn[data-variant=secondary] {
+    --btn_gradient: linear-gradient(
+      160deg,
+      hsl(0, 0%, 0%) var(--btn_gradient-length),
+      hsl(0, 0%, 100%) var(--btn_gradient-length)
+    );
+    --btn-after_gradient: linear-gradient(
+      160deg,
+      hsl(0, 0%, 100%) var(--btn_gradient-length),
+      hsl(0, 0%, 0%) var(--btn_gradient-length)
+    );
   }
   header:before, header:after {
     content: "";
@@ -88,16 +100,37 @@ body {
     opacity: 0;
     animation: show-title 0.5s ease-out 0.35s forwards;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .intro__title {
+      scale: initial;
+      opacity: initial;
+      animation: none;
+    }
+  }
   .intro__subtitle {
     letter-spacing: 0.25em;
     translate: 0 -25%;
     opacity: 0;
     animation: show-subtitle 0.5s ease-out 0.7s forwards;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .intro__subtitle {
+      translate: initial;
+      opacity: initial;
+      animation: none;
+    }
+  }
   .intro__btn {
     translate: 0 225%;
     opacity: 0;
     animation: show-button 0.5s ease-out 0.7s forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .intro__btn {
+      translate: 0 200%;
+      opacity: initial;
+      animation: none;
+    }
   }
   @keyframes show-triangle {
     to {
