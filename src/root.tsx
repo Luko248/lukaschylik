@@ -37,6 +37,43 @@ export default component$(() => {
         <meta name="keywords" content="" />
         <meta name="author" content="Lukáš Chylík" />
 
+        <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
+        <meta
+          itemProp="description"
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+        />
+        <meta itemProp="image" content="./wwwroot/images/meta/meta-image.jpg" />
+
+        <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
+        <meta
+          itemProp="description"
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+        />
+        <meta itemProp="image" content="./wwwroot/images/meta/meta-image.jpg" />
+
+        <meta
+          property="og:title"
+          content="Lukáš Chylík | Creative web developer"
+        />
+        <meta
+          property="og:description"
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+        />
+        <meta property="og:url" content="https://lukaschylik.sk/" />
+        <meta
+          property="og:image"
+          content="./wwwroot/images/meta/meta-image.jpg"
+        />
+
+        <meta
+          name="twitter:title"
+          content="Lukáš Chylík | Creative web developer"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+        />
+
         {!isDev && (
           <link
             rel="manifest"
