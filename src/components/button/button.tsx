@@ -17,7 +17,7 @@ const Button = component$<ButtonProps>(({
     };
 
     const variantClasses = {
-        primary: "text-white bg-transparent hover:bg-transparent border border-white",
+        primary: "text-transparent border border-white",
         secondary: "text-black bg-green-500 hover:bg-green-700",
     };
 
@@ -28,7 +28,7 @@ const Button = component$<ButtonProps>(({
         aria-label={ariaLabel}
         title={title}
         class={classNames(
-            'btn line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
+            'btn relative overflow-clip line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
             sizeClasses[size],
             variantClasses[variant],
             className
