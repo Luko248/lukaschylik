@@ -3,12 +3,12 @@
 @use "typography" as *;
 
 @mixin create-layers {
-    @at-root {
-        @layer my-base, my-components, my-utils;
+  @at-root {
+    @layer my-base, my-components, my-utils;
 
-        @layer my-base {
-            @include reset;
-            @include create-typography;
-        }
+    @layer my-base {
+      @include reset;
+      @include create-typography;
     }
+  }
 }

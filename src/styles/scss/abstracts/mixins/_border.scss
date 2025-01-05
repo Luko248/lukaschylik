@@ -1,23 +1,42 @@
 @use "../variables/colors" as *;
 @use "../variables/sizes" as *;
 
-@mixin border-set($top: $border-width, $right: $border-width, $bottom: $border-width, $left: $border-width, $style: solid, $color: $color-border) {
-    border-style: $style;
-    border-color: $color;
-    border-block-start-width: $top;
-    border-inline-end-width: $right;
-    border-block-end-width: $bottom;
-    border-inline-start-width: $left;
+@mixin border-set(
+  $top: $border-width,
+  $right: $border-width,
+  $bottom: $border-width,
+  $left: $border-width,
+  $style: solid,
+  $color: $color-border
+) {
+  border-style: $style;
+  border-color: $color;
+  border-block-start-width: $top;
+  border-inline-end-width: $right;
+  border-block-end-width: $bottom;
+  border-inline-start-width: $left;
 }
 
-@mixin border-set-block($width: $border-width, $style: solid, $color: $color-border) {
-    border-block: $width $style $color;
+@mixin border-set-block(
+  $width: $border-width,
+  $style: solid,
+  $color: $color-border
+) {
+  border-block: $width $style $color;
 }
 
-@mixin border-set-inline($width: $border-width, $style: solid, $color: $color-border) {
-    border-inline: $width $style $color;
+@mixin border-set-inline(
+  $width: $border-width,
+  $style: solid,
+  $color: $color-border
+) {
+  border-inline: $width $style $color;
 }
 
-@mixin border-set-all($width: $border-width, $style: solid, $color: $color-border) {
-    border: $width $style $color;
+@mixin border-set-all(
+  $width: $border-width,
+  $style: solid,
+  $color: $color-border
+) {
+  border: $width $style $color;
 }

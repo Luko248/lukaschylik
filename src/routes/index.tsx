@@ -7,14 +7,22 @@ export default component$(() => {
   return (
     <>
       <Intro />
-      <section id="skills" class="min-h-screen relative text-black border-b border-black py-section-block bg-black">
+      <section
+        id="skills"
+        class="min-h-screen relative text-black border-b border-black py-section-block bg-black">
         <Container>
-          <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">Skills</h2>
+          <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">
+            Skills
+          </h2>
         </Container>
       </section>
-      <section id="reference" class="min-h-screen relative text-black border-b border-black py-section-block bg-black">
+      <section
+        id="reference"
+        class="min-h-screen relative text-black border-b border-black py-section-block bg-black">
         <Container size="lg">
-          <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">Reference</h2>
+          <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">
+            Reference
+          </h2>
           <div class="grid grid-cols-[5fr_8fr] gap-section-inline bg-black isolate">
             <div></div>
             <ul class="bg-black list-none p-0 m-0">

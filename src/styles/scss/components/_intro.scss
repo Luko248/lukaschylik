@@ -14,18 +14,30 @@
       z-index: 1;
       background-color: hsl(from #{$color-black} h s l / 0.5);
       animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+
+      @include mq-reduce-motion {
+        animation: none;
+      }
     }
 
     &:before {
       inset: 0 0 auto 0;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
       translate: 0 -100%;
+
+      @include mq-reduce-motion {
+        translate: 0 0;
+      }
     }
 
     &:after {
       inset: auto 0 0 0;
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       translate: 0 100%;
+
+      @include mq-reduce-motion {
+        translate: 0 0;
+      }
     }
   }
 

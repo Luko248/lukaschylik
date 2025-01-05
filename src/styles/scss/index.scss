@@ -8,7 +8,7 @@
 @layer my-base, my-components, my-utils;
 
 @layer my-base {
-    @include create-typography;
+  @include create-typography;
 }
 
 @layer my-components {

@@ -1,12 +1,15 @@
 import type { PropFunction } from "@builder.io/qwik";
 
 export interface ButtonProps {
-    onClick$?: PropFunction<() => void>;
-    variant: "primary" | "secondary";
-    size?: "sm" | "md";
-    disabled?: boolean;
-    icon?: string;
-    title?: string;
-    ariaLabel?: string;
-    className?: string;
+  onClick$?: PropFunction<() => void>;
+  variant: "primary" | "secondary";
+  size?: "sm" | "md";
+  disabled?: boolean;
+  icon?: string;
+  title?: string;
+  ariaLabel?: string;
+  className?: string;
+  href?: string;
+  rel?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
 }

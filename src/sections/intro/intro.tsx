@@ -16,18 +16,16 @@ const Intro = component$(() => {
             <strong class="intro__subtitle block font-medium text-[clamp(1rem,3.8svb,3.5rem)]">
               Creative web developer
             </strong>
-           <div class="inline-flex gap-32 place-items-center content-center">
-           <Button
-              onClick$={() => {
-                alert("Clicked");
-              }}
-              variant="primary"
-              size="md"
-              title="Let's talk"
-              className="intro__btn">
-              Let's talk
-            </Button>
-           </div>
+            <div class="inline-flex gap-32 place-items-center content-center">
+              <Button
+                href="#skills"
+                variant="primary"
+                size="md"
+                title="Let's talk"
+                className="intro__btn">
+                Let's talk
+              </Button>
+            </div>
           </div>
         </div>
       </Container>

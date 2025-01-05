@@ -26,7 +26,8 @@
     "qwik": "qwik",
     "build:css": "sass src/styles/scss/index.scss src/styles/css/index.css",
     "watch:css": "nodemon",
-    "start": "concurrently \"vite --open --mode ssr\" \"npm run watch:css\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "start": "npm run format && concurrently \"vite --open --mode ssr\" \"npm run watch:css\""
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.12.0",

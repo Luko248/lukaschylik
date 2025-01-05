@@ -1,19 +1,19 @@
 @use "../variables/sizes" as *;
 
 $radiusList: (
-    2: $radius-2, 
-    4: $radius-4, 
-    8: $radius-8, 
-    16: $radius-16, 
-    circle: $radius-circle, 
-    full: $radius-full, 
-    no: $radius-none
+  2: $radius-2,
+  4: $radius-4,
+  8: $radius-8,
+  16: $radius-16,
+  circle: $radius-circle,
+  full: $radius-full,
+  no: $radius-none,
 );
 
 @mixin border-radius($size) {
-    @if map_has_key($radiusList, $size) {
-        $size: map_get($radiusList, $size);
+  @if map_has_key($radiusList, $size) {
+    $size: map_get($radiusList, $size);
 
-        border-radius: $size;
-    }
+    border-radius: $size;
+  }
 }

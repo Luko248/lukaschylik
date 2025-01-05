@@ -1,24 +1,27 @@
 @mixin text-truncate($max-width: none) {
-    @if $max-width != none {
-        max-width: $max-width;
-    }
+  @if $max-width != none {
+    max-width: $max-width;
+  }
 
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @mixin text-line-clamp($lineNo: 1) {
-    display: -webkit-box;
-    white-space: pre-wrap;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: $lineNo;
+  display: -webkit-box;
+  white-space: pre-wrap;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lineNo;
 }
 
 @mixin input-placeholder {
-    &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder, &::-webkit-input-placeholder {
-        @content;
-    }
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder {
+    @content;
+  }
 }

@@ -14,27 +14,31 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <>
-    <Navigation small links={[
-      {
-        href: "/",
-        text: "Home"
-      },
-      {
-        href: "#skills",
-        text: "Skills"
-      },
-      {
-        href: "#reference",
-        text: "Reference"
-      },
-      {
-        href: "/contact",
-        text: "Kontakt"
-      }
-    ]} />
-    <main>
-      <Slot />
-    </main>
-  </>
+  return (
+    <>
+      <Navigation
+        links={[
+          {
+            href: "/",
+            text: "Home",
+          },
+          {
+            href: "#skills",
+            text: "About me",
+          },
+          {
+            href: "#reference",
+            text: "Reference",
+          },
+          {
+            href: "/contact",
+            text: "Kontakt",
+          },
+        ]}
+      />
+      <main>
+        <Slot />
+      </main>
+    </>
+  );
 });

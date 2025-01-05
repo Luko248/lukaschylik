@@ -23,16 +23,19 @@ export default component$(() => {
       <head>
         <meta charset="utf-8" />
         <title>Lukáš Chylík | Creative web developer</title>
-        <meta name="description" content="Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact me for collaborations." />
+        <meta
+          name="description"
+          content="Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact me for collaborations."
+        />
         <meta
           content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover"
           name="viewport"
         />
         <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta  name="format-detection" content="telephone=no"/>
-        <meta  name="keywords" content="" />
-        <meta name="author" content="Lukáš Chylík"  />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Lukáš Chylík" />
 
         {!isDev && (
           <link

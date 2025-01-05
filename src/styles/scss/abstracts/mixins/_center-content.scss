@@ -1,6 +1,12 @@
-@mixin center-content($position, $top: 50%, $left: 50%, $translateX: -50%, $translateY: -50%) {
-    position: $position;
-    top: $top;
-    left: $left;
-    translate: $translateX $translateY;
+@mixin center-content(
+  $position,
+  $top: 50%,
+  $left: 50%,
+  $translateX: -50%,
+  $translateY: -50%
+) {
+  position: $position;
+  top: $top;
+  left: $left;
+  translate: $translateX $translateY;
 }
