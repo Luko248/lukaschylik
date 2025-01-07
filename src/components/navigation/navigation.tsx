@@ -5,7 +5,7 @@ import type { NavigationProps } from "./navigatioin.types";
 const Navigation = component$<NavigationProps>(({ links }) => {
   return (
     <nav class="fixed top-0 text-center py-32 px-16 w-full z-50">
-      <ul class="inline-flex justify-center gap-32 list-none m-0 backdrop-blur">
+      <ul class="inline-flex justify-center gap-32 list-none m-0">
         {links &&
           links.map((link: LinkProps, index: number) => (
             <li key={index}>

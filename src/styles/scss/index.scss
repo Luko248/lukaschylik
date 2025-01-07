@@ -2,15 +2,20 @@
 @use "./base/reset" as *;
 @use "./base/typography" as *;
 @use "./components/_index" as *;
+@use "./modules/_index" as *;
 
 @include reset;
 
-@layer my-base, my-components, my-utils;
+@layer _base, _components, _modules, _utils;
 
-@layer my-base {
+@layer _base {
   @include create-typography;
 }
 
-@layer my-components {
+@layer _components {
   @include create-components;
+}
+
+@layer _modules {
+  @include create-modules;
 }

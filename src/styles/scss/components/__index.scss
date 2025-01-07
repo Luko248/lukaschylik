@@ -1,7 +1,7 @@
 @use "./button" as *;
-@use "./intro" as *;
+@use "./section" as *;
 
 @mixin create-components {
   @include create-button;
-  @include create-intro;
+  @include create-section;
 }

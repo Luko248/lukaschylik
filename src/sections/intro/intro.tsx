@@ -12,7 +12,7 @@ const Intro = component$(() => {
           Chylík
         </h1>
         <div class="grid place-items-center content-center">
-          <strong class="intro__subtitle text-white block font-medium text-[clamp(1rem,3.8svb,3.5rem)]">
+          <strong class="intro__subtitle text-black bg-yellow block font-medium text-[clamp(1rem,3.8svb,3.5rem)]">
             Creative web developer
           </strong>
           <div class="inline-flex gap-32 place-items-center content-center">

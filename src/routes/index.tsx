@@ -1,18 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";
+import About from "~/sections/about/about";
 
 export default component$(() => {
   return (
     <>
-      <section id="about-me" class="min-h-screen relative py-section-block ">
-        <Container>
-          <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">
-            Skills
-          </h2>
-        </Container>
-      </section>
-      <section id="reference" class="min-h-screen relative py-section-block">
+      <About />
+      {/* <section id="reference" class="min-h-screen relative py-section-block">
         <Container size="lg">
           <h2 class="absolute inset-x-1/2 top-1/2 text-[clamp(4.5rem,35svb,16rem)] uppercase font-extrabold tracking-widest text-[hsl(0_0%_100%_/_0)] opacity-0 translate-x-half translate-y-[calc(-50svb+100%)] animate-moveToTop">
             Reference
@@ -53,7 +48,7 @@ export default component$(() => {
             </ul>
           </div>
         </Container>
-      </section>
+      </section> */}
     </>
   );
 });

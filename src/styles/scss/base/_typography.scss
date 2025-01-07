@@ -17,4 +17,8 @@
     font-size: medium;
     resize: vertical;
   }
+
+  p {
+    max-inline-size: 65ch;
+  }
 }

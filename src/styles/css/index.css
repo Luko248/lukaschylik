@@ -19,8 +19,8 @@ body {
   color: hsl(0, 0%, 0%);
 }
 
-@layer my-base, my-components, my-utils;
-@layer my-base {
+@layer _base, _components, _modules, _utils;
+@layer _base {
   h1,
   h2,
   h3,
@@ -37,8 +37,11 @@ body {
     font-size: medium;
     resize: vertical;
   }
+  p {
+    max-inline-size: 65ch;
+  }
 }
-@layer my-components {
+@layer _components {
   @property --btn_gradient-length {
     syntax: "<percentage>";
     inherits: false;
@@ -81,6 +84,11 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
+  section {
+    padding-block: 8svb;
+  }
+}
+@layer _modules {
   header {
     overflow-clip-margin: content-box 35svb;
   }
