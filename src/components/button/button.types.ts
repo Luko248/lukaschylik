@@ -11,5 +11,6 @@ export interface ButtonProps {
   className?: string;
   href?: string;
   rel?: string;
+  type?: "button" | "submit" | "reset";
   target?: "_blank" | "_self" | "_parent" | "_top";
 }

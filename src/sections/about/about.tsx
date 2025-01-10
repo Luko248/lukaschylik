@@ -1,10 +1,9 @@
 import { component$, Slot } from "@builder.io/qwik";
 import Container from "../../components/container/container";
-import Button from "../../components/button/button";
 
 const About = component$(() => {
   return (
-    <section class="text-white min-h-screen" id="about-me">
+    <section id="about-me" class="text-white min-h-screen">
       <Container size="lg" className="relative z-10 isolate">
         <h2 class="text-8xl uppercase mb-56 font-bold tracking-widest">
           About me

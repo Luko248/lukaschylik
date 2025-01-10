@@ -29,11 +29,11 @@ export default component$(() => {
               text: "About me",
             },
             {
-              href: "#reference",
+              href: "#references",
               text: "References",
             },
             {
-              href: "/contact",
+              href: "#contact",
               text: "Contact",
             },
           ]}

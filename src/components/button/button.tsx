@@ -14,6 +14,7 @@ const Button = component$<ButtonProps>(
     href,
     rel,
     target,
+    type = "button",
   }) => {
     const sizeClasses = {
       sm: "px-16 py-8 text-s",
@@ -40,6 +41,7 @@ const Button = component$<ButtonProps>(
         onClick$={onClick$}
         disabled={disabled}
         aria-disabled={disabled}
+        type={type}
         {...commonProps}>
         <Slot />
       </button>
