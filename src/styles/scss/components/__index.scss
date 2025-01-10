@@ -1,7 +1,11 @@
 @use "./button" as *;
+@use "./reference" as *;
 @use "./section" as *;
+@use "./skills" as *;
 
 @mixin create-components {
   @include create-button;
+  @include create-reference;
   @include create-section;
+  @include create-skills;
 }

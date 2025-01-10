@@ -84,8 +84,14 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
+  .reference {
+    display: grid;
+  }
   section {
     padding-block: 8svb;
+  }
+  .skills {
+    max-inline-size: 85ch;
   }
 }
 @layer _modules {

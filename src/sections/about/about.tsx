@@ -29,10 +29,8 @@ const About = component$(() => {
           </strong>{" "}
           in this area.
         </p>
-        <p class="text-xl leading-relaxed ont-light mb-16">
-          My skills include:
-        </p>
-        <ul class="flex flex-wrap gap-16 m-0">
+        <h3 class="text-6xl leading-relaxed font-bold mb-16">Skills</h3>
+        <ul class="skills flex flex-wrap gap-16 m-0">
           <li class="inline-block border border-white px-16 leading-normal py-4 text-xl">
             HTML
           </li>

@@ -1,0 +1,9 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-skills {
+  .skills {
+    max-inline-size: 85ch;
+  }
+}
