@@ -52,7 +52,15 @@ const Contact = component$(() => {
               class="block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400"
               rows={5}></textarea>
           </label>
-          <Button type="submit">Sent</Button>
+          <Button
+            type="submit"
+            title="sent"
+            variant="primary"
+            onClick$={() => {
+              alert("Message Sent!");
+            }}>
+            Sent
+          </Button>
         </form>
       </Container>
     </section>
