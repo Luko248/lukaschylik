@@ -3,28 +3,25 @@ import type { ReferenceProps } from "./reference.types";
 
 const Reference = component$<ReferenceProps>(({ src, title, webURL, year }) => {
   return (
-    <li class="relative flex justify-between items-center gap-8 text-white py-16 border-b border-white uppercase isolate hover:z-10 first:border-t">
+    <li class="border-b border-white isolate hover:z-10 first:border-t relative">
       <a
         href={webURL}
         target="_blank"
         rel="noreferer"
-        class="flex justify-between items-center gap-2 text-white no-underline">
-        <strong class="flex gap-2 font-medium text-2xl leading-normal max-h-12 overflow-hidden relative z-20">
+        class="reference group flex justify-between items-center gap-2 text-white py-16 no-underline">
+        <strong class="flex gap-16 font-medium text-3xl leading-normal overflow-hidden relative z-20 tracking-wide uppercase">
           <span
             aria-label={title}
-            class="before:content-[attr(aria-label)] before:flex before:flex-col before:text-white before:transition-transform before:duration-300 before:ease-in-out before:translate-y-0 hover:before:translate-y-[-100%]">
+            class="transition-colors duration-300 ease-in-out group-hover:text-yellow">
             {title}
           </span>
-          <sup class="text-xs translate-y-2 tracking-wider leading-none">
+          <sup class="text-xs translate-y-16 tracking-wider leading-none">
             {year}
           </sup>
         </strong>
-        <small class="text-base opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
+        <small class="text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-yellow">
           {webURL}
         </small>
-        <div class="absolute flex flex-col justify-center opacity-0 hover:opacity-100 inset-1/2 translate-x-80 translate-y-half bg-gray-700 p-4 aspect-square rounded-full isolate z-10">
-          <img src={src} alt={title} width={250} height={74} class="block" />
-        </div>
       </a>
     </li>
   );

@@ -4,6 +4,15 @@
 
 @mixin create-reference {
   .reference {
-    display: grid;
+  }
+
+  .ref-list {
+    > li {
+      transition: opacity $trans-time $trans-fnc;
+    }
+
+    &:hover > li:not(:hover) {
+      opacity: 0.5;
+    }
   }
 }

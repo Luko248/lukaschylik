@@ -84,8 +84,11 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
-  .reference {
-    display: grid;
+  .ref-list > li {
+    transition: opacity 0.25s ease-in-out;
+  }
+  .ref-list:hover > li:not(:hover) {
+    opacity: 0.5;
   }
   section {
     padding-block: 8svb;
