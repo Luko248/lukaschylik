@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import Container from "../../components/container/container";
 import Button from "~/components/button/button";
+import Social from "~/components/social/social";
 
 const Contact = component$(() => {
   return (

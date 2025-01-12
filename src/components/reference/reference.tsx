@@ -3,7 +3,7 @@ import type { ReferenceProps } from "./reference.types";
 
 const Reference = component$<ReferenceProps>(({ src, title, webURL, year }) => {
   return (
-    <li class="relative flex justify-between items-center gap-2 text-white py-2 border-b border-white uppercase isolate hover:z-10 first:border-t">
+    <li class="relative flex justify-between items-center gap-8 text-white py-16 border-b border-white uppercase isolate hover:z-10 first:border-t">
       <a
         href={webURL}
         target="_blank"
