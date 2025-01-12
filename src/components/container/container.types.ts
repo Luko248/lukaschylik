@@ -1,4 +1,4 @@
 export interface ContainerProps {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "full";
   className?: string;
 }

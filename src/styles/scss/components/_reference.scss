@@ -4,6 +4,34 @@
 
 @mixin create-reference {
   .reference {
+    @include mq-hover {
+      --ref-before_trans-y: -100%;
+      --ref-after_trans-y: 0;
+    }
+
+    :where(span, small) {
+      position: relative;
+      overflow: clip;
+      &:before,
+      &:after {
+        content: attr(aria-label);
+        position: absolute;
+        inset: 0;
+        transition: translate $trans-time $trans-fnc;
+      }
+
+      &:before {
+        color: $color-white;
+        translate: 0 var(--ref-before_trans-y, 0);
+      }
+      &:after {
+        color: $color-yellow;
+        translate: 0 var(--ref-after_trans-y, 100%);
+      }
+    }
+    > small:before {
+      color: $color-transparent;
+    }
   }
 
   .ref-list {

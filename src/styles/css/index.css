@@ -15,7 +15,7 @@ body {
 }
 
 ::selection {
-  background-color: hsl(50, 100%, 56%);
+  background-color: hsl(51, 100%, 53%);
   color: hsl(0, 0%, 0%);
 }
 
@@ -84,6 +84,33 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
+  @media (hover: hover) {
+    .reference:hover {
+      --ref-before_trans-y: -100%;
+      --ref-after_trans-y: 0;
+    }
+  }
+  .reference :where(span, small) {
+    position: relative;
+    overflow: clip;
+  }
+  .reference :where(span, small):before, .reference :where(span, small):after {
+    content: attr(aria-label);
+    position: absolute;
+    inset: 0;
+    transition: translate 0.25s ease-in-out;
+  }
+  .reference :where(span, small):before {
+    color: hsl(0, 0%, 100%);
+    translate: 0 var(--ref-before_trans-y, 0);
+  }
+  .reference :where(span, small):after {
+    color: hsl(51, 100%, 53%);
+    translate: 0 var(--ref-after_trans-y, 100%);
+  }
+  .reference > small:before {
+    color: hsla(0, 0%, 0%, 0);
+  }
   .ref-list > li {
     transition: opacity 0.25s ease-in-out;
   }
@@ -93,8 +120,43 @@ body {
   section {
     padding-block: 8svb;
   }
+  @keyframes scroll {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: -50% 0;
+    }
+  }
   .skills {
-    max-inline-size: 85ch;
+    display: flex;
+    white-space: nowrap;
+  }
+  .skills__scroll {
+    display: flex;
+    animation: scroll 20s linear infinite;
+  }
+  .skills__scroll:hover > li:not(:hover) {
+    opacity: 0.5;
+  }
+  .skills li {
+    display: inline-block;
+    margin-right: 2rem;
+    transition: scale 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  }
+  .skills li:hover {
+    scale: 1.2;
+    z-index: 3;
+  }
+  .skills li:hover + li {
+    scale: 1.1;
+    z-index: 2;
+    opacity: 0.75 !important;
+  }
+  .skills li:has(+ li:hover) {
+    scale: 1.1;
+    z-index: 2;
+    opacity: 0.75 !important;
   }
 }
 @layer _modules {

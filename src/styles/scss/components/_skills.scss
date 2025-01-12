@@ -3,7 +3,50 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-skills {
+  @keyframes scroll {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: -50% 0;
+    }
+  }
+
   .skills {
-    max-inline-size: 85ch;
+    display: flex;
+    white-space: nowrap;
+
+    &__scroll {
+      display: flex;
+      animation: scroll 20s linear infinite;
+
+      &:hover > li:not(:hover) {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .skills li {
+    display: inline-block;
+    margin-right: $gap-space-32;
+    transition:
+      scale $trans-time $trans-fnc,
+      opacity $trans-time $trans-fnc;
+
+    &:hover {
+      scale: 1.2;
+      z-index: 3;
+
+      + li {
+        scale: 1.1;
+        z-index: 2;
+        opacity: 0.75 !important;
+      }
+    }
+    &:has(+ li:hover) {
+      scale: 1.1;
+      z-index: 2;
+      opacity: 0.75 !important;
+    }
   }
 }

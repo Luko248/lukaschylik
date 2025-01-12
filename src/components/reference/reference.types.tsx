@@ -2,5 +2,6 @@ export interface ReferenceProps {
   src: string;
   title: string;
   webURL?: string;
-  year?: number;
+  website?: string;
+  type?: string;
 }
