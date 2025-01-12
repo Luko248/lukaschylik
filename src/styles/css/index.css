@@ -134,14 +134,14 @@ body {
   }
   .skills__scroll {
     display: flex;
+    column-gap: 2rem;
     animation: scroll 20s linear infinite;
   }
   .skills__scroll:hover > li:not(:hover) {
-    opacity: 0.5;
+    opacity: 0.25s ease-in-out;
   }
   .skills li {
     display: inline-block;
-    margin-right: 2rem;
     transition: scale 0.25s ease-in-out, opacity 0.25s ease-in-out;
   }
   .skills li:hover {

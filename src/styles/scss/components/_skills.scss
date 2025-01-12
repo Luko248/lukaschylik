@@ -18,17 +18,17 @@
 
     &__scroll {
       display: flex;
+      column-gap: $gap-space-32;
       animation: scroll 20s linear infinite;
 
       &:hover > li:not(:hover) {
-        opacity: 0.5;
+        opacity: $trans-time $trans-fnc;
       }
     }
   }
 
   .skills li {
     display: inline-block;
-    margin-right: $gap-space-32;
     transition:
       scale $trans-time $trans-fnc,
       opacity $trans-time $trans-fnc;
