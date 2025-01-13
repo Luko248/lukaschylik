@@ -4,7 +4,9 @@
 
 @mixin create-intro {
   header {
-    overflow-clip-margin: content-box 35svb;
+    // overflow-clip-margin: content-box 35svb;
+    scroll-snap-align: start;
+
     &:before,
     &:after {
       content: "";

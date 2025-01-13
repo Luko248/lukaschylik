@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  /* scroll-snap-type: y mandatory; */
 }
 
 body {
@@ -49,7 +50,14 @@ body {
   }
   .btn {
     min-inline-size: 11.25rem;
-    background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
+    background-image: var(
+      --btn_gradient,
+      linear-gradient(
+        160deg,
+        hsl(0, 0%, 100%) var(--btn_gradient-length),
+        hsl(0, 0%, 0%) var(--btn_gradient-length)
+      )
+    ) !important;
     transition: --btn_gradient-length 0.25s ease-in-out;
   }
   @media (hover: hover) {
@@ -66,13 +74,20 @@ body {
     content: attr(title);
     position: absolute;
     inset: 0;
-    background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
+    background-image: var(
+      --btn-after_gradient,
+      linear-gradient(
+        160deg,
+        hsl(0, 0%, 0%) var(--btn_gradient-length),
+        hsl(0, 0%, 100%) var(--btn_gradient-length)
+      )
+    );
     padding: inherit;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: --btn_gradient-length 0.25s ease-in-out;
   }
-  .btn[data-variant=secondary] {
+  .btn[data-variant="secondary"] {
     --btn_gradient: linear-gradient(
       160deg,
       hsl(0, 0%, 0%) var(--btn_gradient-length),
@@ -94,7 +109,8 @@ body {
     position: relative;
     overflow: clip;
   }
-  .reference :where(span, small):before, .reference :where(span, small):after {
+  .reference :where(span, small):before,
+  .reference :where(span, small):after {
     content: attr(aria-label);
     position: absolute;
     inset: 0;
@@ -119,6 +135,7 @@ body {
   }
   section {
     padding-block: 8svb;
+    scroll-snap-align: start;
   }
   @keyframes scroll {
     from {
@@ -142,7 +159,9 @@ body {
   }
   .skills li {
     display: inline-block;
-    transition: scale 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition:
+      scale 0.25s ease-in-out,
+      opacity 0.25s ease-in-out;
   }
   .skills li:hover {
     scale: 1.2;
@@ -161,9 +180,10 @@ body {
 }
 @layer _modules {
   header {
-    overflow-clip-margin: content-box 35svb;
+    scroll-snap-align: start;
   }
-  header:before, header:after {
+  header:before,
+  header:after {
     content: "";
     position: absolute;
     block-size: 135svb;
@@ -174,7 +194,8 @@ body {
     animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:before, header:after {
+    header:before,
+    header:after {
       animation: none;
     }
   }
