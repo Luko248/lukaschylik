@@ -9,7 +9,7 @@ const Contact = component$(() => {
     email: "",
     subject: "",
     message: "",
-    extraField: "", // Honeypot field
+    extraField: "",
   });
 
   const handleSubmit = $((e: Event) => {
@@ -59,7 +59,6 @@ const Contact = component$(() => {
               (state.fullname = (e.target as HTMLInputElement).value)
             }
             required
-            className="block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400"
           />
           <FormField
             label="Your email"
@@ -70,7 +69,6 @@ const Contact = component$(() => {
               (state.email = (e.target as HTMLInputElement).value)
             }
             required
-            className="block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400"
           />
           <FormField
             label="Subject"
@@ -81,7 +79,6 @@ const Contact = component$(() => {
               (state.subject = (e.target as HTMLInputElement).value)
             }
             required
-            className="block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400"
           />
           <FormField
             label="Your message"
@@ -92,7 +89,6 @@ const Contact = component$(() => {
               (state.message = (e.target as HTMLTextAreaElement).value)
             }
             required
-            className="block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400"
           />
           <Button type="submit" title="sent" variant="primary">
             Sent

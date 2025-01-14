@@ -32,13 +32,13 @@ const FormField = component$<FormFieldProps>(
     placeholder,
     autocomplete,
   }) => {
-    const baseClass =
+    const inputClass =
       "block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400";
 
-    const classNames = [baseClass, className].filter(Boolean).join(" ");
+    const labelClass = ["text-white", className].filter(Boolean).join(" ");
 
     return (
-      <label>
+      <label class={labelClass}>
         {label}
         {type === "textarea" ? (
           <textarea
@@ -47,7 +47,7 @@ const FormField = component$<FormFieldProps>(
             value={value}
             onInput$={onInput$}
             required={required}
-            class={classNames}
+            class={inputClass}
             aria-label={label}
             aria-invalid={!value && required}
             disabled={disabled}
@@ -63,7 +63,7 @@ const FormField = component$<FormFieldProps>(
             value={value}
             onInput$={onInput$}
             required={required}
-            class={classNames}
+            class={inputClass}
             aria-label={label}
             aria-invalid={!value && required}
             disabled={disabled}

@@ -5,11 +5,10 @@ import Skills from "~/components/skills/skills";
 const About = component$(() => {
   return (
     <>
-      <section id="about-me" class="text-white min-h-screen bg-black">
+      <section id="about-me" class="relative text-white min-h-screen bg-black">
+        <h2 class="text-8xl uppercase font-bold tracking-widest">About me</h2>
+
         <Container size="lg" className="relative z-10 isolate mb-80">
-          <h2 class="text-8xl uppercase mb-56 font-bold tracking-widest">
-            About me
-          </h2>
           <p class="text-xl leading-relaxed font-light mb-32">
             I'm a front-end developer specializing in{" "}
             <strong class="text-black bg-yellow font-medium">
@@ -34,7 +33,7 @@ const About = component$(() => {
           </p>
           <h3 class="text-6xl leading-relaxed font-bold mb-16">Skills</h3>
         </Container>
-        <Skills />
+        {/* <Skills /> */}
       </section>
     </>
   );
