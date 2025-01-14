@@ -22,4 +22,8 @@ export interface FormFieldProps {
   disabled?: boolean;
   /** Whether the input field is read-only */
   readOnly?: boolean;
+  /** The placeholder for the input field */
+  placeholder?: string;
+  /** The autocomplete attribute for the input field */
+  autocomplete?: string;
 }
