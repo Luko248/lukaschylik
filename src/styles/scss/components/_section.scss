@@ -4,44 +4,13 @@
 
 @mixin create-section {
   section {
-    padding-block: 8svb;
-    scroll-snap-align: start;
+    padding-block: 10svb;
+    // scroll-snap-align: start;
     position: relative;
 
-    > h2 {
+    h2 {
       -webkit-text-stroke: $border-width-2 $color-white;
-      color: transparent !important;
-      position: sticky;
-      display: inline-block !important;
-      top: 50%;
-      left: 50%;
-      opacity: 0;
-      scale: 1;
-      translate: -50% -50%;
-      animation: showTitle linear forwards;
-      animation-timeline: view();
-      z-index: 10;
       animation-range: -8svb exit;
-    }
-  }
-
-  @keyframes showTitle {
-    from,
-    to {
-      opacity: 0;
-      scale: 1;
-    }
-
-    20%,
-    80% {
-      scale: 1;
-      opacity: 0;
-    }
-
-    40%,
-    60% {
-      opacity: 1;
-      scale: 2;
     }
   }
 }

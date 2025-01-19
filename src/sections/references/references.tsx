@@ -1,18 +1,16 @@
 import { component$ } from "@builder.io/qwik";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";
+import Section from "~/components/section/section";
 
 const References = component$(() => {
   return (
-    <section
-      id="references"
-      class="min-h-screen relative py-section-block bg-black
-      ">
+    <Section id="references">
       <Container size="full">
         <div class="grid grid-cols-[8fr_5fr] gap-section-inline isolate">
           <div>
-            <h2 class="text-9xl uppercase mb-56 font-bold tracking-widest text-white">
-              Reference
+            <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
+              references
             </h2>
             <p class="text-xl leading-relaxed font-light mb-32 text-white">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
@@ -113,7 +111,7 @@ const References = component$(() => {
           </ul>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 });
 

@@ -1,7 +1,5 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
-import Button from "~/components/button/button";
-import Container from "~/components/container/container";
-import FormField from "~/components/formField/formField";
+import { Container, FormField, Button, Section } from "~/components";
 
 const Contact = component$(() => {
   const state = useStore({
@@ -29,9 +27,9 @@ const Contact = component$(() => {
   });
 
   return (
-    <section id="contact" class="min-h-screen bg-black text-white">
+    <Section id="contact">
       <Container size="lg" className="relative z-10 isolate">
-        <h2 class="text-8xl uppercase mb-56 font-bold tracking-widest">
+        <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
           Contact
         </h2>
         <p class="text-xl leading-relaxed font-light mb-64">
@@ -95,7 +93,7 @@ const Contact = component$(() => {
           </Button>
         </form>
       </Container>
-    </section>
+    </Section>
   );
 });
 

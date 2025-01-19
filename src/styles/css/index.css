@@ -42,6 +42,23 @@ body {
   }
 }
 @layer _components {
+  .content-fade-in {
+    animation: content-fade-in linear forwards;
+    animation-timeline: view();
+    z-index: 10;
+    animation-range: 0 exit;
+    transform-origin: left;
+  }
+  @keyframes content-fade-in {
+    0%, 20% {
+      opacity: 0;
+      scale: 0.85;
+    }
+    50%, 100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
   @property --btn_gradient-length {
     syntax: "<percentage>";
     inherits: false;
@@ -118,38 +135,12 @@ body {
     opacity: 0.5;
   }
   section {
-    padding-block: 8svb;
-    scroll-snap-align: start;
+    padding-block: 10svb;
     position: relative;
   }
-  section > h2 {
+  section h2 {
     -webkit-text-stroke: 2px hsl(0, 0%, 100%);
-    color: transparent !important;
-    position: sticky;
-    display: inline-block !important;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    scale: 1;
-    translate: -50% -50%;
-    animation: showTitle linear forwards;
-    animation-timeline: view();
-    z-index: 10;
     animation-range: -8svb exit;
-  }
-  @keyframes showTitle {
-    from, to {
-      opacity: 0;
-      scale: 1;
-    }
-    20%, 80% {
-      scale: 1;
-      opacity: 0;
-    }
-    40%, 60% {
-      opacity: 1;
-      scale: 2;
-    }
   }
   @keyframes scroll {
     from {
@@ -191,18 +182,26 @@ body {
   }
 }
 @layer _modules {
-  header {
-    scroll-snap-align: start;
+  header[data-initialize=true]:before, header[data-initialize=true]:after {
+    --header-pseudo_anim: header-bg-zoom-in forwards;
+    translate: 0 0;
+    animation-timeline: view();
+  }
+  @media (prefers-reduced-motion: reduce) {
+    header[data-initialize=true]:before, header[data-initialize=true]:after {
+      animation: none;
+    }
   }
   header:before, header:after {
     content: "";
     position: absolute;
     block-size: 135svb;
     inline-size: 100svi;
-    will-change: translate;
-    z-index: 1;
-    background-color: hsl(from hsl(0, 0%, 0%) h s l/0.5);
-    animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    will-change: translate, opacity;
+    z-index: -1;
+    background-color: hsl(0, 0%, 0%);
+    opacity: 0.5;
+    animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
   }
   @media (prefers-reduced-motion: reduce) {
     header:before, header:after {
@@ -213,6 +212,8 @@ body {
     inset: 0 0 auto 0;
     clip-path: polygon(50% 100%, 0 0, 100% 0);
     translate: 0 -100%;
+    transform-origin: top;
+    animation-range: exit -30svb;
   }
   @media (prefers-reduced-motion: reduce) {
     header:before {
@@ -223,14 +224,21 @@ body {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     translate: 0 100%;
+    transform-origin: bottom;
+    animation-range: exit;
   }
   @media (prefers-reduced-motion: reduce) {
     header:after {
       translate: 0 0;
     }
   }
+  .intro {
+    animation: fade-out forwards;
+    animation-timeline: view();
+    animation-range: exit -250px;
+  }
   .intro__title {
-    -webkit-text-stroke: 2px hsl(0, 0%, 100%);
+    -webkit-text-stroke: 3px hsl(0, 0%, 100%);
     scale: 0.75;
     opacity: 0;
     animation: show-title 0.5s ease-out 0.35s forwards;
@@ -288,6 +296,17 @@ body {
     to {
       opacity: 1;
       translate: 0 200%;
+    }
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes header-bg-zoom-in {
+    to {
+      opacity: 1;
+      scale: 2;
     }
   }
 }

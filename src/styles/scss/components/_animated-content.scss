@@ -1,0 +1,27 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-animated-content {
+  .content-fade-in {
+    animation: content-fade-in linear forwards;
+    animation-timeline: view();
+    z-index: 10;
+    animation-range: 0 exit;
+    transform-origin: left;
+  }
+
+  @keyframes content-fade-in {
+    0%,
+    20% {
+      opacity: 0;
+      scale: 0.85;
+    }
+
+    50%,
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+}

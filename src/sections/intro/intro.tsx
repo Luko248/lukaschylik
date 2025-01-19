@@ -1,6 +1,5 @@
 import { component$, Slot } from "@builder.io/qwik";
-import Container from "../../components/container/container";
-import Button from "../../components/button/button";
+import { Button, Container } from "~/components";
 
 const Intro = component$(() => {
   return (

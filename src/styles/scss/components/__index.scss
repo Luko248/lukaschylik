@@ -1,3 +1,4 @@
+@use "./animated-content" as *;
 @use "./button" as *;
 @use "./reference" as *;
 @use "./navigation" as *;
@@ -5,6 +6,7 @@
 @use "./skills" as *;
 
 @mixin create-components {
+  @include create-animated-content;
   @include create-button;
   @include create-nav;
   @include create-reference;
