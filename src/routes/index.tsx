@@ -1,13 +1,12 @@
 import { component$ } from "@builder.io/qwik";
-import About from "~/sections/about/about";
-import Contact from "~/sections/contact/contact";
-import References from "~/sections/references/references";
+import { About, References, Services, Contact } from "~/sections";
 
 export default component$(() => {
   return (
     <>
       <About />
       <References />
+      <Services />
       <Contact />
     </>
   );
