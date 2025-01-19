@@ -8,7 +8,8 @@
  */
 export interface CardProps {
   title: string;
-  description: string;
+  description?: string;
   path?: string;
   src?: string;
+  price?: boolean;
 }

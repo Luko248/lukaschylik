@@ -1,0 +1,19 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-card {
+  .card {
+    box-shadow: $gap-space-16 $gap-space-16 0 0 $color-yellow;
+    transition:
+      box-shadow $trans-time $trans-fnc,
+      translate $trans-time $trans-fnc;
+    translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
+
+    @include mq-hover {
+      box-shadow: 0 0 0 0 $color-yellow;
+      --card_trans-x: #{$gap-space-8};
+      --card_trans-y: #{$gap-space-8};
+    }
+  }
+}

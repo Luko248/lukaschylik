@@ -115,6 +115,18 @@ body {
       hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
+  .card {
+    box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
+    transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
+    translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
+  }
+  @media (hover: hover) {
+    .card:hover {
+      box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
+      --card_trans-x: 0.5rem;
+      --card_trans-y: 0.5rem;
+    }
+  }
   @media (hover: hover) {
     .reference:hover {
       --ref-before_trans-y: -100%;

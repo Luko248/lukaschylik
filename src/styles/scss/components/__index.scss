@@ -1,5 +1,6 @@
 @use "./animated-content" as *;
 @use "./button" as *;
+@use "./card" as *;
 @use "./reference" as *;
 @use "./navigation" as *;
 @use "./section" as *;
@@ -8,6 +9,7 @@
 @mixin create-components {
   @include create-animated-content;
   @include create-button;
+  @include create-card;
   @include create-nav;
   @include create-reference;
   @include create-section;

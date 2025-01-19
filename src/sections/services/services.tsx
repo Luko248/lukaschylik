@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { Card } from "~/components";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 
@@ -15,6 +16,29 @@ const References = component$(() => {
             blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
             Quis, facere?
           </p>
+        </div>
+        <div class="content-fade-in content-fade-in--entry grid grid-flow-col-dense gap-64">
+          <Card title="Consultations" path="#services">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
+              blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
+              Quis, facere?
+            </p>
+          </Card>
+          <Card title="Workshops" path="#services">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
+              blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
+              Quis, facere?
+            </p>
+          </Card>
+          <Card title="Mentorship" path="#services">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
+              blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
+              Quis, facere?
+            </p>
+          </Card>
         </div>
       </Container>
     </Section>
