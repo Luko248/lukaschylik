@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import type { ReferenceProps } from "./reference.types";
 
 const Reference = component$<ReferenceProps>(
-  ({ src, title, webURL, type, website }) => {
+  ({ title, webURL, type, website }) => {
     return (
       <li class="border-b border-white isolate hover:z-10 first:border-t relative">
         <a
