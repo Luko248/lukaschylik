@@ -3,50 +3,48 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-skills {
-  @keyframes scroll {
-    from {
-      translate: 0 0;
-    }
-    to {
-      translate: -50% 0;
-    }
-  }
-
   .skills {
-    display: flex;
-    white-space: nowrap;
+    display: grid;
+    row-gap: $gap-space-32;
+    max-width: 100svi;
+    overflow: clip;
+    mask: linear-gradient(90deg, $color-transparent, $color-black 20%, $color-black 80%, $color-transparent);
 
-    &__scroll {
+    &:hover li:not(:hover) {
+      opacity: 0.5;
+
+      @include mq-reduce-motion {
+        opacity: 1;
+      }
+    }
+
+    &__scroller {
       display: flex;
+      flex-flow: row nowrap;
+      overflow: clip;
       column-gap: $gap-space-32;
-      animation: scroll 20s linear infinite;
+      animation: scroll-skills linear;
+      animation-timeline: scroll(root);
 
-      &:hover > li:not(:hover) {
-        opacity: $trans-time $trans-fnc;
+      &:nth-of-type(2) {
+        animation-direction: reverse;
+        flex-flow: row-reverse nowrap;
+      }
+
+      @include mq-reduce-motion {
+        animation: none;
       }
     }
   }
 
   .skills li {
     display: inline-block;
-    transition:
-      scale $trans-time $trans-fnc,
-      opacity $trans-time $trans-fnc;
+    transition: opacity $trans-time $trans-fnc;
+  }
 
-    &:hover {
-      scale: 1.2;
-      z-index: 3;
-
-      + li {
-        scale: 1.1;
-        z-index: 2;
-        opacity: 0.75 !important;
-      }
-    }
-    &:has(+ li:hover) {
-      scale: 1.1;
-      z-index: 2;
-      opacity: 0.75 !important;
+  @keyframes scroll-skills {
+    to {
+      translate: calc(-20% - $gap-space-16) 0;
     }
   }
 }

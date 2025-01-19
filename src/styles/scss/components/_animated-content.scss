@@ -4,11 +4,23 @@
 
 @mixin create-animated-content {
   .content-fade-in {
-    animation: content-fade-in linear forwards;
+    opacity: var(--content_opacity, 0);
+    scale: var(--content_scale, 0.85);
+    animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
-    animation-range: 0 exit;
+    animation-range: var(--animation_range, -20svb);
     transform-origin: left;
+
+    &--entry {
+      --animation_range: entry;
+    }
+
+    @include mq-reduce-motion {
+      --content_animation: none;
+      --content_opacity: 1;
+      --content_scale: 1;
+    }
   }
 
   @keyframes content-fade-in {

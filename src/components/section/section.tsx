@@ -7,7 +7,7 @@ const Section = component$<SectionProps>(({ id, className }) => {
     <section
       id={id}
       class={classNames(
-        "relative grid items-center min-h-screen bg-black",
+        "relative grid items-center min-h-screen bg-black ",
         className,
       )}>
       <Slot />

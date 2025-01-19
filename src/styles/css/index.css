@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -43,11 +45,23 @@ body {
 }
 @layer _components {
   .content-fade-in {
-    animation: content-fade-in linear forwards;
+    opacity: var(--content_opacity, 0);
+    scale: var(--content_scale, 0.85);
+    animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
-    animation-range: 0 exit;
+    animation-range: var(--animation_range, -20svb);
     transform-origin: left;
+  }
+  .content-fade-in--entry {
+    --animation_range: entry;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .content-fade-in {
+      --content_animation: none;
+      --content_opacity: 1;
+      --content_scale: 1;
+    }
   }
   @keyframes content-fade-in {
     0%, 20% {
@@ -142,43 +156,46 @@ body {
     -webkit-text-stroke: 2px hsl(0, 0%, 100%);
     animation-range: -8svb exit;
   }
-  @keyframes scroll {
-    from {
-      translate: 0 0;
-    }
-    to {
-      translate: -50% 0;
-    }
-  }
   .skills {
-    display: flex;
-    white-space: nowrap;
+    display: grid;
+    row-gap: 2rem;
+    max-width: 100svi;
+    overflow: clip;
+    mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 20%, hsl(0, 0%, 0%) 80%, hsla(0, 0%, 0%, 0));
   }
-  .skills__scroll {
+  .skills:hover li:not(:hover) {
+    opacity: 0.5;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skills:hover li:not(:hover) {
+      opacity: 1;
+    }
+  }
+  .skills__scroller {
     display: flex;
+    flex-flow: row nowrap;
+    overflow: clip;
     column-gap: 2rem;
-    animation: scroll 20s linear infinite;
+    animation: scroll-skills linear;
+    animation-timeline: scroll(root);
   }
-  .skills__scroll:hover > li:not(:hover) {
-    opacity: 0.25s ease-in-out;
+  .skills__scroller:nth-of-type(2) {
+    animation-direction: reverse;
+    flex-flow: row-reverse nowrap;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skills__scroller {
+      animation: none;
+    }
   }
   .skills li {
     display: inline-block;
-    transition: scale 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
   }
-  .skills li:hover {
-    scale: 1.2;
-    z-index: 3;
-  }
-  .skills li:hover + li {
-    scale: 1.1;
-    z-index: 2;
-    opacity: 0.75 !important;
-  }
-  .skills li:has(+ li:hover) {
-    scale: 1.1;
-    z-index: 2;
-    opacity: 0.75 !important;
+  @keyframes scroll-skills {
+    to {
+      translate: calc(-20% - 1rem) 0;
+    }
   }
 }
 @layer _modules {
@@ -236,6 +253,11 @@ body {
     animation: fade-out forwards;
     animation-timeline: view();
     animation-range: exit -250px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .intro {
+      animation: none;
+    }
   }
   .intro__title {
     -webkit-text-stroke: 3px hsl(0, 0%, 100%);

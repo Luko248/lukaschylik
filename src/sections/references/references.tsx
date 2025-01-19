@@ -12,25 +12,27 @@ const References = component$(() => {
             <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
               references
             </h2>
-            <p class="text-xl leading-relaxed font-light mb-32 text-white">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
-              voluptate quibusdam ab{" "}
-              <strong class="text-black bg-yellow font-medium">
-                accusantium
-              </strong>{" "}
-              reiciendis corporis nemo odio sapiente qui molestiae delectus
-              animi et sed voluptas aliquam neque, natus quas ducimus.
-            </p>
-            <p class="text-xl leading-relaxed font-light text-white">
-              Lorem ipsum dolor sit amet{" "}
-              <strong class="text-black bg-yellow font-medium">
-                consectetur
-              </strong>
-              , adipisicing elit. Esse explicabo facilis, provident voluptatem
-              quam corporis nobis tempora.
-            </p>
+            <div class="content-fade-in">
+              <p class="text-xl leading-relaxed font-light mb-32 text-white">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. In
+                voluptate quibusdam ab{" "}
+                <strong class="text-black bg-yellow font-medium">
+                  accusantium
+                </strong>{" "}
+                reiciendis corporis nemo odio sapiente qui molestiae delectus
+                animi et sed voluptas aliquam neque, natus quas ducimus.
+              </p>
+              <p class="text-xl leading-relaxed font-light text-white">
+                Lorem ipsum dolor sit amet{" "}
+                <strong class="text-black bg-yellow font-medium">
+                  consectetur
+                </strong>
+                , adipisicing elit. Esse explicabo facilis, provident voluptatem
+                quam corporis nobis tempora.
+              </p>
+            </div>
           </div>
-          <ul class="ref-list list-none p-0 m-0">
+          <ul class="ref-list list-none p-0 m-0 content-fade-in">
             <Reference
               src="/images/logos/references/logo-riganti.svg"
               title="Elendris"

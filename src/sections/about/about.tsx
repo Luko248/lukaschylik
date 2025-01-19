@@ -38,7 +38,7 @@ const About = component$(() => {
           </div>
           {/* <h3 class="text-6xl leading-relaxed font-bold mb-16">Skills</h3> */}
         </Container>
-        {/* <Skills /> */}
+        <Skills />
       </Section>
     </>
   );

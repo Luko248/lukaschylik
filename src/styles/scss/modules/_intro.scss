@@ -67,6 +67,10 @@
     animation-timeline: view();
     animation-range: exit -250px;
 
+    @include mq-reduce-motion {
+      animation: none;
+    }
+
     &__title {
       -webkit-text-stroke: 3px $color-white;
       scale: 0.75;

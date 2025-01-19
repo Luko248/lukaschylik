@@ -28,17 +28,19 @@ const Contact = component$(() => {
 
   return (
     <Section id="contact">
-      <Container size="lg" className="relative z-10 isolate">
+      <Container size="full" className="relative z-10 isolate">
         <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
           Contact
         </h2>
-        <p class="text-xl leading-relaxed font-light mb-64">
+        <p class="text-xl leading-relaxed font-light mb-64 text-white content-fade-in">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
           quibusdam ab accusantium reiciendis corporis nemo odio sapiente qui
           molestiae delectus animi et sed voluptas aliquam neque, natus quas
           ducimus.
         </p>
-        <form onSubmit$={handleSubmit} class="grid grid-cols-1 gap-24">
+        <form
+          onSubmit$={handleSubmit}
+          class="grid grid-cols-1 gap-24 content-fade-in content-fade-in--entry">
           <FormField
             type="text"
             name="extraField"
