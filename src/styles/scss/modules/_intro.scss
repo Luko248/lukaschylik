@@ -65,7 +65,7 @@
   .intro {
     animation: fade-out forwards;
     animation-timeline: view();
-    animation-range: exit -250px;
+    animation-range: exit -50px;
 
     @include mq-reduce-motion {
       animation: none;
