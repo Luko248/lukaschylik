@@ -4,17 +4,12 @@
 
 @mixin create-skills {
   .skills {
+    background-color: $color-black;
     display: grid;
     row-gap: $gap-space-32;
     max-width: 100svi;
     overflow: clip;
-    mask: linear-gradient(
-      90deg,
-      $color-transparent,
-      $color-black 20%,
-      $color-black 80%,
-      $color-transparent
-    );
+    mask: linear-gradient(90deg, $color-transparent, $color-black 20%, $color-black 80%, $color-transparent);
 
     &:hover li:not(:hover) {
       opacity: 0.5;

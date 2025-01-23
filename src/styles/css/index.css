@@ -140,6 +140,29 @@ body {
       opacity: 1;
     }
   }
+  @property --me_filter-greyscale {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 100%;
+  }
+  .me {
+    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale));
+    animation: showMe linear forwards;
+    animation-timeline: view();
+    animation-range: -20svb;
+    translate: 0 5svb;
+    transition: filter 0.25s ease-in-out;
+  }
+  @keyframes showMe {
+    0%, 20% {
+      --me_filter-greyscale: 100%;
+      translate: 0 20svb;
+    }
+    50%, 100% {
+      --me_filter-greyscale: 25%;
+      translate: 0 0;
+    }
+  }
   @media (hover: hover) {
     .reference:hover {
       --ref-before_trans-y: -100%;
@@ -182,6 +205,7 @@ body {
     animation-range: -8svb exit;
   }
   .skills {
+    background-color: hsl(0, 0%, 0%);
     display: grid;
     row-gap: 2rem;
     max-width: 100svi;

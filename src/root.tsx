@@ -42,14 +42,14 @@ export default component$(() => {
           itemProp="description"
           content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
         />
-        <meta itemProp="image" content="./wwwroot/images/meta/meta-image.jpg" />
+        <meta itemProp="image" content="./images/profile/me.webp" />
 
         <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
         <meta
           itemProp="description"
           content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
         />
-        <meta itemProp="image" content="./wwwroot/images/meta/meta-image.jpg" />
+        <meta itemProp="image" content="./images/profile/me.webp" />
 
         <meta
           property="og:title"
@@ -60,10 +60,7 @@ export default component$(() => {
           content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
         />
         <meta property="og:url" content="https://lukaschylik.sk/" />
-        <meta
-          property="og:image"
-          content="./wwwroot/images/meta/meta-image.jpg"
-        />
+        <meta property="og:image" content="./images/profile/me.webp" />
 
         <meta
           name="twitter:title"

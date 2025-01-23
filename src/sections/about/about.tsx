@@ -6,11 +6,11 @@ const About = component$(() => {
     <>
       <Section id="about-me">
         <Container size="full" className="relative z-10 isolate text-left">
-          <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-            About me
-          </h2>
           <div class="grid grid-cols-[5fr_8fr] gap-[10svi]">
             <div class="content-fade-in">
+              <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
+                About me
+              </h2>
               <p class="text-xl leading-relaxed font-light mb-32  text-white">
                 I'm a front-end developer specializing in{" "}
                 <strong class="text-black bg-yellow font-medium ">
@@ -34,7 +34,16 @@ const About = component$(() => {
                 in this area.
               </p>
             </div>
-            <div></div>
+            <div>
+              <img
+                class="me block mx-auto"
+                src="./public/images/me.webp"
+                alt="The picture of me"
+                loading="lazy"
+                width={768}
+                height={768}
+              />
+            </div>
           </div>
           {/* <h3 class="text-6xl leading-relaxed font-bold mb-16">Skills</h3> */}
         </Container>

@@ -2,6 +2,7 @@
 @use "./button" as *;
 @use "./card" as *;
 @use "./reference" as *;
+@use "./me" as *;
 @use "./navigation" as *;
 @use "./section" as *;
 @use "./skills" as *;
@@ -10,6 +11,7 @@
   @include create-animated-content;
   @include create-button;
   @include create-card;
+  @include create-me;
   @include create-nav;
   @include create-reference;
   @include create-section;

@@ -1,0 +1,35 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-me {
+  @property --me_filter-greyscale {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 100%;
+  }
+
+  .me {
+    filter: drop-shadow(0 0 1px $color-white) drop-shadow(-1px -1px 1px $color-white)
+      drop-shadow(1px 1px 1px $color-white) grayscale(var(--me_filter-greyscale));
+    animation: showMe linear forwards;
+    animation-timeline: view();
+    animation-range: -20svb;
+    translate: 0 5svb;
+    transition: filter $trans-time $trans-fnc;
+  }
+
+  @keyframes showMe {
+    0%,
+    20% {
+      --me_filter-greyscale: 100%;
+      translate: 0 20svb;
+    }
+
+    50%,
+    100% {
+      --me_filter-greyscale: 25%;
+      translate: 0 0;
+    }
+  }
+}
