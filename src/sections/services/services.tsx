@@ -17,7 +17,7 @@ const References = component$(() => {
             Quis, facere?
           </p>
         </div>
-        <div class="content-fade-in content-fade-in--entry grid grid-flow-col-dense gap-64">
+        <div class="grid grid-flow-col-dense gap-64">
           <Card title="Consultations" path="#services">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic

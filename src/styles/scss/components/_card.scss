@@ -4,6 +4,11 @@
 
 @mixin create-card {
   .card {
+    view-timeline: --showCard block;
+    animation-timeline: --showCard;
+    animation-name: fadeIn;
+    animation-fill-mode: both;
+    animation-duration: 1ms;
     box-shadow: $gap-space-16 $gap-space-16 0 0 $color-yellow;
     transition:
       box-shadow $trans-time $trans-fnc,
@@ -14,6 +19,16 @@
       box-shadow: 0 0 0 0 $color-yellow;
       --card_trans-x: #{$gap-space-8};
       --card_trans-y: #{$gap-space-8};
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 }
