@@ -90,6 +90,7 @@ body {
     position: absolute;
     display: grid;
     place-items: center;
+    line-height: inherit;
     inset: 0;
     background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
     padding: inherit;

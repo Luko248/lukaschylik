@@ -32,6 +32,7 @@
       position: absolute;
       display: grid;
       place-items: center;
+      line-height: inherit;
       inset: 0;
       background-image: var(
         --btn-after_gradient,

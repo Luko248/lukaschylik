@@ -23,7 +23,7 @@ const Button = component$<ButtonProps>(
 
     const commonProps = {
       class: classNames(
-        'btn relative overflow-clip line-height-1 cursor-pointer disabled:opacity-50 disabled:pointer-events-none "text-transparent border border-white',
+        'btn relative overflow-clip leading-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none "text-transparent border border-white',
         sizeClasses[size],
         className,
       ),
