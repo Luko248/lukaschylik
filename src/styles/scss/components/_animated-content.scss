@@ -5,7 +5,7 @@
 @mixin create-animated-content {
   .content-fade-in {
     opacity: var(--content_opacity, 0);
-    scale: var(--content_scale, 0.85);
+    scale: var(--content_scale, 0.95);
     animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
@@ -27,7 +27,7 @@
     0%,
     20% {
       opacity: 0;
-      scale: 0.85;
+      scale: 0.95;
     }
 
     50%,

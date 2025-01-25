@@ -23,14 +23,6 @@ body {
 
 @layer _base, _components, _modules, _utils;
 @layer _base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
   address {
     font-style: normal;
   }
@@ -46,7 +38,7 @@ body {
 @layer _components {
   .content-fade-in {
     opacity: var(--content_opacity, 0);
-    scale: var(--content_scale, 0.85);
+    scale: var(--content_scale, 0.95);
     animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
@@ -66,7 +58,7 @@ body {
   @keyframes content-fade-in {
     0%, 20% {
       opacity: 0;
-      scale: 0.85;
+      scale: 0.95;
     }
     50%, 100% {
       scale: 1;
@@ -118,11 +110,6 @@ body {
     );
   }
   .card {
-    view-timeline: --showCard block;
-    animation-timeline: --showCard;
-    animation-name: fadeIn;
-    animation-fill-mode: both;
-    animation-duration: 1ms;
     box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
     transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
     translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
@@ -132,14 +119,6 @@ body {
       box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
       --card_trans-x: 0.5rem;
       --card_trans-y: 0.5rem;
-    }
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
     }
   }
   @property --me_filter-greyscale {
