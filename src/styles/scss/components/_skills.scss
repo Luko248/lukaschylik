@@ -4,11 +4,7 @@
 
 @mixin create-skills {
   .skills {
-    background-color: $color-black;
-    display: grid;
-    row-gap: $gap-space-32;
     max-width: 100svi;
-    overflow: clip;
     mask: linear-gradient(90deg, $color-transparent, $color-black 20%, $color-black 80%, $color-transparent);
 
     &:hover li:not(:hover) {
@@ -20,10 +16,6 @@
     }
 
     &__scroller {
-      display: flex;
-      flex-flow: row nowrap;
-      overflow: clip;
-      column-gap: $gap-space-32;
       animation: scroll-skills linear;
       animation-timeline: scroll(root);
 

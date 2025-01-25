@@ -146,21 +146,23 @@ body {
     initial-value: 100%;
   }
   .me {
-    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale));
+    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     animation: showMe linear forwards;
     animation-timeline: view();
     animation-range: -20svb;
     translate: 0 5svb;
+    position: relative;
+    z-index: 1;
     transition: filter 0.25s ease-in-out;
   }
   @keyframes showMe {
     0%, 20% {
       --me_filter-greyscale: 100%;
-      translate: 0 20svb;
+      translate: 0 30svb;
     }
     50%, 100% {
       --me_filter-greyscale: 25%;
-      translate: 0 0;
+      translate: 0 2rem;
     }
   }
   @media (hover: hover) {
@@ -205,11 +207,7 @@ body {
     animation-range: -8svb exit;
   }
   .skills {
-    background-color: hsl(0, 0%, 0%);
-    display: grid;
-    row-gap: 2rem;
     max-width: 100svi;
-    overflow: clip;
     mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 20%, hsl(0, 0%, 0%) 80%, hsla(0, 0%, 0%, 0));
   }
   .skills:hover li:not(:hover) {

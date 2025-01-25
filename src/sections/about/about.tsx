@@ -25,7 +25,7 @@ const About = component$(() => {
                 </strong>
                 . Currently, I focus on implementing design systems.
               </p>
-              <p class="text-xl leading-relaxed ont-light mb-32 text-white">
+              <p class="text-xl leading-relaxed ont-light mb-80 text-white">
                 I also assist developers in selecting the right technology for
                 the visual aspects of their projects and offer{" "}
                 <strong class="text-black bg-yellow font-medium">

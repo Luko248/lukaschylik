@@ -2,8 +2,8 @@ import { component$ } from "@builder.io/qwik";
 
 const Skills = component$(() => {
   return (
-    <div class="skills">
-      <ul class="skills__scroller text-white">
+    <div class="skills relative z-20 grid gap-y-32 overflow-clip bg-black">
+      <ul class="flex flex-row flex-nowrap gap-x-32 overflow-clip col- skills__scroller text-white">
         <li class="inline-block border-2 border-white px-32 leading-normal py-16 text-2xl">
           HTML
         </li>
@@ -62,7 +62,7 @@ const Skills = component$(() => {
           Webpack
         </li>
       </ul>
-      <ul class="skills__scroller text-white">
+      <ul class="flex flex-row flex-nowrap overflow-clip col- skills__scroller text-white">
         <li class="inline-block border-2 border-white px-32 leading-normal py-16 text-2xl">
           HTML
         </li>
