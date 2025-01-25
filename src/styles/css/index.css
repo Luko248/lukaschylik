@@ -96,6 +96,8 @@ body {
   .btn:after {
     content: attr(title);
     position: absolute;
+    display: grid;
+    place-items: center;
     inset: 0;
     background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
     padding: inherit;
@@ -219,10 +221,6 @@ body {
     }
   }
   .skills__scroller {
-    display: flex;
-    flex-flow: row nowrap;
-    overflow: clip;
-    column-gap: 2rem;
     animation: scroll-skills linear;
     animation-timeline: scroll(root);
   }

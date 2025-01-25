@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
+  content: ["./src/**/*.{ts,tsx,html}"],
   theme: {
     extend: {
       colors: {
@@ -16,7 +16,7 @@ export default {
         error: "hsl(354 70% 54%)",
         pink: "hsl(313 100% 81%)",
         torquoise: "hsl(175 100% 65%)",
-        yellow: "hsl(51 100% 53%)",
+        "yellow-500": "hsl(51 100% 53%)",
       },
       fontFamily: {
         text: ["open-sans", "sans-serif"],

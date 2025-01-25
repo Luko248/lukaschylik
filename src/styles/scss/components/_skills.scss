@@ -5,7 +5,13 @@
 @mixin create-skills {
   .skills {
     max-width: 100svi;
-    mask: linear-gradient(90deg, $color-transparent, $color-black 20%, $color-black 80%, $color-transparent);
+    mask: linear-gradient(
+      90deg,
+      $color-transparent,
+      $color-black 20%,
+      $color-black 80%,
+      $color-transparent
+    );
 
     &:hover li:not(:hover) {
       opacity: 0.5;

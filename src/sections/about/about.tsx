@@ -37,7 +37,7 @@ const About = component$(() => {
             <div>
               <img
                 class="me block mx-auto"
-                src="./public/images/me.webp"
+                src="/images/me.webp"
                 alt="The picture of me"
                 loading="lazy"
                 width={768}
