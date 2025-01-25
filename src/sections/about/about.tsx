@@ -13,14 +13,14 @@ const About = component$(() => {
               </h2>
               <p class="text-xl leading-relaxed font-light mb-32  text-white">
                 I'm a front-end developer specializing in{" "}
-                <strong class="text-black bg-yellow font-medium ">
+                <strong class="text-black bg-yellow-500 font-medium ">
                   visual logic
                 </strong>
                 . With 8 years of experience and numerous projects under my
                 belt, I've worked on everything from presentation websites to
                 web applications, PWAs, and complex information systems. These
                 experiences have given me a broad understanding of{" "}
-                <strong class="text-black bg-yellow font-medium">
+                <strong class="text-black bg-yellow-500 font-medium">
                   UI-UX design, web accessibility, performance and SEO
                 </strong>
                 . Currently, I focus on implementing design systems.
@@ -28,7 +28,7 @@ const About = component$(() => {
               <p class="text-xl leading-relaxed ont-light mb-80 text-white">
                 I also assist developers in selecting the right technology for
                 the visual aspects of their projects and offer{" "}
-                <strong class="text-black bg-yellow font-medium">
+                <strong class="text-black bg-yellow-500 font-medium">
                   consultations, workshops, and training
                 </strong>{" "}
                 in this area.
