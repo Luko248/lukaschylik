@@ -15,7 +15,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   href={link.href}
                   title={link.text}
                   rel="internal"
-                  class="nav__item text-white uppercase no-underline decoration-yellow decoration-4 underline-offset-8 hover:underline text-l">
+                  class="nav__item text-white uppercase no-underline decoration-yellow-500 decoration-4 underline-offset-8 hover:underline text-l">
                   {link.text}
                 </Link>
               </li>
