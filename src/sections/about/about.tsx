@@ -9,29 +9,30 @@ const About = component$(() => {
           <div class="grid grid-cols-[5fr_8fr] gap-[10svi]">
             <div class="content-fade-in">
               <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-                About me
+                Niečo o mne
               </h2>
               <p class="text-xl leading-relaxed font-light mb-32  text-white">
-                I'm a front-end developer specializing in{" "}
+                Som frontend developer špecializujúci sa na{" "}
                 <strong class="text-black bg-yellow-500 font-medium ">
-                  visual logic
+                  vizuálnu logiku
                 </strong>
-                . With 8 years of experience and numerous projects under my
-                belt, I've worked on everything from presentation websites to
-                web applications, PWAs, and complex information systems. These
-                experiences have given me a broad understanding of{" "}
+                . S 8 rokmi skúseností a množstvom projektov za sebou som
+                pracoval na všetkom od prezentačných webových stránok po webové
+                aplikácie, PWA a komplexné informačné systémy. Tieto skúsenosti
+                mi poskytli široké pochopenie{" "}
                 <strong class="text-black bg-yellow-500 font-medium">
-                  UI-UX design, web accessibility, performance and SEO
+                  UI-UX dizajnu, webovej prístupnosti, výkonu a SEO
                 </strong>
-                . Currently, I focus on implementing design systems.
+                . Momentálne sa zameriavam na implementáciu dizajnových
+                systémov.
               </p>
               <p class="text-xl leading-relaxed ont-light mb-32 text-white">
-                I also assist developers in selecting the right technology for
-                the visual aspects of their projects and offer{" "}
+                Tiež pomáham vývojárom pri výbere správnej technológie pre
+                vizuálne aspekty ich projektov a ponúkam{" "}
                 <strong class="text-black bg-yellow-500 font-medium">
-                  consultations, workshops, and training
+                  konzultácie, workshopy a školenia
                 </strong>{" "}
-                in this area.
+                v tejto oblasti.
               </p>
             </div>
             <div>
@@ -45,7 +46,6 @@ const About = component$(() => {
               />
             </div>
           </div>
-          {/* <h3 class="text-6xl leading-relaxed font-bold mb-16">Skills</h3> */}
         </Container>
         <Skills />
       </Section>

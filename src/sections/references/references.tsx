@@ -10,27 +10,26 @@ const References = component$(() => {
         <div class="grid grid-cols-[8fr_5fr] gap-section-inline isolate">
           <div>
             <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-              references
+              Referencie
             </h2>
             <div class="content-fade-in">
               <p class="text-xl leading-relaxed font-light mb-32 text-white">
-                I have extensive experience in front-end development and have
-                collaborated with various companies and organizations over the
-                years.
+                Mám rozsiahle skúsenosti s frontend vývojom a počas rokov som
+                spolupracoval s rôznymi spoločnosťami a organizáciami.
               </p>
               <p class="text-xl leading-relaxed font-light mb-32 text-white">
-                Since 2016, I have been dedicated to creating websites for
-                clients like Elendris or Anew Style.
+                Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
+                ako Elendris alebo Anew Style.
               </p>
               <p class="text-xl leading-relaxed font-light mb-32 text-white">
-                I had a long-term collaboration with Riganti, contributing to
-                various web projects. For Update Conference, I created numerous
-                websites and helped develop a UI kit for the DotVVM framework. I
-                no longer collaborate with Riganti.
+                Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
+                rôznym webovým projektom. Pre Update Conference som vytvoril
+                množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
+                framework. Už nespolupracujem s Riganti.
               </p>
               <p class="text-xl leading-relaxed font-light text-white">
-                Currently, I work for AIS Servis, developing a design system for
-                VIG Czech Republic.
+                Momentálne pracujem pre AIS Servis, kde vyvíjam dizajnový systém
+                pre VIG Česká republika.
               </p>
             </div>
           </div>
@@ -39,73 +38,73 @@ const References = component$(() => {
               title="AIS servis"
               webURL="https://www.ais=servis.cz/"
               website="ais=servis.cz"
-              type="Cooperation"
+              type="Spolupráca"
             />
             <Reference
               title="Elendris"
               webURL="https://elendris.cz/en/"
               website="elendris.cz"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="Anew style"
               webURL="https://anewstyle.cz/"
               website="anewstyle.cz"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="thelucie.ink"
               webURL="https://thelucie.ink/"
               website="thelucie.ink"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="IVPA bau"
               webURL="https://ivpabau.de/"
               website="ivpabau.de"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="Riganti"
               webURL="https://www.riganti.cz/"
               website="riganti.cz"
-              type="Cooperation"
+              type="Spolupráca"
             />
             <Reference
               title="Update Conference"
               webURL="https://www.updateconference.net/"
               website="updateconference.net"
-              type="Cooperation"
+              type="Spolupráca"
             />
             <Reference
               title="DotVVM"
               webURL="https://www.dotvvm.com/"
               website="dotvvm.com"
-              type="Cooperation"
+              type="Spolupráca"
             />
             <Reference
               title="Krossbau s.r.o."
               webURL="https://www.krossbau.cz/"
               website="krossbau.cz"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="IVPA Okná"
               webURL="https://ivpaokna.sk/"
               website="ivpaokna.sk"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="Brand Design"
               webURL="https://brand-design.cz/"
               website="brand-design.cz"
-              type="Website"
+              type="Web"
             />
             <Reference
               title="Filtre na mlieko"
               webURL="https://filtrenamlieko.sk/"
               website="filtrenamlieko.sk"
-              type="Website"
+              type="Web"
             />
           </ul>
         </div>

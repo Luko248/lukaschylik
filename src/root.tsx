@@ -25,7 +25,7 @@ export default component$(() => {
         <title>Lukáš Chylík | Creative web developer</title>
         <meta
           name="description"
-          content="Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact me for collaborations."
+          content="Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact me for collaborations."
         />
         <meta
           content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover"
@@ -40,14 +40,14 @@ export default component$(() => {
         <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
         <meta
           itemProp="description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
         />
         <meta itemProp="image" content="./images/profile/me.webp" />
 
         <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
         <meta
           itemProp="description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
         />
         <meta itemProp="image" content="./images/profile/me.webp" />
 
@@ -57,7 +57,7 @@ export default component$(() => {
         />
         <meta
           property="og:description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
         />
         <meta property="og:url" content="https://lukaschylik.sk/" />
         <meta property="og:image" content="./images/profile/me.webp" />
@@ -68,7 +68,7 @@ export default component$(() => {
         />
         <meta
           name="twitter:description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in front-end, back-end, and UI/UX design. Contact for collaborations."
+          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
         />
 
         {!isDev && (

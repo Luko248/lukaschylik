@@ -1,9 +1,19 @@
 import { component$ } from "@builder.io/qwik";
 import { IconProps } from "./icon.types";
 
-const Icon = component$<IconProps>(({ name }) => {
+const Icon = component$<IconProps>(({ name, classNames }) => {
+  const classes = [
+    `icon icon-${name}`,
+    "fill-white",
+    "w-32",
+    "aspect-square",
+    classNames,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <svg class={`icon icon-${name} fill-white w-32 aspect-square`}>
+    <svg class={classes}>
       <use xlink:href={`#icon-${name}`} />
     </svg>
   );

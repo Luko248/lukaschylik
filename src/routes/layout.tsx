@@ -33,19 +33,19 @@ export default component$(() => {
             },
             {
               href: "#about-me",
-              text: "About me",
+              text: "O mne",
             },
             {
               href: "#references",
-              text: "References",
+              text: "Referencie",
             },
             {
               href: "#services",
-              text: "Services",
+              text: "Služby",
             },
             {
               href: "#contact",
-              text: "Contact",
+              text: "Kontakt",
             },
           ]}
         />

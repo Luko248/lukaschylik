@@ -30,7 +30,7 @@ const Contact = component$(() => {
     <Section id="contact">
       <Container size="full" className="relative z-10 isolate">
         <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-          Contact
+          Kontakt
         </h2>
         <p class="text-xl leading-relaxed font-light mb-64 text-white content-fade-in">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
@@ -42,6 +42,7 @@ const Contact = component$(() => {
           onSubmit$={handleSubmit}
           class="grid grid-cols-1 gap-24 content-fade-in content-fade-in--entry">
           <FormField
+            label="HP"
             type="text"
             name="extraField"
             value={state.extraField}
@@ -51,7 +52,7 @@ const Contact = component$(() => {
             className="hidden"
           />
           <FormField
-            label="Your name"
+            label="Celé meno"
             type="text"
             name="fullname"
             value={state.fullname}
@@ -61,7 +62,7 @@ const Contact = component$(() => {
             required
           />
           <FormField
-            label="Your email"
+            label="Email"
             type="email"
             name="email"
             value={state.email}
@@ -71,7 +72,7 @@ const Contact = component$(() => {
             required
           />
           <FormField
-            label="Subject"
+            label="Predmet"
             type="text"
             name="subject"
             value={state.subject}
@@ -81,7 +82,7 @@ const Contact = component$(() => {
             required
           />
           <FormField
-            label="Your message"
+            label="Vaše správa"
             type="textarea"
             name="message"
             value={state.message}
@@ -91,7 +92,7 @@ const Contact = component$(() => {
             required
           />
           <Button type="submit" title="sent" variant="primary">
-            Sent
+            Odoslať
           </Button>
         </form>
       </Container>
