@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
-@config "../../../tailwind.config.js";
+@theme {
+  --color-black: hsl(0 0% 0%);
+  --color-black-900: hsl(0 0% 3%);
+  --color-white: hsl(0 0% 100%);
+  --color-transparent: hsl(0 0% 0% / 0%);
+  --color-primary: hsl(0 0% 100%);
+  --color-secondary: hsl(51 100% 53%);
+  --color-info: hsl(200 54% 53%);
+  --color-success: hsl(134 61% 41%);
+  --color-warning: hsl(45 100% 42%);
+  --color-error: hsl(354 70% 54%);
+  --color-pink: hsl(313 100% 81%);
+  --color-torquoise: hsl(175 100% 65%);
+  --color-yellow-500: hsl(51 100% 53%);
+  --color-bg: hsl(0 0% 100%);
+}
 
 @plugin "tailwindcss-signals";

@@ -10,16 +10,12 @@
   }
 
   .me {
-    filter: drop-shadow(0 0 1px $color-white)
-      drop-shadow(-1px -1px 1px $color-white)
-      drop-shadow(1px 1px 1px $color-white)
-      grayscale(var(--me_filter-greyscale)) contrast(1.15);
+    filter: drop-shadow(0 0 1px $color-white) drop-shadow(-1px -1px 1px $color-white)
+      drop-shadow(1px 1px 1px $color-white) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     animation: showMe linear forwards;
     animation-timeline: view();
     animation-range: -20svb;
-    translate: 0 5svb;
-    position: relative;
-    z-index: 1;
+    translate: 0 30svb;
     transition: filter $trans-time $trans-fnc;
   }
 
@@ -28,12 +24,14 @@
     20% {
       --me_filter-greyscale: 100%;
       translate: 0 30svb;
+      opacity: 0;
     }
 
     50%,
     100% {
       --me_filter-greyscale: 25%;
       translate: 0 $gap-space-32;
+      opacity: 1;
     }
   }
 }

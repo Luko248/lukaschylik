@@ -132,19 +132,19 @@ body {
     animation: showMe linear forwards;
     animation-timeline: view();
     animation-range: -20svb;
-    translate: 0 5svb;
-    position: relative;
-    z-index: 1;
+    translate: 0 30svb;
     transition: filter 0.25s ease-in-out;
   }
   @keyframes showMe {
     0%, 20% {
       --me_filter-greyscale: 100%;
       translate: 0 30svb;
+      opacity: 0;
     }
     50%, 100% {
       --me_filter-greyscale: 25%;
       translate: 0 2rem;
+      opacity: 1;
     }
   }
   @media (hover: hover) {

@@ -13,14 +13,14 @@ const About = component$(() => {
               </h2>
               <p class="text-xl leading-relaxed font-light mb-8  text-white">
                 Som frontend developer špecializujúci sa na{" "}
-                <strong class="text-black bg-yellow-500 font-medium ">
+                <strong class="text-black bg-secondary font-medium ">
                   vizuálnu logiku
                 </strong>
                 . S 8 rokmi skúseností a množstvom projektov za sebou som
                 pracoval na všetkom od prezentačných webových stránok po webové
                 aplikácie, PWA a komplexné informačné systémy. Tieto skúsenosti
                 mi poskytli široké pochopenie{" "}
-                <strong class="text-black bg-yellow-500 font-medium">
+                <strong class="text-black bg-secondary font-medium">
                   UI-UX dizajnu, webovej prístupnosti, výkonu a SEO
                 </strong>
                 . Momentálne sa zameriavam na implementáciu dizajnových
@@ -29,7 +29,7 @@ const About = component$(() => {
               <p class="text-xl leading-relaxed ont-light mb-8 text-white">
                 Tiež pomáham vývojárom pri výbere správnej technológie pre
                 vizuálne aspekty ich projektov a ponúkam{" "}
-                <strong class="text-black bg-yellow-500 font-medium">
+                <strong class="text-black bg-secondary font-medium">
                   konzultácie, workshopy a školenia
                 </strong>{" "}
                 v tejto oblasti.
@@ -37,7 +37,7 @@ const About = component$(() => {
             </div>
             <div>
               <img
-                class="me block mx-auto"
+                class="me relative z-0 opacity-0 block mx-auto"
                 src="/images/me.webp"
                 alt="The picture of me"
                 loading="lazy"
