@@ -154,6 +154,36 @@ body {
     translate: 0 -8svb;
     animation: showNav 0.5s ease-in-out forwards;
   }
+  .nav__toggler {
+    display: grid;
+    overflow: clip;
+    place-items: center;
+    --after_scale-x: 0.75;
+  }
+  @media (hover: hover) {
+    .nav__toggler:hover {
+      --after_scale-x: 1;
+    }
+  }
+  .nav__toggler:before, .nav__toggler:after {
+    content: "";
+    display: block;
+    position: absolute;
+    inline-size: 4rem;
+    block-size: 0.5rem;
+    scale: var(--after_scale-x) var(--after_scale-y);
+    translate: var(--after_trans-x) var(--after_trans-y);
+    background-color: hsl(0, 0%, 100%);
+    transform-origin: right;
+  }
+  .nav__toggler:before {
+    --after_scale-x: 1;
+  }
+  .nav__toggler:after {
+    --after_scale-x: 0.8;
+    transition: scale 0.25s ease-in-out;
+    background: red;
+  }
   @keyframes showNav {
     0% {
       opacity: 0;

@@ -9,6 +9,40 @@
       translate: 0 -8svb;
       animation: showNav 0.5s ease-in-out forwards;
     }
+
+    &__toggler {
+      display: grid;
+      overflow: clip;
+      place-items: center;
+      --after_scale-x: 0.75;
+
+      @include mq-hover {
+        --after_scale-x: 1;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        inline-size: calc($gap-space-32 * 2);
+        block-size: $gap-space-8;
+        scale: var(--after_scale-x) var(--after_scale-y);
+        translate: var(--after_trans-x) var(--after_trans-y);
+        background-color: $color-white;
+        transform-origin: right;
+      }
+
+      &:before {
+        --after_scale-x: 1;
+      }
+
+      &:after {
+        --after_scale-x: 0.8;
+        transition: scale $trans-time $trans-fnc;
+        background: red;
+      }
+    }
   }
 
   @keyframes showNav {
