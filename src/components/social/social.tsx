@@ -3,7 +3,7 @@ import Icon from "../icon/icon";
 
 const Social = component$(() => {
   return (
-    <nav class="social fixed bottom-16 right-8 z-10">
+    <nav class="social fixed bottom-16 right-8 z-50">
       <ul class="inline-flex flex-col justify-center items-center gap-8">
         <li class="group">
           <a

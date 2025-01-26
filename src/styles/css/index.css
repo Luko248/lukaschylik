@@ -133,6 +133,7 @@ body {
     animation-timeline: view();
     animation-range: -20svb;
     translate: 0 30svb;
+    max-inline-size: min(375px, 100%);
     transition: filter 0.25s ease-in-out;
   }
   @keyframes showMe {
@@ -148,7 +149,7 @@ body {
     }
   }
   .nav {
-    mask-image: car(--nav_mask, none);
+    mask-image: var(--nav_mask, none);
     --nav-list_display: none;
   }
   .nav--open {
@@ -161,14 +162,15 @@ body {
   }
   @media screen and (width > 768px) {
     .nav {
-      --nav_mask: linear-gradient($color-black 70%, $color-transparent);
+      --nav_mask: linear-gradient(hsl(0, 0%, 0%) 70%, hsla(0, 0%, 0%, 0));
       --nav-list_display: inline-flex;
+      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
   }
   .nav__list {
     display: var(--nav-list_display, inline-flex);
     translate: 0 -8svb;
-    animation: showNav 0.5s ease-in-out forwards;
+    animation: var(--nav-list_anim, none);
   }
   .nav__toggler {
     display: grid;
@@ -198,7 +200,7 @@ body {
     transition: scale 0.25s ease-in-out, translate 0.25s ease-in-out, rotate 0.25s ease-in-out, transform-origin 0.25s ease-in-out;
     background-color: hsl(0, 0%, 100%);
     inline-size: 100%;
-    block-size: 0.3125rem;
+    block-size: 2px;
     background-color: hsl(0, 0%, 100%);
     transform-origin: var(--pseudo_trans-origin, right);
   }

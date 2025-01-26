@@ -1,5 +1,6 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
 import { Container, FormField, Button, Section } from "~/components";
+import SectionTitle from "~/components/section/section.title";
 
 const Contact = component$(() => {
   const state = useStore({
@@ -29,9 +30,7 @@ const Contact = component$(() => {
   return (
     <Section id="contact">
       <Container size="full" className="relative z-10 isolate">
-        <h2 class="text-[clamp(3rem,14svb,10rem)] mb-5 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-          Kontakt
-        </h2>
+        <SectionTitle text="Kontakt" />
         <p class="text-xl leading-relaxed font-light mb-18 text-white content-fade-in">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
           quibusdam ab accusantium reiciendis corporis nemo odio sapiente qui

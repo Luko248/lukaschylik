@@ -2,6 +2,7 @@ import { component$, useStore, $ } from "@builder.io/qwik";
 import { Link, type LinkProps } from "@builder.io/qwik-city";
 import type { NavigationProps } from "./navigatioin.types";
 import Social from "../social/social";
+import { classNames } from "~/utils";
 
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
@@ -10,40 +11,26 @@ const Navigation = component$<NavigationProps>(({ links }) => {
     state.isOpen = !state.isOpen;
   });
 
-  const handleToggleClass = (isOpen: boolean) => {
-    const classList = [
-      "nav__toggler relative w-16 h-16 text-white cursor-pointer visible md:invisible",
-      isOpen && "nav__toggler--open",
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    return classList;
-  };
-
-  const handleMenuClass = () => {
-    const classList = [
-      "nav__list",
-      "absolute top-full inset-0 min-h-screen text-center align-baseline items-center gap-12 list-none m-0",
-      "md:relative md:top-auto md:inset-auto md:min-h-auto md:flex-row md:justify-center",
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    return classList;
-  };
-
   return (
     <>
       <nav
-        class={`nav fixed top-0 flex justify-between text-center py-4 md:py-8 px-8 w-full z-50 backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
+        class={`nav fixed top-0 flex justify-between text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
         <a
           href="/"
           role="menuitem"
-          class="nav__logo text-white text-2xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
+          class="nav__logo relative z-20 text-white text-3xl md:text-xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
           Home
         </a>
-        <ul class={handleMenuClass()} role="menu">
+        <ul
+          class={classNames(
+            "nav__list",
+            "fixed md:relative inset-0 md:inset-auto",
+            "align-baseline items-center content-center gap-16 md:gap-8",
+            "md:flex-row md:justify-center",
+            "bg-menu md:bg-transparent backdrop-blur-lg md:backdrop-blur-none",
+            "list-none m-0",
+          )}
+          role="menu">
           {links &&
             links.map((link: LinkProps, index: number) => (
               <li key={index}>
@@ -52,7 +39,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   href={link.href}
                   title={link.text}
                   rel="internal"
-                  class=" text-white text-xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
+                  class="text-white text-2xl md:text-xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
                   {link.text}
                 </Link>
               </li>
@@ -61,7 +48,10 @@ const Navigation = component$<NavigationProps>(({ links }) => {
 
         <button
           type="button"
-          class={handleToggleClass(state.isOpen)}
+          class={classNames(
+            "nav__toggler relative w-10 h-10 text-white cursor-pointer visible md:invisible",
+            state.isOpen && "nav__toggler--open",
+          )}
           aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           onClick$={toggleMenu}></button>

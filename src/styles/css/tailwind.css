@@ -15,6 +15,7 @@
   --color-torquoise: hsl(175 100% 65%);
   --color-yellow-500: hsl(51 100% 53%);
   --color-bg: hsl(0 0% 100%);
+  --color-menu: hsl(0 0% 0% / 30%);
 }
 
 @plugin "tailwindcss-signals";

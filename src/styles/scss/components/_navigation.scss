@@ -4,7 +4,7 @@
 
 @mixin create-nav {
   .nav {
-    mask-image: car(--nav_mask, none);
+    mask-image: var(--nav_mask, none);
     --nav-list_display: none;
 
     &--open {
@@ -16,15 +16,15 @@
     }
 
     @include mq-responsive(tablet, min) {
-      --nav_mask: linear-gradient($color-black 70%, $color-transparent);
+      --nav_mask: linear-gradient(#{$color-black} 70%, #{$color-transparent});
       --nav-list_display: inline-flex;
+      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
 
     &__list {
       display: var(--nav-list_display, inline-flex);
-
       translate: 0 -8svb;
-      animation: showNav 0.5s ease-in-out forwards;
+      animation: var(--nav-list_anim, none);
     }
 
     &__toggler {
@@ -37,6 +37,7 @@
       --after_trans-x: -50%;
       --after_trans-y: calc(-50% + #{$gap-space-8});
       --after_rotate: 0deg;
+
       &--open {
         --before_trans-y: -50%;
         --before_rotate: -45deg;
@@ -60,7 +61,7 @@
           transform-origin $trans-time $trans-fnc;
         background-color: $color-white;
         inline-size: 100%;
-        block-size: px-to-rem(5px);
+        block-size: $border-width-2;
         background-color: $color-white;
         transform-origin: var(--pseudo_trans-origin, right);
       }

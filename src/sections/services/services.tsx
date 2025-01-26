@@ -2,14 +2,13 @@ import { component$ } from "@builder.io/qwik";
 import { Card } from "~/components";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
+import SectionTitle from "~/components/section/section.title";
 
 const References = component$(() => {
   return (
     <Section id="services">
       <Container size="full">
-        <h2 class="text-[clamp(3rem,14svb,10rem)] mb-20 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-          Služby
-        </h2>
+        <SectionTitle text="Služby" />
         <div class="content-fade-in">
           <p class="text-xl leading-relaxed font-light mb-18 text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
@@ -17,7 +16,7 @@ const References = component$(() => {
             Quis, facere?
           </p>
         </div>
-        <div class="grid grid-flow-col-dense gap-18 content-fade-in content-fade-in--entry">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-18 content-fade-in content-fade-in--entry">
           <Card title="Consultations" path="#services">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic

@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";
 import Section from "~/components/section/section";
+import SectionTitle from "~/components/section/section.title";
 
 const References = component$(() => {
   return (
@@ -9,9 +10,7 @@ const References = component$(() => {
       <Container size="full">
         <div class="grid grid-cols-1 lg:grid-cols-[8fr_5fr] gap-section-inline isolate">
           <div>
-            <h2 class="text-[clamp(3rem,14svb,10rem)] mb-20 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
-              Referencie
-            </h2>
+            <SectionTitle text="Referencie" />
             <div class="content-fade-in">
               <p class="text-xl leading-relaxed font-light mb-2 text-white">
                 Mám rozsiahle skúsenosti s frontend vývojom a počas rokov som
