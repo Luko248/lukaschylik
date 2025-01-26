@@ -3,8 +3,8 @@ import Icon from "../icon/icon";
 
 const Social = component$(() => {
   return (
-    <nav class="social fixed bottom-64 right-32 z-10">
-      <ul class="inline-flex flex-col justify-center items-center gap-32 ">
+    <nav class="social fixed bottom-16 right-8 z-10">
+      <ul class="inline-flex flex-col justify-center items-center gap-4">
         <li>
           <a
             href="https://www.linkedin.com/in/lukas-chylik/"

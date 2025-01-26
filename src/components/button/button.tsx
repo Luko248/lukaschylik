@@ -17,8 +17,8 @@ const Button = component$<ButtonProps>(
     type = "button",
   }) => {
     const sizeClasses = {
-      sm: "px-16 py-8 text-s",
-      md: "px-24 py-16 text-m font-bold uppercase",
+      sm: "px-4 py-2 text-s",
+      md: "px-6 py-4 text-m font-bold uppercase",
     };
 
     const commonProps = {

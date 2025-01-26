@@ -33,9 +33,11 @@ const FormField = component$<FormFieldProps>(
     autocomplete,
   }) => {
     const inputClass =
-      "block w-full bg-transparent border-gray-600 border-b-1 px-6 py-16 user-invalid:border-red-500 user-valid:border-green-400";
+      "block w-full bg-transparent border-gray-600 border-b-1 px-6 py-4 user-invalid:border-red-500 user-valid:border-green-400";
 
-    const labelClass = ["text-white", className].filter(Boolean).join(" ");
+    const labelClass = ["text-white grid gap-2 text-lg", className]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <label class={labelClass}>

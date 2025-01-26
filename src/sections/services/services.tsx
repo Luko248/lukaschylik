@@ -11,13 +11,13 @@ const References = component$(() => {
           Služby
         </h2>
         <div class="content-fade-in">
-          <p class="text-xl leading-relaxed font-light mb-64 text-white">
+          <p class="text-xl leading-relaxed font-light mb-18 text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
             blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
             Quis, facere?
           </p>
         </div>
-        <div class="grid grid-flow-col-dense gap-64 content-fade-in content-fade-in--entry">
+        <div class="grid grid-flow-col-dense gap-18 content-fade-in content-fade-in--entry">
           <Card title="Consultations" path="#services">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic

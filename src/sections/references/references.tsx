@@ -9,19 +9,19 @@ const References = component$(() => {
       <Container size="full">
         <div class="grid grid-cols-[8fr_5fr] gap-section-inline isolate">
           <div>
-            <h2 class="text-[clamp(3rem,14svb,10rem)] mb-80 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
+            <h2 class="text-[clamp(3rem,14svb,10rem)] mb-20 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
               Referencie
             </h2>
             <div class="content-fade-in">
-              <p class="text-xl leading-relaxed font-light mb-32 text-white">
+              <p class="text-xl leading-relaxed font-light mb-2 text-white">
                 Mám rozsiahle skúsenosti s frontend vývojom a počas rokov som
                 spolupracoval s rôznymi spoločnosťami a organizáciami.
               </p>
-              <p class="text-xl leading-relaxed font-light mb-32 text-white">
+              <p class="text-xl leading-relaxed font-light mb-2 text-white">
                 Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
                 ako Elendris alebo Anew Style.
               </p>
-              <p class="text-xl leading-relaxed font-light mb-32 text-white">
+              <p class="text-xl leading-relaxed font-light mb-2 text-white">
                 Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
                 rôznym webovým projektom. Pre Update Conference som vytvoril
                 množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM

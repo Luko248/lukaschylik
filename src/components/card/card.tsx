@@ -5,10 +5,10 @@ import { Button } from "../button";
 const Card = component$(({ title, description, path, src }: CardProps) => {
   return (
     <div class="card border-white border-2 text-white">
-      <h3 class="text-2xl font-bold py-24 px-32 border-b-2 border-b-white">
+      <h3 class="text-2xl font-bold py-6 px-8 border-b-2 border-b-white">
         {title}
       </h3>
-      <div class="grid gap-32 p-32 text-xl leading-relaxed font-light content-start">
+      <div class="grid gap-8 p-8 text-xl leading-relaxed font-light content-start">
         <Slot />
         <div>
           <Button

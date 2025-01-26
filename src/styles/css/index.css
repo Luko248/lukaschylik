@@ -286,8 +286,6 @@ body {
   }
   .intro__title {
     -webkit-text-stroke: 3px hsl(0, 0%, 100%);
-    scale: 0.75;
-    opacity: 0;
     animation: show-title 0.5s ease-out 0.35s forwards;
   }
   @media (prefers-reduced-motion: reduce) {

@@ -6,8 +6,8 @@ import Social from "../social/social";
 const Navigation = component$<NavigationProps>(({ links }) => {
   return (
     <>
-      <nav class="nav fixed top-0 text-center py-32 px-16 w-full z-50">
-        <ul class="inline-flex justify-center gap-32 list-none m-0">
+      <nav class="nav fixed top-0 text-center py-8 px-1 w-full z-50">
+        <ul class="inline-flex justify-center gap-8 list-none m-0">
           {links &&
             links.map((link: LinkProps, index: number) => (
               <li key={index}>

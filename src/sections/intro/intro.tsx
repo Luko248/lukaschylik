@@ -1,11 +1,11 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { Button, Container } from "~/components";
 
 const Intro = component$(() => {
   return (
     <Container size="lg" className="relative z-10 isolate">
       <div class="intro grid gap-4 place-items-center content-center min-h-svh text-center">
-        <h1 class="intro__title text-[clamp(3rem,16svb,12rem)] font-extrabold uppercase leading-none text-black tracking-widest">
+        <h1 class="intro__title opacity-0 scale-75 text-[clamp(3rem,16svb,12rem)] font-extrabold uppercase leading-none text-black tracking-widest">
           Lukáš
           <br />
           Chylík
