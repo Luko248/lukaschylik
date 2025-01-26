@@ -4,7 +4,21 @@
 
 @mixin create-nav {
   .nav {
-    &__item {
+    mask-image: linear-gradient($color-black 70%, $color-transparent);
+    &__list {
+      translate: 0 -8svb;
+      animation: showNav 0.5s ease-in-out forwards;
+    }
+  }
+
+  @keyframes showNav {
+    0% {
+      opacity: 0;
+      translate: 0 -8svb;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0;
     }
   }
 }
