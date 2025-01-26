@@ -7,7 +7,7 @@ const References = component$(() => {
   return (
     <Section id="references">
       <Container size="full">
-        <div class="grid grid-cols-[8fr_5fr] gap-section-inline isolate">
+        <div class="grid grid-cols-1 lg:grid-cols-[8fr_5fr] gap-section-inline isolate">
           <div>
             <h2 class="text-[clamp(3rem,14svb,10rem)] mb-20 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in">
               Referencie

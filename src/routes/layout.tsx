@@ -28,10 +28,6 @@ export default component$(() => {
         <Navigation
           links={[
             {
-              href: "/",
-              text: "Home",
-            },
-            {
               href: "#about-me",
               text: "O mne",
             },

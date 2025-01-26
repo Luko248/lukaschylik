@@ -10,20 +10,40 @@ const Navigation = component$<NavigationProps>(({ links }) => {
     state.isOpen = !state.isOpen;
   });
 
+  const handleToggleClass = (isOpen: boolean) => {
+    const classList = [
+      "nav__toggler relative w-16 h-16 text-white cursor-pointer visible md:invisible",
+      isOpen && "nav__toggler--open",
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return classList;
+  };
+
+  const handleMenuClass = () => {
+    const classList = [
+      "nav__list",
+      "absolute top-full inset-0 min-h-screen text-center align-baseline items-center gap-12 list-none m-0",
+      "md:relative md:top-auto md:inset-auto md:min-h-auto md:flex-row md:justify-center",
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return classList;
+  };
+
   return (
     <>
       <nav
-        class="nav fixed top-0 flex justify-between text-center py-8 px-1 w-full z-50 px-32"
-        data-open={state.isOpen}>
+        class={`nav fixed top-0 flex justify-between text-center py-4 md:py-8 px-8 w-full z-50 backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
         <a
           href="/"
           role="menuitem"
           class="nav__logo text-white text-2xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
           Home
         </a>
-        <ul
-          class="nav__list inline-flex justify-center align-baseline items-start opacity-0 gap-12 list-none m-0"
-          role="menu">
+        <ul class={handleMenuClass()} role="menu">
           {links &&
             links.map((link: LinkProps, index: number) => (
               <li key={index}>
@@ -41,7 +61,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
 
         <button
           type="button"
-          class="nav__toggler w-16 h-16 bg-secondary text-white cursor-pointer"
+          class={handleToggleClass(state.isOpen)}
           aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           onClick$={toggleMenu}></button>
