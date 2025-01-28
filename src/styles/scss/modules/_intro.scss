@@ -7,6 +7,13 @@
     // overflow-clip-margin: content-box 35svb;
     // scroll-snap-align: start;
 
+    &:has(.intro) {
+      &:before,
+      &:after {
+        --header-pseudo_display: block;
+      }
+    }
+
     &[data-initialize="true"] {
       &:before,
       &:after {
@@ -22,6 +29,7 @@
 
     &:before,
     &:after {
+      display: var(--header-pseudo_display, none);
       content: "";
       position: absolute;
       block-size: 135svb;
@@ -30,10 +38,7 @@
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(
-        --header-pseudo_anim,
-        show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
-      );
+      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
 
       @include mq-reduce-motion {
         animation: none;

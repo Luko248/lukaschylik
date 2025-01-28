@@ -1,0 +1,12 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-view-transitions {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 2s;
+  }
+}

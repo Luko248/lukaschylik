@@ -1,3 +1,10 @@
+@view-transition {
+  navigation: auto;
+}
+::view-transition-group(root) {
+  animation-duration: 2s;
+}
+
 *,
 *:before,
 *:after {
@@ -300,6 +307,9 @@ body {
   }
 }
 @layer _modules {
+  header:has(.intro):before, header:has(.intro):after {
+    --header-pseudo_display: block;
+  }
   header[data-initialize=true]:before, header[data-initialize=true]:after {
     --header-pseudo_anim: header-bg-zoom-in forwards;
     translate: 0 0;
@@ -311,6 +321,7 @@ body {
     }
   }
   header:before, header:after {
+    display: var(--header-pseudo_display, none);
     content: "";
     position: absolute;
     block-size: 135svb;
