@@ -5,6 +5,24 @@
   animation-duration: 2s;
 }
 
+::view-transition-old(root) {
+  animation-name: scaleOut;
+}
+
+::view-transition-new(root) {
+  animation-name: scaleIn;
+}
+
+@keyframes scaleIn {
+  from {
+    scale: 0;
+  }
+}
+@keyframes scaleOut {
+  to {
+    scale: 0;
+  }
+}
 *,
 *:before,
 *:after {
