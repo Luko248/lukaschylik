@@ -5,7 +5,7 @@ import SectionTitle from "~/components/section/section.title";
 const About = component$(() => {
   return (
     <>
-      <Section id="about-me">
+      <Section id="about-me" className="content-center">
         <Container size="full" className="relative z-10 isolate text-left">
           <div class="grid grid-cols-1 lg:grid-cols-[5fr_8fr] gap-[10svi] items-center">
             <div class="content-fade-in">
