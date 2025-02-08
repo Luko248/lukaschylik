@@ -10,7 +10,7 @@ $breakpoints: (
   "desktop-hd": $width-desktop-hd,
   "desktop-full-hd": $width-desktop-full-hd,
   "desktop-2k": $width-desktop-2k,
-  "desktop-4k": $width-desktop-4k
+  "desktop-4k": $width-desktop-4k,
 ) !default;
 
 @mixin mq-responsive($width, $type: max) {
