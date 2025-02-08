@@ -1,0 +1,14 @@
+﻿@use "font-faces" as *;
+@use "reset" as *;
+@use "typography" as *;
+
+@mixin create-layers {
+  @at-root {
+    @layer my-base, my-components, my-utils;
+
+    @layer my-base {
+      @include reset;
+      @include create-typography;
+    }
+  }
+}

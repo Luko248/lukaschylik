@@ -1,0 +1,159 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-intro {
+  header {
+    // overflow-clip-margin: content-box 35svb;
+    // scroll-snap-align: start;
+
+    &:has(.intro) {
+      &:before,
+      &:after {
+        --header-pseudo_display: block;
+      }
+    }
+
+    &[data-initialize="true"] {
+      &:before,
+      &:after {
+        --header-pseudo_anim: header-bg-zoom-in forwards;
+        translate: 0 0;
+        animation-timeline: view();
+
+        @include mq-reduce-motion {
+          animation: none;
+        }
+      }
+    }
+
+    &:before,
+    &:after {
+      display: var(--header-pseudo_display, none);
+      content: "";
+      position: absolute;
+      block-size: 135svb;
+      inline-size: 100svi;
+      will-change: translate, opacity;
+      z-index: -1;
+      background-color: $color-black;
+      opacity: 0.5;
+      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
+
+      @include mq-reduce-motion {
+        animation: none;
+      }
+    }
+
+    &:before {
+      inset: 0 0 auto 0;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      translate: 0 -100%;
+      transform-origin: top;
+      animation-range: exit -30svb;
+
+      @include mq-reduce-motion {
+        translate: 0 0;
+      }
+    }
+
+    &:after {
+      inset: auto 0 0 0;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      translate: 0 100%;
+      transform-origin: bottom;
+      animation-range: exit;
+
+      @include mq-reduce-motion {
+        translate: 0 0;
+      }
+    }
+  }
+
+  .intro {
+    animation: fade-out forwards;
+    animation-timeline: view();
+    animation-range: exit -50px;
+    overflow: clip;
+
+    @include mq-reduce-motion {
+      animation: none;
+    }
+
+    &__title {
+      -webkit-text-stroke: 3px $color-white;
+      animation: show-title 0.5s ease-out 0.35s forwards;
+
+      @include mq-reduce-motion {
+        scale: initial;
+        opacity: initial;
+        animation: none;
+      }
+    }
+
+    &__subtitle {
+      letter-spacing: 0.25em;
+      translate: 0 -25%;
+      opacity: 0;
+      animation: show-subtitle 0.5s ease-out 0.7s forwards;
+
+      @include mq-reduce-motion {
+        translate: initial;
+        opacity: initial;
+        animation: none;
+      }
+    }
+
+    &__btn {
+      translate: 0 225%;
+      opacity: 0;
+      animation: show-button 0.5s ease-out 0.7s forwards;
+
+      @include mq-reduce-motion {
+        translate: 0 200%;
+        opacity: initial;
+        animation: none;
+      }
+    }
+  }
+
+  @keyframes show-triangle {
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes show-title {
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+  @keyframes show-subtitle {
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes show-button {
+    to {
+      opacity: 1;
+      translate: 0 200%;
+    }
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes header-bg-zoom-in {
+    to {
+      opacity: 1;
+      scale: 2;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@mixin create-typography {
+  address {
+    font-style: normal;
+  }
+
+  textarea {
+    font-family: inherit;
+    font-size: medium;
+    resize: vertical;
+  }
+
+  p {
+    max-inline-size: 65ch;
+  }
+}

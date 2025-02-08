@@ -1,0 +1,52 @@
+﻿@use "sass:map";
+@use "../variables/sizes" as *;
+
+$breakpoints: (
+  "mobile-s": $width-mobile-s,
+  "mobile": $width-mobile,
+  "tablet": $width-tablet,
+  "desktop-s": $width-desktop-s,
+  "desktop-l": $width-desktop-l,
+  "desktop-hd": $width-desktop-hd,
+  "desktop-full-hd": $width-desktop-full-hd,
+  "desktop-2k": $width-desktop-2k,
+  "desktop-4k": $width-desktop-4k
+) !default;
+
+@mixin mq-responsive($width, $type: max) {
+  @if map.has-key($breakpoints, $width) {
+    $width: map.get($breakpoints, $width);
+
+    @if $type == max {
+      @media screen and (width <= $width) {
+        @content;
+      }
+    } @else {
+      @media screen and (width > $width) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin mq-theme($theme-color) {
+  @if $theme-color == dark or $theme-color == light {
+    @media (prefers-color-scheme: $theme-color) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-hover($value: hover) {
+  @media (hover: $value) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin mq-reduce-motion($value: reduce) {
+  @media (prefers-reduced-motion: $value) {
+    @content;
+  }
+}

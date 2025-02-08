@@ -1,0 +1,92 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-nav {
+  .nav {
+    mask-image: var(--nav_mask, none);
+    --nav-list_display: none;
+
+    &--open {
+      --nav-list_display: grid;
+
+      @include mq-responsive(tablet, min) {
+        --nav-list_display: inline-flex;
+      }
+    }
+
+    @include mq-responsive(tablet, min) {
+      --nav_mask: linear-gradient(#{$color-black} 70%, #{$color-transparent});
+      --nav-list_display: inline-flex;
+      --nav-list_anim: showNav 0.5s ease-in-out forwards;
+    }
+
+    &__list {
+      display: var(--nav-list_display, inline-flex);
+      translate: 0 -8svb;
+      animation: var(--nav-list_anim, none);
+    }
+
+    &__toggler {
+      display: grid;
+      place-items: center;
+      --after_scale-x: 0.75;
+      --before_trans-x: -50%;
+      --before_trans-y: calc(-50% - #{$gap-space-8});
+      --before_rotate: 0deg;
+      --after_trans-x: -50%;
+      --after_trans-y: calc(-50% + #{$gap-space-8});
+      --after_rotate: 0deg;
+
+      &--open {
+        --before_trans-y: -50%;
+        --before_rotate: -45deg;
+        --after_scale-x: 1;
+        --after_trans-y: -50%;
+        --after_rotate: 45deg;
+        --pseudo_trans-origin: center;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition:
+          scale $trans-time $trans-fnc,
+          translate $trans-time $trans-fnc,
+          rotate $trans-time $trans-fnc,
+          transform-origin $trans-time $trans-fnc;
+        background-color: $color-white;
+        inline-size: 100%;
+        block-size: $border-width-2;
+        background-color: $color-white;
+        transform-origin: var(--pseudo_trans-origin, right);
+      }
+
+      &:before {
+        translate: var(--before_trans-x) var(--before_trans-y);
+        rotate: var(--before_rotate);
+      }
+
+      &:after {
+        scale: var(--after_scale-x) 1;
+        translate: var(--after_trans-x) var(--after_trans-y);
+        rotate: var(--after_rotate);
+      }
+    }
+  }
+
+  @keyframes showNav {
+    0% {
+      opacity: 0;
+      translate: 0 -8svb;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+}

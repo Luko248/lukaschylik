@@ -1,0 +1,43 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-skills {
+  .skills {
+    max-width: 100svi;
+    mask: linear-gradient(90deg, $color-transparent, $color-black 10%, $color-black 90%, $color-transparent);
+
+    &:hover li:not(:hover) {
+      opacity: 0.5;
+
+      @include mq-reduce-motion {
+        opacity: 1;
+      }
+    }
+
+    &__scroller {
+      animation: scroll-skills linear;
+      animation-timeline: scroll(root);
+
+      &:nth-of-type(2) {
+        animation-direction: reverse;
+        flex-flow: row-reverse nowrap;
+      }
+
+      @include mq-reduce-motion {
+        animation: none;
+      }
+    }
+  }
+
+  .skills li {
+    display: inline-block;
+    transition: opacity $trans-time $trans-fnc;
+  }
+
+  @keyframes scroll-skills {
+    to {
+      translate: calc(-20% - $gap-space-16) 0;
+    }
+  }
+}

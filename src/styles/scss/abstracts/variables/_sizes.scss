@@ -1,0 +1,45 @@
+﻿//gap
+$gap: 0.5rem;
+$gap-space-2: calc($gap / 4);
+$gap-space-4: calc($gap / 2);
+$gap-space-8: $gap;
+$gap-space-16: calc($gap * 2);
+$gap-space-24: calc($gap * 3);
+$gap-space-32: calc($gap * 4);
+$gap-space-40: calc($gap * 5);
+
+//border
+$border-width-1: 1px;
+$border-width-2: calc($border-width-1 * 2);
+$radius-2: $gap-space-2;
+$radius-4: $gap-space-4;
+$radius-8: $gap-space-8;
+$radius-16: $gap-space-16;
+$radius-circle: 50%;
+$radius-full: 100vmax;
+$radius-none: 0;
+
+//box-shadow
+$shadow-x: 0;
+$shadow-y: 0;
+$shadow-radius-2: $gap-space-2;
+$shadow-radius-3: 3px;
+$shadow-radius-4: $gap-space-4;
+$shadow-radius-8: $gap-space-8;
+$shadow-radius-16: $gap-space-16;
+$shadow-radius-24: $gap-space-24;
+
+//animation
+$trans-time: 0.25s;
+$trans-fnc: ease-in-out;
+
+//media
+$width-mobile-s: 375px;
+$width-mobile: 560px;
+$width-tablet: 768px;
+$width-desktop-s: 1024px;
+$width-desktop-l: 1366px;
+$width-desktop-hd: 1440px;
+$width-desktop-full-hd: 1920px;
+$width-desktop-2k: 2048px;
+$width-desktop-4k: 3840px;

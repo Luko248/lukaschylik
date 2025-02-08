@@ -1,0 +1,32 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-view-transitions {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 2s;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: scaleOut;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: scaleIn;
+  }
+
+  @keyframes scaleIn {
+    from {
+      scale: 0;
+    }
+  }
+
+  @keyframes scaleOut {
+    to {
+      scale: 0;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../variables/sizes" as *;
+
+$shadowRadiusList: (
+  2: $shadow-radius-2,
+  4: $shadow-radius-4,
+  8: $shadow-radius-8,
+  16: $shadow-radius-16,
+  24: $shadow-radius-24,
+);
+
+@mixin box-shadow-set($radius: m, $x: $shadow-x, $y: $shadow-y, $alpha: 0.15) {
+  @if map_has_key($shadowRadiusList, $radius) {
+    $size: map_get($shadowRadiusList, $radius);
+
+    --shadow-radius: #{$size};
+  } @else {
+    --shadow-radius: #{$radius};
+  }
+
+  box-shadow: $x $y var(--shadow-radius) 0
+    hsla(0, 0%, 0%, var(--shadow-alpha, #{$alpha}));
+}

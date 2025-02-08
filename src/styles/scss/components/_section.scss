@@ -1,0 +1,15 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-section {
+  section {
+    // scroll-snap-align: start;
+    position: relative;
+
+    h2 {
+      -webkit-text-stroke: $border-width-2 $color-white;
+      animation-range: -8svb exit;
+    }
+  }
+}
