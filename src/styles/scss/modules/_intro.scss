@@ -74,6 +74,7 @@
     animation: fade-out forwards;
     animation-timeline: view();
     animation-range: exit -50px;
+    overflow: clip;
 
     @include mq-reduce-motion {
       animation: none;

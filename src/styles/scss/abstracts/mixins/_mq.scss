@@ -5,12 +5,12 @@ $breakpoints: (
   "mobile-s": $width-mobile-s,
   "mobile": $width-mobile,
   "tablet": $width-tablet,
-  "desktop-small": $width-desktop-s,
-  "desktop-large": $width-desktop-l,
+  "desktop-s": $width-desktop-s,
+  "desktop-l": $width-desktop-l,
   "desktop-hd": $width-desktop-hd,
   "desktop-full-hd": $width-desktop-full-hd,
   "desktop-2k": $width-desktop-2k,
-  "desktop-4k": $width-desktop-4k,
+  "desktop-4k": $width-desktop-4k
 ) !default;
 
 @mixin mq-responsive($width, $type: max) {

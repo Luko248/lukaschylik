@@ -161,10 +161,15 @@ body {
     max-inline-size: min(375px, 100%);
     transition: filter 0.25s ease-in-out;
   }
+  @media screen and (width <= 1024px) {
+    .me {
+      max-inline-size: calc(100% - 3rem) !important;
+    }
+  }
   @keyframes showMe {
     0%, 20% {
       --me_filter-greyscale: 100%;
-      translate: 0 30svb;
+      translate: 0 50%;
       opacity: 0;
     }
     50%, 100% {
@@ -282,7 +287,6 @@ body {
     opacity: 0.5;
   }
   section {
-    padding-block: 10svb;
     position: relative;
   }
   section h2 {
@@ -291,7 +295,7 @@ body {
   }
   .skills {
     max-width: 100svi;
-    mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 20%, hsl(0, 0%, 0%) 80%, hsla(0, 0%, 0%, 0));
+    mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
   }
   .skills:hover li:not(:hover) {
     opacity: 0.5;
@@ -383,6 +387,7 @@ body {
     animation: fade-out forwards;
     animation-timeline: view();
     animation-range: exit -50px;
+    overflow: clip;
   }
   @media (prefers-reduced-motion: reduce) {
     .intro {

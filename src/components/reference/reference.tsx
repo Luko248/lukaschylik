@@ -9,14 +9,14 @@ const Reference = component$<ReferenceProps>(
           href={webURL}
           target="_blank"
           rel="noreferer"
-          class="reference group flex justify-between items-center gap-4 py-2 no-underline">
-          <strong class="flex gap-4 font-medium text-5xl leading-normal overflow-hidden relative z-20 tracking-wide uppercase">
+          class="reference group flex just justify-between items-center gap-4 py-2 no-underline">
+          <strong class="flex justify-between gap-4 font-medium text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-normal overflow-hidden relative z-20 tracking-wide uppercase whitespace-nowrap">
             <span
               aria-label={title}
               class="relative text-tramsparent duration-300 ease-in-out">
               {title}
             </span>
-            <sup class="text-xs translate-y-6 text-white tracking-wider leading-none">
+            <sup class="text-xs translate-y-3 sm:translate-y-5 text-white tracking-wider leading-none">
               {type}
             </sup>
           </strong>

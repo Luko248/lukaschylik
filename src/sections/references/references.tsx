@@ -32,7 +32,7 @@ const References = component$(() => {
               </p>
             </div>
           </div>
-          <ul class="ref-list list-none p-0 m-0 content-fade-in">
+          <ul class="ref-list list-none p-0 m-0 content-fade-in mt-10 md:mt-10">
             <Reference
               title="AIS servis"
               webURL="https://www.ais=servis.cz/"
