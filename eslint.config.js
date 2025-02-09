@@ -1,10 +1,17 @@
-module.exports = {
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   root: true,
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
+  ignorePatterns: ["**/dist/*", "**/node_modules/*"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -42,7 +49,6 @@ module.exports = {
   ignores: [
     "**/*.log",
     "**/.DS_Store",
-    "*.vscode/settings.json",
     ".history",
     ".yarn",
     "bazel-*",
@@ -67,7 +73,6 @@ module.exports = {
     ".cache",
     ".vscode",
     ".rollup.cache",
-    "dist",
     "tsconfig.tsbuildinfo",
     "vite.config.ts",
     "*.spec.tsx",
@@ -77,5 +82,6 @@ module.exports = {
     "package-lock.json",
     "yarn.lock",
     "server",
+    "!src/**/*.ts*",
   ],
 };
