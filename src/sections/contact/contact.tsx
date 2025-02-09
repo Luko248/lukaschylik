@@ -31,7 +31,7 @@ const Contact = component$(() => {
     <Section id="contact">
       <Container size="full" className="relative z-10 isolate">
         <SectionTitle text="Kontakt" />
-        <p class="text-xl leading-relaxed font-light mb-18 text-white content-fade-in">
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white content-fade-in">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
           quibusdam ab accusantium reiciendis corporis nemo odio sapiente qui
           molestiae delectus animi et sed voluptas aliquam neque, natus quas
@@ -91,7 +91,7 @@ const Contact = component$(() => {
             required
           />
           <Button type="submit" title="sent" variant="primary">
-            Odoslať
+            sent
           </Button>
         </form>
       </Container>

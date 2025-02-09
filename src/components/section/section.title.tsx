@@ -6,7 +6,12 @@ const SectionTitle = component$<SectionTitleProps>(({ text, className }) => {
   return (
     <h2
       class={classNames(
-        "text-5xl md:text-7xl lg:text-[clamp(3rem,14svb,10rem)] mb-4 font-extrabold uppercase leading-none text-black tracking-widest relative color-transparent content-fade-in",
+        "content-fade-in",
+        "relative",
+        "text-5xl sm:text-6xl lg:text-9xl 2xl:text-[clamp(3rem,10svi,10rem)]",
+        "mb-[5svb]",
+        "font-extrabold uppercase leading-none tracking-widest",
+        "text-transparent",
         className,
       )}>
       {text}

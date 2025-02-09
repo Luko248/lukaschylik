@@ -58,6 +58,7 @@ body {
   }
   p {
     max-inline-size: 65ch;
+    font-size: larger;
   }
 }
 @layer _components {
@@ -158,13 +159,9 @@ body {
     animation-timeline: view();
     animation-range: -20svb;
     translate: 0 30svb;
-    max-inline-size: min(375px, 100%);
+    inline-size: min(768px, 70%);
+    justify-self: end;
     transition: filter 0.25s ease-in-out;
-  }
-  @media screen and (width <= 1024px) {
-    .me {
-      max-inline-size: calc(100% - 3rem) !important;
-    }
   }
   @keyframes showMe {
     0%, 20% {
@@ -180,6 +177,7 @@ body {
   }
   .nav {
     mask-image: var(--nav_mask, none);
+    max-inline-size: 100svi;
     --nav-list_display: none;
   }
   .nav--open {
@@ -290,7 +288,7 @@ body {
     position: relative;
   }
   section h2 {
-    -webkit-text-stroke: 2px hsl(0, 0%, 100%);
+    -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation-range: -8svb exit;
   }
   .skills {
@@ -395,7 +393,7 @@ body {
     }
   }
   .intro__title {
-    -webkit-text-stroke: 3px hsl(0, 0%, 100%);
+    -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation: show-title 0.5s ease-out 0.35s forwards;
   }
   @media (prefers-reduced-motion: reduce) {

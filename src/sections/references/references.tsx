@@ -8,25 +8,21 @@ const References = component$(() => {
   return (
     <Section id="references">
       <Container size="full">
-        <div class="grid grid-cols-1 lg:grid-cols-[8fr_5fr] gap-section-inline isolate">
+        <div class="grid grid-cols-1 xl:grid-cols-[8fr_5fr] gap-5 isolate">
           <div>
             <SectionTitle text="Referencie" />
             <div class="content-fade-in">
-              <p class="text-xl leading-relaxed font-light mb-2 text-white">
-                Mám rozsiahle skúsenosti s frontend vývojom a počas rokov som
-                spolupracoval s rôznymi spoločnosťami a organizáciami.
-              </p>
-              <p class="text-xl leading-relaxed font-light mb-2 text-white">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-white">
                 Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
                 ako Elendris alebo Anew Style.
               </p>
-              <p class="text-xl leading-relaxed font-light mb-2 text-white">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-white">
                 Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
                 rôznym webovým projektom. Pre Update Conference som vytvoril
                 množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
                 framework. Už nespolupracujem s Riganti.
               </p>
-              <p class="text-xl leading-relaxed font-light text-white">
+              <p class="text-l lg:text-xl leading-relaxed font-light text-white">
                 Momentálne pracujem pre AIS Servis, kde vyvíjam dizajnový systém
                 pre VIG Česká republika.
               </p>

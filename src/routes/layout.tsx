@@ -22,7 +22,7 @@ export default component$(() => {
 
   return (
     <>
-      <header ref={headerRef} class="overflow-clip h-full">
+      <header ref={headerRef} class="overflow-y-hidden h-full">
         <Navigation
           links={[
             {
@@ -38,14 +38,14 @@ export default component$(() => {
               text: "Služby",
             },
             {
-              href: "/contact",
+              href: "#contact",
               text: "Kontakt",
             },
           ]}
         />
         <Intro />
       </header>
-      <main>
+      <main class="overflow-y-hidden">
         <IconSet />
         <Slot />
       </main>

@@ -16,6 +16,12 @@
   --color-yellow-500: hsl(51 100% 53%);
   --color-bg: hsl(0 0% 100%);
   --color-menu: hsl(0 0% 0% / 30%);
+
+  --breakpoint-sm: 35rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 85rem;
+  --breakpoint-2xl: 90rem;
 }
 
 @plugin "tailwindcss-signals";

@@ -10,7 +10,7 @@ const References = component$(() => {
       <Container size="full">
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
-          <p class="text-xl leading-relaxed font-light mb-18 text-white">
+          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
             blanditiis quidem dolore excepturi ipsam temporibus, eius dolorum!
             Quis, facere?

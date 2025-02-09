@@ -14,11 +14,18 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   return (
     <>
       <nav
-        class={`nav fixed top-0 flex justify-between text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
+        class={`nav fixed top-0 flex justify-between items-center text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
         <a
           href="/"
           role="menuitem"
-          class="nav__logo relative z-20 text-white text-3xl md:text-xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
+          class={classNames(
+            "nav__logo",
+            "relative z-20",
+            "text-xl md:text-l lg:text-xl",
+            "text-white uppercase",
+            "decoration-secondary decoration-5 underline-offset-8",
+            "no-underline hover:underline",
+          )}>
           Home
         </a>
         <ul
@@ -39,7 +46,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   href={link.href}
                   title={link.text}
                   rel="internal"
-                  class="text-white text-2xl md:text-xl uppercase no-underline decoration-secondary decoration-5 underline-offset-8 hover:underline">
+                  class={classNames(
+                    "text-xl md:text-l lg:text-xl",
+                    "text-white uppercase",
+                    "decoration-secondary decoration-5 underline-offset-8",
+                    "no-underline hover:underline",
+                  )}>
                   {link.text}
                 </Link>
               </li>

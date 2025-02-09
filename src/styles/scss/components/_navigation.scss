@@ -5,6 +5,7 @@
 @mixin create-nav {
   .nav {
     mask-image: var(--nav_mask, none);
+    max-inline-size: 100svi;
     --nav-list_display: none;
 
     &--open {

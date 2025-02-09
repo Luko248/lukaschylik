@@ -8,7 +8,7 @@ const Card = component$(({ title, description, path, src }: CardProps) => {
       <h3 class="text-2xl font-bold py-6 px-8 border-b-2 border-b-white">
         {title}
       </h3>
-      <div class="grid gap-8 p-8 text-xl leading-relaxed font-light content-start">
+      <div class="grid gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
         <Slot />
         <div>
           <Button

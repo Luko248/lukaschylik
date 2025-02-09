@@ -8,7 +8,7 @@
     position: relative;
 
     h2 {
-      -webkit-text-stroke: $border-width-2 $color-white;
+      -webkit-text-stroke: 0.015em $color-white;
       animation-range: -8svb exit;
     }
   }
