@@ -1,8 +1,8 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
 import { Link, type LinkProps } from "@builder.io/qwik-city";
-import type { NavigationProps } from "./navigatioin.types";
 import Social from "../social/social";
 import { classNames } from "~/utils";
+import { NavigationProps } from "./navigation.types";
 
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
