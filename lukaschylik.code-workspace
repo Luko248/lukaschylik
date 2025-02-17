@@ -14,4 +14,7 @@
     "eslint.format.enable": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "extensions": {
+    "recommendations": [],
+  },
 }
