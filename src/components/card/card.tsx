@@ -14,11 +14,19 @@ const Card = component$(({ title, price, path }: CardProps) => {
     <div
       class={classNames(
         "card",
+        "group",
         "grid grid-rows-subgrid row-span-4",
         "border-2 border-white",
         "text-white",
       )}>
-      <h3 class="text-2xl md:text-6xl font-semibold py-6 px-8 border-b-2 border-b-white tracking-widest">
+      <h3
+        class={classNames(
+          "text-2xl md:text-6xl font-semibold tracking-widest",
+          "text-white group-hover:text-yellow-500",
+          "transition-colors duration-300 ease-in-out",
+          "py-6 px-8",
+          "border-b-2 border-b-white",
+        )}>
         {title}
       </h3>
       <div class="grid grid-rows-subgrid row-span-2 gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
