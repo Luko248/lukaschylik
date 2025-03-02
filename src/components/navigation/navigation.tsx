@@ -14,7 +14,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   return (
     <>
       <nav
-        class={`nav fixed top-0 flex justify-between items-center text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md ${state.isOpen ? "nav--open" : ""}`}>
+        class={`nav fixed top-0 flex justify-between items-center text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md mix-blend-difference ${state.isOpen ? "nav--open" : ""}`}>
         <a
           href="/"
           role="menuitem"
@@ -25,9 +25,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "text-white uppercase",
             "decoration-secondary decoration-5 underline-offset-8",
             "no-underline hover:underline",
-          )}>
-          Home
-        </a>
+          )}></a>
         <ul
           class={classNames(
             "nav__list",

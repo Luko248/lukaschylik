@@ -6,4 +6,5 @@ export interface SectionProps {
 export interface SectionTitleProps {
   text: string;
   className?: string;
+  dark?: boolean;
 }

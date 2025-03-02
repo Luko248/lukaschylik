@@ -10,7 +10,7 @@ const About = component$(() => {
         <Container size="full" className="relative z-10 isolate text-left">
           <div
             class={classNames(
-              "grid-cols-1 items-end",
+              "grid-cols-1 items-start",
               "grid grid-cols-1 lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
             )}>
             <SectionTitle

@@ -25,6 +25,18 @@
           animation: none;
         }
       }
+
+      .intro {
+        --intro_anim: header-content-fade-out forwards;
+        translate: 0 0;
+        opacity: 1;
+        animation-range: exit 30svb;
+        animation-timeline: view();
+
+        @include mq-reduce-motion {
+          animation: none;
+        }
+      }
     }
 
     &:before,
@@ -38,10 +50,7 @@
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(
-        --header-pseudo_anim,
-        show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
-      );
+      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
 
       @include mq-reduce-motion {
         animation: none;
@@ -74,7 +83,7 @@
   }
 
   .intro {
-    animation: fade-out forwards;
+    animation: var(--intro_anim, fade-out forwards);
     animation-timeline: view();
     animation-range: exit -50px;
     overflow: clip;
@@ -157,6 +166,13 @@
     to {
       opacity: 1;
       scale: 2;
+    }
+  }
+
+  @keyframes header-content-fade-out {
+    to {
+      translate: 0 -20svb;
+      opacity: 0;
     }
   }
 }

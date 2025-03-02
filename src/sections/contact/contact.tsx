@@ -28,10 +28,14 @@ const Contact = component$(() => {
   });
 
   return (
-    <Section id="contact">
+    <Section id="contact" className="bg-white ">
       <Container size="full" className="relative z-10 isolate">
-        <SectionTitle text="Kontakt" />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white content-fade-in">
+        <SectionTitle
+          text="Kontakt"
+          className="content-fade-in--entry"
+          dark={true}
+        />
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-18">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
           quibusdam ab accusantium reiciendis corporis nemo odio sapiente qui
           molestiae delectus animi et sed voluptas aliquam neque, natus quas

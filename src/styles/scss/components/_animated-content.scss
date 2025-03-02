@@ -13,7 +13,7 @@
     transform-origin: left;
 
     &--entry {
-      --animation_range: entry;
+      --animation_range: entry 30svb;
     }
 
     @include mq-reduce-motion {
