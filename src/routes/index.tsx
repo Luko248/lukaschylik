@@ -4,10 +4,10 @@ import { About, References, Services, Contact, Intro } from "~/sections";
 export default component$(() => {
   return (
     <>
-      {/* <About />
-      <References /> */}
+      <About />
+      <References />
       <Services />
-      {/* <Contact /> */}
+      <Contact />
     </>
   );
 });

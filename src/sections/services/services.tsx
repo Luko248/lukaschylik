@@ -39,8 +39,8 @@ const References = component$(() => {
             </p>
             <ul class="grid gap-2 content-start">
               <ListItem>Úvodná schôdzka ZDARMA!</ListItem>
-              <ListItem marker="🚀">Pre firmy aj jednotlivcov</ListItem>
-              <ListItem marker="🚀">Online alebo osobne</ListItem>
+              <ListItem>Pre firmy aj jednotlivcov</ListItem>
+              <ListItem>Online alebo osobne</ListItem>
               <ListItem marker="☝🏽">Minimálne 1 hodina</ListItem>
             </ul>
           </Card>
@@ -54,8 +54,8 @@ const References = component$(() => {
             </p>
             <ul class="grid gap-2 content-start">
               <ListItem>Prvá hodina konzultácie ZDARMA!</ListItem>
-              <ListItem marker="🚀">Pre firmy aj jednotlivcov</ListItem>
-              <ListItem marker="🚀">Online alebo osobne</ListItem>
+              <ListItem>Pre firmy aj jednotlivcov</ListItem>
+              <ListItem>Online alebo osobne</ListItem>
               <ListItem marker="☝🏽">Minimálne 1 MD</ListItem>
             </ul>
           </Card>
@@ -74,7 +74,7 @@ const References = component$(() => {
               <ListItem>
                 Při objednání viacerich termínu školení 10% zľava
               </ListItem>
-              <ListItem marker="🚀">Pre firmy aj jednotlivcov</ListItem>
+              <ListItem>Pre firmy aj jednotlivcov</ListItem>
               <ListItem marker="☝🏽">len osobne</ListItem>
             </ul>
           </Card>
