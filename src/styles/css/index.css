@@ -46,6 +46,10 @@ body {
   color: hsl(0, 0%, 0%);
 }
 
+strong {
+  font-weight: 700;
+}
+
 @layer _base, _components, _modules, _utils;
 @layer _base {
   address {
@@ -137,16 +141,23 @@ body {
     );
   }
   .card {
-    box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
+    box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
     transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
     translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
   }
   @media (hover: hover) {
     .card:hover {
-      box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
-      --card_trans-x: 0.5rem;
-      --card_trans-y: 0.5rem;
+      --card_trans-x: -0.5rem;
+      --card_trans-y: -0.5rem;
+      box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
     }
+  }
+  .card ul li::marker {
+    content: attr(data-marker);
+  }
+  .card p {
+    text-wrap: ballanced;
+    text-wrap: pretty;
   }
   @property --me_filter-greyscale {
     syntax: "<percentage>";

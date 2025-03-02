@@ -9,23 +9,25 @@ const formatPrice = (price: number) => {
     : price.toString();
 };
 
-const Card = component$(({ title, price = 0, path }: CardProps) => {
+const Card = component$(({ title, price, path }: CardProps) => {
   return (
     <div
       class={classNames(
         "card",
-        "grid grid-rows-subgrid row-span-3",
+        "grid grid-rows-subgrid row-span-4",
         "border-2 border-white",
         "text-white",
       )}>
-      <h3 class="text-2xl md:text-4xl font-bold py-6 px-8 border-b-2 border-b-white">
+      <h3 class="text-2xl md:text-6xl font-semibold py-6 px-8 border-b-2 border-b-white tracking-widest">
         {title}
       </h3>
-      <div class="grid gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
+      <div class="grid grid-rows-subgrid row-span-2 gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
         <Slot />
       </div>
       <div class="flex justify-between p-8 items-center">
-        <strong>{`${formatPrice(price)} Kč`}</strong>
+        <strong class="font-bold text-5xl">
+          {price ? `${formatPrice(price)} Kč` : "Individuálne"}
+        </strong>
         <Button
           variant="secondary"
           ariaLabel="Mám záujem"
