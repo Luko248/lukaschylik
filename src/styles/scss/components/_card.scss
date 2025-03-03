@@ -14,6 +14,7 @@
       box-shadow $trans-time $trans-fnc,
       translate $trans-time $trans-fnc;
     translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
+    anchor-scope: --vat-tooltip;
 
     @include mq-hover {
       --card_trans-x: #{-$gap-space-8};
@@ -29,6 +30,27 @@
     p {
       text-wrap: ballanced;
       text-wrap: pretty;
+    }
+
+    strong {
+      anchor-name: --vat-tooltip;
+
+      @include mq-hover {
+        + .tooltip {
+          --tooltip_display: block;
+        }
+      }
+    }
+
+    .tooltip {
+      display: var(--tooltip_display, none);
+      position: absolute;
+      color: $color-white;
+
+      @supports (position-anchor: --foo) {
+        position-anchor: --vat-tooltip;
+        position-area: top;
+      }
     }
   }
 

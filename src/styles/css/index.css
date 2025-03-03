@@ -144,6 +144,7 @@ strong {
     box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
     transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
     translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
+    anchor-scope: --vat-tooltip;
   }
   @media (hover: hover) {
     .card:hover {
@@ -158,6 +159,25 @@ strong {
   .card p {
     text-wrap: ballanced;
     text-wrap: pretty;
+  }
+  .card strong {
+    anchor-name: --vat-tooltip;
+  }
+  @media (hover: hover) {
+    .card strong:hover + .tooltip {
+      --tooltip_display: block;
+    }
+  }
+  .card .tooltip {
+    display: var(--tooltip_display, none);
+    position: absolute;
+    color: hsl(0, 0%, 100%);
+  }
+  @supports (position-anchor: --foo) {
+    .card .tooltip {
+      position-anchor: --vat-tooltip;
+      position-area: top;
+    }
   }
   @property --me_filter-greyscale {
     syntax: "<percentage>";

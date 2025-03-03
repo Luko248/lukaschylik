@@ -9,7 +9,7 @@ const formatPrice = (price: number) => {
     : price.toString();
 };
 
-const Card = component$(({ title, price, path }: CardProps) => {
+const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
   return (
     <div
       class={classNames(
@@ -21,21 +21,34 @@ const Card = component$(({ title, price, path }: CardProps) => {
       )}>
       <h3
         class={classNames(
-          "text-2xl md:text-6xl font-semibold tracking-widest",
+          "text-2xl md:text-6xl font-regular tracking-[0.35em]",
           "text-white group-hover:text-yellow-500",
           "transition-colors duration-300 ease-in-out",
           "py-6 px-8",
           "border-b-2 border-b-white",
+          "uppercase",
         )}>
         {title}
       </h3>
       <div class="grid grid-rows-subgrid row-span-2 gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
         <Slot />
       </div>
-      <div class="flex justify-between p-8 items-center">
-        <strong class="font-bold text-5xl">
-          {price ? `${formatPrice(price)} Kč` : "Individuálne"}
+      <div class="flex justify-between p-8 items-center mt-8">
+        <strong class="font-bold text-5xl group cursor-help">
+          {price ? `${formatPrice(price * 1.21)} Kč` : "Individuálne"}
+          {showVat && (
+            <small class="block text-base font-light opacity-80">
+              Cena s DPH / 1h
+            </small>
+          )}
         </strong>
+        {showVat && price && (
+          <div
+            class="tooltip my-2 p-2 bg-white/10 font-semibold"
+            role="tooltip">
+            {`Cena bez DPH je ${formatPrice(price)} Kč`}
+          </div>
+        )}
         <Button
           variant="secondary"
           ariaLabel="Mám záujem"

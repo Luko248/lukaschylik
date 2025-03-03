@@ -10,4 +10,5 @@ export interface CardProps {
   title: string;
   path?: string;
   price?: number;
+  showVat?: boolean;
 }

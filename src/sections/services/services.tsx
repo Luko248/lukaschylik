@@ -59,7 +59,7 @@ const References = component$(() => {
               <ListItem marker="☝🏽">Minimálne 1 MD</ListItem>
             </ul>
           </Card>
-          <Card title="Školenia">
+          <Card title="Školenia" showVat={false}>
             <p>
               JavasScript je skvelá technológia, no používať ju v dnešnej dobe
               na všetko, je nezmysel.
