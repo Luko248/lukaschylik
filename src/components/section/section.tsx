@@ -7,7 +7,7 @@ const Section = component$<SectionProps>(({ id, className }) => {
     <section
       id={id}
       class={classNames(
-        "relative grid items-center min-h-screen bg-black py-10 md:py-12",
+        "relative grid items-center min-h-screen bg-black py-10 md:py-12 overflow-x-clip",
         className,
       )}>
       <Slot />
