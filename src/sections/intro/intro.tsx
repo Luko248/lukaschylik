@@ -1,13 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import { Button, Container } from "~/components";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const Intro = component$(() => {
   return (
     <Container size="lg" className="relative z-10 isolate">
       <div class="intro grid gap-4 place-items-center content-center min-h-svh text-center">
         <h1
-          class={classNames(
+          class={cls(
             "intro__title",
             "opacity-0 scale-75",
             "text-7xl sm:text-8xl lg:text-[clamp(3rem,16svb,12rem)]",
@@ -20,7 +20,7 @@ const Intro = component$(() => {
         </h1>
         <div class="grid place-items-center content-center">
           <strong
-            class={classNames(
+            class={cls(
               "intro__subtitle",
               "block",
               "px-[.25em]",

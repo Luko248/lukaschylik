@@ -3,7 +3,7 @@ import { Card, ListItem } from "~/components";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const References = component$(() => {
   return (
@@ -21,7 +21,7 @@ const References = component$(() => {
           </p>
         </div>
         <div
-          class={classNames(
+          class={cls(
             "grid",
             "grid-cols-1 lg:grid-cols-3",
             "grid-rows-[auto_auto_1fr_auto]",

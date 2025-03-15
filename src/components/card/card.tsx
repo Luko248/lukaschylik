@@ -1,7 +1,7 @@
 import { component$, Slot } from "@builder.io/qwik";
 import { CardProps } from "./card.types";
 import { Button } from "../button";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const formatPrice = (price: number) => {
   return price >= 10000
@@ -12,7 +12,7 @@ const formatPrice = (price: number) => {
 const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
   return (
     <div
-      class={classNames(
+      class={cls(
         "card",
         "group",
         "grid grid-rows-subgrid row-span-4",
@@ -20,7 +20,7 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
         "text-white",
       )}>
       <h3
-        class={classNames(
+        class={cls(
           "text-2xl md:text-6xl font-regular tracking-[0.35em]",
           "text-white group-hover:text-yellow-500",
           "transition-colors duration-300 ease-in-out",

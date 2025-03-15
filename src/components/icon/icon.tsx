@@ -1,13 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import { IconProps } from "./icon.types";
 
-const Icon = component$<IconProps>(({ name, classNames }) => {
+const Icon = component$<IconProps>(({ name, cls }) => {
   const classes = [
     `icon icon-${name}`,
     "fill-white",
     "w-6 md:w-8",
     "aspect-square",
-    classNames,
+    cls,
   ]
     .filter(Boolean)
     .join(" ");

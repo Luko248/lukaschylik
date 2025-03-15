@@ -1,6 +1,6 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
-import { classNames } from "~/utils/classNames";
+import { cls } from "~/utils";
 
 const Button = component$<ButtonProps>(
   ({
@@ -22,7 +22,7 @@ const Button = component$<ButtonProps>(
     };
 
     const commonProps = {
-      class: classNames(
+      class: cls(
         'btn relative overflow-clip leading-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none "text-transparent border border-white',
         sizeClasses[size],
         className,

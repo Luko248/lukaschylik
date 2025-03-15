@@ -1,6 +1,6 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import type { ContainerProps } from "./container.types";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const Container = component$<ContainerProps>(({ size = "md", className }) => {
   const sizeClasses = {
@@ -11,12 +11,7 @@ const Container = component$<ContainerProps>(({ size = "md", className }) => {
   };
 
   return (
-    <div
-      class={classNames(
-        "mx-auto relative isolate",
-        sizeClasses[size],
-        className,
-      )}>
+    <div class={cls("mx-auto relative isolate", sizeClasses[size], className)}>
       <Slot />
     </div>
   );

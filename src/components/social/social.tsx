@@ -13,7 +13,7 @@ const Social = component$(() => {
             target="_blank">
             <Icon
               name="linkedin"
-              classNames="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
+              cls="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
             />
           </a>
         </li>
@@ -25,7 +25,7 @@ const Social = component$(() => {
             target="_blank">
             <Icon
               name="codepen"
-              classNames="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
+              cls="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
             />
           </a>
         </li>
@@ -37,7 +37,7 @@ const Social = component$(() => {
             target="_blank">
             <Icon
               name="github"
-              classNames="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
+              cls="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out"
             />
           </a>
         </li>

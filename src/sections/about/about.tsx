@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Container, Section, Skills } from "~/components";
 import SectionTitle from "~/components/section/section.title";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const About = component$(() => {
   return (
@@ -9,7 +9,7 @@ const About = component$(() => {
       <Section id="about-me" className="content-center">
         <Container size="full" className="relative z-10 isolate text-left">
           <div
-            class={classNames(
+            class={cls(
               "grid grid-cols-1 items-start",
               "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
             )}>

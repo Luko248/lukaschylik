@@ -1,7 +1,7 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
 import { Link, type LinkProps } from "@builder.io/qwik-city";
 import Social from "../social/social";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 import { NavigationProps } from "./navigation.types";
 
 const Navigation = component$<NavigationProps>(({ links }) => {
@@ -18,7 +18,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
         <a
           href="/"
           role="menuitem"
-          class={classNames(
+          class={cls(
             "nav__logo",
             "relative z-20",
             "text-xl md:text-l lg:text-xl",
@@ -27,7 +27,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "no-underline hover:underline",
           )}></a>
         <ul
-          class={classNames(
+          class={cls(
             "nav__list",
             "fixed md:relative inset-0 md:inset-auto",
             "align-baseline items-center content-center gap-16 md:gap-8",
@@ -44,7 +44,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   href={link.href}
                   title={link.text}
                   rel="internal"
-                  class={classNames(
+                  class={cls(
                     "text-xl md:text-l lg:text-xl",
                     "text-white uppercase",
                     "decoration-secondary decoration-5 underline-offset-8",
@@ -58,7 +58,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
 
         <button
           type="button"
-          class={classNames(
+          class={cls(
             "nav__toggler relative w-10 h-10 text-white cursor-pointer visible md:invisible",
             state.isOpen && "nav__toggler--open",
           )}

@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import type { ReferenceProps } from "./reference.types";
-import { classNames } from "~/utils";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 
 const Reference = component$<ReferenceProps>(
   ({ title, webURL, type, website }) => {
@@ -13,7 +12,7 @@ const Reference = component$<ReferenceProps>(
           rel="noreferer"
           class="reference group flex just justify-between items-center gap-4 py-2 no-underline">
           <strong
-            class={classNames(
+            class={cls(
               /* Layout */
               "flex justify-between gap-4",
               /* Typography */

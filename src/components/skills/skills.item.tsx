@@ -1,11 +1,11 @@
 import { component$ } from "@builder.io/qwik";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 import { SkillItemProps } from "./skills.types";
 
 const SkillItem = component$<SkillItemProps>(({ text }) => {
   return (
     <li
-      class={classNames(
+      class={cls(
         "inline-block",
         "border-2 border-white",
         "leading-normal text-nowrap",

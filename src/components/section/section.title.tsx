@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { classNames } from "~/utils";
+import { cls } from "~/utils";
 import { SectionTitleProps } from "./section.types";
 
 const SectionTitle = component$<SectionTitleProps>(
@@ -7,7 +7,7 @@ const SectionTitle = component$<SectionTitleProps>(
     return (
       <h2
         data-dark={dark}
-        class={classNames(
+        class={cls(
           "content-fade-in",
           "relative",
           "text-5xl sm:text-6xl lg:text-9xl xl:text-[clamp(2.5rem,6svi,8rem)] 2xl:text-[clamp(3rem,8svi,10rem)]",
