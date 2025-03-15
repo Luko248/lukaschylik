@@ -72,18 +72,9 @@ strong {
     animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
+    position: relative;
     animation-range: var(--animation_range, -20svb);
     transform-origin: left;
-  }
-  .content-fade-in--entry {
-    --animation_range: entry 30svb;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .content-fade-in {
-      --content_animation: none;
-      --content_opacity: 1;
-      --content_scale: 1;
-    }
   }
   @keyframes content-fade-in {
     0%, 20% {
@@ -186,13 +177,21 @@ strong {
   }
   .me {
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
-    animation: showMe linear forwards;
     animation-timeline: view();
     animation-range: -20svb;
+    animation: showMe linear forwards;
     translate: 0 30svb;
     inline-size: min(768px, 70%);
     justify-self: end;
     transition: filter 0.25s ease-in-out;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .me {
+      animation: none;
+      opacity: 1;
+      translate: 0 0;
+      --me_filter-greyscale: 25%;
+    }
   }
   @keyframes showMe {
     0%, 20% {
@@ -513,6 +512,11 @@ strong {
       translate: 0 -20svb;
       opacity: 0;
     }
+  }
+}
+@layer _utils {
+  .text-box-trim-both {
+    text-box: trim-both ex alphabetic;
   }
 }
 

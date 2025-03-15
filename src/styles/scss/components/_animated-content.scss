@@ -9,18 +9,9 @@
     animation: var(--content_animation, content-fade-in linear forwards);
     animation-timeline: view();
     z-index: 10;
+    position: relative;
     animation-range: var(--animation_range, -20svb);
     transform-origin: left;
-
-    &--entry {
-      --animation_range: entry 30svb;
-    }
-
-    @include mq-reduce-motion {
-      --content_animation: none;
-      --content_opacity: 1;
-      --content_scale: 1;
-    }
   }
 
   @keyframes content-fade-in {

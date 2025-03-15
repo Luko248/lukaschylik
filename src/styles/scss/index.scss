@@ -4,6 +4,7 @@
 @use "./base/view-transitions" as *;
 @use "./components/_index" as *;
 @use "./modules/_index" as *;
+@use "./utils/_index" as *;
 
 @include create-view-transitions;
 
@@ -21,4 +22,8 @@
 
 @layer _modules {
   @include create-modules;
+}
+
+@layer _utils {
+  @include create-utils;
 }

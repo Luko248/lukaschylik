@@ -10,8 +10,8 @@ const About = component$(() => {
         <Container size="full" className="relative z-10 isolate text-left">
           <div
             class={classNames(
-              "grid-cols-1 items-start",
-              "grid grid-cols-1 lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
+              "grid grid-cols-1 items-start",
+              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
             )}>
             <SectionTitle
               text="Niečo o mne"
@@ -44,7 +44,7 @@ const About = component$(() => {
             </div>
             <div class="lg:row-start-1 lg:row-span-2 lg:col-start-2">
               <img
-                class="me relative z-0 opacity-0 block mx-auto"
+                class="me relative z-0 block mx-auto"
                 src="/images/me.webp"
                 alt="The picture of me"
                 loading="lazy"

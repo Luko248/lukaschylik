@@ -9,17 +9,22 @@
     initial-value: 100%;
   }
   .me {
-    filter: drop-shadow(0 0 1px $color-white)
-      drop-shadow(-1px -1px 1px $color-white)
-      drop-shadow(1px 1px 1px $color-white)
-      grayscale(var(--me_filter-greyscale)) contrast(1.15);
-    animation: showMe linear forwards;
+    filter: drop-shadow(0 0 1px $color-white) drop-shadow(-1px -1px 1px $color-white)
+      drop-shadow(1px 1px 1px $color-white) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     animation-timeline: view();
     animation-range: -20svb;
+    animation: showMe linear forwards;
     translate: 0 30svb;
     inline-size: min(768px, 70%);
     justify-self: end;
     transition: filter $trans-time $trans-fnc;
+
+    @include mq-reduce-motion {
+      animation: none;
+      opacity: 1;
+      translate: 0 0;
+      --me_filter-greyscale: 25%;
+    }
   }
 
   @keyframes showMe {

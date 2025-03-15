@@ -1,5 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import type { ReferenceProps } from "./reference.types";
+import { classNames } from "~/utils";
+import { classNames } from "~/utils";
 
 const Reference = component$<ReferenceProps>(
   ({ title, webURL, type, website }) => {
@@ -10,15 +12,23 @@ const Reference = component$<ReferenceProps>(
           target="_blank"
           rel="noreferer"
           class="reference group flex just justify-between items-center gap-4 py-2 no-underline">
-          <strong class="flex justify-between gap-4 font-medium text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-normal overflow-hidden relative z-20 tracking-wide uppercase whitespace-nowrap">
+          <strong
+            class={classNames(
+              /* Layout */
+              "flex justify-between gap-4",
+              /* Typography */
+              "font-medium text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl leading-normal tracking-wide uppercase whitespace-nowrap",
+              /* Positioning */
+              "overflow-hidden relative z-20",
+            )}>
             <span
               aria-label={title}
               class="relative text-tramsparent duration-300 ease-in-out">
               {title}
             </span>
-            <sup class="text-xs translate-y-3 sm:translate-y-5 text-white tracking-wider leading-none">
+            <small class="text-xs text-white tracking-wider leading-none">
               {type}
-            </sup>
+            </small>
           </strong>
           <small
             class="relative text-base text-transparent"

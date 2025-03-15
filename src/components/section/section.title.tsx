@@ -10,7 +10,7 @@ const SectionTitle = component$<SectionTitleProps>(
         class={classNames(
           "content-fade-in",
           "relative",
-          "text-5xl sm:text-6xl lg:text-9xl 2xl:text-[clamp(3rem,10svi,10rem)]",
+          "text-5xl sm:text-6xl lg:text-9xl xl:text-[clamp(2.5rem,6svi,8rem)] 2xl:text-[clamp(3rem,8svi,10rem)]",
           "mb-[5svb]",
           "font-extrabold uppercase leading-none tracking-widest",
           dark ? "text-black" : "text-transparent",
