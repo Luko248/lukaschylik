@@ -49,7 +49,7 @@ export default component$(() => {
         <IconSet />
         <Slot />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 });

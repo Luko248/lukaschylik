@@ -14,7 +14,16 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   return (
     <>
       <nav
-        class={`nav fixed top-0 flex justify-between items-center text-center py-4 md:py-8 px-8 w-full z-40 md:backdrop-blur-md mix-blend-difference ${state.isOpen ? "nav--open" : ""}`}>
+        class={cls(
+          "nav",
+          "fixed top-0",
+          "flex justify-between items-center text-center",
+          "py-4 md:py-8 px-8",
+          "w-full z-90",
+          "md:backdrop-blur-md",
+          "md:mix-blend-difference",
+          state.isOpen && "nav--open",
+        )}>
         <a
           href="/"
           role="menuitem"
@@ -29,10 +38,11 @@ const Navigation = component$<NavigationProps>(({ links }) => {
         <ul
           class={cls(
             "nav__list",
-            "fixed md:relative inset-0 md:inset-auto",
+            "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
             "align-baseline items-center content-center gap-16 md:gap-8",
             "md:flex-row md:justify-center",
-            "bg-menu md:bg-transparent backdrop-blur-lg md:backdrop-blur-none",
+            "bg-black md:bg-transparent ",
+            "backdrop-blur-lg md:backdrop-blur-none",
             "list-none m-0",
           )}
           role="menu">
@@ -58,10 +68,16 @@ const Navigation = component$<NavigationProps>(({ links }) => {
 
         <button
           type="button"
-          class={cls(
-            "nav__toggler relative w-10 h-10 text-white cursor-pointer visible md:invisible",
+          class={[
+            "nav__toggler relative",
+            "w-10 h-10",
+            "md:mix-blend-difference",
+            "text-white cursor-pointer visible md:invisible",
             state.isOpen && "nav__toggler--open",
-          )}
+            "z-90",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
           onClick$={toggleMenu}></button>

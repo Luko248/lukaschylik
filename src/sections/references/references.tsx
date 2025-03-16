@@ -8,8 +8,8 @@ const References = component$(() => {
   return (
     <Section id="references">
       <Container size="full">
-        <div class="grid grid-cols-1 xl:grid-cols-[8fr_5fr] gap-5 isolate">
-          <div>
+        <div class="relative grid grid-cols-1 xl:grid-cols-[8fr_5fr] gap-5 isolate xl:max-h-screen xl:overflow-auto">
+          <div class="relative xl:sticky xl:top-0 xl:h-fit mb-8 xl:mb:0">
             <SectionTitle text="Referencie" />
             <div class="content-fade-in">
               <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-white">
@@ -28,11 +28,11 @@ const References = component$(() => {
               </p>
             </div>
           </div>
-          <ul class="ref-list list-none p-0 m-0 content-fade-in mt-8">
+          <ul class="ref-list list-none p-0 m-0 content-fade-in xl:mt-5 3xl:mt-8">
             <Reference
               title="AIS servis"
-              webURL="https://www.ais=servis.cz/"
-              website="ais=servis.cz"
+              webURL="https://www.ais-servis.cz/"
+              website="ais-servis.cz"
               type="Spolupráca"
             />
             <Reference
@@ -66,7 +66,7 @@ const References = component$(() => {
               type="Spolupráca"
             />
             <Reference
-              title="Update Conference"
+              title="Update"
               webURL="https://www.updateconference.net/"
               website="updateconference.net"
               type="Spolupráca"

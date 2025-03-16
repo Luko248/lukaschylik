@@ -29,6 +29,10 @@
   box-sizing: border-box;
 }
 
+html {
+  max-inline-size: 100svi;
+  overflow-x: clip;
+}
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -36,9 +40,9 @@
 }
 
 body {
+  display: grid;
+  grid-template-columns: 1fr;
   min-block-size: 100svb;
-  max-inline-size: 100svi;
-  overflow-x: clip;
 }
 
 ::selection {
@@ -62,7 +66,6 @@ strong {
   }
   p {
     max-inline-size: 65ch;
-    font-size: larger;
   }
 }
 @layer _components {
@@ -153,41 +156,21 @@ strong {
   @property --me_filter-greyscale {
     syntax: "<percentage>";
     inherits: false;
-    initial-value: 100%;
+    initial-value: 25%;
+  }
+  div:has(> .me) {
+    align-self: end;
   }
   .me {
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
-    animation-timeline: view();
-    animation-range: -20svb;
-    animation: showMe linear forwards;
-    translate: 0 30svb;
     inline-size: min(768px, 70%);
-    justify-self: end;
-    transition: filter 0.25s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .me {
-      animation: none;
-      opacity: 1;
-      translate: 0 0;
-      --me_filter-greyscale: 25%;
-    }
-  }
-  @keyframes showMe {
-    0%, 20% {
-      --me_filter-greyscale: 100%;
-      translate: 0 30svb;
-      opacity: 0;
-    }
-    50%, 100% {
-      --me_filter-greyscale: 25%;
-      translate: 0 2rem;
-      opacity: 1;
-    }
+  :where(html, body):has(.nav--open) {
+    overflow: hidden;
   }
   .nav {
     mask-image: var(--nav_mask, none);
-    max-inline-size: 100svi;
+    max-inline-size: 100vw;
     --nav-list_display: none;
   }
   .nav--open {
@@ -207,7 +190,7 @@ strong {
   }
   .nav__list {
     display: var(--nav-list_display, inline-flex);
-    translate: 0 -8svb;
+    translate: 0 0;
     animation: var(--nav-list_anim, none);
   }
   .nav__toggler {
@@ -340,6 +323,9 @@ strong {
   }
 }
 @layer _modules {
+  header {
+    max-inline-size: 100%;
+  }
   header:has(.intro):before, header:has(.intro):after {
     --header-pseudo_display: block;
   }
@@ -384,7 +370,7 @@ strong {
     inset: 0 0 auto 0;
     clip-path: polygon(50% 100%, 0 0, 100% 0);
     translate: 0 -100%;
-    transform-origin: top;
+    transform-origin: top center;
     animation-range: exit -30svb;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -396,7 +382,7 @@ strong {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     translate: 0 100%;
-    transform-origin: bottom;
+    transform-origin: bottom center;
     animation-range: exit;
   }
   @media (prefers-reduced-motion: reduce) {

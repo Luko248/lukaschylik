@@ -21,7 +21,8 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
       )}>
       <h3
         class={cls(
-          "text-2xl md:text-6xl font-regular tracking-[0.35em]",
+          "text-4xl sm:text-5xl xl:text-[clamp(1.5rem,3svi,2.5rem)] 2xl:text-[clamp(2rem,4svi,3rem)] 3xl:text-[clamp(2rem,6svi,6rem)]",
+          "font-regular tracking-widest 2xl:tracking-[.15em] 3xl:tracking-[.35em]",
           "text-white group-hover:text-yellow-500",
           "transition-colors duration-300 ease-in-out",
           "py-6 px-8",
@@ -30,12 +31,32 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
         )}>
         {title}
       </h3>
-      <div class="grid grid-rows-subgrid row-span-2 gap-8 p-8 text-l lg:text-xl leading-relaxed font-light content-start">
+      <div
+        class={cls(
+          "grid grid-rows-subgrid row-span-2",
+          "gap-inherit",
+          "p-8 pt-0",
+          "text-l lg:text-xl",
+          "leading-relaxed font-light",
+          "mb-0 3xl:mb-18 text-white",
+          "content-start",
+        )}>
         <Slot />
       </div>
-      <div class="flex justify-between p-8 items-center mt-8">
-        <strong class="font-bold text-5xl group cursor-help">
-          {price ? `${formatPrice(price * 1.21)} Kč` : "Individuálne"}
+      <div
+        class={cls(
+          "flex justify-between flex-col 2xl:flex-row",
+          "gap-5 p-8",
+          "items-stretch 2xl:items-center",
+        )}>
+        <strong
+          class={cls(
+            "group cursor-help",
+            "inline-block",
+            "text-center 2xl:text-start",
+            "font-bold text-4xl 3xl:text-5xl",
+          )}>
+          {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
           {showVat && (
             <small class="block text-base font-light opacity-80">
               Cena s DPH / 1h

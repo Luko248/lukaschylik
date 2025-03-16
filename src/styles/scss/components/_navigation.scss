@@ -3,9 +3,13 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-nav {
+  :where(html, body):has(.nav--open) {
+    overflow: hidden;
+  }
+
   .nav {
     mask-image: var(--nav_mask, none);
-    max-inline-size: 100svi;
+    max-inline-size: 100vw;
     --nav-list_display: none;
 
     &--open {
@@ -24,7 +28,7 @@
 
     &__list {
       display: var(--nav-list_display, inline-flex);
-      translate: 0 -8svb;
+      translate: 0 0;
       animation: var(--nav-list_anim, none);
     }
 

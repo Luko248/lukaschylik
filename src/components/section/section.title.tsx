@@ -9,8 +9,8 @@ const SectionTitle = component$<SectionTitleProps>(
         data-dark={dark}
         class={cls(
           "content-fade-in",
-          "relative",
-          "text-5xl sm:text-6xl lg:text-9xl xl:text-[clamp(2.5rem,6svi,8rem)] 2xl:text-[clamp(3rem,8svi,10rem)]",
+          "relative z-10",
+          "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[clamp(3rem,6.5svi,7rem)] 2xl:text-[clamp(3rem,7svi,8rem)] 3xl:text-[clamp(3rem,8svi,10rem)]",
           "mb-[5svb]",
           "font-extrabold uppercase leading-none tracking-widest",
           dark ? "text-black" : "text-transparent",

@@ -4,8 +4,8 @@
 
 @mixin create-intro {
   header {
-    // overflow-clip-margin: content-box 35svb;
     // scroll-snap-align: start;
+    max-inline-size: 100%;
 
     &:has(.intro) {
       &:before,
@@ -59,7 +59,7 @@
       inset: 0 0 auto 0;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
       translate: 0 -100%;
-      transform-origin: top;
+      transform-origin: top center;
       animation-range: exit -30svb;
 
       @include mq-reduce-motion {
@@ -71,7 +71,7 @@
       inset: auto 0 0 0;
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       translate: 0 100%;
-      transform-origin: bottom;
+      transform-origin: bottom center;
       animation-range: exit;
 
       @include mq-reduce-motion {

@@ -18,7 +18,7 @@ const About = component$(() => {
               className="about-title lg:row-start-1 lg:col-span-2 lg:col-start-1"
             />
             <div class="content-fade-in">
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-white">
+              <p class="md:text-sm lg:text-xl leading-relaxed font-light mb-8 text-white">
                 Som frontend developer špecializujúci sa na{" "}
                 <strong>vizuálnu logiku</strong>. S ôsmimi rokmi skúseností a
                 množstvom projektov za sebou som pracoval na všetkom od

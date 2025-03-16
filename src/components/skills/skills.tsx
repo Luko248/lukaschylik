@@ -8,6 +8,7 @@ const Skills = component$(() => {
     "SVG",
     "JavaScript",
     "TypeScript",
+    "Web",
     "React",
     "Astro",
     "Qwik",
