@@ -28,9 +28,7 @@
 
       .intro {
         --intro_anim: header-content-fade-out forwards;
-        translate: 0 0;
-        opacity: 1;
-        animation-range: exit 30svb;
+        animation-range-start: exit 30svb;
         animation-timeline: view();
 
         @include mq-reduce-motion {
@@ -50,10 +48,7 @@
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(
-        --header-pseudo_anim,
-        show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
-      );
+      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
 
       @include mq-reduce-motion {
         animation: none;
@@ -86,9 +81,9 @@
   }
 
   .intro {
-    animation: var(--intro_anim, fade-out forwards);
+    animation: var(--intro_anim);
     animation-timeline: view();
-    animation-range: exit -50px;
+    will-change: translate, opacity;
     overflow: clip;
 
     @include mq-reduce-motion {
@@ -156,12 +151,6 @@
     to {
       opacity: 1;
       translate: 0 200%;
-    }
-  }
-
-  @keyframes fade-out {
-    to {
-      opacity: 0;
     }
   }
 

@@ -66,26 +66,6 @@ strong {
   }
 }
 @layer _components {
-  .content-fade-in {
-    opacity: var(--content_opacity, 0);
-    scale: var(--content_scale, 0.95);
-    animation: var(--content_animation, content-fade-in linear forwards);
-    animation-timeline: view();
-    z-index: 10;
-    position: relative;
-    animation-range: var(--animation_range, -20svb);
-    transform-origin: left;
-  }
-  @keyframes content-fade-in {
-    0%, 20% {
-      opacity: 0;
-      scale: 0.95;
-    }
-    50%, 100% {
-      scale: 1;
-      opacity: 1;
-    }
-  }
   @property --btn_gradient-length {
     syntax: "<percentage>";
     inherits: false;
@@ -196,7 +176,7 @@ strong {
   @keyframes showMe {
     0%, 20% {
       --me_filter-greyscale: 100%;
-      translate: 0 50%;
+      translate: 0 30svb;
       opacity: 0;
     }
     50%, 100% {
@@ -375,9 +355,7 @@ strong {
   }
   header[data-initialize=true] .intro {
     --intro_anim: header-content-fade-out forwards;
-    translate: 0 0;
-    opacity: 1;
-    animation-range: exit 30svb;
+    animation-range-start: exit 30svb;
     animation-timeline: view();
   }
   @media (prefers-reduced-motion: reduce) {
@@ -427,9 +405,9 @@ strong {
     }
   }
   .intro {
-    animation: var(--intro_anim, fade-out forwards);
+    animation: var(--intro_anim);
     animation-timeline: view();
-    animation-range: exit -50px;
+    will-change: translate, opacity;
     overflow: clip;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -494,11 +472,6 @@ strong {
     to {
       opacity: 1;
       translate: 0 200%;
-    }
-  }
-  @keyframes fade-out {
-    to {
-      opacity: 0;
     }
   }
   @keyframes header-bg-zoom-in {

@@ -9,10 +9,8 @@
     initial-value: 100%;
   }
   .me {
-    filter: drop-shadow(0 0 1px $color-white)
-      drop-shadow(-1px -1px 1px $color-white)
-      drop-shadow(1px 1px 1px $color-white)
-      grayscale(var(--me_filter-greyscale)) contrast(1.15);
+    filter: drop-shadow(0 0 1px $color-white) drop-shadow(-1px -1px 1px $color-white)
+      drop-shadow(1px 1px 1px $color-white) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     animation-timeline: view();
     animation-range: -20svb;
     animation: showMe linear forwards;
@@ -33,7 +31,7 @@
     0%,
     20% {
       --me_filter-greyscale: 100%;
-      translate: 0 50%;
+      translate: 0 30svb;
       opacity: 0;
     }
 

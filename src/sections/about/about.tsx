@@ -20,14 +20,12 @@ const About = component$(() => {
             <div class="content-fade-in">
               <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-white">
                 Som frontend developer špecializujúci sa na{" "}
-                <strong class="text-black bg-secondary font-medium">
-                  vizuálnu logiku
-                </strong>
-                . S ôsmimi rokmi skúseností a množstvom projektov za sebou som
-                pracoval na všetkom od prezentačných webových stránok po webové
-                aplikácie, PWA a komplexné informačné systémy. Tieto skúsenosti
-                mi poskytli široké pochopenie{" "}
-                <strong class="text-black bg-secondary font-medium">
+                <strong>vizuálnu logiku</strong>. S ôsmimi rokmi skúseností a
+                množstvom projektov za sebou som pracoval na všetkom od
+                prezentačných webových stránok po webové aplikácie, PWA a
+                komplexné informačné systémy. Tieto skúsenosti mi poskytli
+                široké pochopenie{" "}
+                <strong>
                   UI-UX dizajnu, webovej prístupnosti, výkonu a SEO
                 </strong>
                 . Momentálne sa zameriavam na implementáciu dizajnových
@@ -36,10 +34,8 @@ const About = component$(() => {
               <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-white">
                 Tiež pomáham vývojárom pri výbere správnej technológie pre
                 vizuálne aspekty ich projektov a ponúkam{" "}
-                <strong class="text-black bg-secondary font-medium">
-                  konzultácie, workshopy a školenia
-                </strong>{" "}
-                v tejto oblasti.
+                <strong>konzultácie, workshopy a školenia</strong> v tejto
+                oblasti.
               </p>
             </div>
             <div class="lg:row-start-1 lg:row-span-2 lg:col-start-2">
