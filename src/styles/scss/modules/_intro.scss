@@ -56,6 +56,7 @@
       inset: 0 0 auto 0;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
       translate: 0 -100%;
+      transform-origin: top;
       animation-range: exit -30svb;
 
       @include mq-reduce-motion {
