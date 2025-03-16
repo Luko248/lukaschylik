@@ -31,7 +31,7 @@ const Skills = component$(() => {
           <SkillItem key={skill} text={skill} />
         ))}
       </ul>
-      <ul class="flex flex-row flex-nowrap gap-x-4 lg:gap-x-8 overflow-clip skills__scroller text-white">
+      <ul class="flex flex-row-reverse flex-nowrap gap-x-4 lg:gap-x-8 overflow-clip skills__scroller text-white">
         {skills.map((skill) => (
           <SkillItem key={skill} text={skill} />
         ))}

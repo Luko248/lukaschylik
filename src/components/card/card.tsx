@@ -38,7 +38,7 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
           "p-8 pt-0",
           "text-l lg:text-xl font-mono",
           "leading-relaxed font-light",
-          "mb-0 3xl:mb-18 text-white",
+          "mb-0 3xl:mb-8 text-white",
           "content-start",
         )}>
         <Slot />

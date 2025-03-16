@@ -314,7 +314,6 @@ strong {
   }
   .skills__scroller:nth-of-type(2) {
     animation-direction: reverse;
-    flex-flow: row-reverse nowrap;
   }
   @media (prefers-reduced-motion: reduce) {
     .skills__scroller {
