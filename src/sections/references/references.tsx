@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import path from "path";
 import { Button } from "~/components";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";

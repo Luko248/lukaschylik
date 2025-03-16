@@ -33,7 +33,12 @@ const Button = component$<ButtonProps>(
     };
 
     return href ? (
-      <a href={href} rel={rel} target={target} {...commonProps}>
+      <a
+        href={href}
+        aria-disabled={disabled}
+        rel={rel}
+        target={target}
+        {...commonProps}>
         <Slot />
       </a>
     ) : (

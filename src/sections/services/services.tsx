@@ -28,7 +28,7 @@ const References = component$(() => {
             "gap-12 xl:gap-x-8 2xl:gap-x-12 3xl:gap-x-18",
             "content-fade-in content-fade-in--entry",
           )}>
-          <Card title="Konzultácie" price={2000}>
+          <Card title="Konzultácie" price={2000} path="#contact">
             <p>
               Potrebujete poradiť?
               <br />
@@ -44,7 +44,7 @@ const References = component$(() => {
               <ListItem marker="☝🏽">Minimálne 1 hodina</ListItem>
             </ul>
           </Card>
-          <Card title="Mentoring" price={1500}>
+          <Card title="Mentoring" price={1500} path="#contact">
             <p>
               Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
               Vás projekt vhodný? Alebo si len chcete rozšíriť{" "}
