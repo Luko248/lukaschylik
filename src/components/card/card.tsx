@@ -36,7 +36,7 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
           "grid grid-rows-subgrid row-span-2",
           "gap-inherit",
           "p-8 pt-0",
-          "text-l lg:text-xl",
+          "text-l lg:text-xl font-mono",
           "leading-relaxed font-light",
           "mb-0 3xl:mb-18 text-white",
           "content-start",

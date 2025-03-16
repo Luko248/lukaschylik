@@ -32,7 +32,7 @@ const Contact = component$(() => {
           className="content-fade-in--entry"
           dark={true}
         />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-18">
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-18 font-mono">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate
           quibusdam ab accusantium reiciendis corporis nemo odio sapiente qui
           molestiae delectus animi et sed voluptas aliquam neque, natus quas

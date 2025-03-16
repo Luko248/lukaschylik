@@ -8,7 +8,7 @@ const Footer = component$(() => {
         <div class="grid grid-cols-1 gap-6">
           <div class="flex justify-between items-center">
             <div>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-18">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-18 font-mono">
                 © 2016 - {new Date().getFullYear()} All rights reserved
               </p>
             </div>

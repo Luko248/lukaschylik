@@ -11,7 +11,7 @@ const References = component$(() => {
       <Container size="full">
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
-          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white">
+          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white font-mono">
             Zistenie, že ste pre váš projekt zvolili{" "}
             <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
