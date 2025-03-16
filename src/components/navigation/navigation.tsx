@@ -11,6 +11,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
     state.isOpen = !state.isOpen;
   });
 
+  const closeMenuOnMobile = $(() => {
+    if (window.innerWidth < 768) {
+      state.isOpen = false;
+    }
+  });
+
   return (
     <>
       <nav
@@ -41,7 +47,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
             "align-baseline items-center content-center gap-16 md:gap-8",
             "md:flex-row md:justify-center",
-            "bg-black md:bg-transparent ",
+            "bg-black/70 backdrop-blur-md md:bg-transparent ",
             "backdrop-blur-lg md:backdrop-blur-none",
             "list-none m-0",
           )}
@@ -54,6 +60,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   href={link.href}
                   title={link.text}
                   rel="internal"
+                  onClick$={closeMenuOnMobile}
                   class={cls(
                     "text-xl md:text-l lg:text-xl",
                     "text-white uppercase",
@@ -65,23 +72,22 @@ const Navigation = component$<NavigationProps>(({ links }) => {
               </li>
             ))}
         </ul>
-
-        <button
-          type="button"
-          class={[
-            "nav__toggler relative",
-            "w-10 h-10",
-            "md:mix-blend-difference",
-            "text-white cursor-pointer visible md:invisible",
-            state.isOpen && "nav__toggler--open",
-            "z-90",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-          aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-          title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-          onClick$={toggleMenu}></button>
       </nav>
+      <button
+        type="button"
+        class={[
+          "nav__toggler fixed md:relative top-4 right-4",
+          "w-10 h-10",
+          "mix-blend-difference md:mix-blend-normal",
+          "text-white cursor-pointer visible md:invisible",
+          state.isOpen && "nav__toggler--open",
+          "z-90",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+        title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+        onClick$={toggleMenu}></button>
       <Social />
     </>
   );
