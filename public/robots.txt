@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /*.css$
+Allow: /*.js$
+Allow: /
+
+Sitemap: https://lukaschylik.sk/sitemap.xml

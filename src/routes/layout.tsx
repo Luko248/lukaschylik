@@ -61,17 +61,14 @@ export default component$(() => {
       </header>
       <main class="overflow-y-hidden">
         <IconSet />
-        <Slot />
-
-        {/* Form submission alert */}
         <Alert
           message="Vaša správa bola úspešne odoslaná. Ďakujeme!"
           visible={showAlert.value}
           onClose$={handleAlertClose}
           duration={5}
         />
+        <Slot />
       </main>
-      {/* <Footer /> */}
     </>
   );
 });

@@ -80,6 +80,13 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body lang="en" class="bg-black-900">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KQFH8PWL"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}></iframe>
+        </noscript>
         <RouterOutlet />
         {!isDev && <ServiceWorkerRegister />}
       </body>
