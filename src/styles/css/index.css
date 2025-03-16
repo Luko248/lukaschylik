@@ -133,6 +133,11 @@ strong {
       box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
     }
   }
+  .card ul li {
+    /* Default marker for all browsers */
+    list-style-type: disc;
+    /* Override with custom marker where supported */
+  }
   .card ul li::marker {
     content: attr(data-marker);
   }

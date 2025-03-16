@@ -23,8 +23,14 @@
       box-shadow: $gap-space-16 $gap-space-16 0 0 $color-yellow;
     }
 
-    ul li::marker {
-      content: attr(data-marker);
+    ul li {
+      /* Default marker for all browsers */
+      list-style-type: disc;
+
+      /* Override with custom marker where supported */
+      &::marker {
+        content: attr(data-marker);
+      }
     }
 
     p {
