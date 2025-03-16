@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
     },
     plugins: [
       staticAdapter({
-        origin: "https://lukaschylik.sk",
+        origin: "lukaschylik.sk",
       }),
     ],
   };
