@@ -9,7 +9,6 @@
   }
 
   html {
-    max-inline-size: 100svi;
     overflow-x: clip;
     // scroll-snap-type: y mandatory;
     @include mq-reduce-motion(no-preference) {
@@ -18,11 +17,12 @@
   }
 
   body {
-    display: grid;
-    grid-template-columns: 1fr;
     min-block-size: 100svb;
 
-    // cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>') 12 12, auto;
+    // cursor:
+    //   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>')
+    //     12 12,
+    //   auto;
   }
 
   ::selection {

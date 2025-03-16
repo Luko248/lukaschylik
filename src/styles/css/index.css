@@ -30,7 +30,6 @@
 }
 
 html {
-  max-inline-size: 100svi;
   overflow-x: clip;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -40,8 +39,6 @@ html {
 }
 
 body {
-  display: grid;
-  grid-template-columns: 1fr;
   min-block-size: 100svb;
 }
 
@@ -331,9 +328,6 @@ strong {
   }
 }
 @layer _modules {
-  header {
-    max-inline-size: 100%;
-  }
   header:has(.intro):before, header:has(.intro):after {
     --header-pseudo_display: block;
   }
@@ -344,16 +338,6 @@ strong {
   }
   @media (prefers-reduced-motion: reduce) {
     header[data-initialize=true]:before, header[data-initialize=true]:after {
-      animation: none;
-    }
-  }
-  header[data-initialize=true] .intro {
-    --intro_anim: header-content-fade-out forwards;
-    animation-range-start: exit 30svb;
-    animation-timeline: view();
-  }
-  @media (prefers-reduced-motion: reduce) {
-    header[data-initialize=true] .intro {
       animation: none;
     }
   }

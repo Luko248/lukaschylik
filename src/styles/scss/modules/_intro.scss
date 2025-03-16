@@ -4,9 +4,6 @@
 
 @mixin create-intro {
   header {
-    // scroll-snap-align: start;
-    max-inline-size: 100%;
-
     &:has(.intro) {
       &:before,
       &:after {
@@ -26,15 +23,15 @@
         }
       }
 
-      .intro {
-        --intro_anim: header-content-fade-out forwards;
-        animation-range-start: exit 30svb;
-        animation-timeline: view();
+      // .intro {
+      //   --intro_anim: header-content-fade-out forwards;
+      //   animation-range-start: exit 30svb;
+      //   animation-timeline: view();
 
-        @include mq-reduce-motion {
-          animation: none;
-        }
-      }
+      //   @include mq-reduce-motion {
+      //     animation: none;
+      //   }
+      // }
     }
 
     &:before,
@@ -48,10 +45,7 @@
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(
-        --header-pseudo_anim,
-        show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
-      );
+      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
 
       @include mq-reduce-motion {
         animation: none;
