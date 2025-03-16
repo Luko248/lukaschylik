@@ -1,71 +1,107 @@
-# Qwik City App ⚡️
+# Lukas Chylik Portfolio Website
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+A personal portfolio website built with Qwik, showcasing skills, services, references, and contact information.
 
----
+## Prerequisites
 
-## Project Structure
+- Node.js: `^18.17.0 || ^20.3.0 || >=21.0.0`
+- Package Manager: npm or pnpm
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+## Installation
 
-Inside your project, you'll see the following directory structure:
+Clone the repository and install dependencies:
 
-```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
+```bash
+# Using npm
+npm install
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
-
-- `src/components`: Recommended directory for components.
-
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
-
-## Add Integrations and deployment
-
-Use the `pnpm qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
-
-```shell
-pnpm qwik add # or `pnpm qwik add`
+# Using pnpm
+pnpm install
 ```
 
 ## Development
 
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
+Start the development server and watch for CSS changes:
 
-```shell
-npm start # or `pnpm start`
+```bash
+# Using npm
+npm start
+
+# Using pnpm
+pnpm start
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+This will:
 
-## Preview
+- Format your code
+- Start the Vite development server in SSR mode
+- Watch for SCSS changes and compile them to CSS
 
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
+For development server only without formatting:
 
-```shell
-pnpm preview # or `pnpm preview`
+```bash
+# Using npm
+npm run dev
+
+# Using pnpm
+pnpm dev
 ```
 
-## Production
+## Building for Production
 
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
+Build the application for production:
 
-```shell
-pnpm build # or `pnpm build`
+```bash
+# Using npm
+npm run build
+
+# Using pnpm
+pnpm build
 ```
 
-## Static Site Generator (Node.js)
+## Preview Production Build
 
-```shell
-pnpm build.server
+Preview the production build locally:
+
+```bash
+# Using npm
+npm run preview
+
+# Using pnpm
+pnpm preview
 ```
+
+## Project Structure
+
+```
+├── public/              # Static assets
+│   ├── images/          # Image assets
+│   └── ...
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── routes/          # Page routes and layouts
+│   ├── sections/        # Website sections (about, contact, etc.)
+│   ├── styles/          # SCSS and CSS styles
+│   │   ├── css/         # Compiled CSS
+│   │   └── scss/        # SCSS source files
+│   └── utils/           # Utility functions
+└── ...
+```
+
+## Technologies
+
+- [Qwik](https://qwik.dev/) - Frontend framework with resumability
+- [Qwik City](https://qwik.dev/qwikcity/overview/) - Meta-framework for Qwik
+- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [SASS](https://sass-lang.com/) - CSS preprocessor
+
+## Scripts
+
+- `npm start` - Start development server with formatting and CSS watching
+- `npm run dev` - Start development server only
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run build:css` - Compile SCSS to CSS
+- `npm run format` - Format code with Prettier
+- `npm run fmt` - Format all files with Prettier
+- `npm run fmt.check` - Check formatting without making changes

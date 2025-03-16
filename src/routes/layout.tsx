@@ -1,7 +1,13 @@
-import { component$, Slot, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  Slot,
+  useSignal,
+  useVisibleTask$,
+  $,
+} from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
-import { IconSet, Navigation } from "~/components";
+import { Alert, IconSet, Navigation } from "~/components";
 import { Footer, Intro } from "~/sections";
 import { initializeHeaderFlag } from "~/utils";
 
@@ -15,6 +21,12 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 export default component$(() => {
   const headerRef = useSignal<Element>();
   const location = useLocation();
+  const showAlert = useSignal(location.url.searchParams.has("formSubmitted"));
+
+  // Handle alert close
+  const handleAlertClose = $(() => {
+    showAlert.value = false;
+  });
 
   useVisibleTask$(() => {
     initializeHeaderFlag(headerRef.value);
@@ -48,6 +60,14 @@ export default component$(() => {
       <main class="overflow-y-hidden">
         <IconSet />
         <Slot />
+
+        {/* Form submission alert */}
+        <Alert
+          message="Vaša správa bola úspešne odoslaná. Ďakujeme!"
+          visible={showAlert.value}
+          onClose$={handleAlertClose}
+          duration={5}
+        />
       </main>
       {/* <Footer /> */}
     </>
