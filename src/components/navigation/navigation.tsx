@@ -40,7 +40,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "text-white uppercase",
             "decoration-secondary decoration-5 underline-offset-8",
             "no-underline hover:underline",
-          )}></a>
+          )}>
+          Domov
+        </a>
         <ul
           class={cls(
             "nav__list",
@@ -72,6 +74,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
               </li>
             ))}
         </ul>
+        <span></span>
       </nav>
       <button
         type="button"

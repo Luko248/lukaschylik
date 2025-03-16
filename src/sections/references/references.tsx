@@ -30,10 +30,10 @@ const References = component$(() => {
               </p>
               <Button
                 variant="secondary"
-                ariaLabel="Mám záujem"
-                title="Mám záujem"
+                ariaLabel="Služby a spoupráca"
+                title="Služby a spoupráca"
                 href="#contact">
-                Mám záujem
+                Služby a spoupráca
               </Button>
             </div>
           </div>
