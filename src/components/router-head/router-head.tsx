@@ -11,8 +11,6 @@ export const RouterHead = component$(() => {
   const title = head.title || "Lukáš Chylík | Creative web developer";
   const description =
     "Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact me for collaborations.";
-  const extendedDescription =
-    "Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations.";
   const imageUrl = "./images/profile/me.webp";
 
   return (
@@ -24,7 +22,7 @@ export const RouterHead = component$(() => {
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover"
       />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
       {/* Basic meta tags */}
       <meta name="description" content={description} />
@@ -36,18 +34,18 @@ export const RouterHead = component$(() => {
 
       {/* Schema.org markup */}
       <meta itemProp="name" content={title} />
-      <meta itemProp="description" content={extendedDescription} />
+      <meta itemProp="description" content={description} />
       <meta itemProp="image" content={imageUrl} />
 
       {/* Open Graph meta tags */}
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={extendedDescription} />
+      <meta property="og:description" content={description} />
       <meta property="og:url" content={loc.url.href} />
       <meta property="og:image" content={imageUrl} />
 
       {/* Twitter Card meta tags */}
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={extendedDescription} />
+      <meta name="twitter:description" content={description} />
 
       {/* Dynamic meta tags from routes */}
       {head.meta.map((m) => (
