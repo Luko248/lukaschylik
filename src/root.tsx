@@ -22,55 +22,6 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
-        <title>Lukáš Chylík | Creative web developer</title>
-        <meta
-          name="description"
-          content="Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact me for collaborations."
-        />
-        <meta
-          content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover"
-          name="viewport"
-        />
-        <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="Lukáš Chylík" />
-
-        <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
-        <meta
-          itemProp="description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
-        />
-        <meta itemProp="image" content="./images/profile/me.webp" />
-
-        <meta itemProp="name" content="Lukáš Chylík | Creative web developer" />
-        <meta
-          itemProp="description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
-        />
-        <meta itemProp="image" content="./images/profile/me.webp" />
-
-        <meta
-          property="og:title"
-          content="Lukáš Chylík | Creative web developer"
-        />
-        <meta
-          property="og:description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
-        />
-        <meta property="og:url" content="https://lukaschylik.sk/" />
-        <meta property="og:image" content="./images/profile/me.webp" />
-
-        <meta
-          name="twitter:title"
-          content="Lukáš Chylík | Creative web developer"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore the portfolio of Lukáš Chylík, showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact for collaborations."
-        />
-
         {!isDev && (
           <link
             rel="manifest"
@@ -79,7 +30,7 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body lang="en" class="bg-black-900">
+      <body lang="sk" class="bg-black-900">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KQFH8PWL"

@@ -5,7 +5,7 @@ import {
   useVisibleTask$,
   $,
 } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
 import { Alert, IconSet, Navigation } from "~/components";
 import { Footer, Intro } from "~/sections";
@@ -16,6 +16,26 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     maxAge: 5,
   });
+};
+
+/**
+ * Default head metadata for all routes
+ * This includes the Google Tag Manager script
+ */
+export const head: DocumentHead = {
+  scripts: [
+    {
+      key: "gtm",
+      script: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KQFH8PWL');`,
+      props: {
+        async: true,
+      },
+    },
+  ],
 };
 
 export default component$(() => {
