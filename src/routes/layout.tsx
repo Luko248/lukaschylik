@@ -78,6 +78,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "about": {
         "@id": "#person"
       },
+      "mainEntity": {
+        "@id": "#person"
+      },
       "isPartOf": {
         "@id": "#website"
       },
