@@ -1,13 +1,19 @@
-import { component$, useStore, $, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useStore,
+  $,
+  useSignal,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
 import { Container, FormField, Button, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
 const Contact = component$(() => {
   const location = useLocation();
-  const formStatus = useSignal<'idle' | 'success' | 'error'>('idle');
-  const errorMessage = useSignal('');
-  
+  const formStatus = useSignal<"idle" | "success" | "error">("idle");
+  const errorMessage = useSignal("");
+
   const state = useStore({
     fullname: "",
     email: "",
@@ -19,36 +25,36 @@ const Contact = component$(() => {
   // Check URL parameters for form submission status
   useVisibleTask$(({ track }) => {
     track(() => location.url.searchParams);
-    
-    const status = location.url.searchParams.get('status');
-    const message = location.url.searchParams.get('message');
-    
-    if (status === 'success') {
-      formStatus.value = 'success';
+
+    const status = location.url.searchParams.get("status");
+    const message = location.url.searchParams.get("message");
+
+    if (status === "success") {
+      formStatus.value = "success";
       // Reset form on success
       state.fullname = "";
       state.email = "";
       state.subject = "";
       state.message = "";
-    } else if (status === 'error') {
-      formStatus.value = 'error';
-      
+    } else if (status === "error") {
+      formStatus.value = "error";
+
       // Set error message based on the message parameter
       switch (message) {
-        case 'spam':
-          errorMessage.value = 'Spam detected. Form submission discarded.';
+        case "spam":
+          errorMessage.value = "Spam detected. Form submission discarded.";
           break;
-        case 'missing':
-          errorMessage.value = 'Please fill in all required fields.';
+        case "missing":
+          errorMessage.value = "Please fill in all required fields.";
           break;
-        case 'invalid_email':
-          errorMessage.value = 'Please enter a valid email address.';
+        case "invalid_email":
+          errorMessage.value = "Please enter a valid email address.";
           break;
-        case 'send_failed':
-          errorMessage.value = 'Failed to send email. Please try again later.';
+        case "send_failed":
+          errorMessage.value = "Failed to send email. Please try again later.";
           break;
         default:
-          errorMessage.value = 'An error occurred. Please try again.';
+          errorMessage.value = "An error occurred. Please try again.";
       }
     }
   });
@@ -62,8 +68,8 @@ const Contact = component$(() => {
       state.email = "";
       state.subject = "";
       state.message = "";
-      formStatus.value = 'error';
-      errorMessage.value = 'Spam detected. Form submission discarded.';
+      formStatus.value = "error";
+      errorMessage.value = "Spam detected. Form submission discarded.";
     }
   });
 
@@ -81,22 +87,26 @@ const Contact = component$(() => {
           molestiae delectus animi et sed voluptas aliquam neque, natus quas
           ducimus.
         </p>
-        
+
         {/* Status messages */}
-        {formStatus.value === 'success' && (
-          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">
+        {formStatus.value === "success" && (
+          <div
+            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6"
+            role="alert">
             <p class="font-bold">Správa odoslaná!</p>
             <p>Ďakujeme za vašu správu. Čoskoro vás budeme kontaktovať.</p>
           </div>
         )}
-        
-        {formStatus.value === 'error' && (
-          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+
+        {formStatus.value === "error" && (
+          <div
+            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6"
+            role="alert">
             <p class="font-bold">Chyba!</p>
             <p>{errorMessage.value}</p>
           </div>
         )}
-        
+
         <form
           action="/send-email.php"
           method="POST"
