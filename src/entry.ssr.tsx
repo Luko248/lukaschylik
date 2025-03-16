@@ -18,16 +18,19 @@ import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
 
 export default function (opts: RenderToStreamOptions) {
-  return renderToStream(<Root />, {
+  // Create a new options object with all the properties
+  const options: RenderToStreamOptions = {
     manifest,
-    ...opts,
-    // Use container attributes to set attributes on the html tag.
     containerAttributes: {
       lang: "en-us",
-      ...opts.containerAttributes,
+      ...(opts.containerAttributes || {}),
     },
     serverData: {
-      ...opts.serverData,
+      ...(opts.serverData || {}),
     },
-  });
+    ...opts,
+  };
+
+  // Pass the single options object to renderToStream
+  return renderToStream(<Root />, options);
 }

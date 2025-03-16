@@ -18,4 +18,11 @@ import render from "./entry.ssr";
 /**
  * The default export is the QwikCity adapter used by Vite preview.
  */
-export default createQwikCity({ render, qwikCityPlan });
+// Create a single options object with all required properties
+const qwikCityOptions = {
+  render,
+  qwikCityPlan,
+};
+
+// Pass the single options object to createQwikCity
+export default createQwikCity(qwikCityOptions);
