@@ -5,7 +5,7 @@ const Icon = component$<IconProps>(({ name, cls }) => {
   const classes = [
     `icon icon-${name}`,
     "fill-white",
-    "w-5 lg:w-8",
+    "w-5",
     "aspect-square",
     cls,
   ]

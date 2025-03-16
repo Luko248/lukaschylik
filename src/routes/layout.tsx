@@ -21,7 +21,9 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 export default component$(() => {
   const headerRef = useSignal<Element>();
   const location = useLocation();
-  const showAlert = useSignal(location.url.searchParams.has("formSubmitted"));
+  const showAlert = useSignal(
+    location.url.searchParams.has("formSubmitted=true"),
+  );
 
   // Handle alert close
   const handleAlertClose = $(() => {
