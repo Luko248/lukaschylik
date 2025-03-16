@@ -1,4 +1,6 @@
 import { component$ } from "@builder.io/qwik";
+import path from "path";
+import { Button } from "~/components";
 import Container from "~/components/container/container";
 import Reference from "~/components/reference/reference";
 import Section from "~/components/section/section";
@@ -22,10 +24,17 @@ const References = component$(() => {
                 množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
                 framework. Už nespolupracujem s Riganti.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light text-white font-mono">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-20 text-white font-mono">
                 Momentálne pracujem pre AIS Servis, kde vyvíjam dizajnový systém
                 pre VIG Česká republika.
               </p>
+              <Button
+                variant="secondary"
+                ariaLabel="Mám záujem"
+                title="Mám záujem"
+                href="#contact">
+                Mám záujem
+              </Button>
             </div>
           </div>
           <ul class="ref-list list-none p-0 m-0 content-fade-in xl:mt-5 3xl:mt-8">

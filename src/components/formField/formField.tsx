@@ -35,12 +35,12 @@ const FormField = component$<FormFieldProps>(
   }) => {
     const inputClass = [
       type === "textarea" ? "field-sizing-content min-h-40" : "",
-      "block w-full bg-transparent border-gray-600 border-b-1 px-6 py-4 user-invalid:border-red-500 user-valid:border-green-400",
+      "block w-full bg-transparent border-gray-600 border-b-1 px-6 py-4 user-invalid:border-red-500 user-valid:border-green-400 text-base",
     ]
       .filter(Boolean)
       .join(" ");
 
-    const labelClass = ["text-black grid gap-2 text-lg", className]
+    const labelClass = ["text-black grid gap-2 text-lg font-mono", className]
       .filter(Boolean)
       .join(" ");
 

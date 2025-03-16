@@ -1,9 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
 
-/**
- * The RouterHead component is placed inside of the document `<head>` element.
- */
 export const RouterHead = component$(() => {
   const head = useDocumentHead();
   const loc = useLocation();
@@ -24,12 +21,12 @@ export const RouterHead = component$(() => {
       />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-      {/* Basic meta tags */}
       <meta name="description" content={description} />
       <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta http-equiv="Content-Language" content="sk" />
       <meta name="format-detection" content="telephone=no" />
+      <meta name="theme-color" content="#000"></meta>
       <meta name="robots" content="index, follow" />
       <meta
         name="keywords"
