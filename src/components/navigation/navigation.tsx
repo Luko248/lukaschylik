@@ -75,16 +75,14 @@ const Navigation = component$<NavigationProps>(({ links }) => {
       </nav>
       <button
         type="button"
-        class={[
+        class={cls(
           "nav__toggler fixed md:relative top-4 right-4",
           "w-10 h-10",
           "mix-blend-difference md:mix-blend-normal",
           "text-white cursor-pointer visible md:invisible",
           state.isOpen && "nav__toggler--open",
           "z-90",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        )}
         aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
         title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
         onClick$={toggleMenu}></button>

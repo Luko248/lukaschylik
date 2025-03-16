@@ -3,25 +3,37 @@ import { Container } from "~/components";
 
 const Footer = component$(() => {
   return (
-    <footer class="bg-black text-white">
-      <Container size="full" className="relative z-10 isolate">
-        <div class="grid grid-cols-1 gap-6">
-          <div class="flex justify-between items-center">
-            <div>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-18 font-mono">
-                © 2016 - {new Date().getFullYear()} All rights reserved
-              </p>
-            </div>
-            <div>
+    <footer class="bg-black text-white py-8">
+      <Container size="full" className="relative z-10 isolate grid gap-5 ">
+        <div>
+          <h3 class="mb-5 text-2xl font-bold">Kontaktné údaje</h3>
+          <address class="font-mono">
+            Lukáš Chylík
+            <br />
+            Hybešova 308/61, 602 00 Brno
+            <br />
+            Česká republika
+            <br />
+            <br />
+            <span>
+              <strong>IČO: </strong>
+              05483247
+            </span>
+            <br />
+            <span>
+              <b>Email: </b>
               <a
-                href="#"
-                class="text-white
-                hover:text-primary
-                transition-colors">
-                Privacy Policy
+                class="hover:underline"
+                href="mailto:chylik.lukas@gmail.com"
+                role="internal"
+                rel="noreferer">
+                chylik.lukas@gmail.com
               </a>
-            </div>
-          </div>
+            </span>
+          </address>
+          <small class=" leading-relaxed font-light font-mono mt-4 block">
+            ©{new Date().getFullYear()} Všetky práva vyhradené.
+          </small>
         </div>
       </Container>
     </footer>

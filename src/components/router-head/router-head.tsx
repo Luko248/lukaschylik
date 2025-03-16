@@ -28,9 +28,15 @@ export const RouterHead = component$(() => {
       <meta name="description" content={description} />
       <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta http-equiv="Content-Language" content="sk" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="keywords" content="" />
+      <meta name="robots" content="index, follow" />
+      <meta
+        name="keywords"
+        content="web developer, frontend developer, creative developer, UI/UX design, web applications, Lukáš Chylík, Brno developer, web development, javascript, typescript, react"
+      />
       <meta name="author" content="Lukáš Chylík" />
+      <meta name="publisher" content="Lukáš Chylík" />
 
       {/* Schema.org markup */}
       <meta itemProp="name" content={title} />

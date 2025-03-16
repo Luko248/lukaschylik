@@ -5,7 +5,12 @@ import { cls } from "~/utils";
 const Intro = component$(() => {
   return (
     <Container size="lg" className="relative z-10 isolate">
-      <div class="intro grid gap-4 place-items-center content-center min-h-svh text-center">
+      <div
+        class={cls(
+          "intro",
+          "grid gap-4 place-items-center content-center",
+          "min-h-svh text-center",
+        )}>
         <h1
           class={cls(
             "intro__title",
@@ -18,7 +23,7 @@ const Intro = component$(() => {
           <br />
           Chylík
         </h1>
-        <div class="grid place-items-center content-center">
+        <div class={cls("grid place-items-center content-center")}>
           <strong
             class={cls(
               "intro__subtitle",
