@@ -21,7 +21,7 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
       )}>
       <h3
         class={cls(
-          "text-4xl sm:text-5xl xl:text-[clamp(1.5rem,3svi,2.5rem)] 2xl:text-[clamp(2rem,4svi,3rem)] 3xl:text-[clamp(2rem,6svi,6rem)]",
+          "text-4xl sm:text-5xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
           "font-regular tracking-widest 2xl:tracking-[.15em] 3xl:tracking-[.35em]",
           "text-white group-hover:text-yellow-500",
           "transition-colors duration-300 ease-in-out",
