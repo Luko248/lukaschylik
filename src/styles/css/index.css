@@ -367,7 +367,7 @@ strong {
     inset: 0 0 auto 0;
     clip-path: polygon(50% 100%, 0 0, 100% 0);
     translate: 0 -100%;
-    transform-origin: top center;
+    transform-origin: top;
     animation-range: exit -30svb;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -379,7 +379,6 @@ strong {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     translate: 0 100%;
-    transform-origin: bottom center;
     animation-range: exit;
   }
   @media (prefers-reduced-motion: reduce) {
