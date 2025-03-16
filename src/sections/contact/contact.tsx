@@ -97,7 +97,7 @@ const Contact = component$(() => {
             required
           />
           <FormField
-            label="Vaše správa"
+            label="Vaša správa"
             type="textarea"
             name="message"
             value={state.message}
