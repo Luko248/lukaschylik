@@ -69,6 +69,15 @@ strong {
   }
 }
 @layer _components {
+  .alert-progress {
+    scale: 0 1;
+    animation: show-progress var(--alert_duration) linear forwards;
+  }
+  @keyframes show-progress {
+    to {
+      scale: 1 1;
+    }
+  }
   @property --btn_gradient-length {
     syntax: "<percentage>";
     inherits: false;

@@ -38,17 +38,25 @@ const Contact = component$(() => {
           molestiae delectus animi et sed voluptas aliquam neque, natus quas
           ducimus.
         </p>
-        
+
         <form
           action="https://formsubmit.co/chylik.lukas@gmail.com"
           method="POST"
           onSubmit$={handleSubmit}
           class="grid grid-cols-1 gap-6 content-fade-in content-fade-in--entry">
           {/* FormSubmit configuration */}
-          <input type="hidden" name="_subject" value="New contact form submission" />
+          <input
+            type="hidden"
+            name="_subject"
+            value="New contact form submission"
+          />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://lukaschylik.sk/?formSubmitted=true" />
-          
+          <input
+            type="hidden"
+            name="_next"
+            value="https://lukaschylik.sk/?formSubmitted=true"
+          />
+
           {/* Honeypot field - FormSubmit will automatically detect this */}
           <FormField
             label="HP"

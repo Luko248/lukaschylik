@@ -1,31 +1,12 @@
-// Alert component styles
 @mixin create-alert {
-  .alert {
-    // Custom animation for progress bar
-    @keyframes alert-progress-shrink {
-      from {
-        transform: scaleX(1);
-      }
-      to {
-        transform: scaleX(0);
-      }
-    }
+  .alert-progress {
+    scale: 0 1;
+    animation: show-progress var(--alert_duration) linear forwards;
+  }
 
-    // Default animation duration
-    --alert-duration: 5s;
-
-    // Ensure good contrast and readability
-    font-weight: 500;
-    line-height: 1.5;
-
-    // Add transition for smooth appearance/disappearance
-    transition:
-      opacity 0.3s ease-in-out,
-      transform 0.3s ease-in-out;
-
-    // Ensure the progress bar is visible
-    .alert-progress {
-      transform-origin: left;
+  @keyframes show-progress {
+    to {
+      scale: 1 1;
     }
   }
 }
