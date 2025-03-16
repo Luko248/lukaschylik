@@ -10,7 +10,7 @@ export const RouterHead = component$(() => {
 
   const title = head.title || "Lukáš Chylík | Creative web developer";
   const description =
-    "Explore my portfolio showcasing dynamic web applications and innovative solutions. Skilled in frontend, back-end, and UI/UX design. Contact me for collaborations.";
+    "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.";
   const imageUrl = "./images/profile/me.webp";
 
   return (

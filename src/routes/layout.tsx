@@ -20,7 +20,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 
 /**
  * Default head metadata for all routes
- * This includes the Google Tag Manager script
+ * This includes the Google Tag Manager script and structured data
  */
 export const head: DocumentHead = {
   scripts: [
@@ -33,6 +33,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KQFH8PWL');`,
       props: {
         async: true,
+      },
+    },
+    {
+      key: "structuredData",
+      script: `{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "#person",
+      "name": "Lukáš Chylík",
+      "jobTitle": "Creative web developer",
+      "email": "chylik.lukas@gmail.com",
+      "telephone": "+421721459889",
+      "image": "./images/profile/me.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hybešova 308/61",
+        "addressLocality": "Brno",
+        "postalCode": "602 00",
+        "addressCountry": "Česká republika"
+      },
+      "sameAs": [
+        "mailto:chylik.lukas@gmail.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "#website",
+      "url": "https://lukaschylik.sk/",
+      "name": "Lukáš Chylík | Creative web developer",
+      "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.",
+      "publisher": {
+        "@id": "#person"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "#webpage",
+      "url": "https://lukaschylik.sk/",
+      "name": "Lukáš Chylík | Creative web developer",
+      "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.",
+      "about": {
+        "@id": "#person"
+      },
+      "isPartOf": {
+        "@id": "#website"
+      },
+      "inLanguage": "sk"
+    }
+  ]
+}`,
+      props: {
+        type: "application/ld+json",
       },
     },
   ],
