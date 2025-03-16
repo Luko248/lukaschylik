@@ -35,9 +35,9 @@ const Intro = component$(() => {
               href="#about-me"
               variant="primary"
               size="md"
-              title="Let's talk"
+              title="Kto som?"
               className="intro__btn">
-              Let's talk
+              Kto som?
             </Button>
           </div>
         </div>
