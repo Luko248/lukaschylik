@@ -24,7 +24,7 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "preview": "qwik build preview && vite preview --open",
+    "preview": "vite build --ssr src/entry.preview.tsx && vite preview --open",
     "start": "npm run format && concurrently \"vite --open --mode ssr\" \"npm run watch:css\"",
     "watch:css": "nodemon",
     "qwik": "qwik"
