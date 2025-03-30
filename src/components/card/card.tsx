@@ -21,11 +21,11 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
       )}>
       <h3
         class={cls(
-          "text-4xl sm:text-5xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
+          "text-3xl sm:text-4xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
           "font-regular tracking-widest 2xl:tracking-[.15em] 3xl:tracking-[.35em]",
           "text-white group-hover:text-yellow-500",
           "transition-colors duration-300 ease-in-out",
-          "py-6 px-8",
+          "py-3 sm:py-6 px-6 sm:px-8",
           "border-b-2 border-b-white",
           "uppercase",
         )}>
@@ -35,8 +35,8 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
         class={cls(
           "grid grid-rows-subgrid row-span-2",
           "gap-inherit",
-          "p-8 pt-0",
-          "text-l lg:text-xl font-mono",
+          "p-6 pt-0 sm:p-8 sm:pt-0",
+          "text-base lg:text-xl font-mono",
           "leading-relaxed font-light",
           "mb-0 3xl:mb-8 text-white",
           "content-start",
@@ -46,7 +46,7 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
       <div
         class={cls(
           "flex justify-between flex-col 2xl:flex-row",
-          "gap-5 p-8",
+          "gap-5 p-6 sm:p-8",
           "items-stretch 2xl:items-center",
         )}>
         <strong
@@ -54,11 +54,11 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
             "group cursor-help",
             "inline-block",
             "text-center 2xl:text-start",
-            "font-bold text-4xl 3xl:text-5xl",
+            "font-bold text-3xl sm:text-4xl 3xl:text-5xl",
           )}>
           {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
           {showVat && (
-            <small class="block text-base font-light opacity-80">
+            <small class="block text-sm sm:text-base font-light opacity-80">
               Cena s DPH / 1h
             </small>
           )}

@@ -32,7 +32,7 @@ const Contact = component$(() => {
           className="content-fade-in--entry"
           dark={true}
         />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-18 font-mono">
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono">
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
         </p>
@@ -41,7 +41,7 @@ const Contact = component$(() => {
           action="https://formsubmit.co/chylik.lukas@gmail.com"
           method="POST"
           onSubmit$={handleSubmit}
-          class="grid grid-cols-1 gap-6 content-fade-in content-fade-in--entry">
+          class="grid grid-cols-1 gap-4 sm:gap-6 content-fade-in content-fade-in--entry">
           {/* FormSubmit configuration */}
           <input
             type="hidden"

@@ -136,7 +136,7 @@ export default component$(() => {
         />
         <Intro />
       </header>
-      <main class="overflow-y-hidden">
+      <main>
         <IconSet />
         <Alert
           message="Vaša správa bola úspešne odoslaná. Ďakujeme!"

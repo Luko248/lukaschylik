@@ -25,7 +25,7 @@ const References = component$(() => {
             "grid",
             "grid-cols-1 xl:grid-cols-3",
             "grid-rows-[auto_auto_1fr_auto]",
-            "gap-12 xl:gap-x-8 2xl:gap-x-12 3xl:gap-x-18",
+            "gap-6 sm:gap-8 md:gap-12 xl:gap-x-8 2xl:gap-x-12 3xl:gap-x-18",
             "content-fade-in content-fade-in--entry",
           )}>
           <Card title="Konzultácie" price={2000} path="#contact">

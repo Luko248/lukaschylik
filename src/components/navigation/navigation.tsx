@@ -36,7 +36,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative z-20",
-            "text-xl md:text-l lg:text-xl",
+            "text-lg md:text-l lg:text-xl",
             "text-white uppercase",
             "decoration-secondary decoration-5 underline-offset-8",
             "no-underline hover:underline",
@@ -64,7 +64,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   rel="internal"
                   onClick$={closeMenuOnMobile}
                   class={cls(
-                    "text-xl md:text-l lg:text-xl",
+                    "text-lg md:text-l lg:text-xl",
                     "text-white uppercase",
                     "decoration-secondary decoration-5 underline-offset-8",
                     "no-underline hover:underline",
