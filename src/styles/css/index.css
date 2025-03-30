@@ -333,11 +333,12 @@ strong {
   }
 }
 @layer _modules {
-  header:has(.intro):before, header:has(.intro):after {
-    --header-pseudo_display: block;
+  header {
+    overflow: clip;
   }
   header[data-initialize=true]:before, header[data-initialize=true]:after {
-    --header-pseudo_anim: header-bg-zoom-in forwards;
+    animation: triangle-exit forwards;
+    animation-range-start: exit;
     translate: 0 0;
     animation-timeline: view();
   }
@@ -347,16 +348,16 @@ strong {
     }
   }
   header:before, header:after {
-    display: var(--header-pseudo_display, none);
+    display: block;
     content: "";
     position: absolute;
     block-size: 135svb;
     inline-size: 100svi;
-    will-change: translate, opacity;
+    will-change: translate, opacity, clip-path;
     z-index: -1;
     background-color: hsl(0, 0%, 0%);
     opacity: 0.5;
-    animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
+    animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   }
   @media (prefers-reduced-motion: reduce) {
     header:before, header:after {
@@ -365,10 +366,9 @@ strong {
   }
   header:before {
     inset: 0 0 auto 0;
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
     translate: 0 -100%;
     transform-origin: top;
-    animation-range: exit -30svb;
   }
   @media (prefers-reduced-motion: reduce) {
     header:before {
@@ -377,9 +377,9 @@ strong {
   }
   header:after {
     inset: auto 0 0 0;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
     translate: 0 100%;
-    animation-range: exit;
+    transform-origin: bottom;
   }
   @media (prefers-reduced-motion: reduce) {
     header:after {
@@ -387,10 +387,10 @@ strong {
     }
   }
   .intro {
-    animation: var(--intro_anim);
+    animation: header-content-fade-out forwards;
+    animation-range-start: exit;
     animation-timeline: view();
     will-change: translate, opacity;
-    overflow: clip;
   }
   @media (prefers-reduced-motion: reduce) {
     .intro {
@@ -438,6 +438,12 @@ strong {
       translate: 0 0;
     }
   }
+  @keyframes triangle-exit {
+    to {
+      scale: 2;
+      opacity: 1;
+    }
+  }
   @keyframes show-title {
     to {
       scale: 1;
@@ -456,15 +462,10 @@ strong {
       translate: 0 200%;
     }
   }
-  @keyframes header-bg-zoom-in {
-    to {
-      opacity: 1;
-      scale: 2;
-    }
-  }
   @keyframes header-content-fade-out {
     to {
       translate: 0 -20svb;
+      scale: 1.2;
       opacity: 0;
     }
   }

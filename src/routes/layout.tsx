@@ -113,7 +113,7 @@ export default component$(() => {
 
   return (
     <>
-      <header ref={headerRef} class="overflow-hidden h-full max-w-svw">
+      <header ref={headerRef} class="max-h-screen max-w-svw">
         <Navigation
           links={[
             {

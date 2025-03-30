@@ -4,48 +4,33 @@
 
 @mixin create-intro {
   header {
-    &:has(.intro) {
-      &:before,
-      &:after {
-        --header-pseudo_display: block;
-      }
-    }
+    overflow: clip;
 
     &[data-initialize="true"] {
       &:before,
       &:after {
-        --header-pseudo_anim: header-bg-zoom-in forwards;
+        animation: triangle-exit forwards;
+        animation-range-start: exit;
         translate: 0 0;
         animation-timeline: view();
-
         @include mq-reduce-motion {
           animation: none;
         }
       }
-
-      // .intro {
-      //   animation: header-content-fade-out forwards;
-      //   animation-range-start: exit 30svb;
-      //   animation-timeline: view();
-
-      //   @include mq-reduce-motion {
-      //     animation: none;
-      //   }
-      // }
     }
 
     &:before,
     &:after {
-      display: var(--header-pseudo_display, none);
+      display: block;
       content: "";
       position: absolute;
       block-size: 135svb;
       inline-size: 100svi;
-      will-change: translate, opacity;
+      will-change: translate, opacity, clip-path;
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
+      animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 
       @include mq-reduce-motion {
         animation: none;
@@ -54,10 +39,9 @@
 
     &:before {
       inset: 0 0 auto 0;
-      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
       translate: 0 -100%;
       transform-origin: top;
-      animation-range: exit -30svb;
 
       @include mq-reduce-motion {
         translate: 0 0;
@@ -66,9 +50,9 @@
 
     &:after {
       inset: auto 0 0 0;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
       translate: 0 100%;
-      animation-range: exit;
+      transform-origin: bottom;
 
       @include mq-reduce-motion {
         translate: 0 0;
@@ -77,10 +61,10 @@
   }
 
   .intro {
-    animation: var(--intro_anim);
+    animation: header-content-fade-out forwards;
+    animation-range-start: exit;
     animation-timeline: view();
     will-change: translate, opacity;
-    overflow: clip;
 
     @include mq-reduce-motion {
       animation: none;
@@ -129,6 +113,13 @@
     }
   }
 
+  @keyframes triangle-exit {
+    to {
+      scale: 2;
+      opacity: 1;
+    }
+  }
+
   @keyframes show-title {
     to {
       scale: 1;
@@ -150,16 +141,10 @@
     }
   }
 
-  @keyframes header-bg-zoom-in {
-    to {
-      opacity: 1;
-      scale: 2;
-    }
-  }
-
   @keyframes header-content-fade-out {
     to {
       translate: 0 -20svb;
+      scale: 1.2;
       opacity: 0;
     }
   }
