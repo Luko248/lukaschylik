@@ -336,11 +336,13 @@ strong {
   header {
     overflow: clip;
   }
-  header[data-initialize=true]:before, header[data-initialize=true]:after {
-    animation: triangle-exit forwards;
-    animation-range-start: exit;
-    translate: 0 0;
-    animation-timeline: view();
+  @supports (view-timeline-name: --foo) {
+    header[data-initialize=true]:before, header[data-initialize=true]:after {
+      animation: triangle-exit forwards;
+      animation-range-start: exit;
+      translate: 0 0;
+      animation-timeline: view();
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     header[data-initialize=true]:before, header[data-initialize=true]:after {
@@ -362,6 +364,11 @@ strong {
   @media (prefers-reduced-motion: reduce) {
     header:before, header:after {
       animation: none;
+    }
+  }
+  @media screen and (width <= 768px) {
+    header:before, header:after {
+      display: none;
     }
   }
   header:before {
@@ -386,11 +393,13 @@ strong {
       translate: 0 0;
     }
   }
-  .intro {
-    animation: header-content-fade-out forwards;
-    animation-range-start: exit;
-    animation-timeline: view();
-    will-change: translate, opacity;
+  @supports (view-timeline-name: --foo) {
+    .intro {
+      animation: header-content-fade-out forwards;
+      animation-range-start: exit;
+      animation-timeline: view();
+      will-change: translate, opacity;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .intro {

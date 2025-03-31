@@ -9,10 +9,13 @@
     &[data-initialize="true"] {
       &:before,
       &:after {
-        animation: triangle-exit forwards;
-        animation-range-start: exit;
-        translate: 0 0;
-        animation-timeline: view();
+        @supports (view-timeline-name: --foo) {
+          animation: triangle-exit forwards;
+          animation-range-start: exit;
+          translate: 0 0;
+          animation-timeline: view();
+        }
+
         @include mq-reduce-motion {
           animation: none;
         }
@@ -34,6 +37,10 @@
 
       @include mq-reduce-motion {
         animation: none;
+      }
+
+      @include mq-responsive(tablet, max) {
+        display: none;
       }
     }
 
@@ -61,10 +68,12 @@
   }
 
   .intro {
-    animation: header-content-fade-out forwards;
-    animation-range-start: exit;
-    animation-timeline: view();
-    will-change: translate, opacity;
+    @supports (view-timeline-name: --foo) {
+      animation: header-content-fade-out forwards;
+      animation-range-start: exit;
+      animation-timeline: view();
+      will-change: translate, opacity;
+    }
 
     @include mq-reduce-motion {
       animation: none;
