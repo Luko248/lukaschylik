@@ -8,20 +8,6 @@ const Contact = component$(() => {
     email: "",
     subject: "",
     message: "",
-    extraField: "",
-  });
-
-  // Client-side honeypot check as a fallback
-  const handleSubmit = $((e: Event) => {
-    if (state.extraField) {
-      e.preventDefault();
-      // If honeypot field is filled, discard the form data
-      state.fullname = "";
-      state.email = "";
-      state.subject = "";
-      state.message = "";
-      alert("Spam detected. Form submission discarded.");
-    }
   });
 
   return (
@@ -40,7 +26,6 @@ const Contact = component$(() => {
         <form
           action="https://formsubmit.co/chylik.lukas@gmail.com"
           method="POST"
-          onSubmit$={handleSubmit}
           class="grid grid-cols-1 gap-4 sm:gap-6 content-fade-in content-fade-in--entry">
           {/* FormSubmit configuration */}
           <input
@@ -48,22 +33,18 @@ const Contact = component$(() => {
             name="_subject"
             value="New contact form submission"
           />
-          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_captcha" value="true" />
           <input
             type="hidden"
             name="_next"
             value="https://lukaschylik.sk/?formSubmitted=true"
           />
-
-          {/* Honeypot field - FormSubmit will automatically detect this */}
           <FormField
             label="HP"
             type="text"
             name="_honey"
-            value={state.extraField}
-            onInput$={(e) =>
-              (state.extraField = (e.target as HTMLInputElement).value)
-            }
+            value=""
+            onInput$={() => {}}
             className="hidden"
           />
           <FormField
