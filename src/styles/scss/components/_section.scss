@@ -8,6 +8,7 @@
     position: relative;
 
     h2 {
+      paint-order: stroke fill;
       -webkit-text-stroke: 0.015em $color-white;
       animation-range: -8svb exit;
 

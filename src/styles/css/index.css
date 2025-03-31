@@ -292,6 +292,7 @@ strong {
     position: relative;
   }
   section h2 {
+    paint-order: stroke fill;
     -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation-range: -8svb exit;
   }
@@ -407,6 +408,7 @@ strong {
     }
   }
   .intro__title {
+    paint-order: stroke fill;
     -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation: show-title 0.5s ease-out 0.35s forwards;
   }
