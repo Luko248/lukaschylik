@@ -21,7 +21,6 @@ export default component$(() => {
     <Section id="blog">
       <Container size="lg">
         <SectionTitle text="Blog" />
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {posts.value.length > 0 ? (
             posts.value.map((post) => (

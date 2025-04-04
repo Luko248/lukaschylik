@@ -16,7 +16,6 @@ export interface BlogPost {
 // This function should only be used on the server
 export const getAllPosts = () => {
   const articlesDirectory = path.join(process.cwd(), "public/articles");
-
   // Get all markdown files from the articles directory
   const fileNames = fs.readdirSync(articlesDirectory);
 
@@ -58,7 +57,6 @@ export const getAllPosts = () => {
 export const getPostBySlug = (slug: string): BlogPost | undefined => {
   try {
     const articlesDirectory = path.join(process.cwd(), "public/articles");
-
     // Find the markdown file that matches the slug
     const fullPath = path.join(articlesDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
