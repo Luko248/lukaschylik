@@ -408,11 +408,11 @@ strong {
   }
 }
 @layer _modules {
-  header {
+  header:not([data-animation=false]) {
     overflow: clip;
   }
   @supports (view-timeline-name: --foo) {
-    header[data-initialize=true]:before, header[data-initialize=true]:after {
+    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
       animation: triangle-exit forwards;
       animation-range-start: exit;
       translate: 0 0;
@@ -420,11 +420,11 @@ strong {
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    header[data-initialize=true]:before, header[data-initialize=true]:after {
+    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
       animation: none;
     }
   }
-  header:before, header:after {
+  header:not([data-animation=false]):before, header:not([data-animation=false]):after {
     display: block;
     content: "";
     position: absolute;
@@ -437,34 +437,34 @@ strong {
     animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
   }
   @media (prefers-reduced-motion: reduce) {
-    header:before, header:after {
+    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
       animation: none;
     }
   }
   @media screen and (width <= 768px) {
-    header:before, header:after {
+    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
       display: none;
     }
   }
-  header:before {
+  header:not([data-animation=false]):before {
     inset: 0 0 auto 0;
     clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
     translate: 0 -100%;
     transform-origin: top;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:before {
+    header:not([data-animation=false]):before {
       translate: 0 0;
     }
   }
-  header:after {
+  header:not([data-animation=false]):after {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
     translate: 0 100%;
     transform-origin: bottom;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:after {
+    header:not([data-animation=false]):after {
       translate: 0 0;
     }
   }

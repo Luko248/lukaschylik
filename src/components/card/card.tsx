@@ -2,6 +2,7 @@ import { component$, Slot } from "@builder.io/qwik";
 import { CardProps } from "./card.types";
 import { Button } from "../button";
 import { cls } from "~/utils";
+import { Link } from "@builder.io/qwik-city";
 
 const formatPrice = (price: number) => {
   return price >= 10000
@@ -9,7 +10,16 @@ const formatPrice = (price: number) => {
     : price.toString();
 };
 
-const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
+const Card = component$(({ 
+  title, 
+  price, 
+  showVat = true, 
+  path,
+  isBlogPost,
+  date,
+  author,
+  description
+}: CardProps) => {
   return (
     <div
       class={cls(
@@ -41,6 +51,18 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
           "mb-0 3xl:mb-8 text-white",
           "content-start",
         )}>
+        {isBlogPost && (
+          <>
+            {description && <p class="mb-4">{description}</p>}
+            {(date || author) && (
+              <div class="flex items-center text-sm text-gray-300 mb-2">
+                {date && <span>{date}</span>}
+                {date && author && <span class="mx-2">•</span>}
+                {author && <span>{author}</span>}
+              </div>
+            )}
+          </>
+        )}
         <Slot />
       </div>
       <div
@@ -49,35 +71,47 @@ const Card = component$(({ title, price, showVat = true, path }: CardProps) => {
           "gap-5 p-6 sm:p-8",
           "items-stretch 2xl:items-center",
         )}>
-        <strong
-          class={cls(
-            "group cursor-help",
-            "inline-block",
-            "text-center 2xl:text-start",
-            "font-bold text-3xl sm:text-4xl 3xl:text-5xl",
-          )}>
-          {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
-          {showVat && (
-            <small class="block text-sm sm:text-base font-light opacity-80">
-              Cena s DPH / 1h
-            </small>
-          )}
-        </strong>
-        {showVat && price && (
-          <div
-            class="tooltip my-2 p-2 bg-white/10 font-semibold"
-            role="tooltip">
-            {`Cena bez DPH je ${formatPrice(price)} Kč`}
-          </div>
+        {isBlogPost ? (
+          <Button
+            variant="secondary"
+            ariaLabel="Čítať viac"
+            title="Čítať viac"
+            href={path}>
+            Čítať viac
+          </Button>
+        ) : (
+          <>
+            <strong
+              class={cls(
+                "group cursor-help",
+                "inline-block",
+                "text-center 2xl:text-start",
+                "font-bold text-3xl sm:text-4xl 3xl:text-5xl",
+              )}>
+              {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
+              {showVat && (
+                <small class="block text-sm sm:text-base font-light opacity-80">
+                  Cena s DPH / 1h
+                </small>
+              )}
+            </strong>
+            {showVat && price && (
+              <div
+                class="tooltip my-2 p-2 bg-white/10 font-semibold"
+                role="tooltip">
+                {`Cena bez DPH je ${formatPrice(price)} Kč`}
+              </div>
+            )}
+            <Button
+              variant="secondary"
+              ariaLabel={price ? `Mám záujem` : "Nedostupné"}
+              title={price ? ` Mám záujem` : "Nedostupné"}
+              disabled={!price}
+              href={path}>
+              {price ? ` Mám záujem` : "Nedostupné"}
+            </Button>
+          </>
         )}
-        <Button
-          variant="secondary"
-          ariaLabel={price ? `Mám záujem` : "Nedostupné"}
-          title={price ? ` Mám záujem` : "Nedostupné"}
-          disabled={!price}
-          href={path}>
-          {price ? ` Mám záujem` : "Nedostupné"}
-        </Button>
       </div>
     </div>
   );
