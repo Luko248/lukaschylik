@@ -102,6 +102,9 @@ export default component$(() => {
     location.url.searchParams.has("formSubmitted=true"),
   );
 
+  // Check if we're on the homepage
+  const isHomePage = location.url.pathname === "/";
+
   // Handle alert close
   const handleAlertClose = $(() => {
     showAlert.value = false;
@@ -115,6 +118,7 @@ export default component$(() => {
     <>
       <header
         ref={headerRef}
+        data-animation={isHomePage ? "true" : "false"}
         class="max-h-screen max-w-svw bg-black md:bg-transparent">
         <Navigation
           links={[
@@ -131,12 +135,16 @@ export default component$(() => {
               text: "Služby",
             },
             {
+              href: "/blog",
+              text: "Blog",
+            },
+            {
               href: "#contact",
               text: "Kontakt",
             },
           ]}
         />
-        <Intro />
+        {isHomePage && <Intro />}
       </header>
       <main>
         <IconSet />
