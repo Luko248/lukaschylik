@@ -29,7 +29,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "md:backdrop-blur-md",
           "md:mix-blend-difference",
           state.isOpen && "nav--open",
-        )}>
+        )}
+        aria-label="Main navigation">
         <a
           href="/"
           role="menuitem"
@@ -44,6 +45,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           Domov
         </a>
         <ul
+          id="navigation-menu"
           class={cls(
             "nav__list",
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
@@ -87,6 +89,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "z-90",
         )}
         aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+        aria-expanded={state.isOpen ? "true" : "false"}
+        aria-controls="navigation-menu"
         title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
         onClick$={toggleMenu}></button>
       <Social />
