@@ -360,7 +360,7 @@ strong {
     z-index: -1;
     background-color: hsl(0, 0%, 0%);
     opacity: 0.5;
-    animation: show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
   }
   @media (prefers-reduced-motion: reduce) {
     header:before, header:after {
@@ -409,7 +409,7 @@ strong {
   }
   .intro__title {
     paint-order: stroke fill;
-    -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
+    -webkit-text-stroke: 0.025em hsl(0, 0%, 100%);
     animation: show-title 0.5s ease-out 0.35s forwards;
   }
   @media (prefers-reduced-motion: reduce) {

@@ -22,8 +22,6 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <html lang="sk" />
         {!isDev && (
           <link
             rel="manifest"
@@ -32,7 +30,7 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body class="bg-black-900">
+      <body class="bg-black-900" lang="sk">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KQFH8PWL"

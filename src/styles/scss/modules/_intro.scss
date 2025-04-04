@@ -33,7 +33,10 @@
       z-index: -1;
       background-color: $color-black;
       opacity: 0.5;
-      animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
+      animation: var(
+        --header-pseudo_anim,
+        show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
+      );
 
       @include mq-reduce-motion {
         animation: none;
@@ -81,7 +84,7 @@
 
     &__title {
       paint-order: stroke fill;
-      -webkit-text-stroke: 0.015em $color-white;
+      -webkit-text-stroke: 0.025em $color-white;
       animation: show-title 0.5s ease-out 0.35s forwards;
 
       @include mq-reduce-motion {
