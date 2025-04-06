@@ -125,7 +125,14 @@ strong {
   }
   .btn {
     min-inline-size: 11.25rem;
-    background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
+    background-image: var(
+      --btn_gradient,
+      linear-gradient(
+        160deg,
+        hsl(0, 0%, 100%) var(--btn_gradient-length),
+        hsl(0, 0%, 0%) var(--btn_gradient-length)
+      )
+    ) !important;
     transition: --btn_gradient-length 0.25s ease-in-out;
   }
   @media (hover: hover) {
@@ -145,13 +152,20 @@ strong {
     place-items: center;
     line-height: inherit;
     inset: 0;
-    background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
+    background-image: var(
+      --btn-after_gradient,
+      linear-gradient(
+        160deg,
+        hsl(0, 0%, 0%) var(--btn_gradient-length),
+        hsl(0, 0%, 100%) var(--btn_gradient-length)
+      )
+    );
     padding: inherit;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: --btn_gradient-length 0.25s ease-in-out;
   }
-  .btn[data-variant=secondary] {
+  .btn[data-variant="secondary"] {
     --btn_gradient: linear-gradient(
       160deg,
       hsl(0, 0%, 0%) var(--btn_gradient-length),
@@ -165,7 +179,9 @@ strong {
   }
   .card {
     box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
-    transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
+    transition:
+      box-shadow 0.25s ease-in-out,
+      translate 0.25s ease-in-out;
     translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
     anchor-scope: --vat-tooltip;
   }
@@ -216,8 +232,15 @@ strong {
     align-self: end;
   }
   .me {
+<<<<<<< HEAD
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     translate: 0;
+=======
+    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%))
+      drop-shadow(-1px -1px 1px hsl(0, 0%, 100%))
+      drop-shadow(1px 1px 1px hsl(0, 0%, 100%))
+      grayscale(var(--me_filter-greyscale)) contrast(1.15);
+>>>>>>> 06632cc (update packages)
     inline-size: min(768px, 70%);
     transition: filter 0.25s ease-in-out;
   }
@@ -297,13 +320,18 @@ strong {
     --after_rotate: 45deg;
     --pseudo_trans-origin: center;
   }
-  .nav__toggler:before, .nav__toggler:after {
+  .nav__toggler:before,
+  .nav__toggler:after {
     content: "";
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    transition: scale 0.25s ease-in-out, translate 0.25s ease-in-out, rotate 0.25s ease-in-out, transform-origin 0.25s ease-in-out;
+    transition:
+      scale 0.25s ease-in-out,
+      translate 0.25s ease-in-out,
+      rotate 0.25s ease-in-out,
+      transform-origin 0.25s ease-in-out;
     background-color: hsl(0, 0%, 100%);
     inline-size: 100%;
     block-size: 2px;
@@ -339,7 +367,8 @@ strong {
     position: relative;
     overflow: clip;
   }
-  .reference :where(span, small):before, .reference :where(span, small):after {
+  .reference :where(span, small):before,
+  .reference :where(span, small):after {
     content: attr(aria-label);
     position: absolute;
     inset: 0;
@@ -375,7 +404,13 @@ strong {
   }
   .skills {
     max-width: 100svi;
-    mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
+    mask: linear-gradient(
+      90deg,
+      hsla(0, 0%, 0%, 0),
+      hsl(0, 0%, 0%) 10%,
+      hsl(0, 0%, 0%) 90%,
+      hsla(0, 0%, 0%, 0)
+    );
   }
   .skills:hover li:not(:hover) {
     opacity: 0.5;
@@ -408,11 +443,12 @@ strong {
   }
 }
 @layer _modules {
-  header:not([data-animation=false]) {
+  header:not([data-animation="false"]) {
     overflow: clip;
   }
   @supports (view-timeline-name: --foo) {
-    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
+    header:not([data-animation="false"])[data-initialize="true"]:before,
+    header:not([data-animation="false"])[data-initialize="true"]:after {
       animation: triangle-exit forwards;
       animation-range-start: exit;
       translate: 0 0;
@@ -420,11 +456,13 @@ strong {
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
+    header:not([data-animation="false"])[data-initialize="true"]:before,
+    header:not([data-animation="false"])[data-initialize="true"]:after {
       animation: none;
     }
   }
-  header:not([data-animation=false]):before, header:not([data-animation=false]):after {
+  header:not([data-animation="false"]):before,
+  header:not([data-animation="false"]):after {
     display: block;
     content: "";
     position: absolute;
@@ -434,37 +472,42 @@ strong {
     z-index: -1;
     background-color: hsl(0, 0%, 0%);
     opacity: 0.5;
-    animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
+    animation: var(
+      --header-pseudo_anim,
+      show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards
+    );
   }
   @media (prefers-reduced-motion: reduce) {
-    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
+    header:not([data-animation="false"]):before,
+    header:not([data-animation="false"]):after {
       animation: none;
     }
   }
   @media screen and (width <= 768px) {
-    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
+    header:not([data-animation="false"]):before,
+    header:not([data-animation="false"]):after {
       display: none;
     }
   }
-  header:not([data-animation=false]):before {
+  header:not([data-animation="false"]):before {
     inset: 0 0 auto 0;
     clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
     translate: 0 -100%;
     transform-origin: top;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:not([data-animation=false]):before {
+    header:not([data-animation="false"]):before {
       translate: 0 0;
     }
   }
-  header:not([data-animation=false]):after {
+  header:not([data-animation="false"]):after {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
     translate: 0 100%;
     transform-origin: bottom;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:not([data-animation=false]):after {
+    header:not([data-animation="false"]):after {
       translate: 0 0;
     }
   }
