@@ -12,6 +12,7 @@ This is my first blog post using Qwik and markdown. I'm excited to share my thou
 ## What to Expect
 
 In this blog, I'll be sharing:
+
 - Web development tips and tricks
 - My experiences as a creative web developer
 - Tutorials and guides for frontend technologies
