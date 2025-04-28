@@ -3,28 +3,42 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-animated-content {
-  // .content-fade-in {
-  //   opacity: var(--content_opacity, 0);
-  //   scale: var(--content_scale, 0.95);
-  //   animation: var(--content_animation, content-fade-in linear forwards);
-  //   animation-timeline: view();
-  //   z-index: 10;
-  //   position: relative;
-  //   animation-range: var(--animation_range, -20svb);
-  //   transform-origin: left;
-  // }
+  section:has(.content-fade-in) {
+    view-timeline: --section-view block;
+    view-timeline-inset: -200px;
+  }
 
-  // @keyframes content-fade-in {
-  //   0%,
-  //   20% {
-  //     opacity: 0;
-  //     scale: 0.95;
-  //   }
+  .content-fade-in {
+    z-index: 10;
+    position: relative;
+    transform-origin: left;
 
-  //   50%,
-  //   100% {
-  //     scale: 1;
-  //     opacity: 1;
-  //   }
-  // }
+    @supports (view-timeline-name: --foo) {
+      animation: var(--content_animation, content-fade-in forwards);
+      animation-timeline: --section-view;
+      will-change: opacity, scale;
+      opacity: var(--content_opacity, 0);
+      scale: var(--content_scale, 0.95);
+    }
+
+    @include mq-reduce-motion {
+      animation: none;
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes content-fade-in {
+    0%,
+    20% {
+      opacity: 0;
+      scale: 0.95;
+    }
+
+    50%,
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
 }

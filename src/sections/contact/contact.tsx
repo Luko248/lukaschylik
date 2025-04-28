@@ -18,7 +18,7 @@ const Contact = component$(() => {
           className="content-fade-in--entry"
           dark={true}
         />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono">
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono content-fade-in">
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
         </p>

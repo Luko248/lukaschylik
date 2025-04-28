@@ -75,6 +75,41 @@ strong {
       scale: 1 1;
     }
   }
+  section:has(.content-fade-in) {
+    view-timeline: --section-view block;
+    view-timeline-inset: -200px;
+  }
+  .content-fade-in {
+    z-index: 10;
+    position: relative;
+    transform-origin: left;
+  }
+  @supports (view-timeline-name: --foo) {
+    .content-fade-in {
+      animation: var(--content_animation, content-fade-in forwards);
+      animation-timeline: --section-view;
+      will-change: opacity, scale;
+      opacity: var(--content_opacity, 0);
+      scale: var(--content_scale, 0.95);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .content-fade-in {
+      animation: none;
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  @keyframes content-fade-in {
+    0%, 20% {
+      opacity: 0;
+      scale: 0.95;
+    }
+    50%, 100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
   @property --btn_gradient-length {
     syntax: "<percentage>";
     inherits: false;
@@ -174,7 +209,38 @@ strong {
   }
   .me {
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
+    translate: 0;
     inline-size: min(768px, 70%);
+    transition: filter 0.25s ease-in-out;
+  }
+  @supports (view-timeline-name: --foo) {
+    .me {
+      animation: show-me forwards;
+      animation-range-start: entry;
+      animation-timeline: view();
+      will-change: translate, filter;
+      translate: 0 30svb;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .me {
+      animation: none;
+      opacity: 1;
+      translate: 0 0;
+      --me_filter-greyscale: 25%;
+    }
+  }
+  @keyframes show-me {
+    0%, 20% {
+      --me_filter-greyscale: 100%;
+      translate: 0 30svb;
+      opacity: 0;
+    }
+    50%, 100% {
+      --me_filter-greyscale: 25%;
+      translate: 0 2rem;
+      opacity: 1;
+    }
   }
   :where(html, body):has(.nav--open) {
     overflow: hidden;
