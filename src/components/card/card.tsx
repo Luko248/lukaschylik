@@ -106,10 +106,10 @@ const Card = component$(
               <Button
                 variant="secondary"
                 ariaLabel={price ? `Mám záujem` : "Nedostupné"}
-                title={price ? ` Mám záujem` : "Nedostupné"}
+                title={price ? `Mám záujem` : "Nedostupné"}
                 disabled={!price}
                 href={path}>
-                {price ? ` Mám záujem` : "Nedostupné"}
+                {price ? `Mám záujem` : "Nedostupné"}
               </Button>
             </>
           )}
