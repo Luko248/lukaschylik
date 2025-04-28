@@ -234,21 +234,11 @@ strong {
     align-self: end;
   }
   .me {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
-    translate: 0;
-=======
-=======
->>>>>>> dd2549ba5dccc4a08c8eb01a4c7a3628e0b7fa6e
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%))
       drop-shadow(-1px -1px 1px hsl(0, 0%, 100%))
       drop-shadow(1px 1px 1px hsl(0, 0%, 100%))
       grayscale(var(--me_filter-greyscale)) contrast(1.15);
-<<<<<<< HEAD
->>>>>>> 06632cc (update packages)
-=======
->>>>>>> dd2549ba5dccc4a08c8eb01a4c7a3628e0b7fa6e
+    translate: 0;
     inline-size: min(768px, 70%);
     transition: filter 0.25s ease-in-out;
   }
