@@ -127,6 +127,7 @@ strong {
     min-inline-size: 11.25rem;
     background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
     transition: --btn_gradient-length 0.25s ease-in-out;
+    text-align: center;
   }
   @media (hover: hover) {
     .btn:hover {
