@@ -18,7 +18,7 @@ const About = component$(() => {
               className="about-title lg:row-start-1 lg:col-span-2 lg:col-start-1"
             />
             <div class="content-fade-in">
-              <p class="md:text-sm lg:text-xl leading-relaxed font-light mb-8 text-white font-mono">
+              <p class="md:text-sm lg:text-xl leading-relaxed font-light mb-8 text-gray-200 font-mono">
                 Som frontend developer špecializujúci sa na{" "}
                 <strong>vizuálnu logiku</strong>. S ôsmimi rokmi skúseností a
                 množstvom projektov za sebou som pracoval na všetkom od
@@ -31,7 +31,7 @@ const About = component$(() => {
                 . Momentálne sa zameriavam na implementáciu dizajnových
                 systémov.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-white font-mono">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-gray-200 font-mono">
                 Tiež pomáham vývojárom pri výbere správnej technológie pre
                 vizuálne aspekty ich projektov a ponúkam{" "}
                 <strong>konzultácie, workshopy a školenia</strong> v tejto

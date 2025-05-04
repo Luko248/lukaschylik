@@ -51,11 +51,11 @@ export default component$(() => {
 
   return (
     <Section id="blog-detail">
-      <Container size="sm">
+      <Container size="blog">
         <Link
           href="/blog"
           class="inline-flex items-center text-white mb-6 underline">
-          ← Späť na Blog
+          ← Späť na zoznam článkov
         </Link>
 
         <article class="blog">

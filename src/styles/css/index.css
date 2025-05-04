@@ -374,10 +374,9 @@ strong {
     position: relative;
   }
   section h2 {
-    paint-order: stroke fill;
+    paint-order: fill stroke;
     -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation-range: -8svb exit;
-    color: Canvas;
   }
   section h2[data-dark] {
     -webkit-text-stroke: 0.015em hsl(0, 0%, 0%);

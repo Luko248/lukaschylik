@@ -18,9 +18,6 @@ Web Animations API, které známe hlavně v podobě vlastností jako `transition
 - **`view-timeline-inset`**
 - **`timeline-scope`**
 
-**Začněme!**
-{post.value.title}
-
 ## **`scroll-timeline`: Definice časové osi scrollování**
 
 Vlastnost `scroll-timeline` slouží k definování tzv. "časové osy scrollování". Tato časová osa sleduje průběh scrollování elementu (nazývaného scroller) od jeho horního okraje ke spodnímu nebo od levého k pravému okraji.
