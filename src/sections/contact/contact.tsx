@@ -8,6 +8,48 @@ const Contact = component$(() => {
     email: "",
     subject: "",
     message: "",
+    submitting: false,
+  });
+  
+  // Handle form submission
+  const handleSubmit = $((event: SubmitEvent) => {
+    event.preventDefault();
+    
+    if (state.submitting) return;
+    state.submitting = true;
+    
+    // Get form data
+    const formData = new FormData(event.target as HTMLFormElement);
+    
+    // Send form data using fetch
+    fetch("https://formsubmit.co/ajax/chylik.lukas@gmail.com", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+      return response.json();
+    })      .then(() => {
+      // Reset form
+      state.fullname = "";
+      state.email = "";
+      state.subject = "";
+      state.message = "";
+      
+      // Add URL parameter to show success message and redirect
+      window.location.href = `${window.location.pathname}?formSubmitted=true`;
+    })
+    .catch(error => {
+      console.error("Form submission error:", error);
+      // Display error message (will be shown on the form itself)
+      state.submitting = false;
+      alert("Odoslanie správy zlyhalo. Skúste to znova, prosím.");
+    })
+    .finally(() => {
+      state.submitting = false;
+    });
   });
 
   return (
@@ -24,8 +66,7 @@ const Contact = component$(() => {
         </p>
 
         <form
-          action="https://formsubmit.co/chylik.lukas@gmail.com"
-          method="POST"
+          onSubmit$={handleSubmit}
           class="grid grid-cols-1 gap-4 sm:gap-6 content-fade-in content-fade-in--entry">
           {/* FormSubmit configuration */}
           <input
@@ -36,8 +77,8 @@ const Contact = component$(() => {
           <input type="hidden" name="_captcha" value="true" />
           <input
             type="hidden"
-            name="_next"
-            value="https://lukaschylik.sk/?formSubmitted=true"
+            name="_format"
+            value="json"
           />
           <FormField
             label="HP"
@@ -87,8 +128,13 @@ const Contact = component$(() => {
             }
             required
           />
-          <Button type="submit" title="Odoslať" variant="primary">
-            Odoslať
+          <Button 
+            type="submit" 
+            title="Odoslať" 
+            variant="primary"
+            disabled={state.submitting}
+          >
+            {state.submitting ? "Odosielam..." : "Odoslať"}
           </Button>
         </form>
       </Container>

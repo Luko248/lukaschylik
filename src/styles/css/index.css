@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @view-transition {
   navigation: auto;
 }
@@ -51,25 +52,25 @@ strong {
   font-weight: 700;
 }
 
-@layer _base, _components, _modules, _utils;
-@layer _base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+@layer base, _components, _modules, _utils;
+@layer base {
+  *:not(.blog) h1,
+  *:not(.blog) h2,
+  *:not(.blog) h3,
+  *:not(.blog) h4,
+  *:not(.blog) h5,
+  *:not(.blog) h6 {
     paint-order: stroke fill;
   }
-  address {
+  *:not(.blog) address {
     font-style: normal;
   }
-  textarea {
+  *:not(.blog) textarea {
     font-family: inherit;
     font-size: medium;
     resize: vertical;
   }
-  p {
+  *:not(.blog) p {
     max-inline-size: 65ch;
   }
 }
@@ -207,6 +208,12 @@ strong {
       position-anchor: --vat-tooltip;
       position-area: top;
     }
+  }
+  .icon {
+    display: block;
+    aspect-ratio: 1;
+    inline-size: var(--icon_size, 1rem);
+    fill: var(--icon_color, currentColor);
   }
   @property --me_filter-greyscale {
     syntax: "<percentage>";
@@ -368,11 +375,12 @@ strong {
   }
   section h2 {
     paint-order: stroke fill;
-    -webkit-text-stroke: 0.015em hsl(0, 0%, 100%);
     animation-range: -8svb exit;
+    color: hsl(0, 0%, 0%);
+    -webkit-text-stroke: 0.035em hsl(0, 0%, 100%);
   }
   section h2[data-dark] {
-    -webkit-text-stroke: 0.015em hsl(0, 0%, 0%);
+    -webkit-text-stroke: 0.035em hsl(0, 0%, 0%);
   }
   .skills {
     max-width: 100svi;
@@ -409,11 +417,215 @@ strong {
   }
 }
 @layer _modules {
-  header {
+  .blog {
+    color: oklch(87.2% 0.01 258.338deg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-inline: auto;
+  }
+  .blog__progress {
+    animation: article-progress forwards 1ms;
+    animation-timeline: scroll(block);
+    position: fixed;
+    inset: 0 0 auto 0;
+    background-color: hsl(51, 100%, 53%);
+    block-size: 0.25rem;
+    transform-origin: left;
+    scale: 0 1;
+    z-index: 1000;
+  }
+  .blog > * + * {
+    margin-top: 1.5em;
+  }
+  .blog header:before, .blog header:after {
+    display: none !important;
+  }
+  .blog h2,
+  .blog h3,
+  .blog h4,
+  .blog h5,
+  .blog h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 2.5em;
+    margin-bottom: 0.8em;
+    color: hsl(0, 0%, 100%);
+    padding-left: 0.5em;
+    border-left: 4px solid hsl(51, 100%, 53%);
+  }
+  .blog h2 {
+    font-size: 2.25rem;
+    letter-spacing: -0.03em;
+  }
+  .blog h3 {
+    font-size: 1.875rem;
+  }
+  .blog h4 {
+    font-size: 1.5rem;
+  }
+  .blog h5 {
+    font-size: 1.25rem;
+  }
+  .blog h6 {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .blog p {
+    margin-bottom: 1.5em;
+  }
+  .blog p:last-child {
+    margin-bottom: 0;
+  }
+  .blog .link,
+  .blog a {
+    color: hsl(51, 100%, 53%);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  .blog .link:hover, .blog .link:focus,
+  .blog a:hover,
+  .blog a:focus {
+    border-bottom-color: hsl(51, 100%, 53%);
+    color: hsl(51, 100%, 53%);
+  }
+  .blog ul,
+  .blog ol {
+    margin: 1.5em 0;
+    padding-left: 1.5em;
+  }
+  .blog ul li,
+  .blog ol li {
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+  .blog ul li::before,
+  .blog ol li::before {
+    position: absolute;
+    left: -1.5em;
+  }
+  .blog ul {
+    list-style: none;
+  }
+  .blog ul li::before {
+    content: "•";
+    color: hsl(51, 100%, 53%);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+  }
+  .blog ol {
+    list-style-type: decimal;
+    counter-reset: item;
+  }
+  .blog ol li {
+    counter-increment: item;
+  }
+  .blog pre {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1.5em;
+    overflow-x: auto;
+    margin: 2em 0;
+    font-family: "Fira Code", "Consolas", monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+  .blog code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: "Fira Code", "Consolas", monospace;
+  }
+  .blog img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2em 0;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  .blog img:hover {
+    transform: scale(1.01);
+  }
+  .blog blockquote {
+    margin: 2em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid hsl(51, 100%, 53%);
+    background: rgba(255, 255, 255, 0.05);
+    font-style: italic;
+  }
+  .blog blockquote p {
+    margin: 0;
+  }
+  .blog blockquote cite {
+    display: block;
+    margin-top: 1em;
+    font-size: 0.9em;
+    color: oklch(87.2% 0.01 258.338deg);
+    opacity: 0.8;
+    font-style: normal;
+  }
+  .blog table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 0.9em;
+  }
+  .blog th,
+  .blog td {
+    padding: 0.75em;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .blog th {
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .blog hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 3em 0;
+  }
+  @media (max-width: 768px) {
+    .blog {
+      font-size: 1rem;
+      padding: 1.5rem 1rem;
+    }
+    .blog h2 {
+      font-size: 2rem;
+    }
+    .blog h3 {
+      font-size: 1.75rem;
+    }
+    .blog h4 {
+      font-size: 1.5rem;
+    }
+    .blog h5 {
+      font-size: 1.25rem;
+    }
+    .blog h6 {
+      font-size: 1.125rem;
+    }
+    .blog pre {
+      padding: 1em;
+    }
+  }
+  @keyframes article-progress {
+    to {
+      scale: 1 1;
+    }
+  }
+  header:not([data-animation=false]) {
     overflow: clip;
   }
   @supports (view-timeline-name: --foo) {
-    header[data-initialize=true]:before, header[data-initialize=true]:after {
+    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
       animation: triangle-exit forwards;
       animation-range-start: exit;
       translate: 0 0;
@@ -421,11 +633,11 @@ strong {
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    header[data-initialize=true]:before, header[data-initialize=true]:after {
+    header:not([data-animation=false])[data-initialize=true]:before, header:not([data-animation=false])[data-initialize=true]:after {
       animation: none;
     }
   }
-  header:before, header:after {
+  header:not([data-animation=false]):before, header:not([data-animation=false]):after {
     display: block;
     content: "";
     position: absolute;
@@ -438,34 +650,34 @@ strong {
     animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
   }
   @media (prefers-reduced-motion: reduce) {
-    header:before, header:after {
+    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
       animation: none;
     }
   }
   @media screen and (width <= 768px) {
-    header:before, header:after {
+    header:not([data-animation=false]):before, header:not([data-animation=false]):after {
       display: none;
     }
   }
-  header:before {
+  header:not([data-animation=false]):before {
     inset: 0 0 auto 0;
     clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
     translate: 0 -100%;
     transform-origin: top;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:before {
+    header:not([data-animation=false]):before {
       translate: 0 0;
     }
   }
-  header:after {
+  header:not([data-animation=false]):after {
     inset: auto 0 0 0;
     clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
     translate: 0 100%;
     transform-origin: bottom;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:after {
+    header:not([data-animation=false]):after {
       translate: 0 0;
     }
   }

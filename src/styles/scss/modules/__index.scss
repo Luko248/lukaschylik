@@ -1,5 +1,7 @@
 @use "./intro" as *;
+@use "./blog" as *;
 
 @mixin create-modules {
+  @include create-blog;
   @include create-intro;
 }

@@ -10,9 +10,9 @@
 
 @include reset;
 
-@layer _base, _components, _modules, _utils;
+@layer base, _components, _modules, _utils;
 
-@layer _base {
+@layer base {
   @include create-typography;
 }
 

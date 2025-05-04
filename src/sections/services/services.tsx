@@ -11,7 +11,7 @@ const References = component$(() => {
       <Container size="full">
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
-          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-white font-mono">
+          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-gray-300 font-mono">
             Zistenie, že ste pre váš projekt zvolili{" "}
             <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
@@ -28,8 +28,8 @@ const References = component$(() => {
             "gap-6 sm:gap-8 md:gap-12 xl:gap-x-8 2xl:gap-x-12 3xl:gap-x-18",
             "content-fade-in content-fade-in--entry",
           )}>
-          <Card title="Konzultácie" price={2000} path="#contact">
-            <p>
+          <Card title="Konzultácie" price={1500} path="#contact">
+            <p class="text-gray-300">
               Potrebujete poradiť?
               <br />
               Trápi Vas implementačný problém, vizuálny bug alebo{" "}
@@ -44,8 +44,8 @@ const References = component$(() => {
               <ListItem marker="☝🏽">Minimálne 1 hodina</ListItem>
             </ul>
           </Card>
-          <Card title="Mentoring" price={1500} path="#contact">
-            <p>
+          <Card title="Mentoring" price={1000} path="#contact">
+            <p class="text-gray-300">
               Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
               Vás projekt vhodný? Alebo si len chcete rozšíriť{" "}
               <strong>svoje vedomosti</strong> ? Poradím Vám, ako minimalizovať
@@ -60,7 +60,7 @@ const References = component$(() => {
             </ul>
           </Card>
           <Card title="Školenia" showVat={false}>
-            <p>
+            <p class="text-gray-300">
               JavasScript je skvelá technológia, no používať ju v dnešnej dobe
               na všetko, je nezmysel.
               <br />

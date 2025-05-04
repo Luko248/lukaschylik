@@ -1,11 +1,12 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
-import { Link, type LinkProps } from "@builder.io/qwik-city";
+import { Link, useLocation, type LinkProps } from "@builder.io/qwik-city";
 import Social from "../social/social";
 import { cls } from "~/utils";
 import { NavigationProps } from "./navigation.types";
 
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
+  const location = useLocation();
 
   const toggleMenu = $(() => {
     state.isOpen = !state.isOpen;
@@ -16,6 +17,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
       state.isOpen = false;
     }
   });
+
+  // Check if current path is blog or blog detail page
+  const isBlogPage = location.url.pathname.startsWith("/blog");
 
   return (
     <>
@@ -57,24 +61,31 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           )}
           role="menu">
           {links &&
-            links.map((link: LinkProps, index: number) => (
-              <li key={index}>
-                <Link
-                  role="menuitem"
-                  href={link.href}
-                  title={link.text}
-                  rel="internal"
-                  onClick$={closeMenuOnMobile}
-                  class={cls(
-                    "text-lg md:text-l lg:text-xl",
-                    "text-white uppercase",
-                    "decoration-secondary decoration-5 underline-offset-8",
-                    "no-underline hover:underline",
-                  )}>
-                  {link.text}
-                </Link>
-              </li>
-            ))}
+            links.map((link: LinkProps, index: number) => {
+              // Check if this link is the blog link and we're on a blog page
+              const isActive = link.href === "/blog" && isBlogPage;
+
+              return (
+                <li key={index}>
+                  <Link
+                    role="menuitem"
+                    href={link.href}
+                    title={link.text}
+                    rel="internal"
+                    onClick$={closeMenuOnMobile}
+                    data-active={isActive}
+                    class={cls(
+                      "text-lg md:text-l lg:text-xl",
+                      "text-white uppercase",
+                      "decoration-secondary decoration-5 underline-offset-8",
+                      "no-underline hover:underline",
+                      isActive && "underline",
+                    )}>
+                    {link.text}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
         <span></span>
       </nav>
