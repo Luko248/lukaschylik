@@ -11,6 +11,7 @@
       paint-order: stroke fill;
       -webkit-text-stroke: 0.015em $color-white;
       animation-range: -8svb exit;
+      color: Canvas;
 
       &[data-dark] {
         -webkit-text-stroke: 0.015em $color-black;

@@ -1,0 +1,12 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-icon {
+  .icon {
+    display: block;
+    aspect-ratio: 1;
+    inline-size: var(--icon_size, $gap-space-16);
+    fill: var(--icon_color, currentColor);
+  }
+}

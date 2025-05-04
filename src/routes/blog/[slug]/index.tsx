@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { Icon } from "~/components";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
@@ -37,9 +38,9 @@ export default component$(() => {
       icon: "facebook",
     },
     {
-      name: "Twitter",
-      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      icon: "twitter",
+      name: "X",
+      url: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      icon: "x",
     },
     {
       name: "LinkedIn",
@@ -50,57 +51,57 @@ export default component$(() => {
 
   return (
     <Section id="blog-detail">
-      <Container size="lg">
-        <div class="max-w-3xl mx-auto py-8">
-          <Link
-            href="/blog"
-            class="inline-flex items-center text-white mb-6 underline">
-            ← Späť na Blog
-          </Link>
+      <Container size="sm">
+        <Link
+          href="/blog"
+          class="inline-flex items-center text-white mb-6 underline">
+          ← Späť na Blog
+        </Link>
 
-          <article>
-            <header class="mb-8">
-              <SectionTitle text={post.value.title} />
-              <div class="flex items-center text-sm text-gray-300 mb-4">
-                <span>{post.value.date}</span>
-                <span class="mx-2">•</span>
-                <span>{post.value.author}</span>
-              </div>
-            </header>
-
-            <div
-              class="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-white"
-              dangerouslySetInnerHTML={post.value.html}
-            />
-
-            {/* Share buttons */}
-            <div class="mt-12 pt-6 border-t border-gray-700">
-              <h3 class="text-xl font-semibold mb-4 text-white">
-                Zdieľať článok
-              </h3>
-              <div class="flex gap-4">
-                {shareLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class={cls(
-                      "inline-flex items-center justify-center",
-                      "w-10 h-10 rounded-full",
-                      "bg-gray-700",
-                      "text-gray-200",
-                      "hover:bg-blue-500 hover:text-white",
-                      "transition-colors duration-200",
-                    )}
-                    aria-label={`Share on ${link.name}`}
-                    title={`Share on ${link.name}`}>
-                    {link.name[0]}
-                  </a>
-                ))}
-              </div>
+        <article class="blog">
+          <header class="mb-8">
+            <h1 class="text-6xl mb-4 font-bold text-white">
+              {post.value.title}
+            </h1>
+            <div class="flex items-center text-sm text-gray-300 mb-4">
+              <span>{post.value.date}</span>
+              <span class="mx-2">•</span>
+              <span>{post.value.author}</span>
             </div>
-          </article>
+          </header>
+
+          <div
+            class="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-white"
+            dangerouslySetInnerHTML={post.value.html}
+          />
+        </article>
+        {/* Share buttons */}
+        <div class="mt-12 pt-6 border-t border-gray-700">
+          <h3 class="text-xl font-semibold mb-4 text-white">Zdieľať článok</h3>
+          <div class="flex gap-4">
+            {shareLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={cls(
+                  "inline-flex items-center justify-center",
+                  "w-10 h-10 rounded-full",
+                  "bg-gray-700",
+                  "text-gray-200",
+                  "hover:bg-blue-500 hover:text-white",
+                  "transition-colors duration-200",
+                )}
+                aria-label={`Share on ${link.name}`}
+                title={`Share on ${link.name}`}>
+                <Icon
+                  name={link.icon}
+                  size={link.icon === "x" ? "1rem" : "1.25rem"}
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>
