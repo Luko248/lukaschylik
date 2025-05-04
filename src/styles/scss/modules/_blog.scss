@@ -5,7 +5,7 @@
 @mixin create-blog {
   .blog {
     // Base text styling
-    color: $color-white;
+    color: $color-text;
     font-family:
       system-ui,
       -apple-system,
@@ -18,11 +18,30 @@
       sans-serif;
     font-size: 1.125rem; // 18px base
     line-height: 1.7;
-    margin: 0 auto;
+    margin-inline: auto;
+
+    &__progress {
+      animation: article-progress forwards 1ms;
+      animation-timeline: scroll(block);
+      position: fixed;
+      inset: 0 0 auto 0;
+      background-color: $color-yellow;
+      block-size: $gap-space-4;
+      transform-origin: left;
+      scale: 0 1;
+      z-index: 1000;
+    }
 
     // Article spacing
     > * + * {
       margin-top: 1.5em;
+    }
+
+    header {
+      &:before,
+      &:after {
+        display: none !important;
+      }
     }
 
     // Headings hierarchy with proper spacing and sizing
@@ -181,7 +200,7 @@
         display: block;
         margin-top: 1em;
         font-size: 0.9em;
-        color: $color-white;
+        color: $color-text;
         opacity: 0.8;
         font-style: normal;
       }
@@ -239,6 +258,12 @@
       pre {
         padding: 1em;
       }
+    }
+  }
+
+  @keyframes article-progress {
+    to {
+      scale: 1 1;
     }
   }
 }

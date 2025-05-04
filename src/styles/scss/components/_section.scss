@@ -8,12 +8,13 @@
     position: relative;
 
     h2 {
-      paint-order: fill stroke;
-      -webkit-text-stroke: 0.015em $color-white;
+      paint-order: stroke fill;
       animation-range: -8svb exit;
+      color: $color-black;
+      -webkit-text-stroke: 0.035em $color-white;
 
       &[data-dark] {
-        -webkit-text-stroke: 0.015em $color-black;
+        -webkit-text-stroke: 0.035em $color-black;
       }
     }
   }

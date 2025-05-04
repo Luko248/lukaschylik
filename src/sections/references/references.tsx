@@ -13,17 +13,17 @@ const References = component$(() => {
           <div class="relative xl:sticky xl:top-0 xl:h-fit mb-8 xl:mb:0">
             <SectionTitle text="Referencie" />
             <div class="content-fade-in">
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-gray-200 font-mono">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-gray-300 font-mono">
                 Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
                 ako Elendris alebo Anew Style.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-gray-200 font-mono">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-2 text-gray-300 font-mono">
                 Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
                 rôznym webovým projektom. Pre Update Conference som vytvoril
                 množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
                 framework. Už nespolupracujem s Riganti.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-20 text-gray-200 font-mono">
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-20 text-gray-300 font-mono">
                 Momentálne pracujem pre AIS Servis, kde vyvíjam dizajnový systém
                 pre VIG Česká republika.
               </p>

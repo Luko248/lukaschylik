@@ -14,7 +14,7 @@ const SectionTitle = component$<SectionTitleProps>(
           "mb-[5svb]",
           "font-sans",
           "font-extrabold uppercase leading-none tracking-widest",
-          dark ? "text-black" : "text-transparent",
+          "text-black",
           className,
         )}>
         {text}
