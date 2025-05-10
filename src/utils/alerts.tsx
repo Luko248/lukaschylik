@@ -9,4 +9,4 @@ export const AlertContext = createContextId<{
   alertMessage: AlertMessage;
   showAlert: (message: string) => void;
   hideAlert: () => void;
-}>('alert-context');
+}>("alert-context");
