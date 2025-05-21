@@ -50,7 +50,8 @@ export default component$(() => {
   ];
 
   return (
-    <Section id="blog-detail" className="bg-black-900">
+    <Section id="blog-detail" className="bg-black-800">
+      <div className="blog__progress"></div>
       <Container size="blog">
         <Link
           href="/blog"
@@ -71,7 +72,7 @@ export default component$(() => {
           </header>
 
           <div
-            class="prose prose-lg max-w-none prose-invert prose-headings:text-gray-200 prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-gray-200"
+            class="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-gray-300"
             dangerouslySetInnerHTML={post.value.html}
           />
         </article>
@@ -91,8 +92,8 @@ export default component$(() => {
                   "inline-flex items-center justify-center",
                   "w-10 h-10 rounded-full",
                   "bg-gray-700",
-                  "text-gray-200",
-                  "hover:bg-blue-500 hover:text-gray-200",
+                  "text-gray-300",
+                  "hover:bg-blue-500 hover:text-white",
                   "transition-colors duration-200",
                 )}
                 aria-label={`Share on ${link.name}`}

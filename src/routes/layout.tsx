@@ -4,12 +4,16 @@ import {
   useSignal,
   useVisibleTask$,
   $,
+  useContextProvider,
+  useStore,
 } from "@builder.io/qwik";
 import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
 import { Alert, IconSet, Navigation } from "~/components";
 import { Footer, Intro } from "~/sections";
+import { checkUrlForAlerts } from "~/services";
 import { initializeHeaderFlag } from "~/utils";
+import { AlertContext, type AlertMessage } from "~/utils/alerts";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   cacheControl({
@@ -98,16 +102,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 export default component$(() => {
   const headerRef = useSignal<Element>();
   const location = useLocation();
-  const showAlert = useSignal(
-    location.url.searchParams.has("formSubmitted=true"),
-  );
+
+  // Create alert store
+  const alertState = useStore<AlertMessage>({
+    text: "",
+    visible: false,
+  });
+
+  // Provide alert context
+  useContextProvider(AlertContext, {
+    alertMessage: alertState,
+    showAlert: $((message: string) => {
+      alertState.text = message;
+      alertState.visible = true;
+    }),
+    hideAlert: $(() => {
+      alertState.visible = false;
+    }),
+  });
+
+  // Check for URL parameters on initial load
+  useVisibleTask$(({ cleanup }) => {
+    // Use the alert service to check for URL parameters and show appropriate alerts
+    const showAlertFn = $((message: string) => {
+      alertState.text = message;
+      alertState.visible = true;
+    });
+
+    checkUrlForAlerts(location.url, showAlertFn);
+
+    // No cleanup needed
+    cleanup(() => {});
+  });
 
   // Check if we're on the homepage
   const isHomePage = location.url.pathname === "/";
 
   // Handle alert close
   const handleAlertClose = $(() => {
-    showAlert.value = false;
+    alertState.visible = false;
   });
 
   useVisibleTask$(() => {
@@ -149,8 +182,8 @@ export default component$(() => {
       <main>
         <IconSet />
         <Alert
-          message="Vaša správa bola úspešne odoslaná. Ďakujeme!"
-          visible={showAlert.value}
+          message={alertState.text}
+          visible={alertState.visible}
           onClose$={handleAlertClose}
           duration={5}
         />
