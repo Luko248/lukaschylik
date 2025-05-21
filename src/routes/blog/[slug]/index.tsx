@@ -50,17 +50,17 @@ export default component$(() => {
   ];
 
   return (
-    <Section id="blog-detail">
+    <Section id="blog-detail" className="bg-black-900">
       <Container size="blog">
         <Link
           href="/blog"
-          class="inline-flex items-center text-white mb-6 underline">
+          class="inline-flex items-center text-gray-200 mb-6 underline">
           ← Späť na zoznam článkov
         </Link>
 
         <article class="blog">
           <header class="mb-8">
-            <h1 class="text-6xl mb-4 font-bold text-white">
+            <h1 class="text-6xl mb-4 font-bold text-gray-200">
               {post.value.title}
             </h1>
             <div class="flex items-center text-sm text-gray-300 mb-4">
@@ -71,13 +71,15 @@ export default component$(() => {
           </header>
 
           <div
-            class="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-white"
+            class="prose prose-lg max-w-none prose-invert prose-headings:text-gray-200 prose-p:text-gray-300 prose-a:text-blue-400 mb-8 text-gray-200"
             dangerouslySetInnerHTML={post.value.html}
           />
         </article>
         {/* Share buttons */}
         <div class="mt-12 pt-6 border-t border-gray-700">
-          <h3 class="text-xl font-semibold mb-4 text-white">Zdieľať článok</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-200">
+            Zdieľať článok
+          </h3>
           <div class="flex gap-4">
             {shareLinks.map((link) => (
               <a
@@ -90,7 +92,7 @@ export default component$(() => {
                   "w-10 h-10 rounded-full",
                   "bg-gray-700",
                   "text-gray-200",
-                  "hover:bg-blue-500 hover:text-white",
+                  "hover:bg-blue-500 hover:text-gray-200",
                   "transition-colors duration-200",
                 )}
                 aria-label={`Share on ${link.name}`}

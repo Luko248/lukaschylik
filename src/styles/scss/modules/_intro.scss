@@ -3,7 +3,7 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-intro {
-  header:not([data-animation="false"]) {
+  header:is([data-animation="true"]) {
     overflow: clip;
 
     &[data-initialize="true"] {
