@@ -35,10 +35,6 @@
       margin-top: clamp(1em, 3svb, 1.5em);
     }
 
-    p {
-      max-inline-size: none;
-    }
-
     header {
       &:before,
       &:after {
@@ -85,7 +81,9 @@
     }
 
     p {
+      max-inline-size: none;
       margin-bottom: clamp(1em, 3svb, 1.5em);
+      font-weight: 300;
 
       &:last-child {
         margin-bottom: 0;
@@ -224,8 +222,6 @@
       background: rgba(255, 255, 255, 0.2);
       margin: clamp(2em, 6svb, 3em) 0;
     }
-
-    padding: clamp(1rem, 3svb, 2rem) clamp(1rem, 2svb, 2rem);
   }
 
   @keyframes article-progress {

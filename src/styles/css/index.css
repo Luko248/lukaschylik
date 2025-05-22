@@ -423,7 +423,6 @@ strong {
     font-size: clamp(1rem, 2.5svb, 1.125rem);
     line-height: 1.7;
     margin-inline: auto;
-    padding: clamp(1rem, 3svb, 2rem) clamp(1rem, 2svb, 2rem);
   }
   .blog__progress {
     animation: article-progress forwards 1ms;
@@ -438,9 +437,6 @@ strong {
   }
   .blog > * + * {
     margin-top: clamp(1em, 3svb, 1.5em);
-  }
-  .blog p {
-    max-inline-size: none;
   }
   .blog header:before, .blog header:after {
     display: none !important;
@@ -478,7 +474,9 @@ strong {
     text-transform: uppercase;
   }
   .blog p {
+    max-inline-size: none;
     margin-bottom: clamp(1em, 3svb, 1.5em);
+    font-weight: 300;
   }
   .blog p:last-child {
     margin-bottom: 0;
