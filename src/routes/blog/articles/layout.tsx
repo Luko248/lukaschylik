@@ -64,24 +64,31 @@ export default component$(() => {
   const location = useLocation();
   const post = useCurrentPost();
 
-  // Generate share URLs
-  // Use the full URL with origin for proper sharing
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
-  const fullUrl = `${baseUrl}${location.url.pathname}`;
-  const encodedUrl = encodeURIComponent(fullUrl);
-  const encodedTitle = encodeURIComponent(
-    post.value?.title || location.url.pathname.split("/").pop() || "Blog post",
-  );
+  const getAbsoluteUrl = () => {
+    if (typeof window === "undefined") return "";
+
+    const canonicalElement = document.querySelector("link[rel=canonical]");
+    if (canonicalElement) {
+      return canonicalElement.getAttribute("href") || "";
+    }
+
+    return window.location.href;
+  };
+
+  const shareUrl = getAbsoluteUrl();
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const postTitle = post.value?.title || "Blog post";
+  const encodedTitle = encodeURIComponent(postTitle);
 
   const shareLinks: ShareLink[] = [
     {
       name: "Facebook",
-      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      url: `https://www.facebook.com/sharer.php?u=${encodedUrl}`,
       icon: "facebook",
     },
     {
       name: "X",
-      url: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
       icon: "x",
     },
     {
@@ -160,8 +167,10 @@ export default component$(() => {
  */
 export const head: DocumentHead = ({ head, resolveValue }) => {
   const post = resolveValue(useCurrentPost);
-  const description = post?.description || "Osobný blog o webovom vývoji, dizajne a technológiách";
-  
+  const description =
+    post?.description ||
+    "Osobný blog o webovom vývoji, dizajne a technológiách";
+
   return {
     title: `${head.title} | Blog | Lukáš Chylík` || "Blog | Lukáš Chylík",
     meta: [
