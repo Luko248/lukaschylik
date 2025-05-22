@@ -8,5 +8,5 @@ export interface SectionTitleProps {
   className?: string;
   dark?: boolean;
   size?: "sm" | "md";
-  center? : boolean;
+  center?: boolean;
 }

@@ -5,11 +5,9 @@ import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
 import Card from "~/components/card/card";
+import { getAllPosts } from "~/utils/markdown.server";
 
-// Server-side loader to get blog posts
 export const useBlogPosts = routeLoader$(async () => {
-  // Import getAllPosts dynamically to avoid client-side import
-  const { getAllPosts } = await import("~/utils/markdown");
   const posts = getAllPosts();
   return posts;
 });
@@ -30,7 +28,7 @@ export default component$(() => {
                 description={post.description}
                 date={post.date}
                 author={post.author}
-                path={`/blog/${post.slug}`}
+                path={`/blog/articles/${post.slug}`}
                 isBlogPost={true}
               />
             ))

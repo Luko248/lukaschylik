@@ -102,13 +102,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 export default component$(() => {
   const headerRef = useSignal<Element>();
   const location = useLocation();
-  
+
   // Create alert store
   const alertState = useStore<AlertMessage>({
     text: "",
-    visible: false
+    visible: false,
   });
-  
+
   // Provide alert context
   useContextProvider(AlertContext, {
     alertMessage: alertState,
@@ -118,7 +118,7 @@ export default component$(() => {
     }),
     hideAlert: $(() => {
       alertState.visible = false;
-    })
+    }),
   });
 
   // Check for URL parameters on initial load
@@ -128,9 +128,9 @@ export default component$(() => {
       alertState.text = message;
       alertState.visible = true;
     });
-    
+
     checkUrlForAlerts(location.url, showAlertFn);
-    
+
     // No cleanup needed
     cleanup(() => {});
   });
