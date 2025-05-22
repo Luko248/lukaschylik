@@ -29,7 +29,7 @@ export default component$(() => {
                 description={post.description}
                 date={post.date}
                 author={post.author}
-                path={`/blog/${post.slug}`}
+                path={`/blog/articles/${post.slug}`}
                 isBlogPost={true}
               />
             ))

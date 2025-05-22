@@ -11,11 +11,17 @@ export interface BlogPost {
   content: string; // Raw Markdown content
 }
 
-const postsDirectory = path.join(process.cwd(), "src", "routes", "blog");
+// Path to the articles subfolder where all blog posts are now stored
+const postsDirectory = path.join(process.cwd(), "src", "routes", "blog", "articles");
 
 // This function should only be used on the server/build time
+/**
+ * Get all blog posts from the articles directory
+ * @returns {BlogPost[]} Array of blog posts sorted by date (newest first)
+ */
 export const getAllPosts = (): BlogPost[] => {
   try {
+    // Get all directories in the articles folder (each directory is a blog post)
     const slugs = fs
       .readdirSync(postsDirectory, { withFileTypes: true })
       .filter((dirent) => dirent.isDirectory())

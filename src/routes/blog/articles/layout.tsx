@@ -1,8 +1,8 @@
 import {
   component$,
-  useStyles$,
   useVisibleTask$,
   useSignal,
+  useStyles$,
 } from "@builder.io/qwik";
 import { Slot } from "@builder.io/qwik";
 import { DocumentHead, useLocation, Link } from "@builder.io/qwik-city";
@@ -31,39 +31,6 @@ interface ShareLink {
  * @returns {JSX.Element} The blog layout component with nested content
  */
 export default component$(() => {
-  // Create signal for tracking scroll progress
-  const progressWidth = useSignal(0);
-
-  /**
-   * Track scroll progress and update the progress bar width
-   * Uses passive event listener for better scroll performance
-   */
-  useVisibleTask$(({ cleanup }) => {
-    // Calculate scroll progress
-    const calculateScrollProgress = () => {
-      const winScroll =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-      progressWidth.value = scrolled;
-    };
-
-    // Add scroll event listener
-    window.addEventListener("scroll", calculateScrollProgress, {
-      passive: true,
-    });
-
-    // Initial calculation
-    calculateScrollProgress();
-
-    // Clean up event listener on component unmount
-    cleanup(() => {
-      window.removeEventListener("scroll", calculateScrollProgress);
-    });
-  });
-
   const location = useLocation();
 
   // Generate share URLs
@@ -93,9 +60,7 @@ export default component$(() => {
 
   return (
     <Section id="blog-detail" className="bg-black-800">
-      <div
-        class="blog__progress"
-        style={{ width: `${progressWidth.value}%` }}></div>
+      <div class="blog__progress" />
       <Container size="blog">
         <Link
           href="/blog"
@@ -104,10 +69,7 @@ export default component$(() => {
         </Link>
 
         <article class="blog">
-          {/* Blog content is injected here */}
           <Slot />
-
-          {/* Share buttons */}
           <div class="mt-12 pt-6 border-t border-gray-700">
             <h3 class="text-xl font-semibold mb-4 text-gray-200">
               Zdieľať článok
@@ -150,9 +112,8 @@ export default component$(() => {
  * @returns {DocumentHead} The document head metadata for the blog post
  */
 export const head: DocumentHead = ({ head }) => {
-  // Keep the metadata from the MDX frontmatter if available
   return {
-    title: head.title || "Blog | Lukáš Chylík",
+    title: `${head.title} | Blog | Lukáš Chylík` || "Blog | Lukáš Chylík",
     meta: [
       ...(head.meta || []),
       {
