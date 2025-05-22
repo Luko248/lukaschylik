@@ -5,11 +5,10 @@ import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
 import Card from "~/components/card/card";
+import { getAllPosts } from "~/utils/markdown.server"; // Updated import
 
 // Server-side loader to get blog posts
 export const useBlogPosts = routeLoader$(async () => {
-  // Import getAllPosts dynamically to avoid client-side import
-  const { getAllPosts } = await import("~/utils/markdown");
   const posts = getAllPosts();
   return posts;
 });

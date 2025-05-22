@@ -5,6 +5,8 @@ date: 2025-04-28
 author: Lukáš Chylík
 ---
 
+## Úvod
+
 **CSS prochází velkou změnou.** Nástroj, který dlouhé roky sloužil jen na „barvičky, fonty, odsazení či layout“ pro naše weby a aplikace, se postupně transformuje na plnohodnotný jazyk pro tvorbu vizuální logiky. Představa, že budeme moci vytvářet věci jako dynamické layouty, CSS vrstvy, konvertovat barvy do libovolných formátů či spustit webové animace na základě interakce a scrollování, byla donedávna sci-fi. A právě o těchto “scroll-driven” animacích si dnes povíme víc.
 
 Web Animations API, které známe hlavně v podobě vlastností jako `transition`, `animation` či pravidla `@keyframes`, prošlo minulý rok velkým updatem. Co se CSS týče, bylo doplněno o nové vlastnosti, které nám umožňují vytvářet animace řízené scrollováním přímo v CSS.
@@ -18,7 +20,7 @@ Web Animations API, které známe hlavně v podobě vlastností jako `transition
 - **`view-timeline-inset`**
 - **`timeline-scope`**
 
-## **`scroll-timeline`: Definice časové osi scrollování**
+## **`scroll-timeline`: Definice časové osy scrollování**
 
 Vlastnost `scroll-timeline` slouží k definování tzv. "časové osy scrollování". Tato časová osa sleduje průběh scrollování elementu (nazývaného scroller) od jeho horního okraje ke spodnímu nebo od levého k pravému okraji.
 
@@ -177,14 +179,14 @@ Klíčové hodnoty pro `animation-range-start` a `animation-range-end`:
 }
 ```
 
-## **`view-timeline-inset`: Nastavení offsetu časové osi viditelnosti**
+## **`view-timeline-inset`: Nastavení offsetu časové osy viditelnosti**
 
 `view-timeline-inset` umožňuje upravit hranice, kdy se element považuje za viditelný. Tímto způsobem můžete dosáhnout plynulejších přechodů a animací, které reagují na příchod elementu do viewportu ještě předtím, než je fyzicky viditelný. Jinými slovy, můžete nastavit offset, o který se posune začátek a konec přehrávání animace.
 
 `view-timeline-inset` podporuje jednu nebo dvě hodnoty:
 
 - jedna hodnota: Nastaví offset z obou stran.
-- dvě hodnoty: Nastaví offset pro začátek a konec časové osi viditelnosti.
+- dvě hodnoty: Nastaví offset pro začátek a konec časové osy viditelnosti.
 
 Kombinace s `animation-range` :
 
@@ -210,7 +212,7 @@ Příklady:
 **Rozdíl mezi `animation-range` a `view-timeline-inset`:**
 
 - `animation-range` definuje, _v jakém rozsahu časové osy se má animace přehrávat_. Je to jako kdybyste nastavili začátek a konec filmu.
-- `view-timeline-inset` definuje, _kdy se element považuje za viditelný, což ovlivňuje celou časovou osi viditelnosti_. Je to jako kdybyste posunuli kameru, abyste viděli element dříve nebo později.
+- `view-timeline-inset` definuje, _kdy se element považuje za viditelný, což ovlivňuje celou časovou osu viditelnosti_. Je to jako kdybyste posunuli kameru, abyste viděli element dříve nebo později.
 
 ## **`timeline-scope`: Sdílení časových os**
 
