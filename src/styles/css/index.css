@@ -528,7 +528,7 @@ strong {
     counter-increment: item;
   }
   .blog pre {
-    background: rgba(255, 255, 255, 0.1);
+    background: hsl(0, 0%, 20%);
     border-radius: 4px;
     padding: 1.5em;
     overflow-x: auto;
@@ -538,7 +538,7 @@ strong {
     line-height: 1.6;
   }
   .blog code {
-    background: rgba(255, 255, 255, 0.1);
+    background: hsl(0, 0%, 20%);
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-size: 0.9em;
@@ -550,7 +550,7 @@ strong {
     border-radius: 8px;
     margin: 2em 0;
     display: block;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px hsl(0, 0%, 20%);
     transition: transform 0.2s ease-in-out;
   }
   .blog img:hover {
@@ -560,7 +560,7 @@ strong {
     margin: 2em 0;
     padding: 1em 1.5em;
     border-left: 4px solid hsl(51, 100%, 53%);
-    background: rgba(255, 255, 255, 0.05);
+    background: hsl(0, 0%, 20%);
     font-style: italic;
   }
   .blog blockquote p {

@@ -146,7 +146,7 @@
     }
 
     pre {
-      background: rgba(255, 255, 255, 0.1);
+      background: $color-grey-800;
       border-radius: 4px;
       padding: 1.5em;
       overflow-x: auto;
@@ -157,7 +157,7 @@
     }
 
     code {
-      background: rgba(255, 255, 255, 0.1);
+      background: $color-grey-800;
       padding: 0.2em 0.4em;
       border-radius: 3px;
       font-size: 0.9em;
@@ -170,7 +170,7 @@
       border-radius: 8px;
       margin: 2em 0;
       display: block;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px $color-grey-800;
 
       transition: transform 0.2s ease-in-out;
       &:hover {
@@ -182,7 +182,7 @@
       margin: 2em 0;
       padding: 1em 1.5em;
       border-left: 4px solid $color-yellow;
-      background: rgba(255, 255, 255, 0.05);
+      background: $color-grey-800;
       font-style: italic;
 
       p {
