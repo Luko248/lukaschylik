@@ -168,7 +168,8 @@
       border-radius: clamp(4px, 1.5svb, 8px);
       margin: clamp(1.5em, 4svb, 2em) 0;
       display: block;
-      box-shadow: 0 clamp(2px, 0.8svb, 4px) clamp(3px, 1.2svb, 6px) $color-grey-800;
+      box-shadow: 0 clamp(2px, 0.8svb, 4px) clamp(3px, 1.2svb, 6px)
+        $color-grey-800;
 
       transition: transform 0.2s ease-in-out;
       &:hover {

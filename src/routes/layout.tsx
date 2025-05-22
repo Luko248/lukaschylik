@@ -10,6 +10,7 @@ import {
 import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
 import { Alert, IconSet, Navigation } from "~/components";
+import Social from "~/components/social/social";
 import { Footer, Intro } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
 import { initializeHeaderFlag } from "~/utils";
@@ -188,6 +189,7 @@ export default component$(() => {
           duration={5}
         />
         <Slot />
+        <Social />
       </main>
       <Footer />
     </>

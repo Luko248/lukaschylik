@@ -104,7 +104,6 @@ const Navigation = component$<NavigationProps>(({ links }) => {
         aria-controls="navigation-menu"
         title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
         onClick$={toggleMenu}></button>
-      <Social />
     </>
   );
 });
