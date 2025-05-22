@@ -17,7 +17,7 @@ export default component$(() => {
 
   return (
     <Section id="blog">
-      <Container size="md">
+      <Container size="lg">
         <SectionTitle text="Blog" />
         <div class="grid grid-cols-1 gap-8 mt-12">
           {posts.value.length > 0 ? (

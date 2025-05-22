@@ -7,6 +7,7 @@ const Icon = component$<IconProps>(({ name, cls, size, color }) => {
     "fill-white",
     "w-5",
     "aspect-square",
+    "transition-colors duration-200",
     cls,
   ]
     .filter(Boolean)

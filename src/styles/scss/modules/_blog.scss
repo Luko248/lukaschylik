@@ -15,7 +15,7 @@
       Ubuntu,
       Cantarell,
       sans-serif;
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2.5svb, 1.125rem);
     line-height: 1.7;
     margin-inline: auto;
 
@@ -25,14 +25,14 @@
       position: fixed;
       inset: 0 0 auto 0;
       background-color: $color-yellow;
-      block-size: $gap-space-4;
+      block-size: clamp(2px, 1svb, $gap-space-4);
       transform-origin: left;
       scale: 0 1;
       z-index: 1000;
     }
 
     > * + * {
-      margin-top: 1.5em;
+      margin-top: clamp(1em, 3svb, 1.5em);
     }
 
     p {
@@ -55,37 +55,37 @@
     h2 {
       display: flex;
       align-items: center;
-      font-size: 2.25rem;
+      font-size: clamp(2rem, 5svb, 2.25rem);
       font-weight: 500;
       line-height: 1.3;
-      margin-top: 2.5em;
-      margin-bottom: 0.8em;
+      margin-top: clamp(1.8em, 5svb, 2.5em);
+      margin-bottom: clamp(0.6em, 1.5svb, 0.8em);
       text-box: trim-both ex alphabetic;
       color: $color-white;
       color: $color-grey-200;
       font-weight: 500;
-      border-left: 4px solid $color-yellow;
+      border-left: clamp(3px, 0.8svb, 4px) solid $color-yellow;
     }
 
     h3 {
-      font-size: 1.875rem;
+      font-size: clamp(1.75rem, 4.5svb, 1.875rem);
     }
 
     h4 {
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, 3.5svb, 1.5rem);
     }
 
     h5 {
-      font-size: 1.25rem;
+      font-size: clamp(1.25rem, 3svb, 1.25rem);
     }
 
     h6 {
-      font-size: 1.125rem;
+      font-size: clamp(1.125rem, 2.5svb, 1.125rem);
       text-transform: uppercase;
     }
 
     p {
-      margin-bottom: 1.5em;
+      margin-bottom: clamp(1em, 3svb, 1.5em);
 
       &:last-child {
         margin-bottom: 0;
@@ -110,11 +110,11 @@
 
     ul,
     ol {
-      margin: 1.5em 0;
-      padding-left: 1.5em;
+      margin: clamp(1em, 3svb, 1.5em) 0;
+      padding-left: clamp(1em, 3svb, 1.5em);
 
       li {
-        margin-bottom: 0.5em;
+        margin-bottom: clamp(0.3em, 1svb, 0.5em);
         position: relative;
 
         &::before {
@@ -147,30 +147,30 @@
 
     pre {
       background: $color-grey-800;
-      border-radius: 4px;
-      padding: 1.5em;
+      border-radius: clamp(3px, 0.8svb, 4px);
+      padding: clamp(1em, 3svb, 1.5em);
       overflow-x: auto;
-      margin: 2em 0;
+      margin: clamp(1.5em, 4svb, 2em) 0;
       font-family: "Fira Code", "Consolas", monospace;
-      font-size: 0.9em;
+      font-size: clamp(0.85em, 2svb, 0.9em);
       line-height: 1.6;
     }
 
     code {
       background: $color-grey-800;
-      padding: 0.2em 0.4em;
-      border-radius: 3px;
-      font-size: 0.9em;
+      padding: clamp(0.15em, 0.5svb, 0.2em) clamp(0.3em, 0.8svb, 0.4em);
+      border-radius: clamp(2px, 0.6svb, 3px);
+      font-size: clamp(0.85em, 2svb, 0.9em);
       font-family: "Fira Code", "Consolas", monospace;
     }
 
     img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
-      margin: 2em 0;
+      border-radius: clamp(4px, 1.5svb, 8px);
+      margin: clamp(1.5em, 4svb, 2em) 0;
       display: block;
-      box-shadow: 0 4px 6px $color-grey-800;
+      box-shadow: 0 clamp(2px, 0.8svb, 4px) clamp(3px, 1.2svb, 6px) $color-grey-800;
 
       transition: transform 0.2s ease-in-out;
       &:hover {
@@ -179,9 +179,9 @@
     }
 
     blockquote {
-      margin: 2em 0;
-      padding: 1em 1.5em;
-      border-left: 4px solid $color-yellow;
+      margin: clamp(1.5em, 4svb, 2em) 0;
+      padding: clamp(0.8em, 2svb, 1em) clamp(1em, 3svb, 1.5em);
+      border-left: clamp(3px, 0.8svb, 4px) solid $color-yellow;
       background: $color-grey-800;
       font-style: italic;
 
@@ -191,8 +191,8 @@
 
       cite {
         display: block;
-        margin-top: 1em;
-        font-size: 0.9em;
+        margin-top: clamp(0.8em, 2svb, 1em);
+        font-size: clamp(0.85em, 2svb, 0.9em);
         color: $color-text;
         opacity: 0.8;
         font-style: normal;
@@ -202,13 +202,13 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 2em 0;
-      font-size: 0.9em;
+      margin: clamp(1.5em, 4svb, 2em) 0;
+      font-size: clamp(0.85em, 2svb, 0.9em);
     }
 
     th,
     td {
-      padding: 0.75em;
+      padding: clamp(0.5em, 1.5svb, 0.75em);
       text-align: left;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
@@ -222,33 +222,10 @@
       border: 0;
       height: 1px;
       background: rgba(255, 255, 255, 0.2);
-      margin: 3em 0;
+      margin: clamp(2em, 6svb, 3em) 0;
     }
 
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      padding: 1.5rem 1rem;
-
-      h2 {
-        font-size: 2rem;
-      }
-      h3 {
-        font-size: 1.75rem;
-      }
-      h4 {
-        font-size: 1.5rem;
-      }
-      h5 {
-        font-size: 1.25rem;
-      }
-      h6 {
-        font-size: 1.125rem;
-      }
-
-      pre {
-        padding: 1em;
-      }
-    }
+    padding: clamp(1rem, 3svb, 2rem) clamp(1rem, 2svb, 2rem);
   }
 
   @keyframes article-progress {

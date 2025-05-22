@@ -4,11 +4,11 @@ import { cls } from "~/utils";
 
 const Container = component$<ContainerProps>(({ size = "md", className }) => {
   const sizeClasses = {
-    sm: "max-w-[calc(1024px-2rem)] w-full",
-    md: "max-w-[calc(1440px-2rem)] w-full",
-    lg: "max-w-[calc(1920px-2rem)] w-full",
-    full: "max-w-[calc(100%-10svi)] w-full",
-    blog: "max-w-[85ch] w-full",
+    sm: "w-[min(calc(100%-10svi),calc(1024px-2rem))]",
+    md: "w-[min(calc(100%-10svi),calc(1440px-2rem))]",
+    lg: "w-[min(calc(100%-10svi),calc(1920px-2rem))]",
+    full: "w-[calc(100%-10svi)]",
+    blog: "w-[min(calc(100%-10svi),85ch)]",
   };
 
   return (

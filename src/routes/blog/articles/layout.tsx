@@ -114,36 +114,36 @@ export default component$(() => {
             </header>
           )}
           <Slot />
-          <div class="mt-12 pt-6 border-t border-gray-700">
-            <h3 class="text-xl font-semibold mb-4 text-gray-200">
-              Zdieľať článok
-            </h3>
-            <div class="flex gap-4">
-              {shareLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={cls(
-                    "inline-flex items-center justify-center",
-                    "w-10 h-10 rounded-full",
-                    "bg-gray-700",
-                    "text-gray-300",
-                    "hover:bg-blue-500 hover:text-white",
-                    "transition-colors duration-200",
-                  )}
-                  aria-label={`Share on ${link.name}`}
-                  title={`Share on ${link.name}`}>
-                  <Icon
-                    name={link.icon}
-                    size={link.icon === "x" ? "1rem" : "1.25rem"}
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
         </article>
+        <div class="mt-12 pt-6 border-t border-gray-700">
+          <h3 class="text-xl font-semibold mb-4 text-gray-200">
+            Zdieľať článok
+          </h3>
+          <div class="flex gap-4">
+            {shareLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={cls(
+                  "inline-flex items-center justify-center",
+                  "w-10 h-10 rounded-full",
+                  "bg-gray-200",
+                  "text-black",
+                  "scale-100 hover:scale-105",
+                  "transition-all duration-200 scale",
+                )}
+                aria-label={`Share on ${link.name}`}
+                title={`Share on ${link.name}`}>
+                <Icon
+                  name={link.icon}
+                  size={link.icon === "x" ? "1rem" : "1.25rem"}
+                />
+              </a>
+            ))}
+          </div>
+        </div>
       </Container>
     </Section>
   );
