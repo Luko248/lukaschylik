@@ -13,6 +13,7 @@ const formatPrice = (price: number) => {
 const Card = component$(
   ({
     title,
+    subtitle,
     price,
     showVat = true,
     path,
@@ -33,7 +34,7 @@ const Card = component$(
         <h3
           class={cls(
             "text-3xl sm:text-4xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
-            "font-regular tracking-widest 2xl:tracking-[.15em] 3xl:tracking-[.35em]",
+            "font-regular tracking-widest 3xl:tracking-[.15em]",
             "text-white group-hover:text-yellow-500",
             "transition-colors duration-300 ease-in-out",
             "py-3 sm:py-6 px-6 sm:px-8",
@@ -41,6 +42,9 @@ const Card = component$(
             "uppercase",
           )}>
           {title}
+          {subtitle && (
+            <small class="block text-md sm:text-lg mt-2">{subtitle}</small>
+          )}
         </h3>
         <div
           class={cls(
@@ -49,16 +53,17 @@ const Card = component$(
             "p-6 pt-0 sm:p-8 sm:pt-0",
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
-            "mb-0 3xl:mb-8 text-white",
+            !isBlogPost && "mb-0 3xl:mb-8",
+            "text-white",
             "content-start",
           )}>
           {isBlogPost && (
             <>
-              {description && <p class="mb-4">{description}</p>}
+              {description && <p>{description}</p>}
               {(date || author) && (
-                <div class="flex items-center text-sm text-gray-300 mb-2">
-                  {date && <span>{date}</span>}
-                  {date && author && <span class="mx-2">•</span>}
+                <div class="flex gap-2 items-center text-sm text-gray-300">
+                  {date && <time dateTime={date}>{date}</time>}
+                  {date && author && <span>•</span>}
                   {author && <span>{author}</span>}
                 </div>
               )}
@@ -75,10 +80,10 @@ const Card = component$(
           {isBlogPost ? (
             <Button
               variant="secondary"
-              ariaLabel="Čítať viac"
-              title="Čítať viac"
+              ariaLabel="Prečítať"
+              title="Prečítať"
               href={path}>
-              Čítať viac
+              Prečítať
             </Button>
           ) : (
             <>

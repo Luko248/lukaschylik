@@ -25,6 +25,7 @@ export default component$(() => {
               <Card
                 key={post.slug}
                 title={post.title}
+                subtitle={post.subtitle}
                 description={post.description}
                 date={post.date}
                 author={post.author}
