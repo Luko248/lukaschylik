@@ -460,6 +460,7 @@ strong {
     text-box: trim-both ex alphabetic;
     color: hsl(0, 0%, 100%);
     color: hsl(0, 0%, 85%);
+    font-weight: 500;
     border-left: 4px solid hsl(51, 100%, 53%);
   }
   .blog h3 {
