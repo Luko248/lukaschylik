@@ -1,18 +1,18 @@
 ---
-title: CSS scroll-driven animace 
-subtitle: Revoluce webových animací bez JavaScriptu
-description: Zapomeňte na knihovny jako ScrollReveal, AOS nebo Scroll Magic! Moderní CSS je hravě strčí do kapsy.
+title: CSS scroll-driven animácie 
+subtitle: Revolúcia webových animácií bez JavaScriptu
+description: Zabudnite na knižnice ako ScrollReveal, AOS alebo Scroll Magic! Moderné CSS ich hravo strčí do vrecka.
 date: 2025-04-28
 author: Lukáš Chylík
 ---
 
-## CSS prochází velkou změnou.
+## CSS prechádza veľkou zmenou.
 
-Nástroj, který dlouhé roky sloužil jen na „barvičky, fonty, odsazení či layout“ pro naše weby a aplikace, se postupně transformuje na plnohodnotný jazyk pro tvorbu vizuální logiky. Představa, že budeme moci vytvářet věci jako dynamické layouty, CSS vrstvy, konvertovat barvy do libovolných formátů či spustit webové animace na základě interakce a scrollování, byla donedávna sci-fi. A právě o těchto “scroll-driven” animacích si dnes povíme víc.
+Nástroj, ktorý dlhé roky slúžil len na „farbičky, fonty, odsadenie či layout“ pre naše weby a aplikácie, sa postupne transformuje na plnohodnotný jazyk pre tvorbu vizuálnej logiky. Predstava, že budeme môcť vytvárať veci ako dynamické layouty, CSS vrstvy, konvertovať farby do ľubovoľných formátov či spustiť webové animácie na základe interakcie a scrollovania, bola donedávna sci-fi. A práve o týchto "scroll-driven" animáciách si dnes povieme viac.
 
-Web Animations API, které známe hlavně v podobě vlastností jako `transition`, `animation` či pravidla `@keyframes`, prošlo minulý rok velkým updatem. Co se CSS týče, bylo doplněno o nové vlastnosti, které nám umožňují vytvářet animace řízené scrollováním přímo v CSS.
+Web Animations API, ktoré poznáme hlavne v podobe vlastností ako `transition`, `animation` či pravidlá `@keyframes`, prešlo minulý rok veľkým updateom. Čo sa CSS týka, bolo doplnené o nové vlastnosti, ktoré nám umožňujú vytvárať animácie riadené scrollovaním priamo v CSS.
 
-**Přehled klíčových vlastností:**
+### Prehľad kľúčových vlastností:
 
 - **`scroll-timeline`**
 - **`view-timeline`**
@@ -23,18 +23,18 @@ Web Animations API, které známe hlavně v podobě vlastností jako `transition
 
 ## **`scroll-timeline`: Definice časové osy scrollování**
 
-Vlastnost `scroll-timeline` slouží k definování tzv. "časové osy scrollování". Tato časová osa sleduje průběh scrollování elementu (nazývaného scroller) od jeho horního okraje ke spodnímu nebo od levého k pravému okraji.
+Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollovania". Táto časová os sleduje priebeh scrollovania elementu (nazývaného scroller) od jeho horného okraja k spodnému alebo od ľavého k pravému okraju.
 
-`scroll-timeline` je zkratka pro `scroll-timeline-name` a `scroll-timeline-axis`.
+`scroll-timeline` je skratka pre `scroll-timeline-name` a `scroll-timeline-axis`.
 
-Důležité: `scroll-timeline` sama o sobě animaci nespustí. Použití je možné pouze v kombinaci s `animation-timeline`!
+**Dôležité:** `scroll-timeline` sama o sebe animáciu nespustí. Použitie je možné len v kombinácii s `animation-timeline`!
 
-Podvlastnosti:
+### Podvlastnosti:
 
-- `scroll-timeline-name`: Název časové osy. Používáme tzv. `dashed-ident` zápis (začíná na `--`), který známe z CSS custom properties. Je to řetězec, který slouží jako identifikátor.
-- `scroll-timeline-axis`: Osa scrollování (`x`, `y`, `inline`, `block`). `inline` a `block` jsou logické osy, které respektují směr písma.
+- `scroll-timeline-name`: Názov časovej osi. Používame tzv. `dashed-ident` zápis (začína na `--`), ktorý poznáme z CSS custom properties. Je to reťazec, ktorý slúži ako identifikátor.
+- `scroll-timeline-axis`: Os scrollovania (`x`, `y`, `inline`, `block`). `inline` a `block` sú logické osi, ktoré rešpektujú smer písma.
 
-**Příklady:**
+### Príklady:
 
 ```css
 @keyframes fadeIn {
@@ -44,13 +44,13 @@ Podvlastnosti:
 }
 
 .container {
-  scroll-timeline: --my-scroll-timeline y; /* Zkratka */
+  scroll-timeline: --my-scroll-timeline y; /* Skratka */
 }
 
 .animated-element {
   opacity: 0;
-  animation: fadeIn linear; /* Definice animace */
-  animation-timeline: --my-scroll-timeline; /* Přiřazení časové osy */
+  animation: fadeIn linear; /* Definícia animácie */
+  animation-timeline: --my-scroll-timeline; /* Priradenie časovej osi */
 }
 ```
 
@@ -63,20 +63,20 @@ Podvlastnosti:
 }
 ```
 
-## **`view-timeline`: Sledování viditelnosti elementu**
+## **`view-timeline`: Sledovanie viditeľnosti elementu**
 
-Vlastnost `view-timeline` slouží k definování tzv. "časové osy viditelnosti". Tato časová osa sleduje změnu viditelnosti elementu (subject) uvnitř scrollovatelného kontejneru (scroller).
+Vlastnosť `view-timeline` slúži na definovanie tzv. "časovej osi viditeľnosti". Táto časová os sleduje zmenu viditeľnosti elementu (subject) vnútri scrollovateľného kontajnera (scroller).
 
-`view-timeline` je zkratka pro `view-timeline-name` a `view-timeline-axis`.
+`view-timeline` je skratka pre `view-timeline-name` a `view-timeline-axis`.
 
-Stejně jako u `scroll-timeline`: `view-timeline` sama o sobě nic neudělá. Potřebuje `animation-timeline`!
+Rovnako ako pri `scroll-timeline`: `view-timeline` sama o sebe nič neurobí. Potrebuje `animation-timeline`!
 
-Podvlastnosti:
+### Podvlastnosti:
 
-- `view-timeline-name`: Název časové osy (používáme `dashed-ident`).
-- `view-timeline-axis`: Osa sledování viditelnosti (`x`, `y`, `inline`, `block`).
+- `view-timeline-name`: Názov časovej osi (používame `dashed-ident`).
+- `view-timeline-axis`: Os sledovania viditeľnosti (`x`, `y`, `inline`, `block`).
 
-**Příklady:**
+### Príklady:
 
 ```css
 @keyframes slideIn {
@@ -89,8 +89,8 @@ Podvlastnosti:
 }
 
 .animated-element {
-  translate: -100% 0; /* Počáteční pozice mimo obrazovku */
-  view-timeline: --my-view-timeline block; /* Zkratka */
+  translate: -100% 0; /* Počiatočná pozícia mimo obrazovku */
+  view-timeline: --my-view-timeline block; /* Skratka */
   animation: slideIn ease-out;
   animation-timeline: --my-view-timeline;
 }
@@ -105,45 +105,43 @@ Podvlastnosti:
 }
 ```
 
-## **`animation-timeline`: Zodpovědná za spuštění animace**
+## `animation-timeline`: Zodpovedná za spustenie animácie
 
-Určitě jste si všimli, že v předcházejících ukázkách kódu byla vždy přítomná vlastnost `animation-timeline`. Je to proto, že bez ní by scroll-driven animace jednoduše nefungovaly! Tato vlastnost spojuje animaci s definovanou časovou osou (scroll nebo view).
+Určite ste si všimli, že v predchádzajúcich ukážkach kódu bola vždy prítomná vlastnosť `animation-timeline`. Je to preto, že bez nej by scroll-driven animácie jednoducho nefungovali! Táto vlastnosť spája animáciu s definovanou časovou osou (scroll alebo view).
 
-Možnosti:
+### Možnosti:
 
-- Pojmenovaná časová osa: Použijeme název definovaný v `scroll-timeline-name` nebo `view-timeline-name`. Název musí být ve formátu `dashed-ident` (začínat na `--`).
-- Anonymní časová osa: Použijeme funkce `scroll()` nebo `view()`.
+- Pomenovaná časová os: Použijeme názov definovaný v `scroll-timeline-name` alebo `view-timeline-name`. Názov musí byť vo formáte `dashed-ident` (začínať na `--`).
+- Anonymná časová os: Použijeme funkcie `scroll()` alebo `view()`.
 
-Rozdíl mezi pojmenovanou a anonymní osou:
+### Rozdiel medzi pomenovanou a anonymnou osou:
 
-- Pojmenovaná osa: Vhodná pro komplexnější animace, kde potřebujeme opakovaně použít tutéž časovou osu.
-- Anonymní osa: Rychlé řešení pro jednoduché animace, kde nepotřebujeme sdílet časovou osu.
+- Pomenovaná os: Vhodná pre komplexnejšie animácie, kde potrebujeme opakovane použiť tú istú časovú os.
+- Anonymná os: Rýchle riešenie pre jednoduché animácie, kde nepotrebujeme zdieľať časovú os.
 
-**Příklady:**
+**Príklady:**
 
 ```css
 .element {
-  animation-timeline: --my-scroll-timeline; /* Pojmenovaná scroll timeline */
-  animation-timeline: view(); /* Anonymní view timeline */
+  animation-timeline: --my-scroll-timeline; /* Pomenovaná scroll timeline */
+  animation-timeline: view(); /* Anonymná view timeline */
 }
 ```
 
-**Funkce `scroll()` a `view()`:**
+### Funkcie `scroll()` a `view()`: 
 
-Tyto funkce umožňují přímé připojení animace k scrollování nebo viditelnosti bez toho, abychom museli definovat pojmenovanou časovou osu.
+Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo viditeľnosti bez toho, aby sme museli definovať pomenovanú časovú os.
 
-Příklady:
+### Príklady:
 
 ```css
 .element {
   animation-timeline: scroll(y); /* Animace řízená vertikálním scrollováním */
-  animation-timeline: view(
-    inline
-  ); /* Animace řízená viditelností (inline osa) */
+  animation-timeline: view(inline); /* Animace řízená viditelností (inline osa) */
 }
 ```
 
-## **`animation-range`: Nastavení hranic přehrávání animace**
+## `animation-range`: Nastavení hranic přehrávání animace
 
 `animation-range` umožňuje určit, v jakém rozsahu časové osy se má animace přehrát. To znamená, že můžete přesně definovat, kdy se animace začne a skončí, vzhledem k průběhu scrollování nebo viditelnosti elementu.
 
@@ -152,16 +150,16 @@ Příklady:
 - `animation-range-start`
 - `animation-range-end`
 
-Klíčové hodnoty pro `animation-range-start` a `animation-range-end`:
+Kľúčové hodnoty pre `animation-range-start` a `animation-range-end`:
 
-- `normal`: Výchozí hodnota, animace se přehraje od začátku do konce časové osy.
-- `entry`: Animace začne, když element vstupuje do viewportu.
-- `exit`: Animace skončí, když element opouští viewport.
-- `contain`: Animace se přehraje, jen když je element úplně uvnitř viewportu.
-- `cover`: Animace se přehraje, jen když element pokrývá celý viewport.
-- číselné hodnoty: Přesné hodnoty časové osy, které mohou být definovány v procentech (`0%`, `50%`, `100%`), viewportových jednotkách (`10svw`, `50svb`) nebo statických jednotkách (`10rem`, `20px`).
+- `normal`: Východisková hodnota, animácia sa prehrá od začiatku do konca časovej osi.
+- `entry`: Animácia začne, keď element vstupuje do viewportu.
+- `exit`: Animácia skončí, keď element opúšťa viewport.
+- `contain`: Animácia sa prehrá, len keď je element úplne vnútri viewportu.
+- `cover`: Animácia sa prehrá, len keď element pokrýva celý viewport.
+- číselné hodnoty: Presné hodnoty časovej osi, ktoré môžu byť definované v percentách (`0%`, `50%`, `100%`), viewportových jednotkách (`10svw`, `50svb`) alebo statických jednotkách (`10rem`, `20px`).
 
-**Příklady:**
+### Príklady:
 
 ```css
 .element {
@@ -180,62 +178,62 @@ Klíčové hodnoty pro `animation-range-start` a `animation-range-end`:
 }
 ```
 
-## **`view-timeline-inset`: Nastavení offsetu časové osy viditelnosti**
+## **`view-timeline-inset`: Nastavenie offsetu časovej osi viditeľnosti**
 
-`view-timeline-inset` umožňuje upravit hranice, kdy se element považuje za viditelný. Tímto způsobem můžete dosáhnout plynulejších přechodů a animací, které reagují na příchod elementu do viewportu ještě předtím, než je fyzicky viditelný. Jinými slovy, můžete nastavit offset, o který se posune začátek a konec přehrávání animace.
+`view-timeline-inset` umožňuje upraviť hranice, kedy sa element považuje za viditeľný. Týmto spôsobom môžete dosiahnuť plynulejších prechodov a animácií, ktoré reagujú na príchod elementu do viewportu ešte predtým, než je fyzicky viditeľný. Inými slovami, môžete nastaviť offset, o ktorý sa posunie začiatok a koniec prehrávania animácie.
 
-`view-timeline-inset` podporuje jednu nebo dvě hodnoty:
+`view-timeline-inset` podporuje jednu alebo dve hodnoty:
 
-- jedna hodnota: Nastaví offset z obou stran.
-- dvě hodnoty: Nastaví offset pro začátek a konec časové osy viditelnosti.
+- jedna hodnota: Nastaví offset z oboch strán.
+- dve hodnoty: Nastaví offset pre začiatok a koniec časovej osi viditeľnosti.
 
-Kombinace s `animation-range` :
+### Kombinácia s `animation-range`:
 
-`view-timeline-inset` se dá kombinovat s `animation-range` pro ještě větší kontrolu nad animací. Můžete tak nastavit offset detekce viditelnosti a zároveň definovat přesný bod, kdy se má animace spustit.
+`view-timeline-inset` sa dá kombinovať s `animation-range` pre ešte väčšiu kontrolu nad animáciou. Môžete tak nastaviť offset detekcie viditeľnosti a zároveň definovať presný bod, kedy sa má animácia spustiť.
 
-Příklady:
+### Príklady:
 
 ```css
 .element {
   view-timeline: --my-view-timeline block;
-  view-timeline-inset: -50px; /* Animace začne o 50px dříve, než je element viditelný */
+  view-timeline-inset: -50px; /* Animácia začne o 50px skôr, než je element viditeľný */
   animation-timeline: --my-view-timeline;
   animation-range-start: entry;
 }
 
 .element {
   view-timeline: --my-view-timeline block;
-  view-timeline-inset: 10px 20px; /* 10px na začátku, 20px na konci */
+  view-timeline-inset: 10px 20px; /* 10px na začiatku, 20px na konci */
   animation-timeline: --my-view-timeline;
 }
 ```
 
-**Rozdíl mezi `animation-range` a `view-timeline-inset`:**
+### Rozdiel medzi `animation-range` a `view-timeline-inset`:
 
-- `animation-range` definuje, _v jakém rozsahu časové osy se má animace přehrávat_. Je to jako kdybyste nastavili začátek a konec filmu.
-- `view-timeline-inset` definuje, _kdy se element považuje za viditelný, což ovlivňuje celou časovou osu viditelnosti_. Je to jako kdybyste posunuli kameru, abyste viděli element dříve nebo později.
+- `animation-range` definuje, _v akom rozsahu časovej osi sa má animácia prehrávať_. Je to ako keby ste nastavili začiatok a koniec filmu.
+- `view-timeline-inset` definuje, _kedy sa element považuje za viditeľný, čo ovplyvňuje celú časovú os viditeľnosti_. Je to ako keby ste posunuli kameru, aby ste videli element skôr alebo neskôr.
 
-## **`timeline-scope`: Sdílení časových os**
+## `timeline-scope`: Zdieľanie časových osí
 
-`timeline-scope` umožňuje sdílet časovou osou mezi elementy. Tato vlastnost otevírá nové možnosti pro vytváření komplexních a synchronizovaných animací. Představte si například situaci, kdy chcete animovat vlastnosti rodičovského elementu v závislosti na tom, jak se scrolluje v jeho potomkovi. S `timeline-scope` je to možné!
+`timeline-scope` umožňuje zdieľať časovú os medzi elementmi. Táto vlastnosť otvára nové možnosti pre vytváranie komplexných a synchronizovaných animácií. Predstavte si napríklad situáciu, kedy chcete animovať vlastnosti rodičovského elementu v závislosti na tom, ako sa scrolluje v jeho potomkovi. S `timeline-scope` je to možné!
 
-Jak to funguje?
+### Ako to funguje?
 
-1. Definujete časovou osu (například `scroll-timeline`) na potomkovi.
-2. Použijete `timeline-scope` na rodičovském elementu a přiřadíte mu název časové osy potomka.
-3. Teď můžete animovat vlastnosti rodičovského elementu s použitím časové osy potomka!
+1. Definujete časovú os (napríklad `scroll-timeline`) na potomkovi.
+2. Použijete `timeline-scope` na rodičovskom elemente a priradíte mu názov časovej osi potomka.
+3. Teraz môžete animovať vlastnosti rodičovského elementu s použitím časovej osi potomka!
 
-**Příklad:**
+**Príklad:**
 
 ```css
 .parent {
-  timeline-scope: --scroll-timeline-child; /* Rodič sdílí časovou osu potomka */
+  timeline-scope: --scroll-timeline-child; /* Rodič zdieľa časovú os potomka */
   animation: scaleUp linear;
   animation-timeline: --scroll-timeline-child;
 }
 
 .child {
-  scroll-timeline: --scroll-timeline-child y; /* Potomek definuje časovou osu */
+  scroll-timeline: --scroll-timeline-child y; /* Potomok definuje časovú os */
 }
 
 @keyframes scaleUp {
@@ -245,22 +243,22 @@ Jak to funguje?
 }
 ```
 
-V tomto příkladu se rodičovský element zvětší (scaleUp animace) v závislosti na tom, jak se scrolluje v potomkovi.
+V tomto príklade sa rodičovský element zväčší (scaleUp animácia) v závislosti na tom, ako sa scrolluje v potomkovi.
 
-Kdy použít `timeline-scope`?
+### Kedy použiť `timeline-scope`?
 
-- Pokud chcete animovat vlastnosti rodičovského elementu na základě aktivity v potomkovi (například scrollování, viditelnost).
-- Pokud chcete vytvářet komplexní a synchronizované animace mezi více elementy.
-- Při vytváření layoutů, kde je potřeba synchronizace animací mezi různými částmi stránky.
+- Ak chcete animovať vlastnosti rodičovského elementu na základe aktivity v potomkovi (napríklad scrollovanie, viditeľnosť).
+- Ak chcete vytvárať komplexné a synchronizované animácie medzi viacerými elementmi.
+- Pri vytváraní layoutov, kde je potrebná synchronizácia animácií medzi rôznymi časťami stránky.
 
-**Závěr:**
+## Záver
 
-CSS scroll-driven animace představují mocný nástroj pro tvorbu moderních a interaktivních webových stránek. S novými vlastnostmi, jako jsou `scroll-timeline`, `view-timeline`, `animation-range` a `timeline-scope`, můžete vytvářet úžasné animace bez nutnosti používat JavaScript. Vyzkoušejte si je a posuňte své webové projekty na novou úroveň!
+CSS scroll-driven animácie predstavujú mocný nástroj pre tvorbu moderných a interaktívnych webových stránok. S novými vlastnosťami, ako sú `scroll-timeline`, `view-timeline`, `animation-range` a `timeline-scope`, môžete vytvárať úžasné animácie bez nutnosti používať JavaScript. Vyskúšajte si ich a posuňte svoje webové projekty na novú úroveň!
 
-**Poznámka pro uživatele Firefoxu**
+#### Poznámka pre používateľov Firefoxu
 
-Pro správné fungování scroll-driven animací je momentálně potřeba doplnit do definice animovaného elementu i vlastnost `animation-duration` s hodnotou např. `1ms`. Jinak animace nemusí fungovat správně.
+Pre správne fungovanie scroll-driven animácií je momentálne potrebné doplniť do definície animovaného elementu aj vlastnosť `animation-duration` s hodnotou napr. `1ms`. Inak animácie nemusia fungovať správne.
 
-**Poznámka pro uživatele Safari**
+#### Poznámka pre používateľov Safari
 
-Zatím není podporováno.
+Zatiaľ nie je podporované.

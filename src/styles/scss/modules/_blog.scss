@@ -52,24 +52,18 @@
       margin-block-start: 0.5em;
     }
 
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h2 {
+      display: flex;
+      align-items: center;
+      font-size: 2.25rem;
       font-weight: 700;
       line-height: 1.3;
       margin-top: 2.5em;
       margin-bottom: 0.8em;
+      text-box: trim-both ex alphabetic;
       color: $color-white;
       color: $color-grey-200;
-
-      padding-left: 0.5em;
       border-left: 4px solid $color-yellow;
-    }
-
-    h2 {
-      font-size: 2.25rem;
     }
 
     h3 {
@@ -87,7 +81,6 @@
     h6 {
       font-size: 1.125rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     p {

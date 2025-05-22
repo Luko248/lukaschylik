@@ -9,6 +9,7 @@ import { isDev } from "@builder.io/qwik/build";
 
 import "./styles/css/index.css";
 import "./styles/css/tailwind.css";
+import "./styles/css/prism.css";
 
 export default component$(() => {
   /**

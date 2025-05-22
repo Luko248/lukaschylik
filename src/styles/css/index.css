@@ -449,22 +449,18 @@ strong {
     font-size: clamp(1rem, 0.5em, 2rem);
     margin-block-start: 0.5em;
   }
-  .blog h2,
-  .blog h3,
-  .blog h4,
-  .blog h5,
-  .blog h6 {
+  .blog h2 {
+    display: flex;
+    align-items: center;
+    font-size: 2.25rem;
     font-weight: 700;
     line-height: 1.3;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
+    text-box: trim-both ex alphabetic;
     color: hsl(0, 0%, 100%);
     color: hsl(0, 0%, 85%);
-    padding-left: 0.5em;
     border-left: 4px solid hsl(51, 100%, 53%);
-  }
-  .blog h2 {
-    font-size: 2.25rem;
   }
   .blog h3 {
     font-size: 1.875rem;
@@ -478,7 +474,6 @@ strong {
   .blog h6 {
     font-size: 1.125rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
   .blog p {
     margin-bottom: 1.5em;
