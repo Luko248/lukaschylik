@@ -54,23 +54,23 @@ strong {
 
 @layer base, _components, _modules, _utils;
 @layer base {
-  *:not(.blog) h1,
-  *:not(.blog) h2,
-  *:not(.blog) h3,
-  *:not(.blog) h4,
-  *:not(.blog) h5,
-  *:not(.blog) h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     paint-order: stroke fill;
   }
-  *:not(.blog) address {
+  address {
     font-style: normal;
   }
-  *:not(.blog) textarea {
+  textarea {
     font-family: inherit;
     font-size: medium;
     resize: vertical;
   }
-  *:not(.blog) p {
+  p {
     max-inline-size: 65ch;
   }
 }
@@ -438,8 +438,16 @@ strong {
   .blog > * + * {
     margin-top: 1.5em;
   }
+  .blog p {
+    max-inline-size: none;
+  }
   .blog header:before, .blog header:after {
     display: none !important;
+  }
+  .blog h1 small {
+    display: block;
+    font-size: clamp(1rem, 0.5em, 2rem);
+    margin-block-start: 0.5em;
   }
   .blog h2,
   .blog h3,
@@ -451,12 +459,12 @@ strong {
     margin-top: 2.5em;
     margin-bottom: 0.8em;
     color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 85%);
     padding-left: 0.5em;
     border-left: 4px solid hsl(51, 100%, 53%);
   }
   .blog h2 {
     font-size: 2.25rem;
-    letter-spacing: -0.03em;
   }
   .blog h3 {
     font-size: 1.875rem;

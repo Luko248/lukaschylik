@@ -4,7 +4,6 @@
 
 @mixin create-blog {
   .blog {
-    // Base text styling
     color: $color-text;
     font-family:
       system-ui,
@@ -16,7 +15,7 @@
       Ubuntu,
       Cantarell,
       sans-serif;
-    font-size: 1.125rem; // 18px base
+    font-size: 1.125rem;
     line-height: 1.7;
     margin-inline: auto;
 
@@ -32,9 +31,12 @@
       z-index: 1000;
     }
 
-    // Article spacing
     > * + * {
       margin-top: 1.5em;
+    }
+
+    p {
+      max-inline-size: none;
     }
 
     header {
@@ -44,7 +46,12 @@
       }
     }
 
-    // Headings hierarchy with proper spacing and sizing
+    h1 small {
+      display: block;
+      font-size: clamp($gap-space-16, 0.5em, $gap-space-32);
+      margin-block-start: 0.5em;
+    }
+
     h2,
     h3,
     h4,
@@ -55,36 +62,34 @@
       margin-top: 2.5em;
       margin-bottom: 0.8em;
       color: $color-white;
+      color: $color-grey-200;
 
-      // Add subtle left border for visual hierarchy
       padding-left: 0.5em;
       border-left: 4px solid $color-yellow;
     }
 
     h2 {
-      font-size: 2.25rem; // 36px
-      letter-spacing: -0.03em;
+      font-size: 2.25rem;
     }
 
     h3 {
-      font-size: 1.875rem; // 30px
+      font-size: 1.875rem;
     }
 
     h4 {
-      font-size: 1.5rem; // 24px
+      font-size: 1.5rem;
     }
 
     h5 {
-      font-size: 1.25rem; // 20px
+      font-size: 1.25rem;
     }
 
     h6 {
-      font-size: 1.125rem; // 18px
+      font-size: 1.125rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    // Paragraphs
     p {
       margin-bottom: 1.5em;
 
@@ -93,7 +98,6 @@
       }
     }
 
-    // Links with smooth hover effect
     .link,
     a {
       color: $color-yellow;
@@ -110,7 +114,6 @@
       }
     }
 
-    // Lists styling
     ul,
     ol {
       margin: 1.5em 0;
@@ -148,7 +151,6 @@
       }
     }
 
-    // Code blocks
     pre {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 4px;
@@ -168,7 +170,6 @@
       font-family: "Fira Code", "Consolas", monospace;
     }
 
-    // Images
     img {
       max-width: 100%;
       height: auto;
@@ -177,14 +178,12 @@
       display: block;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-      // Add subtle zoom effect on hover
       transition: transform 0.2s ease-in-out;
       &:hover {
         transform: scale(1.01);
       }
     }
 
-    // Blockquotes
     blockquote {
       margin: 2em 0;
       padding: 1em 1.5em;
@@ -206,7 +205,6 @@
       }
     }
 
-    // Tables
     table {
       width: 100%;
       border-collapse: collapse;
@@ -226,7 +224,6 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    // Horizontal rule
     hr {
       border: 0;
       height: 1px;
@@ -234,7 +231,6 @@
       margin: 3em 0;
     }
 
-    // Responsive adjustments
     @media (max-width: 768px) {
       font-size: 1rem;
       padding: 1.5rem 1rem;

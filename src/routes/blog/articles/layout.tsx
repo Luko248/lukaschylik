@@ -104,6 +104,7 @@ export default component$(() => {
             <header class="mb-8">
               <h1 class="text-6xl mb-4 font-bold text-gray-200">
                 {post.value.title}
+                <small>{post.value.subtitle}</small>
               </h1>
               <div class="flex items-center text-sm text-gray-300 mb-4">
                 <span>{post.value.date}</span>

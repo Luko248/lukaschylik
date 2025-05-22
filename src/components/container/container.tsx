@@ -8,7 +8,7 @@ const Container = component$<ContainerProps>(({ size = "md", className }) => {
     md: "max-w-[calc(1440px-2rem)] w-full",
     lg: "max-w-[calc(1920px-2rem)] w-full",
     full: "max-w-[calc(100%-10svi)] w-full",
-    blog: "max-w-[110ch] w-full",
+    blog: "max-w-[85ch] w-full",
   };
 
   return (

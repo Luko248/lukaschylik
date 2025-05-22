@@ -10,6 +10,8 @@ export interface BlogPost {
   slug: string;
   /** Title of the blog post */
   title: string;
+  /** Subtitle of the blog post */
+  subtitle: string;
   /** Short description or excerpt of the blog post */
   description: string;
   /** Publication date in ISO format (YYYY-MM-DD) */
@@ -50,6 +52,7 @@ const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
     return {
       slug,
       title: data.title,
+      subtitle: data.subtitle,
       description: data.description,
       date:
         data.date instanceof Date
