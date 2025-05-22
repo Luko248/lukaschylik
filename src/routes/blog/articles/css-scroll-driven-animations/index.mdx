@@ -21,7 +21,7 @@ Web Animations API, ktoré poznáme hlavne v podobe vlastností ako `transition`
 - **`view-timeline-inset`**
 - **`timeline-scope`**
 
-## **`scroll-timeline`: Definice časové osy scrollování**
+## scroll-timeline: Definice časové osy scrollování
 
 Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollovania". Táto časová os sleduje priebeh scrollovania elementu (nazývaného scroller) od jeho horného okraja k spodnému alebo od ľavého k pravému okraju.
 
@@ -63,7 +63,7 @@ Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollova
 }
 ```
 
-## **`view-timeline`: Sledovanie viditeľnosti elementu**
+## view-timeline: Sledovanie viditeľnosti elementu
 
 Vlastnosť `view-timeline` slúži na definovanie tzv. "časovej osi viditeľnosti". Táto časová os sleduje zmenu viditeľnosti elementu (subject) vnútri scrollovateľného kontajnera (scroller).
 
@@ -105,7 +105,7 @@ Rovnako ako pri `scroll-timeline`: `view-timeline` sama o sebe nič neurobí. Po
 }
 ```
 
-## `animation-timeline`: Zodpovedná za spustenie animácie
+## animation-timeline: Zodpovedná za spustenie animácie
 
 Určite ste si všimli, že v predchádzajúcich ukážkach kódu bola vždy prítomná vlastnosť `animation-timeline`. Je to preto, že bez nej by scroll-driven animácie jednoducho nefungovali! Táto vlastnosť spája animáciu s definovanou časovou osou (scroll alebo view).
 
@@ -141,7 +141,7 @@ Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo vidit
 }
 ```
 
-## `animation-range`: Nastavení hranic přehrávání animace
+## animation-range: Nastavení hranic přehrávání animace
 
 `animation-range` umožňuje určit, v jakém rozsahu časové osy se má animace přehrát. To znamená, že můžete přesně definovat, kdy se animace začne a skončí, vzhledem k průběhu scrollování nebo viditelnosti elementu.
 
@@ -178,7 +178,7 @@ Kľúčové hodnoty pre `animation-range-start` a `animation-range-end`:
 }
 ```
 
-## **`view-timeline-inset`: Nastavenie offsetu časovej osi viditeľnosti**
+## view-timeline-inset: Nastavenie offsetu časovej osi viditeľnosti
 
 `view-timeline-inset` umožňuje upraviť hranice, kedy sa element považuje za viditeľný. Týmto spôsobom môžete dosiahnuť plynulejších prechodov a animácií, ktoré reagujú na príchod elementu do viewportu ešte predtým, než je fyzicky viditeľný. Inými slovami, môžete nastaviť offset, o ktorý sa posunie začiatok a koniec prehrávania animácie.
 
