@@ -172,7 +172,7 @@ export default component$(() => {
               text: "Blog",
             },
             {
-              href: "#contact",
+              href: "/#contact",
               text: "Kontakt",
             },
           ]}
