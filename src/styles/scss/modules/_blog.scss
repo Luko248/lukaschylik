@@ -15,9 +15,10 @@
       Ubuntu,
       Cantarell,
       sans-serif;
-    font-size: clamp(1rem, 2.5svb, 1.125rem);
+    font-size: clamp(1rem, 2.5svi, 1.125rem);
     line-height: 1.7;
     margin-inline: auto;
+    max-inline-size: 100svi;
 
     &__progress {
       animation: article-progress forwards 1ms;
@@ -25,14 +26,14 @@
       position: fixed;
       inset: 0 0 auto 0;
       background-color: $color-yellow;
-      block-size: clamp(2px, 1svb, $gap-space-4);
+      block-size: clamp(2px, 1svi, $gap-space-4);
       transform-origin: left;
       scale: 0 1;
       z-index: 1000;
     }
 
     > * + * {
-      margin-top: clamp(1em, 3svb, 1.5em);
+      margin-top: clamp(1em, 3svi, 1.5em);
     }
 
     header {
@@ -42,47 +43,81 @@
       }
     }
 
-    h1 small {
-      display: block;
-      font-size: clamp($gap-space-16, 0.5em, $gap-space-32);
-      margin-block-start: 0.5em;
+    h1 {
+      font-size: clamp(2.5rem, 6svi, 3rem);
+      line-height: 1.2;
+      margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
+
+      @include mq-responsive(tablet, max) {
+        font-size: clamp(2rem, 5svi, 2.5rem);
+        line-height: 1.3;
+      }
+
+      @include mq-responsive(mobile, max) {
+        font-size: clamp(1.75rem, 4.5svi, 2rem);
+        line-height: 1.4;
+      }
+
+      small {
+        display: block;
+        font-size: clamp($gap-space-16, 0.5em, $gap-space-32);
+        margin-block-start: 0.5em;
+      }
     }
 
     h2 {
       display: flex;
       align-items: center;
-      font-size: clamp(2rem, 5svb, 2.25rem);
+      font-size: clamp(2rem, 5svi, 2.25rem);
       font-weight: 500;
       line-height: 1.3;
-      margin-top: clamp(1.8em, 5svb, 2.5em);
-      margin-bottom: clamp(0.6em, 1.5svb, 0.8em);
+      margin-top: clamp(1.8em, 5svi, 2.5em);
+      margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
       text-box: trim-both ex alphabetic;
       color: $color-white;
       color: $color-grey-200;
       font-weight: 500;
-      border-left: clamp(3px, 0.8svb, 4px) solid $color-yellow;
+      border-left: clamp(3px, 0.8svi, 4px) solid $color-yellow;
+
+      @include mq-responsive(tablet, max) {
+        font-size: clamp(1.75rem, 4.5svi, 2rem);
+        margin-top: clamp(1.5em, 4svi, 2em);
+      }
+
+      @include mq-responsive(mobile, max) {
+        font-size: clamp(1.5rem, 4svi, 1.75rem);
+        margin-top: clamp(1.2em, 3.5svi, 1.8em);
+      }
     }
 
     h3 {
-      font-size: clamp(1.75rem, 4.5svb, 1.875rem);
+      font-size: clamp(1.75rem, 4.5svi, 1.875rem);
+
+      @include mq-responsive(tablet, max) {
+        font-size: clamp(1.5rem, 4svi, 1.65rem);
+      }
+
+      @include mq-responsive(mobile, max) {
+        font-size: clamp(1.25rem, 3.5svi, 1.5rem);
+      }
     }
 
     h4 {
-      font-size: clamp(1.5rem, 3.5svb, 1.5rem);
+      font-size: clamp(1.5rem, 3.5svi, 1.5rem);
     }
 
     h5 {
-      font-size: clamp(1.25rem, 3svb, 1.25rem);
+      font-size: clamp(1.25rem, 3svi, 1.25rem);
     }
 
     h6 {
-      font-size: clamp(1.125rem, 2.5svb, 1.125rem);
+      font-size: clamp(1.125rem, 2.5svi, 1.125rem);
       text-transform: uppercase;
     }
 
     p {
       max-inline-size: none;
-      margin-bottom: clamp(1em, 3svb, 1.5em);
+      margin-bottom: clamp(1em, 3svi, 1.5em);
       font-weight: 300;
 
       &:last-child {
@@ -108,11 +143,11 @@
 
     ul,
     ol {
-      margin: clamp(1em, 3svb, 1.5em) 0;
-      padding-left: clamp(1em, 3svb, 1.5em);
+      margin: clamp(1em, 3svi, 1.5em) 0;
+      padding-left: clamp(1em, 3svi, 1.5em);
 
       li {
-        margin-bottom: clamp(0.3em, 1svb, 0.5em);
+        margin-bottom: clamp(0.3em, 1svi, 0.5em);
         position: relative;
 
         &::before {
@@ -145,83 +180,24 @@
 
     pre {
       background: $color-grey-800;
-      border-radius: clamp(3px, 0.8svb, 4px);
-      padding: clamp(1em, 3svb, 1.5em);
+      border-radius: clamp(3px, 0.8svi, 4px);
+      padding: clamp(1em, 3svi, 1.5em);
       overflow-x: auto;
-      margin: clamp(1.5em, 4svb, 2em) 0;
+      margin: clamp(1.5em, 4svi, 2em) 0;
       font-family: "Fira Code", "Consolas", monospace;
-      font-size: clamp(0.85em, 2svb, 0.9em);
+      font-size: clamp(0.85em, 2svi, 0.9em);
       line-height: 1.6;
+      max-inline-size: 100%;
+      display: block;
+      overflow: auto;
     }
 
     code {
       background: $color-grey-800;
-      padding: clamp(0.15em, 0.5svb, 0.2em) clamp(0.3em, 0.8svb, 0.4em);
-      border-radius: clamp(2px, 0.6svb, 3px);
-      font-size: clamp(0.85em, 2svb, 0.9em);
+      padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
+      border-radius: clamp(2px, 0.6svi, 3px);
+      font-size: clamp(0.85em, 2svi, 0.9em);
       font-family: "Fira Code", "Consolas", monospace;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: clamp(4px, 1.5svb, 8px);
-      margin: clamp(1.5em, 4svb, 2em) 0;
-      display: block;
-      box-shadow: 0 clamp(2px, 0.8svb, 4px) clamp(3px, 1.2svb, 6px)
-        $color-grey-800;
-
-      transition: transform 0.2s ease-in-out;
-      &:hover {
-        transform: scale(1.01);
-      }
-    }
-
-    blockquote {
-      margin: clamp(1.5em, 4svb, 2em) 0;
-      padding: clamp(0.8em, 2svb, 1em) clamp(1em, 3svb, 1.5em);
-      border-left: clamp(3px, 0.8svb, 4px) solid $color-yellow;
-      background: $color-grey-800;
-      font-style: italic;
-
-      p {
-        margin: 0;
-      }
-
-      cite {
-        display: block;
-        margin-top: clamp(0.8em, 2svb, 1em);
-        font-size: clamp(0.85em, 2svb, 0.9em);
-        color: $color-text;
-        opacity: 0.8;
-        font-style: normal;
-      }
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: clamp(1.5em, 4svb, 2em) 0;
-      font-size: clamp(0.85em, 2svb, 0.9em);
-    }
-
-    th,
-    td {
-      padding: clamp(0.5em, 1.5svb, 0.75em);
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    th {
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    hr {
-      border: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      margin: clamp(2em, 6svb, 3em) 0;
     }
   }
 

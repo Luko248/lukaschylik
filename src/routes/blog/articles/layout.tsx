@@ -65,10 +65,12 @@ export default component$(() => {
   const post = useCurrentPost();
 
   // Generate share URLs
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const encodedUrl = encodeURIComponent(shareUrl);
+  // Use the full URL with origin for proper sharing
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+  const fullUrl = `${baseUrl}${location.url.pathname}`;
+  const encodedUrl = encodeURIComponent(fullUrl);
   const encodedTitle = encodeURIComponent(
-    location.url.pathname.split("/").pop() || "Blog post",
+    post.value?.title || location.url.pathname.split("/").pop() || "Blog post",
   );
 
   const shareLinks: ShareLink[] = [
@@ -102,9 +104,9 @@ export default component$(() => {
         <article class="blog">
           {post.value && (
             <header class="mb-8">
-              <h1 class="text-6xl mb-4 font-bold text-gray-200">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-200 leading-tight md:leading-tight lg:leading-tight">
                 {post.value.title}
-                <small>{post.value.subtitle}</small>
+                <small class="mt-2 block">{post.value.subtitle}</small>
               </h1>
               <div class="flex items-center text-sm text-gray-300 mb-4">
                 <span>{post.value.date}</span>
@@ -138,7 +140,8 @@ export default component$(() => {
                 title={`Share on ${link.name}`}>
                 <Icon
                   name={link.icon}
-                  size={link.icon === "x" ? "1rem" : "1.25rem"}
+                  color="black"
+                  size={link.icon === "x" ? "1rem" : "1.125rem"}
                 />
               </a>
             ))}
@@ -155,11 +158,22 @@ export default component$(() => {
  * @param {Object} props - The head props object containing metadata from MDX frontmatter
  * @returns {DocumentHead} The document head metadata for the blog post
  */
-export const head: DocumentHead = ({ head }) => {
+export const head: DocumentHead = ({ head, resolveValue }) => {
+  const post = resolveValue(useCurrentPost);
+  const description = post?.description || "Osobný blog o webovom vývoji, dizajne a technológiách";
+  
   return {
     title: `${head.title} | Blog | Lukáš Chylík` || "Blog | Lukáš Chylík",
     meta: [
       ...(head.meta || []),
+      {
+        name: "description",
+        content: description,
+      },
+      {
+        name: "og:description",
+        content: description,
+      },
       {
         name: "og:type",
         content: "article",

@@ -4,8 +4,6 @@ import { IconProps } from "./icon.types";
 const Icon = component$<IconProps>(({ name, cls, size, color }) => {
   const classes = [
     `icon icon-${name}`,
-    "fill-white",
-    "w-5",
     "aspect-square",
     "transition-colors duration-200",
     cls,
