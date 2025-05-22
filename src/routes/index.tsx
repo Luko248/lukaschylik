@@ -8,6 +8,7 @@ export default component$(() => {
       <About />
       <References />
       <Services />
+      <Newsletter />
       <Contact />
     </>
   );

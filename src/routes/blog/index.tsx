@@ -16,8 +16,8 @@ export default component$(() => {
   const posts = useBlogPosts();
 
   return (
-    <Section id="blog">
-      <Container size="lg">
+    <Section id="blog" centerContent={false}>
+      <Container size="md">
         <SectionTitle text="Blog" />
         <div class="grid grid-cols-1 gap-8 mt-12">
           {posts.value.length > 0 ? (

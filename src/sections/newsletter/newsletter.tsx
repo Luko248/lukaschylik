@@ -77,7 +77,7 @@ const Newsletter = component$(() => {
   });
 
   return (
-    <Section id="contact" className="bg-white">
+    <Section id="contact" className="bg-white" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
         <SectionTitle text="Newsletter" size="sm" center dark />
 

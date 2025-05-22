@@ -1,6 +1,8 @@
 export interface SectionProps {
   id: string;
   className?: string;
+  centerContent?: boolean;
+  fullHeight?: boolean;
 }
 
 export interface SectionTitleProps {
