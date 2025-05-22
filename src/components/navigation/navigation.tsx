@@ -42,7 +42,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "nav__logo",
             "relative z-20",
             "text-lg md:text-l lg:text-xl",
-            "text-white uppercase",
+            "text-white",
             "decoration-secondary decoration-5 underline-offset-8",
             "no-underline hover:underline",
           )}>
@@ -76,7 +76,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                     data-active={isActive}
                     class={cls(
                       "text-lg md:text-l lg:text-xl",
-                      "text-white uppercase",
+                      "text-white ",
                       "decoration-secondary decoration-5 underline-offset-8",
                       "no-underline hover:underline",
                       isActive && "underline",
