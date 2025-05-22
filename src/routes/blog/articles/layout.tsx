@@ -1,15 +1,45 @@
-import {
-  component$,
-  useVisibleTask$,
-  useSignal,
-  useStyles$,
-} from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { Slot } from "@builder.io/qwik";
-import { DocumentHead, useLocation, Link } from "@builder.io/qwik-city";
+import {
+  DocumentHead,
+  useLocation,
+  Link,
+  routeLoader$,
+} from "@builder.io/qwik-city";
+import { getAllPosts } from "~/utils/markdown.server";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import { cls } from "~/utils";
 import { Icon } from "~/components";
+
+/**
+ * Route loader to fetch the current blog post data based on the URL slug
+ * Follows Qwik's pattern for efficient data loading and resumability
+ * @returns {BlogPost | null} The current blog post data or null if not found
+ */
+export const useCurrentPost = routeLoader$(async ({ status, url }) => {
+  try {
+    const urlParts = url.pathname.split("/");
+    const slug = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+
+    if (!slug || slug === "articles") {
+      return null;
+    }
+
+    const allPosts = getAllPosts();
+    const post = allPosts.find((post) => post.slug === slug);
+
+    if (!post) {
+      status(404);
+      return null;
+    }
+
+    return post;
+  } catch (error) {
+    status(500);
+    return null;
+  }
+});
 
 /**
  * Interface for social share links
@@ -32,6 +62,7 @@ interface ShareLink {
  */
 export default component$(() => {
   const location = useLocation();
+  const post = useCurrentPost();
 
   // Generate share URLs
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -69,6 +100,18 @@ export default component$(() => {
         </Link>
 
         <article class="blog">
+          {post.value && (
+            <header class="mb-8">
+              <h1 class="text-6xl mb-4 font-bold text-gray-200">
+                {post.value.title}
+              </h1>
+              <div class="flex items-center text-sm text-gray-300 mb-4">
+                <span>{post.value.date}</span>
+                <span class="mx-2">•</span>
+                <span>{post.value.author}</span>
+              </div>
+            </header>
+          )}
           <Slot />
           <div class="mt-12 pt-6 border-t border-gray-700">
             <h3 class="text-xl font-semibold mb-4 text-gray-200">
