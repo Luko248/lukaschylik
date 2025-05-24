@@ -26,12 +26,10 @@ const Navigation = component$<NavigationProps>(({ links }) => {
       <nav
         class={cls(
           "nav",
-          "fixed top-0",
+          "sticky top-0",
           "flex justify-between items-center text-center",
           "py-4 md:py-8 px-8",
           "w-full z-90",
-          "md:backdrop-blur-md",
-          "md:mix-blend-difference",
           state.isOpen && "nav--open",
         )}
         aria-label="Main navigation">
@@ -41,12 +39,18 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative z-20",
-            "text-lg md:text-l lg:text-xl",
-            "text-white",
-            "decoration-secondary decoration-5 underline-offset-8",
-            "no-underline hover:underline",
+            "flex items-center",
+            "no-underline",
+            "transition-opacity duration-300 ease-in-out hover:opacity-80",
           )}>
-          Domov
+          <img 
+            src="/images/logos/references/logo.svg" 
+            alt="LCH Logo" 
+            width="100" 
+            height="60" 
+            class="mr-2"
+            loading="eager"
+          />
         </a>
         <ul
           id="navigation-menu"
@@ -54,9 +58,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "nav__list",
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
             "align-baseline items-center content-center gap-16 md:gap-8",
-            "md:flex-row md:justify-center",
-            "bg-black/70 backdrop-blur-md md:bg-transparent ",
-            "backdrop-blur-lg md:backdrop-blur-none",
+            "md:flex-row md:justify-center py-4 px-8 rounded-full",
+            "backdrop-blur-sm",
+            "transition-colors duration-200 ease-in-out",
             "list-none m-0",
           )}
           role="menu">

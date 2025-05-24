@@ -8,9 +8,19 @@
   }
 
   .nav {
-    mask-image: var(--nav_mask, none);
+    container-type: scroll-state;
     max-inline-size: 100vw;
+    margin-block-end: -124px;
     --nav-list_display: none;
+    --nav-bg-color: transparent;
+
+    @supports (container-type: scroll-state) {
+      @container scroll-state(stuck: top) {
+        > ul {
+          background-color: hsl(0 0% 40% / 50%);
+        }
+      }
+    }
 
     &--open {
       --nav-list_display: grid;
@@ -21,7 +31,6 @@
     }
 
     @include mq-responsive(tablet, min) {
-      --nav_mask: linear-gradient(#{$color-black} 70%, #{$color-transparent});
       --nav-list_display: inline-flex;
       --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }

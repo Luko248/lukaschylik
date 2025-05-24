@@ -150,34 +150,34 @@ export default component$(() => {
 
   return (
     <>
+      <Navigation
+        links={[
+          {
+            href: "/#about-me",
+            text: "O mne",
+          },
+          {
+            href: "/#references",
+            text: "Referencie",
+          },
+          {
+            href: "/#services",
+            text: "Služby",
+          },
+          {
+            href: "/blog",
+            text: "Blog",
+          },
+          {
+            href: "/#contact",
+            text: "Kontakt",
+          },
+        ]}
+      />
       <header
         ref={headerRef}
         data-animation={isHomePage ? "true" : "false"}
         class="max-h-screen max-w-svw bg-black md:bg-transparent">
-        <Navigation
-          links={[
-            {
-              href: "/#about-me",
-              text: "O mne",
-            },
-            {
-              href: "/#references",
-              text: "Referencie",
-            },
-            {
-              href: "/#services",
-              text: "Služby",
-            },
-            {
-              href: "/blog",
-              text: "Blog",
-            },
-            {
-              href: "/#contact",
-              text: "Kontakt",
-            },
-          ]}
-        />
         {isHomePage && <Intro />}
       </header>
       <main>

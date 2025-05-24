@@ -262,9 +262,18 @@ strong {
     overflow: hidden;
   }
   .nav {
-    mask-image: var(--nav_mask, none);
+    container-type: scroll-state;
     max-inline-size: 100vw;
+    margin-block-end: -124px;
     --nav-list_display: none;
+    --nav-bg-color: transparent;
+  }
+  @supports (container-type: scroll-state) {
+    @container scroll-state(stuck: top) {
+      .nav > ul {
+        background-color: hsla(0, 0%, 40%, 0.5);
+      }
+    }
   }
   .nav--open {
     --nav-list_display: grid;
@@ -276,7 +285,6 @@ strong {
   }
   @media screen and (width > 768px) {
     .nav {
-      --nav_mask: linear-gradient(hsl(0, 0%, 0%) 70%, hsla(0, 0%, 0%, 0));
       --nav-list_display: inline-flex;
       --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
