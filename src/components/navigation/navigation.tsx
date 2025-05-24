@@ -44,10 +44,10 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "transition-opacity duration-300 ease-in-out hover:opacity-80",
           )}>
           <img
-            src="/images/logos/references/logo.svg"
+            src="/images/logos/logo.svg"
             alt="LCH Logo"
-            width="100"
-            height="60"
+            width="80"
+            height="40"
             class="mr-2"
             loading="eager"
           />
