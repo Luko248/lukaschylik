@@ -51,7 +51,7 @@ export const RouterHead = component$(() => {
         href="/images/favicon/apple-touch-icon.png"
       />
       <meta name="apple-mobile-web-app-title" content="Lukáš Chylík" />
-      <link rel="manifest" href="/images/favicon/site.webmanifest" />
+      <link rel="manifest" href="/manifest.json" />
 
       <meta name="description" content={description} />
       <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
