@@ -43,11 +43,11 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "no-underline",
             "transition-opacity duration-300 ease-in-out hover:opacity-80",
           )}>
-          <img 
-            src="/images/logos/references/logo.svg" 
-            alt="LCH Logo" 
-            width="100" 
-            height="60" 
+          <img
+            src="/images/logos/references/logo.svg"
+            alt="LCH Logo"
+            width="100"
+            height="60"
             class="mr-2"
             loading="eager"
           />
