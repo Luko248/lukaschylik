@@ -4,41 +4,24 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
 
 <url>
-  <loc>https://lukaschylik.com/</loc>
-  <lastmod>2023-06-01T12:00:00+00:00</lastmod>
+  <loc>https://lukaschylik.sk/</loc>
+  <lastmod>2025-05-26T16:34:51+00:00</lastmod>
   <priority>1.00</priority>
-  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://lukaschylik.sk/blog/</loc>
+  <lastmod>2025-05-26T16:34:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lukaschylik.sk/blog/articles/css-scroll-driven-animations/</loc>
+  <lastmod>2025-05-26T16:34:51+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
-<!-- Sections as anchors on the main page -->
-<url>
-  <loc>https://lukaschylik.com/#about</loc>
-  <lastmod>2023-06-01T12:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>monthly</changefreq>
-</url>
-
-<url>
-  <loc>https://lukaschylik.com/#references</loc>
-  <lastmod>2023-06-01T12:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>monthly</changefreq>
-</url>
-
-<url>
-  <loc>https://lukaschylik.com/#services</loc>
-  <lastmod>2023-06-01T12:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>monthly</changefreq>
-</url>
-
-<url>
-  <loc>https://lukaschylik.com/#contact</loc>
-  <lastmod>2023-06-01T12:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>monthly</changefreq>
-</url>
 
 </urlset>
