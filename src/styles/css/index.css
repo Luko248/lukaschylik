@@ -270,10 +270,16 @@ strong {
   }
   @supports (container-type: scroll-state) {
     @container scroll-state(stuck: top) {
-      .nav > ul,
-      .nav .nav__logo {
-        background-color: hsla(0, 0%, 15%, 0.7);
+      @media screen and (width > 768px) {
+        .nav :is(.nav__list, .nav__logo) {
+          background-color: hsla(0, 0%, 10%, 0.7);
+        }
       }
+    }
+  }
+  @media screen and (width <= 768px) {
+    .nav :is(.nav__list, .nav__logo) {
+      background-color: hsla(0, 0%, 0%, 0.9);
     }
   }
   .nav--open {
@@ -297,6 +303,7 @@ strong {
   }
   .nav__toggler {
     display: grid;
+    aspect-ratio: 1;
     place-items: center;
     --after_scale-x: 0.75;
     --before_trans-x: -50%;

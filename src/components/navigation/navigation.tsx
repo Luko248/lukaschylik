@@ -28,7 +28,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "nav",
           "sticky top-0",
           "flex justify-between items-center text-center",
-          "py-4 md:py-8 px-8",
+          "py-2 md:py-8 px-4 md:px-8",
+          "bg-black md:bg-transparent",
           "w-full z-90",
           state.isOpen && "nav--open",
         )}
@@ -38,14 +39,14 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           role="menuitem"
           class={cls(
             "nav__logo",
-            "relative z-20",
+            "relative",
             "flex items-center",
             "no-underline",
-            "px-3 py-4",
-            "mix-blend-difference",
+            "px-0 md:px-3 py-0 md:py-4",
             "backdrop-blur-sm",
             "transition-colors duration-200 ease-in-out",
             "hover:opacity-80",
+            "z-90",
           )}>
           <img
             src="/images/logos/logo.svg"
@@ -65,6 +66,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "backdrop-blur-sm",
             "transition-colors duration-200 ease-in-out",
             "list-none m-0",
+            "z-80",
           )}
           role="menu">
           {links &&
@@ -94,23 +96,21 @@ const Navigation = component$<NavigationProps>(({ links }) => {
               );
             })}
         </ul>
-        <span></span>
+        <button
+          type="button"
+          class={cls(
+            "nav__toggler relative",
+            "w-10 h-10",
+            "z-90",
+            "text-white cursor-pointer visible md:invisible",
+            state.isOpen && "nav__toggler--open",
+          )}
+          aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+          aria-expanded={state.isOpen ? "true" : "false"}
+          aria-controls="navigation-menu"
+          title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+          onClick$={toggleMenu}></button>
       </nav>
-      <button
-        type="button"
-        class={cls(
-          "nav__toggler fixed md:relative top-4 right-4",
-          "w-10 h-10",
-          "mix-blend-difference md:mix-blend-normal",
-          "text-white cursor-pointer visible md:invisible",
-          state.isOpen && "nav__toggler--open",
-          "z-90",
-        )}
-        aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-        aria-expanded={state.isOpen ? "true" : "false"}
-        aria-controls="navigation-menu"
-        title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-        onClick$={toggleMenu}></button>
     </>
   );
 });

@@ -16,10 +16,17 @@
 
     @supports (container-type: scroll-state) {
       @container scroll-state(stuck: top) {
-        > ul,
-        .nav__logo {
-          background-color: hsl(0 0% 15% / 70%);
+        :is(.nav__list, .nav__logo) {
+          @include mq-responsive(tablet, min) {
+            background-color: hsl(0 0% 10% / 70%);
+          }
         }
+      }
+    }
+
+    :is(.nav__list, .nav__logo) {
+      @include mq-responsive(tablet, max) {
+        background-color: hsl(0 0% 0% / 90%);
       }
     }
 
@@ -44,6 +51,7 @@
 
     &__toggler {
       display: grid;
+      aspect-ratio: 1;
       place-items: center;
       --after_scale-x: 0.75;
       --before_trans-x: -50%;
