@@ -41,14 +41,17 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "relative z-20",
             "flex items-center",
             "no-underline",
-            "transition-opacity duration-300 ease-in-out hover:opacity-80",
+            "p-4",
+            "mix-blend-difference",
+            "backdrop-blur-sm",
+            "transition-colors duration-200 ease-in-out",
+            "hover:opacity-80",
           )}>
           <img
             src="/images/logos/logo.svg"
             alt="LCH Logo"
-            width="80"
-            height="40"
-            class="mr-2"
+            width="65"
+            height="38"
             loading="eager"
           />
         </a>
@@ -58,7 +61,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "nav__list",
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
             "align-baseline items-center content-center gap-16 md:gap-8",
-            "md:flex-row md:justify-center py-4 px-8 rounded-full",
+            "md:flex-row md:justify-center py-4 px-8",
             "backdrop-blur-sm",
             "transition-colors duration-200 ease-in-out",
             "list-none m-0",
@@ -81,7 +84,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                     class={cls(
                       "text-lg md:text-l lg:text-xl",
                       "text-white ",
-                      "decoration-secondary decoration-5 underline-offset-8",
+                      "decoration-secondary decoration-3 underline-offset-8",
                       "no-underline hover:underline",
                       isActive && "underline",
                     )}>

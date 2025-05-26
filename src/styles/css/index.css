@@ -263,15 +263,16 @@ strong {
   }
   .nav {
     container-type: scroll-state;
-    max-inline-size: 100vw;
+    max-inline-size: 100lvi;
     margin-block-end: -124px;
     --nav-list_display: none;
     --nav-bg-color: transparent;
   }
   @supports (container-type: scroll-state) {
     @container scroll-state(stuck: top) {
-      .nav > ul {
-        background-color: hsla(0, 0%, 40%, 0.5);
+      .nav > ul,
+      .nav .nav__logo {
+        background-color: hsla(0, 0%, 15%, 0.7);
       }
     }
   }

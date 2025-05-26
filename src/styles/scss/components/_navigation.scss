@@ -9,15 +9,16 @@
 
   .nav {
     container-type: scroll-state;
-    max-inline-size: 100vw;
+    max-inline-size: 100lvi;
     margin-block-end: -124px;
     --nav-list_display: none;
     --nav-bg-color: transparent;
 
     @supports (container-type: scroll-state) {
       @container scroll-state(stuck: top) {
-        > ul {
-          background-color: hsl(0 0% 40% / 50%);
+        > ul,
+        .nav__logo {
+          background-color: hsl(0 0% 15% / 70%);
         }
       }
     }
