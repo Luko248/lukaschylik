@@ -18,6 +18,8 @@ export interface BlogPost {
   date: string;
   /** Author of the blog post */
   author: string;
+  /** Podcast URL of the blog post */
+  podcastUrl?: string;
   /** Raw Markdown content of the blog post */
   content: string;
 }
@@ -59,6 +61,7 @@ const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
           ? data.date.toISOString().split("T")[0]
           : data.date,
       author: data.author,
+      podcastUrl: data.podcastUrl,
       content,
     };
   } catch (error) {

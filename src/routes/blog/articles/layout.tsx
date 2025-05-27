@@ -10,7 +10,7 @@ import { getAllPosts } from "~/utils/markdown.server";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import { cls } from "~/utils";
-import { Icon } from "~/components";
+import { Button, Icon } from "~/components";
 
 /**
  * Route loader to fetch the current blog post data based on the URL slug
@@ -115,10 +115,24 @@ export default component$(() => {
                 {post.value.title}
                 <small class="mt-2 block">{post.value.subtitle}</small>
               </h1>
-              <div class="flex items-center text-sm text-gray-300 mb-4">
-                <span>{post.value.date}</span>
-                <span class="mx-2">•</span>
-                <span>{post.value.author}</span>
+
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-start text-sm text-gray-300 mb-4">
+                  <span>{post.value.date}</span>
+                  <span class="mx-2">•</span>
+                  <span>{post.value.author}</span>
+                </div>
+                {post.value.podcastUrl && (
+                  <a
+                    class="w-10 h-10 grid place-items-center ratio-1/1 border-0 text-black bg-white hover:bg-yellow-500  transition-colors duration-200"
+                    href={post.value.podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Prehrať Podcast"
+                    title="Prehrať Podcast">
+                    <Icon name="podcast" size="1.8rem" />
+                  </a>
+                )}
               </div>
             </header>
           )}

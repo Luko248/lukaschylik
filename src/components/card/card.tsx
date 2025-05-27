@@ -123,13 +123,13 @@ const Card = component$(
             "text-white",
             "no-underline", // Ensure no default link styling
             "block", // Ensure the link behaves as a block element
-            "hover:no-underline" // Maintain no underline on hover
+            "hover:no-underline", // Maintain no underline on hover
           )}>
           {CardContent}
         </Link>
       );
     }
-    
+
     // For non-blog cards, use the regular div wrapper
     return (
       <div

@@ -13,4 +13,5 @@ export interface ButtonProps {
   rel?: string;
   type?: "button" | "submit" | "reset";
   target?: "_blank" | "_self" | "_parent" | "_top";
+  iconOnly?: boolean;
 }
