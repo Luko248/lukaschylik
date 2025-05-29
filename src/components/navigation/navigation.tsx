@@ -31,7 +31,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
           "text-center",
           "py-2 md:py-0 px-4 md:px-8",
-          "backdrop-blur-sm",
+          "md:backdrop-blur-sm",
           "bg-black md:bg-black-alpha-70",
           "w-full z-90",
           state.isOpen && "nav--open",
@@ -42,15 +42,15 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           role="menuitem"
           class={cls(
             "nav__logo",
-            "relative",
-            "w-[120px]",
+            "relative z-90",
+            "w-[60px] md:w-[120px]",
             "flex items-center",
             "no-underline",
             "px-0 md:px-4",
             "hover:opacity-80",
           )}>
           <img
-            class="w-100"
+            class="w-full max-w-full"
             src="/images/logos/logo.svg"
             alt="Lukáš Chylík Logo"
             width="80"
@@ -62,15 +62,15 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           id="navigation-menu"
           class={cls(
             "nav__list",
-            "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
+            "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto z-80",
             "align-baseline items-center content-center gap-10 md:gap-8",
             "md:flex-row md:justify-center py-6 px-8",
+            "backdrop-blur-md bg-black-alpha-70 md:bg-transparent",
             "list-none m-0",
           )}
           role="menu">
           {links &&
             links.map((link: LinkProps, index: number) => {
-              // Check if this link is the blog link and we're on a blog page
               const isActive = link.href === "/blog" && isBlogPage;
 
               return (
