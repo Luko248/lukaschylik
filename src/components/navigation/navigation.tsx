@@ -27,9 +27,11 @@ const Navigation = component$<NavigationProps>(({ links }) => {
         class={cls(
           "nav",
           "sticky top-0",
-          "flex justify-between items-center text-center",
+          "flex justify-between items-center",
+          "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
+          "text-center",
           "py-2 md:py-8 px-4 md:px-8",
-          "bg-black md:bg-transparent",
+          "bg-black-alpha-70 md:bg-transparent",
           "w-full z-90",
           state.isOpen && "nav--open",
         )}
@@ -40,19 +42,20 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative",
+            "w-[120px]",
             "flex items-center",
             "no-underline",
-            "px-0 md:px-3 py-0 md:py-4",
+            "px-0 md:px-4",
             "backdrop-blur-sm",
-            "transition-colors duration-200 ease-in-out",
+            "bg-transparent md:bg-black-alpha-70",
             "hover:opacity-80",
-            "z-90",
           )}>
           <img
+            class="w-100"
             src="/images/logos/logo.svg"
             alt="LCH Logo"
-            width="100"
-            height="50"
+            width="80"
+            height="40"
             loading="eager"
           />
         </a>
@@ -64,9 +67,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "align-baseline items-center content-center gap-10 md:gap-8",
             "md:flex-row md:justify-center py-4 px-8",
             "backdrop-blur-sm",
-            "transition-colors duration-200 ease-in-out",
+            "bg-black-alpha-90 md:bg-black-alpha-70",
             "list-none m-0",
-            "z-80",
           )}
           role="menu">
           {links &&

@@ -11,7 +11,7 @@ import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
 import { Alert, IconSet, Navigation } from "~/components";
 import Social from "~/components/social/social";
-import { Footer, Intro } from "~/sections";
+import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
 import { initializeHeaderFlag } from "~/utils";
 import { AlertContext, type AlertMessage } from "~/utils/alerts";
@@ -101,7 +101,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 };
 
 export default component$(() => {
-  const headerRef = useSignal<Element>();
   const location = useLocation();
 
   // Create alert store
@@ -144,10 +143,6 @@ export default component$(() => {
     alertState.visible = false;
   });
 
-  useVisibleTask$(() => {
-    initializeHeaderFlag(headerRef.value);
-  });
-
   return (
     <>
       <Navigation
@@ -174,12 +169,7 @@ export default component$(() => {
           },
         ]}
       />
-      <header
-        ref={headerRef}
-        data-animation={isHomePage ? "true" : "false"}
-        class="max-h-screen max-w-svw bg-black md:bg-transparent">
-        {isHomePage && <Intro />}
-      </header>
+      {isHomePage && <Header />}
       <main>
         <IconSet />
         <Alert

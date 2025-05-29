@@ -261,24 +261,13 @@ strong {
     overflow: hidden;
   }
   .nav {
-    container-type: scroll-state;
     max-inline-size: 100lvi;
-    margin-block-end: -124px;
     --nav-list_display: none;
-    --nav-bg-color: transparent;
   }
-  @supports (container-type: scroll-state) {
-    @container scroll-state(stuck: top) {
-      @media screen and (width > 768px) {
-        .nav :is(.nav__list, .nav__logo) {
-          background-color: hsla(0, 0%, 10%, 0.7);
-        }
-      }
-    }
-  }
-  @media screen and (width <= 768px) {
-    .nav :is(.nav__list, .nav__logo) {
-      background-color: hsla(0, 0%, 0%, 0.9);
+  @media screen and (width > 768px) {
+    .nav {
+      --nav-list_display: inline-flex;
+      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
   }
   .nav--open {
@@ -287,12 +276,6 @@ strong {
   @media screen and (width > 768px) {
     .nav--open {
       --nav-list_display: inline-flex;
-    }
-  }
-  @media screen and (width > 768px) {
-    .nav {
-      --nav-list_display: inline-flex;
-      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
   }
   .nav__list {
@@ -451,6 +434,9 @@ strong {
     scale: 0 1;
     z-index: 1000;
   }
+  .blog header {
+    block-size: unset;
+  }
   .blog > * + * {
     margin-top: clamp(1em, 3svi, 1.5em);
   }
@@ -606,65 +592,8 @@ strong {
       scale: 1 1;
     }
   }
-  header:is([data-animation=true]) {
-    overflow: clip;
-  }
-  @supports (view-timeline-name: --foo) {
-    header:is([data-animation=true])[data-initialize=true]:before, header:is([data-animation=true])[data-initialize=true]:after {
-      animation: triangle-exit forwards;
-      animation-range-start: exit;
-      translate: 0 0;
-      animation-timeline: view();
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    header:is([data-animation=true])[data-initialize=true]:before, header:is([data-animation=true])[data-initialize=true]:after {
-      animation: none;
-    }
-  }
-  header:is([data-animation=true]):before, header:is([data-animation=true]):after {
-    display: block;
-    content: "";
-    position: absolute;
-    block-size: 135svb;
-    inline-size: 100svi;
-    will-change: translate, opacity, clip-path;
-    z-index: -1;
-    background-color: hsl(0, 0%, 0%);
-    opacity: 0.5;
-    animation: var(--header-pseudo_anim, show-triangle 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    header:is([data-animation=true]):before, header:is([data-animation=true]):after {
-      animation: none;
-    }
-  }
-  @media screen and (width <= 768px) {
-    header:is([data-animation=true]):before, header:is([data-animation=true]):after {
-      display: none;
-    }
-  }
-  header:is([data-animation=true]):before {
-    inset: 0 0 auto 0;
-    clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
-    translate: 0 -100%;
-    transform-origin: top;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    header:is([data-animation=true]):before {
-      translate: 0 0;
-    }
-  }
-  header:is([data-animation=true]):after {
-    inset: auto 0 0 0;
-    clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
-    translate: 0 100%;
-    transform-origin: bottom;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    header:is([data-animation=true]):after {
-      translate: 0 0;
-    }
+  header {
+    block-size: calc(100svb - 124px);
   }
   @supports (view-timeline-name: --foo) {
     .intro {
@@ -705,13 +634,13 @@ strong {
     }
   }
   .intro__btn {
-    translate: 0 225%;
+    translate: 0 50%;
     opacity: 0;
     animation: show-button 0.5s ease-out 0.7s forwards;
   }
   @media (prefers-reduced-motion: reduce) {
     .intro__btn {
-      translate: 0 200%;
+      translate: initial;
       opacity: initial;
       animation: none;
     }
@@ -742,7 +671,7 @@ strong {
   @keyframes show-button {
     to {
       opacity: 1;
-      translate: 0 200%;
+      translate: 0 0;
     }
   }
   @keyframes header-content-fade-out {

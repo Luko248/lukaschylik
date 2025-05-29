@@ -8,26 +8,13 @@
   }
 
   .nav {
-    container-type: scroll-state;
     max-inline-size: 100lvi;
-    margin-block-end: -124px;
+
     --nav-list_display: none;
-    --nav-bg-color: transparent;
 
-    @supports (container-type: scroll-state) {
-      @container scroll-state(stuck: top) {
-        :is(.nav__list, .nav__logo) {
-          @include mq-responsive(tablet, min) {
-            background-color: hsl(0 0% 10% / 70%);
-          }
-        }
-      }
-    }
-
-    :is(.nav__list, .nav__logo) {
-      @include mq-responsive(tablet, max) {
-        background-color: hsl(0 0% 0% / 90%);
-      }
+    @include mq-responsive(tablet, min) {
+      --nav-list_display: inline-flex;
+      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
 
     &--open {
@@ -36,11 +23,6 @@
       @include mq-responsive(tablet, min) {
         --nav-list_display: inline-flex;
       }
-    }
-
-    @include mq-responsive(tablet, min) {
-      --nav-list_display: inline-flex;
-      --nav-list_anim: showNav 0.5s ease-in-out forwards;
     }
 
     &__list {
