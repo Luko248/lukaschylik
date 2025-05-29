@@ -30,7 +30,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "flex justify-between items-center",
           "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
           "text-center",
-          "py-2 md:py-0 px-4 md:px-8",
+          "py-2 md:py-0 px-4 md:px-18",
           "md:backdrop-blur-sm",
           "bg-black md:bg-black-alpha-70",
           "w-full z-90",
@@ -43,10 +43,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative z-90",
-            "w-[60px] md:w-[120px]",
+            "w-[60px] md:w-[100px]",
             "flex items-center",
             "no-underline",
-            "px-0 md:px-4",
             "hover:opacity-80",
           )}>
           <img

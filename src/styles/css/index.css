@@ -593,7 +593,12 @@ strong {
     }
   }
   header {
-    block-size: calc(100svb - 124px);
+    block-size: var(--header_height, calc(100svb - 76px));
+  }
+  @media screen and (width <= 768px) {
+    header {
+      --header_height: calc(100svb - 56px);
+    }
   }
   header:empty {
     display: none;
