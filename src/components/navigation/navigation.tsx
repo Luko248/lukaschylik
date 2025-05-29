@@ -30,8 +30,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "flex justify-between items-center",
           "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
           "text-center",
-          "py-2 md:py-8 px-4 md:px-8",
-          "bg-black-alpha-70 md:bg-transparent",
+          "py-2 md:py-0 px-4 md:px-8",
+          "backdrop-blur-sm",
+          "bg-black md:bg-black-alpha-70",
           "w-full z-90",
           state.isOpen && "nav--open",
         )}
@@ -46,14 +47,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "flex items-center",
             "no-underline",
             "px-0 md:px-4",
-            "backdrop-blur-sm",
-            "bg-transparent md:bg-black-alpha-70",
             "hover:opacity-80",
           )}>
           <img
             class="w-100"
             src="/images/logos/logo.svg"
-            alt="LCH Logo"
+            alt="Lukáš Chylík Logo"
             width="80"
             height="40"
             loading="eager"
@@ -65,9 +64,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "nav__list",
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto",
             "align-baseline items-center content-center gap-10 md:gap-8",
-            "md:flex-row md:justify-center py-4 px-8",
-            "backdrop-blur-sm",
-            "bg-black-alpha-90 md:bg-black-alpha-70",
+            "md:flex-row md:justify-center py-6 px-8",
             "list-none m-0",
           )}
           role="menu">
