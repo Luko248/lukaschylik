@@ -617,6 +617,7 @@ strong {
     }
   }
   .intro__title {
+    position: relative;
     paint-order: stroke fill;
     -webkit-text-stroke: 0.025em hsl(0, 0%, 100%);
     animation: show-title 0.5s ease-out 0.35s forwards;
@@ -627,6 +628,25 @@ strong {
       opacity: initial;
       animation: none;
     }
+  }
+  .intro__title:before, .intro__title:after {
+    display: none;
+    position: absolute;
+    top: 50%;
+    color: var(--color-yellow-500);
+    opacity: var(--header-opacity, 1);
+    font-size: 2em;
+    -webkit-text-stroke: 0;
+  }
+  .intro__title:before {
+    content: "<";
+    left: 0;
+    translate: var(--header-before_trans-x, -100%) -50%;
+  }
+  .intro__title:after {
+    content: ">";
+    right: 0;
+    translate: var(--header-after_trans-x, 100%) -50%;
   }
   .intro__subtitle {
     letter-spacing: 0.25em;
