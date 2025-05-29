@@ -1,6 +1,6 @@
 {
-  "name": "Lukáš Chylík",
-  "short_name": "LCH",
+  "name": "Lukáš Chylík portfolio",
+  "short_name": "Lukáš Chylík",
   "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.",
   "start_url": "/",
   "id": "/",
@@ -48,7 +48,11 @@
   "orientation": "portrait",
   "scope": "/",
   "lang": "sk",
-  "categories": ["development", "design", "portfolio"],
+  "categories": [
+    "development",
+    "design",
+    "portfolio"
+  ],
   "screenshots": [
     {
       "src": "/images/meta/meta-large.webp",
