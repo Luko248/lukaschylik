@@ -51,8 +51,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           <img
             src="/images/logos/logo.svg"
             alt="LCH Logo"
-            width="60"
-            height="38"
+            width="100"
+            height="50"
             loading="eager"
           />
         </a>
