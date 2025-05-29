@@ -32,7 +32,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "text-center",
           "py-2 md:py-0 px-4 md:px-18",
           "md:backdrop-blur-sm",
-          "bg-black md:bg-black-alpha-70",
+          "bg-black-alpha-90",
           "w-full z-90",
           state.isOpen && "nav--open",
         )}
@@ -64,7 +64,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto z-80",
             "align-baseline items-center content-center gap-10 md:gap-8",
             "md:flex-row md:justify-center py-6 px-8",
-            "backdrop-blur-md bg-black-alpha-70 md:bg-transparent",
+            "backdrop-blur-md md:backdrop-blur-none bg-black-alpha-70 md:bg-transparent",
             "list-none m-0",
           )}
           role="menu">
