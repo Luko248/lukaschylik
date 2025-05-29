@@ -5,6 +5,10 @@
 @mixin create-header {
   header {
     block-size: calc(100svb - 124px);
+
+    &:empty {
+      display: none;
+    }
   }
 
   .intro {

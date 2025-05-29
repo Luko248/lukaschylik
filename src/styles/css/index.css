@@ -595,6 +595,9 @@ strong {
   header {
     block-size: calc(100svb - 124px);
   }
+  header:empty {
+    display: none;
+  }
   @supports (view-timeline-name: --foo) {
     .intro {
       animation: header-content-fade-out forwards;
