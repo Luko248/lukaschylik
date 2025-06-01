@@ -1,17 +1,16 @@
-import { component$ } from "@builder.io/qwik";
-import { Slot } from "@builder.io/qwik";
-import { BlogProgress } from "~/components/blog/BlogProgress";
+import { component$, Slot, useStyles$, useContext } from "@builder.io/qwik";
 import {
-  DocumentHead,
-  useLocation,
-  Link,
   routeLoader$,
+  Link,
+  useLocation,
+  DocumentHead,
 } from "@builder.io/qwik-city";
+import { BlogProgress } from "~/components/blog/BlogProgress";
 import { getAllPosts } from "~/utils/markdown.server";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import { cls } from "~/utils";
-import { Button, Icon } from "~/components";
+import { Icon } from "~/components";
 
 /**
  * Route loader to fetch the current blog post data based on the URL slug
@@ -63,19 +62,11 @@ interface ShareLink {
  */
 export default component$(() => {
   const post = useCurrentPost();
+  const loc = useLocation();
 
-  const getAbsoluteUrl = () => {
-    if (typeof window === "undefined") return "";
-
-    const canonicalElement = document.querySelector("link[rel=canonical]");
-    if (canonicalElement) {
-      return canonicalElement.getAttribute("href") || "";
-    }
-
-    return window.location.href;
-  };
-
-  const shareUrl = getAbsoluteUrl();
+  // Use loc.url.href which provides the full, absolute URL of the current page.
+  // This works correctly during both SSR and client-side navigation.
+  const shareUrl = loc.url.href;
   const encodedUrl = encodeURIComponent(shareUrl);
   const postTitle = post.value?.title || "Blog post";
   const encodedTitle = encodeURIComponent(postTitle);

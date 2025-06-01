@@ -1,40 +1,24 @@
-import {
-  component$,
-  useVisibleTask$,
-  useStore,
-  useContextProvider,
-  createContextId,
-} from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { IconProps } from "./icon.types";
 
-/**
- * Context to track SVG sprite loading state
- * @type {Object} Context containing loaded state of SVG sprites
- * @property {boolean} loaded - Whether the SVG sprites have been loaded into the DOM
- */
-export const IconsLoadedContext = createContextId<{ loaded: boolean }>(
-  "icons-loaded-context",
-);
+// Removed IconsLoadedContext, useStore, useContextProvider, useVisibleTask$
+// as this component now only renders SVG definitions.
 
 /**
- * IconSet component that renders the SVG sprite definitions
- * This component is responsible for loading all SVG icon definitions into the DOM
- * and providing a context to signal when icons are ready to be displayed.
- * It uses Qwik's reactivity system to notify all icon components when sprites are loaded.
- *
+ * IconSet component that renders the SVG sprite definitions.
+ * This component's primary role is to embed the SVG definitions into the DOM
+ * so that individual Icon components can reference them using `<use xlink:href="#icon-name" />`.
+ * It should be placed in a high-level layout component (e.g., root layout)
+ * to ensure definitions are available before any icons attempt to use them.
+ * 
  * @component
- * @param {IconProps} props - Component properties passed to the Qwik component
- * @param {string} [props.name] - Optional name parameter (not used in this component)
- * @returns {JSX.Element} SVG sprite definitions hidden from view but available for reference
+ * @param {IconProps} props - Component properties passed to the Qwik component.
+ * @param {string} [props.name] - Optional name parameter, currently not used by IconSet itself.
+ * @returns {JSX.Element} An SVG element containing symbol definitions, styled to be hidden.
  */
-const IconSet = component$<IconProps>(({ name }) => {
-  const iconsLoadedStore = useStore({ loaded: false });
-
-  useContextProvider(IconsLoadedContext, iconsLoadedStore);
-
-  useVisibleTask$(() => {
-    iconsLoadedStore.loaded = true;
-  });
+const IconSet = component$<IconProps>(({ name }) => { // The 'name' prop is declared but not used here.
+  // This component no longer manages a 'loaded' state or provides a context.
+  // It simply renders the SVG definitions directly.
   return (
     <svg
       aria-hidden="true"
