@@ -43,7 +43,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative z-90",
-            "w-[80px] md:w-[140px]",
+            "w-[110px] md:w-[140px]",
             "flex items-center",
             "no-underline",
             "transition-opacity duration-200",
