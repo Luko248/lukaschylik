@@ -30,6 +30,13 @@
       transform-origin: left;
       scale: 0 1;
       z-index: 1000;
+      
+      &--fallback {
+        animation: none;
+        transform: scaleX(0);
+        scale: none;
+        will-change: transform;
+      }
     }
 
     header {

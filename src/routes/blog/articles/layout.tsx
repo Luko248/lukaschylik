@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Slot } from "@builder.io/qwik";
+import { BlogProgress } from "~/components/blog/BlogProgress";
 import {
   DocumentHead,
   useLocation,
@@ -61,7 +62,6 @@ interface ShareLink {
  * @returns {JSX.Element} The blog layout component with nested content
  */
 export default component$(() => {
-  const location = useLocation();
   const post = useCurrentPost();
 
   const getAbsoluteUrl = () => {
@@ -100,7 +100,7 @@ export default component$(() => {
 
   return (
     <Section id="blog-detail" className="bg-black-800">
-      <div class="blog__progress" />
+      <BlogProgress />
       <Container size="blog" className="pt-8">
         <Link
           href="/blog"

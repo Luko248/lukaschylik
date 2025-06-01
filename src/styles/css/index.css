@@ -434,6 +434,12 @@ strong {
     scale: 0 1;
     z-index: 1000;
   }
+  .blog__progress--fallback {
+    animation: none;
+    transform: scaleX(0);
+    scale: none;
+    will-change: transform;
+  }
   .blog header {
     block-size: unset;
   }

@@ -43,17 +43,18 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           class={cls(
             "nav__logo",
             "relative z-90",
-            "w-[60px] md:w-[100px]",
+            "w-[80px] md:w-[140px]",
             "flex items-center",
             "no-underline",
-            "hover:opacity-80",
+            "transition-opacity duration-200",
+            "opacity-100 hover:opacity-80",
           )}>
           <img
             class="w-full max-w-full"
             src="/images/logos/logo.svg"
             alt="Lukáš Chylík Logo"
-            width="80"
-            height="40"
+            width="120"
+            height="60"
             loading="eager"
           />
         </a>
