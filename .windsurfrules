@@ -1,19 +1,21 @@
-1. After you complete the task, run browser MCP and check if everything works as expected.
-2. Functions should not have more than two nested "if" conditions; if necessary, split the function into smaller ones.
-3. Use double quotes for strings.
-4. Consider performance;
-5. Solve all issues in a React-friendly way.
-6. Always think about whether it is appropriate to use useEffect, useLayoutEffect, or useCallback.
-7. Use TypeScript for type safety and better code quality.
-8. Use proper error boundaries to handle errors in a React-friendly way.
-9. Emphasize clean code practices.
-10. Don't create TS and eslint ignore comments, solve problems.
-11. Do not make declarations without reading the values.
-12. Remove unused declarations in imports.
-13. Always set complete dependency arrays.
-14. Don't make explanation comments in code, if there are remove them.
-15. Don't remove custom comments.
-16. Add JS doc for all components, types and functions or hooks.
-17. Don't remove previous working code, and don't change anything what I don't ask to change.
-18. Avoid infinite loops.
-19. Don't ask me if I want to remove a file, you can do it by yourself.
+1. After you complete the task, always check all rules in .windsurfrules file and make sure you followed them.
+2. Don't make explanation comments in code, if there are remove them.
+3. Always use Qwik solutions for building the website or solve issues in a Qwik-friendly way.
+4. Functions should not have more than two nested "if" conditions; if necessary, split the function into smaller ones.
+5. Use double quotes for strings.
+6. Consider performance;
+7. Solve all issues in a Qwik-friendly way.
+8. Always think about whether it is appropriate to use useEffect, useLayoutEffect, or useCallback.
+9. Use TypeScript for type safety and better code quality.
+10. Use proper error boundaries to handle errors in a Qwik-friendly way.
+11. Emphasize clean code practices.
+12. Don't create TS and eslint ignore comments, solve problems.
+13. Do not make declarations without reading the values.
+14. Remove unused declarations in imports.
+15. Always set complete dependency arrays.
+16. Don't remove custom comments.
+17. Add JS doc for all components, types and functions or hooks.
+18. Don't remove previous working code, and don't change anything what I don't ask to change.
+19. Avoid infinite loops.
+20. Don't ask me if I want to remove a file, you can do it by yourself.
+21. After you complete the task, run browser MCP and check if everything works as expected.

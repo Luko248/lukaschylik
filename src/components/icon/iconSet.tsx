@@ -1,7 +1,40 @@
-import { component$ } from "@builder.io/qwik";
+import {
+  component$,
+  useVisibleTask$,
+  useStore,
+  useContextProvider,
+  createContextId,
+} from "@builder.io/qwik";
 import { IconProps } from "./icon.types";
 
+/**
+ * Context to track SVG sprite loading state
+ * @type {Object} Context containing loaded state of SVG sprites
+ * @property {boolean} loaded - Whether the SVG sprites have been loaded into the DOM
+ */
+export const IconsLoadedContext = createContextId<{ loaded: boolean }>(
+  "icons-loaded-context",
+);
+
+/**
+ * IconSet component that renders the SVG sprite definitions
+ * This component is responsible for loading all SVG icon definitions into the DOM
+ * and providing a context to signal when icons are ready to be displayed.
+ * It uses Qwik's reactivity system to notify all icon components when sprites are loaded.
+ *
+ * @component
+ * @param {IconProps} props - Component properties passed to the Qwik component
+ * @param {string} [props.name] - Optional name parameter (not used in this component)
+ * @returns {JSX.Element} SVG sprite definitions hidden from view but available for reference
+ */
 const IconSet = component$<IconProps>(({ name }) => {
+  const iconsLoadedStore = useStore({ loaded: false });
+
+  useContextProvider(IconsLoadedContext, iconsLoadedStore);
+
+  useVisibleTask$(() => {
+    iconsLoadedStore.loaded = true;
+  });
   return (
     <svg
       aria-hidden="true"
