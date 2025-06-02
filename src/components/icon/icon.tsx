@@ -8,7 +8,7 @@ import { IconProps } from "./icon.types";
  * The icon initially renders with opacity 0 and becomes visible (opacity 1)
  * when the component enters the viewport, managed by `useVisibleTask$`.
  * This approach assumes the SVG definitions from IconSet are available in the DOM by that time.
- * 
+ *
  * @component
  * @param {IconProps} props - Component properties passed to the Qwik component.
  * @param {string} props.name - The name of the icon to display (must match an id in the sprite).
@@ -36,15 +36,14 @@ const Icon = component$<IconProps>(({ name, cls, size, color }) => {
   });
 
   return (
-    <svg 
-      class={classes} 
-      style={{ 
-        "--icon_size": size, 
+    <svg
+      class={classes}
+      style={{
+        "--icon_size": size,
         "--icon_color": color,
-        "opacity": iconVisible.value ? "1" : "0", // Controlled by iconVisible signal
-        "transition": "opacity 0.2s ease-in-out"
-      }}
-    >
+        opacity: iconVisible.value ? "1" : "0", // Controlled by iconVisible signal
+        transition: "opacity 0.2s ease-in-out",
+      }}>
       <use xlink:href={`#icon-${name}`} />
     </svg>
   );

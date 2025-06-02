@@ -8,7 +8,7 @@ const Section = component$<SectionProps>(
       <section
         id={id}
         class={cls(
-          "relative bg-black py-10 md:py-[8svb]",
+          "relative bg-black py-10 md:py-[8svb] scroll-mt-14",
           centerContent && "grid items-center",
           fullHeight && "min-h-screen",
           className,

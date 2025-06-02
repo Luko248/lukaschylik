@@ -10,13 +10,14 @@ import { IconProps } from "./icon.types";
  * so that individual Icon components can reference them using `<use xlink:href="#icon-name" />`.
  * It should be placed in a high-level layout component (e.g., root layout)
  * to ensure definitions are available before any icons attempt to use them.
- * 
+ *
  * @component
  * @param {IconProps} props - Component properties passed to the Qwik component.
  * @param {string} [props.name] - Optional name parameter, currently not used by IconSet itself.
  * @returns {JSX.Element} An SVG element containing symbol definitions, styled to be hidden.
  */
-const IconSet = component$<IconProps>(({ name }) => { // The 'name' prop is declared but not used here.
+const IconSet = component$<IconProps>(({ name }) => {
+  // The 'name' prop is declared but not used here.
   // This component no longer manages a 'loaded' state or provides a context.
   // It simply renders the SVG definitions directly.
   return (
