@@ -53,6 +53,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
+    "@toolwind/anchors": "^1.0.10",
     "gray-matter": "^4.0.3",
     "tailwind-variants": "^1.0.0"
   }

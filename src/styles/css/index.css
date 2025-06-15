@@ -415,6 +415,9 @@ strong {
       translate: calc(-20% - 1rem) 0;
     }
   }
+  .social:has(+ nav[popover]:popover-open) {
+    background-color: var(--color-yellow-500);
+  }
 }
 @layer _modules {
   .blog {

@@ -1,4 +1,10 @@
-import { component$, useStore, $, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useStore,
+  $,
+  useSignal,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { Link, useLocation, type LinkProps } from "@builder.io/qwik-city";
 import Social from "../social/social";
 import { cls } from "~/utils";

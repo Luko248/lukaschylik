@@ -8,6 +8,7 @@
 @use "./reference" as *;
 @use "./section" as *;
 @use "./skills" as *;
+@use "./social" as *;
 
 @mixin create-components {
   @include create-alert;
@@ -20,4 +21,5 @@
   @include create-reference;
   @include create-section;
   @include create-skills;
+  @include create-social;
 }
