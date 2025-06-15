@@ -137,7 +137,7 @@
     }
 
     .link,
-    a {
+    a:not(.podcast-link) {
       color: $color-yellow;
       text-decoration: none;
       border-bottom: 1px solid transparent;

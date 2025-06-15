@@ -211,7 +211,7 @@ strong {
   .icon {
     display: block;
     aspect-ratio: 1;
-    inline-size: var(--icon_size, 1rem);
+    inline-size: var(--icon_size, 2rem);
     fill: var(--icon_color, currentColor);
   }
   @property --me_filter-greyscale {
@@ -529,15 +529,15 @@ strong {
     margin-bottom: 0;
   }
   .blog .link,
-  .blog a {
+  .blog a:not(.podcast-link) {
     color: hsl(51, 100%, 53%);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
   .blog .link:hover, .blog .link:focus,
-  .blog a:hover,
-  .blog a:focus {
+  .blog a:not(.podcast-link):hover,
+  .blog a:not(.podcast-link):focus {
     border-bottom-color: hsl(51, 100%, 53%);
     color: hsl(51, 100%, 53%);
   }

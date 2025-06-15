@@ -4,11 +4,7 @@ import { cls } from "~/utils";
 
 const Header = component$(() => {
   return (
-    <header
-      class={cls(
-        "grid place-items-center content-center",
-        "bg-black md:bg-transparent",
-      )}>
+    <header class={cls("grid place-items-center content-center", "bg-black")}>
       <Container size="lg" className="relative z-10 isolate">
         <div
           class={cls("intro", "grid gap-4 place-items-center content-center")}>

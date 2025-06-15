@@ -62,32 +62,6 @@ interface ShareLink {
  */
 export default component$(() => {
   const post = useCurrentPost();
-  const loc = useLocation();
-
-  // Use loc.url.href which provides the full, absolute URL of the current page.
-  // This works correctly during both SSR and client-side navigation.
-  const shareUrl = loc.url.href;
-  const encodedUrl = encodeURIComponent(shareUrl);
-  const postTitle = post.value?.title || "Blog post";
-  const encodedTitle = encodeURIComponent(postTitle);
-
-  const shareLinks: ShareLink[] = [
-    {
-      name: "Facebook",
-      url: `https://www.facebook.com/sharer.php?u=${encodedUrl}`,
-      icon: "facebook",
-    },
-    {
-      name: "X",
-      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      icon: "x",
-    },
-    {
-      name: "LinkedIn",
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      icon: "linkedin",
-    },
-  ];
 
   return (
     <Section id="blog-detail" className="bg-black-800">
@@ -115,13 +89,13 @@ export default component$(() => {
                 </div>
                 {post.value.podcastUrl && (
                   <a
-                    class="w-10 h-10 grid place-items-center ratio-1/1 border-0 text-black bg-white hover:bg-yellow-500  transition-colors duration-200"
+                    class="podcast-link w-10 h-10 grid place-items-center ratio-1/1 border-0 text-black bg-white hover:bg-yellow-500 transition-colors duration-200 rounded-full"
                     href={post.value.podcastUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Prehrať Podcast"
                     title="Prehrať Podcast">
-                    <Icon name="podcast" size="1.8rem" />
+                    <Icon name="podcast" size="1.5rem" />
                   </a>
                 )}
               </div>
@@ -129,36 +103,6 @@ export default component$(() => {
           )}
           <Slot />
         </article>
-        <div class="mt-12 pt-6 border-t border-gray-700">
-          <h3 class="text-xl font-semibold mb-4 text-gray-200">
-            Zdieľať článok
-          </h3>
-          <div class="flex gap-4">
-            {shareLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={cls(
-                  "inline-flex items-center justify-center",
-                  "w-10 h-10 rounded-full",
-                  "bg-gray-200",
-                  "text-black",
-                  "scale-100 hover:scale-105",
-                  "transition-all duration-200 scale",
-                )}
-                aria-label={`Share on ${link.name}`}
-                title={`Share on ${link.name}`}>
-                <Icon
-                  name={link.icon}
-                  color="black"
-                  size={link.icon === "x" ? "1rem" : "1.125rem"}
-                />
-              </a>
-            ))}
-          </div>
-        </div>
       </Container>
     </Section>
   );

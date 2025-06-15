@@ -1,25 +1,69 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { IconProps } from "./icon.types";
+import portfolioData from "./portfolio.json";
 
 /**
- * Icon component that renders SVG icons from a sprite.
- * This component displays SVG icons by referencing definitions from an IconSet component,
- * which should be rendered in a higher-level layout (e.g., root layout).
- * The icon initially renders with opacity 0 and becomes visible (opacity 1)
- * when the component enters the viewport, managed by `useVisibleTask$`.
- * This approach assumes the SVG definitions from IconSet are available in the DOM by that time.
+ * Interface for the portfolio JSON structure
+ */
+interface PortfolioIcon {
+  paths: string[];
+  tags: string[];
+  grid: number;
+}
+
+interface PortfolioSelection {
+  order: number;
+  name: string;
+  prevSize: number;
+}
+
+interface PortfolioData {
+  selection: PortfolioSelection[];
+  icons: PortfolioIcon[];
+}
+
+/**
+ * Helper function to parse portfolio.json and convert it to iconPaths format
+ * @param portfolioData - The imported portfolio JSON data
+ * @returns Record<string, string> - Icon name to SVG path mapping
+ */
+const parsePortfolioIcons = (
+  portfolioData: PortfolioData,
+): Record<string, string> => {
+  const iconPaths: Record<string, string> = {};
+
+  portfolioData.selection.forEach((selection, index) => {
+    const iconData = portfolioData.icons[index];
+    if (iconData && iconData.paths.length > 0) {
+      const paths = iconData.paths.join(" ");
+      iconPaths[selection.name] = paths;
+    }
+  });
+
+  return iconPaths;
+};
+
+/**
+ * Icon definitions map containing SVG paths for each icon
+ */
+const iconPaths: Record<string, string> = parsePortfolioIcons(
+  portfolioData as PortfolioData,
+);
+
+/**
+ * Icon component that renders inline SVG icons.
+ * This component displays SVG icons using inline path definitions,
+ * ensuring they work correctly on statically generated pages.
  *
  * @component
  * @param {IconProps} props - Component properties passed to the Qwik component.
- * @param {string} props.name - The name of the icon to display (must match an id in the sprite).
+ * @param {string} props.name - The name of the icon to display.
  * @param {string} [props.cls] - Optional CSS class to apply to the icon.
  * @param {string} [props.size] - Optional size for the icon (e.g., "1rem", "24px").
  * @param {string} [props.color] - Optional color for the icon.
- * @returns {JSX.Element} An SVG element that references the icon from the sprite.
+ * @returns {JSX.Element} An SVG element containing the icon path.
  */
 const Icon = component$<IconProps>(({ name, cls, size, color }) => {
-  const iconVisible = useSignal(false); // Manages the opacity state
-
   const classes = [
     `icon icon-${name}`,
     "aspect-square",
@@ -29,22 +73,27 @@ const Icon = component$<IconProps>(({ name, cls, size, color }) => {
     .filter(Boolean)
     .join(" ");
 
-  // When the icon component becomes visible in the viewport,
-  // set its opacity to 1 to make it appear.
-  useVisibleTask$(() => {
-    iconVisible.value = true;
-  });
+  const iconPath = name ? iconPaths[name] : undefined;
+
+  if (!name || !iconPath) {
+    console.warn(`Icon "${name}" not found`);
+    return (
+      <div
+        class={classes}
+        style={{ "--icon_size": size, "--icon_color": color }}
+      />
+    );
+  }
 
   return (
     <svg
       class={classes}
+      viewBox="0 0 1024 1024"
       style={{
         "--icon_size": size,
         "--icon_color": color,
-        opacity: iconVisible.value ? "1" : "0", // Controlled by iconVisible signal
-        transition: "opacity 0.2s ease-in-out",
       }}>
-      <use xlink:href={`#icon-${name}`} />
+      <path d={iconPath} />
     </svg>
   );
 });

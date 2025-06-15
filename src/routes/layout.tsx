@@ -9,7 +9,7 @@ import {
 } from "@builder.io/qwik";
 import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
-import { Alert, IconSet, Navigation } from "~/components";
+import { Alert, Navigation } from "~/components";
 import Social from "~/components/social/social";
 import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
@@ -171,7 +171,6 @@ export default component$(() => {
       />
       {isHomePage && <Header />}
       <main>
-        <IconSet />
         <Alert
           message={alertState.text}
           visible={alertState.visible}
