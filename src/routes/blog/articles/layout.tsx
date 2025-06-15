@@ -89,13 +89,12 @@ export default component$(() => {
                 </div>
                 {post.value.podcastUrl && (
                   <a
-                    class="podcast-link w-10 h-10 grid place-items-center ratio-1/1 border-0 text-black bg-white hover:bg-yellow-500 transition-colors duration-200 rounded-full"
+                    class="podcast-link grid place-items-center ratio-1/1 border-0 text-white bg-transparent hover:text-[#1DB954] transition-colors duration-200 rounded-full"
                     href={post.value.podcastUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Prehrať Podcast"
-                    title="Prehrať Podcast">
-                    <Icon name="podcast" size="1.5rem" />
+                    aria-label="Prehrať Podcast na Spotify">
+                    <Icon name="spotify" size="2.5rem" />
                   </a>
                 )}
               </div>
