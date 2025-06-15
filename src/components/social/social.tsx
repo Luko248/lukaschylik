@@ -19,6 +19,18 @@ const Social = component$(() => {
         </li>
         <li class="group">
           <a
+            href="https://discord.gg/yXfUhRjx"
+            rel="external"
+            aria-label="Odkaz na CSS CzechoSlovakia Discord"
+            target="_blank">
+            <Icon
+              name="discord"
+              cls="scale-100 group-hover:scale-120 transition-transform duration-250 ease-in-out w-6 xl:w-8 text-white"
+            />
+          </a>
+        </li>
+        <li class="group">
+          <a
             href="https://codepen.io/luko248"
             rel="external"
             aria-label="Odkaz na môj CodePen"
