@@ -6,7 +6,10 @@
   .icon {
     display: block;
     aspect-ratio: 1;
-    inline-size: var(--icon_size, 2rem); // 32px default
     fill: var(--icon_color, currentColor);
+
+    &:not([class*="w-"]) {
+      inline-size: var(--icon_size, 2rem); // 32px default
+    }
   }
 }

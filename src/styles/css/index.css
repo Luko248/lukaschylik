@@ -211,8 +211,10 @@ strong {
   .icon {
     display: block;
     aspect-ratio: 1;
-    inline-size: var(--icon_size, 2rem);
     fill: var(--icon_color, currentColor);
+  }
+  .icon:not([class*=w-]) {
+    inline-size: var(--icon_size, 2rem);
   }
   @property --me_filter-greyscale {
     syntax: "<percentage>";

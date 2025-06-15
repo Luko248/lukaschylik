@@ -75,12 +75,17 @@ const Icon = component$<IconProps>(({ name, cls, size, color }) => {
 
   const iconPath = name ? iconPaths[name] : undefined;
 
+  const hasTailwindWidth = cls && /\b(w-\d+|w-\d+\/\d+)\b/.test(cls);
+
   if (!name || !iconPath) {
     console.warn(`Icon "${name}" not found`);
     return (
       <div
         class={classes}
-        style={{ "--icon_size": size, "--icon_color": color }}
+        style={{
+          "--icon_size": !hasTailwindWidth ? size : undefined,
+          "--icon_color": color,
+        }}
       />
     );
   }
@@ -90,7 +95,7 @@ const Icon = component$<IconProps>(({ name, cls, size, color }) => {
       class={classes}
       viewBox="0 0 1024 1024"
       style={{
-        "--icon_size": size,
+        "--icon_size": !hasTailwindWidth ? size : undefined,
         "--icon_color": color,
       }}>
       <path d={iconPath} />
