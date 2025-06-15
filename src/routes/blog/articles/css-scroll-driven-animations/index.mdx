@@ -1,10 +1,10 @@
 ---
-title: CSS scroll-driven animácie 
+title: CSS scroll-driven animácie
 subtitle: Revolúcia webových animácií bez JavaScriptu
 description: Zabudnite na knižnice ako ScrollReveal, AOS alebo Scroll Magic! Moderné CSS ich hravo strčí do vrecka.
 date: 2025-04-28
 author: Lukáš Chylík
-podcastUrl: https://notebooklm.google.com/notebook/7a433055-ebe3-4b0a-9cf1-b7860bf510fa/audio
+podcastUrl: https://open.spotify.com/episode/084tRwRmMQYPGmMhW1Dekc?si=7kr_hZw3TrS6hOFsPg_4Fw
 ---
 
 ## CSS prechádza veľkou zmenou
@@ -129,7 +129,7 @@ Určite ste si všimli, že v predchádzajúcich ukážkach kódu bola vždy pr�
 }
 ```
 
-### Funkcie `scroll()` a `view()`: 
+### Funkcie `scroll()` a `view()`:
 
 Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo viditeľnosti bez toho, aby sme museli definovať pomenovanú časovú os.
 
@@ -138,7 +138,9 @@ Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo vidit
 ```css
 .element {
   animation-timeline: scroll(y); /* Animace řízená vertikálním scrollováním */
-  animation-timeline: view(inline); /* Animace řízená viditelností (inline osa) */
+  animation-timeline: view(
+    inline
+  ); /* Animace řízená viditelností (inline osa) */
 }
 ```
 
