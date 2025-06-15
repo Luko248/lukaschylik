@@ -29,14 +29,6 @@ $breakpoints: (
   }
 }
 
-@mixin mq-theme($theme-color) {
-  @if $theme-color == dark or $theme-color == light {
-    @media (prefers-color-scheme: $theme-color) {
-      @content;
-    }
-  }
-}
-
 @mixin mq-hover($value: hover) {
   @media (hover: $value) {
     &:hover {
