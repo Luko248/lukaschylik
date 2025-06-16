@@ -34,7 +34,8 @@
     }
   }
 
-  div:has(> .ref-list) {
+  div:has(> .ref-list),
+  .video-carousel {
     @include set-scrollbar;
   }
 

@@ -369,19 +369,24 @@ strong {
   .reference > small:before {
     color: hsla(0, 0%, 0%, 0);
   }
-  div:has(> .ref-list)::-webkit-scrollbar {
+  div:has(> .ref-list)::-webkit-scrollbar,
+  .video-carousel::-webkit-scrollbar {
     background: transparent;
   }
-  div:has(> .ref-list)::-webkit-scrollbar:vertical {
+  div:has(> .ref-list)::-webkit-scrollbar:vertical,
+  .video-carousel::-webkit-scrollbar:vertical {
     width: 0.5rem;
   }
-  div:has(> .ref-list)::-webkit-scrollbar:horizontal {
+  div:has(> .ref-list)::-webkit-scrollbar:horizontal,
+  .video-carousel::-webkit-scrollbar:horizontal {
     height: 0.5rem;
   }
-  div:has(> .ref-list)::-webkit-scrollbar-track {
+  div:has(> .ref-list)::-webkit-scrollbar-track,
+  .video-carousel::-webkit-scrollbar-track {
     border-radius: 100vmax;
   }
-  div:has(> .ref-list)::-webkit-scrollbar-thumb {
+  div:has(> .ref-list)::-webkit-scrollbar-thumb,
+  .video-carousel::-webkit-scrollbar-thumb {
     background: hsl(0, 0%, 20%);
     border-radius: 100vmax;
   }
