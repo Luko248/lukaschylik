@@ -22,7 +22,7 @@ Web Animations API, ktoré poznáme hlavne v podobe vlastností ako `transition`
 - **`view-timeline-inset`**
 - **`timeline-scope`**
 
-## scroll-timeline: Definice časové osy scrollování
+## scroll-timeline: Definícia časovej osi scrollovania
 
 Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollovania". Táto časová os sleduje priebeh scrollovania elementu (nazývaného scroller) od jeho horného okraja k spodnému alebo od ľavého k pravému okraju.
 
@@ -35,7 +35,7 @@ Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollova
 - `scroll-timeline-name`: Názov časovej osi. Používame tzv. `dashed-ident` zápis (začína na `--`), ktorý poznáme z CSS custom properties. Je to reťazec, ktorý slúži ako identifikátor.
 - `scroll-timeline-axis`: Os scrollovania (`x`, `y`, `inline`, `block`). `inline` a `block` sú logické osi, ktoré rešpektujú smer písma.
 
-### Príklady:
+### Príklad:
 
 ```css
 @keyframes fadeIn {
@@ -55,7 +55,7 @@ Vlastnosť `scroll-timeline` slúži na definovanie tzv. "časovej osi scrollova
 }
 ```
 
-**Ekvivalentní zápis (bez zkratky):**
+**Ekvivalentný zápis (bez skratky):**
 
 ```css
 .container {
@@ -77,7 +77,7 @@ Rovnako ako pri `scroll-timeline`: `view-timeline` sama o sebe nič neurobí. Po
 - `view-timeline-name`: Názov časovej osi (používame `dashed-ident`).
 - `view-timeline-axis`: Os sledovania viditeľnosti (`x`, `y`, `inline`, `block`).
 
-### Príklady:
+### Príklad:
 
 ```css
 @keyframes slideIn {
@@ -97,7 +97,7 @@ Rovnako ako pri `scroll-timeline`: `view-timeline` sama o sebe nič neurobí. Po
 }
 ```
 
-**Ekvivalentní zápis (bez zkratky):**
+**Ekvivalentný zápis (bez skratky):**
 
 ```css
 .animated-element {
@@ -120,7 +120,7 @@ Určite ste si všimli, že v predchádzajúcich ukážkach kódu bola vždy pr�
 - Pomenovaná os: Vhodná pre komplexnejšie animácie, kde potrebujeme opakovane použiť tú istú časovú os.
 - Anonymná os: Rýchle riešenie pre jednoduché animácie, kde nepotrebujeme zdieľať časovú os.
 
-**Príklady:**
+### Príklad:
 
 ```css
 .element {
@@ -133,7 +133,7 @@ Určite ste si všimli, že v predchádzajúcich ukážkach kódu bola vždy pr�
 
 Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo viditeľnosti bez toho, aby sme museli definovať pomenovanú časovú os.
 
-### Príklady:
+### Príklad:
 
 ```css
 .element {
@@ -144,11 +144,11 @@ Tieto funkcie umožňujú priame pripojenie animácie k scrollovaniu alebo vidit
 }
 ```
 
-## animation-range: Nastavení hranic přehrávání animace
+## animation-range: Nastavenie hranic prehrávania animácie
 
-`animation-range` umožňuje určit, v jakém rozsahu časové osy se má animace přehrát. To znamená, že můžete přesně definovat, kdy se animace začne a skončí, vzhledem k průběhu scrollování nebo viditelnosti elementu.
+`animation-range` umožňuje určit, v jakém rozsahu časové osy se má animácia prehrávať. To znamená, že můžete přesně definovat, kdy se animace začne a skončí, vzhledem k průběhu scrollování nebo viditelnosti elementu.
 
-`animation-range` je zkratka pro:
+`animation-range` je skratka pre:
 
 - `animation-range-start`
 - `animation-range-end`
@@ -162,7 +162,7 @@ Kľúčové hodnoty pre `animation-range-start` a `animation-range-end`:
 - `cover`: Animácia sa prehrá, len keď element pokrýva celý viewport.
 - číselné hodnoty: Presné hodnoty časovej osi, ktoré môžu byť definované v percentách (`0%`, `50%`, `100%`), viewportových jednotkách (`10svw`, `50svb`) alebo statických jednotkách (`10rem`, `20px`).
 
-### Príklady:
+### Príklad:
 
 ```css
 .element {
@@ -194,7 +194,7 @@ Kľúčové hodnoty pre `animation-range-start` a `animation-range-end`:
 
 `view-timeline-inset` sa dá kombinovať s `animation-range` pre ešte väčšiu kontrolu nad animáciou. Môžete tak nastaviť offset detekcie viditeľnosti a zároveň definovať presný bod, kedy sa má animácia spustiť.
 
-### Príklady:
+### Príklad:
 
 ```css
 .element {
@@ -226,7 +226,7 @@ Kľúčové hodnoty pre `animation-range-start` a `animation-range-end`:
 2. Použijete `timeline-scope` na rodičovskom elemente a priradíte mu názov časovej osi potomka.
 3. Teraz môžete animovať vlastnosti rodičovského elementu s použitím časovej osi potomka!
 
-**Príklad:**
+### Príklad:
 
 ```css
 .parent {
