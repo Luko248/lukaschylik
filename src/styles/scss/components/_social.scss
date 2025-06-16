@@ -1,9 +1,54 @@
+@use "sass:math";
 @use "../abstracts/variables/_index" as *;
 @use "../abstracts/functions/_index" as *;
 @use "../abstracts/mixins/_index" as *;
 
+@property --social-radius {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
 @mixin create-social {
-  .social:has(+ nav[popover]:popover-open) {
-    background-color: var(--color-yellow-500);
+  .social {
+    --social-radius: 0%;
+    --social-opacity: 0;
+    --button-scale: 1;
+
+    &[data-open] {
+      --social-radius: 200%;
+      --social-opacity: 1;
+      --button-scale: 1.1;
+    }
+
+    ul > li {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition:
+        transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: var(--social-opacity);
+      will-change: transform, opacity;
+
+      $total-items: 4;
+      $start-angle: 160deg; // Start from top
+      $arc-size: 120deg; // 180° arc (semi-circle)
+      $angle-step: $arc-size / ($total-items - 1);
+      $radius: var(--social-radius);
+
+      @for $i from 1 through $total-items {
+        $angle: $start-angle + (($i - 1) * $angle-step);
+        $rad: math.div($angle, 1deg) * math.$pi / 180; // Convert to radians
+        $x: calc(cos($rad) * var(--social-radius));
+        $y: calc(sin($rad) * var(--social-radius));
+
+        &:nth-child(#{$i}) {
+          transform: translate(calc(-50% + #{$x}), calc(-50% + #{$y}));
+          transition-delay: #{$i * 0.05}s;
+        }
+      }
+    }
   }
 }

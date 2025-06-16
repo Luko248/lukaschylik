@@ -1,86 +1,107 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, $, useOnDocument } from "@builder.io/qwik";
+import type { QRL } from "@builder.io/qwik";
+import { cls } from "~/utils";
 import Icon from "../icon/icon";
+import SocialItem from "./socialItem";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.linkedin.com/in/lukas-chylik/",
+    label: "Odkaz na môj LinkedIn",
+    icon: "linkedin",
+  },
+  {
+    href: "https://discord.gg/yXfUhRjx",
+    label: "Odkaz na CSS CzechoSlovakia Discord",
+    icon: "discord",
+  },
+  {
+    href: "https://codepen.io/luko248",
+    label: "Odkaz na môj CodePen",
+    icon: "codepen",
+  },
+  {
+    href: "https://github.com/Luko248",
+    label: "Odkaz na môj github",
+    icon: "github",
+  },
+] as const;
 
 const Social = component$(() => {
+  const isOpen = useSignal(false);
+  const menuRef = useSignal<HTMLDivElement>();
+  const buttonRef = useSignal<HTMLButtonElement>();
+
+  const closeMenu = $(() => (isOpen.value = false));
+  const toggleMenu = $(() => (isOpen.value = !isOpen.value));
+
+  // Close when clicking outside
+  useOnDocument(
+    "click",
+    $((event) => {
+      if (!isOpen.value) return;
+
+      const target = event.target as Node;
+      const clickedOutside =
+        menuRef.value &&
+        !menuRef.value.contains(target) &&
+        !buttonRef.value?.contains(target);
+
+      if (clickedOutside) closeMenu();
+    }),
+  );
+
+  // Close on Escape key
+  useOnDocument(
+    "keydown",
+    $((event) => {
+      if (event.key === "Escape" && isOpen.value) closeMenu();
+    }),
+  );
+
   return (
-    <>
+    <div
+      ref={menuRef}
+      class={cls(
+        "social fixed bottom-4 right-2 z-50 grid place-items-center w-10 h-10 ratio-1/1",
+        "md:bottom-8 md:right-4 lg:right-8",
+      )}
+      data-open={isOpen.value}>
+      <ul
+        id="socialMenu"
+        class="absolute inset-0 m-0 p-0 list-none z-10"
+        aria-hidden={!isOpen.value}>
+        {SOCIAL_LINKS.map((item) => (
+          <SocialItem key={item.icon} {...item} />
+        ))}
+      </ul>
       <button
         type="button"
-        {...({
-          commandfor: "socialPopover",
-          command: "toggle-popover",
-        } as any)}
         id="menuButton"
-        aria-describedby="socialPopover"
-        aria-label="Zobraziť sociálne média"
-        class="social group fixed bottom-4 md:bottom-8 right-2 md:right-4 lg:right-8 z-50 transition-transform grid place-items-center ratio-1/1 text-black bg-white duration-200 rounded-full p-2 m-0 border-0 anchor/social cursor-pointer">
+        onClick$={toggleMenu}
+        aria-label={
+          isOpen.value ? "Zavrieť sociálne siete" : "Otvoriť sociálne siete"
+        }
+        aria-expanded={isOpen.value}
+        aria-controls="socialMenu"
+        class={cls(
+          "absolute inset-0",
+          "group grid place-items-center",
+          "m-0 cursor-pointer z-10",
+          "bg-white rounded-full",
+          "transition-colors duration-200 focus:outline-none",
+          isOpen.value && "bg-yellow-500",
+        )}>
         <Icon
           name="share"
-          cls="scale-100 group-hover:scale-110 transition-transform duration-250 ease-in-out w-4 md:w-6"
+          cls={cls(
+            "w-4 md:w-6",
+            "transition-transform duration-250 ease-in-out group-hover:scale-110",
+            isOpen.value && "scale-110",
+          )}
         />
       </button>
-      <nav
-        {...({
-          popover: "",
-          closedby: "any",
-        } as any)}
-        id="socialPopover"
-        class="mix-blend-difference bg-transparent fixed anchored/social anchored-top-center p-2 m-0 mb-4"
-        closedby="any">
-        <ul
-          class="inline-flex flex-col justify-center items-center gap-6 ms:gap-8"
-          role="dialog">
-          <li class="group">
-            <a
-              href="https://www.linkedin.com/in/lukas-chylik/"
-              rel="external"
-              aria-label="Odkaz na môj LinkedIn"
-              target="_blank">
-              <Icon
-                name="linkedin"
-                cls="scale-100 group-hover:scale-110 transition-transform duration-250 ease-in-out w-6 xl:w-8 text-white"
-              />
-            </a>
-          </li>
-          <li class="group">
-            <a
-              href="https://discord.gg/yXfUhRjx"
-              rel="external"
-              aria-label="Odkaz na CSS CzechoSlovakia Discord"
-              target="_blank">
-              <Icon
-                name="discord"
-                cls="scale-100 group-hover:scale-110 transition-transform duration-250 ease-in-out w-6 xl:w-8 text-white"
-              />
-            </a>
-          </li>
-          <li class="group">
-            <a
-              href="https://codepen.io/luko248"
-              rel="external"
-              aria-label="Odkaz na môj CodePen"
-              target="_blank">
-              <Icon
-                name="codepen"
-                cls="scale-100 group-hover:scale-110 transition-transform duration-250 ease-in-out w-6 xl:w-8 text-white"
-              />
-            </a>
-          </li>
-          <li class="group">
-            <a
-              href="https://github.com/Luko248"
-              rel="external"
-              aria-label="Odkaz na môj github"
-              target="_blank">
-              <Icon
-                name="github"
-                cls="scale-100 group-hover:scale-110 transition-transform duration-250 ease-in-out w-6 xl:w-8 text-white"
-              />
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </>
+    </div>
   );
 });
 

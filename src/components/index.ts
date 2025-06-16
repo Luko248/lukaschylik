@@ -11,3 +11,4 @@ export * from "./router-head";
 export * from "./section";
 export * from "./skills";
 export * from "./blog";
+export * from "./social";
