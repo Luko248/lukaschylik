@@ -37,20 +37,18 @@ const References = component$(() => {
               </Button>
               <div class="video-carousel flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-auto">
                 <iframe
-                  class="snap-center min-w-full"
+                  class="snap-center min-w-full aspect-video block"
                   loading="lazy"
                   width="560"
-                  height="315"
                   src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
                   title="YouTube video Lukáš Chylík - Frontendové novinky"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullscreen></iframe>
                 <iframe
-                  class="snap-center min-w-full"
+                  class="snap-center min-w-full aspect-video block"
                   loading="lazy"
                   width="560"
-                  height="315"
                   src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"
                   title="YouTube video Lukáš Chylík - Pozicování pomocí CSS anchor"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
