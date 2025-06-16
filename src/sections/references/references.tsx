@@ -35,7 +35,7 @@ const References = component$(() => {
                 href="#contact">
                 Služby a spoupráca
               </Button>
-              <div class="video-carousel flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-auto">
+              <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth">
                 <iframe
                   class="snap-center min-w-full aspect-video block"
                   loading="lazy"

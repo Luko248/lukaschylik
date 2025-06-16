@@ -48,4 +48,51 @@
       opacity: 0.5;
     }
   }
+
+  .video-carousel {
+    container-type: scroll-state;
+    anchor-name: --video-carousel;
+    scroll-snap-align: center;
+
+    &::scroll-button(*) {
+      display: block;
+      position: absolute;
+      position-anchor: --video-carousel;
+      border-radius: 100vmax;
+      color: white;
+      font-weight: bold;
+      font-size: 2em;
+      line-height: 1;
+      aspect-ratio: 1;
+      inline-size: 2.5rem;
+      border: none;
+      background-color: hsl(0 0% 0% / 0.25);
+      backdrop-filter: blur(0.5rem);
+      transition:
+        translate 0.25s ease-out,
+        opacity 0.25s ease-out,
+        scale 0.25s ease-out;
+      cursor: pointer;
+      scale: 1.1;
+      text-box: trim-both ex alphabetic;
+      z-index: 10;
+    }
+
+    &::scroll-button(*):disabled {
+      opacity: 0;
+      translate: 0;
+    }
+
+    &::scroll-button(left) {
+      content: "‹";
+      position-area: center left;
+      translate: calc(100% + 0.5rem) 0;
+    }
+
+    &::scroll-button(right) {
+      content: "›";
+      position-area: center right;
+      translate: calc(-100% - 0.5rem) 0;
+    }
+  }
 }
