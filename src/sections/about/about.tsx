@@ -32,6 +32,18 @@ const About = component$(() => {
                 systémov.
               </p>
               <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-gray-300 font-mono">
+                Ako člen komunity{" "}
+                <a
+                  class="underline"
+                  href="https://www.frontendisti.cz/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Frontendisti
+                </a>{" "}
+                sa spoločne s kolegami podieľam na organizovaní pravidelných
+                Frontendisti meetupov v Brne.
+              </p>
+              <p class="text-l lg:text-xl leading-relaxed font-light mb-8 text-gray-300 font-mono">
                 Tiež pomáham vývojárom pri výbere správnej technológie pre
                 vizuálne aspekty ich projektov a ponúkam{" "}
                 <strong>konzultácie, workshopy a školenia</strong> v tejto
