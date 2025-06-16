@@ -369,6 +369,22 @@ strong {
   .reference > small:before {
     color: hsla(0, 0%, 0%, 0);
   }
+  div:has(> .ref-list)::-webkit-scrollbar {
+    background: transparent;
+  }
+  div:has(> .ref-list)::-webkit-scrollbar:vertical {
+    width: 0.5rem;
+  }
+  div:has(> .ref-list)::-webkit-scrollbar:horizontal {
+    height: 0.5rem;
+  }
+  div:has(> .ref-list)::-webkit-scrollbar-track {
+    border-radius: 100vmax;
+  }
+  div:has(> .ref-list)::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 20%);
+    border-radius: 100vmax;
+  }
   .ref-list > li {
     transition: opacity 0.25s ease-in-out;
   }

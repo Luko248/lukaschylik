@@ -1,0 +1,22 @@
+@mixin set-scrollbar($size: 0.5rem) {
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar:vertical {
+    width: $size;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 100vmax;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 20%);
+    border-radius: 100vmax;
+  }
+}

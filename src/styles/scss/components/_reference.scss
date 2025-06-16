@@ -34,6 +34,10 @@
     }
   }
 
+  div:has(> .ref-list) {
+    @include set-scrollbar;
+  }
+
   .ref-list {
     > li {
       transition: opacity $trans-time $trans-fnc;
