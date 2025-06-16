@@ -24,7 +24,7 @@ const Reference = component$<ReferenceProps>(
               class="relative text-transparent duration-300 ease-in-out">
               {title}
             </span>
-            <small class="text-xs lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-white tracking-wider leading-none">
+            <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-white tracking-wider leading-none">
               {type}
             </small>
           </strong>
