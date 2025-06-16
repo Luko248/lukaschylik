@@ -4,7 +4,9 @@ import { SocialItemProps } from "./socialItem.types";
 
 const SocialItem = component$<SocialItemProps>(({ href, label, icon, key }) => {
   return (
-    <li key={key} class="group absolute to-50% left-50% z-10">
+    <li
+      key={key}
+      class="group absolute to-50% left-50% z-10 mix-blend-difference">
       <a
         href={href}
         rel="external"

@@ -64,7 +64,7 @@ const Social = component$(() => {
       ref={menuRef}
       class={cls(
         "social fixed bottom-4 right-2 z-50 grid place-items-center w-10 h-10 ratio-1/1",
-        "md:bottom-8 md:right-4 lg:right-8",
+        "md:bottom-8 md:right-4 lg:right-8 mix-blend-difference",
       )}
       data-open={isOpen.value}>
       <ul
@@ -85,17 +85,16 @@ const Social = component$(() => {
         aria-expanded={isOpen.value}
         aria-controls="socialMenu"
         class={cls(
-          "absolute inset-0",
+          "absolute w-10 h-10",
           "group grid place-items-center",
           "m-0 cursor-pointer z-10",
           "bg-white rounded-full",
           "transition-colors duration-200 focus:outline-none",
-          isOpen.value && "bg-yellow-500",
         )}>
         <Icon
           name="share"
           cls={cls(
-            "w-4 md:w-6",
+            "w-4 md:w-5",
             "transition-transform duration-250 ease-in-out group-hover:scale-110",
             isOpen.value && "scale-110",
           )}
