@@ -56,11 +56,7 @@ const Contact = component$(() => {
   return (
     <Section id="contact" className="bg-white ">
       <Container size="full" className="relative z-10 isolate">
-        <SectionTitle
-          text="Kontakt"
-          className="content-fade-in--entry"
-          dark={true}
-        />
+        <SectionTitle text="Kontakt" dark={true} />
         <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono content-fade-in">
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
@@ -69,7 +65,6 @@ const Contact = component$(() => {
         <form
           onSubmit$={handleSubmit}
           class="grid grid-cols-1 gap-4 sm:gap-6 content-fade-in content-fade-in--entry">
-          {/* FormSubmit configuration */}
           <input
             type="hidden"
             name="_subject"

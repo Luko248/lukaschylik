@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { About, References, Services, Contact, Newsletter } from "~/sections";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import Reservation from "~/sections/reservation/Reservation";
 
 export default component$(() => {
   return (
@@ -8,6 +9,7 @@ export default component$(() => {
       <About />
       <References />
       <Services />
+      <Reservation />
       <Contact />
     </>
   );

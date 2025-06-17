@@ -5,10 +5,10 @@ import {
   useSignal,
   useVisibleTask$,
 } from "@builder.io/qwik";
-import { Link, useLocation, type LinkProps } from "@builder.io/qwik-city";
-import Social from "../social/social";
+import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls } from "~/utils";
-import { NavigationProps } from "./navigation.types";
+import { NavigationProps, NavigationLinkProps } from "./navigation.types";
+import { Icon } from "../icon";
 
 /**
  * Navigation component with mobile menu functionality
@@ -88,7 +88,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           )}
           role="menu">
           {links &&
-            links.map((link: LinkProps, index: number) => {
+            links.map((link: NavigationLinkProps, index: number) => {
               const isActive = link.href === "/blog" && isBlogPage;
 
               return (
@@ -101,6 +101,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                     onClick$={closeMenuOnMobile}
                     data-active={isActive}
                     class={cls(
+                      "flex items-center flex-nowrap gap-3",
                       "text-xl md:text-l lg:text-xl",
                       "text-white ",
                       "decoration-secondary decoration-3 underline-offset-8",
@@ -108,6 +109,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                       isActive && "underline",
                     )}>
                     {link.text}
+                    {link.icon && <Icon name={link.icon} size="1.25rem" />}
                   </Link>
                 </li>
               );

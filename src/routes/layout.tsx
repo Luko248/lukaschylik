@@ -160,12 +160,17 @@ export default component$(() => {
             text: "Služby",
           },
           {
-            href: "/blog",
-            text: "Blog",
+            href: "/#reservation",
+            text: "Rezervácia",
+            icon: "calendar",
           },
           {
             href: "/#contact",
             text: "Kontakt",
+          },
+          {
+            href: "/blog",
+            text: "Blog",
           },
         ]}
       />
