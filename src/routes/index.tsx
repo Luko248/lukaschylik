@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { About, References, Services, Contact, Newsletter } from "~/sections";
+import { About, References, Services, Contact } from "~/sections";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Reservation from "~/sections/reservation/reservation";
 
