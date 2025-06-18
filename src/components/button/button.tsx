@@ -1,6 +1,8 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
 import { cls } from "~/utils";
+import { Icon } from "../icon";
+import icon from "../icon/icon";
 
 const Button = component$<ButtonProps>(
   ({
@@ -16,6 +18,7 @@ const Button = component$<ButtonProps>(
     rel,
     target,
     type = "button",
+    icon,
   }) => {
     // Define base styles that apply to all button sizes
     const baseClasses =
@@ -47,6 +50,7 @@ const Button = component$<ButtonProps>(
         target={target}
         {...commonProps}>
         <Slot />
+        {icon && <Icon name={icon} size="1rem" />}
       </a>
     ) : (
       <button
@@ -56,6 +60,7 @@ const Button = component$<ButtonProps>(
         type={type}
         {...commonProps}>
         <Slot />
+        {icon && <Icon name={icon} size="1rem" />}
       </button>
     );
   },

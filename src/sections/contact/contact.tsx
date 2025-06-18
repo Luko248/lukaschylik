@@ -1,5 +1,5 @@
 import { component$, useStore, $ } from "@builder.io/qwik";
-import { Container, FormField, Button, Section } from "~/components";
+import { Container, FormField, Button, Section, Icon } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
 const Contact = component$(() => {
@@ -64,7 +64,7 @@ const Contact = component$(() => {
 
         <form
           onSubmit$={handleSubmit}
-          class="grid grid-cols-1 gap-4 sm:gap-6 content-fade-in content-fade-in--entry">
+          class="grid grid-cols-1 gap-4 md:gap-6 content-fade-in content-fade-in--entry">
           <input
             type="hidden"
             name="_subject"
@@ -124,7 +124,8 @@ const Contact = component$(() => {
             type="submit"
             title="Odoslať"
             variant="primary"
-            disabled={state.submitting}>
+            disabled={state.submitting}
+            icon="send">
             {state.submitting ? "Odosielam..." : "Odoslať"}
           </Button>
         </form>
