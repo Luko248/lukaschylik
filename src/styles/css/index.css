@@ -96,7 +96,10 @@ strong {
   .content-fade-in {
     z-index: 10;
     position: relative;
-    transform-origin: left;
+    transform-origin: var(--animation_trans-origin, left);
+  }
+  .content-fade-in--bottom {
+    --animation_trans-origin: center;
   }
   @supports (view-timeline-name: --foo) {
     .content-fade-in {

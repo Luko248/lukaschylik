@@ -113,8 +113,8 @@ const Reservation = component$(() => {
   return (
     <Section id="reservation">
       <Container size="full" className="relative z-10">
-        <SectionTitle text="Rezervácia" className="text-center mb-8" />
-        <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono">
+        <SectionTitle text="Rezervácia" className="mb-8" center />
+        <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
           Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
           dátum a čas.
         </p>

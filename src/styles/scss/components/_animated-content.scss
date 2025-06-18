@@ -11,7 +11,11 @@
   .content-fade-in {
     z-index: 10;
     position: relative;
-    transform-origin: left;
+    transform-origin: var(--animation_trans-origin, left);
+
+    &--bottom {
+      --animation_trans-origin: center;
+    }
 
     @supports (view-timeline-name: --foo) {
       animation: var(--content_animation, content-fade-in forwards);

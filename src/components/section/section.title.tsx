@@ -16,7 +16,7 @@ const SectionTitle = component$<SectionTitleProps>(
           "content-fade-in",
           "relative z-10",
           textSizeClasses,
-          center && "text-center",
+          center && "text-center content-fade-in--bottom",
           "mb-[5svb]",
           "font-sans",
           "font-extrabold uppercase leading-none tracking-widest",
