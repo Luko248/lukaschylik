@@ -2,7 +2,6 @@ import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
-import icon from "../icon/icon";
 
 const Button = component$<ButtonProps>(
   ({
@@ -22,7 +21,7 @@ const Button = component$<ButtonProps>(
   }) => {
     // Define base styles that apply to all button sizes
     const baseClasses =
-      "btn relative overflow-clip leading-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none text-transparent border border-white";
+      "btn inline-flex gap-8 items-center justify-center relative overflow-clip leading-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none text-transparent border";
 
     // Define conditional size classes based on whether it's an icon-only button
     const sizeClasses = iconOnly

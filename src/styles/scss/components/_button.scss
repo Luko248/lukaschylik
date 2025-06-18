@@ -10,13 +10,11 @@
   }
 
   .btn {
+    --btn-icon_color: var(--color-white);
+    border-color: var(--color-white);
     background-image: var(
       --btn_gradient,
-      linear-gradient(
-        160deg,
-        $color-white var(--btn_gradient-length),
-        $color-black var(--btn_gradient-length)
-      )
+      linear-gradient(160deg, $color-white var(--btn_gradient-length), $color-black var(--btn_gradient-length))
     ) !important;
     transition: --btn_gradient-length $trans-time $trans-fnc;
     text-align: center;
@@ -25,10 +23,15 @@
       --btn-before_trans-x: 0;
       --btn-after_trans-x: 0;
       --btn_gradient-length: 100%;
+      --btn-icon_color: var(--color-black);
 
       &:after {
         --btn_gradient-length: 100%;
       }
+    }
+
+    &:is([type="submit"]) {
+      border-color: var(--color-black);
     }
 
     &:after {
@@ -40,11 +43,7 @@
       inset: 0;
       background-image: var(
         --btn-after_gradient,
-        linear-gradient(
-          160deg,
-          $color-black var(--btn_gradient-length),
-          $color-white var(--btn_gradient-length)
-        )
+        linear-gradient(160deg, $color-black var(--btn_gradient-length), $color-white var(--btn_gradient-length))
       );
       padding: inherit;
       -webkit-background-clip: text;
@@ -53,6 +52,8 @@
     }
 
     &[data-variant="secondary"] {
+      border-color: var(--color-black);
+      --btn-icon_color: var(--color-black);
       --btn_gradient: linear-gradient(
         160deg,
         #{$color-black} var(--btn_gradient-length),
@@ -64,6 +65,15 @@
         #{$color-white} var(--btn_gradient-length),
         #{$color-black} var(--btn_gradient-length)
       );
+
+      @include mq-hover {
+        --btn-icon_color: var(--color-white);
+      }
+    }
+
+    > .icon {
+      --icon_color: var(--btn-icon_color);
+      transition: --icon_color $trans-time $trans-fnc;
     }
   }
 }
