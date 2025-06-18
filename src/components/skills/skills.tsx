@@ -12,6 +12,8 @@ const Skills = component$(() => {
     "React",
     "Astro",
     "Qwik",
+    "AI",
+    "MCP",
     "AMP",
     "Tailwind",
     "Stylex",

@@ -63,7 +63,7 @@ const Social = component$(() => {
     <div
       ref={menuRef}
       class={cls(
-        "social fixed bottom-4 right-2 z-50 grid place-items-center w-10 h-10 ratio-1/1",
+        "social fixed bottom-4 right-2 z-[200] grid place-items-center w-10 h-10 ratio-1/1",
         "md:bottom-8 md:right-4 lg:right-8 mix-blend-difference",
       )}
       data-open={isOpen.value}>
