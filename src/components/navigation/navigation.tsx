@@ -47,8 +47,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
           "text-center",
           "py-2 md:py-0 px-4 md:px-18",
-          "backdrop-blur-sm",
-          "bg-black-alpha-80",
+          "md:backdrop-blur-sm",
+          "background-black md:bg-black-alpha-80",
           "w-full z-[100]",
           state.isOpen && "nav--open",
         )}
