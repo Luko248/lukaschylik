@@ -118,10 +118,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
         </ul>
         <div class="flex gap-4 items-center">
           <Button
-            href="#reservation"
             variant="secondary"
             size="sm"
-            title="Rezervácia">
+            title="Rezervácia"
+            className="relative z-[100]"
+            command="show-modal"
+            commandfor="reservationModal">
             Rezervácia
           </Button>
           <button

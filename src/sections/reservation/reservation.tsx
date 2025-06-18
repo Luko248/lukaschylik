@@ -2,6 +2,13 @@ import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Container, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
+// Extend HTMLDialogElement to include the closedby attribute
+declare global {
+  interface HTMLDialogElement {
+    closedby?: string;
+  }
+}
+
 declare global {
   interface Window {
     Cal: any;
@@ -111,25 +118,31 @@ const Reservation = component$(() => {
   );
 
   return (
-    <Section id="reservation">
-      <Container size="full" className="relative z-10">
-        <SectionTitle text="Rezervácia" className="mb-8" center />
-        <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
-          Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
-          dátum a čas.
-        </p>
-        <div
-          id="my-cal-inline"
-          class="min-h-[570px] max-w-full overflow-clip"
-          style={{
-            "--cal-brand": "#2563eb",
-            "--cal-brand-emphasis": "#1e40af",
-            "--cal-brand-text": "#ffffff",
-            "--cal-brand-subtle": "#dbeafe",
-          }}
-        />
-      </Container>
-    </Section>
+    <dialog
+      id="reservationModal"
+      closedby="any"
+      class="bg-[#171717] mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
+      <SectionTitle
+        text="Rezervácia"
+        className="mb-8 text-white"
+        center
+        size="sm"
+      />
+      <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
+        Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
+        dátum a čas.
+      </p>
+      <div
+        id="my-cal-inline"
+        class="min-h-[570px] max-w-full overflow-clip"
+        style={{
+          "--cal-brand": "#2563eb",
+          "--cal-brand-emphasis": "#1e40af",
+          "--cal-brand-text": "#ffffff",
+          "--cal-brand-subtle": "#dbeafe",
+        }}
+      />
+    </dialog>
   );
 });
 

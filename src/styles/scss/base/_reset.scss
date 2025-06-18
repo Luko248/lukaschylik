@@ -10,9 +10,13 @@
 
   html {
     overflow-x: clip;
-    // scroll-snap-type: y mandatory;
+    scrollbar-gutter: stable;
     @include mq-reduce-motion(no-preference) {
       scroll-behavior: smooth;
+    }
+
+    &:has(dialog[open]) {
+      overflow: hidden;
     }
   }
 

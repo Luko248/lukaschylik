@@ -1,0 +1,10 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-reservation {
+  dialog::backdrop {
+    background-color: var(--color-black-alpha-80);
+    backdrop-filter: blur(0.5rem);
+  }
+}

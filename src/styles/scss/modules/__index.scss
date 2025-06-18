@@ -1,7 +1,9 @@
 @use "./header" as *;
 @use "./blog" as *;
+@use "./reservation" as *;
 
 @mixin create-modules {
   @include create-blog;
   @include create-header;
+  @include create-reservation;
 }

@@ -37,11 +37,15 @@
 
 html {
   overflow-x: clip;
+  scrollbar-gutter: stable;
 }
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
+}
+html:has(dialog[open]) {
+  overflow: hidden;
 }
 
 body {
@@ -836,6 +840,10 @@ strong {
       scale: 1.2;
       opacity: 0;
     }
+  }
+  dialog::backdrop {
+    background-color: var(--color-black-alpha-80);
+    backdrop-filter: blur(0.5rem);
   }
 }
 @layer _utils {

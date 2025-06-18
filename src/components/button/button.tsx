@@ -3,6 +3,14 @@ import type { ButtonProps } from "./button.types";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
 
+// Extend HTMLButtonElement to include command attributes
+declare global {
+  interface HTMLButtonElement {
+    command?: string;
+    commandfor?: string;
+  }
+}
+
 /**
  * Button component with multiple variants and sizes
  * Supports both button and anchor elements
@@ -22,6 +30,8 @@ const Button = component$<ButtonProps>(
     target,
     type = "button",
     icon,
+    command,
+    commandfor,
   }) => {
     // Determine size and variant classes based on props
     const getSizeAndVariantClasses = () => {
@@ -47,30 +57,44 @@ const Button = component$<ButtonProps>(
 
     const commonProps = {
       class: baseClasses,
-      "aria-label": ariaLabel,
+      'aria-label': ariaLabel,
       title,
-      "data-variant": variant,
+      'data-variant': variant,
     };
 
-    return href ? (
-      <a
-        href={href}
-        aria-disabled={disabled}
-        rel={rel}
-        target={target}
-        {...commonProps}>
+    // Only include command attributes if they are provided
+    const buttonProps = {
+      ...commonProps,
+      onClick$,
+      disabled,
+      'aria-disabled': disabled,
+      type,
+      ...(command && { command }),
+      ...(commandfor && { commandfor }),
+    };
+
+    const linkProps = {
+      ...commonProps,
+      href,
+      rel,
+      target,
+      'aria-disabled': disabled,
+    };
+
+    const content = (
+      <>
         <Slot />
         {icon && <Icon name={icon} size="1rem" />}
+      </>
+    );
+
+    return href ? (
+      <a {...linkProps}>
+        {content}
       </a>
     ) : (
-      <button
-        onClick$={onClick$}
-        disabled={disabled}
-        aria-disabled={disabled}
-        type={type}
-        {...commonProps}>
-        <Slot />
-        {icon && <Icon name={icon} size="1rem" />}
+      <button {...buttonProps}>
+        {content}
       </button>
     );
   },
