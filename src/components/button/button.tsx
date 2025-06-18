@@ -3,6 +3,10 @@ import type { ButtonProps } from "./button.types";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
 
+/**
+ * Button component with multiple variants and sizes
+ * Supports both button and anchor elements
+ */
 const Button = component$<ButtonProps>(
   ({
     size = "md",
@@ -19,23 +23,30 @@ const Button = component$<ButtonProps>(
     type = "button",
     icon,
   }) => {
-    // Define base styles that apply to all button sizes
-    const baseClasses =
-      "btn inline-flex gap-8 items-center justify-center relative overflow-clip leading-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none text-transparent border";
+    // Determine size and variant classes based on props
+    const getSizeAndVariantClasses = () => {
+      if (iconOnly) {
+        return size === "sm" ? "p-3 text-xs" : "p-3 text-sm";
+      } else {
+        return size === "sm" 
+          ? "px-3 py-2 text-xs sm:px-4 sm:py-2 sm:text-sm min-w-[150px]"
+          : "px-5 py-3 text-sm sm:px-6 sm:py-4 sm:text-base font-bold uppercase min-w-[180px]";
+      }
+    };
 
-    // Define conditional size classes based on whether it's an icon-only button
-    const sizeClasses = iconOnly
-      ? {
-          sm: "p-3 text-xs",
-          md: "p-3 text-sm",
-        }
-      : {
-          sm: "px-3 py-2 text-xs sm:px-4 sm:py-2 sm:text-sm min-w-[150px]",
-          md: "px-5 py-3 text-sm sm:px-6 sm:py-4 sm:text-base font-bold uppercase min-w-[180px]",
-        };
+    const baseClasses = cls(
+      "btn",
+      "inline-flex items-center justify-center",
+      "relative overflow-clip leading-none",
+      "cursor-pointer rounded-lg border",
+      "disabled:opacity-50 disabled:pointer-events-none",
+      "text-transparent",
+      getSizeAndVariantClasses(),
+      className
+    );
 
     const commonProps = {
-      class: cls(baseClasses, sizeClasses[size], className),
+      class: baseClasses,
       "aria-label": ariaLabel,
       title,
       "data-variant": variant,
