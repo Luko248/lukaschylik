@@ -1,5 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { Container, Section } from "~/components";
+import { Container, Icon, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
 // Extend HTMLDialogElement to include the closedby attribute
@@ -68,60 +68,35 @@ const loadCalcomScript = () => {
 };
 
 const Reservation = component$(() => {
-  const hasScrolled = useSignal(false);
   const containerRef = useSignal<HTMLElement>();
 
   useVisibleTask$(
     ({ cleanup }) => {
-      if (hasScrolled.value) return;
+      const script = loadCalcomScript();
 
-      const handleScroll = () => {
-        if (hasScrolled.value) return;
-
-        hasScrolled.value = true;
-        const script = loadCalcomScript();
-
-        cleanup(() => {
-          if (script && document.head.contains(script)) {
-            document.head.removeChild(script);
-          }
-        });
-      };
-
-      // Use passive event listener for better scroll performance
-      const options = { passive: true } as AddEventListenerOptions;
-      window.addEventListener("scroll", handleScroll, options);
-
-      // Also trigger on touchmove for mobile devices
-      window.addEventListener("touchmove", handleScroll, options);
-
-      // Cleanup function
-      return () => {
-        window.removeEventListener("scroll", handleScroll, options);
-        window.removeEventListener("touchmove", handleScroll, options);
-      };
+      cleanup(() => {
+        if (script && document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      });
     },
     { strategy: "document-ready" },
-  );
-
-  // Load immediately if user has already scrolled
-  useVisibleTask$(
-    ({ track }) => {
-      track(() => hasScrolled);
-
-      if (window.scrollY > 0) {
-        hasScrolled.value = true;
-        loadCalcomScript();
-      }
-    },
-    { strategy: "document-idle" },
   );
 
   return (
     <dialog
       id="reservationModal"
       closedby="any"
-      class="bg-[#171717] mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
+      class="bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
+      <button
+        type="button"
+        title="Zatvoriť rezerváciu"
+        aria-label="Zatvoriť rezerváciu"
+        class="absolute top-4 right-4 text-white border-0 p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100 transition-all duration-200 cursor-pointer"
+        command="close"
+        commandfor="reservationModal">
+        <Icon name="close" size="1.5rem" aria-hidden="true" />
+      </button>
       <SectionTitle
         text="Rezervácia"
         className="mb-8 text-white"
