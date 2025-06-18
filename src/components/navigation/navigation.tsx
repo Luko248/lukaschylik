@@ -48,7 +48,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "text-center",
           "py-2 md:py-0 px-4 md:px-18",
           "md:backdrop-blur-sm",
-          "background-black md:bg-black-alpha-80",
+          "bg-black md:bg-black-alpha-80",
           "w-full z-[100]",
           state.isOpen && "nav--open",
         )}
