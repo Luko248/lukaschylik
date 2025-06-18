@@ -9,6 +9,7 @@ import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls } from "~/utils";
 import { NavigationProps, NavigationLinkProps } from "./navigation.types";
 import { Icon } from "../icon";
+import { Button } from "../button";
 
 /**
  * Navigation component with mobile menu functionality
@@ -115,20 +116,29 @@ const Navigation = component$<NavigationProps>(({ links }) => {
               );
             })}
         </ul>
-        <button
-          type="button"
-          class={cls(
-            "nav__toggler relative",
-            "w-10 h-10",
-            "z-[101]",
-            "text-white cursor-pointer visible md:invisible",
-            state.isOpen && "nav__toggler--open",
-          )}
-          aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-          aria-expanded={state.isOpen ? "true" : "false"}
-          aria-controls="navigation-menu"
-          title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-          onClick$={toggleMenu}></button>
+        <div class="flex gap-4 items-center">
+          <Button
+            href="#reservation"
+            variant="secondary"
+            size="sm"
+            title="Rezervácia">
+            Rezervácia
+          </Button>
+          <button
+            type="button"
+            class={cls(
+              "nav__toggler relative",
+              "w-10 h-10",
+              "z-[101]",
+              "text-white cursor-pointer visible md:invisible",
+              state.isOpen && "nav__toggler--open",
+            )}
+            aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+            aria-expanded={state.isOpen ? "true" : "false"}
+            aria-controls="navigation-menu"
+            title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
+            onClick$={toggleMenu}></button>
+        </div>
       </nav>
     </>
   );
