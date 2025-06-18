@@ -1,10 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import { Container } from "~/components";
+import { cls } from "~/utils";
 
 const Footer = component$(() => {
   return (
     <footer class="bg-black text-white py-8">
-      <Container size="full" className="relative z-10 isolate grid gap-5 ">
+      <Container
+        size="full"
+        className="relative z-10 isolate flex flex-wrap items-center justify-between gap-5 ">
         <div>
           <h3 class="mb-5 text-2xl font-bold">Kontaktné údaje</h3>
           <address class="font-mono">
@@ -34,6 +37,29 @@ const Footer = component$(() => {
           <small class=" leading-relaxed font-light font-mono mt-4 block">
             ©{new Date().getFullYear()} Všetky práva vyhradené.
           </small>
+        </div>
+        <div>
+          <a
+            href="/"
+            role="menuitem"
+            class={cls(
+              "nav__logo",
+              "relative z-[101]",
+              "w-[110px] md:w-[140px]",
+              "flex items-center",
+              "no-underline",
+              "transition-opacity duration-200",
+              "opacity-100 hover:opacity-80",
+            )}>
+            <img
+              class="w-full max-w-full"
+              src="/images/logos/logo.svg"
+              alt="Lukáš Chylík Logo"
+              width="120"
+              height="60"
+              loading="eager"
+            />
+          </a>
         </div>
       </Container>
     </footer>
