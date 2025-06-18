@@ -34,7 +34,7 @@ const Footer = component$(() => {
               </a>
             </span>
           </address>
-          <small class=" leading-relaxed font-light font-mono mt-4 block">
+          <small class="leading-relaxed font-light font-mono mt-4 block">
             ©{new Date().getFullYear()} Všetky práva vyhradené.
           </small>
         </div>
