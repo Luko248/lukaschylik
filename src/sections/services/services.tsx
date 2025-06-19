@@ -20,14 +20,7 @@ const References = component$(() => {
             kľudný spánok.
           </p>
         </div>
-        <div
-          class={cls(
-            "grid",
-            "grid-cols-1 xl:grid-cols-3",
-            "grid-rows-[auto_auto_1fr_auto]",
-            "gap-6 sm:gap-8 md:gap-12 xl:gap-x-8 2xl:gap-x-12 3xl:gap-x-18",
-            "content-fade-in content-fade-in--entry",
-          )}>
+        <div class="services grid gap-8 text-white">
           <Card title="Konzultácie" price={1500} path="#contact">
             <p class="text-gray-300">
               Potrebujete poradiť?

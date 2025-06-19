@@ -1,0 +1,71 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-services {
+  .services {
+    --carousel-size: calc(100svi - #{$gap-space-32});
+    container-size: size;
+    grid-template-columns: var(--col-template, 1fr 1fr 1fr);
+    transition: all $trans-time;
+    overflow: clip;
+    scroll-behavior: smooth;
+    scroll-marker-group: after;
+
+    // &:has(> div:first-of-type:hover) {
+    //   --col-template: 2fr 0.5fr 0.5fr;
+    // }
+
+    // &:has(> div:last-of-type:hover) {
+    //   --col-template: 0.5fr 0.5fr 2fr;
+    // }
+
+    // &:has(> div:not(:first-of-type, :last-of-type):hover) {
+    //   --col-template: 0.5fr 2fr 0.5fr;
+    // }
+
+    @include mq-responsive("tablet", max) {
+      --col-template: repeat(3, min-content);
+      overflow-x: auto;
+      column-gap: 0;
+      scroll-snap-type: x mandatory;
+      inline-size: var(--carousel-size);
+    }
+
+    &::scroll-marker-group {
+      display: flex;
+      block-size: 1rem;
+      gap: 1rem;
+      justify-content: center;
+      margin-block-start: 1rem;
+    }
+
+    > div {
+      container-type: scroll-state;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+
+      @include mq-responsive("tablet", max) {
+        container-type: scroll-state;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        min-inline-size: var(--carousel-size);
+      }
+
+      &::scroll-marker {
+        content: "";
+        background-color: var(--marker-bg, var(--color-white));
+        inline-size: 1rem;
+        aspect-ratio: 1;
+        display: block;
+        box-sizing: border-box;
+        border-radius: 100vmax;
+        border: 2px solid var(--color-white);
+      }
+
+      &::scroll-marker:target-current {
+        --marker-bg: var(--color-yellow-500);
+      }
+    }
+  }
+}

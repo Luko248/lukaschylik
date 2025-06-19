@@ -6,7 +6,10 @@ const ListItem = component$(({ marker = "🔥" }: ListItemProps) => {
   return (
     <li
       data-marker={marker}
-      class={cls("ms-5 md:ms-7 ps-2", "text-xl 3xl:text-2xl font-bold")}>
+      class={cls(
+        "ms-5 md:ms-7 ps-2",
+        "text-md sm:text-lg md:text-xl 3xl:text-2xl font-bold",
+      )}>
       <Slot />
     </li>
   );

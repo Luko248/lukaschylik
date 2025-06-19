@@ -174,7 +174,7 @@ strong {
     --btn-icon_color: var(--color-white);
     border-color: var(--color-white);
     background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
-    transition: --btn_gradient-length 0.25s ease-in-out;
+    transition: --btn_gradient-length 0.2s ease-in-out;
     text-align: center;
   }
   @media (hover: hover) {
@@ -203,7 +203,7 @@ strong {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: --btn_gradient-length 0.25s ease-in-out;
+    transition: --btn_gradient-length 0.2s ease-in-out;
   }
   .btn[data-variant=secondary] {
     border-color: var(--color-white);
@@ -226,28 +226,16 @@ strong {
   }
   .btn > .icon {
     --icon_color: var(--btn-icon_color);
-    transition: --icon_color 0.25s ease-in-out;
+    transition: --icon_color 0.2s ease-in-out;
   }
   .btn[data-variant=plain] {
     all: initial;
   }
   .card {
-    box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
-    transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;
-    translate: var(--card_trans-x, 0) var(--card_trans-y, 0);
     anchor-scope: --vat-tooltip;
   }
-  @media (hover: hover) {
-    .card:hover {
-      --card_trans-x: -0.5rem;
-      --card_trans-y: -0.5rem;
-      box-shadow: 1rem 1rem 0 0 hsl(51, 100%, 53%);
-    }
-  }
   .card ul li {
-    /* Default marker for all browsers */
     list-style-type: disc;
-    /* Override with custom marker where supported */
   }
   .card ul li::marker {
     content: attr(data-marker);
@@ -295,7 +283,7 @@ strong {
     filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     translate: 0;
     inline-size: min(768px, 70%);
-    transition: filter 0.25s ease-in-out;
+    transition: filter 0.2s ease-in-out;
   }
   @supports (view-timeline-name: --foo) {
     .me {
@@ -378,7 +366,7 @@ strong {
     position: absolute;
     top: 50%;
     left: 50%;
-    transition: scale 0.25s ease-in-out, translate 0.25s ease-in-out, rotate 0.25s ease-in-out, transform-origin 0.25s ease-in-out;
+    transition: scale 0.2s ease-in-out, translate 0.2s ease-in-out, rotate 0.2s ease-in-out, transform-origin 0.2s ease-in-out;
     background-color: hsl(0, 0%, 100%);
     inline-size: 100%;
     block-size: 2px;
@@ -418,7 +406,7 @@ strong {
     content: attr(aria-label);
     position: absolute;
     inset: 0;
-    transition: translate 0.25s ease-in-out;
+    transition: translate 0.2s ease-in-out;
   }
   .reference :where(span, small):before {
     color: hsl(0, 0%, 100%);
@@ -453,7 +441,7 @@ strong {
     border-radius: 100vmax;
   }
   .ref-list > li {
-    transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
   .ref-list:hover > li:not(:hover) {
     opacity: 0.5;
@@ -535,7 +523,7 @@ strong {
   }
   .skills li {
     display: inline-block;
-    transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
   @keyframes scroll-skills {
     to {
@@ -882,6 +870,57 @@ strong {
   dialog::backdrop {
     background-color: var(--color-black-alpha-80);
     backdrop-filter: blur(0.5rem);
+  }
+  .services {
+    --carousel-size: calc(100svi - 2rem);
+    container-size: size;
+    grid-template-columns: var(--col-template, 1fr 1fr 1fr);
+    transition: all 0.2s;
+    overflow: clip;
+    scroll-behavior: smooth;
+    scroll-marker-group: after;
+  }
+  @media screen and (width <= 768px) {
+    .services {
+      --col-template: repeat(3, min-content);
+      overflow-x: auto;
+      column-gap: 0;
+      scroll-snap-type: x mandatory;
+      inline-size: var(--carousel-size);
+    }
+  }
+  .services::scroll-marker-group {
+    display: flex;
+    block-size: 1rem;
+    gap: 1rem;
+    justify-content: center;
+    margin-block-start: 1rem;
+  }
+  .services > div {
+    container-type: scroll-state;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  @media screen and (width <= 768px) {
+    .services > div {
+      container-type: scroll-state;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      min-inline-size: var(--carousel-size);
+    }
+  }
+  .services > div::scroll-marker {
+    content: "";
+    background-color: var(--marker-bg, var(--color-white));
+    inline-size: 1rem;
+    aspect-ratio: 1;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 100vmax;
+    border: 2px solid var(--color-white);
+  }
+  .services > div::scroll-marker:target-current {
+    --marker-bg: var(--color-yellow-500);
   }
 }
 @layer _utils {
