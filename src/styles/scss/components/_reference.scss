@@ -12,24 +12,27 @@
     :where(span, small) {
       position: relative;
       overflow: clip;
-      &:before,
-      &:after {
+
+      &::before,
+      &::after {
         content: attr(aria-label);
         position: absolute;
         inset: 0;
         transition: translate $trans-time $trans-fnc;
       }
 
-      &:before {
+      &::before {
         color: $color-white;
         translate: 0 var(--ref-before_trans-y, 0);
       }
-      &:after {
+
+      &::after {
         color: $color-yellow;
         translate: 0 var(--ref-after_trans-y, 100%);
       }
     }
-    > small:before {
+
+    > small::before {
       color: $color-transparent;
     }
   }
@@ -55,27 +58,27 @@
     scroll-snap-align: center;
 
     &::scroll-button(*) {
-      display: block;
       position: absolute;
-      position-anchor: --video-carousel;
-      border-radius: 100vmax;
-      color: white;
-      font-weight: bold;
-      font-size: 2em;
-      line-height: 1;
-      aspect-ratio: 1;
-      inline-size: 2.5rem;
-      border: none;
-      background-color: hsl(0 0% 0% / 0.25);
+      display: block;
+      background-color: hsl(0deg 0% 0% / 25%);
       backdrop-filter: blur(0.5rem);
+      border: none;
+      border-radius: 100vmax;
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 1;
+      color: white;
+      scale: 1.1;
       transition:
         translate 0.25s ease-out,
         opacity 0.25s ease-out,
         scale 0.25s ease-out;
-      cursor: pointer;
-      scale: 1.1;
-      text-box: trim-both ex alphabetic;
       z-index: 10;
+      cursor: pointer;
+      aspect-ratio: 1;
+      inline-size: 2.5rem;
+      position-anchor: --video-carousel;
+      text-box: trim-both ex alphabetic;
     }
 
     &::scroll-button(*):disabled {
@@ -85,14 +88,14 @@
 
     &::scroll-button(left) {
       content: "‹";
-      position-area: center left;
       translate: calc(100% + 0.5rem) 0;
+      position-area: center left;
     }
 
     &::scroll-button(right) {
       content: "›";
-      position-area: center right;
       translate: calc(-100% - 0.5rem) 0;
+      position-area: center right;
     }
   }
 }

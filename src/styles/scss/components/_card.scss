@@ -30,8 +30,8 @@
     }
 
     .tooltip {
-      display: var(--tooltip_display, none);
       position: absolute;
+      display: var(--tooltip_display, none);
       color: $color-white;
 
       @supports (position-anchor: --foo) {

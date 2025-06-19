@@ -4,9 +4,9 @@
 @use "../abstracts/mixins/_index" as *;
 
 @property --social-radius {
-  syntax: "<percentage>";
-  initial-value: 0%;
   inherits: true;
+  initial-value: 0%;
+  syntax: "<percentage>";
 }
 
 @mixin create-social {
@@ -25,11 +25,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
+      opacity: var(--social-opacity);
       transform: translate(-50%, -50%);
       transition:
         transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
         opacity 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      opacity: var(--social-opacity);
       will-change: transform, opacity;
 
       $total-items: 4;

@@ -1,20 +1,15 @@
-$color-black: hsl(0 0% 0%);
-$color-black-800: hsl(0 0% 8%);
-$color-white: hsl(0 0% 100%);
-
-$color-transparent: hsl(0 0% 0% / 0%);
-
+$color-black: hsl(0deg 0% 0%);
+$color-black-800: hsl(0deg 0% 8%);
+$color-white: hsl(0deg 0% 100%);
+$color-transparent: hsl(0deg 0% 0% / 0%);
 $color-primary: $color-white;
 $color-secondary: $color-black;
-$color-text: oklch(0.872 0.01 258.338);
-
-$color-info: hsl(200 54% 53%);
-$color-success: hsl(134 61% 41%);
-$color-warning: hsl(45 100% 42%);
-$color-error: hsl(354 70% 54%);
-
-$color-bg: hsl(0 0% 8%);
-
-$color-yellow: hsl(51 100% 53%);
-$color-grey-200: hsl(0 0% 85%);
-$color-grey-800: hsl(0 0% 20%);
+$color-text: oklch(87.2% 0.01 258.338deg);
+$color-info: hsl(200deg 54% 53%);
+$color-success: hsl(134deg 61% 41%);
+$color-warning: hsl(45deg 100% 42%);
+$color-error: hsl(354deg 70% 54%);
+$color-bg: hsl(0deg 0% 8%);
+$color-yellow: hsl(51deg 100% 53%);
+$color-grey-200: hsl(0deg 0% 85%);
+$color-grey-800: hsl(0deg 0% 20%);

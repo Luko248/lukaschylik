@@ -4,7 +4,7 @@
 
 @mixin create-blog {
   .blog {
-    color: $color-text;
+    margin-inline: auto;
     font-family:
       system-ui,
       -apple-system,
@@ -17,24 +17,24 @@
       sans-serif;
     font-size: clamp(1rem, 2.5svi, 1.125rem);
     line-height: 1.7;
-    margin-inline: auto;
+    color: $color-text;
     max-inline-size: 100svi;
 
     &__progress {
-      animation: article-progress forwards 1ms;
-      animation-timeline: scroll(block);
       position: fixed;
-      inset: 0 0 auto 0;
+      inset: 0 0 auto;
       background-color: $color-yellow;
-      block-size: clamp(2px, 1svi, $gap-space-4);
-      transform-origin: left;
+      animation: article-progress forwards 1ms;
       scale: 0 1;
+      transform-origin: left;
       z-index: 1000;
+      animation-timeline: scroll(block);
+      block-size: clamp(2px, 1svi, $gap-space-4);
 
       &--fallback {
         animation: none;
-        transform: scaleX(0);
         scale: none;
+        transform: scaleX(0);
         will-change: transform;
       }
     }
@@ -48,16 +48,16 @@
     }
 
     header {
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         display: none !important;
       }
     }
 
     h1 {
+      margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
       font-size: clamp(2.5rem, 6svi, 3rem);
       line-height: 1.2;
-      margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
 
       @include mq-responsive(tablet, max) {
         font-size: clamp(2rem, 5svi, 2.5rem);
@@ -71,33 +71,32 @@
 
       small {
         display: block;
-        font-size: clamp($gap-space-16, 0.5em, $gap-space-32);
         margin-block-start: 0.5em;
+        font-size: clamp($gap-space-16, 0.5em, $gap-space-32);
       }
     }
 
     h2 {
       display: flex;
       align-items: center;
+      margin-top: clamp(1.8em, 5svi, 2.5em);
+      margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
+      border-left: clamp(3px, 0.8svi, 4px) solid $color-yellow;
       font-size: clamp(2rem, 5svi, 2.25rem);
       font-weight: 500;
       line-height: 1.3;
-      margin-top: clamp(1.8em, 5svi, 2.5em);
-      margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
-      text-box: trim-both ex alphabetic;
       color: $color-white;
       color: $color-grey-200;
-      font-weight: 500;
-      border-left: clamp(3px, 0.8svi, 4px) solid $color-yellow;
+      text-box: trim-both ex alphabetic;
 
       @include mq-responsive(tablet, max) {
-        font-size: clamp(1.75rem, 4.5svi, 2rem);
         margin-top: clamp(1.5em, 4svi, 2em);
+        font-size: clamp(1.75rem, 4.5svi, 2rem);
       }
 
       @include mq-responsive(mobile, max) {
-        font-size: clamp(1.5rem, 4svi, 1.75rem);
         margin-top: clamp(1.2em, 3.5svi, 1.8em);
+        font-size: clamp(1.5rem, 4svi, 1.75rem);
       }
     }
 
@@ -127,9 +126,9 @@
     }
 
     p {
-      max-inline-size: none;
       margin-bottom: clamp(1em, 3svi, 1.5em);
       font-weight: 300;
+      max-inline-size: none;
 
       &:last-child {
         margin-bottom: 0;
@@ -138,9 +137,9 @@
 
     .link,
     a:not(.podcast-link) {
+      border-bottom: 1px solid transparent;
       color: $color-yellow;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
       transition:
         border-color 0.2s ease-in-out,
         color 0.2s ease-in-out;
@@ -158,8 +157,8 @@
       padding-left: clamp(1em, 3svi, 1.5em);
 
       li {
-        margin-bottom: clamp(0.3em, 1svi, 0.5em);
         position: relative;
+        margin-bottom: clamp(0.3em, 1svi, 0.5em);
 
         &::before {
           position: absolute;
@@ -173,10 +172,10 @@
 
       li::before {
         content: "•";
-        color: $color-yellow;
-        font-weight: bold;
         display: inline-block;
         width: 1em;
+        font-weight: bold;
+        color: $color-yellow;
       }
     }
 
@@ -190,25 +189,25 @@
     }
 
     pre {
+      display: block;
+      margin: clamp(1.5em, 4svi, 2em) 0;
+      padding: clamp(1em, 3svi, 1.5em);
       background: $color-grey-800;
       border-radius: clamp(3px, 0.8svi, 4px);
-      padding: clamp(1em, 3svi, 1.5em);
-      overflow-x: auto;
-      margin: clamp(1.5em, 4svi, 2em) 0;
-      font-family: "Fira Code", "Consolas", monospace;
+      font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);
       line-height: 1.6;
-      max-inline-size: 100%;
-      display: block;
       overflow: auto;
+      overflow-x: auto;
+      max-inline-size: 100%;
     }
 
     code {
-      background: $color-grey-800;
       padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
+      background: $color-grey-800;
       border-radius: clamp(2px, 0.6svi, 3px);
+      font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);
-      font-family: "Fira Code", "Consolas", monospace;
     }
   }
 

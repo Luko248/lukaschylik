@@ -14,7 +14,7 @@
 
     @include mq-responsive(tablet, min) {
       --nav-list_display: inline-flex;
-      --nav-list_anim: showNav 0.5s ease-in-out forwards;
+      --nav-list_anim: shownav 0.5s ease-in-out forwards;
     }
 
     &--open {
@@ -27,14 +27,15 @@
 
     &__list {
       display: var(--nav-list_display, inline-flex);
-      translate: 0 0;
       animation: var(--nav-list_anim, none);
+      translate: 0 0;
     }
 
     &__toggler {
       display: grid;
-      aspect-ratio: 1;
       place-items: center;
+      aspect-ratio: 1;
+
       --after_scale-x: 0.75;
       --before_trans-x: -50%;
       --before_trans-y: calc(-50% - #{$gap-space-8});
@@ -52,33 +53,32 @@
         --pseudo_trans-origin: center;
       }
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         content: "";
-        display: block;
         position: absolute;
         top: 50%;
         left: 50%;
+        display: block;
+        background-color: $color-white;
+        transform-origin: var(--pseudo_trans-origin, right);
         transition:
           scale $trans-time $trans-fnc,
           translate $trans-time $trans-fnc,
           rotate $trans-time $trans-fnc,
           transform-origin $trans-time $trans-fnc;
-        background-color: $color-white;
-        inline-size: 100%;
         block-size: $border-width-2;
-        background-color: $color-white;
-        transform-origin: var(--pseudo_trans-origin, right);
+        inline-size: 100%;
       }
 
-      &:before {
+      &::before {
         translate: var(--before_trans-x) var(--before_trans-y);
         rotate: var(--before_rotate);
       }
 
-      &:after {
-        scale: var(--after_scale-x) 1;
+      &::after {
         translate: var(--after_trans-x) var(--after_trans-y);
+        scale: var(--after_scale-x) 1;
         rotate: var(--after_rotate);
       }
     }
@@ -89,6 +89,7 @@
       opacity: 0;
       translate: 0 -8svb;
     }
+
     100% {
       opacity: 1;
       translate: 0 0;

@@ -7,13 +7,13 @@
   $align-content: flex-start
 ) {
   display: $display;
+  place-content: $align-content $justify-content;
+  align-items: $align-items;
   grid-template-columns: $template;
+
   @if $gap != 0 {
     gap: $gap;
   }
-  align-items: $align-items;
-  align-content: $align-content;
-  justify-content: $justify-content;
 }
 
 @mixin grid-rows(
@@ -25,13 +25,13 @@
   $align-content: flex-start
 ) {
   display: $display;
+  place-content: $align-content $justify-content;
+  align-items: $align-items;
   grid-template-rows: $template;
+
   @if $gap != 0 {
     gap: $gap;
   }
-  align-items: $align-items;
-  align-content: $align-content;
-  justify-content: $justify-content;
 }
 
 @mixin grid-col-span($columns: 2) {

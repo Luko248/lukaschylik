@@ -18,10 +18,10 @@
 }
 
 @mixin input-placeholder {
-  &:-moz-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
-  &::-webkit-input-placeholder {
+  &:placeholder,
+  &::placeholder,
+  &:input-placeholder,
+  &::input-placeholder {
     @content;
   }
 }

@@ -9,25 +9,25 @@
   }
 
   .content-fade-in {
-    z-index: 10;
     position: relative;
     transform-origin: var(--animation_trans-origin, left);
+    z-index: 10;
 
     &--bottom {
       --animation_trans-origin: center;
     }
 
     @supports (view-timeline-name: --foo) {
+      opacity: var(--content_opacity, 0);
       animation: var(--content_animation, content-fade-in forwards);
+      scale: var(--content_scale, 0.95);
       animation-timeline: --section-view;
       will-change: opacity, scale;
-      opacity: var(--content_opacity, 0);
-      scale: var(--content_scale, 0.95);
     }
 
     @include mq-reduce-motion {
-      animation: none;
       opacity: 1;
+      animation: none;
       scale: 1;
     }
   }
@@ -41,8 +41,8 @@
 
     50%,
     100% {
-      scale: 1;
       opacity: 1;
+      scale: 1;
     }
   }
 }

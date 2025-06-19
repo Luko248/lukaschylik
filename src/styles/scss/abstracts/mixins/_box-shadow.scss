@@ -18,5 +18,5 @@ $shadowRadiusList: (
   }
 
   box-shadow: $x $y var(--shadow-radius) 0
-    hsla(0, 0%, 0%, var(--shadow-alpha, #{$alpha}));
+    hsla(0deg, 0%, 0%, var(--shadow-alpha, #{$alpha}));
 }

@@ -12,9 +12,9 @@
   border-style: $style;
   border-color: $color;
   border-block-start-width: $top;
-  border-inline-end-width: $right;
   border-block-end-width: $bottom;
   border-inline-start-width: $left;
+  border-inline-end-width: $right;
 }
 
 @mixin border-set-block(

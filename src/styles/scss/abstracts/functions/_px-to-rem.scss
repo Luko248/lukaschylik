@@ -1,6 +1,7 @@
-﻿@use "strip-unit" as *;
+@use "strip-unit" as *;
 
 @function px-to-rem($value) {
   $remValue: calc(strip-unit($value) / 16) + rem;
+
   @return $remValue;
 }

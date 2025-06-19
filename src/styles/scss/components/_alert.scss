@@ -1,7 +1,7 @@
 @mixin create-alert {
   .alert-progress {
-    scale: 0 1;
     animation: show-progress var(--alert_duration) linear forwards;
+    scale: 0 1;
   }
 
   @keyframes show-progress {

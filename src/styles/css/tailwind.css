@@ -2,27 +2,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-black: hsl(0 0% 0%);
-  --color-black-900: hsl(0 0% 3%);
-  --color-black-800: hsl(0 0% 9%);
-  --color-black-alpha-70: hsl(0 0% 0% / 70%);
-  --color-black-alpha-80: hsl(0 0% 0% / 80%);
-  --color-grey-200: hsl(0 0% 85%);
-  --color-white: hsl(0 0% 100%);
-  --color-gray: hsl(0 0% 50%);
-  --color-transparent: hsl(0 0% 0% / 0%);
-  --color-primary: hsl(0 0% 100%);
-  --color-secondary: hsl(51 100% 53%);
-  --color-info: hsl(200 54% 53%);
-  --color-success: hsl(134 61% 41%);
-  --color-warning: hsl(45 100% 42%);
-  --color-error: hsl(354 70% 54%);
-  --color-pink: hsl(313 100% 81%);
-  --color-torquoise: hsl(175 100% 65%);
-  --color-yellow-500: hsl(51 100% 53%);
-  --color-bg: hsl(0 0% 100%);
-  --color-menu: hsl(0 0% 0% / 30%);
-
+  --color-black: hsl(0deg 0% 0%);
+  --color-black-900: hsl(0deg 0% 3%);
+  --color-black-800: hsl(0deg 0% 9%);
+  --color-black-alpha-70: hsl(0deg 0% 0% / 70%);
+  --color-black-alpha-80: hsl(0deg 0% 0% / 80%);
+  --color-grey-200: hsl(0deg 0% 85%);
+  --color-white: hsl(0deg 0% 100%);
+  --color-gray: hsl(0deg 0% 50%);
+  --color-transparent: hsl(0deg 0% 0% / 0%);
+  --color-primary: hsl(0deg 0% 100%);
+  --color-secondary: hsl(51deg 100% 53%);
+  --color-info: hsl(200deg 54% 53%);
+  --color-success: hsl(134deg 61% 41%);
+  --color-warning: hsl(45deg 100% 42%);
+  --color-error: hsl(354deg 70% 54%);
+  --color-pink: hsl(313deg 100% 81%);
+  --color-torquoise: hsl(175deg 100% 65%);
+  --color-yellow-500: hsl(51deg 100% 53%);
+  --color-bg: hsl(0deg 0% 100%);
+  --color-menu: hsl(0deg 0% 0% / 30%);
   --breakpoint-sm: 35rem;
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;

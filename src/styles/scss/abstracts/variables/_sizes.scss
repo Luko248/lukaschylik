@@ -1,4 +1,4 @@
-﻿//gap
+// gap
 $gap: 0.5rem;
 $gap-space-2: calc($gap / 4);
 $gap-space-4: calc($gap / 2);
@@ -8,7 +8,7 @@ $gap-space-24: calc($gap * 3);
 $gap-space-32: calc($gap * 4);
 $gap-space-40: calc($gap * 5);
 
-//border
+// border
 $border-width-1: 1px;
 $border-width-2: calc($border-width-1 * 2);
 $radius-2: $gap-space-2;
@@ -19,7 +19,7 @@ $radius-circle: 50%;
 $radius-full: 100vmax;
 $radius-none: 0;
 
-//box-shadow
+// box-shadow
 $shadow-x: 0;
 $shadow-y: 0;
 $shadow-radius-2: $gap-space-2;
@@ -29,11 +29,11 @@ $shadow-radius-8: $gap-space-8;
 $shadow-radius-16: $gap-space-16;
 $shadow-radius-24: $gap-space-24;
 
-//animation
+// animation
 $trans-time: 0.2s;
 $trans-fnc: ease-in-out;
 
-//media
+// media
 $width-mobile-s: 375px;
 $width-mobile: 560px;
 $width-tablet: 768px;

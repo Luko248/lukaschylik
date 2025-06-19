@@ -5,10 +5,11 @@
 @mixin create-services {
   .services {
     --carousel-size: calc(100svi - #{$gap-space-32});
-    container-size: size;
+
     grid-template-columns: var(--col-template, 1fr 1fr 1fr);
     transition: all $trans-time;
     overflow: clip;
+    container-size: size;
     scroll-behavior: smooth;
     scroll-marker-group: after;
 
@@ -26,18 +27,19 @@
 
     @include mq-responsive("tablet", max) {
       --col-template: repeat(3, min-content);
-      overflow-x: auto;
+
       column-gap: 0;
-      scroll-snap-type: x mandatory;
+      overflow-x: auto;
       inline-size: var(--carousel-size);
+      scroll-snap-type: x mandatory;
     }
 
     &::scroll-marker-group {
       display: flex;
-      block-size: 1rem;
-      gap: 1rem;
       justify-content: center;
+      gap: 1rem;
       margin-block-start: 1rem;
+      block-size: 1rem;
     }
 
     > div {
@@ -47,27 +49,28 @@
 
       @include mq-responsive("tablet", max) {
         container-type: scroll-state;
+        min-inline-size: var(--carousel-size);
         scroll-snap-align: center;
         scroll-snap-stop: always;
-        min-inline-size: var(--carousel-size);
       }
 
       &::scroll-marker {
         content: "";
-        background-color: var(--marker-bg, var(--color-white));
-        inline-size: 1rem;
-        aspect-ratio: 1;
         display: block;
         box-sizing: border-box;
+        background-color: var(--marker-bg, var(--color-white));
         border-radius: 100vmax;
+        scale: 1;
         transition:
           background-color $trans-time $trans-fnc,
           scale $trans-time $trans-fnc;
-        scale: 1;
+        aspect-ratio: 1;
+        inline-size: 1rem;
       }
 
       &::scroll-marker:target-current {
         --marker-bg: var(--color-yellow-500);
+
         scale: 1.2;
       }
     }

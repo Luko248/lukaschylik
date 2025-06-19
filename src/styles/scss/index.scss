@@ -1,15 +1,12 @@
-﻿@use "./base/font-faces" as *;
+@use "./base/font-faces" as *;
 @use "./base/reset" as *;
 @use "./base/typography" as *;
 @use "./base/view-transitions" as *;
 @use "./components/_index" as *;
 @use "./modules/_index" as *;
 @use "./utils/_index" as *;
-
 @include create-view-transitions;
-
 @include reset;
-
 @layer base, _components, _modules, _utils;
 
 @layer base {
