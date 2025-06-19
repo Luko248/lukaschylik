@@ -82,9 +82,9 @@ export const ReservationDialog = component$(() => {
         commandfor="reservationModal">
         <Icon name="close" size="1.5rem" aria-hidden="true" />
       </Button>
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-white">
+      <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 text-white">
         Rezervácia
-      </h2>
+      </h3>
       <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
         Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
         dátum a čas.
