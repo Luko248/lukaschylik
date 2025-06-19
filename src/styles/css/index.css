@@ -1,15 +1,12 @@
 @charset "UTF-8";
-
 @property --social-radius {
   inherits: true;
   initial-value: 0%;
   syntax: "<percentage>";
 }
-
 @view-transition {
   navigation: auto;
 }
-
 ::view-transition-group(root) {
   animation-duration: 2s;
 }
@@ -27,13 +24,11 @@
     scale: 0;
   }
 }
-
 @keyframes scaleOut {
   to {
     scale: 0;
   }
 }
-
 *,
 *::before,
 *::after {
@@ -44,34 +39,27 @@ html {
   overflow-x: clip;
   scrollbar-gutter: stable;
 }
-
 html::-webkit-scrollbar {
   background: transparent;
 }
-
 html::-webkit-scrollbar:vertical {
   width: 0.5rem;
 }
-
 html::-webkit-scrollbar:horizontal {
   height: 0.5rem;
 }
-
 html::-webkit-scrollbar-track {
   border-radius: 100vmax;
 }
-
 html::-webkit-scrollbar-thumb {
-  background: hsl(0deg 0% 20%);
+  background: hsl(0, 0%, 20%);
   border-radius: 100vmax;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
-
 html:has(dialog[open]) {
   overflow: hidden;
 }
@@ -84,27 +72,23 @@ body {
 dialog::-webkit-scrollbar {
   background: transparent;
 }
-
 dialog::-webkit-scrollbar:vertical {
   width: 0.5rem;
 }
-
 dialog::-webkit-scrollbar:horizontal {
   height: 0.5rem;
 }
-
 dialog::-webkit-scrollbar-track {
   border-radius: 100vmax;
 }
-
 dialog::-webkit-scrollbar-thumb {
-  background: hsl(0deg 0% 20%);
+  background: hsl(0, 0%, 20%);
   border-radius: 100vmax;
 }
 
 ::selection {
-  background-color: hsl(51deg 100% 53%);
-  color: hsl(0deg 0% 0%);
+  background-color: hsl(51, 100%, 53%);
+  color: hsl(0, 0%, 0%);
 }
 
 strong {
@@ -112,7 +96,6 @@ strong {
 }
 
 @layer base, _components, _modules, _utils;
-
 @layer base {
   h1,
   h2,
@@ -122,49 +105,40 @@ strong {
   h6 {
     paint-order: stroke fill;
   }
-
   address {
     font-style: normal;
   }
-
   textarea {
     font-family: inherit;
     font-size: medium;
     resize: vertical;
   }
-
   p {
     max-inline-size: 65ch;
   }
 }
-
 @layer _components {
   .alert-progress {
     animation: show-progress var(--alert_duration) linear forwards;
     scale: 0 1;
   }
-
   @keyframes show-progress {
     to {
       scale: 1 1;
     }
   }
-
   section:has(.content-fade-in) {
     view-timeline: --section-view block;
     view-timeline-inset: -200px;
   }
-
   .content-fade-in {
     position: relative;
     transform-origin: var(--animation_trans-origin, left);
     z-index: 10;
   }
-
   .content-fade-in--bottom {
     --animation_trans-origin: center;
   }
-
   @supports (view-timeline-name: --foo) {
     .content-fade-in {
       opacity: var(--content_opacity, 0);
@@ -174,7 +148,6 @@ strong {
       will-change: opacity, scale;
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .content-fade-in {
       opacity: 1;
@@ -182,34 +155,28 @@ strong {
       scale: 1;
     }
   }
-
   @keyframes content-fade-in {
     0%, 20% {
       opacity: 0;
       scale: 0.95;
     }
-
     50%, 100% {
       opacity: 1;
       scale: 1;
     }
   }
-
   @property --btn_gradient-length {
     inherits: false;
     initial-value: 0%;
     syntax: "<percentage>";
   }
-
   .btn {
     --btn-icon_color: var(--color-white);
-
-    background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0deg 0% 100%) var(--btn_gradient-length), hsl(0deg 0% 0%) var(--btn_gradient-length))) !important;
+    background-image: var(--btn_gradient, linear-gradient(160deg, hsl(0, 0%, 100%) var(--btn_gradient-length), hsl(0, 0%, 0%) var(--btn_gradient-length))) !important;
     border-color: var(--color-white);
     text-align: center;
     transition: --btn_gradient-length 0.2s ease-in-out;
   }
-
   @media (hover: hover) {
     .btn:hover {
       --btn-before_trans-x: 0;
@@ -217,16 +184,13 @@ strong {
       --btn_gradient-length: 100%;
       --btn-icon_color: var(--color-black);
     }
-
     .btn:hover::after {
       --btn_gradient-length: 100%;
     }
   }
-
-  .btn:is([type="submit"]) {
+  .btn:is([type=submit]) {
     border-color: var(--color-black);
   }
-
   .btn::after {
     content: attr(title);
     position: absolute;
@@ -234,112 +198,92 @@ strong {
     display: grid;
     place-items: center;
     padding: inherit;
-    background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0deg 0% 0%) var(--btn_gradient-length), hsl(0deg 0% 100%) var(--btn_gradient-length)));
+    background-image: var(--btn-after_gradient, linear-gradient(160deg, hsl(0, 0%, 0%) var(--btn_gradient-length), hsl(0, 0%, 100%) var(--btn_gradient-length)));
     background-clip: text;
     line-height: inherit;
     transition: --btn_gradient-length 0.2s ease-in-out;
     -webkit-text-fill-color: transparent;
   }
-
-  .btn[data-variant="secondary"] {
+  .btn[data-variant=secondary] {
     border-color: var(--color-white);
-
     --btn-icon_color: var(--color-black);
     --btn_gradient: linear-gradient(
       160deg,
-      hsl(0deg 0% 0%) var(--btn_gradient-length),
-      hsl(0deg 0% 100%) var(--btn_gradient-length)
+      hsl(0, 0%, 0%) var(--btn_gradient-length),
+      hsl(0, 0%, 100%) var(--btn_gradient-length)
     );
     --btn-after_gradient: linear-gradient(
       160deg,
-      hsl(0deg 0% 100%) var(--btn_gradient-length),
-      hsl(0deg 0% 0%) var(--btn_gradient-length)
+      hsl(0, 0%, 100%) var(--btn_gradient-length),
+      hsl(0, 0%, 0%) var(--btn_gradient-length)
     );
   }
-
   @media (hover: hover) {
-    .btn[data-variant="secondary"]:hover {
+    .btn[data-variant=secondary]:hover {
       --btn-icon_color: var(--color-white);
     }
   }
-
   .btn > .icon {
     --icon_color: var(--btn-icon_color);
-
     transition: --icon_color 0.2s ease-in-out;
   }
-
-  .btn[data-variant="plain"] {
+  .btn[data-variant=plain] {
     all: initial;
   }
-
   .card {
     anchor-scope: --vat-tooltip;
   }
-
   .card ul li {
     list-style-type: disc;
   }
-
   .card ul li::marker {
     content: attr(data-marker);
   }
-
   .card p {
     text-wrap: ballanced;
     text-wrap: pretty;
   }
-
   .card strong {
     anchor-name: --vat-tooltip;
   }
-
   @media (hover: hover) {
     .card strong:hover + .tooltip {
       --tooltip_display: block;
     }
   }
-
   .card .tooltip {
     position: absolute;
     display: var(--tooltip_display, none);
-    color: hsl(0deg 0% 100%);
+    color: hsl(0, 0%, 100%);
   }
-
   @supports (position-anchor: --foo) {
     .card .tooltip {
       position-anchor: --vat-tooltip;
       position-area: top;
     }
   }
-
   .icon {
     display: block;
     aspect-ratio: 1;
     fill: var(--icon_color, currentColor);
   }
-
-  .icon:not([class*="w-"]) {
+  .icon:not([class*=w-]) {
     inline-size: var(--icon_size, 2rem);
   }
-
   @property --me_filter-greyscale {
     inherits: false;
     initial-value: 25%;
     syntax: "<percentage>";
   }
-
   div:has(> .me) {
     align-self: end;
   }
-
   .me {
-    filter: drop-shadow(0 0 1px hsl(0deg 0% 100%)) drop-shadow(-1px -1px 1px hsl(0deg 0% 100%)) drop-shadow(1px 1px 1px hsl(0deg 0% 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
+    filter: drop-shadow(0 0 1px hsl(0, 0%, 100%)) drop-shadow(-1px -1px 1px hsl(0, 0%, 100%)) drop-shadow(1px 1px 1px hsl(0, 0%, 100%)) grayscale(var(--me_filter-greyscale)) contrast(1.15);
     translate: 0;
     transition: filter 0.2s ease-in-out;
     inline-size: min(768px, 70%);
   }
-
   @supports (view-timeline-name: --foo) {
     .me {
       animation: show-me forwards;
@@ -349,71 +293,56 @@ strong {
       will-change: translate, filter;
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .me {
       opacity: 1;
       animation: none;
       translate: 0 0;
-
       --me_filter-greyscale: 25%;
     }
   }
-
   @keyframes show-me {
     0%, 20% {
       --me_filter-greyscale: 100%;
-
       opacity: 0;
       translate: 0 30svb;
     }
-
     50%, 100% {
       --me_filter-greyscale: 25%;
-
       opacity: 1;
       translate: 0 2rem;
     }
   }
-
   :where(html, body):has(.nav--open) {
     overflow: hidden;
   }
-
   .nav {
     max-inline-size: 100lvi;
-
     --nav-list_display: none;
   }
-
   @media screen and (width > 768px) {
     .nav {
       --nav-list_display: inline-flex;
       --nav-list_anim: shownav 0.5s ease-in-out forwards;
     }
   }
-
   .nav--open {
     --nav-list_display: grid;
   }
-
   @media screen and (width > 768px) {
     .nav--open {
       --nav-list_display: inline-flex;
     }
   }
-
   .nav__list {
     display: var(--nav-list_display, inline-flex);
     animation: var(--nav-list_anim, none);
     translate: 0 0;
   }
-
   .nav__toggler {
     display: grid;
     place-items: center;
     aspect-ratio: 1;
-
     --after_scale-x: 0.75;
     --before_trans-x: -50%;
     --before_trans-y: calc(-50% - 0.5rem);
@@ -422,7 +351,6 @@ strong {
     --after_trans-y: calc(-50% + 0.5rem);
     --after_rotate: 0deg;
   }
-
   .nav__toggler--open {
     --before_trans-y: -50%;
     --before_rotate: -45deg;
@@ -431,120 +359,100 @@ strong {
     --after_rotate: 45deg;
     --pseudo_trans-origin: center;
   }
-
   .nav__toggler::before, .nav__toggler::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     display: block;
-    background-color: hsl(0deg 0% 100%);
+    background-color: hsl(0, 0%, 100%);
     transform-origin: var(--pseudo_trans-origin, right);
     transition: scale 0.2s ease-in-out, translate 0.2s ease-in-out, rotate 0.2s ease-in-out, transform-origin 0.2s ease-in-out;
     block-size: 2px;
     inline-size: 100%;
   }
-
   .nav__toggler::before {
     translate: var(--before_trans-x) var(--before_trans-y);
     rotate: var(--before_rotate);
   }
-
   .nav__toggler::after {
     translate: var(--after_trans-x) var(--after_trans-y);
     scale: var(--after_scale-x) 1;
     rotate: var(--after_rotate);
   }
-
   @keyframes showNav {
     0% {
       opacity: 0;
       translate: 0 -8svb;
     }
-
     100% {
       opacity: 1;
       translate: 0 0;
     }
   }
-
   @media (hover: hover) {
     .reference:hover {
       --ref-before_trans-y: -100%;
       --ref-after_trans-y: 0;
     }
   }
-
   .reference :where(span, small) {
     position: relative;
     overflow: clip;
   }
-
   .reference :where(span, small)::before, .reference :where(span, small)::after {
     content: attr(aria-label);
     position: absolute;
     inset: 0;
     transition: translate 0.2s ease-in-out;
   }
-
   .reference :where(span, small)::before {
-    color: hsl(0deg 0% 100%);
+    color: hsl(0, 0%, 100%);
     translate: 0 var(--ref-before_trans-y, 0);
   }
-
   .reference :where(span, small)::after {
-    color: hsl(51deg 100% 53%);
+    color: hsl(51, 100%, 53%);
     translate: 0 var(--ref-after_trans-y, 100%);
   }
-
   .reference > small::before {
-    color: hsl(0deg 0% 0% / 0%);
+    color: hsla(0, 0%, 0%, 0);
   }
-
   div:has(> .ref-list)::-webkit-scrollbar,
   .video-carousel::-webkit-scrollbar {
     background: transparent;
   }
-
   div:has(> .ref-list)::-webkit-scrollbar:vertical,
   .video-carousel::-webkit-scrollbar:vertical {
     width: 0.5rem;
   }
-
   div:has(> .ref-list)::-webkit-scrollbar:horizontal,
   .video-carousel::-webkit-scrollbar:horizontal {
     height: 0.5rem;
   }
-
   div:has(> .ref-list)::-webkit-scrollbar-track,
   .video-carousel::-webkit-scrollbar-track {
     border-radius: 100vmax;
   }
-
   div:has(> .ref-list)::-webkit-scrollbar-thumb,
   .video-carousel::-webkit-scrollbar-thumb {
-    background: hsl(0deg 0% 20%);
+    background: hsl(0, 0%, 20%);
     border-radius: 100vmax;
   }
-
   .ref-list > li {
     transition: opacity 0.2s ease-in-out;
   }
-
   .ref-list:hover > li:not(:hover) {
     opacity: 0.5;
   }
-
   .video-carousel {
     container-type: scroll-state;
     anchor-name: --video-carousel;
     scroll-snap-align: center;
   }
-
   .video-carousel::scroll-button(*) {
     position: absolute;
     display: block;
-    background-color: hsl(0deg 0% 0% / 25%);
+    background-color: hsla(0, 0%, 0%, 0.25);
     backdrop-filter: blur(0.5rem);
     border: none;
     border-radius: 100vmax;
@@ -561,92 +469,75 @@ strong {
     position-anchor: --video-carousel;
     text-box: trim-both ex alphabetic;
   }
-
   .video-carousel::scroll-button(*):disabled {
     opacity: 0;
     translate: 0;
   }
-
   .video-carousel::scroll-button(left) {
     content: "‹";
     translate: calc(100% + 0.5rem) 0;
     position-area: center left;
   }
-
   .video-carousel::scroll-button(right) {
     content: "›";
     translate: calc(-100% - 0.5rem) 0;
     position-area: center right;
   }
-
   section {
     position: relative;
   }
-
   section h2 {
-    color: hsl(0deg 0% 0%);
+    color: hsl(0, 0%, 0%);
     animation-range: -8svb exit;
     paint-order: stroke fill;
-    -webkit-text-stroke: 0.035em hsl(0deg 0% 100%);
+    -webkit-text-stroke: 0.035em hsl(0, 0%, 100%);
   }
-
   section h2[data-dark] {
-    -webkit-text-stroke: 0.035em hsl(0deg 0% 0%);
+    -webkit-text-stroke: 0.035em hsl(0, 0%, 0%);
   }
-
   .skills {
     max-width: 100svi;
-    mask: linear-gradient(90deg, hsl(0deg 0% 0% / 0%), hsl(0deg 0% 0%) 10%, hsl(0deg 0% 0%) 90%, hsl(0deg 0% 0% / 0%));
+    mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
   }
-
   .skills:hover li:not(:hover) {
     opacity: 0.5;
   }
-
   @media (prefers-reduced-motion: reduce) {
     .skills:hover li:not(:hover) {
       opacity: 1;
     }
   }
-
   .skills__scroller {
     animation: scroll-skills linear;
     animation-timeline: scroll(root);
   }
-
   .skills__scroller:nth-of-type(2) {
     animation-direction: reverse;
   }
-
   @media (prefers-reduced-motion: reduce) {
     .skills__scroller {
       animation: none;
     }
   }
-
   .skills li {
     display: inline-block;
     transition: opacity 0.2s ease-in-out;
   }
-
   @keyframes scroll-skills {
     to {
       translate: calc(-20% - 1rem) 0;
     }
   }
-
   .social {
     --social-radius: 0%;
     --social-opacity: 0;
     --button-scale: 1;
   }
-
   .social[data-open] {
     --social-radius: 200%;
     --social-opacity: 1;
     --button-scale: 1.1;
   }
-
   .social ul > li {
     position: absolute;
     top: 50%;
@@ -656,28 +547,23 @@ strong {
     transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: transform, opacity;
   }
-
   .social ul > li:nth-child(1) {
     transform: translate(calc(-50% + calc(-0.9396926208 * var(--social-radius))), calc(-50% + calc(0.3420201433 * var(--social-radius))));
     transition-delay: 0.05s;
   }
-
   .social ul > li:nth-child(2) {
     transform: translate(calc(-50% + calc(-0.9396926208 * var(--social-radius))), calc(-50% + calc(-0.3420201433 * var(--social-radius))));
     transition-delay: 0.1s;
   }
-
   .social ul > li:nth-child(3) {
     transform: translate(calc(-50% + calc(-0.5 * var(--social-radius))), calc(-50% + calc(-0.8660254038 * var(--social-radius))));
     transition-delay: 0.15s;
   }
-
   .social ul > li:nth-child(4) {
     transform: translate(calc(-50% + calc(0.1736481777 * var(--social-radius))), calc(-50% + calc(-0.984807753 * var(--social-radius))));
     transition-delay: 0.2s;
   }
 }
-
 @layer _modules {
   .blog {
     margin-inline: auto;
@@ -687,11 +573,10 @@ strong {
     color: oklch(87.2% 0.01 258.338deg);
     max-inline-size: 100svi;
   }
-
   .blog__progress {
     position: fixed;
     inset: 0 0 auto;
-    background-color: hsl(51deg 100% 53%);
+    background-color: hsl(51, 100%, 53%);
     animation: article-progress forwards 1ms;
     scale: 0 1;
     transform-origin: left;
@@ -699,177 +584,149 @@ strong {
     animation-timeline: scroll(block);
     block-size: clamp(2px, 1svi, 0.25rem);
   }
-
   .blog__progress--fallback {
     animation: none;
     scale: none;
     transform: scaleX(0);
     will-change: transform;
   }
-
   .blog header {
     block-size: unset;
   }
-
   .blog > * + * {
     margin-top: clamp(1em, 3svi, 1.5em);
   }
-
   .blog header::before, .blog header::after {
     display: none !important;
   }
-
   .blog h1 {
     margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
     font-size: clamp(2.5rem, 6svi, 3rem);
     line-height: 1.2;
   }
-
   @media screen and (width <= 768px) {
     .blog h1 {
       font-size: clamp(2rem, 5svi, 2.5rem);
       line-height: 1.3;
     }
   }
-
   @media screen and (width <= 560px) {
     .blog h1 {
       font-size: clamp(1.75rem, 4.5svi, 2rem);
       line-height: 1.4;
     }
   }
-
   .blog h1 small {
     display: block;
     margin-block-start: 0.5em;
     font-size: clamp(1rem, 0.5em, 2rem);
   }
-
   .blog h2 {
     display: flex;
     align-items: center;
     margin-top: clamp(1.8em, 5svi, 2.5em);
     margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
-    border-left: clamp(3px, 0.8svi, 4px) solid hsl(51deg 100% 53%);
+    border-left: clamp(3px, 0.8svi, 4px) solid hsl(51, 100%, 53%);
     font-size: clamp(2rem, 5svi, 2.25rem);
     font-weight: 500;
     line-height: 1.3;
-    color: hsl(0deg 0% 85%);
+    color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 85%);
     text-box: trim-both ex alphabetic;
   }
-
   @media screen and (width <= 768px) {
     .blog h2 {
       margin-top: clamp(1.5em, 4svi, 2em);
       font-size: clamp(1.75rem, 4.5svi, 2rem);
     }
   }
-
   @media screen and (width <= 560px) {
     .blog h2 {
       margin-top: clamp(1.2em, 3.5svi, 1.8em);
       font-size: clamp(1.5rem, 4svi, 1.75rem);
     }
   }
-
   .blog h3 {
     font-size: clamp(1.75rem, 4.5svi, 1.875rem);
   }
-
   @media screen and (width <= 768px) {
     .blog h3 {
       font-size: clamp(1.5rem, 4svi, 1.65rem);
     }
   }
-
   @media screen and (width <= 560px) {
     .blog h3 {
       font-size: clamp(1.25rem, 3.5svi, 1.5rem);
     }
   }
-
   .blog h4 {
     font-size: clamp(1.5rem, 3.5svi, 1.5rem);
   }
-
   .blog h5 {
     font-size: clamp(1.25rem, 3svi, 1.25rem);
   }
-
   .blog h6 {
     font-size: clamp(1.125rem, 2.5svi, 1.125rem);
     text-transform: uppercase;
   }
-
   .blog p {
     margin-bottom: clamp(1em, 3svi, 1.5em);
     font-weight: 300;
     max-inline-size: none;
   }
-
   .blog p:last-child {
     margin-bottom: 0;
   }
-
   .blog .link,
   .blog a:not(.podcast-link) {
     border-bottom: 1px solid transparent;
-    color: hsl(51deg 100% 53%);
+    color: hsl(51, 100%, 53%);
     text-decoration: none;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
-
   .blog .link:hover, .blog .link:focus,
   .blog a:not(.podcast-link):hover,
   .blog a:not(.podcast-link):focus {
-    border-bottom-color: hsl(51deg 100% 53%);
-    color: hsl(51deg 100% 53%);
+    border-bottom-color: hsl(51, 100%, 53%);
+    color: hsl(51, 100%, 53%);
   }
-
   .blog ul,
   .blog ol {
     margin: clamp(1em, 3svi, 1.5em) 0;
     padding-left: clamp(1em, 3svi, 1.5em);
   }
-
   .blog ul li,
   .blog ol li {
     position: relative;
     margin-bottom: clamp(0.3em, 1svi, 0.5em);
   }
-
   .blog ul li::before,
   .blog ol li::before {
     position: absolute;
     left: -1.5em;
   }
-
   .blog ul {
     list-style: none;
   }
-
   .blog ul li::before {
     content: "•";
     display: inline-block;
     width: 1em;
     font-weight: bold;
-    color: hsl(51deg 100% 53%);
+    color: hsl(51, 100%, 53%);
   }
-
   .blog ol {
     list-style-type: decimal;
     counter-reset: item;
   }
-
   .blog ol li {
     counter-increment: item;
   }
-
   .blog pre {
     display: block;
     margin: clamp(1.5em, 4svi, 2em) 0;
     padding: clamp(1em, 3svi, 1.5em);
-    background: hsl(0deg 0% 20%);
+    background: hsl(0, 0%, 20%);
     border-radius: clamp(3px, 0.8svi, 4px);
     font-family: "Fira Code", Consolas, monospace;
     font-size: clamp(0.85em, 2svi, 0.9em);
@@ -878,35 +735,29 @@ strong {
     overflow-x: auto;
     max-inline-size: 100%;
   }
-
   .blog code {
     padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
-    background: hsl(0deg 0% 20%);
+    background: hsl(0, 0%, 20%);
     border-radius: clamp(2px, 0.6svi, 3px);
     font-family: "Fira Code", Consolas, monospace;
     font-size: clamp(0.85em, 2svi, 0.9em);
   }
-
   @keyframes article-progress {
     to {
       scale: 1 1;
     }
   }
-
   header {
     block-size: var(--header_height, calc(100svb - 76px));
   }
-
   @media screen and (width <= 768px) {
     header {
       --header_height: calc(100svb - 56px);
     }
   }
-
   header:empty {
     display: none;
   }
-
   @supports (view-timeline-name: --foo) {
     .intro {
       animation: header-content-fade-out forwards;
@@ -915,20 +766,17 @@ strong {
       will-change: translate, opacity;
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .intro {
       animation: none;
     }
   }
-
   .intro__title {
     position: relative;
     animation: show-title 0.5s ease-out 0.35s forwards;
     paint-order: stroke fill;
-    -webkit-text-stroke: 0.025em hsl(0deg 0% 100%);
+    -webkit-text-stroke: 0.025em hsl(0, 0%, 100%);
   }
-
   @media (prefers-reduced-motion: reduce) {
     .intro__title {
       opacity: initial;
@@ -936,7 +784,6 @@ strong {
       scale: initial;
     }
   }
-
   .intro__title::before, .intro__title::after {
     position: absolute;
     top: 50%;
@@ -946,26 +793,22 @@ strong {
     color: var(--color-yellow-500);
     -webkit-text-stroke: 0;
   }
-
   .intro__title::before {
     content: "<";
     left: 0;
     translate: var(--header-before_trans-x, -100%) -50%;
   }
-
   .intro__title::after {
     content: ">";
     right: 0;
     translate: var(--header-after_trans-x, 100%) -50%;
   }
-
   .intro__subtitle {
     opacity: 0;
     letter-spacing: 0.25em;
     animation: show-subtitle 0.5s ease-out 0.7s forwards;
     translate: 0 -25%;
   }
-
   @media (prefers-reduced-motion: reduce) {
     .intro__subtitle {
       opacity: initial;
@@ -973,13 +816,11 @@ strong {
       translate: initial;
     }
   }
-
   .intro__btn {
     opacity: 0;
     animation: show-button 0.5s ease-out 0.7s forwards;
     translate: 0 50%;
   }
-
   @media (prefers-reduced-motion: reduce) {
     .intro__btn {
       opacity: initial;
@@ -987,41 +828,35 @@ strong {
       translate: initial;
     }
   }
-
   @keyframes show-triangle {
     to {
       translate: 0 0;
     }
   }
-
   @keyframes triangle-exit {
     to {
       opacity: 1;
       scale: 2;
     }
   }
-
   @keyframes show-title {
     to {
       opacity: 1;
       scale: 1;
     }
   }
-
   @keyframes show-subtitle {
     to {
       opacity: 1;
       translate: 0 0;
     }
   }
-
   @keyframes show-button {
     to {
       opacity: 1;
       translate: 0 0;
     }
   }
-
   @keyframes header-content-fade-out {
     to {
       opacity: 0;
@@ -1029,15 +864,12 @@ strong {
       scale: 1.2;
     }
   }
-
   dialog::backdrop {
     background-color: var(--color-black-alpha-80);
     backdrop-filter: blur(0.5rem);
   }
-
   .services {
     --carousel-size: calc(100svi - 2rem);
-
     grid-template-columns: var(--col-template, 1fr 1fr 1fr);
     transition: all 0.2s;
     overflow: clip;
@@ -1045,18 +877,15 @@ strong {
     scroll-behavior: smooth;
     scroll-marker-group: after;
   }
-
   @media screen and (width <= 768px) {
     .services {
       --col-template: repeat(3, min-content);
-
       column-gap: 0;
       overflow-x: auto;
       inline-size: var(--carousel-size);
       scroll-snap-type: x mandatory;
     }
   }
-
   .services::scroll-marker-group {
     display: flex;
     justify-content: center;
@@ -1064,13 +893,11 @@ strong {
     margin-block-start: 1rem;
     block-size: 1rem;
   }
-
   .services > div {
     container-type: scroll-state;
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
-
   @media screen and (width <= 768px) {
     .services > div {
       container-type: scroll-state;
@@ -1079,7 +906,6 @@ strong {
       scroll-snap-stop: always;
     }
   }
-
   .services > div::scroll-marker {
     content: "";
     display: block;
@@ -1091,14 +917,11 @@ strong {
     aspect-ratio: 1;
     inline-size: 1rem;
   }
-
   .services > div::scroll-marker:target-current {
     --marker-bg: var(--color-yellow-500);
-
     scale: 1.2;
   }
 }
-
 @layer _utils {
   .text-box-trim-both {
     text-box: trim-both ex alphabetic;

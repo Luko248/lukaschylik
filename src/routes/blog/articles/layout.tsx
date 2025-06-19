@@ -1,14 +1,10 @@
 import { component$, Slot } from "@builder.io/qwik";
-import {
-  routeLoader$,
-  Link,
-  type DocumentHead,
-} from "@builder.io/qwik-city";
+import { routeLoader$, Link, type DocumentHead } from "@builder.io/qwik-city";
+import { Icon } from "~/components";
 import { BlogProgress } from "~/components/blog/BlogProgress";
-import { getAllPosts } from "~/utils/markdown.server";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
-import { Icon } from "~/components";
+import { getAllPosts } from "~/utils/markdown.server";
 import "~/styles/css/prism.css";
 
 /**
