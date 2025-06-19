@@ -7,9 +7,9 @@
   $align-content: flex-start
 ) {
   display: $display;
-  place-content: $align-content $justify-content;
   align-items: $align-items;
   grid-template-columns: $template;
+  place-content: $align-content $justify-content;
 
   @if $gap != 0 {
     gap: $gap;
@@ -25,9 +25,9 @@
   $align-content: flex-start
 ) {
   display: $display;
-  place-content: $align-content $justify-content;
   align-items: $align-items;
   grid-template-rows: $template;
+  place-content: $align-content $justify-content;
 
   @if $gap != 0 {
     gap: $gap;

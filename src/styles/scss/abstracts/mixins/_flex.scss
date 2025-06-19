@@ -9,7 +9,7 @@
 ) {
   display: $display;
   flex-flow: $direction $wrap;
-  place-content: $align-content $justify-content;
   align-items: $align-items;
   gap: $gap;
+  place-content: $align-content $justify-content;
 }

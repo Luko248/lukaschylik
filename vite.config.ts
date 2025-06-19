@@ -57,7 +57,7 @@ function errorOnDuplicatesPkgDeps(
   dependencies: Record<string, string>,
 ) {
   let msg = "";
-  
+
   const duplicateDeps = Object.keys(devDependencies).filter(
     (dep) => dependencies[dep],
   );
