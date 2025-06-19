@@ -1,17 +1,45 @@
 # Lukas Chylik Portfolio Website
 
-A personal portfolio website built with Qwik, showcasing skills, services, references, and contact information.
+A modern personal portfolio website built with **Qwik** featuring server-side rendering (SSR), dynamic blog posts, and optimized performance. The site showcases skills, services, references, and includes a fully functional blog with markdown support.
+
+## Tech Stack
+
+- **[Qwik](https://qwik.dev/)** - Resumable framework with O(1) loading time
+- **[Qwik City](https://qwik.dev/qwikcity/overview/)** - Full-stack meta-framework with file-based routing
+- **[Vite](https://vitejs.dev/)** - Fast build tool and development server
+- **[Bun](https://bun.sh/)** - Fast JavaScript runtime and package manager
+- **[TailwindCSS v4](https://tailwindcss.com/blog/tailwindcss-v4-alpha)** - Utility-first CSS framework (latest alpha)
+- **[Biome](https://biomejs.dev/)** - Fast formatter and linter for JavaScript/TypeScript
+- **[Stylelint](https://stylelint.io/)** - CSS/SCSS linter
+- **[SASS](https://sass-lang.com/)** - CSS preprocessor
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **SSR Blog Posts** - Server-side rendered markdown blog with frontmatter support
 
 ## Prerequisites
 
-- Node.js: `^18.17.0 || ^20.3.0 || >=21.0.0`
-- Package Manager: npm or pnpm
+- **Node.js**: `^18.17.0 || ^20.3.0 || >=21.0.0`
+- **Package Manager**: Bun (recommended) or npm/pnpm
 
 ## Installation
 
-Clone the repository and install dependencies:
+### Using Bun (Recommended)
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+cd lukaschylik
+
+# Install dependencies with Bun
+bun install
+```
+
+### Using npm/pnpm
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd lukaschylik
+
 # Using npm
 npm install
 
@@ -21,87 +49,179 @@ pnpm install
 
 ## Development
 
-Start the development server and watch for CSS changes:
+### Start Development Server
 
 ```bash
+# Full development with formatting and CSS watching (recommended)
+bun start
+
+# Development server only
+bun run dev
+
 # Using npm
-npm start
+npm start  # or npm run dev
 
 # Using pnpm
-pnpm start
+pnpm start  # or pnpm dev
 ```
 
-This will:
+The `bun start` command will:
 
-- Format your code
-- Start the Vite development server in SSR mode
-- Watch for SCSS changes and compile them to CSS
-
-For development server only without formatting:
-
-```bash
-# Using npm
-npm run dev
-
-# Using pnpm
-pnpm dev
-```
+- Format code with Biome
+- Fix SCSS/CSS with Stylelint
+- Start Vite development server in SSR mode
+- Watch for SCSS changes and compile to CSS
+- Open browser automatically
 
 ## Building for Production
 
-Build the application for production:
-
 ```bash
-# Using npm
-npm run build
+# Build for production
+bun run build
 
-# Using pnpm
-pnpm build
+# Using npm/pnpm
+npm run build
+pnpm run build
 ```
 
 ## Preview Production Build
 
-Preview the production build locally:
+```bash
+# Preview production build locally
+bun run preview
+
+# Using npm/pnpm
+npm run preview
+pnpm run preview
+```
+
+## Code Quality & Formatting
+
+### Format Code
 
 ```bash
-# Using npm
-npm run preview
+# Format all files with Biome
+bun run biome:format
 
-# Using pnpm
-pnpm preview
+# Check formatting without changes
+bun run biome:check
+
+# Lint with Biome
+bun run biome:lint
+
+# CI check (format + lint)
+bun run biome:ci
+```
+
+### CSS/SCSS Linting
+
+```bash
+# Lint styles
+bun run stylelint
+
+# Fix style issues automatically
+bun run stylelint:fix
+
+# Detailed style check
+bun run stylelint:check
+```
+
+### Format Everything
+
+```bash
+# Fix styles and format code in one command
+bun run fix:all
+```
+
+## Blog Features
+
+The website includes a fully functional blog system with:
+
+- **Markdown Support**: Write blog posts in markdown with frontmatter
+- **SSR**: Server-side rendered blog posts for better SEO
+- **Code Highlighting**: Prism.js for syntax highlighting (loaded only on blog pages)
+- **Dynamic Routing**: File-based routing with Qwik City
+- **Blog Progress**: Reading progress indicator on articles
+
+### Adding Blog Posts
+
+Create markdown files in `src/routes/blog/articles/[slug]/index.mdx`:
+
+```markdown
+---
+title: "Your Blog Post Title"
+subtitle: "Optional subtitle"
+description: "SEO description"
+date: "2025-06-19"
+author: "Your Name"
+---
+
+# Your Blog Content
+
+Write your blog content here with full markdown support.
+
+\`\`\`typescript
+// Code blocks are automatically highlighted
+const example = "Hello World";
+\`\`\`
 ```
 
 ## Project Structure
 
-```
+```text
 ├── public/              # Static assets
 │   ├── images/          # Image assets
-│   └── ...
+│   └── manifest.json    # PWA manifest
 ├── src/
 │   ├── components/      # Reusable UI components
-│   ├── routes/          # Page routes and layouts
+│   ├── routes/          # File-based routing
+│   │   ├── blog/        # Blog pages
+│   │   │   ├── articles/    # Blog article layouts
+│   │   │   └── index.tsx    # Blog listing page
+│   │   ├── layout.tsx   # Root layout
+│   │   └── index.tsx    # Homepage
 │   ├── sections/        # Website sections (about, contact, etc.)
 │   ├── styles/          # SCSS and CSS styles
 │   │   ├── css/         # Compiled CSS
 │   │   └── scss/        # SCSS source files
+│   ├── services/        # Business logic
 │   └── utils/           # Utility functions
-└── ...
+├── biome.json          # Biome configuration
+├── bun.toml           # Bun configuration
+├── tailwind.config.js # Tailwind configuration
+└── vite.config.ts     # Vite configuration
 ```
 
-## Technologies
+## Available Scripts
 
-- [Qwik](https://qwik.dev/) - Frontend framework with resumability
-- [Qwik City](https://qwik.dev/qwikcity/overview/) - Meta-framework for Qwik
-- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [SASS](https://sass-lang.com/) - CSS preprocessor
+```bash
+# Development
+bun start              # Full dev with formatting + CSS watching
+bun run dev           # Development server only
 
-## Scripts
+# Building
+bun run build         # Production build
+bun run preview       # Preview production build
 
-- `npm start` - Start development server with formatting and CSS watching
-- `npm run dev` - Start development server only
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run build:css` - Compile SCSS to CSS
-- `npm run format` - Format code with Prettier
-- `npm run fmt` - Format all files with Prettier
-- `npm run fmt.check` - Check formatting without making changes
+# Code Quality
+bun run biome:format  # Format code with Biome
+bun run biome:lint    # Lint with Biome
+bun run biome:check   # Check formatting
+bun run stylelint     # Lint CSS/SCSS
+bun run stylelint:fix # Fix CSS/SCSS issues
+bun run fix:all       # Fix styles + format code
+
+# CSS
+bun run build:css     # Compile SCSS to CSS
+bun run watch:css     # Watch SCSS changes
+```
+
+## Performance Features
+
+- **Resumability**: Qwik's unique approach to hydration
+- **SSR**: Server-side rendering for better SEO and performance
+- **Code Splitting**: Automatic code splitting per route
+- **Lazy Loading**: Components load only when needed
+- **Optimized CSS**: TailwindCSS v4 with modern features
+- **Fast Build**: Vite for lightning-fast development
+- **Type Safety**: Full TypeScript support
