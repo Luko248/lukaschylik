@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { Link, routeLoader$ } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
@@ -17,21 +17,35 @@ export default component$(() => {
 
   return (
     <Section id="blog" centerContent={false}>
-      <Container size="md">
+      <Container size="sm">
         <SectionTitle text="Blog" />
-        <div class="grid grid-cols-1 gap-8 mt-12">
+        <div class="grid">
           {posts.value.length > 0 ? (
             posts.value.map((post) => (
-              <Card
-                key={post.slug}
-                title={post.title}
-                subtitle={post.subtitle}
-                description={post.description}
-                date={post.date}
-                author={post.author}
-                path={`/blog/articles/${post.slug}`}
-                isBlogPost={true}
-              />
+              <>
+                <Link
+                  key={post.slug}
+                  href={`/blog/articles/${post.slug}`}
+                  class="text-white group">
+                  <strong class="text-2xl sm:text-4xl md:text-6xl block mb-1 md:mb-2 group-hover:text-yellow-500 transition-colors duration-200">
+                    {post.title}
+                  </strong>
+                  <small class="block text-white/70 text-xl sm:text-2xl md:text-3xl">
+                    {post.subtitle}
+                  </small>
+                  <p class="block  text-l md:text-xl my-4 md:my-8">
+                    {post.description}
+                  </p>
+                  <div class="flex gap-2 items-center text-sm text-white/70">
+                    <time dateTime={post.date}>
+                      {new Date(post.date).toLocaleDateString("cs-CZ")}
+                    </time>
+                    <span class="text-yellow-500 text-2xl">•</span>
+                    <span>{post.author}</span>
+                  </div>
+                </Link>
+                <hr class="border-white/20 my-4 md:my-8" />
+              </>
             ))
           ) : (
             <div class="col-span-full text-center text-xl text-white">
