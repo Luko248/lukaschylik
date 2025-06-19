@@ -18,7 +18,7 @@ const References = component$(() => {
             <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
             pomôžem predísť. Ušetríte <strong>čas</strong>,{" "}
-            <strong>peniaze</strong>, a ako bonus budete mať Vy aj váš tím
+            <strong>peniaze</strong>, a ako bonus budete mať Vy aj Váš tým
             kľudný spánok.
           </p>
         </div>
@@ -48,7 +48,7 @@ const References = component$(() => {
             onClick$={dialogContext.showDialog}>
             <p class="text-gray-300">
               Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
-              Vás projekt vhodný? Alebo si len chcete rozšíriť{" "}
+              Váš projekt vhodný? Alebo si len chcete rozšíriť{" "}
               <strong>svoje vedomosti</strong> ? Poradím Vám, ako minimalizovať
               náklady a maximalizovať efektivitu Vášho biznisu výberom vhodnej
               technológie.
