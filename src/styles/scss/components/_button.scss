@@ -14,7 +14,11 @@
     border-color: var(--color-white);
     background-image: var(
       --btn_gradient,
-      linear-gradient(160deg, $color-white var(--btn_gradient-length), $color-black var(--btn_gradient-length))
+      linear-gradient(
+        160deg,
+        $color-white var(--btn_gradient-length),
+        $color-black var(--btn_gradient-length)
+      )
     ) !important;
     transition: --btn_gradient-length $trans-time $trans-fnc;
     text-align: center;
@@ -43,9 +47,14 @@
       inset: 0;
       background-image: var(
         --btn-after_gradient,
-        linear-gradient(160deg, $color-black var(--btn_gradient-length), $color-white var(--btn_gradient-length))
+        linear-gradient(
+          160deg,
+          $color-black var(--btn_gradient-length),
+          $color-white var(--btn_gradient-length)
+        )
       );
       padding: inherit;
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: --btn_gradient-length $trans-time $trans-fnc;

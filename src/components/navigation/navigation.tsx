@@ -10,6 +10,7 @@ import { cls } from "~/utils";
 import { NavigationProps, NavigationLinkProps } from "./navigation.types";
 import { Icon } from "../icon";
 import { Button } from "../button";
+import { ReservationDialog } from "../reservationDialog";
 
 /**
  * Navigation component with mobile menu functionality
@@ -142,6 +143,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             onClick$={toggleMenu}></button>
         </div>
       </nav>
+      <ReservationDialog />
     </>
   );
 });

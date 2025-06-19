@@ -1,5 +1,6 @@
 export * from "./alert";
 export * from "./button";
+export * from "./blog";
 export * from "./card";
 export * from "./container";
 export * from "./formField";
@@ -7,8 +8,8 @@ export * from "./icon";
 export * from "./listItem";
 export * from "./navigation";
 export * from "./reference";
+export * from "./reservationDialog";
 export * from "./router-head";
 export * from "./section";
 export * from "./skills";
-export * from "./blog";
 export * from "./social";

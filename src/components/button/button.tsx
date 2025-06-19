@@ -25,7 +25,6 @@ const Button = component$<ButtonProps>(
     command,
     commandfor,
   }) => {
-    // Determine size and variant classes based on props
     const getSizeAndVariantClasses = () => {
       if (iconOnly) {
         return size === "sm" ? "p-3 text-xs" : "p-3 text-sm";
@@ -59,7 +58,6 @@ const Button = component$<ButtonProps>(
       "data-variant": variant,
     };
 
-    // Only include command attributes if they are provided
     const buttonProps = {
       ...commonProps,
       onClick$,
