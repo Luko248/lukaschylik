@@ -33,14 +33,14 @@
       will-change: transform, opacity;
 
       $total-items: 4;
-      $start-angle: 160deg; // Start from top
-      $arc-size: 120deg; // 180° arc (semi-circle)
-      $angle-step: $arc-size / ($total-items - 1);
+      $start-angle: 160deg;
+      $arc-size: 120deg;
+      $angle-step: math.div($arc-size, $total-items - 1);
       $radius: var(--social-radius);
 
       @for $i from 1 through $total-items {
         $angle: $start-angle + (($i - 1) * $angle-step);
-        $rad: math.div($angle, 1deg) * math.$pi / 180; // Convert to radians
+        $rad: math.div(math.div($angle, 1deg) * math.$pi, 180);
         $x: calc(cos($rad) * var(--social-radius));
         $y: calc(sin($rad) * var(--social-radius));
 
