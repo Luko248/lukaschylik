@@ -1,4 +1,4 @@
-import { component$, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Button, Icon } from "~/components";
 import "./reservationDialog.types";
 
@@ -55,6 +55,8 @@ const loadCalcomScript = () => {
 };
 
 export const ReservationDialog = component$(() => {
+  const dialogRef = useSignal<HTMLDialogElement>();
+
   useVisibleTask$(
     ({ cleanup }) => {
       const script = loadCalcomScript();
@@ -70,6 +72,7 @@ export const ReservationDialog = component$(() => {
 
   return (
     <dialog
+      ref={dialogRef}
       id="reservationModal"
       closedby="any"
       class="bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
@@ -77,9 +80,8 @@ export const ReservationDialog = component$(() => {
         className="absolute top-4 right-4 text-white p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
         variant="plain"
         title="Zatvoriť rezerváciu"
-        aria-label="Zatvoriť rezerváciu"
-        command="close"
-        commandfor="reservationModal">
+        onClick$={() => dialogRef.value?.close()}
+        aria-label="Zatvoriť rezerváciu">
         <Icon name="close" size="1.5rem" aria-hidden="true" />
       </Button>
       <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 text-white">
