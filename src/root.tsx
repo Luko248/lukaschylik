@@ -6,7 +6,9 @@ import {
 	ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
-
+import "./styles/css/index.css";
+import "./styles/css/tailwind.css";
+import "./styles/css/prism.css";
 export default component$(() => {
 	/**
 	 * The root of a QwikCity site always start with the <QwikCityProvider> component,
