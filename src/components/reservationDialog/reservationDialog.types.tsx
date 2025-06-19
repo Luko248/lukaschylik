@@ -7,7 +7,6 @@ declare global {
   }
 
   interface Window {
-    // The Cal type is defined in @types/cal.com
     Cal: any;
   }
 }
