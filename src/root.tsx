@@ -1,11 +1,11 @@
 import { component$ } from "@builder.io/qwik";
+import { isDev } from "@builder.io/qwik/build";
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
-import { isDev } from "@builder.io/qwik/build";
 
 import "./styles/css/index.css";
 import "./styles/css/tailwind.css";
@@ -37,6 +37,7 @@ export default component$(() => {
             src="https://www.googletagmanager.com/ns.html?id=GTM-KQFH8PWL"
             height="0"
             width="0"
+            title="Google Tag Manager"
             style={{ display: "none", visibility: "hidden" }}></iframe>
         </noscript>
         <RouterOutlet />
