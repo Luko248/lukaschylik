@@ -19,6 +19,7 @@ import { ReservationDialog } from "../reservationDialog";
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
   const isHydrated = useSignal(false);
+  const dialogRef = useSignal<HTMLDialogElement>();
   const location = useLocation();
 
   // Ensure proper hydration
@@ -123,8 +124,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             size="sm"
             title="Rezervácia"
             className="relative z-[101]"
-            command="show-modal"
-            commandfor="reservationModal">
+            onClick$={() => dialogRef.value?.showModal()}>
             Rezervácia
           </Button>
           <button
@@ -143,7 +143,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             onClick$={toggleMenu}></button>
         </div>
       </nav>
-      <ReservationDialog />
+      <ReservationDialog dialogRef={dialogRef} />
     </>
   );
 });

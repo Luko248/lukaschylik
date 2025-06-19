@@ -1,6 +1,6 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Button, Icon } from "~/components";
-import "./reservationDialog.types";
+import type { ReservationDialogProps } from "./reservationDialog.types";
 
 const loadCalcomScript = () => {
   if (window.Cal?.loaded) return null;
@@ -54,53 +54,60 @@ const loadCalcomScript = () => {
   return script;
 };
 
-export const ReservationDialog = component$(() => {
-  const dialogRef = useSignal<HTMLDialogElement>();
+/**
+ * ReservationDialog component for handling booking appointments
+ * Integrates with Cal.com for calendar functionality
+ */
+export const ReservationDialog = component$<ReservationDialogProps>(
+  ({ dialogRef: externalDialogRef }) => {
+    const internalDialogRef = useSignal<HTMLDialogElement>();
+    const dialogRef = externalDialogRef || internalDialogRef;
 
-  useVisibleTask$(
-    ({ cleanup }) => {
-      const script = loadCalcomScript();
+    useVisibleTask$(
+      ({ cleanup }) => {
+        const script = loadCalcomScript();
 
-      cleanup(() => {
-        if (script && document.head.contains(script)) {
-          document.head.removeChild(script);
-        }
-      });
-    },
-    { strategy: "document-ready" },
-  );
+        cleanup(() => {
+          if (script && document.head.contains(script)) {
+            document.head.removeChild(script);
+          }
+        });
+      },
+      { strategy: "document-ready" },
+    );
 
-  return (
-    <dialog
-      ref={dialogRef}
-      id="reservationModal"
-      closedby="any"
-      class="bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
-      <Button
-        className="absolute top-4 right-4 text-white p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
-        variant="plain"
-        title="Zatvoriť rezerváciu"
-        onClick$={() => dialogRef.value?.close()}
-        aria-label="Zatvoriť rezerváciu">
-        <Icon name="close" size="1.5rem" aria-hidden="true" />
-      </Button>
-      <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 text-white">
-        Rezervácia
-      </h3>
-      <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
-        Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
-        dátum a čas.
-      </p>
-      <div
-        id="my-cal-inline"
-        class="min-h-[570px] max-w-full overflow-clip"
-        style={{
-          "--cal-brand": "#2563eb",
-          "--cal-brand-emphasis": "#1e40af",
-          "--cal-brand-text": "#ffffff",
-          "--cal-brand-subtle": "#dbeafe",
-        }}
-      />
-    </dialog>
-  );
-});
+    return (
+      <dialog
+        ref={dialogRef}
+        id="reservationModal"
+        closedby="any"
+        class="bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
+        <Button
+          className="absolute top-4 right-4 text-white p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
+          variant="plain"
+          title="Zatvoriť rezerváciu"
+          onClick$={() => dialogRef.value?.close()}
+          aria-label="Zatvoriť rezerváciu">
+          <Icon name="close" size="1.5rem" aria-hidden="true" />
+        </Button>
+        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8 text-white">
+          Rezervácia
+        </h3>
+        <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
+          Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
+          dátum a čas.
+        </p>
+        <div
+          id="my-cal-inline"
+          class="min-h-[570px] max-w-full overflow-clip"
+          style={{
+            "--cal-brand": "#2563eb",
+            "--cal-brand-emphasis": "#1e40af",
+            "--cal-brand-text": "#ffffff",
+            "--cal-brand-subtle": "#dbeafe",
+          }}
+        />
+      </dialog>
+    );
+  },
+);
