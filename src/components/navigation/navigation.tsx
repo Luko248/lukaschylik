@@ -122,7 +122,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             variant="secondary"
             size="sm"
             title="Rezervácia"
-            className="relative z-[100]"
+            className="relative z-[101]"
             command="show-modal"
             commandfor="reservationModal">
             Rezervácia
