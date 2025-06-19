@@ -1,10 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import { Link, routeLoader$ } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { Link, routeLoader$ } from "@builder.io/qwik-city";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
-import Card from "~/components/card/card";
 import { getAllPosts } from "~/utils/markdown.server";
 
 export const useBlogPosts = routeLoader$(async () => {

@@ -1,16 +1,15 @@
-import { component$, Slot, useStyles$, useContext } from "@builder.io/qwik";
+import { component$, Slot } from "@builder.io/qwik";
 import {
   routeLoader$,
   Link,
-  useLocation,
-  DocumentHead,
+  type DocumentHead,
 } from "@builder.io/qwik-city";
 import { BlogProgress } from "~/components/blog/BlogProgress";
 import { getAllPosts } from "~/utils/markdown.server";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
-import { cls } from "~/utils";
 import { Icon } from "~/components";
+import "~/styles/css/prism.css";
 
 /**
  * Route loader to fetch the current blog post data based on the URL slug
@@ -35,23 +34,11 @@ export const useCurrentPost = routeLoader$(async ({ status, url }) => {
     }
 
     return post;
-  } catch (error) {
+  } catch {
     status(500);
     return null;
   }
 });
-
-/**
- * Interface for social share links
- * @property {string} name - The name of the social media platform
- * @property {string} url - The sharing URL with placeholders for content
- * @property {string} icon - The icon name to display for the sharing button
- */
-interface ShareLink {
-  name: string;
-  url: string;
-  icon: string;
-}
 
 /**
  * Universal blog detail layout that wraps all blog article content
