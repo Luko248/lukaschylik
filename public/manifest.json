@@ -48,11 +48,7 @@
   "orientation": "portrait",
   "scope": "/",
   "lang": "sk",
-  "categories": [
-    "development",
-    "design",
-    "portfolio"
-  ],
+  "categories": ["development", "design", "portfolio"],
   "screenshots": [
     {
       "src": "/images/meta/meta-large.webp",
