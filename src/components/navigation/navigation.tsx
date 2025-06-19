@@ -4,13 +4,13 @@ import {
   $,
   useSignal,
   useVisibleTask$,
+  useContext,
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
-import { cls } from "~/utils";
+import { cls, DialogContext } from "~/utils";
 import { NavigationProps, NavigationLinkProps } from "./navigation.types";
 import { Icon } from "../icon";
 import { Button } from "../button";
-import { ReservationDialog } from "../reservationDialog";
 
 /**
  * Navigation component with mobile menu functionality
@@ -19,7 +19,7 @@ import { ReservationDialog } from "../reservationDialog";
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
   const isHydrated = useSignal(false);
-  const dialogRef = useSignal<HTMLDialogElement>();
+  const dialogContext = useContext(DialogContext);
   const location = useLocation();
 
   // Ensure proper hydration
@@ -124,7 +124,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             size="sm"
             title="Rezervácia"
             className="relative z-[101]"
-            onClick$={() => dialogRef.value?.showModal()}>
+            onClick$={dialogContext.showDialog}>
             Rezervácia
           </Button>
           <button
@@ -143,7 +143,6 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             onClick$={toggleMenu}></button>
         </div>
       </nav>
-      <ReservationDialog dialogRef={dialogRef} />
     </>
   );
 });

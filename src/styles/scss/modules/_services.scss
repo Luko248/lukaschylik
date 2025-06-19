@@ -60,11 +60,15 @@
         display: block;
         box-sizing: border-box;
         border-radius: 100vmax;
-        border: 2px solid var(--color-white);
+        transition:
+          background-color $trans-time $trans-fnc,
+          scale $trans-time $trans-fnc;
+        scale: 1;
       }
 
       &::scroll-marker:target-current {
         --marker-bg: var(--color-yellow-500);
+        scale: 1.2;
       }
     }
   }

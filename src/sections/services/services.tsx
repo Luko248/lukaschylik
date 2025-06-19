@@ -1,11 +1,13 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useContext } from "@builder.io/qwik";
 import { Card, ListItem } from "~/components";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
-import { cls } from "~/utils";
+import { DialogContext } from "~/utils";
 
 const References = component$(() => {
+  const dialogContext = useContext(DialogContext);
+
   return (
     <Section id="services">
       <Container size="full">
@@ -21,7 +23,10 @@ const References = component$(() => {
           </p>
         </div>
         <div class="services grid gap-8 text-white">
-          <Card title="Konzultácie" price={1500} path="#contact">
+          <Card
+            title="Konzultácie"
+            price={1500}
+            onClick$={dialogContext.showDialog}>
             <p class="text-gray-300">
               Potrebujete poradiť?
               <br />
@@ -37,7 +42,10 @@ const References = component$(() => {
               <ListItem marker="☝🏽">Minimálne 1 hodina</ListItem>
             </ul>
           </Card>
-          <Card title="Mentoring" price={1000} path="#contact">
+          <Card
+            title="Mentoring"
+            price={1000}
+            onClick$={dialogContext.showDialog}>
             <p class="text-gray-300">
               Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
               Vás projekt vhodný? Alebo si len chcete rozšíriť{" "}

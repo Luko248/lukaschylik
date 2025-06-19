@@ -24,6 +24,7 @@ const Card = component$(
     isBlogPost,
     date,
     author,
+    onClick$,
     description,
   }: CardProps) => {
     // Card content that will be wrapped by either div or anchor
@@ -102,7 +103,7 @@ const Card = component$(
               ariaLabel={price ? `Mám záujem` : "Nedostupné"}
               title={price ? `Mám záujem` : "Nedostupné"}
               disabled={!price}
-              href={path}>
+              onClick$={onClick$}>
               {price ? `Mám záujem` : "Nedostupné"}
             </Button>
           </div>

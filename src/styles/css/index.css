@@ -917,10 +917,12 @@ strong {
     display: block;
     box-sizing: border-box;
     border-radius: 100vmax;
-    border: 2px solid var(--color-white);
+    transition: background-color 0.2s ease-in-out, scale 0.2s ease-in-out;
+    scale: 1;
   }
   .services > div::scroll-marker:target-current {
     --marker-bg: var(--color-yellow-500);
+    scale: 1.2;
   }
 }
 @layer _utils {

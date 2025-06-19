@@ -14,7 +14,7 @@ import Social from "~/components/social/social";
 import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
 import { initializeHeaderFlag } from "~/utils";
-import { AlertContext, type AlertMessage } from "~/utils/alerts";
+import { AlertContext, type AlertMessage, DialogContext } from "~/utils";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   cacheControl({
@@ -109,6 +109,9 @@ export default component$(() => {
     visible: false,
   });
 
+  // Create dialog ref for global reservation dialog
+  const dialogRef = useSignal<HTMLDialogElement>();
+
   // Provide alert context
   useContextProvider(AlertContext, {
     alertMessage: alertState,
@@ -118,6 +121,17 @@ export default component$(() => {
     }),
     hideAlert: $(() => {
       alertState.visible = false;
+    }),
+  });
+
+  // Provide dialog context
+  useContextProvider(DialogContext, {
+    dialogRef,
+    showDialog: $(() => {
+      dialogRef.value?.showModal();
+    }),
+    hideDialog: $(() => {
+      dialogRef.value?.close();
     }),
   });
 
@@ -181,6 +195,7 @@ export default component$(() => {
         <Social />
       </main>
       <Footer />
+      <ReservationDialog dialogRef={dialogRef} />
     </>
   );
 });

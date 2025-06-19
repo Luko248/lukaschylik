@@ -1,3 +1,5 @@
+import { PropFunction } from "@builder.io/qwik";
+
 /**
  * Props interface for the Card component
  * @interface CardProps
@@ -17,4 +19,5 @@ export interface CardProps {
   date?: string;
   author?: string;
   description?: string;
+  onClick$?: PropFunction<() => void>;
 }
