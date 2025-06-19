@@ -39,6 +39,22 @@ html {
   overflow-x: clip;
   scrollbar-gutter: stable;
 }
+html::-webkit-scrollbar {
+  background: transparent;
+}
+html::-webkit-scrollbar:vertical {
+  width: 0.5rem;
+}
+html::-webkit-scrollbar:horizontal {
+  height: 0.5rem;
+}
+html::-webkit-scrollbar-track {
+  border-radius: 100vmax;
+}
+html::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 20%);
+  border-radius: 100vmax;
+}
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -50,6 +66,23 @@ html:has(dialog[open]) {
 
 body {
   min-block-size: 100svb;
+}
+
+dialog::-webkit-scrollbar {
+  background: transparent;
+}
+dialog::-webkit-scrollbar:vertical {
+  width: 0.5rem;
+}
+dialog::-webkit-scrollbar:horizontal {
+  height: 0.5rem;
+}
+dialog::-webkit-scrollbar-track {
+  border-radius: 100vmax;
+}
+dialog::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 20%);
+  border-radius: 100vmax;
 }
 
 ::selection {

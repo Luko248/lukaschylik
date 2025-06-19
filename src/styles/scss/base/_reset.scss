@@ -11,6 +11,7 @@
   html {
     overflow-x: clip;
     scrollbar-gutter: stable;
+    @include set-scrollbar;
     @include mq-reduce-motion(no-preference) {
       scroll-behavior: smooth;
     }
@@ -27,6 +28,10 @@
     //   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>')
     //     12 12,
     //   auto;
+  }
+
+  dialog {
+    @include set-scrollbar;
   }
 
   ::selection {
