@@ -1,5 +1,7 @@
 {
-  "watch": ["src/styles/scss/**/*.scss"],
+  "watch": [
+    "src/styles/scss/**/*.scss"
+  ],
   "ext": "scss",
-  "exec": "npm run build:css"
+  "exec": "bun run build:css"
 }

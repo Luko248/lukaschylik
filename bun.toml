@@ -1,0 +1,15 @@
+[workspaces]
+packages = [".", "server"]
+
+[install]
+# Optimizations for faster installs
+dev = true
+production = false
+frozen = false
+
+# Trust sharp for native binaries
+trusted = ["sharp"]
+
+[test]
+root = "."
+preload = []

@@ -18,7 +18,7 @@
     "build.server": "vite build -c adapters/static/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
     "build:css": "sass src/styles/scss/index.scss src/styles/css/index.css",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "deploy": "echo 'Run \"bun run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -31,7 +31,7 @@
     "biome:check:scss": "biome check src/styles/scss/**/*.scss",
     "biome:format:scss": "biome format --write src/styles/scss/**/*.scss",
     "preview": "vite build --ssr src/entry.preview.tsx && vite preview --open",
-    "start": "npm run format && concurrently \"vite --open --mode ssr\" \"npm run watch:css\"",
+    "start": "bun run format && concurrently \"vite --open --mode ssr\" \"bun run watch:css\"",
     "watch:css": "nodemon",
     "qwik": "qwik"
   },
