@@ -3,14 +3,6 @@ import type { ButtonProps } from "./button.types";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
 
-// Extend HTMLButtonElement to include command attributes
-declare global {
-  interface HTMLButtonElement {
-    command?: string;
-    commandfor?: string;
-  }
-}
-
 /**
  * Button component with multiple variants and sizes
  * Supports both button and anchor elements
@@ -55,11 +47,16 @@ const Button = component$<ButtonProps>(
       className,
     );
 
+    const plainClasses = cls(
+      "border-0 p-0 transition-all duration-200 cursor-pointer",
+      className,
+    );
+
     const commonProps = {
-      class: baseClasses,
-      'aria-label': ariaLabel,
+      class: variant === "plain" ? plainClasses : baseClasses,
+      "aria-label": ariaLabel,
       title,
-      'data-variant': variant,
+      "data-variant": variant,
     };
 
     // Only include command attributes if they are provided
@@ -67,7 +64,7 @@ const Button = component$<ButtonProps>(
       ...commonProps,
       onClick$,
       disabled,
-      'aria-disabled': disabled,
+      "aria-disabled": disabled,
       type,
       ...(command && { command }),
       ...(commandfor && { commandfor }),
@@ -78,7 +75,7 @@ const Button = component$<ButtonProps>(
       href,
       rel,
       target,
-      'aria-disabled': disabled,
+      "aria-disabled": disabled,
     };
 
     const content = (
@@ -89,13 +86,9 @@ const Button = component$<ButtonProps>(
     );
 
     return href ? (
-      <a {...linkProps}>
-        {content}
-      </a>
+      <a {...linkProps}>{content}</a>
     ) : (
-      <button {...buttonProps}>
-        {content}
-      </button>
+      <button {...buttonProps}>{content}</button>
     );
   },
 );

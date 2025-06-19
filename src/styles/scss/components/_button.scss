@@ -75,5 +75,9 @@
       --icon_color: var(--btn-icon_color);
       transition: --icon_color $trans-time $trans-fnc;
     }
+
+    &[data-variant="plain"] {
+      all: initial;
+    }
   }
 }

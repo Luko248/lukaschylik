@@ -1,5 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { Container, Icon, Section } from "~/components";
+import { Button, Container, Icon, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
 // Extend HTMLDialogElement to include the closedby attribute
@@ -88,15 +88,15 @@ const Reservation = component$(() => {
       id="reservationModal"
       closedby="any"
       class="bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
-      <button
-        type="button"
+      <Button
+        className="absolute top-4 right-4 text-white p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
+        variant="plain"
         title="Zatvoriť rezerváciu"
         aria-label="Zatvoriť rezerváciu"
-        class="absolute top-4 right-4 text-white border-0 p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100 transition-all duration-200 cursor-pointer"
         command="close"
         commandfor="reservationModal">
         <Icon name="close" size="1.5rem" aria-hidden="true" />
-      </button>
+      </Button>
       <SectionTitle
         text="Rezervácia"
         className="mb-8 text-white"

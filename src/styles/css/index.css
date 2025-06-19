@@ -193,6 +193,9 @@ strong {
     --icon_color: var(--btn-icon_color);
     transition: --icon_color 0.25s ease-in-out;
   }
+  .btn[data-variant=plain] {
+    all: initial;
+  }
   .card {
     box-shadow: 0 0 0 0 hsl(51, 100%, 53%);
     transition: box-shadow 0.25s ease-in-out, translate 0.25s ease-in-out;

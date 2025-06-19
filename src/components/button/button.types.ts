@@ -1,8 +1,17 @@
 import type { PropFunction } from "@builder.io/qwik";
 
-export interface ButtonProps {
+// Extend HTMLButtonElement to include command attributes
+declare global {
+  interface NewHTMLButtonElement {
+    command?: string;
+    commandfor?: string;
+    close?: string;
+  }
+}
+
+export interface ButtonProps extends NewHTMLButtonElement {
   onClick$?: PropFunction<() => void>;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "plain";
   size?: "sm" | "md";
   disabled?: boolean;
   icon?: string;
