@@ -1,0 +1,46 @@
+{
+  "ignores": [
+    "@toolwind/anchors",
+    "@tailwindcss/postcss",
+    "autoprefixer",
+    "postcss",
+    "postcss-scss",
+    "stylelint-order",
+    "@builder.io/qwik-city",
+    "tailwindcss",
+    "vite-tsconfig-paths",
+    "gray-matter",
+    "tailwind-variants"
+  ],
+  "skip-missing": true,
+  "parsers": {
+    "*.js": [
+      "es6",
+      "es7"
+    ],
+    "*.jsx": [
+      "jsx"
+    ],
+    "*.ts": [
+      "typescript"
+    ],
+    "*.tsx": [
+      "typescript",
+      "jsx"
+    ]
+  },
+  "detectors": [
+    "requireCallExpression",
+    "importDeclaration",
+    "gruntLoadTaskCallExpression",
+    "gulpLoadPluginsCallExpression"
+  ],
+  "specials": [
+    "bin",
+    "babel",
+    "eslint",
+    "stylelint",
+    "postcss",
+    "autoprefixer"
+  ]
+}
