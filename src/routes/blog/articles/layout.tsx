@@ -63,11 +63,12 @@ export default component$(() => {
                 {post.value.title}
                 <small class="mt-2 block">{post.value.subtitle}</small>
               </h1>
-
               <div class="flex items-center justify-between gap-2">
-                <div class="flex items-start text-sm text-gray-300 mb-4">
-                  <span>{post.value.date}</span>
-                  <span class="mx-2">•</span>
+                <div class="flex gap-2 items-center text-sm text-white/70">
+                  <time dateTime={post.value.date} class="text-gray-300">
+                    {new Date(post.value.date).toLocaleDateString("cs-CZ")}
+                  </time>
+                  <span class="text-yellow-500 text-2xl">•</span>
                   <span>{post.value.author}</span>
                 </div>
                 {post.value.podcastUrl && (
