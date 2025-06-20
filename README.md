@@ -25,7 +25,7 @@ A modern personal portfolio website built with **Qwik** featuring server-side re
 
 ## Prerequisites
 
-- **Node.js**: `^18.17.0 || ^20.3.0 || >=21.0.0`
+- **Node.js**: `^18.17.0 || ^20.3.0 || ^22.0.0 || >=24.0.0`
 - **Package Manager**: Bun (recommended) or npm/pnpm
 
 ## Installation

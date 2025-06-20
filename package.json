@@ -1,8 +1,29 @@
 {
-  "name": "my-portfolio-website",
-  "description": "",
+  "name": "lukas-chylik-portfolio-website",
+  "version": "2.0.0",
+  "description": "Modern personal portfolio website built with Qwik featuring SSR, dynamic blog posts, and optimized performance. Showcases skills, services, references, and includes a fully functional blog with markdown support.",
+  "author": {
+    "name": "Lukas Chylik",
+    "url": "https://lukaschylik.sk"
+  },
+  "license": "MIT",
+  "keywords": [
+    "portfolio",
+    "qwik",
+    "ssr",
+    "blog",
+    "typescript",
+    "tailwindcss",
+    "personal-website",
+    "frontend-developer"
+  ],
+  "homepage": "https://lukaschylik.sk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukaschylik/lukaschylik.sk.git"
+  },
   "engines": {
-    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+    "node": "^18.17.0 || ^20.3.0 || ^22.0.0 || >=24.0.0"
   },
   "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
   "private": true,
@@ -39,21 +60,22 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.0",
-    "@builder.io/qwik": "^1.13.0",
-    "@builder.io/qwik-city": "^1.13.0",
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/node": "^22.12.0",
+    "@builder.io/qwik": "^1.14.1",
+    "@builder.io/qwik-city": "^1.14.1",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^24.0.3",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.2",
     "depcheck": "^1.4.7",
-    "nodemon": "^3.1.9",
-    "postcss": "^8.5.3",
+    "esbuild": "^0.25.5",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
     "postcss-preset-env": "^10.2.3",
     "postcss-scss": "^4.0.9",
-    "sass": "^1.86.3",
+    "sass": "^1.89.2",
     "stylelint": "^16.21.0",
     "stylelint-order": "^7.0.0",
-    "tailwindcss": "^4.1.3",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4"
