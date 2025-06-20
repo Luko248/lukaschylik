@@ -4,10 +4,10 @@
 
 @mixin create-root {
   :root{
-    --nav_height: #{px-to-rem(76px)};
+    --nav_height: #{$nav-height};
 
     @include mq-responsive(tablet, max) {
-      --nav_height: #{px-to-rem(56px)};
+      --nav_height: #{$nav-height-tablet};
     }
   }
 }

@@ -1,5 +1,6 @@
 {
   "plugins": ["stylelint-order"],
+  "ignoreFiles": ["**/*.css"],
   "overrides": [
     {
       "files": ["**/*.scss"],
@@ -239,12 +240,5 @@
         "unspecified": "bottomAlphabetical"
       }
     ]
-  },
-  "ignoreFiles": [
-    "node_modules/**/*",
-    "dist/**/*",
-    "build/**/*",
-    "tmp/**/*",
-    "server/**/*"
-  ]
+  }
 }

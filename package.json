@@ -48,14 +48,12 @@
     "biome:lint": "biome lint .",
     "biome:ci": "biome ci .",
     "depcheck": "depcheck",
-    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
-    "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
-    "stylelint:check": "stylelint \"src/**/*.{css,scss}\" --formatter verbose",
+    "stylelint": "stylelint --fix src/**/*.scss --custom-syntax postcss-scss",
     "preview": "vite build --ssr src/entry.preview.tsx && vite preview --open",
     "start": "bun run format:all && concurrently \"vite --open --mode ssr\" \"bun run watch:css\"",
     "watch:css": "nodemon",
-    "format:all": "bun run stylelint:fix && bun run biome:format",
-    "fix:all": "bun run stylelint:fix && bun run biome:format",
+    "format:all": "bun run stylelint && bun run biome:format",
+    "fix:all": "bun run stylelint && bun run biome:format",
     "qwik": "qwik"
   },
   "devDependencies": {

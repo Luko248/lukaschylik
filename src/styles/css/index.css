@@ -6,11 +6,11 @@
   syntax: "<percentage>";
 }
 :root {
-  --nav_height: 4.75rem;
+  --nav_height: 72px;
 }
 @media screen and (width <= 768px) {
   :root {
-    --nav_height: 3.5rem;
+    --nav_height: 56px;
   }
 }
 
@@ -905,3 +905,5 @@ strong {
     text-box: trim-both ex alphabetic;
   }
 }
+
+/*# sourceMappingURL=index.css.map */
