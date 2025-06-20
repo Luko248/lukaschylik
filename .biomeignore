@@ -1,0 +1,9 @@
+dist/**
+server/**
+tmp/**
+node_modules/**
+*.lock
+*.log
+.DS_Store
+.vscode/**
+.cache/**

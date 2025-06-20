@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { IconProps } from "./icon.types";
+import type { IconProps } from "./icon.types";
 import portfolioData from "./portfolio.json";
 
 /**

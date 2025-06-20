@@ -1,16 +1,16 @@
 import {
-  component$,
-  useStore,
   $,
-  useSignal,
-  useVisibleTask$,
+  component$,
   useContext,
+  useSignal,
+  useStore,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls, DialogContext } from "~/utils";
-import { NavigationProps, NavigationLinkProps } from "./navigation.types";
-import { Icon } from "../icon";
 import { Button } from "../button";
+import { Icon } from "../icon";
+import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
 
 /**
  * Navigation component with mobile menu functionality

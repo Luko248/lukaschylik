@@ -1,7 +1,7 @@
-import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
-import type { AlertProps } from "./alert.types";
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
+import type { AlertProps } from "./alert.types";
 
 const Alert = component$<AlertProps>(
   ({ message, visible, onClose$, duration = 5, className }) => {

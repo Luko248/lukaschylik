@@ -1,8 +1,8 @@
 import { component$, Slot } from "@builder.io/qwik";
-import { CardProps } from "./card.types";
-import { Button } from "../button";
-import { cls } from "~/utils";
 import { Link } from "@builder.io/qwik-city";
+import { cls } from "~/utils";
+import { Button } from "../button";
+import type { CardProps } from "./card.types";
 
 const formatPrice = (price: number) => {
   return price >= 10000

@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { cls } from "~/utils";
-import { SkillItemProps } from "./skills.types";
+import type { SkillItemProps } from "./skills.types";
 
 const SkillItem = component$<SkillItemProps>(({ text }) => {
   return (

@@ -19,10 +19,26 @@
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "off"
       },
       "correctness": {
-        "noUnusedFunctionParameters": "warn"
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error"
+      },
+      "style": {
+        "useConsistentArrayType": "error",
+        "useImportType": "warn",
+        "noNonNullAssertion": "off",
+        "useEnumInitializers": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "warn",
+          "options": {
+            "maxAllowedComplexity": 15
+          }
+        }
       }
     }
   },

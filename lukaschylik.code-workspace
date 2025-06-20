@@ -11,8 +11,7 @@
     "prettier.useTabs": false,
     "prettier.tabWidth": 2,
     "prettier.bracketSameLine": true,
-    "eslint.format.enable": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "extensions": {
     "recommendations": []

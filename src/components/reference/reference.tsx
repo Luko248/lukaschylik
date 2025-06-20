@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-import type { ReferenceProps } from "./reference.types";
 import { cls } from "~/utils";
+import type { ReferenceProps } from "./reference.types";
 
 const Reference = component$<ReferenceProps>(
   ({ title, webURL, type, website }) => {

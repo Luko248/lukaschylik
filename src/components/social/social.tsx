@@ -1,5 +1,5 @@
-import { component$, useSignal, $, useOnDocument } from "@builder.io/qwik";
 import type { QRL } from "@builder.io/qwik";
+import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
 import { cls } from "~/utils";
 import Icon from "../icon/icon";
 import SocialItem from "./socialItem";

@@ -18,5 +18,3 @@ export interface ReservationDialogProps {
   /** Ref to the dialog element for external control */
   dialogRef?: Signal<HTMLDialogElement | undefined>;
 }
-
-export {};

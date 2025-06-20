@@ -1,7 +1,7 @@
 import {
+  $,
   component$,
   useSignal,
-  $,
   useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";

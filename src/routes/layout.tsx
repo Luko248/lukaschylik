@@ -1,20 +1,24 @@
 import {
+  $,
   component$,
   Slot,
-  useSignal,
-  useVisibleTask$,
-  $,
   useContextProvider,
+  useSignal,
   useStore,
+  useVisibleTask$,
 } from "@builder.io/qwik";
-import type { RequestHandler, DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
 import { Alert, Navigation, ReservationDialog } from "~/components";
 import Social from "~/components/social/social";
 import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
-import { initializeHeaderFlag } from "~/utils";
-import { AlertContext, type AlertMessage, DialogContext } from "~/utils";
+import {
+  AlertContext,
+  type AlertMessage,
+  DialogContext,
+  initializeHeaderFlag,
+} from "~/utils";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   cacheControl({

@@ -1,6 +1,6 @@
 import { component$, Slot } from "@builder.io/qwik";
 import { cls } from "~/utils";
-import { ListItemProps } from "./listItem.types";
+import type { ListItemProps } from "./listItem.types";
 
 const ListItem = component$(({ marker = "🔥" }: ListItemProps) => {
   return (

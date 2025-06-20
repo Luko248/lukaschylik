@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { cls } from "~/utils";
-import { SectionTitleProps } from "./section.types";
+import type { SectionTitleProps } from "./section.types";
 
 const SectionTitle = component$<SectionTitleProps>(
   ({ text, className, dark, size = "md", center }) => {

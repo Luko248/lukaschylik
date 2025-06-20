@@ -1,5 +1,5 @@
 import { component$, Slot } from "@builder.io/qwik";
-import { routeLoader$, Link, type DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead, Link, routeLoader$ } from "@builder.io/qwik-city";
 import { Icon } from "~/components";
 import { BlogProgress } from "~/components/blog/BlogProgress";
 import Container from "~/components/container/container";

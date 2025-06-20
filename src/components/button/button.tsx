@@ -1,7 +1,7 @@
-import { Slot, component$ } from "@builder.io/qwik";
+import { component$, Slot } from "@builder.io/qwik";
+import { Icon } from "../icon";
 import type { ButtonProps } from "./button.types";
 import { buttonVariants } from "./button.variants";
-import { Icon } from "../icon";
 
 /**
  * Button component with multiple variants and sizes using tailwind-variants

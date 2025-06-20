@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-import { FormFieldProps } from "./formField.types";
 import { type } from "os";
+import type { FormFieldProps } from "./formField.types";
 
 /**
  * FormField component renders a label and an input or textarea element based on the type prop.

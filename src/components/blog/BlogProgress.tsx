@@ -1,9 +1,9 @@
 import {
-  component$,
-  useVisibleTask$,
-  useSignal,
-  useOnWindow,
   $,
+  component$,
+  useOnWindow,
+  useSignal,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import { supportsScrollTimeline } from "~/utils";
 

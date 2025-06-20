@@ -1,6 +1,6 @@
-import { Slot, component$ } from "@builder.io/qwik";
-import type { ContainerProps } from "./container.types";
+import { component$, Slot } from "@builder.io/qwik";
 import { cls } from "~/utils";
+import type { ContainerProps } from "./container.types";
 
 const Container = component$<ContainerProps>(({ size = "md", className }) => {
   const sizeClasses = {
