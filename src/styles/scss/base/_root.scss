@@ -1,0 +1,13 @@
+@use "../abstracts/variables/_index" as *;
+@use "../abstracts/functions/_index" as *;
+@use "../abstracts/mixins/_index" as *;
+
+@mixin create-root {
+  :root{
+    --nav_height: #{px-to-rem(76px)};
+
+    @include mq-responsive(tablet, max) {
+      --nav_height: #{px-to-rem(56px)};
+    }
+  }
+}

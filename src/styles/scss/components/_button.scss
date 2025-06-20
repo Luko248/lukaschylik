@@ -20,7 +20,6 @@
         $color-black var(--btn_gradient-length)
       )
     ) !important;
-    border-color: var(--color-white);
     text-align: center;
     transition: --btn_gradient-length $trans-time $trans-fnc;
 
@@ -36,7 +35,7 @@
     }
 
     &:is([type="submit"]) {
-      border-color: var(--color-black);
+      border-color: var(--color-black) !important;
     }
 
     &::after {
@@ -61,7 +60,6 @@
     }
 
     &[data-variant="secondary"] {
-      border-color: var(--color-white);
 
       --btn-icon_color: var(--color-black);
       --btn_gradient: linear-gradient(

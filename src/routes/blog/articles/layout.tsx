@@ -49,7 +49,7 @@ export default component$(() => {
   return (
     <Section id="blog-detail" className="bg-black-800">
       <BlogProgress />
-      <Container size="blog" className="pt-8">
+      <Container size="blog">
         <Link
           href="/blog"
           class="inline-flex items-center text-gray-200 mb-6 underline">
