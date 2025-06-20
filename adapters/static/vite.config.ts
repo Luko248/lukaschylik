@@ -1,5 +1,5 @@
-import { staticAdapter } from "@builder.io/qwik-city/adapters/static/vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
+import { staticAdapter } from "@builder.io/qwik-city/adapters/static/vite";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";

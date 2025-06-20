@@ -5,19 +5,28 @@ import { tv, type VariantProps } from "tailwind-variants";
  * Preserves custom CSS properties and gradient effects from the original implementation
  */
 export const buttonVariants = tv({
-  base: [
-    "btn",
-    "inline-flex items-center justify-center gap-8",
-    "relative overflow-clip leading-none",
-    "cursor-pointer rounded-lg border",
-    "disabled:opacity-50 disabled:pointer-events-none",
-    "text-transparent",
-  ],
+  base: [],
   variants: {
     variant: {
-      primary: [],
-      secondary: [],
+      primary: [
+        "btn",
+        "inline-flex items-center justify-center gap-8",
+        "relative overflow-clip leading-none",
+        "cursor-pointer rounded-lg border",
+        "disabled:opacity-50 disabled:pointer-events-none",
+        "text-transparent",
+      ],
+      secondary: [
+        "btn",
+        "inline-flex items-center justify-center gap-8",
+        "relative overflow-clip leading-none",
+        "cursor-pointer rounded-lg border",
+        "disabled:opacity-50 disabled:pointer-events-none",
+        "text-transparent",
+      ],
       plain: [
+        "all-[unset]",
+        "cursor-pointer",
         "border-0 p-0",
         "bg-transparent text-current",
         "hover:opacity-80",
@@ -55,7 +64,7 @@ export const buttonVariants = tv({
     },
     {
       variant: "plain",
-      class: "!all-[initial]",
+      class: "min-w-none",
     },
   ],
   defaultVariants: {
