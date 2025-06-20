@@ -33,7 +33,16 @@ export default defineConfig((): UserConfig => {
     optimizeDeps: {
       exclude: [],
     },
-
+    build: {
+      target: "esnext",
+      rollupOptions: {
+        output: {
+          assetFileNames: "assets/[name]-[hash][extname]",
+          chunkFileNames: "assets/[name]-[hash].js",
+          entryFileNames: "assets/[name]-[hash].js",
+        },
+      },
+    },
     server: {
       headers: {
         "Cache-Control": "public, max-age=0",
