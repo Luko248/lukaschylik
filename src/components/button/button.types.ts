@@ -25,14 +25,6 @@ declare global {
  * @extends {NewHTMLButtonElement}
  */
 export interface ButtonProps extends NewHTMLButtonElement {
-  /** Button variant style */
-  variant?: "primary" | "secondary" | "plain";
-  
-  /** Button size */
-  size?: "sm" | "md";
-  
-  /** Whether the button is icon-only */
-  iconOnly?: boolean;
   /** Click event handler */
   onClick$?: PropFunction<() => void>;
 
@@ -62,4 +54,13 @@ export interface ButtonProps extends NewHTMLButtonElement {
 
   /** Where to display the linked URL (for anchor tags) */
   target?: "_blank" | "_self" | "_parent" | "_top";
+
+  /** Button variant style */
+  variant?: "primary" | "secondary" | "plain";
+
+  /** Button size */
+  size?: "sm" | "md";
+
+  /** Whether the button contains only an icon */
+  iconOnly?: boolean;
 }
