@@ -14,10 +14,5 @@ export interface CardProps {
   path?: string;
   price?: number;
   showVat?: boolean;
-  // Blog post specific props
-  isBlogPost?: boolean;
-  date?: string;
-  author?: string;
-  description?: string;
   onClick$?: PropFunction<() => void>;
 }

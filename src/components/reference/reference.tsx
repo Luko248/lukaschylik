@@ -19,20 +19,14 @@ const Reference = component$<ReferenceProps>(
               "font-medium leading-normal tracking-wide uppercase whitespace-nowrap",
               "overflow-hidden z-20",
             )}>
-            <span
-              aria-label={title}
-              class="relative text-transparent duration-300 ease-in-out">
+            <span class="relative text-transparent duration-300 ease-in-out">
               {title}
             </span>
             <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-white tracking-wider leading-none">
               {type}
             </small>
           </strong>
-          <small
-            class="relative text-base text-transparent"
-            aria-label={website}>
-            {website}
-          </small>
+          <small class="relative text-base text-transparent">{website}</small>
         </a>
       </li>
     );

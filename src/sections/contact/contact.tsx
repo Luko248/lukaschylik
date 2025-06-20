@@ -1,5 +1,5 @@
 import { $, component$, useStore } from "@builder.io/qwik";
-import { Button, Container, FormField, Icon, Section } from "~/components";
+import { Button, Container, FormField, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
 const Contact = component$(() => {

@@ -54,7 +54,7 @@ const About = component$(() => {
               <img
                 class="me relative z-0 block mx-auto"
                 src="/images/me.webp"
-                alt="The picture of me"
+                alt="Fotografia Lukáša Chylika"
                 loading="lazy"
                 width={768}
                 height={768}

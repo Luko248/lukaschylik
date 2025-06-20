@@ -13,12 +13,7 @@ import { Alert, Navigation, ReservationDialog } from "~/components";
 import Social from "~/components/social/social";
 import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
-import {
-  AlertContext,
-  type AlertMessage,
-  DialogContext,
-  initializeHeaderFlag,
-} from "~/utils";
+import { AlertContext, type AlertMessage, DialogContext } from "~/utils";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   cacheControl({

@@ -1,9 +1,12 @@
 {
-  "plugins": ["stylelint-order"],
-  "ignoreFiles": ["**/*.css"],
+  "plugins": [
+    "stylelint-order"
+  ],
   "overrides": [
     {
-      "files": ["**/*.scss"],
+      "files": [
+        "**/*.scss"
+      ],
       "customSyntax": "postcss-scss"
     }
   ],
@@ -240,5 +243,12 @@
         "unspecified": "bottomAlphabetical"
       }
     ]
-  }
+  },
+  "ignoreFiles": [
+    "node_modules/**/*",
+    "dist/**/*",
+    "build/**/*",
+    "tmp/**/*",
+    "server/**/*"
+  ]
 }

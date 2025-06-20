@@ -28,7 +28,6 @@ const Footer = component$(() => {
               <a
                 class="hover:underline"
                 href="mailto:chylik.lukas@gmail.com"
-                role="internal"
                 rel="noreferer">
                 chylik.lukas@gmail.com
               </a>

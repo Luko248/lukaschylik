@@ -2,9 +2,5 @@
   "watch": ["src/styles/scss/**/*.scss", "src/**/*.{ts,tsx,js,jsx}"],
   "ext": "scss,ts,tsx,js,jsx",
   "exec": "bun run build:css && bun run stylelint && bun run biome:format",
-  "delay": 500,
-  "scripts": {
-    "stylelint:fix": "stylelint --fix src/**/*.scss --custom-syntax postcss-scss",
-    "stylelint:check": "stylelint src/**/*.scss --custom-syntax postcss-scss --formatter verbose"
-  }
+  "delay": 500
 }

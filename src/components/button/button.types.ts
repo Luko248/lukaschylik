@@ -1,5 +1,4 @@
 import type { PropFunction } from "@builder.io/qwik";
-import type { ButtonVariants } from "./button.variants";
 
 /**
  * Extends the HTMLButtonElement to include custom command attributes
@@ -25,7 +24,15 @@ declare global {
  * @interface ButtonProps
  * @extends {NewHTMLButtonElement}
  */
-export interface ButtonProps extends NewHTMLButtonElement, ButtonVariants {
+export interface ButtonProps extends NewHTMLButtonElement {
+  /** Button variant style */
+  variant?: "primary" | "secondary" | "plain";
+  
+  /** Button size */
+  size?: "sm" | "md";
+  
+  /** Whether the button is icon-only */
+  iconOnly?: boolean;
   /** Click event handler */
   onClick$?: PropFunction<() => void>;
 

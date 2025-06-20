@@ -88,35 +88,33 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "list-none m-0",
             !isHydrated.value && "invisible md:visible",
             state.isOpen ? "grid" : "hidden md:flex",
-          )}
-          role="menu">
-          {links &&
-            links.map((link: NavigationLinkProps, index: number) => {
-              const isActive = link.href === "/blog" && isBlogPage;
+          )}>
+          {links?.map((link: NavigationLinkProps, index: number) => {
+            const isActive = link.href === "/blog" && isBlogPage;
 
-              return (
-                <li key={index}>
-                  <Link
-                    role="menuitem"
-                    href={link.href}
-                    title={link.text}
-                    rel="internal"
-                    onClick$={closeMenuOnMobile}
-                    data-active={isActive}
-                    class={cls(
-                      "flex justify-center items-center flex-nowrap gap-3",
-                      "text-xl md:text-l lg:text-xl",
-                      "text-white ",
-                      "decoration-secondary decoration-3 underline-offset-8",
-                      "no-underline hover:underline",
-                      isActive && "underline",
-                    )}>
-                    {link.text}
-                    {link.icon && <Icon name={link.icon} size="1.25rem" />}
-                  </Link>
-                </li>
-              );
-            })}
+            return (
+              <li key={index}>
+                <Link
+                  role="menuitem"
+                  href={link.href}
+                  title={link.text}
+                  rel="internal"
+                  onClick$={closeMenuOnMobile}
+                  data-active={isActive}
+                  class={cls(
+                    "flex justify-center items-center flex-nowrap gap-3",
+                    "text-xl md:text-l lg:text-xl",
+                    "text-white ",
+                    "decoration-secondary decoration-3 underline-offset-8",
+                    "no-underline hover:underline",
+                    isActive && "underline",
+                  )}>
+                  {link.text}
+                  {link.icon && <Icon name={link.icon} size="1.25rem" />}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <div class="flex gap-4 items-center">
           <Button

@@ -1,5 +1,4 @@
 import { component$, Slot } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
 import { cls } from "~/utils";
 import { Button } from "../button";
 import type { CardProps } from "./card.types";
@@ -12,21 +11,9 @@ const formatPrice = (price: number) => {
 
 /**
  * Card component that displays content in a card format
- * For blog posts, the entire card becomes clickable
  */
 const Card = component$(
-  ({
-    title,
-    subtitle,
-    price,
-    showVat = true,
-    path,
-    isBlogPost,
-    date,
-    author,
-    onClick$,
-    description,
-  }: CardProps) => {
+  ({ title, subtitle, price, showVat = true, onClick$ }: CardProps) => {
     // Card content that will be wrapped by either div or anchor
     const CardContent = (
       <>
@@ -52,84 +39,50 @@ const Card = component$(
             "p-6 pt-0 sm:p-8 sm:pt-0",
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
-            !isBlogPost && "mb-0 3xl:mb-8",
+            "mb-0 3xl:mb-8",
             "text-white",
             "content-start",
           )}>
-          {isBlogPost && (
-            <>
-              {description && <p>{description}</p>}
-              {(date || author) && (
-                <div class="flex gap-2 items-center text-sm text-gray-300">
-                  {date && <time dateTime={date}>{date}</time>}
-                  {date && author && <span>•</span>}
-                  {author && <span>{author}</span>}
-                </div>
-              )}
-            </>
-          )}
           <Slot />
         </div>
-        {!isBlogPost && (
-          <div
+        <div
+          class={cls(
+            "flex justify-between flex-col 2xl:flex-row",
+            "gap-5 p-6 sm:p-8",
+            "items-stretch 2xl:items-center",
+          )}>
+          <strong
             class={cls(
-              "flex justify-between flex-col 2xl:flex-row",
-              "gap-5 p-6 sm:p-8",
-              "items-stretch 2xl:items-center",
+              "group cursor-help",
+              "inline-block",
+              "text-center 2xl:text-start",
+              "font-bold text-3xl sm:text-4xl 3xl:text-5xl",
             )}>
-            <strong
-              class={cls(
-                "group cursor-help",
-                "inline-block",
-                "text-center 2xl:text-start",
-                "font-bold text-3xl sm:text-4xl 3xl:text-5xl",
-              )}>
-              {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
-              {showVat && (
-                <small class="block text-sm sm:text-base font-light opacity-80">
-                  Cena s DPH / 1h
-                </small>
-              )}
-            </strong>
-            {showVat && price && (
-              <div
-                class="tooltip my-2 p-2 bg-white/10 font-semibold"
-                role="tooltip">
-                {`Cena bez DPH je ${formatPrice(price)} Kč`}
-              </div>
+            {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
+            {showVat && (
+              <small class="block text-sm sm:text-base font-light opacity-80">
+                Cena s DPH / 1h
+              </small>
             )}
-            <Button
-              variant="secondary"
-              ariaLabel={price ? `Mám záujem` : "Nedostupné"}
-              title={price ? `Mám záujem` : "Nedostupné"}
-              disabled={!price}
-              onClick$={onClick$}>
-              {price ? `Mám záujem` : "Nedostupné"}
-            </Button>
-          </div>
-        )}
+          </strong>
+          {showVat && price && (
+            <div
+              class="tooltip my-2 p-2 bg-white/10 font-semibold"
+              role="tooltip">
+              {`Cena bez DPH je ${formatPrice(price)} Kč`}
+            </div>
+          )}
+          <Button
+            variant="secondary"
+            ariaLabel={price ? `Mám záujem` : "Nedostupné"}
+            title={price ? `Mám záujem` : "Nedostupné"}
+            disabled={!price}
+            onClick$={onClick$}>
+            {price ? `Mám záujem` : "Nedostupné"}
+          </Button>
+        </div>
       </>
     );
-
-    // For blog posts, wrap the entire card in an anchor tag
-    if (isBlogPost && path) {
-      return (
-        <Link
-          href={path}
-          class={cls(
-            "card",
-            "group",
-            "grid grid-rows-subgrid row-span-4",
-            "border-2 border-white",
-            "text-white",
-            "no-underline", // Ensure no default link styling
-            "block", // Ensure the link behaves as a block element
-            "hover:no-underline", // Maintain no underline on hover
-          )}>
-          {CardContent}
-        </Link>
-      );
-    }
 
     // For non-blog cards, use the regular div wrapper
     return (
