@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "../env.css";
+@import "../css/env.css";
 @property --social-radius {
   inherits: true;
   initial-value: 0%;
