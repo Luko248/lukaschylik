@@ -1,21 +1,21 @@
 import { Slot, component$ } from "@builder.io/qwik";
 import type { ButtonProps } from "./button.types";
-import { cls } from "~/utils";
+import { buttonVariants } from "./button.variants";
 import { Icon } from "../icon";
 
 /**
- * Button component with multiple variants and sizes
- * Supports both button and anchor elements
+ * Button component with multiple variants and sizes using tailwind-variants
+ * Supports both button and anchor elements with type-safe styling
  */
 const Button = component$<ButtonProps>(
   ({
     size = "md",
     variant = "primary",
+    iconOnly = false,
     onClick$,
     disabled,
     ariaLabel,
     className,
-    iconOnly,
     title,
     href,
     rel,
@@ -25,34 +25,15 @@ const Button = component$<ButtonProps>(
     command,
     commandfor,
   }) => {
-    const getSizeAndVariantClasses = () => {
-      if (iconOnly) {
-        return size === "sm" ? "p-3 text-xs" : "p-3 text-sm";
-      } else {
-        return size === "sm"
-          ? "px-3 py-2 text-xs sm:px-4 sm:py-2 sm:text-sm"
-          : "px-5 py-3 text-sm sm:px-6 sm:py-4 sm:text-base font-bold uppercase min-w-[180px]";
-      }
-    };
-
-    const baseClasses = cls(
-      "btn",
-      "inline-flex items-center justify-center gap-8",
-      "relative overflow-clip leading-none",
-      "cursor-pointer rounded-lg border",
-      "disabled:opacity-50 disabled:pointer-events-none",
-      "text-transparent",
-      getSizeAndVariantClasses(),
-      className,
-    );
-
-    const plainClasses = cls(
-      "border-0 p-0 transition-all duration-200 cursor-pointer",
-      className,
-    );
+    const buttonClasses = buttonVariants({
+      variant,
+      size,
+      iconOnly,
+      class: className,
+    });
 
     const commonProps = {
-      class: variant === "plain" ? plainClasses : baseClasses,
+      class: buttonClasses,
       "aria-label": ariaLabel,
       title,
       "data-variant": variant,
