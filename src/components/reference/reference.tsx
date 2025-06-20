@@ -19,7 +19,9 @@ const Reference = component$<ReferenceProps>(
               "font-medium leading-normal tracking-wide uppercase whitespace-nowrap",
               "overflow-hidden z-20",
             )}>
-            <span class="relative text-transparent duration-300 ease-in-out">
+            <span
+              class="relative text-transparent duration-300 ease-in-out"
+              title={title}>
               {title}
             </span>
             <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-white tracking-wider leading-none">

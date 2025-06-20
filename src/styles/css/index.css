@@ -384,7 +384,7 @@ strong {
     overflow: clip;
   }
   .reference :where(span, small)::before, .reference :where(span, small)::after {
-    content: attr(aria-label);
+    content: attr(title);
     position: absolute;
     inset: 0;
     transition: translate 0.2s ease-in-out;

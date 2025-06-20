@@ -32,7 +32,7 @@ const References = component$(() => {
                 variant="secondary"
                 ariaLabel="Služby a spoupráca"
                 title="Služby a spoupráca"
-                href="#contact">
+                href="#services">
                 Služby a spoupráca
               </Button>
               <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth">

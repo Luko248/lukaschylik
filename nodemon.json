@@ -1,6 +1,6 @@
 {
   "watch": ["src/styles/scss/**/*.scss", "src/**/*.{ts,tsx,js,jsx}"],
   "ext": "scss,ts,tsx,js,jsx",
-  "exec": "bun run build:css && bun run stylelint && bun run biome:format",
+  "exec": "bun run build:css && bun run stylelint && bun run format",
   "delay": 500
 }

@@ -1,0 +1,3 @@
+# Ignore the _sizes.scss file to prevent corruption
+src/styles/scss/abstracts/variables/_sizes.scss
+src/styles/scss/abstracts/variables/_fonts.scss

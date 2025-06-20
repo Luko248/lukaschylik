@@ -15,7 +15,7 @@
 
       &::before,
       &::after {
-        content: attr(aria-label);
+        content: attr(title);
         position: absolute;
         inset: 0;
         transition: translate $trans-time $trans-fnc;
