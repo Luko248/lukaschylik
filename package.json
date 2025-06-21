@@ -34,17 +34,25 @@
   "type": "module",
   "scripts": {
     "build": "qwik build",
+    "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "vite build -c adapters/static/vite.config.ts",
+    "build.types": "tsc --incremental --noEmit",
     "build:css": "sass src/styles/scss/index.scss src/styles/css/index.css",
+    "deploy": "echo 'Run \"bun run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "format": "biome format --write .",
+    "biome:check": "biome check .",
+    "biome:lint": "biome lint .",
+    "biome:ci": "biome ci .",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "preview": "vite build --ssr src/entry.preview.tsx && vite preview --open",
     "start": "bun run fix && concurrently \"vite --open --mode ssr\" \"bun run watch:css\"",
     "watch:css": "nodemon",
-    "fix": "bun run stylelint:fix && bun run format"
+    "fix": "bun run stylelint:fix && bun run format",
+    "qwik": "qwik"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.0",
