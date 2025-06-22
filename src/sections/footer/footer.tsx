@@ -39,27 +39,6 @@ const Footer = component$(() => {
         </div>
         <div>
           <ThemeSwitch />
-          <a
-            href="/"
-            role="menuitem"
-            class={cls(
-              "nav__logo",
-              "relative z-[101]",
-              "w-[110px] md:w-[140px]",
-              "flex items-center",
-              "no-underline",
-              "transition-opacity duration-200",
-              "opacity-100 hover:opacity-80",
-            )}>
-            <img
-              class="w-full max-w-full"
-              src="/images/logos/logo.svg"
-              alt="Lukáš Chylík Logo"
-              width="120"
-              height="60"
-              loading="eager"
-            />
-          </a>
         </div>
       </Container>
     </footer>

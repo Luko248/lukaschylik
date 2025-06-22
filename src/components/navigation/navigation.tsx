@@ -1,13 +1,15 @@
 import {
   $,
   component$,
+  useContext,
   useSignal,
   useStore,
   useVisibleTask$,
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
-import { cls } from "~/utils";
+import { cls, DialogContext } from "~/utils";
 import Logo from "../../assets/images/logo.svg?jsx";
+import { Button } from "../button";
 import { Icon } from "../icon";
 import { ThemeSwitch } from "../themeSwitch";
 import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
@@ -20,6 +22,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
   const isHydrated = useSignal(false);
   const location = useLocation();
+  const dialogContext = useContext(DialogContext);
 
   // Ensure proper hydration
   useVisibleTask$(() => {
@@ -115,15 +118,14 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           })}
         </ul>
         <div class="flex gap-4 items-center">
-          {/* <Button
+          <Button
             variant="secondary"
             size="sm"
             title="Rezervácia"
             className="relative z-[101]"
             onClick$={dialogContext.showDialog}>
             Rezervácia
-          </Button> */}
-          <ThemeSwitch />
+          </Button>
           <button
             type="button"
             class={cls(
