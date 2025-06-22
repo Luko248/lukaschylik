@@ -6,7 +6,7 @@
   syntax: "<percentage>";
 }
 :root {
-  color-scheme: light dark;
+  color-scheme: dark light;
   --nav_height: 72px;
 }
 @media screen and (width <= 768px) {
