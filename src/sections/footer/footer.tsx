@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Container } from "~/components";
+import { Container, ThemeSwitch } from "~/components";
 import { cls } from "~/utils";
 
 const Footer = component$(() => {
@@ -38,6 +38,7 @@ const Footer = component$(() => {
           </small>
         </div>
         <div>
+          <ThemeSwitch />
           <a
             href="/"
             role="menuitem"
