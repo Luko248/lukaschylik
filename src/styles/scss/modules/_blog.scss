@@ -46,6 +46,12 @@
       }
     }
 
+    :is(h2, h3, h4, h5, h6) > :is(a) { 
+        
+        color: inherit !important;
+        text-decoration: none;
+    }
+
     h1 {
       margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
       font-size: clamp(2.5rem, 6svi, 3rem);
@@ -73,6 +79,7 @@
       align-items: center;
       margin-top: clamp(1.8em, 5svi, 2.5em);
       margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
+      padding-inline-start: clamp(.5rem, 2svi, 1rem);
       border-left: clamp(3px, 0.8svi, 4px) solid $color-yellow;
       font-size: clamp(2rem, 5svi, 2.25rem);
       font-weight: 500;
@@ -80,6 +87,8 @@
       color: light-dark(var(--color-gray-800), var(--color-gray-300));
       scroll-margin-block-start: calc(#{$gap-space-16} + var(--nav_height));
       text-box: trim-both ex alphabetic;
+
+    
 
       @include mq-responsive(tablet, max) {
         margin-top: clamp(1.5em, 4svi, 2em);
@@ -129,14 +138,12 @@
 
     .link,
     a:not(.podcast-link) {
-      border-bottom: 1px solid transparent;
       color: $color-yellow;
       text-decoration: none;
       transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
       &:hover,
       &:focus {
-        border-bottom-color: $color-yellow;
         color: $color-yellow;
       }
     }

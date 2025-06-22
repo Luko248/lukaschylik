@@ -599,6 +599,10 @@ strong {
   .blog header::before, .blog header::after {
     display: none !important;
   }
+  .blog :is(h2, h3, h4, h5, h6) > :is(a) {
+    color: inherit !important;
+    text-decoration: none;
+  }
   .blog h1 {
     margin-bottom: clamp(0.5em, 1.5svi, 0.7em);
     font-size: clamp(2.5rem, 6svi, 3rem);
@@ -626,6 +630,7 @@ strong {
     align-items: center;
     margin-top: clamp(1.8em, 5svi, 2.5em);
     margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
+    padding-inline-start: clamp(0.5rem, 2svi, 1rem);
     border-left: clamp(3px, 0.8svi, 4px) solid hsl(51, 100%, 53%);
     font-size: clamp(2rem, 5svi, 2.25rem);
     font-weight: 500;
@@ -679,7 +684,6 @@ strong {
   }
   .blog .link,
   .blog a:not(.podcast-link) {
-    border-bottom: 1px solid transparent;
     color: hsl(51, 100%, 53%);
     text-decoration: none;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -687,7 +691,6 @@ strong {
   .blog .link:hover, .blog .link:focus,
   .blog a:not(.podcast-link):hover,
   .blog a:not(.podcast-link):focus {
-    border-bottom-color: hsl(51, 100%, 53%);
     color: hsl(51, 100%, 53%);
   }
   .blog ul,

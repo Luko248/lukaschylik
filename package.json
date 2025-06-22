@@ -79,6 +79,7 @@
   "dependencies": {
     "@toolwind/anchors": "^1.0.10",
     "gray-matter": "^4.0.3",
+    "rehype-autolink-headings": "^7.1.0",
     "tailwind-variants": "^1.0.0"
   },
   "browserslist": [
