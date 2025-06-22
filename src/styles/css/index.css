@@ -315,6 +315,7 @@ strong {
   }
   :where(html, body):has(.nav--open) {
     overflow: hidden;
+    max-block-size: 100svb;
   }
   .nav {
     max-inline-size: 100lvi;

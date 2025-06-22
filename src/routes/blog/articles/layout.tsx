@@ -47,7 +47,7 @@ export default component$(() => {
   const post = useCurrentPost();
 
   return (
-    <Section id="blog-detail" className="bg-white dark:bg-black-800">
+    <Section id="blog-detail" className=" dark:bg-black-800">
       <BlogProgress />
       <Container size="blog">
         <Link

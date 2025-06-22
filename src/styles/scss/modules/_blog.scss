@@ -88,7 +88,6 @@
       scroll-margin-block-start: calc(#{$gap-space-16} + var(--nav_height));
       text-box: trim-both ex alphabetic;
 
-    
 
       @include mq-responsive(tablet, max) {
         margin-top: clamp(1.5em, 4svi, 2em);
