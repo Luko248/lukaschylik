@@ -47,7 +47,7 @@ const FormField = component$<FormFieldProps>(
       .join(" ");
 
     return (
-      <label class={labelClass}>
+      <label class={labelClass} for={name}>
         {label}
         {type === "textarea" ? (
           <textarea
@@ -73,6 +73,7 @@ const FormField = component$<FormFieldProps>(
             required={required}
             class={inputClass}
             aria-label={label}
+            autocomplete="on"
             aria-invalid={!value && required}
             disabled={disabled}
             readOnly={readOnly}

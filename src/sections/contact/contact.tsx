@@ -2,6 +2,10 @@ import { $, component$, useStore } from "@builder.io/qwik";
 import { Button, Container, FormField, Section } from "~/components";
 import SectionTitle from "~/components/section/section.title";
 
+/**
+ * Contact section component
+ * Renders a contact form with validation and form submission handling
+ */
 const Contact = component$(() => {
   const state = useStore({
     fullname: "",
@@ -11,17 +15,17 @@ const Contact = component$(() => {
     submitting: false,
   });
 
-  // Handle form submission
+  /**
+   * Handles form submission
+   */
   const handleSubmit = $((event: SubmitEvent) => {
     event.preventDefault();
 
     if (state.submitting) return;
     state.submitting = true;
 
-    // Get form data
     const formData = new FormData(event.target as HTMLFormElement);
 
-    // Send form data using fetch
     fetch("https://formsubmit.co/ajax/chylik.lukas@gmail.com", {
       method: "POST",
       body: formData,
@@ -33,24 +37,52 @@ const Contact = component$(() => {
         return response.json();
       })
       .then(() => {
-        // Reset form
         state.fullname = "";
         state.email = "";
         state.subject = "";
         state.message = "";
 
-        // Add URL parameter to show success message and redirect
-        window.location.href = `${window.location.pathname}?formSubmitted=true`;
+        const url = new URL(window.location.href);
+        url.search = "";
+        url.searchParams.set("formSubmitted", "true");
+        window.location.href = url.toString();
       })
       .catch((error) => {
         console.error("Form submission error:", error);
-        // Display error message (will be shown on the form itself)
         state.submitting = false;
         alert("Odoslanie správy zlyhalo. Skúste to znova, prosím.");
       })
       .finally(() => {
         state.submitting = false;
       });
+  });
+
+  /**
+   * Handles fullname input change
+   */
+  const handleFullnameInput = $((e: Event) => {
+    state.fullname = (e.target as HTMLInputElement).value;
+  });
+
+  /**
+   * Handles email input change
+   */
+  const handleEmailInput = $((e: Event) => {
+    state.email = (e.target as HTMLInputElement).value;
+  });
+
+  /**
+   * Handles subject input change
+   */
+  const handleSubjectInput = $((e: Event) => {
+    state.subject = (e.target as HTMLInputElement).value;
+  });
+
+  /**
+   * Handles message input change
+   */
+  const handleMessageInput = $((e: Event) => {
+    state.message = (e.target as HTMLTextAreaElement).value;
   });
 
   return (
@@ -85,9 +117,7 @@ const Contact = component$(() => {
             type="text"
             name="fullname"
             value={state.fullname}
-            onInput$={(e) =>
-              (state.fullname = (e.target as HTMLInputElement).value)
-            }
+            onInput$={handleFullnameInput}
             required
           />
           <FormField
@@ -95,9 +125,7 @@ const Contact = component$(() => {
             type="email"
             name="email"
             value={state.email}
-            onInput$={(e) =>
-              (state.email = (e.target as HTMLInputElement).value)
-            }
+            onInput$={handleEmailInput}
             required
           />
           <FormField
@@ -105,9 +133,7 @@ const Contact = component$(() => {
             type="text"
             name="subject"
             value={state.subject}
-            onInput$={(e) =>
-              (state.subject = (e.target as HTMLInputElement).value)
-            }
+            onInput$={handleSubjectInput}
             required
           />
           <FormField
@@ -115,9 +141,7 @@ const Contact = component$(() => {
             type="textarea"
             name="message"
             value={state.message}
-            onInput$={(e) =>
-              (state.message = (e.target as HTMLTextAreaElement).value)
-            }
+            onInput$={handleMessageInput}
             required
           />
           <Button
