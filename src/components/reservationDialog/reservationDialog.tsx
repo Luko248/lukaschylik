@@ -83,7 +83,7 @@ export const ReservationDialog = component$<ReservationDialogProps>(
         closedby="any"
         class="bg-white dark:bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
         <Button
-          className="absolute top-4 right-4 text-gray-800 ldark:text-gray-300 p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
+          className="absolute top-4 right-4 text-gray-800 dark:text-white ldark:text-gray-300 p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
           variant="plain"
           title="Zatvoriť rezerváciu"
           onClick$={() => dialogRef.value?.close()}
