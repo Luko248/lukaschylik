@@ -5,7 +5,6 @@
 @mixin create-nav {
   :where(html, body):has(.nav--open) {
     overflow: hidden;
-    max-block-size: 100svb;
   }
 
   .nav {
@@ -19,6 +18,8 @@
     }
 
     &--open {
+      position: fixed !important;
+      inset: 0 0 auto !important;
       --nav-list_display: grid;
 
       @include mq-responsive(tablet, min) {

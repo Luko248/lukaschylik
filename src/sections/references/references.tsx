@@ -29,15 +29,16 @@ const References = component$(() => {
                 konferenciách.
               </p>
               <Button
+                className="content-fade-in"
                 variant="secondary"
                 ariaLabel="Služby a spoupráca"
                 title="Služby a spoupráca"
                 href="#services">
                 Služby a spoupráca
               </Button>
-              <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth">
+              <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth content-fade-in">
                 <iframe
-                  class="snap-center min-w-full aspect-video block"
+                  class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
                   loading="lazy"
                   width="560"
                   src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
@@ -46,7 +47,7 @@ const References = component$(() => {
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullscreen></iframe>
                 <iframe
-                  class="snap-center min-w-full aspect-video block"
+                  class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
                   loading="lazy"
                   width="560"
                   src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"

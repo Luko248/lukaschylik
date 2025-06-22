@@ -315,7 +315,6 @@ strong {
   }
   :where(html, body):has(.nav--open) {
     overflow: hidden;
-    max-block-size: 100svb;
   }
   .nav {
     max-inline-size: 100lvi;
@@ -328,6 +327,8 @@ strong {
     }
   }
   .nav--open {
+    position: fixed !important;
+    inset: 0 0 auto !important;
     --nav-list_display: grid;
   }
   @media screen and (width > 768px) {
