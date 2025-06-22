@@ -85,7 +85,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "fixed md:relative inset-[var(--nav_height)_0_0_0] md:inset-auto h-auto z-100",
             "align-baseline items-center content-center gap-10 md:gap-8",
             "md:flex-row md:justify-center py-6 px-8",
-            "backdrop-blur-md md:backdrop-blur-none bg-white/70 dark:bg-black/70 md:bg-transparent",
+            "backdrop-blur-md md:backdrop-blur-none bg-white/70 dark:bg-black/70 md:bg-transparent dark:md:bg-transparent",
             "list-none m-0",
             !isHydrated.value && "invisible md:visible",
             state.isOpen ? "grid" : "hidden md:flex",
