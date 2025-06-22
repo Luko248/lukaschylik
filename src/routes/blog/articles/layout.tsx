@@ -47,25 +47,27 @@ export default component$(() => {
   const post = useCurrentPost();
 
   return (
-    <Section id="blog-detail" className="bg-black-800">
+    <Section id="blog-detail" className="bg-white dark:bg-black-800">
       <BlogProgress />
       <Container size="blog">
         <Link
           href="/blog"
-          class="inline-flex items-center text-gray-200 mb-6 underline">
+          class="inline-flex items-center text-gray-800 dark:text-gray-300 mb-6 underline">
           ← Späť na zoznam článkov
         </Link>
 
         <article class="blog">
           {post.value && (
             <header class="mb-8">
-              <h1 class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-200 leading-tight md:leading-tight lg:leading-tight">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-800 dark:text-gray-300 leading-tight md:leading-tight lg:leading-tight">
                 {post.value.title}
                 <small class="mt-2 block">{post.value.subtitle}</small>
               </h1>
               <div class="flex items-center justify-between gap-2">
-                <div class="flex gap-2 items-center text-sm text-white/70">
-                  <time dateTime={post.value.date} class="text-gray-300">
+                <div class="flex gap-2 items-center text-sm text-gray-800 dark:text-gray-300">
+                  <time
+                    dateTime={post.value.date}
+                    class="text-gray-800 dark:text-gray-300">
                     {new Date(post.value.date).toLocaleDateString("cs-CZ")}
                   </time>
                   <span class="text-yellow-500 text-2xl">•</span>
@@ -73,7 +75,7 @@ export default component$(() => {
                 </div>
                 {post.value.podcastUrl && (
                   <a
-                    class="podcast-link grid place-items-center ratio-1/1 border-0 text-white bg-transparent hover:text-[#1DB954] transition-colors duration-200 rounded-full"
+                    class="podcast-link grid place-items-center ratio-1/1 border-0 text-black dark:text-white bg-transparent hover:text-[#1DB954] transition-colors duration-200 rounded-full"
                     href={post.value.podcastUrl}
                     target="_blank"
                     rel="noopener noreferrer"

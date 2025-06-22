@@ -27,7 +27,7 @@
       position: relative;
       animation: show-title 0.5s ease-out 0.35s forwards;
       paint-order: stroke fill;
-      -webkit-text-stroke: 0.025em $color-white;
+      -webkit-text-stroke: 0.025em light-dark(var(--color-black), var(--color-white));
 
       @include mq-reduce-motion {
         opacity: initial;

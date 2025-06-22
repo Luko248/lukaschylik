@@ -25,17 +25,17 @@ export default component$(() => {
                 <Link
                   key={post.slug}
                   href={`/blog/articles/${post.slug}`}
-                  class="text-white group">
+                  class="text-black dark:text-white group">
                   <strong class="text-2xl sm:text-4xl md:text-6xl block mb-1 md:mb-2 group-hover:text-yellow-500 transition-colors duration-200">
                     {post.title}
                   </strong>
-                  <small class="block text-white/70 text-l sm:text-2xl md:text-3xl">
+                  <small class="block text-gray-800 dark:text-gray-300 text-l sm:text-2xl md:text-3xl">
                     {post.subtitle}
                   </small>
                   <p class="block text-l md:text-xl my-4 md:my-8">
                     {post.description}
                   </p>
-                  <div class="flex gap-2 items-center text-sm text-white/70">
+                  <div class="flex gap-2 items-center text-sm text-gray-800 dark:text-gray-300">
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString("cs-CZ")}
                     </time>
@@ -47,7 +47,7 @@ export default component$(() => {
               </>
             ))
           ) : (
-            <div class="col-span-full text-center text-xl text-white">
+            <div class="col-span-full text-center text-xl text-gray-800 dark:text-gray-300">
               Žiadne články zatiaľ nie sú k dispozícii.
             </div>
           )}

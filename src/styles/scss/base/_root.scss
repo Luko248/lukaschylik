@@ -4,6 +4,7 @@
 
 @mixin create-root {
   :root{
+      color-scheme: light dark;
     --nav_height: #{$nav-height};
 
     @include mq-responsive(tablet, max) {

@@ -5,19 +5,11 @@
 @mixin create-blog {
   .blog {
     margin-inline: auto;
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-size: clamp(1rem, 2.5svi, 1.125rem);
     line-height: 1.7;
-    color: $color-text;
+    color: light-dark(var(--color-gray-800), var(--color-gray-300));
     max-inline-size: 100svi;
 
     &__progress {
@@ -85,8 +77,8 @@
       font-size: clamp(2rem, 5svi, 2.25rem);
       font-weight: 500;
       line-height: 1.3;
-      color: $color-white;
-      color: $color-grey-200;
+      color: light-dark(var(--color-gray-800), var(--color-gray-300));
+      scroll-margin-block-start: calc(#{$gap-space-16} + var(--nav_height));
       text-box: trim-both ex alphabetic;
 
       @include mq-responsive(tablet, max) {
@@ -140,9 +132,7 @@
       border-bottom: 1px solid transparent;
       color: $color-yellow;
       text-decoration: none;
-      transition:
-        border-color 0.2s ease-in-out,
-        color 0.2s ease-in-out;
+      transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
       &:hover,
       &:focus {
@@ -192,7 +182,10 @@
       display: block;
       margin: clamp(1.5em, 4svi, 2em) 0;
       padding: clamp(1em, 3svi, 1.5em);
-      background: $color-grey-800;
+      background-color: light-dark(
+        var(--color-gray-200),
+        var(--color-gray-800)
+      );
       border-radius: clamp(3px, 0.8svi, 4px);
       font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);
@@ -204,7 +197,10 @@
 
     code {
       padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
-      background: $color-grey-800;
+      background-color: light-dark(
+        var(--color-gray-200),
+        var(--color-gray-800)
+      );
       border-radius: clamp(2px, 0.6svi, 3px);
       font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);

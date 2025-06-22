@@ -13,7 +13,7 @@ const References = component$(() => {
       <Container size="full">
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
-          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-gray-300 font-mono">
+          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-gray-800 dark:text-gray-300 font-mono">
             Zistenie, že ste pre váš projekt zvolili{" "}
             <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
@@ -27,7 +27,7 @@ const References = component$(() => {
             title="Konzultácie"
             price={1500}
             onClick$={dialogContext.showDialog}>
-            <p class="text-gray-300">
+            <p class="text-gray-800 dark:text-gray-300">
               Potrebujete poradiť?
               <br />
               Trápi Vas implementačný problém, vizuálny bug alebo{" "}
@@ -46,7 +46,7 @@ const References = component$(() => {
             title="Mentoring"
             price={1000}
             onClick$={dialogContext.showDialog}>
-            <p class="text-gray-300">
+            <p class="text-gray-800 dark:text-gray-300">
               Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
               Váš projekt vhodný? Alebo si len chcete rozšíriť{" "}
               <strong>svoje vedomosti</strong> ? Poradím Vám, ako minimalizovať
@@ -61,7 +61,7 @@ const References = component$(() => {
             </ul>
           </Card>
           <Card title="Školenia" showVat={false}>
-            <p class="text-gray-300">
+            <p class="text-gray-800 dark:text-gray-300">
               JavasScript je skvelá technológia, no používať ju v dnešnej dobe
               na všetko, je nezmysel.
               <br />

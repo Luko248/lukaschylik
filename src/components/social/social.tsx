@@ -87,7 +87,8 @@ const Social = component$(() => {
           "absolute w-10 h-10",
           "group grid place-items-center",
           "m-0 cursor-pointer z-10",
-          "bg-white rounded-full",
+          "bg-white text-black",
+          "rounded-full",
           "transition-colors duration-200 focus:outline-none",
         )}>
         <Icon

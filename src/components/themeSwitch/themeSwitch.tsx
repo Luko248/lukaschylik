@@ -44,22 +44,16 @@ const ThemeSwitch = component$(() => {
       typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null
     ) as Theme | null;
 
+    const themeToApply = storedTheme || currentTheme.value;
+
     if (storedTheme) {
       currentTheme.value = storedTheme;
-
-      if (typeof document !== "undefined") {
-        const html = document.querySelector("html");
-        if (html) {
-          html.style.setProperty("color-scheme", storedTheme);
-        }
-      }
-      return;
     }
 
     if (typeof document !== "undefined") {
       const html = document.querySelector("html");
       if (html) {
-        html.style.setProperty("color-scheme", currentTheme.value);
+        html.style.setProperty("color-scheme", themeToApply);
       }
     }
   });
