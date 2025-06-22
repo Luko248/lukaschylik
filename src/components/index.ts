@@ -13,3 +13,4 @@ export * from "./router-head";
 export * from "./section";
 export * from "./skills";
 export * from "./social";
+export * from "./themeSwitch";

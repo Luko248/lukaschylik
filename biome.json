@@ -49,7 +49,7 @@
   },
   "css": {
     "formatter": {
-      "enabled": false
+      "enabled": true
     },
     "linter": {
       "enabled": false

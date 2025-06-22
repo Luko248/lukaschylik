@@ -54,7 +54,7 @@ const Contact = component$(() => {
   });
 
   return (
-    <Section id="contact" className="bg-white ">
+    <Section id="contact" className="bg-black dark:bg-white">
       <Container size="full" className="relative z-10 isolate">
         <SectionTitle text="Kontakt" dark={true} />
         <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono content-fade-in">
@@ -123,7 +123,7 @@ const Contact = component$(() => {
           <Button
             type="submit"
             title="Odoslať"
-            variant="primary"
+            variant="secondary"
             disabled={state.submitting}
             icon="send">
             {state.submitting ? "Odosielam..." : "Odoslať"}

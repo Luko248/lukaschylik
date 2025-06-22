@@ -16,8 +16,8 @@
       --btn_gradient,
       linear-gradient(
         160deg,
-        $color-white var(--btn_gradient-length),
-        $color-black var(--btn_gradient-length)
+        light-dark(var(--color-black), var(--color-white)) var(--btn_gradient-length),
+        light-dark(var(--color-white), var(--color-black)) var(--btn_gradient-length)
       )
     ) !important;
     text-align: center;
@@ -34,10 +34,6 @@
       }
     }
 
-    &:is([type="submit"]) {
-      border-color: var(--color-black) !important;
-    }
-
     &::after {
       content: attr(title);
       position: absolute;
@@ -49,8 +45,8 @@
         --btn-after_gradient,
         linear-gradient(
           160deg,
-          $color-black var(--btn_gradient-length),
-          $color-white var(--btn_gradient-length)
+          light-dark(var(--color-white), var(--color-black)) var(--btn_gradient-length),
+          light-dark(var(--color-black), var(--color-white)) var(--btn_gradient-length)
         )
       );
       background-clip: text;
@@ -60,21 +56,20 @@
     }
 
     &[data-variant="secondary"] {
-
-      --btn-icon_color: var(--color-black);
+      --btn-icon_color: light-dark(var(--color-white), var(--color-black));
       --btn_gradient: linear-gradient(
         160deg,
-        #{$color-black} var(--btn_gradient-length),
-        #{$color-white} var(--btn_gradient-length)
+        light-dark(var(--color-white), var(--color-black)) var(--btn_gradient-length),
+        light-dark(var(--color-black), var(--color-white)) var(--btn_gradient-length)
       );
       --btn-after_gradient: linear-gradient(
         160deg,
-        #{$color-white} var(--btn_gradient-length),
-        #{$color-black} var(--btn_gradient-length)
+        light-dark(var(--color-black), var(--color-white)) var(--btn_gradient-length),
+        light-dark(var(--color-white), var(--color-black)) var(--btn_gradient-length)
       );
 
       @include mq-hover {
-        --btn-icon_color: var(--color-white);
+        --btn-icon_color: light-dark(var(--color-black), var(--color-white));
       }
     }
 
@@ -82,6 +77,25 @@
       --icon_color: var(--btn-icon_color);
 
       transition: --icon_color $trans-time $trans-fnc;
+    }
+
+    &:is([type="submit"]) {
+      border-color: var(--color-black) !important;
+      --btn_gradient: linear-gradient(
+        160deg,
+        var(--color-white) var(--btn_gradient-length),
+        var(--color-black) var(--btn_gradient-length)
+      );
+      --btn-after_gradient: linear-gradient(
+        160deg,
+        var(--color-black) var(--btn_gradient-length),
+        var(--color-white) var(--btn_gradient-length)
+      );
+      --btn-icon_color: var(--color-white);
+
+      @include mq-hover {
+        --btn-icon_color: var(--color-black);
+      }
     }
 
     &[data-variant="plain"] {

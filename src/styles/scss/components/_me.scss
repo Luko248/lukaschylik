@@ -14,9 +14,9 @@
   }
 
   .me {
-    filter: drop-shadow(0 0 1px $color-white)
-      drop-shadow(-1px -1px 1px $color-white)
-      drop-shadow(1px 1px 1px $color-white)
+    filter: drop-shadow(0 0 1px light-dark(var(--color-black), var(--color-white)))
+      drop-shadow(-1px -1px 1px light-dark(var(--color-black), var(--color-white)))
+      drop-shadow(1px 1px 1px light-dark(var(--color-black), var(--color-white)))
       grayscale(var(--me_filter-greyscale)) contrast(1.15);
     translate: 0;
     transition: filter $trans-time $trans-fnc;

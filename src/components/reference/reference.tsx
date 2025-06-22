@@ -5,7 +5,7 @@ import type { ReferenceProps } from "./reference.types";
 const Reference = component$<ReferenceProps>(
   ({ title, webURL, type, website }) => {
     return (
-      <li class="border-b border-white/60 md:border-white isolate hover:z-10 first:border-t relative">
+      <li class="border-b border-white/70 dark:border-white/30  md:border-black dark:md:border-white isolate hover:z-10 first:border-t relative">
         <a
           href={webURL}
           target="_blank"
@@ -24,7 +24,7 @@ const Reference = component$<ReferenceProps>(
               title={title}>
               {title}
             </span>
-            <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-white tracking-wider leading-none">
+            <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-black dark:text-white tracking-wider leading-none">
               {type}
             </small>
           </strong>

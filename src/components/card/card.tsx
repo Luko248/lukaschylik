@@ -21,10 +21,10 @@ const Card = component$(
           class={cls(
             "text-3xl sm:text-4xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
             "font-regular tracking-widest 3xl:tracking-[.15em]",
-            "text-white group-hover:text-yellow-500",
+            "text-black dark:text-white group-hover:bg-yellow-500 group-hover:text-black",
             "transition-colors duration-300 ease-in-out",
             "py-3 sm:py-6 px-6 sm:px-8",
-            "border-b-2 border-b-white",
+            "border-b-2 border-b-black dark:border-b-white",
             "uppercase",
           )}>
           {title}
@@ -40,7 +40,7 @@ const Card = component$(
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
             "mb-0 3xl:mb-8",
-            "text-white",
+            "text-black dark:text-white",
             "content-start",
           )}>
           <Slot />
@@ -67,7 +67,7 @@ const Card = component$(
           </strong>
           {showVat && price && (
             <div
-              class="tooltip my-2 p-2 bg-white/10 font-semibold"
+              class="tooltip my-2 p-2 bg-white/90 dark:bg-white/10 font-semibold"
               role="tooltip">
               {`Cena bez DPH je ${formatPrice(price)} Kč`}
             </div>
@@ -91,8 +91,8 @@ const Card = component$(
           "card",
           "group",
           "grid grid-rows-subgrid row-span-4",
-          "border-2 border-white",
-          "text-white",
+          "border-2 border-black dark:border-white",
+          "text-black dark:text-white",
         )}>
         {CardContent}
       </div>

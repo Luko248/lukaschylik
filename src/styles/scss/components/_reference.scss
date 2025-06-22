@@ -22,7 +22,7 @@
       }
 
       &::before {
-        color: $color-white;
+        color: light-dark(var(--color-black), var(--color-white));
         translate: 0 var(--ref-before_trans-y, 0);
       }
 

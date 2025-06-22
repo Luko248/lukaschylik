@@ -8,6 +8,7 @@ import {
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls, DialogContext } from "~/utils";
+import Logo from "../../assets/images/logo.svg?jsx";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
@@ -19,8 +20,8 @@ import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
 const Navigation = component$<NavigationProps>(({ links }) => {
   const state = useStore({ isOpen: false });
   const isHydrated = useSignal(false);
-  const dialogContext = useContext(DialogContext);
   const location = useLocation();
+  const dialogContext = useContext(DialogContext);
 
   // Ensure proper hydration
   useVisibleTask$(() => {
@@ -51,7 +52,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "text-center",
           "py-2 md:py-0 px-4 md:px-18",
           "md:backdrop-blur-sm",
-          "bg-black md:bg-black-alpha-80",
+          "bg-white dark:bg-black md:bg-white dark:md:bg-black-alpha-80",
           "w-full z-[100]",
           state.isOpen && "nav--open",
         )}
@@ -68,13 +69,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "transition-opacity duration-200",
             "opacity-100 hover:opacity-80",
           )}>
-          <img
+          <Logo
             class="w-full max-w-full"
-            src="/images/logos/logo.svg"
-            alt="Lukáš Chylík Logo"
+            role="img"
+            aria-label="Lukáš Chylík Logo"
             width="120"
             height="60"
-            loading="eager"
           />
         </a>
         <ul
@@ -89,11 +89,11 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             !isHydrated.value && "invisible md:visible",
             state.isOpen ? "grid" : "hidden md:flex",
           )}>
-          {links?.map((link: NavigationLinkProps, index: number) => {
+          {links?.map((link: NavigationLinkProps) => {
             const isActive = link.href === "/blog" && isBlogPage;
 
             return (
-              <li key={index}>
+              <li key={link.href}>
                 <Link
                   role="menuitem"
                   href={link.href}
@@ -104,7 +104,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   class={cls(
                     "flex justify-center items-center flex-nowrap gap-3",
                     "text-xl md:text-l lg:text-xl",
-                    "text-white ",
+                    "text-black dark:text-white",
                     "decoration-secondary decoration-3 underline-offset-8",
                     "no-underline hover:underline",
                     isActive && "underline",

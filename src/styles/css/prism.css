@@ -9,7 +9,7 @@ pre[class*="language-"] {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1em;
   line-height: 1.5;
-  color: hsl(215deg 8% 47%);
+  color: light-dark(hsl(220deg 14% 15%), hsl(220deg 14% 90%));
   text-align: left;
   white-space: pre;
   word-break: normal;
@@ -22,7 +22,7 @@ pre[class*="language-"] {
 pre[class*="language-"] {
   margin: 0.5em 0;
   padding: 1em;
-  background: hsl(210deg 33% 97%);
+  background: light-dark(hsl(210deg 33% 97%), hsl(215deg 15% 12%));
   border-radius: 0.3em;
   overflow: auto;
 }
@@ -37,11 +37,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: hsl(215deg 8% 47%);
+  color: light-dark(hsl(214deg 8% 58%), hsl(120deg 6% 55%));
 }
 
 .token.punctuation {
-  color: hsl(215deg 8% 47%);
+  color: light-dark(hsl(215deg 8% 47%), hsl(220deg 14% 90%));
 }
 
 .token.namespace {
@@ -54,7 +54,7 @@ pre[class*="language-"] {
 .token.number,
 .token.constant,
 .token.symbol {
-  color: hsl(212deg 100% 40%);
+  color: light-dark(hsl(212deg 100% 40%), hsl(210deg 100% 74%));
 }
 
 .token.selector,
@@ -62,7 +62,7 @@ pre[class*="language-"] {
 .token.string,
 .token.char,
 .token.builtin {
-  color: hsl(212deg 68% 20%);
+  color: light-dark(hsl(212deg 68% 20%), hsl(208deg 100% 82%));
 }
 
 .token.operator,
@@ -71,26 +71,26 @@ pre[class*="language-"] {
 .language-css .token.string,
 .token.variable,
 .token.inserted {
-  color: hsl(215deg 8% 47%);
+  color: light-dark(hsl(215deg 8% 47%), hsl(220deg 14% 90%));
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: hsl(353deg 68% 54%);
+  color: light-dark(hsl(353deg 68% 54%), hsl(358deg 100% 72%));
 }
 
 .token.function {
-  color: hsl(272deg 51% 51%);
+  color: light-dark(hsl(272deg 51% 51%), hsl(270deg 100% 83%));
 }
 
 .token.class-name {
-  color: hsl(51deg 100% 53%);
+  color: light-dark(hsl(51deg 100% 30%), hsl(51deg 100% 53%));
 }
 
 .token.regex,
 .token.important {
-  color: hsl(24deg 81% 47%);
+  color: light-dark(hsl(24deg 81% 47%), hsl(27deg 87% 59%));
 }
 
 .token.important,
@@ -107,84 +107,11 @@ pre[class*="language-"] {
 }
 
 .token.deleted {
-  background-color: hsl(0deg 55% 97%);
-  color: hsl(355deg 74% 44%);
+  background-color: light-dark(hsl(0deg 55% 97%), hsl(0deg 91% 15%));
+  color: light-dark(hsl(355deg 74% 44%), hsl(359deg 100% 80%));
 }
 
 /* Line highlighting */
 .line-highlight {
   background: hsl(60deg 100% 50% / 10%);
-}
-
-/* Dark theme overrides */
-@media (prefers-color-scheme: dark) {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: hsl(220deg 14% 90%);
-  }
-
-  pre[class*="language-"] {
-    background: hsl(215deg 15% 12%);
-  }
-
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: hsl(214deg 8% 58%);
-  }
-
-  .token.punctuation {
-    color: hsl(220deg 14% 90%);
-  }
-
-  .token.property,
-  .token.tag,
-  .token.boolean,
-  .token.number,
-  .token.constant,
-  .token.symbol {
-    color: hsl(210deg 100% 74%);
-  }
-
-  .token.selector,
-  .token.attr-name,
-  .token.string,
-  .token.char,
-  .token.builtin {
-    color: hsl(208deg 100% 82%);
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .token.variable,
-  .token.inserted {
-    color: hsl(220deg 14% 90%);
-  }
-
-  .token.atrule,
-  .token.attr-value,
-  .token.keyword {
-    color: hsl(358deg 100% 72%);
-  }
-
-  .token.function {
-    color: hsl(270deg 100% 83%);
-  }
-
-  .token.class-name {
-    color: hsl(51deg 100% 53%);
-  }
-
-  .token.regex,
-  .token.important {
-    color: hsl(27deg 87% 59%);
-  }
-
-  .token.deleted {
-    background-color: hsl(0deg 91% 15%);
-    color: hsl(359deg 100% 80%);
-  }
 }

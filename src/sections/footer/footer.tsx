@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Container } from "~/components";
+import { Container, ThemeSwitch } from "~/components";
 import { cls } from "~/utils";
 
 const Footer = component$(() => {
@@ -38,27 +38,7 @@ const Footer = component$(() => {
           </small>
         </div>
         <div>
-          <a
-            href="/"
-            role="menuitem"
-            class={cls(
-              "nav__logo",
-              "relative z-[101]",
-              "w-[110px] md:w-[140px]",
-              "flex items-center",
-              "no-underline",
-              "transition-opacity duration-200",
-              "opacity-100 hover:opacity-80",
-            )}>
-            <img
-              class="w-full max-w-full"
-              src="/images/logos/logo.svg"
-              alt="Lukáš Chylík Logo"
-              width="120"
-              height="60"
-              loading="eager"
-            />
-          </a>
+          <ThemeSwitch />
         </div>
       </Container>
     </footer>
