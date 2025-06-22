@@ -11,7 +11,6 @@ import { cls, DialogContext } from "~/utils";
 import Logo from "../../assets/images/logo.svg?jsx";
 import { Button } from "../button";
 import { Icon } from "../icon";
-import { ThemeSwitch } from "../themeSwitch";
 import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
 
 /**
