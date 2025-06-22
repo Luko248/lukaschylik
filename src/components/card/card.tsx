@@ -67,7 +67,7 @@ const Card = component$(
           </strong>
           {showVat && price && (
             <div
-              class="tooltip my-2 p-2 bg-white/90 dark:bg-white/10 font-semibold"
+              class="tooltip my-2 p-2 bg-black/10 dark:bg-white/10 font-semibold"
               role="tooltip">
               {`Cena bez DPH je ${formatPrice(price)} Kč`}
             </div>

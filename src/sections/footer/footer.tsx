@@ -37,9 +37,6 @@ const Footer = component$(() => {
             ©{new Date().getFullYear()} Všetky práva vyhradené.
           </small>
         </div>
-        <div>
-          <ThemeSwitch />
-        </div>
       </Container>
     </footer>
   );

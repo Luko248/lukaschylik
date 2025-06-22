@@ -27,7 +27,7 @@ export const buttonVariants = tv({
       plain: [
         "all-[unset]",
         "cursor-pointer",
-        "border-0 p-0",
+        "border-0 px-0 py-0 m-0",
         "bg-transparent text-current",
         "hover:opacity-80",
       ],
@@ -64,7 +64,7 @@ export const buttonVariants = tv({
     },
     {
       variant: "plain",
-      class: "min-w-none",
+      class: "min-w-none px-0 py-0 sm:px-0 sm:py-0",
     },
   ],
   defaultVariants: {

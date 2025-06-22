@@ -1,71 +1,76 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Button } from "../button";
+import { Icon } from "../icon";
 
 type Theme = "light" | "dark";
 
 /**
- * Simple theme toggle button component
- * @param props - Component properties
+ * Theme toggle button component with simplified logic
  * @returns JSX button element
  */
 const ThemeSwitch = component$(() => {
   const currentTheme = useSignal<Theme>("light");
 
   /**
-   * Applies theme to HTML element and saves to localStorage
-   */
-  const applyAndSaveTheme = $((theme: Theme) => {
-    if (typeof document !== "undefined") {
-      const html = document.querySelector("html");
-      if (html) {
-        html.style.setProperty("color-scheme", theme);
-      }
-    }
-
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem("theme", theme);
-    }
-  });
-
-  /**
-   * Toggles theme between light and dark
+   * Applies theme to HTML element
    */
   const toggleTheme = $(() => {
-    const newTheme = currentTheme.value === "dark" ? "light" : "dark";
-    currentTheme.value = newTheme;
-    applyAndSaveTheme(newTheme);
+    if (typeof document === "undefined") return;
+
+    const html = document.querySelector("html");
+    if (!html) return;
+
+    currentTheme.value === "dark"
+      ? html.style.setProperty("color-scheme", "dark")
+      : html.style.setProperty("color-scheme", "light");
   });
 
   /**
-   * Initialize theme from localStorage or system preference
+   * Initialize theme on page load
    */
   useVisibleTask$(() => {
-    const storedTheme = (
-      typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null
-    ) as Theme | null;
+    if (typeof window === "undefined") return;
 
-    const themeToApply = storedTheme || currentTheme.value;
+    const html = document.querySelector("html");
+    if (!html) return;
 
-    if (storedTheme) {
-      currentTheme.value = storedTheme;
+    const storedTheme = localStorage.getItem("theme") as Theme | null;
+    let themeToApply: Theme;
+
+    if (!storedTheme) {
+      themeToApply = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    } else {
+      themeToApply = storedTheme;
     }
 
-    if (typeof document !== "undefined") {
-      const html = document.querySelector("html");
-      if (html) {
-        html.style.setProperty("color-scheme", themeToApply);
-      }
-    }
+    currentTheme.value = themeToApply;
+    html.style.setProperty("color-scheme", themeToApply);
+  });
+
+  /**
+   * Handles theme toggle on button click
+   */
+  const handleToggle = $(() => {
+    currentTheme.value = currentTheme.value === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", currentTheme.value);
+    toggleTheme();
   });
 
   return (
     <Button
       type="button"
-      onClick$={toggleTheme}
+      className="text-black dark:text-white p-0"
+      onClick$={handleToggle}
       variant="plain"
-      aria-label={`Current theme: ${currentTheme.value}. Click to toggle theme.`}
-      title={`Switch from ${currentTheme.value} theme`}>
-      {currentTheme.value === "dark" ? "🌙 Dark" : "☀️ Light"}
+      aria-label={`Zvolená téma: ${currentTheme.value}. Kliknite pre prepnutie.`}
+      title={`Prepni na ${currentTheme.value === "dark" ? "svetlú" : "tmavú"} tému`}>
+      <Icon
+        name={currentTheme.value === "dark" ? "moon" : "sun"}
+        size="1.5rem"
+        color="currentColor"
+      />
     </Button>
   );
 });

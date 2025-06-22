@@ -32,7 +32,7 @@
     .tooltip {
       position: absolute;
       display: var(--tooltip_display, none);
-      color: $color-white;
+      color: light-dark(var(--color-black), var(--color-white));
 
       @supports (position-anchor: --foo) {
         position-anchor: --vat-tooltip;
@@ -43,11 +43,11 @@
 
   // @keyframes fadeIn {
   //   from {
-  //     opacity: 0;
+  //     opacity: 0;opacity
   //   }
 
   //   to {
-  //     opacity: 1;
+  //     opacity: 1;opacity
   //   }
   // }
 }

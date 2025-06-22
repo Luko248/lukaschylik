@@ -14,15 +14,15 @@
     scroll-marker-group: after;
 
     // &:has(> div:first-of-type:hover) {
-    //   --col-template: 2fr 0.5fr 0.5fr;
+    //   --col-template: 2fr 0.5fr 0.5fr;--col-template--col-template--col-template--col-template--col-template--col-template
     // }
 
     // &:has(> div:last-of-type:hover) {
-    //   --col-template: 0.5fr 0.5fr 2fr;
+    //   --col-template: 0.5fr 0.5fr 2fr;--col-template--col-template--col-template--col-template--col-template--col-template
     // }
 
     // &:has(> div:not(:first-of-type, :last-of-type):hover) {
-    //   --col-template: 0.5fr 2fr 0.5fr;
+    //   --col-template: 0.5fr 2fr 0.5fr;--col-template--col-template--col-template--col-template--col-template--col-template
     // }
 
     @include mq-responsive("tablet", max) {
@@ -58,7 +58,7 @@
         content: "";
         display: block;
         box-sizing: border-box;
-        background-color: var(--marker-bg, var(--color-white));
+        background-color: var(--marker-bg, light-dark(var(--color-gray-800), var(--color-white)));
         border-radius: 100vmax;
         scale: 1;
         transition:

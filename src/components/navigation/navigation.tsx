@@ -11,6 +11,7 @@ import { cls, DialogContext } from "~/utils";
 import Logo from "../../assets/images/logo.svg?jsx";
 import { Button } from "../button";
 import { Icon } from "../icon";
+import { ThemeSwitch } from "../themeSwitch";
 import type { NavigationLinkProps, NavigationProps } from "./navigation.types";
 
 /**
@@ -48,12 +49,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "nav",
           "sticky top-0",
           "flex justify-between items-center",
-          "md:grid md:grid-cols-[120px_auto_120px] justify-between items-stretch",
+          "md:grid md:grid-cols-[auto_1fr_auto] justify-between items-stretch",
           "text-center",
           "py-2 md:py-0 px-4 md:px-18",
           "md:backdrop-blur-sm",
-          "bg-white dark:bg-black md:bg-white dark:md:bg-black-alpha-80",
-          "w-full z-[100]",
+          "bg-white dark:bg-black md:bg-white dark:md:bg-black/80",
+          "w-full z-[200] h-[56px] md:h-[76px]",
           state.isOpen && "nav--open",
         )}
         aria-label="Main navigation">
@@ -62,7 +63,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           role="menuitem"
           class={cls(
             "nav__logo",
-            "relative z-[101]",
+            "relative",
             "w-[110px] md:w-[140px]",
             "flex items-center",
             "no-underline",
@@ -81,10 +82,10 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           id="navigation-menu"
           class={cls(
             "nav__list",
-            "fixed md:relative inset-0 md:inset-auto h-screen md:h-auto z-[90]",
+            "fixed md:relative inset-[var(--nav_height)_0_0_0] md:inset-auto h-auto z-100",
             "align-baseline items-center content-center gap-10 md:gap-8",
             "md:flex-row md:justify-center py-6 px-8",
-            "backdrop-blur-md md:backdrop-blur-none bg-black-alpha-70 md:bg-transparent",
+            "backdrop-blur-md md:backdrop-blur-none bg-white/70 dark:bg-black/70 md:bg-transparent",
             "list-none m-0",
             !isHydrated.value && "invisible md:visible",
             state.isOpen ? "grid" : "hidden md:flex",
@@ -117,11 +118,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           })}
         </ul>
         <div class="flex gap-4 items-center">
+          <ThemeSwitch />
           <Button
             variant="secondary"
             size="sm"
             title="Rezervácia"
-            className="relative z-[101]"
+            className="relative"
             onClick$={dialogContext.showDialog}>
             Rezervácia
           </Button>
@@ -130,8 +132,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             class={cls(
               "nav__toggler relative",
               "w-10 h-10",
-              "z-[101]",
-              "text-white cursor-pointer visible md:invisible",
+              "text-white cursor-pointer grid md:hidden",
               state.isOpen && "nav__toggler--open",
             )}
             aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
