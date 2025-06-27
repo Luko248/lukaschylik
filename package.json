@@ -20,7 +20,7 @@
   "homepage": "https://lukaschylik.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukaschylik/lukaschylik.dev.git"
+    "url": "https://github.com/Luko248/lukaschylik/"
   },
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || ^22.0.0 || >=24.0.0"
