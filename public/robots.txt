@@ -3,4 +3,4 @@ Allow: /*.css$
 Allow: /*.js$
 Allow: /
 
-Sitemap: https://lukaschylik.sk/sitemap.xml
+Sitemap: https://lukaschylik.dev/sitemap.xml

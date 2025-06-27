@@ -4,7 +4,7 @@
   "description": "Modern personal portfolio website built with Qwik featuring SSR, dynamic blog posts, and optimized performance. Showcases skills, services, references, and includes a fully functional blog with markdown support.",
   "author": {
     "name": "Lukas Chylik",
-    "url": "https://lukaschylik.sk"
+    "url": "https://lukaschylik.dev"
   },
   "license": "MIT",
   "keywords": [
@@ -17,10 +17,10 @@
     "personal-website",
     "frontend-developer"
   ],
-  "homepage": "https://lukaschylik.sk",
+  "homepage": "https://lukaschylik.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukaschylik/lukaschylik.sk.git"
+    "url": "https://github.com/lukaschylik/lukaschylik.dev.git"
   },
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || ^22.0.0 || >=24.0.0"

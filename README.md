@@ -21,7 +21,7 @@ A modern personal portfolio website built with **Qwik** featuring server-side re
 
 ## Live Website
 
-🌐 **[https://lukaschylik.sk/](https://lukaschylik.dev/)** - Production website
+🌐 **[https://lukaschylik.dev/](https://lukaschylik.dev/)** - Production website
 
 ## Prerequisites
 
