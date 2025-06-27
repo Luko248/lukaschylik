@@ -1,6 +1,10 @@
 {
-  "watch": ["src/styles/scss/**/*.scss", "src/**/*.{ts,tsx,js,jsx}"],
-  "ext": "scss,ts,tsx,js,jsx",
-  "exec": "bun run build:css && bun run stylelint && bun run format",
+  "watch": [
+    "src/styles/scss/**/*.scss",
+    "src/styles/css/tailwind.css",
+    "src/**/*.{ts,tsx,js,jsx}"
+  ],
+  "ext": "scss,css,ts,tsx,js,jsx",
+  "exec": "bun run build:css && bun run tailwind:optimize && bun run stylelint && bun run format",
   "delay": 500
 }

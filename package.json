@@ -33,7 +33,7 @@
   "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
   "type": "module",
   "scripts": {
-    "build": "qwik build",
+    "build": "bun run tailwind:optimize && qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "vite build -c adapters/static/vite.config.ts",
@@ -52,6 +52,7 @@
     "start": "bun run fix && concurrently \"vite --open --mode ssr\" \"bun run watch:css\"",
     "watch:css": "nodemon",
     "fix": "bun run stylelint:fix && bun run format",
+    "tailwind:optimize": "tailwindcss --input ./src/styles/css/tailwind.css --output ./src/styles/css/tailwind.optimized.css --minify",
     "qwik": "qwik"
   },
   "devDependencies": {
@@ -77,6 +78,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "@toolwind/anchors": "^1.0.10",
     "gray-matter": "^4.0.3",
     "rehype-autolink-headings": "^7.1.0",
