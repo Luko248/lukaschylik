@@ -7,11 +7,7 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import "./styles/css/index.css";
-
-// Conditionally import optimized Tailwind CSS in production
-if (!isDev) {
-  import("./styles/css/tailwind.optimized.css");
-}
+import "./styles/css/tailwind.css";
 export default component$(() => {
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -25,7 +21,7 @@ export default component$(() => {
       <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="/src/styles/css/index.css" />
-        {isDev && <link rel="stylesheet" href="/src/styles/css/tailwind.css" />}
+        <link rel="stylesheet" href="/src/styles/css/tailwind.css" />
         {!isDev && (
           <link
             rel="manifest"
