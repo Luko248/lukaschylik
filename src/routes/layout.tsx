@@ -66,7 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@type": "WebSite",
       "@id": "#website",
-      "url": "https://lukaschylik.dev/",
+      "url": "https://lukaschylik.sk/",
       "name": "Lukáš Chylík | Creative web developer",
       "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. konzultácie, workshopy, dizajnové systémy.",
       "publisher": {
@@ -76,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@type": "ProfilePage",
       "@id": "#webpage",
-      "url": "https://lukaschylik.dev/",
+      "url": "https://lukaschylik.sk/",
       "name": "Lukáš Chylík | Creative web developer",
       "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. konzultácie, workshopy, dizajnové systémy.",
       "about": {

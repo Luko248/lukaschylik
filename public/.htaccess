@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^lukaschylik\.sk$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www\.lukaschylik\.sk$ [NC]
-RewriteRule ^(.*)$ https://likaschylik.dev/$1 [R=301,L]

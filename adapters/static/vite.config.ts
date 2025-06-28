@@ -16,7 +16,7 @@ export default defineConfig({
     qwikVite(),
     tsconfigPaths(),
     staticAdapter({
-      origin: "https://lukaschylik.dev",
+      origin: "https://lukaschylik.sk",
     }),
   ],
   build: {
