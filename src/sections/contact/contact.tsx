@@ -89,7 +89,7 @@ const Contact = component$(() => {
     <Section id="contact" className="bg-black dark:bg-white">
       <Container size="full" className="relative z-10 isolate">
         <SectionTitle text="Kontakt" dark={true} />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono content-fade-in">
+        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono text-gray-800 content-fade-in">
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
         </p>
