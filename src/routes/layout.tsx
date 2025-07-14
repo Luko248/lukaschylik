@@ -151,6 +151,9 @@ export default component$(() => {
   // Check if we're on the homepage
   const isHomePage = location.url.pathname === "/";
 
+  // Check if we're on a blog post page
+  const isBlogPostPage = location.url.pathname.startsWith("/blog/articles/");
+
   // Handle alert close
   const handleAlertClose = $(() => {
     alertState.visible = false;
@@ -191,7 +194,7 @@ export default component$(() => {
           duration={5}
         />
         <Slot />
-        <Social />
+        {!isBlogPostPage && <Social />}
       </main>
       <Footer />
       <ReservationDialog dialogRef={dialogRef} />
