@@ -131,6 +131,10 @@ section:has(.blog) {
         margin-top: clamp(1.2em, 3.5svi, 1.8em);
         font-size: clamp(1.5rem, 4svi, 1.75rem);
       }
+
+      > a:has(>span.icon.icon-link) {
+        display: none;
+      }
     }
 
     h3 {

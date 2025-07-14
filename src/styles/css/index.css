@@ -687,6 +687,9 @@ strong {
       font-size: clamp(1.5rem, 4svi, 1.75rem);
     }
   }
+  .blog h2 > a:has(> span.icon.icon-link) {
+    display: none;
+  }
   .blog h3 {
     font-size: clamp(1.5rem, 4svi, 1.65rem);
   }
