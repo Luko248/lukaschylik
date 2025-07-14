@@ -103,7 +103,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                   onClick$={closeMenuOnMobile}
                   data-active={isActive}
                   class={cls(
-                    "flex justify-center items-center flex-nowrap gap-3",
+                    "flex justify-center items-center flex-nowrap gap-3 whitespace-nowrap",
                     "text-xl md:text-l lg:text-xl",
                     "text-black dark:text-white",
                     "decoration-secondary decoration-3 underline-offset-8",

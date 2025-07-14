@@ -30,7 +30,7 @@ const Header = component$(() => {
                 "intro__subtitle",
                 "block",
                 "px-[.25em]",
-                "text-xl sm:text-2xl lg:text-[clamp(1rem,3.8svb,3.5rem)]",
+                "text-[3.5svb] lg:text-[clamp(1rem,3.8svb,3.5rem)]",
                 "text-black bg-secondary rounded-lg",
                 "font-medium",
               )}>
