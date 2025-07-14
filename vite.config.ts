@@ -35,6 +35,7 @@ export default defineConfig((): UserConfig => {
                 behavior: "wrap",
                 properties: {
                   className: ["heading-anchor"],
+                  tabIndex: 0,
                 },
               },
             ],

@@ -636,6 +636,7 @@ strong {
     display: none !important;
   }
   .blog :is(h2, h3, h4, h5, h6) > :is(a) {
+    display: contents;
     color: inherit !important;
     text-decoration: none;
   }
