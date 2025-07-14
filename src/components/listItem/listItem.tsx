@@ -8,7 +8,7 @@ const ListItem = component$(({ marker = "🔥" }: ListItemProps) => {
       data-marker={marker}
       class={cls(
         "ms-5 md:ms-7 ps-2",
-        "text-md sm:text-lg md:text-xl 3xl:text-2xl font-bold",
+        "text-sm sm:text-base md:text-md 3xl:text-lg font-bold",
       )}>
       <Slot />
     </li>

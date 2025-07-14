@@ -24,59 +24,51 @@ const References = component$(() => {
         </div>
         <div class="services grid gap-8 text-white">
           <Card
-            title="Konzultácie"
+            title="Konzultácie a Mentoring"
             price={1500}
             onClick$={dialogContext.showDialog}>
             <p class="text-gray-800 dark:text-gray-300">
-              Potrebujete poradiť?
-              <br />
-              Trápi Vas implementačný problém, vizuálny bug alebo{" "}
-              <strong>optimalizácia webového výkonu?</strong>
-              <br />
-              Som tu pre Vás.
+              Riešim<strong>konkrétne technické problémy</strong> a posúvam
+              developerov vpred prostredníctvom{" "}
+              <strong>personalizovaného mentoringu</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Úvodná schôdzka ZDARMA!</ListItem>
-              <ListItem>Pre firmy aj jednotlivcov</ListItem>
-              <ListItem>Online alebo osobne</ListItem>
-              <ListItem marker="☝🏽">Minimálne 1 hodina</ListItem>
+              <ListItem>Riešenie konkrétnych frontend problémov</ListItem>
+              <ListItem>Code review a architektonické poradenstvo</ListItem>
+              <ListItem>Kariérne poradenstvo pre developerov</ListItem>
+              <ListItem marker="☝🏽">Online aj osobné stretnutia</ListItem>
             </ul>
           </Card>
           <Card
-            title="Mentoring"
-            price={1000}
-            onClick$={dialogContext.showDialog}>
+            title="Technologický audit"
+            onClick$={dialogContext.showDialog}
+            showVat={false}>
             <p class="text-gray-800 dark:text-gray-300">
-              Rozhodujete sa, ktorý <strong>frontend tech stack</strong> je pre
-              Váš projekt vhodný? Alebo si len chcete rozšíriť{" "}
-              <strong>svoje vedomosti</strong> ? Poradím Vám, ako minimalizovať
-              náklady a maximalizovať efektivitu Vášho biznisu výberom vhodnej
-              technológie.
+              Analyzujem váš kód a technické riešenia, identifikujem
+              <strong>slabiny</strong> a navrhujem optimalizácie
+              <strong> pre lepší výkon</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Prvá hodina konzultácie ZDARMA!</ListItem>
-              <ListItem>Pre firmy aj jednotlivcov</ListItem>
-              <ListItem>Online alebo osobne</ListItem>
-              <ListItem marker="☝🏽">Minimálne 1 MD</ListItem>
+              <ListItem>Audit kódu a architektúry</ListItem>
+              <ListItem>Analýza výkonu a accessibility</ListItem>
+              <ListItem>Konkrétne odporúčania na zlepšenie</ListItem>
+              <ListItem marker="☝🏽">
+                60 min. vstupné stretnutie zdarma
+              </ListItem>
             </ul>
           </Card>
-          <Card title="Školenia" showVat={false}>
+          <Card title="Workshopy a školenia" showVat={false}>
             <p class="text-gray-800 dark:text-gray-300">
-              JavasScript je skvelá technológia, no používať ju v dnešnej dobe
-              na všetko, je nezmysel.
-              <br />
-              Ponúkam
-              <strong> školenia a workshopy</strong> zamerané na implementáciu
-              <strong> vizuálnej logiky</strong> a
-              <strong> design systémov</strong> pomocou moderného CSS.
+              Zdieľam praktické znalosti a najnovšie trendy vo frontend
+              developmente cez interaktívne workshopy pre tímy.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Úvodná schôdzka ZDARMA!</ListItem>
-              <ListItem>
-                Při objednání viacerich termínu školení 10% zľava
+              <ListItem>Firemné školenia na mieru</ListItem>
+              <ListItem>Praktické workshopy s live coding</ListItem>
+              <ListItem>Aktuálne technológie a best practices</ListItem>
+              <ListItem marker="☝🏽">
+                Skupinové aj individuálne formáty
               </ListItem>
-              <ListItem>Pre firmy aj jednotlivcov</ListItem>
-              <ListItem marker="☝🏽">len osobne</ListItem>
             </ul>
           </Card>
         </div>
