@@ -101,11 +101,7 @@
     }
 
     h3 {
-      font-size: clamp(1.75rem, 4.5svi, 1.875rem);
-
-      @include mq-responsive(tablet, max) {
-        font-size: clamp(1.5rem, 4svi, 1.65rem);
-      }
+      font-size: clamp(1.5rem, 4svi, 1.65rem);
 
       @include mq-responsive(mobile, max) {
         font-size: clamp(1.25rem, 3.5svi, 1.5rem);

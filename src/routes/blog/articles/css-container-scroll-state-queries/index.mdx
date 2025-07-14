@@ -6,15 +6,13 @@ date: 2025-07-13
 author: Lukáš Chylík
 ---
 
-## CSS sa stáva čoraz mocnejším
+## Čo sú Container Scroll State Queries?
 
-Napadlo Vás niekedy, že budeme pomocou CSS niekedy schopní sledovať scroll stav elementu? Mňa teda nie, a to sa CSS venujem už pekných pár rokov. **CSS Container Scroll State Queries menia hru!**
-
-### Čo sú Container Scroll State Queries?
+Napadlo Vás niekedy, že budeme pomocou CSS niekedy schopní sledovať scroll stav elementu? **CSS Container Scroll State Queries menia hru!**
 
 Container Scroll State Queries sú novým prírastkom do rodiny container queries, ktoré nám umožňujú selektívne aplikovať štýly na potomkov kontajnera na základe jeho stavu scrollovania. A nie len to! Vedia identifikovať či je element prilepený pomocou `position: sticky` alebo prichytený (snapped) na základe vlastnosti `scroll-snap`.
 
-## Syntax Container Scroll State Queries
+## Syntax
 
 Podobne ako u Container Queries, aby ste mohli začať identifikovať stav scrollovania, musíte najprv nastaviť element ako scroll-state query kontajner pomocou vlastnosti `container-type` s hodnotou `scroll-state`. Voliteľne môžete tiež nastaviť `container-name`, aby ste mohli cieliť na konkrétny kontajner:
 
@@ -47,9 +45,28 @@ Container Scroll State Queries ponúkajú tri hlavné typy detekcie stavov:
 
 ## scrollable: Detekcia možnosti scrollovania
 
-Query `scrollable` testuje, či je možné kontajner scrollovať v danom smere pomocou užívateľom iniciovaného scrollovania. Inými slovami, existuje v danom smere pretekajúci obsah, ku ktorému sa dá scrollovať? To nám umožňuje jednoducho identifikovať či je užívateľ na začiatku, na konci alebo v priebehu scrollovania. Scroll stav je možné identifikovať ako na x-ovej, tak na y-ovej osi.
+Query `scrollable` testuje, či je možné kontajner scrollovať v danom smere pomocou užívateľom iniciovaného scrollovania. Inými slovami, existuje v danom smere pretekajúci obsah, ku ktorému sa dá scrollovať? To nám umožňuje jednoducho identifikovať či je užívateľ na začiatku, na konci alebo v priebehu scrollovania.
 
 Je možné to šikovne využiť napríklad pri popover menu, kde v prípade, že je možné scrollovať, vykreslíte overlay, ktorý užívateľovi napovie, že je k dispozícii ďalší obsah. Celkom užitočná UX funkcia, ktorá je prakticky zadarmo.
+
+### Možné hodnoty
+
+```css
+/* Žiadne scrollovanie */
+scrollable: none          /* nie je možnosť scrollovať */
+
+/* Fyzické smery */
+scrollable: top           /* možnosť scrollovať nahor */
+scrollable: right         /* možnosť scrollovať doprava */
+scrollable: bottom        /* možnosť scrollovať nadol */
+scrollable: left          /* možnosť scrollovať doľava */
+
+/* Logické smery */
+scrollable: block-start   /* možnosť scrollovať na začiatok bloku */
+scrollable: inline-start  /* možnosť scrollovať na začiatok riadku */
+scrollable: block-end     /* možnosť scrollovať na koniec bloku */
+scrollable: inline-end    /* možnosť scrollovať na koniec riadku */
+```
 
 ### Showcase
 
@@ -90,9 +107,24 @@ V tomto príklade sa odkaz "Späť nahor" zobrazí iba vtedy, keď je možné sc
 
 ## snapped: Detekcia prichytenia v scroll snap
 
-Query `snapped` testuje, či je kontajner "prichytený" (snapped) k scroll snap kontajneru. Táto query sa aktivuje len v kombinácii s CSS vlastnosťou `scroll-snap-type`. Rovnako ako `scrollable`, môžeme identifikovať `snapped` ako na x-ovej, tak na y-ovej osi.
+Query `snapped` testuje, či je kontajner "prichytený" (snapped) k scroll snap kontajneru. Táto query sa aktivuje len v kombinácii s CSS vlastnosťou `scroll-snap-type`. Môžeme identifikovať prichytenie na rôznych osiach a smeroch.
 
 Veľmi šikovné je využitie v CSS only carouseloch, kde môžete zvýrazniť aktuálne prichytený (snapped) element alebo zobraziť niektoré jeho časti, ktoré boli predtým skryté, napríklad pomocou pekného fade efektu.
+
+### Možné hodnoty
+
+```css
+/* Žiadne prichytenie */
+snapped: none       /* element nie je prichytený */
+
+/* Fyzické osi */
+snapped: x          /* element je prichytený horizontálne */
+snapped: y          /* element je prichytený vertikálne */
+
+/* Logické osi */
+snapped: block      /* element je prichytený v bloku */
+snapped: inline     /* element je prichytený v riadku */
+```
 
 ### Showcase
 
@@ -125,7 +157,7 @@ V tomto príklade máme horizontálny carousel s prvkami, ktoré sa prichytávaj
 @container carousel-item scroll-state(snapped: x) {
   .carousel-item {
     border-color: oklch(0.65 0.25 25);
-    transform: scale(1.05);
+    scale: 1.05;
   }
 }
 ```
@@ -134,9 +166,28 @@ V tomto príklade sa položka carousel-u, ktorá je aktuálne prichytená, zvýr
 
 ## stuck: Detekcia prilepeného sticky elementu
 
-Query `stuck` testuje, či je kontajner s hodnotou `position: sticky` "prilepený" (stuck) k okraju svojho rodiča, nezávisle na strane, ku ktorej sa element prilepí.
+Query `stuck` testuje, či je kontajner s hodnotou `position: sticky` "prilepený" (stuck) k okraju svojho rodiča. Môžeme identifikovať prilepenie na rôznych stranách kontajnera.
 
 Veľmi pekný príklad môže byť prefarbenie navigačnej lišty, kde môžete zmeniť jej vzhľad, keď je prilepená k hornej časti stránky. Typicky má nastavené transparentné pozadie, ktoré sa zmení na plné, keď sa prilepí.
+
+### Možné hodnoty
+
+```css
+/* Žiadne prilepenie */
+stuck: none         /* element sa neprilepi nikde */
+
+/* Fyzické smery */
+stuck: top          /* element sa prilepi k vrchu */
+stuck: right        /* element sa prilepi vpravo */
+stuck: bottom       /* element sa prilepi dole */
+stuck: left         /* element sa prilepi vľavo */
+
+/* Logické smery */
+stuck: block-start  /* element sa prilepi na začiatok bloku */
+stuck: inline-start /* element sa prilepi na začiatok riadku */
+stuck: block-end    /* element sa prilepi na koniec bloku */
+stuck: inline-end   /* element sa prilepi na koniec riadku */
+```
 
 ### Showcase
 
@@ -181,6 +232,17 @@ V tomto príklade máme navigačnú lištu, ktorá sa "prilepí" k hornej časti
 ```
 
 V tomto príklade sa navigačná lišta zmení, keď je prilepená k hornej časti stránky - dostane polopriehľadné pozadie, tieň a menšie padding-y.
+
+## Container Queries jednotky
+
+Rovnako ako u klasických Container Queries, aj tu platia tie isté špeciálne jednotky pre veľkosti:
+
+- **`cqw`** - 1% šírky query kontajnera
+- **`cqh`** - 1% výšky query kontajnera  
+- **`cqi`** - 1% inline veľkosti query kontajnera
+- **`cqb`** - 1% block veľkosti query kontajnera
+- **`cqmin`** - 1% užšieho rozmeru kontajnera
+- **`cqmax`** - 1% širšieho rozmeru kontajnera
 
 ## Podpora prehliadačov
 
