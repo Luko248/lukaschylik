@@ -56,7 +56,7 @@ export default component$(() => {
           ← Späť na zoznam článkov
         </Link>
 
-        <article class="blog">
+        <article class="blog dark:bg-gray-900 bg-gray-100">
           {post.value && (
             <header class="mb-8">
               <h1 class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-800 dark:text-gray-300 leading-tight md:leading-tight lg:leading-tight">
