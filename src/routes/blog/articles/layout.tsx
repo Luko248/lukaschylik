@@ -118,6 +118,10 @@ export const head: DocumentHead = ({ head, resolveValue }) => {
         content: description,
       },
       {
+        name: "twitter:description",
+        content: description,
+      },
+      {
         name: "og:type",
         content: "article",
       },
