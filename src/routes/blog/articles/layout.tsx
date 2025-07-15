@@ -101,33 +101,13 @@ export default component$(() => {
  */
 export const head: DocumentHead = ({ head, resolveValue }) => {
   const post = resolveValue(useCurrentPost);
-  const description =
-    post?.description ||
-    "Osobný blog o webovom vývoji, dizajne a technológiách";
 
   return {
-    title: `${head.title} | Blog | Lukáš Chylík` || "Blog | Lukáš Chylík",
+    title: `${post?.title} | Blog | Lukáš Chylík`,
     meta: [
-      ...(head.meta || []),
       {
         name: "description",
-        content: description,
-      },
-      {
-        name: "og:description",
-        content: description,
-      },
-      {
-        name: "twitter:description",
-        content: description,
-      },
-      {
-        name: "og:type",
-        content: "article",
-      },
-      {
-        name: "keywords",
-        content: `blog, webový vývoj, dizajn, technológie, Lukáš Chylík`,
+        content: post?.description,
       },
     ],
   };

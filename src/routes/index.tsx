@@ -12,20 +12,3 @@ export default component$(() => {
     </>
   );
 });
-
-export const head: DocumentHead = {
-  title: "Lukáš Chylík | Creative web developer",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.",
-    },
-    {
-      name: "keywords",
-      content:
-        "web developer, frontend, backend, UI/UX design, portfolio, Lukáš Chylík",
-    },
-  ],
-  links: [],
-};

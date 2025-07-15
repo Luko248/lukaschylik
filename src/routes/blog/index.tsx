@@ -65,9 +65,5 @@ export const head: DocumentHead = {
       content:
         "Prečítajte si moje najnovšie články o webovom vývoji, dizajne a technológiách.",
     },
-    {
-      name: "keywords",
-      content: "blog, webový vývoj, dizajn, technológie, Lukáš Chylík",
-    },
   ],
 };
