@@ -15,7 +15,7 @@ container scroll-state queries sú novým prírastkom do rodiny container querie
 
 ## Syntax
 
-Podobne ako u Container Queries, aby ste mohli začať identifikovať stav scrollovania, musíte najprv nastaviť element ako scroll-state query kontajner pomocou vlastnosti `container-type` s hodnotou `scroll-state`. Voliteľne môžete tiež nastaviť `container-name`, aby ste mohli cieliť na konkrétny kontajner:
+Podobne ako u container queries, aby ste mohli začať identifikovať stav scrollovania, musíte najprv nastaviť element ako scroll-state query kontajner pomocou vlastnosti `container-type` s hodnotou `scroll-state`. Voliteľne môžete tiež nastaviť `container-name`, aby ste mohli cieliť na konkrétny kontajner:
 
 ```css
 .container {
@@ -24,7 +24,7 @@ Podobne ako u Container Queries, aby ste mohli začať identifikovať stav scrol
 }
 ```
 
-Následne je možné definovať jednotlivé `@container` queries. Tie špecifikujú pravidlá, ktoré sa aplikujú na potomkov kontajnera v prípade, že sa query zavolá. Prakticky je to rovnaký postup, ktorý poznáme z klasických Container Queries.
+Následne je možné definovať jednotlivé `@container` queries. Tie špecifikujú pravidlá, ktoré sa aplikujú na potomkov kontajnera v prípade, že sa query zavolá. Prakticky je to rovnaký postup, ktorý poznáme z klasických container queries.
 
 ```css
 @container my-container scroll-state(scrollable: top) {
@@ -234,9 +234,9 @@ V tomto príklade máme navigačnú lištu, ktorá sa "prilepí" k hornej časti
 
 V tomto príklade sa navigačná lišta zmení, keď je prilepená k hornej časti stránky - dostane polopriehľadné pozadie, tieň a menšie padding-y.
 
-## Container Queries jednotky
+## container queries jednotky
 
-Rovnako ako u klasických Container Queries, aj tu platia tie isté špeciálne jednotky pre veľkosti:
+Rovnako ako u klasických container queries, aj tu platia tie isté špeciálne jednotky pre veľkosti:
 
 - **`cqw`** - 1% šírky query kontajnera
 - **`cqh`** - 1% výšky query kontajnera  
