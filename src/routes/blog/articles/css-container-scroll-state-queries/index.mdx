@@ -1,17 +1,17 @@
 ---
-title: CSS Container Scroll State Queries
+title: CSS container scroll-state queries
 subtitle: Nový spôsob ako reagovať na stav scrollovania v CSS
-description: Objavte, ako môžete pomocou CSS Container Scroll State Queries vytvárať interaktívne prvky reagujúce na scrollovanie bez použitia JavaScriptu.
+description: Objavte, ako môžete pomocou CSS container scroll-state queries vytvárať interaktívne prvky reagujúce na scrollovanie bez použitia JavaScriptu.
 date: 2025-07-14
 author: Lukáš Chylík
 podcastUrl: https://open.spotify.com/episode/7MCsBrsSFOBMTcQxNLdFTB?si=02T7dOEWS2WhRA5_3p0tbA
 ---
 
-## Čo sú Container Scroll State Queries?
+## Čo sú container scroll-state queries?
 
-Napadlo Vás niekedy, že budeme pomocou CSS niekedy schopní sledovať scroll stav elementu? **CSS Container Scroll State Queries menia hru!**
+Napadlo Vás niekedy, že budeme pomocou CSS niekedy schopní sledovať scroll stav elementu? **CSS container scroll-state queries menia hru!**
 
-Container Scroll State Queries sú novým prírastkom do rodiny container queries, ktoré nám umožňujú selektívne aplikovať štýly na potomkov kontajnera na základe jeho stavu scrollovania. A nie len to! Vedia identifikovať či je element prilepený pomocou `position: sticky` alebo prichytený (snapped) na základe vlastnosti `scroll-snap`.
+container scroll-state queries sú novým prírastkom do rodiny container queries, ktoré nám umožňujú selektívne aplikovať štýly na potomkov kontajnera na základe jeho stavu scrollovania. A nie len to! Vedia identifikovať či je element prilepený pomocou `position: sticky` alebo prichytený (snapped) na základe vlastnosti `scroll-snap`.
 
 ## Syntax
 
@@ -34,9 +34,9 @@ Následne je možné definovať jednotlivé `@container` queries. Tie špecifiku
 
 **Poznámka:** Na oddelenie scroll-state queries od iných container queries sa deskriptory a hodnoty scroll-state umiestňujú do zátvoriek, pred ktorými je `scroll-state` (scroll-state( ... )). Tieto konštrukcie vyzerajú ako funkcie, ale nie sú to funkcie.
 
-## Typy Container Scroll State Queries
+## Typy container scroll-state queries
 
-Container Scroll State Queries ponúkajú tri hlavné typy detekcie stavov:
+container scroll-state queries ponúkajú tri hlavné typy detekcie stavov:
 
 ### Prehľad kľúčových typov:
 
@@ -247,7 +247,7 @@ Rovnako ako u klasických Container Queries, aj tu platia tie isté špeciálne 
 
 ## Podpora prehliadačov
 
-CSS Container Scroll State Queries sú relatívne novou funkciou a podpora v prehliadačoch sa stále vyvíja:
+CSS container scroll-state queries sú relatívne novou funkciou a podpora v prehliadačoch sa stále vyvíja:
 
 - Chrome: Podporované od verzie 127
 - Firefox: Zatiaľ nepodporované
@@ -257,7 +257,7 @@ Pre produkčné použitie je vhodné implementovať fallback riešenie, aby vaš
 
 ## Fallback riešenie
 
-Pre prehliadače, ktoré nepodporujú Container Scroll State Queries, môžete implementovať fallback riešenie pomocou `@supports` pravidla:
+Pre prehliadače, ktoré nepodporujú container scroll-state queries, môžete implementovať fallback riešenie pomocou `@supports` pravidla:
 
 ```css
 /* Základné štýly pre všetky prehliadače */
@@ -268,7 +268,7 @@ Pre prehliadače, ktoré nepodporujú Container Scroll State Queries, môžete i
   display: none;
 }
 
-/* Štýly pre prehliadače, ktoré podporujú Container Scroll State Queries */
+/* Štýly pre prehliadače, ktoré podporujú container scroll-state queries */
 @supports (container-type: scroll-state) {
   .scroll-container {
     container-type: scroll-state;
@@ -282,7 +282,7 @@ Pre prehliadače, ktoré nepodporujú Container Scroll State Queries, môžete i
   }
 }
 
-/* Fallback pre prehliadače, ktoré nepodporujú Container Scroll State Queries */
+/* Fallback pre prehliadače, ktoré nepodporujú container scroll-state queries */
 @supports not (container-type: scroll-state) {
   .scroll-container:not(:scroll-position(0% 0%)) .scroll-to-top {
     display: block;
@@ -292,8 +292,8 @@ Pre prehliadače, ktoré nepodporujú Container Scroll State Queries, môžete i
 
 ## Záver
 
-CSS Container Scroll State Queries predstavujú ďalší krok v evolúcii CSS, ktorý nám umožňuje vytvárať interaktívnejšie a dynamickejšie webové stránky bez potreby JavaScriptu. S možnosťou reagovať na stav scrollovania kontajnera môžeme vytvárať sofistikovanejšie užívateľské rozhrania, ktoré sa prispôsobujú interakcii užívateľa.
+CSS container scroll-state queries predstavujú ďalší krok v evolúcii CSS, ktorý nám umožňuje vytvárať interaktívnejšie a dynamickejšie webové stránky bez potreby JavaScriptu. S možnosťou reagovať na stav scrollovania kontajnera môžeme vytvárať sofistikovanejšie užívateľské rozhrania, ktoré sa prispôsobujú interakcii užívateľa.
 
-Aj keď podpora v prehliadačoch je zatiaľ obmedzená, je dobré začať s touto funkciou experimentovať a pripraviť sa na jej širšie nasadenie v budúcnosti. S fallback riešením môžete začať používať Container Scroll State Queries už dnes a poskytnúť vylepšený zážitok užívateľom moderných prehliadačov, zatiaľ čo ostatní užívatelia dostanú základnú funkcionalitu.
+Aj keď podpora v prehliadačoch je zatiaľ obmedzená, je dobré začať s touto funkciou experimentovať a pripraviť sa na jej širšie nasadenie v budúcnosti. S fallback riešením môžete začať používať container scroll-state queries už dnes a poskytnúť vylepšený zážitok užívateľom moderných prehliadačov, zatiaľ čo ostatní užívatelia dostanú základnú funkcionalitu.
 
-Skúste si Container Scroll State Queries vo svojich projektoch a objavte nové možnosti, ktoré nám prinášajú!
+Skúste si container scroll-state queries vo svojich projektoch a objavte nové možnosti, ktoré nám prinášajú!
