@@ -22,13 +22,18 @@ export const RouterHead = component$(() => {
   )?.content;
   const description = descriptionFromMeta || defaultDescription;
 
+  // Check if title and description are already defined in route to avoid duplication
+  const hasTitle = !!head.title;
+  const hasDescriptionMeta = head.meta.some((m) => m.name === "description");
+
   // Default meta images (not overridable)
   const defaultOpenGraphImage = "/images/meta/meta-large.webp";
   const defaultTwitterImage = "/images/meta/meta-small.webp";
 
   return (
     <>
-      <title>{title}</title>
+      {/* Only render title tag if not already defined in route */}
+      {!hasTitle && <title>{title}</title>}
 
       <link rel="canonical" href={loc.url.href} />
       <meta
@@ -55,7 +60,8 @@ export const RouterHead = component$(() => {
       <meta name="apple-mobile-web-app-title" content="Lukáš Chylík" />
       <link rel="manifest" href="/manifest.json" />
 
-      <meta name="description" content={description} />
+      {/* Only render description meta tag if not already defined in route */}
+      {!hasDescriptionMeta && <meta name="description" content={description} />}
       <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta http-equiv="Content-Language" content="sk" />
@@ -88,6 +94,13 @@ export const RouterHead = component$(() => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={defaultTwitterImage} />
+
+      {/* Dynamic meta tags from routes (only those not handled above) */}
+      {head.meta
+        .filter((m) => m.name !== "description") // Skip description as it's handled conditionally above
+        .map((m) => (
+          <meta key={m.key} {...m} />
+        ))}
 
       {/* Dynamic links from routes */}
       {head.links.map((l) => (
