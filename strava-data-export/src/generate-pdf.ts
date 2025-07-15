@@ -1,7 +1,8 @@
 import * as fs from "fs";
-import PDFDocument from "pdfkit";
 import axios from "axios";
 import { parse } from "csv-parse/sync";
+
+const PDFDocument = require("pdfkit");
 
 /**
  * Safely sanitizes text to ensure PDF compatibility
@@ -46,7 +47,9 @@ async function generatePdf(): Promise<void> {
         layout: "portrait",
         info: {
           Title: "Strava Runs Report - Jan to Jun 2025",
-          Author: "Strava Data Export Tool"
+          Author: "Strava Data Export Tool",
+          User: "Lukáš Chylík",
+          UserEmail: "chylik.lukas@gmail.com"
         }
       });
     
@@ -69,8 +72,16 @@ async function generatePdf(): Promise<void> {
       .font("Helvetica")
       .text("January to June 2025", 140, 80);
     
+    // Add user information
+    doc.moveDown(1)
+      .fillColor("#000000")
+      .fontSize(12)
+      .font("Helvetica")
+      .text("User: Lukas Chylik", 140, 105)
+      .text("User Email: chylik.lukas@gmail.com", 140, 120);
+    
     // Add summary section
-    doc.moveDown(3)
+    doc.moveDown(2)
       .fillColor("#000000") // Ensure text is black
       .fontSize(14)
       .font("Helvetica-Bold")
