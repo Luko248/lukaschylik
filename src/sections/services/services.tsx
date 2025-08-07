@@ -44,7 +44,7 @@ const References = component$(() => {
             onClick$={dialogContext.showDialog}
             showVat={false}>
             <p class="text-gray-800 dark:text-gray-300">
-              Analyzujem váš kód a technické riešenia, identifikujem
+              Analyzujem váš kód a technické riešenia, identifikujem{" "}
               <strong>slabiny</strong> a navrhujem optimalizácie
               <strong> pre lepší výkon</strong>.
             </p>

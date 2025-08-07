@@ -21,7 +21,7 @@ const References = component$(() => {
                 Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
                 rôznym webovým projektom. Pre Update Conference som vytvoril
                 množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
-                framework. Už nespolupracujem s Riganti.
+                framework.
               </p>
 
               <p class="text-l lg:text-xl leading-relaxed font-light mb-8 md:mb-16 text-gray-800 dark:text-gray-300 font-mono">
@@ -59,10 +59,16 @@ const References = component$(() => {
             </div>
           </div>
           <ul class="ref-list list-none p-0 m-0 content-fade-in xl:mt-5 3xl:mt-8">
+           <Reference
+              title="Vertice"
+              webURL="https://vertice.one/"
+              website="vertice.one"
+              type="Technická analýza"
+            />
             <Reference
-              title="AIS servis"
-              webURL="https://www.ais-servis.cz/"
-              website="ais-servis.cz"
+              title="VIG (Kooperativa & CPP)"
+              webURL="https://vig.cz/"
+              website="vig.cz"
               type="Spolupráca"
             />
             <Reference
