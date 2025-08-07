@@ -806,35 +806,55 @@ strong {
   }
   .intro__title {
     position: relative;
-    animation: show-title 0.5s ease-out 0.35s forwards;
+    text-shadow: -2px 0 var(--color-pink), 2px 0 var(--color-torquoise);
+    animation: show-title-glitch 0.5s ease-out 0.35s forwards;
     paint-order: stroke fill;
     -webkit-text-stroke: 0.025em light-dark(var(--color-black), var(--color-white));
   }
   @media (prefers-reduced-motion: reduce) {
     .intro__title {
       opacity: initial;
+      text-shadow: none;
       animation: none;
       scale: initial;
     }
   }
   .intro__title::before, .intro__title::after {
+    content: attr(data-glitch);
     position: absolute;
-    top: 50%;
-    display: none;
-    opacity: var(--header-opacity, 1);
-    font-size: 2em;
-    color: var(--color-yellow-500);
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: white;
+    text-align: inherit;
+    white-space: pre-line;
+    overflow: hidden;
+    z-index: -1;
+    clip: rect(0, attr(data-width px), attr(data-height px), 0);
+    pointer-events: none;
     -webkit-text-stroke: 0;
   }
+  @supports not (clip: rect(0, attr(data-width px), attr(data-height px), 0)) {
+    .intro__title::before, .intro__title::after {
+      clip: rect(0, 9999px, attr(data-height px, 200px), 0);
+    }
+  }
   .intro__title::before {
-    content: "<";
-    left: 0;
-    translate: var(--header-before_trans-x, -100%) -50%;
+    left: 2px;
+    color: var(--color-pink);
+    animation: noise-anim 2s infinite linear alternate-reverse;
   }
   .intro__title::after {
-    content: ">";
-    right: 0;
-    translate: var(--header-after_trans-x, 100%) -50%;
+    left: -2px;
+    color: var(--color-torquoise);
+    animation: noise-anim-2 3s infinite linear alternate-reverse;
   }
   .intro__subtitle {
     opacity: 0;
@@ -878,6 +898,24 @@ strong {
       scale: 1;
     }
   }
+  @keyframes show-title-glitch {
+    0% {
+      opacity: 0;
+      scale: 0.5;
+    }
+    60% {
+      opacity: 0.8;
+      scale: 1.1;
+    }
+    80% {
+      opacity: 0.9;
+      scale: 0.98;
+    }
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
   @keyframes show-subtitle {
     to {
       opacity: 1;
@@ -895,6 +933,156 @@ strong {
       opacity: 0;
       translate: 0 -20svb;
       scale: 1.2;
+    }
+  }
+  @keyframes glitch-color {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-3px, 3px);
+    }
+    40% {
+      transform: translate(-3px, -3px);
+    }
+    60% {
+      transform: translate(3px, 3px);
+    }
+    80% {
+      transform: translate(3px, -3px);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+  @keyframes noise-anim {
+    0% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.2), 0);
+    }
+    5% {
+      clip: rect(calc(attr(data-height px) * 0.3), attr(data-width px), calc(attr(data-height px) * 0.6), 0);
+    }
+    10% {
+      clip: rect(calc(attr(data-height px) * 0.1), attr(data-width px), calc(attr(data-height px) * 0.4), 0);
+    }
+    15% {
+      clip: rect(calc(attr(data-height px) * 0.5), attr(data-width px), calc(attr(data-height px) * 0.8), 0);
+    }
+    20% {
+      clip: rect(calc(attr(data-height px) * 0.2), attr(data-width px), calc(attr(data-height px) * 0.7), 0);
+    }
+    25% {
+      clip: rect(calc(attr(data-height px) * 0.4), attr(data-width px), calc(attr(data-height px) * 0.9), 0);
+    }
+    30% {
+      clip: rect(calc(attr(data-height px) * 0.6), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    35% {
+      clip: rect(calc(attr(data-height px) * 0.15), attr(data-width px), calc(attr(data-height px) * 0.55), 0);
+    }
+    40% {
+      clip: rect(calc(attr(data-height px) * 0.35), attr(data-width px), calc(attr(data-height px) * 0.85), 0);
+    }
+    45% {
+      clip: rect(calc(attr(data-height px) * 0.7), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    50% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.3), 0);
+    }
+    55% {
+      clip: rect(calc(attr(data-height px) * 0.45), attr(data-width px), calc(attr(data-height px) * 0.75), 0);
+    }
+    60% {
+      clip: rect(calc(attr(data-height px) * 0.25), attr(data-width px), calc(attr(data-height px) * 0.65), 0);
+    }
+    65% {
+      clip: rect(calc(attr(data-height px) * 0.55), attr(data-width px), calc(attr(data-height px) * 0.95), 0);
+    }
+    70% {
+      clip: rect(calc(attr(data-height px) * 0.05), attr(data-width px), calc(attr(data-height px) * 0.45), 0);
+    }
+    75% {
+      clip: rect(calc(attr(data-height px) * 0.75), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    80% {
+      clip: rect(calc(attr(data-height px) * 0.3), attr(data-width px), calc(attr(data-height px) * 0.8), 0);
+    }
+    85% {
+      clip: rect(calc(attr(data-height px) * 0.1), attr(data-width px), calc(attr(data-height px) * 0.6), 0);
+    }
+    90% {
+      clip: rect(calc(attr(data-height px) * 0.65), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    95% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.35), 0);
+    }
+    100% {
+      clip: rect(calc(attr(data-height px) * 0.8), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+  }
+  @keyframes noise-anim-2 {
+    0% {
+      clip: rect(calc(attr(data-height px) * 0.4), attr(data-width px), calc(attr(data-height px) * 0.9), 0);
+    }
+    5% {
+      clip: rect(calc(attr(data-height px) * 0.1), attr(data-width px), calc(attr(data-height px) * 0.5), 0);
+    }
+    10% {
+      clip: rect(calc(attr(data-height px) * 0.6), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    15% {
+      clip: rect(calc(attr(data-height px) * 0.2), attr(data-width px), calc(attr(data-height px) * 0.7), 0);
+    }
+    20% {
+      clip: rect(calc(attr(data-height px) * 0.8), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    25% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.4), 0);
+    }
+    30% {
+      clip: rect(calc(attr(data-height px) * 0.5), attr(data-width px), calc(attr(data-height px) * 0.85), 0);
+    }
+    35% {
+      clip: rect(calc(attr(data-height px) * 0.15), attr(data-width px), calc(attr(data-height px) * 0.6), 0);
+    }
+    40% {
+      clip: rect(calc(attr(data-height px) * 0.7), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    45% {
+      clip: rect(calc(attr(data-height px) * 0.25), attr(data-width px), calc(attr(data-height px) * 0.75), 0);
+    }
+    50% {
+      clip: rect(calc(attr(data-height px) * 0.45), attr(data-width px), calc(attr(data-height px) * 0.95), 0);
+    }
+    55% {
+      clip: rect(calc(attr(data-height px) * 0.05), attr(data-width px), calc(attr(data-height px) * 0.55), 0);
+    }
+    60% {
+      clip: rect(calc(attr(data-height px) * 0.65), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    65% {
+      clip: rect(calc(attr(data-height px) * 0.3), attr(data-width px), calc(attr(data-height px) * 0.8), 0);
+    }
+    70% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.35), 0);
+    }
+    75% {
+      clip: rect(calc(attr(data-height px) * 0.55), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    80% {
+      clip: rect(calc(attr(data-height px) * 0.35), attr(data-width px), calc(attr(data-height px) * 0.85), 0);
+    }
+    85% {
+      clip: rect(calc(attr(data-height px) * 0.75), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    90% {
+      clip: rect(calc(attr(data-height px) * 0.1), attr(data-width px), calc(attr(data-height px) * 0.6), 0);
+    }
+    95% {
+      clip: rect(calc(attr(data-height px) * 0.9), attr(data-width px), calc(attr(data-height px) * 1), 0);
+    }
+    100% {
+      clip: rect(calc(attr(data-height px) * 0), attr(data-width px), calc(attr(data-height px) * 0.3), 0);
     }
   }
   dialog::backdrop {

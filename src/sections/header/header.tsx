@@ -1,8 +1,27 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 import { Button, Container } from "~/components";
 import { cls } from "~/utils";
 
 const Header = component$(() => {
+  useVisibleTask$(() => {
+    const titleElement = document.querySelector(".intro__title") as HTMLElement;
+    if (titleElement) {
+      // Set the client dimensions as data attributes for use in CSS
+      const clientHeight = titleElement.clientHeight;
+      const clientWidth = titleElement.clientWidth;
+      console.log("Title element height:", clientHeight);
+      console.log("Title element width:", clientWidth);
+      titleElement.setAttribute("data-height", clientHeight.toString());
+      titleElement.setAttribute("data-width", clientWidth.toString());
+      console.log(
+        "Data attributes set - height:",
+        titleElement.getAttribute("data-height"),
+        "width:",
+        titleElement.getAttribute("data-width"),
+      );
+    }
+  });
+
   return (
     <header
       class={cls(
@@ -17,9 +36,14 @@ const Header = component$(() => {
               "intro__title",
               "opacity-0 scale-75",
               "text-7xl sm:text-8xl lg:text-[clamp(3rem,16svb,12rem)]",
-              "text-black text-center",
+              "text-white text-center",
               "font-extrabold uppercase leading-none tracking-widest",
-            )}>
+              "relative z-10",
+            )}
+            data-glitch="Lukáš
+Chylík"
+            data-height="200"
+            data-width="800">
             Lukáš
             <br />
             Chylík
