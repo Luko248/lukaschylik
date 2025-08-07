@@ -82,6 +82,47 @@ Relative colors fungujú s akýmkoľvek farebným formátom ako vstup a umožňu
 }
 ```
 
+### Práca s CSS custom properties a farbebnými kľúčovými slovami
+
+Relative colors môžete použiť aj s CSS custom properties a farebnými kľúčovými slovami ako `red`, `blue` či `white`. Toto otvára nové možnosti pre dynamické tvorenie tém a komponentov:
+
+```css
+:root {
+  --_color-orange: lab(76 27.53 79.12);
+}
+
+.component {
+  /* Kombinácia s calc() funkciou */
+  &.info {
+    --block_bg-color: hsl(from blue h 75% calc(l + 10%));
+  }
+  
+  /* Použitie farebných kľúčových slov */
+  &.success {
+    --block_bg-color: hwb(from green h 15% 40%);
+  }
+  
+  /* Použitie CSS custom property */
+  &.warn {
+    --block_bg-color: rgb(from var(--_color-orange) r 175 42);
+  }
+  
+  /* Kombinácia so SCSS premennými */
+  $color-red: #ff0000;
+  
+  &.error {
+    --block_bg-color: oklch(from #{$color-red} .6 .2 h);
+  }
+  
+  /* Pridanie alpha kanála */
+  &.disabled {
+    --block_bg-color: hsl(from white h s l / .5);
+  }
+}
+```
+
+Tento prístup umožňuje **prehoz kanálov** medzi farebnými priestormi a **rovnaké kanály** pre všetky atribúty, čo poskytuje neobyčajnú flexibilitu pri tvorbe farebných schém.
+
 ## Color-mix(): Miešanie farieb ako vo Photoshope
 
 Funkcia `color-mix()` prináša do CSS schopnosť miešať dve farby v určenom farebnom priestore. Je to podobné nástroju na miešanie farieb vo vizuálnych editoroch, ale priamo v CSS.
