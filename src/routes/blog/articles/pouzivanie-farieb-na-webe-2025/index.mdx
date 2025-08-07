@@ -1,0 +1,169 @@
+---
+title: Používanie farieb na webe v roku 2025
+subtitle: OKLCH, relative colors a CSS color-mix()
+description: Web design prešiel v roku 2025 revolúciou vo farbách. Zatiaľ čo tradičné RGB a HSL formáty stále dominujú, nové CSS funkcie ako OKLCH, relative colors a color-mix() prinášajú web developerom bezprecedentné možnosti práce s farbami.
+date: 2025-08-07
+author: Lukáš Chylík
+---
+
+## Web design prešiel v roku 2025 revolúciou vo farbách
+
+Zatiaľ čo tradičné RGB a HSL formáty stále dominujú, nové CSS funkcie ako OKLCH, relative colors a color-mix() prinášajú web developerom bezprecedentné možnosti práce s farbami. Tieto technológie nie sú len novými nástrojmi – predstavujú paradigmatickú zmenu v tom, ako uvažujeme o farbách na webe.
+
+## Farebné trendy roku 2025: Od Mocha Mousse po Cherry Red
+
+Rok 2025 je charakterizovaný teplými, zemitými tónmi kombinovanými s výraznými akcentmi. Pantone vyhlásil **Mocha Mousse** (PANTONE 17-1230) za farbu roku – bohatý, hnedý odtieň, ktorý evokuje komfort a stabilitu. Pinterest identifikoval **Cherry Red** ako najvýraznejší trend, zatiaľ čo **Butter Yellow** a **Aura Indigo** dopĺňajú paletu moderného webu.
+
+Súčasné trendy poukazujú na dualizmus v dizajne – na jednej strane vidíme nárast mäkkých pastelov pre pohodlie a prístupnosť, na druhej strane odvážne, saturované farby pre dynamické a energické zážitky.
+
+## OKLCH: Nová éra farebnej presnosti
+
+OKLCH (Oklab Lightness, Chroma, Hue) predstavuje revolučný prístup k definovaniu farieb v CSS. Na rozdiel od RGB alebo HSL je OKLCH navrhnutý tak, aby korešpondoval s ľudským vnímaním farieb.
+
+### Prečo OKLCH?
+
+**Predvídateľnosť svetlosti:** Zmeny v parametri L (lightness) sa prejavujú konzistentne naprieč všetkými odtieňmi, čo nie je možné pri HSL.
+
+**Širší farebný gamut:** OKLCH podporuje P3 farby, čo znamená 30% viac viditeľných farieb oproti tradičnému sRGB.
+
+**Lepšia prístupnosť:** Vďaka perceptuálnej svetlosti je jednoduchšie udržiavať konzistentný kontrast.
+
+```css
+/* Tradičný prístup s HSL */
+.button {
+  background: hsl(210, 50%, 50%);
+}
+.button:hover {
+  background: hsl(210, 50%, 60%); /* Nepredvídateľná zmena jasu */
+}
+
+/* Moderný prístup s OKLCH */
+.button {
+  background: oklch(60% 0.15 250);
+}
+.button:hover {
+  background: oklch(70% 0.15 250); /* Predvídateľné zosvetlenie o 10% */
+}
+```
+
+## Relative Colors: Dynamické odvodzovanie farieb
+
+CSS relative colors umožňujú vytvárať nové farby na základe existujúcich pomocou kľúčového slova `from`. Táto funkcia eliminuje potrebu manuálneho kalkulovania farebných variant.
+
+```css
+:root {
+  --primary: oklch(55% 0.20 250);
+}
+
+.element {
+  background: var(--primary);
+  
+  /* Automatické vytvorenie svetlejšej varianty */
+  &:hover {
+    background: oklch(from var(--primary) calc(l + 0.15) c h);
+  }
+  
+  /* Zníženie saturácie pre disabled stav */
+  &:disabled {
+    background: oklch(from var(--primary) l calc(c * 0.3) h / 0.6);
+  }
+}
+```
+
+Relative colors fungujú s akýmkoľvek farebným formátom ako vstup a umožňujú konverziu medzi rôznymi farebnými priestormi:
+
+```css
+.conversion-example {
+  /* RGB na OKLCH s úpravami */
+  background: oklch(from #ff6b35 calc(l * 0.8) c h);
+  
+  /* HSL na OKLCH s pridaním priehľadnosti */
+  border-color: oklch(from hsl(200, 50%, 40%) l c h / 0.7);
+}
+```
+
+## Color-mix(): Miešanie farieb ako vo Photoshope
+
+Funkcia `color-mix()` prináša do CSS schopnosť miešať dve farby v určenom farebnom priestore. Je to podobné nástroju na miešanie farieb vo vizuálnych editoroch, ale priamo v CSS.
+
+```css
+:root {
+  --green: oklch(65% 0.15 140);
+  --red: oklch(55% 0.22 20);
+}
+
+/* Vytvorenie plynulého prechodu */
+.gradient {
+  background: linear-gradient(
+    to right,
+    var(--green),
+    color-mix(in oklch, var(--green) 75%, var(--red) 25%),
+    color-mix(in oklch, var(--green) 50%, var(--red) 50%),
+    color-mix(in oklch, var(--green) 25%, var(--red) 75%),
+    var(--red)
+  );
+}
+
+/* Dynamické tvorba tém */
+.theme-variations {
+  --base-color: oklch(60% 0.15 200);
+  
+  background: var(--base-color);
+  border: 2px solid color-mix(in oklch, var(--base-color) 70%, black 30%);
+  color: color-mix(in oklch, var(--base-color) 20%, white 80%);
+}
+```
+
+## Praktická implementácia: Od teórie k praxi
+
+### Podpora prehliadačov v roku 2025
+
+OKLCH je podporovaný vo všetkých moderných prehliadačoch:
+
+- **Chrome 111+** (marec 2023)
+- **Firefox 113+** (máj 2023)
+- **Safari 15.4+** (marec 2022)
+- **Edge 111+** (marec 2023)
+
+Celková podpora dosahuje **90.2%** globálne, čo robí OKLCH použiteľným pre produkčné projekty s fallback riešeniami.
+
+### Progresívne vylepšovanie
+
+```css
+/* Bezpečný fallback prístup */
+.modern-button {
+  /* Fallback pre staršie prehliadače */
+  background: #4a90e2;
+  
+  /* Moderná implementácia pre supportované prehliadače */
+  background: oklch(60% 0.15 250);
+  
+  /* Pokročilé efekty len kde sú podporované */
+  &:hover {
+    background: oklch(from oklch(60% 0.15 250) calc(l + 0.1) c h);
+  }
+}
+
+/* Feature detection pomocou @supports */
+@supports (background: oklch(50% 0.1 180)) {
+  .enhanced-colors {
+    /* Pokročilé farebné schémy len pre podporované prehliadače */
+    --primary: oklch(65% 0.18 200);
+    --accent: color-mix(in oklch, var(--primary) 80%, oklch(80% 0.15 60) 20%);
+  }
+}
+```
+
+## Trendy vo webdesign komunitách 2025
+
+Slovenská a česká webdeveloper komunita postupne adoptuje tieto technológie. **Bold minimalizmus** kombinovaný s výraznými farebnými akcentmi sa stáva dominantným trendom, pričom OKLCH umožňuje presnejšie kontrolovanie farebných paliet.
+
+Pozoruhodný je nárast AI-generovaných farebných paliet, kde OKLCH poskytuje lepšie výsledky vďaka svojej perceptuálnej povahe.
+
+## Budúcnosť farieb na webe
+
+CSS Color Module Level 5 prináša ďalšie inovácie vrátane `contrast-color()` funkcií a rozšírených možností gamut mapingu. Očakáva sa, že do roku 2026 budú wide-gamut displeje štandardom, čím sa výhody OKLCH stanú ešte výraznejšími.
+
+## Záver
+
+Rok 2025 označuje prelom v používaní farieb na webe. OKLCH, relative colors a color-mix() nie sú len technické novinky – sú to nástroje, ktoré fundamentálne menia spôsob, akým uvažujeme o farbe v digitálnom prostredí. Pre Slovak a Czech web development komunitu predstavujú príležitosť vytvárať vizuálne sofistikovanejšie a prístupnejšie webové zážitky, ktoré konkurujú najlepším svetovým štandardom.

@@ -59,7 +59,7 @@ const References = component$(() => {
             </div>
           </div>
           <ul class="ref-list list-none p-0 m-0 content-fade-in xl:mt-5 3xl:mt-8">
-           <Reference
+            <Reference
               title="Vertice"
               webURL="https://vertice.one/"
               website="vertice.one"
