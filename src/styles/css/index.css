@@ -832,7 +832,6 @@ strong {
     font-weight: inherit;
     line-height: inherit;
     letter-spacing: inherit;
-    color: white;
     text-align: inherit;
     white-space: pre-line;
     overflow: hidden;
@@ -848,12 +847,10 @@ strong {
   }
   .intro__title::before {
     left: 2px;
-    color: var(--color-pink);
     animation: noise-anim 2s infinite linear alternate-reverse;
   }
   .intro__title::after {
     left: -2px;
-    color: var(--color-torquoise);
     animation: noise-anim-2 3s infinite linear alternate-reverse;
   }
   .intro__subtitle {

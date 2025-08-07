@@ -36,7 +36,7 @@ const Header = component$(() => {
               "intro__title",
               "opacity-0 scale-75",
               "text-7xl sm:text-8xl lg:text-[clamp(3rem,16svb,12rem)]",
-              "text-white text-center",
+              "!text-black dark:!text-white text-center",
               "font-extrabold uppercase leading-none tracking-widest",
               "relative z-10",
             )}
