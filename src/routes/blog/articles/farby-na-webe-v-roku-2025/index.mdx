@@ -178,26 +178,32 @@ Celková podpora dosahuje **90.2%** globálne, čo robí OKLCH použiteľným pr
 ### Progresívne vylepšovanie
 
 ```css
-/* Bezpečný fallback prístup */
-.modern-button {
-  /* Fallback pre staršie prehliadače */
-  background: #4a90e2;
-  
-  /* Moderná implementácia pre supportované prehliadače */
-  background: oklch(60% 0.15 250);
-  
-  /* Pokročilé efekty len kde sú podporované */
-  &:hover {
-    background: oklch(from oklch(60% 0.15 250) calc(l + 0.1) c h);
+/* Fallback */
+.demo-btn {
+  --primary: #4a90e2;
+  background: var(--primary);
+  color: #fff;
+}
+
+/* 1) OKLCH */
+@supports (background: oklch(60% 0.15 250)) {
+  .demo-btn {
+    --primary: oklch(60% 0.15 250);
+    background: var(--primary);
   }
 }
 
-/* Feature detection pomocou @supports */
-@supports (background: oklch(50% 0.1 180)) {
-  .enhanced-colors {
-    /* Pokročilé farebné schémy len pre podporované prehliadače */
-    --primary: oklch(65% 0.18 200);
-    --accent: color-mix(in oklch, var(--primary) 80%, oklch(80% 0.15 60) 20%);
+/* 2) color-mix() */
+@supports (color: color-mix(in oklch, white 50%, black 50%)) {
+  .demo-btn.is-tinted {
+    background: color-mix(in oklch, var(--primary) 85%, white 15%);
+  }
+}
+
+/* 3) Relatívne farby (from) */
+@supports (background: oklch(from oklch(60% 0.15 250) l c h)) {
+  .demo-btn:hover {
+    background: oklch(from var(--primary) calc(l + 0.1) c h);
   }
 }
 ```
