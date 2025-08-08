@@ -808,8 +808,6 @@ strong {
     position: relative;
     text-shadow: -2px 0 var(--color-pink), 2px 0 var(--color-torquoise);
     animation: show-title-glitch 0.5s ease-out 0.35s forwards;
-    paint-order: stroke fill;
-    -webkit-text-stroke: 0.025em light-dark(var(--color-black), var(--color-white));
   }
   @media (prefers-reduced-motion: reduce) {
     .intro__title {
