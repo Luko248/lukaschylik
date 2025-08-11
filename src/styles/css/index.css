@@ -817,7 +817,7 @@ strong {
       scale: initial;
     }
   }
-  .intro__title::before, .intro__title::after {
+  .intro__title:before, .intro__title:after {
     content: attr(data-glitch);
     position: absolute;
     top: 0;
@@ -838,9 +838,9 @@ strong {
     pointer-events: none;
     -webkit-text-stroke: 0;
   }
-  @supports not (clip: rect(0, attr(data-width px), attr(data-height px), 0)) {
-    .intro__title::before, .intro__title::after {
-      clip: rect(0, 9999px, attr(data-height px, 200px), 0);
+  @supports not (width: attr(data-width px)) {
+    .intro__title:before, .intro__title:after {
+      display: none;
     }
   }
   .intro__title::before {

@@ -38,8 +38,8 @@
       }
 
       // Glitch effect applied directly to title
-      &::before,
-      &::after {
+      &:before,
+      &:after {
         content: attr(data-glitch);
         position: absolute;
         top: 0;
@@ -61,8 +61,8 @@
         -webkit-text-stroke: 0;
         
         // Fallback for browsers that don't support typed attr()
-        @supports not (clip: rect(0, attr(data-width px), attr(data-height px), 0)) {
-          clip: rect(0, 9999px, attr(data-height px, 200px), 0);
+        @supports not (width: attr(data-width px)) {
+          display: none;
         }
       }
 
