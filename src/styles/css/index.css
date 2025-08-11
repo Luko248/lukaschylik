@@ -7,7 +7,7 @@
 }
 :root {
   color-scheme: light dark;
-  --nav_height: 72px;
+  --nav_height: 76px;
 }
 @media screen and (width <= 768px) {
   :root {
