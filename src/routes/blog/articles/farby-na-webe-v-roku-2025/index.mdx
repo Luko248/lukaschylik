@@ -53,37 +53,34 @@ OKLCH (Oklab Lightness, Chroma, Hue) predstavuje revolučný prístup k definova
 
 CSS relative colors umožňujú vytvárať nové farby na základe existujúcich pomocou kľúčového slova `from`. Táto funkcia eliminuje potrebu manuálneho kalkulovania farebných variant.
 
-```css
-:root {
-  --primary: oklch(55% 0.20 250);
-}
+<a href="https://codepen.io/luko248/pen/RwzOwWV" target="_blank">🎨 CSS relative colors CodePen showcase</a>
 
+### Čo už nepotrebujeme v JS:
+
+**Základné konverzie medzi formátmi:**
+```css
+/* Namiesto JS converteru HEX → HSL */
 .element {
-  background: var(--primary);
-  
-  /* Automatické vytvorenie svetlejšej varianty */
-  &:hover {
-    background: oklch(from var(--primary) calc(l + 0.15) c h);
-  }
-  
-  /* Zníženie saturácie pre disabled stav */
-  &:disabled {
-    background: oklch(from var(--primary) l calc(c * 0.3) h / 0.6);
-  }
+  color: hsl(from #ff6b35 h s l);
 }
+
+/* RGB → OKLCH s úpravou lightness */
+background: oklch(from rgb(255, 107, 53) calc(l * 0.8) c h);
 ```
 
-Relative colors fungujú s akýmkoľvek farebným formátom ako vstup a umožňujú konverziu medzi rôznymi farebnými priestormi:
-
+**Farebné manipulácie:**
 ```css
-.conversion-example {
-  /* RGB na OKLCH s úpravami */
-  background: oklch(from #ff6b35 calc(l * 0.8) c h);
-  
-  /* HSL na OKLCH s pridaním priehľadnosti */
-  border-color: oklch(from hsl(200, 50%, 40%) l c h / 0.7);
-}
+/* Namiesto polyfill knižníc pre lighten/darken */
+--lighter: oklch(from var(--primary) calc(l + 0.15) c h);
+--darker: oklch(from var(--primary) calc(l - 0.15) c h);
+--desaturated: oklch(from var(--primary) l calc(c * 0.5) h);
 ```
+
+**Kde JS konvertery ešte majú zmysel:**
+
+- Generovanie statických farebných paliet
+- Analýza kontrastných pomerov
+- Validácia prístupnosti pred deploymentom
 
 ### Práca s CSS custom properties a farbebnými kľúčovými slovami
 
@@ -134,6 +131,8 @@ Tento prístup umožňuje **prehoz kanálov** medzi farebnými priestormi a **ro
 ## Color-mix(): Miešanie farieb ako vo Photoshope
 
 Funkcia `color-mix()` prináša do CSS schopnosť miešať dve farby v určenom farebnom priestore. Je to podobné nástroju na miešanie farieb vo vizuálnych editoroch, ale priamo v CSS.
+
+<a href="https://codepen.io/luko248/pen/eYXENdJ" target="_blank">🎨 color-mix() CodePen showcase</a>
 
 ```css
 :root {
