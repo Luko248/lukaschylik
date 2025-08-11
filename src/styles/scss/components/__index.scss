@@ -6,6 +6,7 @@
 @use "./me" as *;
 @use "./navigation" as *;
 @use "./reference" as *;
+@use "./search" as *;
 @use "./section" as *;
 @use "./skills" as *;
 @use "./social" as *;
@@ -19,6 +20,7 @@
   @include create-me;
   @include create-nav;
   @include create-reference;
+  @include create-search;
   @include create-section;
   @include create-skills;
   @include create-social;
