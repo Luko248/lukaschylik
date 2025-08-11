@@ -5,7 +5,7 @@ import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
 import { getAllPosts } from "~/utils/markdown.server";
-import { cls, cls } from "~/utils";
+import { cls } from "~/utils";
 
 export const useBlogPosts = routeLoader$(async () => {
   const posts = getAllPosts();
@@ -32,7 +32,7 @@ export default component$(() => {
     return posts.value.filter(
       (post) =>
         post.title.toLowerCase().includes(query) ||
-        post.subtitle.toLowerCase().includes(query)
+        post.subtitle.toLowerCase().includes(query),
     );
   });
 
@@ -45,9 +45,8 @@ export default component$(() => {
             "sticky pb-8 md:pb-12",
             "top-[var(--nav_height)]",
             "bg-gradient-to-b from-white from-65% to-transparent",
-            "dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10"
-          )}
-        >
+            "dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10",
+          )}>
           <input
             type="search"
             placeholder="Vyhľadať článok..."
@@ -57,7 +56,7 @@ export default component$(() => {
               "rounded-lg",
               "text-black dark:text-white",
               "placeholder-gray-500 dark:placeholder-gray-400",
-              "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+              "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent",
             )}
             value={searchQuery.value}
             onInput$={(e) => {
@@ -73,25 +72,22 @@ export default component$(() => {
                 <Link
                   key={post.slug}
                   href={`/blog/articles/${post.slug}`}
-                  class={cls("text-black dark:text-white", "group")}
-                >
+                  class={cls("text-black dark:text-white", "group")}>
                   <strong
                     class={cls(
                       "text-2xl sm:text-4xl md:text-6xl",
                       "block mb-1 md:mb-2",
                       "group-hover:text-yellow-500",
-                      "transition-colors duration-200"
-                    )}
-                  >
+                      "transition-colors duration-200",
+                    )}>
                     {post.title}
                   </strong>
                   <small
                     class={cls(
                       "block",
                       "text-gray-800 dark:text-gray-300",
-                      "text-l sm:text-2xl md:text-3xl"
-                    )}
-                  >
+                      "text-l sm:text-2xl md:text-3xl",
+                    )}>
                     {post.subtitle}
                   </small>
                   <p class={cls("block", "text-l md:text-xl", "my-4 md:my-8")}>
@@ -101,9 +97,8 @@ export default component$(() => {
                     class={cls(
                       "flex gap-2 items-center",
                       "text-sm",
-                      "text-gray-800 dark:text-gray-300"
-                    )}
-                  >
+                      "text-gray-800 dark:text-gray-300",
+                    )}>
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString("cs-CZ")}
                     </time>
@@ -114,7 +109,7 @@ export default component$(() => {
                 <hr
                   class={cls(
                     "border-black/20 dark:border-white/20",
-                    "my-4 md:my-8"
+                    "my-4 md:my-8",
                   )}
                 />
               </>
@@ -124,9 +119,8 @@ export default component$(() => {
               class={cls(
                 "col-span-full",
                 "text-center text-xl",
-                "text-gray-800 dark:text-gray-300"
-              )}
-            >
+                "text-gray-800 dark:text-gray-300",
+              )}>
               {searchQuery.value.trim()
                 ? "Žiadne články sa nenašli."
                 : "Žiadne články zatiaľ nie sú k dispozícii."}
