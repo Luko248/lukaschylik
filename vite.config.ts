@@ -24,7 +24,7 @@ export default defineConfig((): UserConfig => {
       qwikCity({
         mdxPlugins: {
           remarkGfm: false,
-          rehypeSyntaxHighlight: true,
+          rehypeSyntaxHighlight: false,
           rehypeAutolinkHeadings: false,
         },
         mdx: {

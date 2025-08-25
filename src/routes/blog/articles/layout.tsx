@@ -1,11 +1,11 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useVisibleTask$ } from "@builder.io/qwik";
 import { type DocumentHead, Link, routeLoader$ } from "@builder.io/qwik-city";
 import { Icon } from "~/components";
 import { BlogProgress } from "~/components/blog/BlogProgress";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import { getAllPosts } from "~/utils/markdown.server";
-import "~/styles/css/prism.css";
+import "~/styles/css/shiki.css";
 
 /**
  * Route loader to fetch the current blog post data based on the URL slug
@@ -45,6 +45,12 @@ export const useCurrentPost = routeLoader$(async ({ status, url }) => {
  */
 export default component$(() => {
   const post = useCurrentPost();
+
+  // Initialize Shiki highlighting when component becomes visible
+  useVisibleTask$(async () => {
+    const { highlightCodeBlocks } = await import("~/utils/highlight-client");
+    highlightCodeBlocks();
+  });
 
   return (
     <Section id="blog-detail" className=" dark:bg-black-800">

@@ -791,7 +791,6 @@ strong {
   }
   .blog code {
     padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
-    background-color: light-dark(var(--color-gray-200), var(--color-gray-800));
     border-radius: clamp(2px, 0.6svi, 3px);
     font-family: "Fira Code", Consolas, monospace;
     font-size: clamp(0.85em, 2svi, 0.9em);
