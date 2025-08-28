@@ -81,6 +81,7 @@
     "@tailwindcss/cli": "^4.1.11",
     "@toolwind/anchors": "^1.0.10",
     "gray-matter": "^4.0.3",
+    "hast-util-from-html": "^2.0.3",
     "rehype-autolink-headings": "^7.1.0",
     "shiki": "^3.11.0",
     "tailwind-variants": "^1.0.0",

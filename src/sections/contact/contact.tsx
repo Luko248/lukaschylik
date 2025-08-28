@@ -1,6 +1,9 @@
 import { $, component$, useStore } from "@builder.io/qwik";
 import { Button, Container, FormField, Section } from "~/components";
+import Icon from "~/components/icon/icon";
 import SectionTitle from "~/components/section/section.title";
+import { SOCIAL_LINKS } from "~/constants/socialLinks";
+import { cls } from "~/utils";
 
 /**
  * Contact section component
@@ -89,14 +92,56 @@ const Contact = component$(() => {
     <Section id="contact" className="bg-black dark:bg-white">
       <Container size="full" className="relative z-10 isolate">
         <SectionTitle text="Kontakt" dark={true} />
-        <p class="text-l lg:text-xl leading-relaxed font-light mb-10 sm:mb-18 font-mono text-gray-800 content-fade-in">
+        <p
+          class={cls(
+            "text-l lg:text-xl leading-relaxed font-light",
+            "mb-4 sm:mb-12",
+            "font-mono text-gray-800",
+            "content-fade-in",
+          )}>
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
         </p>
 
+        <div
+          class={cls(
+            "flex items-center justify-start gap-3",
+            "mb-10 sm:mb-18",
+            "content-fade-in",
+          )}>
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.icon}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              title={link.label}
+              class={cls(
+                "group flex items-center justify-center",
+                "w-10 h-10 rounded-full",
+                "bg-black hover:bg-gray-900",
+                "transition-all duration-300 hover:scale-110",
+                "focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-black",
+              )}>
+              <Icon
+                name={link.icon}
+                cls={cls(
+                  "w-5 h-5",
+                  "text-gray-200 group-hover:text-white",
+                  "transition-colors duration-300",
+                )}
+              />
+            </a>
+          ))}
+        </div>
+
         <form
           onSubmit$={handleSubmit}
-          class="grid grid-cols-1 gap-4 md:gap-6 content-fade-in content-fade-in--entry">
+          class={cls(
+            "grid grid-cols-1 gap-4 md:gap-6",
+            "content-fade-in content-fade-in--entry",
+          )}>
           <input
             type="hidden"
             name="_subject"

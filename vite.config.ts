@@ -7,6 +7,7 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { defineConfig, type UserConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { rehypeShiki } from "./src/utils/rehype-shiki";
 import pkg from "./package.json";
 
 interface PackageJson {
@@ -29,6 +30,7 @@ export default defineConfig((): UserConfig => {
         },
         mdx: {
           rehypePlugins: [
+            rehypeShiki,
             [
               rehypeAutolinkHeadings,
               {

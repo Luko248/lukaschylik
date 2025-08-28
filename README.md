@@ -17,6 +17,7 @@ A modern personal portfolio website built with **Qwik** featuring server-side re
 - **[Stylelint](https://stylelint.io/)** - CSS/SCSS linter
 - **[SASS](https://sass-lang.com/)** - CSS preprocessor
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Shiki](https://shiki.style/)** - Syntax highlighter for code blocks in blog posts
 - **SSR Blog Posts** - Server-side rendered markdown blog with frontmatter support
 
 ## Live Website
@@ -288,7 +289,7 @@ The website includes a fully functional blog system with:
 
 - **Markdown Support**: Write blog posts in markdown with frontmatter
 - **SSR**: Server-side rendered blog posts for better SEO
-- **Code Highlighting**: Prism.js for syntax highlighting (loaded only on blog pages)
+- **Code Highlighting**: Shiki for syntax highlighting
 - **Dynamic Routing**: File-based routing with Qwik City
 - **Blog Progress**: Reading progress indicator on articles
 

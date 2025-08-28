@@ -1,30 +1,8 @@
 import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
 import { cls } from "~/utils";
+import { SOCIAL_LINKS } from "~/constants/socialLinks";
 import Icon from "../icon/icon";
 import SocialItem from "./socialItem";
-
-const SOCIAL_LINKS = [
-  {
-    href: "https://www.linkedin.com/in/lukas-chylik/",
-    label: "Odkaz na môj LinkedIn",
-    icon: "linkedin",
-  },
-  {
-    href: "https://discord.gg/yXfUhRjx",
-    label: "Odkaz na CSS CzechoSlovakia Discord",
-    icon: "discord",
-  },
-  {
-    href: "https://codepen.io/luko248",
-    label: "Odkaz na môj CodePen",
-    icon: "codepen",
-  },
-  {
-    href: "https://github.com/Luko248",
-    label: "Odkaz na môj github",
-    icon: "github",
-  },
-] as const;
 
 const Social = component$(() => {
   const isOpen = useSignal(false);

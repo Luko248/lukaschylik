@@ -1,6 +1,7 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Button } from "../button";
 import { Icon } from "../icon";
+import { updateShikiTheme } from "../../utils/highlight-client";
 
 type Theme = "light" | "dark";
 
@@ -12,7 +13,7 @@ const ThemeSwitch = component$(() => {
   const currentTheme = useSignal<Theme>("light");
 
   /**
-   * Applies theme to HTML element
+   * Applies theme to HTML element and updates Shiki code blocks
    */
   const toggleTheme = $(() => {
     if (typeof document === "undefined") return;
@@ -23,6 +24,9 @@ const ThemeSwitch = component$(() => {
     currentTheme.value === "dark"
       ? html.style.setProperty("color-scheme", "dark")
       : html.style.setProperty("color-scheme", "light");
+
+    // Update Shiki code blocks to match new theme
+    updateShikiTheme();
   });
 
   /**
@@ -47,6 +51,9 @@ const ThemeSwitch = component$(() => {
 
     currentTheme.value = themeToApply;
     html.style.setProperty("color-scheme", themeToApply);
+
+    // Update Shiki code blocks to match initial theme
+    updateShikiTheme();
   });
 
   /**

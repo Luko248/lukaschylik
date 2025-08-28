@@ -16,6 +16,12 @@
   tab-size: 2;
 }
 
+/* Theme-switchable code blocks */
+.shiki-theme-switchable {
+  margin: 1rem 0;
+  transition: opacity 0.2s ease;
+}
+
 /* Ensure proper spacing for code lines */
 .shiki code {
   display: block;

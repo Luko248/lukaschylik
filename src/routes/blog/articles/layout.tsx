@@ -46,10 +46,12 @@ export const useCurrentPost = routeLoader$(async ({ status, url }) => {
 export default component$(() => {
   const post = useCurrentPost();
 
-  // Initialize Shiki highlighting when component becomes visible
+  // Initialize Shiki theme observer when component becomes visible
   useVisibleTask$(async () => {
-    const { highlightCodeBlocks } = await import("~/utils/highlight-client");
-    highlightCodeBlocks();
+    const { setupShikiThemeObserver } = await import(
+      "~/utils/highlight-client"
+    );
+    setupShikiThemeObserver();
   });
 
   return (
