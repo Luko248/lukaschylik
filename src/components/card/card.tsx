@@ -36,10 +36,9 @@ const Card = component$(
           class={cls(
             "grid grid-rows-subgrid row-span-2",
             "gap-inherit",
-            "p-6 pt-0 sm:p-8 sm:pt-0",
+            "px-6 sm:px-8",
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
-            "mb-0 3xl:mb-8",
             "text-black dark:text-white",
             "content-start",
           )}>
@@ -91,7 +90,7 @@ const Card = component$(
           "card",
           "group",
           "grid grid-rows-subgrid row-span-4",
-          "border-2 border-black dark:border-white",
+          "border-2 border-black dark:border-white rounded-lg",
           "text-black dark:text-white",
         )}>
         {CardContent}
