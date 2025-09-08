@@ -6,7 +6,7 @@ import {
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
-import "./styles/css/index.css";
+import "./styles/scss/index.scss";
 import "./styles/css/tailwind.css";
 export default component$(() => {
   /**
@@ -20,7 +20,6 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="/src/styles/css/index.css" />
         <link rel="stylesheet" href="/src/styles/css/tailwind.css" />
         {!isDev && (
           <link

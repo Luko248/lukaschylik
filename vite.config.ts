@@ -47,6 +47,13 @@ export default defineConfig((): UserConfig => {
       qwikVite(),
       tsconfigPaths(),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
     optimizeDeps: {
       exclude: [],
     },

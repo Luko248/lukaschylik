@@ -233,6 +233,30 @@ strong {
   .card {
     anchor-scope: --vat-tooltip;
   }
+  .card:hover {
+    --card-before_trans-y: -100%;
+    --card-after_trans-y: 0;
+  }
+  .card h3 > span {
+    position: relative;
+    overflow: clip;
+    color: transparent;
+  }
+  .card h3 > span::before, .card h3 > span::after {
+    content: attr(title);
+    position: absolute;
+    inset: 0;
+    transition: translate 0.2s ease-in-out;
+  }
+  .card h3 > span::before {
+    color: light-dark(var(--color-black), var(--color-white));
+    translate: 0 var(--card-before_trans-y, 0);
+  }
+  .card h3 > span::after {
+    background-color: hsl(51, 100%, 53%);
+    color: hsl(0, 0%, 0%);
+    translate: 0 var(--card-after_trans-y, 100%);
+  }
   .card ul li {
     list-style-type: disc;
   }

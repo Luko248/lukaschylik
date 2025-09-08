@@ -6,6 +6,44 @@
   .card {
     anchor-scope: --vat-tooltip;
 
+    &:hover {
+      --card-before_trans-y: -100%;
+      --card-after_trans-y: 0;
+    }
+
+    h3 {
+      position: relative;
+      overflow: clip;
+      text-wrap: ballanced;
+      white-space: pre-line;
+
+      &:before,
+      &:after {
+        content: attr(title);
+        position: absolute;
+        inset: 0;
+        padding: inherit !important;
+        transition: translate $trans-time $trans-fnc;
+        display: block;
+        font: inherit;
+        text-align: inherit;
+        text-wrap: pretty;
+      }
+
+      &:before {
+        color: light-dark(var(--color-black), var(--color-white));
+        translate: 0 var(--card-before_trans-y, 0);
+        z-index: 1;
+      }
+
+      &:after {
+        color: light-dark(var(--color-black), var(--color-yellow-500));
+        background-color: light-dark(var(--color-yellow-500), var(--color-black));
+        translate: 0 var(--card-after_trans-y, 100%);
+        z-index: 2;
+      }
+    }
+
     ul li {
       list-style-type: disc;
 
