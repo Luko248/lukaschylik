@@ -30,8 +30,12 @@
 }
 
 .shiki .line {
-  display: block;
-  min-height: 1.4em;
+  display: inline;
+}
+
+.shiki .line::after {
+  content: "\A";
+  white-space: pre;
 }
 
 /* Remove extra spacing between spans */
@@ -78,11 +82,6 @@
   margin: 1rem 0;
 }
 
-/* Line number support (if enabled) */
-.shiki .line {
-  display: block;
-  min-height: 1.5rem;
-}
 
 /* Copy button placeholder (optional enhancement) */
 .shiki-container::before {

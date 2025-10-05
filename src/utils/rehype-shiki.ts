@@ -65,8 +65,13 @@ function extractTextContent(node: any): string {
     return node.value;
   }
 
-  if (node.type === "element" && node.children) {
-    return node.children.map(extractTextContent).join("");
+  if (node.type === "element") {
+    if (node.tagName === "br") {
+      return "\n";
+    }
+    if (node.children) {
+      return node.children.map(extractTextContent).join("");
+    }
   }
 
   return "";

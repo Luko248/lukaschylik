@@ -1,0 +1,402 @@
+---
+title: CSS Carousel
+subtitle: Nové CSS pseudo-classy :scroll-button, :scroll-marker a :scroll-marker-group
+description: Scroll Spy navigácia či tabs komponenta bez JavaScriptu a prístupne? Zabudnite na komplexné JavaScript knižnice! CSS carousel je gamechanger.
+date: 2025-10-05
+author: Lukáš Chylík
+---
+
+## Carousel bez JavaScriptu? 
+
+Ak ste doteraz mysleli, že na vytvorenie funkčného carouselu potrebujete nejakú fancy JS knižnicu, mám pre vás dobrú správu – už nie! CSS prešlo v posledných rokoch obrovským vývojom a dnes môžeme vytvárať plnohodnotné carousel komponenty s tlačidlami, dot navigáciou a animáciami, bez jediného riadku JavaScriptu.
+
+Samozrejme, základ pre CSS carousel tvorí vlastnosť `scroll-snap`, ktorú poznáme už nejaký čas. Ale tá skutočná magia prichádza s novými CSS pseudo-classami ako `::scroll-button`, `::scroll-marker` a `::scroll-marker-group`. Tieto novinky v kombinácii so scroll snap vlastnosťami vytvárajú skutočný CSS carousel, ktorý sa môže porovnávať s JavaScript riešeniami.
+
+## Scroll Snap: Základ každého carouselu
+
+Pred tým, než sa pozrieme na nové pseudo-classy, je dôležité pochopiť základ – `scroll-snap`. Táto vlastnosť umožňuje "prichytiť" scrollovanie k definovaným bodom, čím vzniká efekt posúvania medzi jednotlivými slidmi.
+
+### Kľúčové vlastnosti:
+
+- **`scroll-snap-type`**: Definuje typ a os snapovania
+- **`scroll-snap-align`**: Určuje zarovnanie snap bodov
+- **`scroll-snap-stop`**: Kontroluje, či scrollovanie musí zastaviť na snap bodoch
+
+### scroll-snap-type hodnoty:
+
+- **`x`**: Horizontálne snapovanie
+- **`y`**: Vertikálne snapovanie  
+- **`inline`**: Snapovanie v smere písania textu (logická os)
+- **`block`**: Snapovanie kolmo na smer písania (logická os)
+
+### scroll-snap-stop hodnoty:
+
+- **`normal`**: Predvolená hodnota - scrollovanie môže preskočiť snap body
+- **`always`**: Scrollovanie musí zastaviť na každom snap bode
+
+### Základný príklad:
+
+```css
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+  flex: 0 0 100%;
+}
+```
+
+**Vertikálny carousel:**
+
+```css
+.carousel {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: 25rem;
+}
+
+.carousel-item {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  height: 100%;
+}
+```
+
+<iframe height="600" style="width: 100%;" scrolling="no" title="CSS Carousel - Scroll Snap" src="https://codepen.io/luko248/embed/mdqJjWG?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/luko248/pen/mdqJjWG">
+  CSS Carousel - Scroll Snap</a> by Lukáš Chylík (<a href="https://codepen.io/luko248">@luko248</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+Toto ale nie je nič nové – scroll snap je v CSS už nejaký čas. Poďme sa pozrieť na tie skutočné novinky!
+
+## ::scroll-button: Automatické navigačné tlačidlá
+
+Tu prichádza prvá veľká novinka! Pseudo-classa `::scroll-button` automaticky vytvára navigačné tlačidlá pre váš carousel. Nemusíte nič manuálne pridávať do HTML – CSS to spraví za vás.
+
+### Dostupné hodnoty:
+
+- **`*`**: Vyberá všetky scroll buttony (spoločné štýly)
+- **`left`**: Tlačidlo pre posun doľava
+- **`right`**: Tlačidlo pre posun doprava
+- **`up`**: Tlačidlo pre posun hore
+- **`down`**: Tlačidlo pre posun dole
+- **`inline-start`**: Tlačidlo pre posun na začiatok inline osi
+- **`inline-end`**: Tlačidlo pre posun na koniec inline osi
+- **`block-start`**: Tlačidlo pre posun na začiatok block osi
+- **`block-end`**: Tlačidlo pre posun na koniec block osi
+
+### Príklad použitia:
+
+```css
+.carousel {
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.carousel::scroll-button(left) {
+  content: "⬅" / "Scroll Left";
+}
+
+.carousel::scroll-button(right) {
+  content: "⮕" / "Scroll Right";
+}
+
+.carousel::scroll-button(*) {
+  padding: 1rem;
+  background: oklch(0% 0 0 / 0.5);
+  color: oklch(100% 0 0);
+  border: none;
+  border-radius: 50%;
+}
+
+.carousel::scroll-button(*):focus-visible {
+  outline: 0.125rem solid oklch(55% 0.25 264);
+  outline-offset: 0.3125rem;
+}
+
+.carousel::scroll-button(*):disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+```
+
+### Čo je super na ::scroll-button?
+
+- ✅ Tlačidlá sú automaticky disabled, keď už nie je možné scrollovať v danom smere
+- ✅ Majú natívny focus stav pre prístupnosť
+- ✅ Fungujú ako normálne `<button>` elementy
+- ✅ Žiadny extra HTML markup!
+
+**Poznámka:** Špecifikácia definuje aj hodnoty `next` a `prev`, ale tiete zatiaľ nie sú podporované v žiadnom prehliadači.
+
+## ::scroll-marker: Automatická dot navigácia
+
+Druhá mega užitočná pseudo-classa! `::scroll-marker` automaticky vytvorí klikateľné tlačidlo pre každý slide v carouseli. Poznáte to typicky ako bodkovú navigáciu pod alebo nad carouselom.
+
+### Ako to funguje?
+
+CSS automaticky deteguje počet slidov v carouseli a vytvorí pre každý z nich marker (tlačidlo). Keď používateľ klikne na marker, carousel sa presunie na príslušný slide.
+
+### Príklad:
+
+```css
+.carousel::scroll-marker {
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: oklch(0% 0 0 / 0.3);
+  border: 0.125rem solid transparent;
+  cursor: pointer;
+}
+
+.carousel::scroll-marker:hover {
+  background: oklch(0% 0 0 / 0.5);
+}
+
+.carousel::scroll-marker:focus-visible {
+  outline: 0.125rem solid oklch(55% 0.25 264);
+  outline-offset: 0.1875rem;
+}
+```
+
+### :target-current – Active stav markeru
+
+V nadväznosti na `::scroll-marker` prichádza ďalšia super vec! Môžeme samozrejme nastaviť aktívny marker. Pseudo-classa `:target-current` automaticky nastavuje active stav práve aktívnemu markeru (teda `slide`u, ktorý je momentálne viditeľný).
+
+```css
+.carousel::scroll-marker:target-current {
+  background: oklch(55% 0.25 264);
+  transform: scale(1.2);
+}
+```
+
+Bez jediného riadku JS máte fungujúcu dot navigáciu s active stavom! 🎉
+
+#### :target-before a :target-after – Nová úroveň štylizácie
+
+**Úplná novinka z Chrome 142 Beta!** Tieto pseudo-classy umožňujú štylizovať scroll markery na základe ich pozície relatívne k aktívnemu markeru (ktorý má `:target-current`).
+
+- **`:target-before`**: Vyberá všetky scroll markery, ktoré sa nachádzajú **pred** aktívnym markerom v rámci skupiny
+- **`:target-after`**: Vyberá všetky scroll markery, ktoré sa nachádzajú **za** aktívnym markerom v rámci skupiny
+
+```css
+.carousel::scroll-marker {
+  background: oklch(85% 0 0);
+  opacity: 0.5;
+}
+
+.carousel::scroll-marker:target-current {
+  background: oklch(55% 0.25 264);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.carousel::scroll-marker:target-before {
+  opacity: 0.3;
+}
+
+.carousel::scroll-marker:target-after {
+  opacity: 0.3;
+}
+```
+
+Týmto spôsobom môžete vytvoriť vizuálny efekt, kde aktívny marker je výrazný, zatiaľ čo markery pred a za ním sú tlmené.
+
+**Dostupnosť:** Zatiaľ len v <a href="https://developer.chrome.com/blog/chrome-142-beta?hl=en" target="_blank" rel="noopener noreferrer">Chrome 142 Beta</a> (experimentálna funkcia). Sledujte <a href="https://cr-status.appspot.com/feature/5120827674722304" target="_blank" rel="noopener noreferrer">Chrome Status</a> pre aktuálny stav podpory.
+
+## ::scroll-marker-group: Štylizácia marker kontajnera
+
+Pseudo-classa `::scroll-marker-group` umožňuje štylizovať samotný kontajner markerov. Tento pseudo-kontajner sa správa ako normálny element, takže môžete použiť flexbox, grid, gap, padding a podobne.
+
+Pomocou vlastnosti `scroll-marker-group` môžete určiť, kde sa má tento kontajner zobraziť – pred carouselom (`before`), za ním (`after`) alebo vôbec (`none`).
+
+### Príklad:
+
+```css
+.carousel {
+  scroll-marker-group: after;
+}
+
+.carousel::scroll-marker-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem 0;
+}
+```
+
+Takto jednoducho vytvoríte prehľadnú, zarovnanú dot navigáciu!
+
+## Praktické tipy a triky
+
+### 1. Vlastný obsah v markeroch pomocou attr()
+
+Do jednotlivých markerov môžete podobne ako do `::before` a `::after` pseudo-elementov vkladať text pomocou funkcie `attr()`:
+
+```css
+.carousel-item {
+  --label: "Slide";
+}
+
+.carousel::scroll-marker {
+  content: attr(--label);
+  padding: 0.5rem 1rem;
+  background: oklch(85% 0 0);
+}
+```
+
+### 2. Poradové číslo slidu pomocou counter-increment
+
+Chcete zobraziť číslovanie slidov? Použite CSS countery!
+
+```css
+.carousel-item {
+  counter-increment: carousel-item;
+}
+
+.carousel-item::scroll-marker {
+  content: counter(carousel-item);
+}
+```
+
+## Container scroll-state queries: Animácie pri zmene snap stavu
+
+A čo nám ešte chýba k dokonalému carouselu? Pekné animácie pri zobrazení aktívneho slidu! Na toto najlepšie poslúžia CSS Scroll State Container Queries typu `snap`.
+
+Tieto container queries reagujú na stavové zmeny snapu, čo znamená, že keď prvok scroll snap "prichytí" prvok, automaticky sa mu priradí pseudo-element `:target-current` a zároveň sa odchytí aj stav snapu.
+
+**Ak vás zaujíma tento nový typ container queries, môžete si pozrieť náš <a href="/blog/articles/css-scroll-driven-animations" target="_blank" rel="noopener noreferrer">starší článok o CSS scroll-driven animáciách</a>.**
+
+### Príklad animácie pri zmene slidu:
+
+```css
+.carousel {
+  container-type: scroll-state;
+}
+
+.carousel-item {
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+}
+
+@container scroll-state(snapped: inline) {
+  .carousel-item {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+```
+
+**TIP:** Môžete použiť rôzne hodnoty pre `scroll-state()`:
+
+- **`snapped: inline`** – Slide je prichytený v inline osi
+- **`snapped: block`** – Slide je prichytený v block osi
+- **`snapped: x`** – Slide je prichytený horizontálne
+- **`snapped: y`** – Slide je prichytený vertikálne
+
+<iframe height="600" style="width: 100%;" scrolling="no" title="CSS Carousel - Scroll State Container Queries" src="https://codepen.io/luko248/embed/jEOQOGw?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/luko248/pen/jEOQOGw">
+  CSS Carousel - Scroll State Container Queries</a> by Lukáš Chylík (<a href="https://codepen.io/luko248">@luko248</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+## Galéria carouselov od Adama Argyla
+
+CSS carousel nemusí byť len klasický kolotoč s obrázkami! Adam Argyle vytvoril komplexnú galériu rôznych typov carouselov, ktoré demonštrujú možnosti týchto nových CSS vlastností:
+
+- <a href="https://chrome.dev/carousel/vertical/scroll-spy/" target="_blank" rel="noopener noreferrer">Scroll Spy navigácia</a> – Vertikálna navigácia, ktorá automaticky zvýrazňuje aktuálnu sekciu
+- <a href="https://chrome.dev/carousel/horizontal/tabs/" target="_blank" rel="noopener noreferrer">Tabs komponenta</a> – Horizontálne prepínanie medzi tabmi bez JavaScriptu
+- <a href="https://chrome.dev/carousel/" target="_blank" rel="noopener noreferrer">Kompletná galéria carouselov</a> – Mnoho ďalších príkladov a variácií
+
+## Prístupnosť a podpora
+
+### Podpora @supports
+
+Keďže ide o experimentálne vlastnosti, je dôležité myslieť na fallback riešenia:
+
+```css
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+@supports (scroll-marker-group: after) {
+  .carousel {
+    scroll-marker-group: after;
+  }
+  
+  .carousel::scroll-button(left) {
+    content: "⬅" / "Previous";
+  }
+  
+  .carousel::scroll-button(right) {
+    content: "⮕" / "Next";
+  }
+}
+```
+
+### Prístupnosť – prefers-reduced-motion
+
+Vždy rešpektujte používateľské nastavenia pre redukciu pohybu:
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-item {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  @container scroll-state(snapped: inline) {
+    .carousel-item {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
+}
+```
+
+## Prístupnosť CSS carouselov
+
+CSS carousely sú z pohľadu prístupnosti vo veľa veciach na dobrej úrovni: dajú sa ovládať klávesnicou aj myšou — tabulátor prepína medzi ovládacími prvkami, šípky medzi slidmi a klikátkom viete prepnúť na konkrétny slide.
+
+Pre čítačky obrazovky (screen reader) je však opatrnosť na mieste: pseudo-elementy ako `::scroll-button` či `::scroll-marker` síce poskytujú základnú "oznamovaciu" vrstvu ("Scroll left", "Next slide" a podobne), ale ARIA atribúty na ne pridať momentálne nemôžete.
+
+**Najväčší problém:** Pseudo-prvky nie je možné individuálne popísať cez ARIA, takže komplexná custom accessibility (názvy, popisy, stavy) zatiaľ nie je možná len pomocou CSS. Klávesnica a základný output z čítačky fungujú, ale hlbšia úroveň accessibility (napríklad schované popisky, čo vidí len screen reader) sa bez fallbacku alebo kombinácie s HTML riešiť nedá.
+
+## Podpora v prehliadačoch
+
+**Dôležité upozornenie:** CSS carousel pseudo-classy a vlastnosti sú experimentálne a môžu sa v priebehu času ešte meniť!
+
+### Aktuálny stav podpory:
+
+- **Chrome/Edge**: Od verzie 130+ (október 2024)
+- **Firefox**: Zatiaľ nie je podporované
+- **Safari**: Zatiaľ nie je podporované
+
+### Zdroje a ďalšie čítanie:
+
+- [CSS Carousels with scroll buttons – Chrome Developers](https://developer.chrome.com/docs/css-ui/scroll-driven-animations)
+- [::scroll-button – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-button)
+- [::scroll-marker – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-marker)
+
+## Záver
+
+CSS carousel je absolútny gamechanger! Kombinácia scroll snap vlastností s novými pseudo-classami `::scroll-button`, `::scroll-marker` a vlastnosťou `scroll-marker-group` otvára úplne nové možnosti pre tvorbu interaktívnych komponentov bez jediného riadku JavaScriptu.
+
+Hoci ide zatiaľ o experimentálne vlastnosti s obmedzenou podporou, už dnes si ich môžete vyskúšať v najnovších verziách Chrome. A kto vie – možno o rok budú bežnou súčasťou každého projektu!
+
+Takže nečakajte a vyskúšajte si vytvoriť svoj prvý CSS carousel. Či už pôjde o klasický slideshow, scroll spy navigáciu, tabs komponentu či steps komponentu – nápadom sa medze nejakú. 🔥
