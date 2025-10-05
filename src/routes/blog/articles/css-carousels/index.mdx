@@ -181,7 +181,7 @@ Bez jediného riadku JS máte fungujúcu dot navigáciu s active stavom! 🎉
 
 #### :target-before a :target-after
 
-**Úplná novinka z Chrome 142 Beta!** Tieto pseudo-classy umožňujú štylizovať scroll markery na základe ich pozície relatívne k aktívnemu markeru (ktorý má `:target-current`).
+**Úplná novinka z Chrome 142 Beta!** Tieto pseudo-classy umožňujú nastaviť vzhľad scroll markerov na základe ich pozície relatívne k aktívnemu markeru (ktorý má `:target-current`).
 
 - **`:target-before`**: Vyberá všetky scroll markery, ktoré sa nachádzajú **pred** aktívnym markerom v rámci skupiny
 - **`:target-after`**: Vyberá všetky scroll markery, ktoré sa nachádzajú **za** aktívnym markerom v rámci skupiny
@@ -211,9 +211,9 @@ Týmto spôsobom môžete vytvoriť vizuálny efekt, kde aktívny marker je výr
 
 **Dostupnosť:** Zatiaľ len v <a href="https://developer.chrome.com/blog/chrome-142-beta?hl=en" target="_blank" rel="noopener noreferrer">Chrome 142 Beta</a> (experimentálna funkcia). Sledujte <a href="https://cr-status.appspot.com/feature/5120827674722304" target="_blank" rel="noopener noreferrer">Chrome Status</a> pre aktuálny stav podpory.
 
-## ::scroll-marker-group: Štylizácia marker kontajnera
+## ::scroll-marker-group: Štýlovanie marker kontajnera
 
-Pseudo-classa `::scroll-marker-group` umožňuje štylizovať samotný kontajner markerov. Tento pseudo-kontajner sa správa ako normálny element, takže môžete použiť flexbox, grid, gap, padding a podobne.
+Pseudo-classa `::scroll-marker-group` umožňuje nastaviť vzhľad samotného kontajnera markerov. Tento pseudo-kontajner sa správa ako normálny element, takže môžete použiť flexbox, grid, gap, padding a podobne.
 
 Pomocou vlastnosti `scroll-marker-group` môžete určiť, kde sa má tento kontajner zobraziť – pred carouselom (`before`), za ním (`after`) alebo vôbec (`none`).
 
@@ -316,35 +316,15 @@ CSS carousel nemusí byť len klasický kolotoč s obrázkami! Adam Argyle vytvo
 - <a href="https://chrome.dev/carousel/horizontal/tabs/" target="_blank" rel="noopener noreferrer">Tabs komponenta</a> – Horizontálne prepínanie medzi tabmi bez JavaScriptu
 - <a href="https://chrome.dev/carousel/" target="_blank" rel="noopener noreferrer">Kompletná galéria carouselov</a> – Mnoho ďalších príkladov a variácií
 
-## Prístupnosť a podpora
+## Prístupnosť
 
-### Podpora @supports
+CSS carousely sú z pohľadu prístupnosti vo veľa veciach na dobrej úrovni: dajú sa ovládať klávesnicou aj myšou — tabulátor prepína medzi ovládacími prvkami, šípky medzi slidmi a klikátkom viete prepnúť na konkrétny slide.
 
-Keďže ide o experimentálne vlastnosti, je dôležité myslieť na fallback riešenia:
+Pre čítačky obrazovky (screen reader) je však opatrnosť na mieste: pseudo-elementy ako `::scroll-button` či `::scroll-marker` síce poskytujú základnú "oznamovaciu" vrstvu ("Scroll left", "Next slide" a podobne), ale ARIA atribúty na ne pridať momentálne nemôžete.
 
-```css
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-}
+**Najväčší problém:** Pseudo-prvky nie je možné individuálne popísať cez ARIA, takže komplexná custom accessibility (názvy, popisy, stavy) zatiaľ nie je možná len pomocou CSS. Klávesnica a základný output z čítačky fungujú, ale hlbšia úroveň accessibility (napríklad schované popisky, čo vidí len screen reader) sa bez fallbacku alebo kombinácie s HTML riešiť nedá.
 
-@supports (scroll-marker-group: after) {
-  .carousel {
-    scroll-marker-group: after;
-  }
-  
-  .carousel::scroll-button(left) {
-    content: "⬅" / "Previous";
-  }
-  
-  .carousel::scroll-button(right) {
-    content: "⮕" / "Next";
-  }
-}
-```
-
-### Prístupnosť – prefers-reduced-motion
+### Redukcia pohybu – prefers-reduced-motion
 
 Vždy rešpektujte používateľské nastavenia pre redukciu pohybu:
 
@@ -369,14 +349,6 @@ Vždy rešpektujte používateľské nastavenia pre redukciu pohybu:
 }
 ```
 
-## Prístupnosť CSS carouselov
-
-CSS carousely sú z pohľadu prístupnosti vo veľa veciach na dobrej úrovni: dajú sa ovládať klávesnicou aj myšou — tabulátor prepína medzi ovládacími prvkami, šípky medzi slidmi a klikátkom viete prepnúť na konkrétny slide.
-
-Pre čítačky obrazovky (screen reader) je však opatrnosť na mieste: pseudo-elementy ako `::scroll-button` či `::scroll-marker` síce poskytujú základnú "oznamovaciu" vrstvu ("Scroll left", "Next slide" a podobne), ale ARIA atribúty na ne pridať momentálne nemôžete.
-
-**Najväčší problém:** Pseudo-prvky nie je možné individuálne popísať cez ARIA, takže komplexná custom accessibility (názvy, popisy, stavy) zatiaľ nie je možná len pomocou CSS. Klávesnica a základný output z čítačky fungujú, ale hlbšia úroveň accessibility (napríklad schované popisky, čo vidí len screen reader) sa bez fallbacku alebo kombinácie s HTML riešiť nedá.
-
 ## Podpora v prehliadačoch
 
 **Dôležité upozornenie:** CSS carousel pseudo-classy a vlastnosti sú experimentálne a môžu sa v priebehu času ešte meniť!
@@ -387,11 +359,31 @@ Pre čítačky obrazovky (screen reader) je však opatrnosť na mieste: pseudo-e
 - **Firefox**: Zatiaľ nie je podporované
 - **Safari**: Zatiaľ nie je podporované
 
-### Zdroje a ďalšie čítanie:
+### Best practice: @supports
 
-- [CSS Carousels with scroll buttons – Chrome Developers](https://developer.chrome.com/docs/css-ui/scroll-driven-animations)
-- [::scroll-button – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-button)
-- [::scroll-marker – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-marker)
+Keďže ide o experimentálne vlastnosti, je dôležité myslieť na fallback riešenia pomocou `@supports`:
+
+```css
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+@supports (scroll-marker-group: after) {
+  .carousel {
+    scroll-marker-group: after;
+  }
+  
+  .carousel::scroll-button(left) {
+    content: "⬅" / "Previous";
+  }
+  
+  .carousel::scroll-button(right) {
+    content: "⮕" / "Next";
+  }
+}
+```
 
 ## Záver
 
@@ -400,3 +392,11 @@ CSS carousel je absolútny gamechanger! Kombinácia scroll snap vlastností s no
 Hoci ide zatiaľ o experimentálne vlastnosti s obmedzenou podporou, už dnes si ich môžete vyskúšať v najnovších verziách Chrome. A kto vie – možno o rok budú bežnou súčasťou každého projektu!
 
 Takže nečakajte a vyskúšajte si vytvoriť svoj prvý CSS carousel. Či už pôjde o klasický slideshow, scroll spy navigáciu, tabs komponentu či steps komponentu – nápadom sa medze nejakú. 🔥
+
+## Zdroje a ďalšie čítanie
+
+- [Carousels with CSS – Chrome Developers](https://developer.chrome.com/blog/carousels-with-css)
+- [::scroll-button – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-button)
+- [::scroll-marker – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-marker)
+- [::scroll-marker-group – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::scroll-marker-group)
+- [scroll-marker-group – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-marker-group)
