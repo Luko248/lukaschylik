@@ -40,3 +40,6 @@ lerna-debug.log*
 # Yarn
 .yarn/*
 !.yarn/releases
+
+# Windsurf/Spec Kit (may contain credentials)
+.windsurf/
