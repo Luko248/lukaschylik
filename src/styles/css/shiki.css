@@ -33,11 +33,6 @@
   display: inline;
 }
 
-.shiki .line::after {
-  content: "\A";
-  white-space: pre;
-}
-
 /* Remove extra spacing between spans */
 .shiki span {
   line-height: inherit;

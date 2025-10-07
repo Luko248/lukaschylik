@@ -4,46 +4,28 @@ import {
   type BundledLanguage,
   type BundledTheme,
 } from "shiki";
+import { SHIKI_CONFIG } from "./shiki-config";
 
 let highlighter: HighlighterGeneric<BundledLanguage, BundledTheme> | null =
   null;
+let highlighterPromise: Promise<HighlighterGeneric<BundledLanguage, BundledTheme>> | null = null;
 
 /**
  * Initialize Shiki highlighter with GitHub themes
  */
 export const initHighlighter = async () => {
-  if (!highlighter) {
-    highlighter = await createHighlighter({
-      themes: ["github-light", "github-dark"],
-      langs: [
-        "javascript",
-        "typescript",
-        "css",
-        "html",
-        "json",
-        "jsx",
-        "tsx",
-        "bash",
-        "python",
-        "java",
-        "php",
-        "go",
-        "rust",
-        "swift",
-        "kotlin",
-        "dart",
-        "yaml",
-        "markdown",
-        "sql",
-        "xml",
-        "scss",
-        "sass",
-        "vue",
-        "svelte",
-      ],
+  if (highlighter) {
+    return highlighter;
+  }
+  
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter(SHIKI_CONFIG).then(hl => {
+      highlighter = hl;
+      return hl;
     });
   }
-  return highlighter;
+  
+  return highlighterPromise;
 };
 
 /**

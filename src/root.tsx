@@ -36,7 +36,8 @@ export default component$(() => {
             height="0"
             width="0"
             title="Google Tag Manager"
-            style={{ display: "none", visibility: "hidden" }}></iframe>
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
         </noscript>
         <RouterOutlet />
         {!isDev && <ServiceWorkerRegister />}

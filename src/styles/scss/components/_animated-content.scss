@@ -5,7 +5,6 @@
 @mixin create-animated-content {
   section:has(.content-fade-in) {
     view-timeline: --section-view block;
-    view-timeline-inset: -200px;
   }
 
   .content-fade-in {
@@ -21,6 +20,8 @@
       opacity: var(--content_opacity, 0);
       animation: var(--content_animation, content-fade-in forwards);
       scale: var(--content_scale, 0.95);
+      animation-range-end: 80svb;
+      animation-range-start: entry;
       animation-timeline: --section-view;
       will-change: opacity, scale;
     }

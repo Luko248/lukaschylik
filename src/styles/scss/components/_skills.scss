@@ -25,6 +25,10 @@
       animation: scroll-skills linear;
       animation-timeline: scroll(root);
 
+      @include mq-responsive(tablet){
+        animation-timeline: view(--section-view);
+      }
+
       &:nth-of-type(2) {
         animation-direction: reverse;
       }

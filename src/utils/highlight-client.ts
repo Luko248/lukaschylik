@@ -3,45 +3,26 @@
  */
 
 import { createHighlighter } from "shiki";
+import { SHIKI_CONFIG } from "./shiki-config";
 
 let highlighter: any = null;
+let highlighterPromise: Promise<any> | null = null;
 
 /**
  * Initialize Shiki highlighter on the client side
  */
 async function initClientHighlighter() {
-  if (!highlighter && typeof window !== "undefined") {
-    highlighter = await createHighlighter({
-      themes: ["github-light", "github-dark"],
-      langs: [
-        "javascript",
-        "typescript",
-        "css",
-        "html",
-        "json",
-        "jsx",
-        "tsx",
-        "bash",
-        "python",
-        "java",
-        "php",
-        "go",
-        "rust",
-        "swift",
-        "kotlin",
-        "dart",
-        "yaml",
-        "markdown",
-        "sql",
-        "xml",
-        "scss",
-        "sass",
-        "vue",
-        "svelte",
-      ],
+  if (highlighter) {
+    return highlighter;
+  }
+  
+  if (!highlighterPromise && typeof window !== "undefined") {
+    highlighterPromise = createHighlighter(SHIKI_CONFIG).then(hl => {
+      highlighter = hl;
+      return hl;
     });
   }
-  return highlighter;
+  return highlighterPromise;
 }
 
 /**

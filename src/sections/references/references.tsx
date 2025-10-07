@@ -33,7 +33,8 @@ const References = component$(() => {
                 variant="secondary"
                 ariaLabel="Služby a spoupráca"
                 title="Služby a spoupráca"
-                href="#services">
+                href="#services"
+              >
                 Služby a spoupráca
               </Button>
               <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth content-fade-in">
@@ -45,7 +46,8 @@ const References = component$(() => {
                   title="YouTube video Lukáš Chylík - Frontendové novinky"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullscreen></iframe>
+                  allowFullscreen
+                ></iframe>
                 <iframe
                   class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
                   loading="lazy"
@@ -54,7 +56,8 @@ const References = component$(() => {
                   title="YouTube video Lukáš Chylík - Pozicování pomocí CSS anchor"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullscreen></iframe>
+                  allowFullscreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -63,12 +66,42 @@ const References = component$(() => {
               title="Vertice"
               webURL="https://vertice.one/"
               website="vertice.one"
-              type="Technická analýza"
+              type="Design Systém"
             />
             <Reference
-              title="VIG (Kooperativa & CPP)"
+              title="VIGo (Kooperativa & CPP)"
               webURL="https://vig.cz/"
               website="vig.cz"
+              type="Design Systém"
+            />
+            <Reference
+              title="Riganti"
+              webURL="https://www.riganti.cz/"
+              website="riganti.cz"
+              type="Spolupráca"
+            />
+            <Reference
+              title="Update Conference"
+              webURL="https://www.updateconference.net/"
+              website="updateconference.net"
+              type="Spolupráca"
+            />
+            <Reference
+              title="Update Days"
+              webURL="https://www.updatedays.cz/"
+              website="updatedays.cz"
+              type="Spolupráca"
+            />
+            <Reference
+              title="Meetupdate"
+              webURL="https://www.meetupdate.cz/"
+              website="meetupdate.cz"
+              type="Spolupráca"
+            />
+            <Reference
+              title="DotVVM"
+              webURL="https://www.dotvvm.com/"
+              website="dotvvm.com"
               type="Spolupráca"
             />
             <Reference
@@ -89,31 +122,7 @@ const References = component$(() => {
               website="thelucie.ink"
               type="Web"
             />
-            <Reference
-              title="IVPA bau"
-              webURL="https://ivpabau.de/"
-              website="ivpabau.de"
-              type="Web"
-            />
-            <Reference
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
-              website="riganti.cz"
-              type="Spolupráca"
-            />
-            <Reference
-              title="Update"
-              webURL="https://www.updateconference.net/"
-              website="updateconference.net"
-              type="Spolupráca"
-            />
-            <Reference
-              title="DotVVM"
-              webURL="https://www.dotvvm.com/"
-              website="dotvvm.com"
-              type="Spolupráca"
-            />
-            <Reference
+            {/* <Reference
               title="Krossbau s.r.o."
               webURL="https://www.krossbau.cz/"
               website="krossbau.cz"
@@ -137,6 +146,13 @@ const References = component$(() => {
               website="filtrenamlieko.sk"
               type="Web"
             />
+            <Reference
+              title="IVPA bau"
+              webURL="https://ivpabau.de/"
+              website="ivpabau.de"
+              type="Web"
+            /> 
+            */}
           </ul>
         </div>
       </Container>
