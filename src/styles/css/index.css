@@ -233,9 +233,11 @@ strong {
   .card {
     anchor-scope: --vat-tooltip;
   }
-  .card:hover {
-    --card-before_trans-y: -100%;
-    --card-after_trans-y: 0;
+  @media (hover: hover) {
+    .card:hover {
+      --card-before_trans-y: -100%;
+      --card-after_trans-y: 0;
+    }
   }
   .card h3 {
     position: relative;
@@ -265,7 +267,7 @@ strong {
     translate: 0 var(--card-after_trans-y, 100%);
     z-index: 2;
   }
-  @media screen and (width <= 768px) {
+  @media (hover: none) {
     .card h3:after {
       display: none;
     }

@@ -6,7 +6,7 @@
   .card {
     anchor-scope: --vat-tooltip;
 
-    &:hover {
+    @include mq-hover {
       --card-before_trans-y: -100%;
       --card-after_trans-y: 0;
     }
@@ -42,7 +42,7 @@
         translate: 0 var(--card-after_trans-y, 100%);
         z-index: 2;
 
-        @include mq-responsive(tablet, max) {
+        @media (hover: none) {
           display: none;
         }
       }
