@@ -9,28 +9,33 @@
 
 <url>
   <loc>https://lukaschylik.dev/</loc>
-  <lastmod>2025-08-10T08:19:56+00:00</lastmod>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://lukaschylik.dev/blog/</loc>
-  <lastmod>2025-08-10T08:19:56+00:00</lastmod>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://lukaschylik.dev/blog/articles/farby-na-webe-v-roku-2025/</loc>
-  <lastmod>2025-08-10T08:19:56+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
+  <priority>0.7</priority>
 </url>
 <url>
   <loc>https://lukaschylik.dev/blog/articles/css-container-scroll-state-queries/</loc>
-  <lastmod>2025-08-10T08:19:56+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
+  <priority>0.7</priority>
 </url>
 <url>
   <loc>https://lukaschylik.dev/blog/articles/css-scroll-driven-animations/</loc>
-  <lastmod>2025-08-10T08:19:56+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>https://lukaschylik.dev/blog/articles/css-carousels/</loc>
+  <lastmod>2025-10-07T09:50:00+00:00</lastmod>
+  <priority>0.7</priority>
 </url>
 
 
