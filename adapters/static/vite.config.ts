@@ -3,20 +3,38 @@ import { staticAdapter } from "@builder.io/qwik-city/adapters/static/vite";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { rehypeShiki } from "../../src/utils/rehype-shiki";
 
 export default defineConfig({
   plugins: [
     qwikCity({
       mdxPlugins: {
-        remarkGfm: true,
-        rehypeSyntaxHighlight: true,
-        rehypeAutolinkHeadings: true,
+        remarkGfm: false,
+        rehypeSyntaxHighlight: false,
+        rehypeAutolinkHeadings: false,
+      },
+      mdx: {
+        rehypePlugins: [
+          rehypeShiki,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: "wrap",
+              properties: {
+                className: ["heading-anchor"],
+                tabIndex: 0,
+              },
+            },
+          ],
+        ],
       },
     }),
     qwikVite(),
     tsconfigPaths(),
     staticAdapter({
       origin: "https://lukaschylik.dev",
+      maxWorkers: 1,
     }),
   ],
   build: {

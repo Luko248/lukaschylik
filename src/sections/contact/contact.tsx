@@ -97,8 +97,9 @@ const Contact = component$(() => {
             "text-l lg:text-xl leading-relaxed font-light",
             "mb-4 sm:mb-12",
             "font-mono text-gray-800",
-            "content-fade-in",
-          )}>
+            "content-fade-in"
+          )}
+        >
           Chcete vedieť o mne viac, potrebujete poradiť alebo chcete rovno
           naviazať spoluprácu? <strong> Neváhajte ma kontaktovať.</strong>
         </p>
@@ -107,8 +108,9 @@ const Contact = component$(() => {
           class={cls(
             "flex items-center justify-start gap-3",
             "mb-10 sm:mb-18",
-            "content-fade-in",
-          )}>
+            "content-fade-in"
+          )}
+        >
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.icon}
@@ -122,14 +124,15 @@ const Contact = component$(() => {
                 "w-10 h-10 rounded-full",
                 "bg-black hover:bg-gray-900",
                 "transition-all duration-300 hover:scale-110",
-                "focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-black",
-              )}>
+                "focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-black"
+              )}
+            >
               <Icon
                 name={link.icon}
                 cls={cls(
                   "w-5 h-5",
-                  "text-gray-200 group-hover:text-white",
-                  "transition-colors duration-300",
+                  "text-white group-hover:text-gray-200",
+                  "transition-colors duration-300"
                 )}
               />
             </a>
@@ -140,8 +143,9 @@ const Contact = component$(() => {
           onSubmit$={handleSubmit}
           class={cls(
             "grid grid-cols-1 gap-4 md:gap-6",
-            "content-fade-in content-fade-in--entry",
-          )}>
+            "content-fade-in content-fade-in--entry"
+          )}
+        >
           <input
             type="hidden"
             name="_subject"
@@ -194,7 +198,8 @@ const Contact = component$(() => {
             title="Odoslať"
             variant="secondary"
             disabled={state.submitting}
-            icon="send">
+            icon="send"
+          >
             {state.submitting ? "Odosielam..." : "Odoslať"}
           </Button>
         </form>
