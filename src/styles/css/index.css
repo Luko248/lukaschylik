@@ -115,23 +115,30 @@ strong {
   }
   section:has(.content-fade-in) {
     view-timeline: --section-view block;
-    view-timeline-inset: -200px;
   }
   .content-fade-in {
     position: relative;
     transform-origin: var(--animation_trans-origin, left);
     z-index: 10;
+    opacity: var(--content_opacity, 1);
+    scale: var(--content_scale, 1);
   }
   .content-fade-in--bottom {
     --animation_trans-origin: center;
   }
   @supports (view-timeline-name: --foo) {
     .content-fade-in {
-      opacity: var(--content_opacity, 0);
       animation: var(--content_animation, content-fade-in forwards);
-      scale: var(--content_scale, 0.95);
+      animation-range-end: 80svb;
+      animation-range-start: entry;
       animation-timeline: --section-view;
       will-change: opacity, scale;
+    }
+    @starting-style {
+      .content-fade-in {
+        opacity: var(--content_opacity-start, 0);
+        scale: var(--content_scale-start, 0.95);
+      }
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -255,8 +262,20 @@ strong {
     text-align: inherit;
     text-wrap: pretty;
     transition: translate 0.2s ease-in-out;
+    z-index: 1;
+  }
+  @media screen and (width <= 768px) {
+    .card h3:before, .card h3:after {
+      display: none;
+    }
+  }
+  @media (hover: none) {
+    .card h3:before:hover, .card h3:after:hover {
+      display: none;
+    }
   }
   .card h3:before {
+    background-color: light-dark(var(--color-white), var(--color-black));
     color: light-dark(var(--color-black), var(--color-white));
     translate: 0 var(--card-before_trans-y, 0);
     z-index: 1;
@@ -266,11 +285,6 @@ strong {
     color: light-dark(var(--color-black), var(--color-yellow-500));
     translate: 0 var(--card-after_trans-y, 100%);
     z-index: 2;
-  }
-  @media (hover: none) {
-    .card h3:after {
-      display: none;
-    }
   }
   .card ul li {
     list-style-type: disc;
@@ -567,6 +581,11 @@ strong {
   .skills__scroller {
     animation: scroll-skills linear;
     animation-timeline: scroll(root);
+  }
+  @media screen and (width <= 768px) {
+    .skills__scroller {
+      animation-timeline: view(--section-view);
+    }
   }
   .skills__scroller:nth-of-type(2) {
     animation-direction: reverse;
