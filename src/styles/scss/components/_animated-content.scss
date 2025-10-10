@@ -9,8 +9,6 @@
 
   .content-fade-in {
     position: relative;
-    opacity: var(--content_opacity, 1);
-    scale: var(--content_scale, 1);
     transform-origin: var(--animation_trans-origin, left);
     z-index: 10;
 
@@ -19,16 +17,13 @@
     }
 
     @supports (view-timeline-name: --foo) {
+      opacity: var(--content_opacity, 0);
       animation: var(--content_animation, content-fade-in forwards);
+      scale: var(--content_scale, 0.95);
       animation-range-end: 80svb;
       animation-range-start: entry;
       animation-timeline: --section-view;
       will-change: opacity, scale;
-
-      @starting-style {
-        opacity: var(--content_opacity-start, 0);
-        scale: var(--content_scale-start, 0.95);
-      }
     }
 
     @include mq-reduce-motion {
