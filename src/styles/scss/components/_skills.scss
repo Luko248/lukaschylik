@@ -5,7 +5,7 @@
 @mixin create-skills {
   section#about-me {
     view-timeline: --about-view block;
-    view-timeline-inset: 0 -10svb;
+    view-timeline-inset: 0 10svb;
   }
 
   .skills {
