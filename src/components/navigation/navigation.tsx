@@ -8,7 +8,7 @@ import {
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls, DialogContext } from "~/utils";
-import Logo from "../../assets/images/logo.svg?jsx";
+import Logo from "../../../public/images/logos/logo.svg?jsx";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import { ThemeSwitch } from "../themeSwitch";
@@ -78,7 +78,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             class="w-full max-w-full"
             role="img"
             aria-label="Lukáš Chylík Logo"
-            width="120"
+            width="140"
             height="60"
           />
         </a>

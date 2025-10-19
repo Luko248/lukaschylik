@@ -93,12 +93,13 @@ const Card = component$(
     return (
       <div
         class={cls(
-          "card overflow-clip",
+          "card overflow-clip [overflow-clip-margin:.5rem]",
           "group relative",
           "grid grid-rows-subgrid row-span-4 gap-6 sm:gap-8",
           "border-2 border-black dark:border-white rounded-lg",
           "text-black dark:text-white",
-          "bg-white dark:bg-black"
+          "bg-white dark:bg-black",
+          "transition-colors duration-200 ease-in-out hover:border-transparent"
         )}
       >
         {CardContent}
