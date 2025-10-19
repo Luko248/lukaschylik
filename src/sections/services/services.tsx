@@ -26,49 +26,49 @@ const References = component$(() => {
           <Card
             title="Konzultácie a Mentoring"
             price={1500}
-            onClick$={dialogContext.showDialog}>
-            <p class="text-gray-800 dark:text-gray-300">
+            priceNote="Cena za 1 hod"
+            onClick$={dialogContext.showDialog}
+          >
+            <p class="text-sm text-gray-800 dark:text-gray-300">
               Riešim<strong>konkrétne technické problémy</strong> a posúvam
               developerov vpred prostredníctvom{" "}
               <strong>personalizovaného mentoringu</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Riešenie konkrétnych frontend problémov</ListItem>
-              <ListItem>Code review a architektonické poradenstvo</ListItem>
-              <ListItem>Kariérne poradenstvo pre developerov</ListItem>
-              <ListItem marker="☝🏽">Online aj osobné stretnutia</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Riešenie konkrétnych frontend problémov</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Code review a architektonické poradenstvo</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Kariérne poradenstvo pre developerov</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">Online aj osobné stretnutia</ListItem>
             </ul>
           </Card>
           <Card
             title="Technologický audit"
+            price={2000}
+            priceNote="Cena za 1 hod"
             onClick$={dialogContext.showDialog}
-            showVat={false}>
-            <p class="text-gray-800 dark:text-gray-300">
+          >
+            <p class="text-sm text-gray-800 dark:text-gray-300">
               Analyzujem váš kód a technické riešenia, identifikujem{" "}
               <strong>slabiny</strong> a navrhujem optimalizácie
               <strong> pre lepší výkon</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Audit kódu a architektúry</ListItem>
-              <ListItem>Analýza výkonu a accessibility</ListItem>
-              <ListItem>Konkrétne odporúčania na zlepšenie</ListItem>
-              <ListItem marker="☝🏽">
-                60 min. vstupné stretnutie zdarma
-              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Audit kódu a architektúry</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Analýza výkonu a accessibility</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Konkrétne odporúčania na zlepšenie</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">60 min. vstupné stretnutie zdarma</ListItem>
             </ul>
           </Card>
-          <Card title="Workshopy a školenia" showVat={false}>
-            <p class="text-gray-800 dark:text-gray-300">
+          <Card title="Workshopy a školenia" priceLabel="Dohodou" available={true}>
+            <p class="text-sm text-gray-800 dark:text-gray-300">
               Zdieľam praktické znalosti a najnovšie trendy vo frontend
               developmente cez interaktívne workshopy pre tímy.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem>Firemné školenia na mieru</ListItem>
-              <ListItem>Praktické workshopy s live coding</ListItem>
-              <ListItem>Aktuálne technológie a best practices</ListItem>
-              <ListItem marker="☝🏽">
-                Skupinové aj individuálne formáty
-              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Firemné školenia na mieru</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Praktické workshopy s live coding</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">Aktuálne technológie a best practices</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">Skupinové aj individuálne formáty</ListItem>
             </ul>
           </Card>
         </div>

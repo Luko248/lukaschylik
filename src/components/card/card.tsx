@@ -13,7 +13,7 @@ const formatPrice = (price: number) => {
  * Card component that displays content in a card format
  */
 const Card = component$(
-  ({ title, price, showVat = true, onClick$ }: CardProps) => {
+  ({ title, price, priceLabel, priceNote, available = true, onClick$ }: CardProps) => {
     // Card content that will be wrapped by either div or anchor
     const CardContent = (
       <>
@@ -21,7 +21,7 @@ const Card = component$(
           title={title}
           class={cls(
             "relative block",
-            "text-3xl sm:text-4xl xl:text-6xl 2xl:text-[clamp(1.5rem,3svi,2.5rem)] 3xl:text-[clamp(2rem,4svi,3rem)]",
+            "text-2xl sm:text-3xl xl:text-5xl 2xl:text-[clamp(1.5rem,2.5svi,2.25rem)] 3xl:text-[clamp(1.75rem,3svi,2.75rem)]",
             "font-regular tracking-widest 3xl:tracking-[.15em]",
             "py-3 sm:py-6 px-6 sm:px-8",
             "border-b-2 border-b-black dark:border-b-white text-black dark:text-white",
@@ -53,35 +53,34 @@ const Card = component$(
         >
           <strong
             class={cls(
-              "group cursor-help",
               "inline-block",
               "text-center 2xl:text-start",
-              "font-bold text-3xl sm:text-4xl 3xl:text-5xl"
+              "font-bold whitespace-nowrap",
+              "text-2xl sm:text-3xl 3xl:text-4xl"
             )}
           >
-            {price ? `${formatPrice(price * 1.21)} Kč` : "Na mieru"}
-            {showVat && (
-              <small class="block text-sm sm:text-base font-light opacity-80">
-                Cena s DPH / 1h
+            {priceLabel ? (
+              priceLabel
+            ) : price != null ? (
+              `${formatPrice(price)} Kč`
+            ) : (
+              "Na mieru"
+            )}
+            {priceNote && (
+              <small class="block text-xs sm:text-sm font-light opacity-80">
+                {priceNote}
               </small>
             )}
           </strong>
-          {showVat && price && (
-            <div
-              class="tooltip my-2 p-2 bg-black/10 dark:bg-white/10 font-semibold"
-              role="tooltip"
-            >
-              {`Cena bez DPH je ${formatPrice(price)} Kč`}
-            </div>
-          )}
           <Button
             variant="secondary"
-            ariaLabel={price ? `Mám záujem` : "Nedostupné"}
-            title={price ? `Mám záujem` : "Nedostupné"}
-            disabled={!price}
+            className="whitespace-nowrap"
+            ariaLabel={available ? `Mám záujem` : "Nedostupné"}
+            title={available ? `Mám záujem` : "Nedostupné"}
+            disabled={!available}
             onClick$={onClick$}
           >
-            {price ? `Mám záujem` : "Nedostupné"}
+            {available ? `Mám záujem` : "Nedostupné"}
           </Button>
         </div>
       </>
@@ -92,7 +91,7 @@ const Card = component$(
       <div
         class={cls(
           "card",
-          "group",
+          "group overflow-clip",
           "grid grid-rows-subgrid row-span-4",
           "border-2 border-black dark:border-white rounded-lg",
           "text-black dark:text-white"

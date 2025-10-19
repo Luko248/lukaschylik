@@ -4,7 +4,6 @@
 
 @mixin create-card {
   .card {
-    anchor-scope: --vat-tooltip;
 
     @include mq-hover {
       --card-before_trans-y: -100%;
@@ -67,35 +66,6 @@
       text-wrap: pretty;
     }
 
-    strong {
-      anchor-name: --vat-tooltip;
-
-      @include mq-hover {
-        + .tooltip {
-          --tooltip_display: block;
-        }
-      }
-    }
-
-    .tooltip {
-      position: absolute;
-      display: var(--tooltip_display, none);
-      color: light-dark(var(--color-black), var(--color-white));
-
-      @supports (position-anchor: --foo) {
-        position-anchor: --vat-tooltip;
-        position-area: top;
-      }
-    }
+    // Removed VAT tooltip anchor-positioning and styles
   }
-
-  // @keyframes fadeIn {
-  //   from {
-  //     opacity: 0;opacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacity
-  //   }
-
-  //   to {
-  //     opacity: 1;opacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacityopacity
-  //   }
-  // }
 }

@@ -1,41 +1,68 @@
 import { component$ } from "@builder.io/qwik";
-import { Container, ThemeSwitch } from "~/components";
+import { Container } from "~/components";
 import { cls } from "~/utils";
+import Logo from "../../assets/images/logo.svg?jsx";
 
 const Footer = component$(() => {
   return (
-    <footer class="bg-black text-white py-8">
-      <Container
-        size="full"
-        className="relative z-10 isolate flex flex-wrap items-center justify-between gap-5 ">
-        <div>
-          <h3 class="mb-5 text-2xl font-bold">Kontaktné údaje</h3>
-          <address class="font-mono">
-            Lukáš Chylík
-            <br />
-            Hybešova 308/61, 602 00 Brno
-            <br />
-            Česká republika
-            <br />
-            <br />
-            <span>
-              <strong>IČO: </strong>
-              05483247
-            </span>
-            <br />
-            <span>
-              <b>Email: </b>
-              <a
-                class="hover:underline"
-                href="mailto:chylik.lukas@gmail.com"
-                rel="noreferer">
-                chylik.lukas@gmail.com
-              </a>
-            </span>
-          </address>
-          <small class="leading-relaxed font-light font-mono mt-4 block">
-            ©{new Date().getFullYear()} Všetky práva vyhradené.
-          </small>
+    <footer class="relative bg-white dark:bg-black text-black dark:text-white">
+      <div class="h-px w-full bg-gradient-to-r from-transparent via-neutral-400/50 to-transparent" />
+
+      <Container size="md" className="relative z-10 isolate py-8 md:py-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 md:gap-x-10 md:gap-y-2 items-start">
+          <div class="text-sm">
+            <a
+              href="/"
+              class={cls(
+                "relative",
+                "w-[120px] h-[60px]",
+                "flex items-center",
+                "no-underline",
+                "transition-opacity duration-200",
+                "opacity-100 hover:opacity-80",
+              )}>
+              <Logo
+                class="w-full h-full max-w-full"
+                role="img"
+                aria-label="Lukáš Chylík Logo"
+                width="120"
+                height="60"
+              />
+            </a>
+            <p class="mt-2 mb-4 md:mb-0 max-w-[50ch] text-neutral-600 dark:text-neutral-300">
+              Creative web developer so zameraním na vizuálnu logiku, prístupnosť, výkon a SEO.
+            </p>
+          </div>
+
+          <div class="md:justify-self-end text-sm">
+            <address class="not-italic leading-relaxed text-neutral-700 dark:text-neutral-300">
+              Lukáš Chylík
+              <br />
+              Hybešova 308/61, 602 00 Brno
+              <br />
+              Česká republika
+              <br />
+              <span class="block mt-2">
+                <strong>IČO:</strong> 05483247
+              </span>
+              <span class="block">
+                <strong>Email:</strong>{" "}
+                <a class="hover:underline" href="mailto:chylik.lukas@gmail.com">
+                  chylik.lukas@gmail.com
+                </a>
+              </span>
+              <span class="block">
+                <strong>Tel.:</strong>{" "}
+                <a class="hover:underline" href="tel:+421721459889">
+                  +421 721 459 889
+                </a>
+              </span>
+            </address>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center text-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
+          <small class="font-mono">©{new Date().getFullYear()} Všetky práva vyhradené.</small>
         </div>
       </Container>
     </footer>

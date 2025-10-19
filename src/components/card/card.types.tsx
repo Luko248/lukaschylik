@@ -11,6 +11,8 @@ export interface CardProps {
   title: string;
   path?: string;
   price?: number;
-  showVat?: boolean;
+  priceLabel?: string; // when provided, overrides numeric price display
+  priceNote?: string; // small note under price (e.g., Cena za 1 hod)
+  available?: boolean; // controls button disabled state
   onClick$?: PropFunction<() => void>;
 }
