@@ -231,14 +231,38 @@ strong {
   .btn[data-variant=plain] {
     all: initial;
   }
+  @property --gradient-angle {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: "<angle>";
+  }
+  .card {
+    transition: border-color 0.25s ease-in-out;
+    overflow-clip-margin: 0.5rem;
+  }
   @media (hover: hover) {
     .card:hover {
       --card-before_trans-y: -100%;
       --card-after_trans-y: 0;
+      --card-after_opacity: 1;
+      border-color: transparent !important;
     }
+  }
+  .card:after {
+    content: "";
+    position: absolute;
+    inset: -0.4rem;
+    background-image: conic-gradient(from var(--gradient-angle), var(--color-turquoise-300), var(--color-turquoise-500), var(--color-purple-300), var(--color-purple-500), var(--color-purple-700), var(--color-purple-500), var(--color-purple-300), var(--color-turquoise-500), var(--color-turquoise-300));
+    opacity: var(--card-after_opacity, 0);
+    animation: rotateGradient 3s linear infinite;
+    animation-play-state: var(--anim-state, initial);
+    transition: opacity 0.25s ease-in-out;
+    z-index: -1;
   }
   .card h3 {
     position: relative;
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
     text-wrap: ballanced;
     white-space: pre-line;
     overflow: clip;
@@ -286,6 +310,11 @@ strong {
   .card p {
     text-wrap: ballanced;
     text-wrap: pretty;
+  }
+  @keyframes rotateGradient {
+    to {
+      --gradient-angle: 1turn;
+    }
   }
   .icon {
     display: block;
@@ -837,15 +866,8 @@ strong {
       scale: 1 1;
     }
   }
-  @media screen and (width <= 768px) {
-    header {
-      block-size: var(--header_height, calc(100svb - var(--nav_height)));
-    }
-  }
-  @media screen and (width > 768px) {
-    header {
-      block-size: auto;
-    }
+  header {
+    block-size: var(--header_height, calc(100svb - var(--nav_height)));
   }
   header:empty {
     display: none;
@@ -865,7 +887,7 @@ strong {
   }
   .intro__title {
     position: relative;
-    text-shadow: -2px 0 var(--color-pink), 2px 0 var(--color-torquoise);
+    text-shadow: -2px 0 var(--color-violet-700), 2px 0 var(--color-turquoise-600);
     animation: show-title-glitch 0.5s ease-out 0.35s forwards;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -903,10 +925,12 @@ strong {
     }
   }
   .intro__title::before {
+    color: var(--color-violet-700);
     left: 2px;
     animation: noise-anim 2s infinite linear alternate-reverse;
   }
   .intro__title::after {
+    color: var(--color-turquoise-600);
     left: -2px;
     animation: noise-anim-2 3s infinite linear alternate-reverse;
   }
@@ -1149,32 +1173,26 @@ strong {
     transition: all 0.2s;
     overflow: clip;
     container-size: size;
+    overflow-clip-margin: 0.5rem;
     scroll-behavior: smooth;
     scroll-marker-group: after;
   }
   @media screen and (width <= 1024px) {
     .services {
-      /* Grid carousel with 16px side peeks and centered snapping */
       --col-template: none;
       display: grid !important;
       grid-auto-flow: column;
-      /* Increase side peeks a bit (24px) */
       grid-auto-columns: calc(100% - 2 * 1.5rem);
-      gap: 1rem; /* keep 16px gap between cards */
-      /* no padding on wrapper per request */
       padding-inline: 0;
       overflow-x: auto;
       overscroll-behavior-x: contain;
       inline-size: 100%;
       max-inline-size: 100%;
-      /* keep snap offset so first/last can center without visual padding */
       scroll-padding-inline: 1.5rem;
       scroll-snap-type: x mandatory;
-      /* hide scrollbar across browsers */
-      -ms-overflow-style: none; /* IE/Edge legacy */
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
-    .services::-webkit-scrollbar { /* WebKit */
+    .services::-webkit-scrollbar {
       display: none;
     }
   }
@@ -1193,7 +1211,6 @@ strong {
   @media screen and (width <= 1024px) {
     .services > div {
       container-type: scroll-state;
-      /* Grid auto-columns control width; ensure no extra minimums */
       min-inline-size: 0;
       scroll-snap-align: center;
       scroll-snap-stop: always;

@@ -32,14 +32,15 @@
       inset: -0.4rem;
       background-image: conic-gradient(
         from var(--gradient-angle),
-        turquoise,
-        skyblue,
-        violet,
-        purple,
-        purple,
-        violet,
-        skyblue,
-        turquoise
+        var(--color-turquoise-300),
+        var(--color-turquoise-500),
+        var(--color-purple-300),
+        var(--color-purple-500),
+        var(--color-purple-700),
+        var(--color-purple-500),
+        var(--color-purple-300),
+        var(--color-turquoise-500),
+        var(--color-turquoise-300)
       );
       opacity: var(--card-after_opacity, 0);
       animation: rotateGradient 3s linear infinite;

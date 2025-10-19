@@ -26,8 +26,8 @@
     &__title {
       position: relative;
       text-shadow: 
-        -2px 0 var(--color-pink),
-        2px 0 var(--color-torquoise);
+        -2px 0 var(--color-purple-300),
+        2px 0 var(--color-turquoise-300);
       animation: show-title-glitch 0.5s ease-out 0.35s forwards;
 
       @include mq-reduce-motion {
@@ -68,11 +68,13 @@
 
       &::before {
         left: 2px;
+        color: var(--color-violet-700);
         animation: noise-anim 2s infinite linear alternate-reverse;
       }
 
       &::after {
         left: -2px;
+        color: var(--color-turquoise-600);
         animation: noise-anim-2 3s infinite linear alternate-reverse;
       }
     }

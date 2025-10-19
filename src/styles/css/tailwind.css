@@ -25,6 +25,16 @@
   --color-error: hsl(354deg 70% 54%);
   --color-pink: hsl(313deg 100% 81%);
   --color-torquoise: hsl(175deg 100% 65%);
+  /* alias with correct spelling */
+  --color-turquoise: var(--color-torquoise);
+  /* turquoise shades */
+  --color-turquoise-300: hsl(175deg 100% 75%);
+  --color-turquoise-500: hsl(175deg 100% 60%);
+  --color-turquoise-700: hsl(175deg 85% 45%);
+  /* purple shades */
+  --color-purple-300: hsl(270deg 100% 80%);
+  --color-purple-500: hsl(270deg 80% 60%);
+  --color-purple-700: hsl(270deg 60% 45%);
   --color-yellow-500: hsl(51deg 100% 53%);
   --color-bg: hsl(0deg 0% 100%);
   --color-menu: hsl(0deg 0% 0% / 30%);

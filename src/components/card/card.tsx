@@ -41,7 +41,7 @@ const Card = component$(
           class={cls(
             "grid grid-rows-subgrid row-span-2",
             "gap-inherit",
-            "px-6 sm:px-8",
+            "px-6 sm:px-8 pt-6 sm:pt-8",
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
             "text-black dark:text-white",
