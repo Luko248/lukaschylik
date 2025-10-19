@@ -39,9 +39,16 @@ const References = component$(() => {
                 >
                   Služby a spoupráca
                 </Button>
-                <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth">
+                <div
+                  class="video-carousel relative
+                    grid grid-flow-col [grid-auto-columns:calc(100%-2rem)] gap-4
+                    mt-10 md:mt-20 max-w-full md:max-w-[560px]
+                    overflow-x-auto overscroll-x-contain scroll-smooth
+                    snap-x snap-mandatory [scroll-padding-inline:1rem]
+                    [scrollbar-width:none] [-ms-overflow-style:'none'] [&::-webkit-scrollbar]:hidden
+                    [&>*]:min-w-0 [&>*]:snap-center [&>*]:snap-always">
                   <iframe
-                    class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
+                    class="w-full aspect-video block rounded-l overflow-clip"
                     loading="lazy"
                     width="560"
                     src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
@@ -51,7 +58,7 @@ const References = component$(() => {
                     allowFullscreen
                   ></iframe>
                   <iframe
-                    class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
+                    class="w-full aspect-video block rounded-l overflow-clip"
                     loading="lazy"
                     width="560"
                     src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"
