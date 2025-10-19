@@ -9,9 +9,10 @@ const SkillItem = component$<SkillItemProps>(({ text }) => {
         "inline-block",
         "border border-black dark:border-white rounded-lg",
         "leading-normal text-nowrap",
-        "text-sm sm:text-lg md:text-xl lg:text-xl xl:text-lg",
-        "px-4 lg:px-6 xl:px-5 py-2 lg:py-2 xl:py-1.5 3xl:py-3",
-      )}>
+        "text-sm sm:text-lg md:text-xl xl:text-2xl",
+        "px-4 xl:px-8 py-2 xl:py-3 3xl:py-4"
+      )}
+    >
       {text}
     </li>
   );
