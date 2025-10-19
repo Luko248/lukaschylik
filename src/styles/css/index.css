@@ -541,21 +541,13 @@ strong {
   section h2[data-dark] {
     -webkit-text-stroke: 0.035em hsl(0, 0%, 0%);
   }
+  section#about-me {
+    view-timeline: --about-view block;
+    view-timeline-inset: 0 10svb;
+  }
   .skills {
     max-width: 100svi;
     mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
-  }
-  @media screen and (width <= 768px) {
-    .skills {
-      view-timeline: --skills block;
-      view-timeline-inset: -10svb 0 0 0;
-    }
-  }
-  @media screen and (width > 768px) {
-    .skills {
-      view-timeline: initial;
-      view-timeline-inset: initial;
-    }
   }
   .skills:hover li:not(:hover) {
     opacity: 0.5;
@@ -567,12 +559,11 @@ strong {
   }
   .skills__scroller {
     animation: scroll-skills linear;
-    animation-timeline: view(--section-view);
+    animation-timeline: scroll(root);
   }
   @media screen and (width <= 768px) {
     .skills__scroller {
-      animation-timeline: --skills;
-      animation-range-end: 80svb;
+      animation-timeline: --about-view;
     }
   }
   .skills__scroller:nth-of-type(2) {
@@ -846,8 +837,15 @@ strong {
       scale: 1 1;
     }
   }
-  header {
-    block-size: var(--header_height, calc(100svb - var(--nav_height)));
+  @media screen and (width <= 768px) {
+    header {
+      block-size: var(--header_height, calc(100svb - var(--nav_height)));
+    }
+  }
+  @media screen and (width > 768px) {
+    header {
+      block-size: auto;
+    }
   }
   header:empty {
     display: none;

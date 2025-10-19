@@ -49,7 +49,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
       <nav
         class={cls(
           "nav",
-          "fixed md:sticky inset-x-0 top-0",
+          "sticky inset-x-0 top-0",
           "flex justify-between items-center",
           "md:grid md:grid-cols-[auto_1fr_auto] justify-between items-stretch",
           "text-center",

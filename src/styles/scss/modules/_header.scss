@@ -4,7 +4,12 @@
 
 @mixin create-header {
   header {
-    block-size: var(--header_height, calc(100svb - var(--nav_height)));
+    @include mq-responsive("tablet", max) {
+      block-size: var(--header_height, calc(100svb - var(--nav_height)));
+    }
+    @include mq-responsive("tablet", min) {
+      block-size: auto;
+    }
 
     &:empty {
       display: none;
