@@ -45,12 +45,12 @@ const Alert = component$<AlertProps>(
     return (
       <div
         class={cls(
-          "fixed",
+          "fixed overflow-hidden",
           "flex gap-8 items-center justify-between",
           "p-4 rounded-md",
           "backdrop-blur-md bg-green-500/70 text-white",
-          "sm:inset-auto sm:bottom-4 sm:left-0.5 sm:right-0.5",
-          "lg:inset-auto lg:bottom-8 lg:left-[50%] -translate-x-[50%]",
+          "top-auto bottom-4 left-0.5 right-0.5",
+          "lg:top-auto lg:bottom-8 lg:left-[50%] -translate-x-[50%]",
           "z-50",
           className
         )}
