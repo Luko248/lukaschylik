@@ -17,7 +17,7 @@ const Header = component$(() => {
         "Data attributes set - height:",
         titleElement.getAttribute("data-height"),
         "width:",
-        titleElement.getAttribute("data-width"),
+        titleElement.getAttribute("data-width")
       );
     }
   });
@@ -26,11 +26,13 @@ const Header = component$(() => {
     <header
       class={cls(
         "grid place-items-center content-center",
-        "bg-white dark:bg-black",
-      )}>
+        "bg-white dark:bg-black"
+      )}
+    >
       <Container size="lg" className="relative z-10 isolate">
         <div
-          class={cls("intro", "grid gap-4 place-items-center content-center")}>
+          class={cls("intro", "grid gap-4 place-items-center content-center")}
+        >
           <h1
             class={cls(
               "intro__title",
@@ -38,12 +40,13 @@ const Header = component$(() => {
               "text-7xl sm:text-8xl lg:text-[clamp(3rem,16svb,12rem)]",
               "!text-black dark:!text-white text-center",
               "font-extrabold uppercase leading-none tracking-widest",
-              "relative z-10",
+              "relative z-10"
             )}
             data-glitch="Lukáš
 Chylík"
             data-height="200"
-            data-width="800">
+            data-width="800"
+          >
             Lukáš
             <br />
             Chylík
@@ -56,8 +59,9 @@ Chylík"
                 "px-[.25em]",
                 "text-[3.5svb] lg:text-[clamp(1rem,3.8svb,3.5rem)]",
                 "text-black bg-secondary rounded-lg",
-                "font-medium",
-              )}>
+                "font-medium"
+              )}
+            >
               Creative web developer
             </strong>
             <div class="inline-flex gap-32 place-items-center content-center mt-16">
@@ -66,7 +70,8 @@ Chylík"
                 variant="primary"
                 size="md"
                 title="Kto som?"
-                className="intro__btn">
+                className="intro__btn"
+              >
                 Kto som?
               </Button>
             </div>

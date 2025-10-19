@@ -13,8 +13,14 @@ const formatPrice = (price: number) => {
  * Card component that displays content in a card format
  */
 const Card = component$(
-  ({ title, price, priceLabel, priceNote, available = true, onClick$ }: CardProps) => {
-    // Card content that will be wrapped by either div or anchor
+  ({
+    title,
+    price,
+    priceLabel,
+    priceNote,
+    available = true,
+    onClick$,
+  }: CardProps) => {
     const CardContent = (
       <>
         <h3
@@ -59,13 +65,11 @@ const Card = component$(
               "text-2xl sm:text-3xl 3xl:text-4xl"
             )}
           >
-            {priceLabel ? (
-              priceLabel
-            ) : price != null ? (
-              `${formatPrice(price)} Kč`
-            ) : (
-              "Na mieru"
-            )}
+            {priceLabel
+              ? priceLabel
+              : price != null
+              ? `${formatPrice(price)} Kč`
+              : "Na mieru"}
             {priceNote && (
               <small class="block text-xs sm:text-sm font-light opacity-80">
                 {priceNote}
@@ -86,15 +90,15 @@ const Card = component$(
       </>
     );
 
-    // For non-blog cards, use the regular div wrapper
     return (
       <div
         class={cls(
-          "card",
-          "group overflow-clip",
+          "card overflow-clip",
+          "group relative",
           "grid grid-rows-subgrid row-span-4",
           "border-2 border-black dark:border-white rounded-lg",
-          "text-black dark:text-white"
+          "text-black dark:text-white",
+          "bg-white dark:bg-black"
         )}
       >
         {CardContent}

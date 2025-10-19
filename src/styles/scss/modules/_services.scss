@@ -10,31 +10,25 @@
     transition: all $trans-time;
     overflow: clip;
     container-size: size;
+    overflow-clip-margin: .5rem;
     scroll-behavior: smooth;
     scroll-marker-group: after;
 
     @include mq-responsive("desktop-s", max) {
-      /* Grid carousel with 16px side peeks and centered snapping */
       --col-template: none;
       display: grid !important;
       grid-auto-flow: column;
-      /* Increase side peeks a bit (24px) */
       grid-auto-columns: calc(100% - (2 * #{$gap-space-24}));
-      gap: $gap-space-16; /* keep 16px gap between cards */
-      /* no padding on wrapper per request */
       padding-inline: 0;
       overflow-x: auto;
       overscroll-behavior-x: contain;
       inline-size: 100%;
       max-inline-size: 100%;
-      /* keep snap offset so first/last can center without visual padding */
+
       scroll-padding-inline: $gap-space-24;
       scroll-snap-type: x mandatory;
-
-      /* hide scrollbar across browsers */
-      -ms-overflow-style: none; /* IE/Edge legacy */
-      scrollbar-width: none; /* Firefox */
-      &::-webkit-scrollbar { /* WebKit */
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
         display: none;
       }
     }
@@ -54,7 +48,6 @@
 
       @include mq-responsive("desktop-s", max) {
         container-type: scroll-state;
-        /* Grid auto-columns control width; ensure no extra minimums */
         min-inline-size: 0;
         scroll-snap-align: center;
         scroll-snap-stop: always;
