@@ -26,7 +26,7 @@ export const checkUrlForAlerts = (
   };
   // Contact form submission (preferred flag)
   if (location.searchParams.has("formSubmitted")) {
-    trigger("Vaša správa bola úspešne odoslaná. Ďakujeme!");
+    trigger("Vaša správa bola úspešne odoslaná.");
 
     // Clean URL parameters
     const url = new URL(window.location.href);
@@ -41,7 +41,7 @@ export const checkUrlForAlerts = (
     location.searchParams.has("subject") &&
     location.searchParams.has("message");
   if (hasLegacyContactParams) {
-    trigger("Vaša správa bola úspešne odoslaná. Ďakujeme!");
+    trigger("Vaša správa bola úspešne odoslaná.");
 
     // Clean all known contact params from URL and preserve hash
     const url = new URL(window.location.href);
@@ -60,7 +60,7 @@ export const checkUrlForAlerts = (
 
   // Newsletter subscription
   if (location.searchParams.has("newsletterSubscribed")) {
-    trigger("Úspešne ste sa prihlásili na odber noviniek. Ďakujeme!");
+    trigger("Úspešne ste sa prihlásili na odber noviniek.");
 
     // Clean URL parameters
     const url = new URL(window.location.href);
