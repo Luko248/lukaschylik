@@ -53,12 +53,6 @@ const Footer = component$(() => {
                   chylik.lukas@gmail.com
                 </a>
               </span>
-              <span class="block">
-                <strong>Tel.:</strong>{" "}
-                <a class="hover:underline" href="tel:+421721459889">
-                  +421 721 459 889
-                </a>
-              </span>
             </address>
           </div>
         </div>
