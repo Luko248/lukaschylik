@@ -5,7 +5,6 @@
 @mixin create-services {
   .services {
     --carousel-size: 100%;
-
     grid-template-columns: var(--col-template, 1fr 1fr 1fr);
     transition: all $trans-time;
     overflow: clip;
@@ -25,7 +24,6 @@
       overscroll-behavior-x: contain;
       inline-size: 100%;
       max-inline-size: 100%;
-
       scroll-padding-inline: $gap-space-24;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;

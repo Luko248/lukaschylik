@@ -8,7 +8,7 @@ import {
 } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
 import { cls, DialogContext } from "~/utils";
-import Logo from "../../../public/images/logos/logo.svg?jsx";
+import Logo from "~/images/logos/logo.svg?jsx";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import { ThemeSwitch } from "../themeSwitch";

@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Container } from "~/components";
 import { cls } from "~/utils";
-import Logo from "../../../public/images/logos/logo-footer.svg?jsx";
+import Logo from "~/images/logos/logo-footer.svg?jsx";
 
 const Footer = component$(() => {
   return (
