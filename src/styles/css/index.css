@@ -340,9 +340,9 @@ strong {
   }
   :where(html, body):has(.nav--open) {
     overflow: hidden;
-    block-size: 100svb;
-    touch-action: none;
     overscroll-behavior: none;
+    scrollbar-gutter: stable;
+    touch-action: none;
   }
   .nav {
     max-inline-size: 100lvi;
@@ -545,6 +545,18 @@ strong {
     max-width: 100svi;
     mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
   }
+  @media screen and (width <= 768px) {
+    .skills {
+      view-timeline: --skills block;
+      view-timeline-inset: -10svb 0 0 0;
+    }
+  }
+  @media screen and (width > 768px) {
+    .skills {
+      view-timeline: initial;
+      view-timeline-inset: initial;
+    }
+  }
   .skills:hover li:not(:hover) {
     opacity: 0.5;
   }
@@ -555,11 +567,12 @@ strong {
   }
   .skills__scroller {
     animation: scroll-skills linear;
-    animation-timeline: scroll(root);
+    animation-timeline: view(--section-view);
   }
   @media screen and (width <= 768px) {
     .skills__scroller {
-      animation-timeline: view(--section-view);
+      animation-timeline: --skills;
+      animation-range-end: 80svb;
     }
   }
   .skills__scroller:nth-of-type(2) {
