@@ -21,15 +21,16 @@ const References = component$(() => {
                   klientov ako Elendris alebo Anew Style.
                 </p>
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                  Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
-                  rôznym webovým projektom. Pre Update Conference som vytvoril
-                  množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
-                  framework.
+                  V spolupráci so spoločnosťou Riganti som sa podieľal na
+                  realizácii viacerých webových projektov. Pre Update Conference
+                  som pripravil viacero webových stránok a prispel k vývoju UI kitu
+                  pre framework DotVVM.
                 </p>
 
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-8 md:mb-16 text-gray-800 dark:text-gray-300 font-mono">
-                  Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a
-                  konferenciách.
+                  Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a konferenciách.
+                  Zároveň sa podieľam na spoluorganizácii meetupov pod záštitou spolku
+                  <a class="underline" href="https://www.frontendisti.cz/" target="_blank" rel="noopener noreferrer">Frontendisti</a>.
                 </p>
                 <Button
                   variant="secondary"

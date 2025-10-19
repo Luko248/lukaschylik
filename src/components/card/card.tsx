@@ -41,7 +41,7 @@ const Card = component$(
           class={cls(
             "grid grid-rows-subgrid row-span-2",
             "gap-inherit",
-            "px-6 sm:px-8 pt-6 sm:pt-8",
+            "px-6 sm:px-8",
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
             "text-black dark:text-white",
@@ -95,7 +95,7 @@ const Card = component$(
         class={cls(
           "card overflow-clip",
           "group relative",
-          "grid grid-rows-subgrid row-span-4",
+          "grid grid-rows-subgrid row-span-4 gap-6 sm:gap-8",
           "border-2 border-black dark:border-white rounded-lg",
           "text-black dark:text-white",
           "bg-white dark:bg-black"
