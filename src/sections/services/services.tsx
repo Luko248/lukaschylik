@@ -22,7 +22,7 @@ const References = component$(() => {
             kľudný spánok.
           </p>
         </div>
-        <div class="services grid gap-8 text-white">
+        <div class="services grid text-white xl:gap-8">
           <Card
             title="Konzultácie a Mentoring"
             price={1200}

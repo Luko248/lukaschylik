@@ -5,7 +5,7 @@ import Logo from "../../assets/images/logo.svg?jsx";
 
 const Footer = component$(() => {
   return (
-    <footer class="relative bg-white dark:bg-black text-black dark:text-white">
+    <footer class="relative bg-black text-white">
       <div class="h-px w-full bg-gradient-to-r from-transparent via-neutral-400/50 to-transparent" />
 
       <Container size="md" className="relative z-10 isolate py-8 md:py-10">
@@ -19,8 +19,9 @@ const Footer = component$(() => {
                 "flex items-center",
                 "no-underline",
                 "transition-opacity duration-200",
-                "opacity-100 hover:opacity-80",
-              )}>
+                "opacity-100 hover:opacity-80"
+              )}
+            >
               <Logo
                 class="w-full h-full max-w-full"
                 role="img"
@@ -29,13 +30,14 @@ const Footer = component$(() => {
                 height="60"
               />
             </a>
-            <p class="mt-2 mb-4 md:mb-0 max-w-[50ch] text-neutral-600 dark:text-neutral-300">
-              Creative web developer so zameraním na vizuálnu logiku, prístupnosť, výkon a SEO.
+            <p class="mt-2 mb-4 md:mb-0 max-w-[60ch] text-neutral-300">
+              Frontend developer s presahom do UX/UI. Design Systémy a AI vo
+              vývoji.
             </p>
           </div>
 
           <div class="md:justify-self-end text-sm">
-            <address class="not-italic leading-relaxed text-neutral-700 dark:text-neutral-300">
+            <address class="not-italic leading-relaxed text-neutral-300">
               Lukáš Chylík
               <br />
               Hybešova 308/61, 602 00 Brno
@@ -61,8 +63,10 @@ const Footer = component$(() => {
           </div>
         </div>
 
-        <div class="mt-8 flex items-center justify-center text-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
-          <small class="font-mono">©{new Date().getFullYear()} Všetky práva vyhradené.</small>
+        <div class="mt-8 flex items-center justify-center text-center gap-2 text-xs text-neutral-400">
+          <small class="font-mono">
+            ©{new Date().getFullYear()} Všetky práva vyhradené.
+          </small>
         </div>
       </Container>
     </footer>
