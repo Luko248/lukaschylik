@@ -94,7 +94,7 @@ const Contact = component$(() => {
         <SectionTitle text="Kontakt" dark={true} />
         <p
           class={cls(
-            "text-l lg:text-xl leading-relaxed font-light",
+            "text-sm lg:text-base 3xl:text-lg leading-relaxed font-light",
             "mb-4 sm:mb-12",
             "font-mono text-gray-800",
             "content-fade-in"

@@ -15,7 +15,7 @@ const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
           class={cls(
             "relative",
             "flex w-full lg:w-auto justify-between gap-4",
-            "md:text-l sm:text-2xl md:text-4xl xl:text-2xl 2xl:lg:text-4xl 3xl:text-5xl",
+            "text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl",
             "font-medium leading-normal tracking-wide uppercase whitespace-nowrap",
             "overflow-hidden z-20"
           )}
@@ -26,7 +26,7 @@ const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
           >
             {title}
           </span>
-          <small class="text-[10px] md:text-xs pt-1 lg:pt-2 xl:pt-3 2xl:pt-4 3xl:pt-5 text-black dark:text-white tracking-wider leading-none">
+          <small class="text-[10px] md:text-xs pt-1 lg:pt-1 xl:pt-2 2xl:pt-3 3xl:pt-4 text-black dark:text-white tracking-wider leading-none">
             {type}
           </small>
         </strong>

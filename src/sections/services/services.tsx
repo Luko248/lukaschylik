@@ -13,7 +13,7 @@ const References = component$(() => {
       <Container size="full">
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
-          <p class="text-l lg:text-xl leading-relaxed font-light mb-18 text-gray-800 dark:text-gray-300 font-mono">
+          <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-18 text-gray-800 dark:text-gray-300 font-mono">
             Zistenie, že ste pre váš projekt zvolili{" "}
             <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
@@ -35,10 +35,18 @@ const References = component$(() => {
               <strong>personalizovaného mentoringu</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem className="text-xs sm:text-sm md:text-sm">Riešenie konkrétnych frontend problémov</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Code review a architektonické poradenstvo</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Kariérne poradenstvo pre developerov</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">Online aj osobné stretnutia</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Riešenie konkrétnych frontend problémov
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Code review a architektonické poradenstvo
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Kariérne poradenstvo pre developerov
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">
+                Online aj osobné stretnutia
+              </ListItem>
             </ul>
           </Card>
           <Card
@@ -53,22 +61,42 @@ const References = component$(() => {
               <strong> pre lepší výkon</strong>.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem className="text-xs sm:text-sm md:text-sm">Audit kódu a architektúry</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Analýza výkonu a accessibility</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Konkrétne odporúčania na zlepšenie</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">60 min. vstupné stretnutie zdarma</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Audit kódu a architektúry
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Analýza výkonu a accessibility
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Konkrétne odporúčania na zlepšenie
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">
+                60 min. vstupné stretnutie zdarma
+              </ListItem>
             </ul>
           </Card>
-          <Card title="Workshopy a školenia" priceLabel="Dohodou" available={true}>
+          <Card
+            title="Workshopy a školenia"
+            priceLabel="Dohodou"
+            available={true}
+          >
             <p class="text-sm text-gray-800 dark:text-gray-300">
               Zdieľam praktické znalosti a najnovšie trendy vo frontend
               developmente cez interaktívne workshopy pre tímy.
             </p>
             <ul class="grid gap-2 content-start">
-              <ListItem className="text-xs sm:text-sm md:text-sm">Firemné školenia na mieru</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Praktické workshopy s live coding</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm">Aktuálne technológie a best practices</ListItem>
-              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">Skupinové aj individuálne formáty</ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Firemné školenia na mieru
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Praktické workshopy s live coding
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm">
+                Aktuálne technológie a best practices
+              </ListItem>
+              <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">
+                Skupinové aj individuálne formáty
+              </ListItem>
             </ul>
           </Card>
         </div>

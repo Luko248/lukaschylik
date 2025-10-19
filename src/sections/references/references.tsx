@@ -7,61 +7,63 @@ import SectionTitle from "~/components/section/section.title";
 
 const References = component$(() => {
   return (
-    <Section id="references">
+    <Section id="references" centerContent={false} fullHeight={false}>
       <Container size="full">
-        <div class="relative grid grid-cols-1 xl:grid-cols-[8fr_5fr] gap-5 isolate xl:max-h-screen xl:overflow-auto">
-          <div class="relative xl:sticky xl:top-0 xl:h-fit mb-8 xl:mb:0">
+        <div class="relative grid gap-5 isolate">
+          <div>
             <SectionTitle text="Referencie" />
-            <div class="content-fade-in">
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
-                ako Elendris alebo Anew Style.
-              </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
-                rôznym webovým projektom. Pre Update Conference som vytvoril
-                množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
-                framework.
-              </p>
+          </div>
+          <div class="grid grid-cols-1 xl:grid-cols-[10fr_4fr] 2xl:grid-cols-[9fr_4fr] 3xl:grid-cols-[8fr_5fr] gap-5 items-start">
+            <div class="relative mb-8 xl:mb-0">
+              <div>
+                <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
+                  Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
+                  ako Elendris alebo Anew Style.
+                </p>
+                <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
+                  Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
+                  rôznym webovým projektom. Pre Update Conference som vytvoril
+                  množstvo webových stránok a pomohol vyvinúť UI kit pre DotVVM
+                  framework.
+                </p>
 
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-8 md:mb-16 text-gray-800 dark:text-gray-300 font-mono">
-                Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a
-                konferenciách.
-              </p>
-              <Button
-                className="content-fade-in"
-                variant="secondary"
-                ariaLabel="Služby a spoupráca"
-                title="Služby a spoupráca"
-                href="#services"
-              >
-                Služby a spoupráca
-              </Button>
-              <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth content-fade-in">
-                <iframe
-                  class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
-                  loading="lazy"
-                  width="560"
-                  src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
-                  title="YouTube video Lukáš Chylík - Frontendové novinky"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullscreen
-                ></iframe>
-                <iframe
-                  class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
-                  loading="lazy"
-                  width="560"
-                  src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"
-                  title="YouTube video Lukáš Chylík - Pozicování pomocí CSS anchor"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullscreen
-                ></iframe>
+                <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-8 md:mb-16 text-gray-800 dark:text-gray-300 font-mono">
+                  Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a
+                  konferenciách.
+                </p>
+                <Button
+                  variant="secondary"
+                  ariaLabel="Služby a spoupráca"
+                  title="Služby a spoupráca"
+                  href="#services"
+                >
+                  Služby a spoupráca
+                </Button>
+                <div class="video-carousel relative flex flex-row gap-4 mt-10 md:mt-20 snap-x snap-mandatory max-w-full md:max-w-[560px] overflow-clip overflow-x-auto scroll-smooth">
+                  <iframe
+                    class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
+                    loading="lazy"
+                    width="560"
+                    src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
+                    title="YouTube video Lukáš Chylík - Frontendové novinky"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullscreen
+                  ></iframe>
+                  <iframe
+                    class="snap-center min-w-full aspect-video block rounded-l overflow-clip"
+                    loading="lazy"
+                    width="560"
+                    src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"
+                    title="YouTube video Lukáš Chylík - Pozicování pomocí CSS anchor"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullscreen
+                  ></iframe>
+                </div>
               </div>
             </div>
-          </div>
-          <ul class="ref-list list-none p-0 m-0 content-fade-in xl:mt-5 3xl:mt-8">
+            <ul class="ref-list list-none p-0 m-0">
             <Reference
               title="Vertice"
               webURL="https://vertice.one/"
@@ -153,7 +155,8 @@ const References = component$(() => {
               type="Web"
             /> 
             */}
-          </ul>
+            </ul>
+          </div>
         </div>
       </Container>
     </Section>

@@ -73,7 +73,7 @@ export const ReservationDialog = component$<ReservationDialogProps>(
           }
         });
       },
-      { strategy: "document-ready" },
+      { strategy: "document-ready" }
     );
 
     return (
@@ -81,19 +81,21 @@ export const ReservationDialog = component$<ReservationDialogProps>(
         ref={dialogRef}
         id="reservationModal"
         closedby="any"
-        class="bg-white dark:bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg">
+        class="bg-white dark:bg-black-800 mx-auto my-auto max-w-full px-4 md:px-8 pt-8 md:pt-16 pb-8 rounded-lg"
+      >
         <Button
           className="absolute top-4 right-4 text-gray-800 dark:text-white ldark:text-gray-300 p-0 scale-95 hover:scale-100 opacity-90 hover:opacity-100"
           variant="plain"
           title="Zatvoriť rezerváciu"
           onClick$={() => dialogRef.value?.close()}
-          aria-label="Zatvoriť rezerváciu">
+          aria-label="Zatvoriť rezerváciu"
+        >
           <Icon name="close" size="1.5rem" aria-hidden="true" />
         </Button>
         <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center text-black dark:text-white">
           Rezervácia
         </h3>
-        <p class="text-l lg:text-xl text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-800 dark:text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
+        <p class="text-sm lg:text-base 3xl:text-lg text-center leading-relaxed font-light mb-8 md:mb-16 mx-auto text-gray-800 dark:text-gray-300 font-mono content-fade-in content-fade-in--bottom text-pretty">
           Pre rezerváciu 60 minútnej konzultácie kliknite na kalendar a vyberte
           dátum a čas.
         </p>
@@ -109,5 +111,5 @@ export const ReservationDialog = component$<ReservationDialogProps>(
         />
       </dialog>
     );
-  },
+  }
 );

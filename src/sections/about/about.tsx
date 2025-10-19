@@ -11,14 +11,15 @@ const About = component$(() => {
           <div
             class={cls(
               "grid grid-cols-1 items-start",
-              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
-            )}>
+              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]"
+            )}
+          >
             <SectionTitle
               text="Niečo o mne"
               className="about-title lg:row-start-1 lg:col-span-2 lg:col-start-1"
             />
             <div class="content-fade-in">
-              <p class="md:text-sm lg:text-xl leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
+              <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
                 Som frontend developer špecializujúci sa na{" "}
                 <strong>vizuálnu logiku</strong>. S ôsmimi rokmi skúseností a
                 množstvom projektov za sebou som pracoval na všetkom od
@@ -31,19 +32,20 @@ const About = component$(() => {
                 . Momentálne sa zameriavam na implementáciu dizajnových
                 systémov.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
+              <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
                 Ako člen komunity{" "}
                 <a
                   class="underline"
                   href="https://www.frontendisti.cz/"
                   target="_blank"
-                  rel="noopener noreferrer">
+                  rel="noopener noreferrer"
+                >
                   Frontendisti
                 </a>{" "}
                 sa spoločne s kolegami podieľam na organizovaní pravidelných
                 Frontendisti meetupov v Brne.
               </p>
-              <p class="text-l lg:text-xl leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
+              <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
                 Tiež pomáham vývojárom pri výbere správnej technológie pre
                 vizuálne aspekty ich projektov a ponúkam{" "}
                 <strong>konzultácie, workshopy a školenia</strong> v tejto
