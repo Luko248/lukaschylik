@@ -50,7 +50,7 @@ const Alert = component$<AlertProps>(
           "p-4 rounded-md",
           "backdrop-blur-md bg-green-500/70 text-white",
           "top-auto bottom-4 left-0.5 right-0.5",
-          "lg:top-auto lg:bottom-8 lg:left-[50%] -translate-x-[50%]",
+          "lg:top-auto lg:bottom-8 lg:left-[50%] lg:-translate-x-[50%]",
           "z-50",
           className
         )}
