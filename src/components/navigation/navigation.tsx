@@ -39,6 +39,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
     }
   });
 
+  // Scroll lock handled via CSS in _navigation.scss using :has(.nav--open)
+
   // Check if current path is blog or blog detail page
   const isBlogPage = location.url.pathname.startsWith("/blog");
 
