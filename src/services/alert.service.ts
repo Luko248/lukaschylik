@@ -24,7 +24,7 @@ export const checkUrlForAlerts = (
       anyFn(message);
     }
   };
-  // Contact form submission
+  // Contact form submission (preferred flag)
   if (location.searchParams.has("formSubmitted")) {
     trigger("Vaša správa bola úspešne odoslaná. Ďakujeme!");
 
@@ -32,6 +32,30 @@ export const checkUrlForAlerts = (
     const url = new URL(window.location.href);
     url.searchParams.delete("formSubmitted");
     window.history.replaceState({}, document.title, url.toString());
+  }
+
+  // Fallback: detect GET-submitted contact form (pre-hydration)
+  const hasLegacyContactParams =
+    location.searchParams.has("fullname") &&
+    location.searchParams.has("email") &&
+    location.searchParams.has("subject") &&
+    location.searchParams.has("message");
+  if (hasLegacyContactParams) {
+    trigger("Vaša správa bola úspešne odoslaná. Ďakujeme!");
+
+    // Clean all known contact params from URL and preserve hash
+    const url = new URL(window.location.href);
+    [
+      "_subject",
+      "_captcha",
+      "_format",
+      "_honey",
+      "fullname",
+      "email",
+      "subject",
+      "message",
+    ].forEach((p) => url.searchParams.delete(p));
+    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
   }
 
   // Newsletter subscription

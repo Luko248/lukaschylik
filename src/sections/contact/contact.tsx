@@ -137,6 +137,8 @@ const Contact = component$(() => {
         </div>
 
         <form
+          preventdefault:submit
+          method="post"
           onSubmit$={handleSubmit}
           class={cls(
             "grid grid-cols-1 gap-4 md:gap-6",
