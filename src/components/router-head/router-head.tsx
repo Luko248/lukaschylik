@@ -9,9 +9,9 @@ export const RouterHead = component$(() => {
   const head = useDocumentHead();
   const loc = useLocation();
 
-  const defaultTitle = "Lukáš Chylík | Creative web developer";
+  const defaultTitle = "Lukáš Chylík | Frontend, UX/UI, AI workshopy";
   const defaultDescription =
-    "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. Konzultácie, workshopy, dizajnové systémy.";
+    "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.";
 
   // Custom override mechanism - handle title and description from routes
   const title = head.title || defaultTitle;
@@ -70,7 +70,7 @@ export const RouterHead = component$(() => {
       <meta name="robots" content="index, follow" />
       <meta
         name="keywords"
-        content="web developer, frontend developer, creative developer, UI/UX design, web applications, Lukáš Chylík, Brno developer, web development, javascript, typescript, react"
+        content="frontend developer, UX/UI, dizajnové systémy, AI vo vývoji, AI workshopy, AI školenia, spec‑driven development, custom agenti, AI workflow, Lukáš Chylík, Brno"
       />
       <meta name="author" content="Lukáš Chylík" />
       <meta name="publisher" content="Lukáš Chylík" />

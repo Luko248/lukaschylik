@@ -21,7 +21,7 @@ const Card = component$(
           title={title}
           class={cls(
             "relative block",
-            "text-2xl sm:text-3xl xl:text-5xl 2xl:text-[clamp(1.5rem,2.5svi,2.25rem)] 3xl:text-[clamp(1.75rem,3svi,2.75rem)]",
+            "text-2xl sm:text-3xl lg:text-2xl xl:text-5xl 2xl:text-[clamp(1.5rem,2.5svi,2.25rem)] 3xl:text-[clamp(1.75rem,3svi,2.75rem)]",
             "font-regular tracking-widest 3xl:tracking-[.15em]",
             "py-3 sm:py-6 px-6 sm:px-8",
             "border-b-2 border-b-black dark:border-b-white text-black dark:text-white",

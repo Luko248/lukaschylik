@@ -25,7 +25,7 @@ const References = component$(() => {
         <div class="services grid gap-8 text-white">
           <Card
             title="Konzultácie a Mentoring"
-            price={1500}
+            price={1200}
             priceNote="Cena za 1 hod"
             onClick$={dialogContext.showDialog}
           >
@@ -51,7 +51,7 @@ const References = component$(() => {
           </Card>
           <Card
             title="Technologický audit"
-            price={2000}
+            price={1700}
             priceNote="Cena za 1 hod"
             onClick$={dialogContext.showDialog}
           >
@@ -76,23 +76,22 @@ const References = component$(() => {
             </ul>
           </Card>
           <Card
-            title="Workshopy a školenia"
+            title="AI workshopy a školenia"
             priceLabel="Dohodou"
             available={true}
           >
             <p class="text-sm text-gray-800 dark:text-gray-300">
-              Zdieľam praktické znalosti a najnovšie trendy vo frontend
-              developmente cez interaktívne workshopy pre tímy.
+              AI workshopy a školenia zamerané na prax a produktivitu.
             </p>
             <ul class="grid gap-2 content-start">
               <ListItem className="text-xs sm:text-sm md:text-sm">
-                Firemné školenia na mieru
+                Spec driven development
               </ListItem>
               <ListItem className="text-xs sm:text-sm md:text-sm">
-                Praktické workshopy s live coding
+                Custom agenti
               </ListItem>
               <ListItem className="text-xs sm:text-sm md:text-sm">
-                Aktuálne technológie a best practices
+                AI frontend workflow
               </ListItem>
               <ListItem className="text-xs sm:text-sm md:text-sm" marker="☝🏽">
                 Skupinové aj individuálne formáty

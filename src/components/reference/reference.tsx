@@ -9,14 +9,14 @@ const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
         href={webURL}
         target="_blank"
         rel="noreferer"
-        class="reference group flex just justify-between items-center gap-4 py-2 no-underline"
+        class="reference group flex just justify-between items-center gap-4 py-2 no-underline w-full min-w-0"
       >
         <strong
           class={cls(
             "relative",
-            "flex w-full lg:w-auto justify-between gap-4",
-            "text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl",
-            "font-medium leading-normal tracking-wide uppercase whitespace-nowrap",
+            "flex w-full lg:w-auto justify-between gap-4 min-w-0",
+            "text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-xl 2xl:text-2xl 3xl:text-4xl",
+            "font-medium leading-normal tracking-wide uppercase whitespace-normal 3xl:whitespace-nowrap",
             "overflow-hidden z-20"
           )}
         >

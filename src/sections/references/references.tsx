@@ -13,12 +13,12 @@ const References = component$(() => {
           <div>
             <SectionTitle text="Referencie" />
           </div>
-          <div class="grid grid-cols-1 xl:grid-cols-[10fr_4fr] 2xl:grid-cols-[9fr_4fr] 3xl:grid-cols-[8fr_5fr] gap-5 items-start">
-            <div class="relative mb-8 xl:mb-0">
+          <div class="grid grid-cols-1 lg:grid-cols-[34fr_21fr] gap-5 items-start">
+            <div class="mb-8 xl:mb-0">
               <div>
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                  Od roku 2016 som sa venoval tvorbe webových stránok pre klientov
-                  ako Elendris alebo Anew Style.
+                  Od roku 2016 som sa venoval tvorbe webových stránok pre
+                  klientov ako Elendris alebo Anew Style.
                 </p>
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
                   Mal som dlhodobú spoluprácu s Riganti, kde som prispieval k
@@ -63,68 +63,68 @@ const References = component$(() => {
                 </div>
               </div>
             </div>
-            <ul class="ref-list list-none p-0 m-0">
-            <Reference
-              title="Vertice"
-              webURL="https://vertice.one/"
-              website="vertice.one"
-              type="Design Systém"
-            />
-            <Reference
-              title="VIGo (Kooperativa & CPP)"
-              webURL="https://vig.cz/"
-              website="vig.cz"
-              type="Design Systém"
-            />
-            <Reference
-              title="Riganti"
-              webURL="https://www.riganti.cz/"
-              website="riganti.cz"
-              type="Spolupráca"
-            />
-            <Reference
-              title="Update Conference"
-              webURL="https://www.updateconference.net/"
-              website="updateconference.net"
-              type="Spolupráca"
-            />
-            <Reference
-              title="Update Days"
-              webURL="https://www.updatedays.cz/"
-              website="updatedays.cz"
-              type="Spolupráca"
-            />
-            <Reference
-              title="Meetupdate"
-              webURL="https://www.meetupdate.cz/"
-              website="meetupdate.cz"
-              type="Spolupráca"
-            />
-            <Reference
-              title="DotVVM"
-              webURL="https://www.dotvvm.com/"
-              website="dotvvm.com"
-              type="Spolupráca"
-            />
-            <Reference
-              title="Elendris"
-              webURL="https://elendris.cz/en/"
-              website="elendris.cz"
-              type="Web"
-            />
-            <Reference
-              title="Anew style"
-              webURL="https://anewstyle.cz/"
-              website="anewstyle.cz"
-              type="Web"
-            />
-            <Reference
-              title="thelucie.ink"
-              webURL="https://thelucie.ink/"
-              website="thelucie.ink"
-              type="Web"
-            />
-            {/* <Reference
+            <ul class="ref-list list-none p-0 m-0 min-w-0">
+              <Reference
+                title="Vertice"
+                webURL="https://vertice.one/"
+                website="vertice.one"
+                type="Design Systém"
+              />
+              <Reference
+                title="VIGo (Kooperativa & CPP)"
+                webURL="https://vig.cz/"
+                website="vig.cz"
+                type="Design Systém"
+              />
+              <Reference
+                title="Riganti"
+                webURL="https://www.riganti.cz/"
+                website="riganti.cz"
+                type="Spolupráca"
+              />
+              <Reference
+                title="Update Conference"
+                webURL="https://www.updateconference.net/"
+                website="updateconference.net"
+                type="Spolupráca"
+              />
+              <Reference
+                title="Update Days"
+                webURL="https://www.updatedays.cz/"
+                website="updatedays.cz"
+                type="Spolupráca"
+              />
+              <Reference
+                title="Meetupdate"
+                webURL="https://www.meetupdate.cz/"
+                website="meetupdate.cz"
+                type="Spolupráca"
+              />
+              <Reference
+                title="DotVVM"
+                webURL="https://www.dotvvm.com/"
+                website="dotvvm.com"
+                type="Spolupráca"
+              />
+              <Reference
+                title="Elendris"
+                webURL="https://elendris.cz/en/"
+                website="elendris.cz"
+                type="Web"
+              />
+              <Reference
+                title="Anew style"
+                webURL="https://anewstyle.cz/"
+                website="anewstyle.cz"
+                type="Web"
+              />
+              <Reference
+                title="thelucie.ink"
+                webURL="https://thelucie.ink/"
+                website="thelucie.ink"
+                type="Web"
+              />
+              {/* <Reference
               title="Krossbau s.r.o."
               webURL="https://www.krossbau.cz/"
               website="krossbau.cz"

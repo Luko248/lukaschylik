@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Person",
       "@id": "#person",
       "name": "Lukáš Chylík",
-      "jobTitle": "Creative web developer",
+      "jobTitle": "Frontend developer",
       "email": "chylik.lukas@gmail.com",
       "telephone": "+421721459889",
       "image": "./images/profile/me.webp",
@@ -67,8 +67,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "WebSite",
       "@id": "#website",
       "url": "https://lukaschylik.dev/",
-      "name": "Lukáš Chylík | Creative web developer",
-      "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. konzultácie, workshopy, dizajnové systémy.",
+      "name": "Lukáš Chylík | Frontend, UX/UI, AI workshopy",
+      "description": "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.",
       "publisher": {
         "@id": "#person"
       }
@@ -77,8 +77,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "ProfilePage",
       "@id": "#webpage",
       "url": "https://lukaschylik.dev/",
-      "name": "Lukáš Chylík | Creative web developer",
-      "description": "Frontend developer so špecializáciou na vizuálnu logiku, UI-UX dizajn, prístupnosť, výkon a SEO. konzultácie, workshopy, dizajnové systémy.",
+      "name": "Lukáš Chylík | Frontend, UX/UI, AI workshopy",
+      "description": "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.",
       "about": {
         "@id": "#person"
       },
