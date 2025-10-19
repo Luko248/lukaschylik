@@ -6,7 +6,6 @@
   :where(html, body):has(.nav--open) {
     overflow: hidden;
     overscroll-behavior: none;
-    block-size: 100svb;
     scrollbar-gutter: stable;
     touch-action: none;
   }
