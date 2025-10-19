@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $, component$, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik";
 import { cls } from "~/utils";
 import { Icon } from "../icon";
 import type { AlertProps } from "./alert.types";
@@ -9,13 +9,20 @@ const Alert = component$<AlertProps>(
 
     const animationDuration = `${duration}s`;
 
-    useVisibleTask$(({ cleanup }) => {
+    // Keep internal visibility in sync with prop changes
+    useTask$(({ track }) => {
+      track(() => visible);
+      isVisible.value = visible;
+    });
+
+    // Auto-hide when becoming visible
+    useVisibleTask$(({ track, cleanup }) => {
+      track(() => isVisible.value);
       if (isVisible.value) {
         const timer = setTimeout(() => {
           isVisible.value = false;
           onClose$?.();
         }, duration * 1000);
-
         cleanup(() => clearTimeout(timer));
       }
     });

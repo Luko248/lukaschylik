@@ -13,19 +13,7 @@
     scroll-behavior: smooth;
     scroll-marker-group: after;
 
-    // &:has(> div:first-of-type:hover) {
-    //   --col-template: 2fr 0.5fr 0.5fr;--col-template--col-template--col-template--col-template--col-template--col-template
-    // }
-
-    // &:has(> div:last-of-type:hover) {
-    //   --col-template: 0.5fr 0.5fr 2fr;--col-template--col-template--col-template--col-template--col-template--col-template
-    // }
-
-    // &:has(> div:not(:first-of-type, :last-of-type):hover) {
-    //   --col-template: 0.5fr 2fr 0.5fr;--col-template--col-template--col-template--col-template--col-template--col-template
-    // }
-
-    @include mq-responsive("tablet", max) {
+    @include mq-responsive("desktop-s", max) {
       --col-template: repeat(3, min-content);
 
       column-gap: 0;
@@ -47,7 +35,7 @@
       scroll-snap-align: center;
       scroll-snap-stop: always;
 
-      @include mq-responsive("tablet", max) {
+      @include mq-responsive("desktop-s", max) {
         container-type: scroll-state;
         min-inline-size: var(--carousel-size);
         scroll-snap-align: center;

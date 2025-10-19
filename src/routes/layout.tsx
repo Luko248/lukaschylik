@@ -135,7 +135,10 @@ export default component$(() => {
   });
 
   // Check for URL parameters on initial load
-  useVisibleTask$(({ cleanup }) => {
+  useVisibleTask$(({ track, cleanup }) => {
+    // React to URL changes (e.g., query params added by client-side navigation)
+    track(() => location.url.href);
+
     // Use the alert service to check for URL parameters and show appropriate alerts
     const showAlertFn = $((message: string) => {
       alertState.text = message;

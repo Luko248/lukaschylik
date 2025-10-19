@@ -13,11 +13,20 @@ import type { QRL } from "@builder.io/qwik";
  */
 export const checkUrlForAlerts = (
   location: URL,
-  showAlert: QRL<(message: string) => void>,
+  showAlert: QRL<(message: string) => void> | ((message: string) => void),
 ): void => {
+  const trigger = (message: string) => {
+    const anyFn = showAlert as any;
+    if (anyFn && typeof anyFn.invoke === "function") {
+      // Invoke QRL lazily
+      anyFn.invoke(message);
+    } else if (typeof anyFn === "function") {
+      anyFn(message);
+    }
+  };
   // Contact form submission
   if (location.searchParams.has("formSubmitted")) {
-    showAlert("Vaša správa bola úspešne odoslaná. Ďakujeme!");
+    trigger("Vaša správa bola úspešne odoslaná. Ďakujeme!");
 
     // Clean URL parameters
     const url = new URL(window.location.href);
@@ -27,7 +36,7 @@ export const checkUrlForAlerts = (
 
   // Newsletter subscription
   if (location.searchParams.has("newsletterSubscribed")) {
-    showAlert("Úspešne ste sa prihlásili na odber noviniek. Ďakujeme!");
+    trigger("Úspešne ste sa prihlásili na odber noviniek. Ďakujeme!");
 
     // Clean URL parameters
     const url = new URL(window.location.href);

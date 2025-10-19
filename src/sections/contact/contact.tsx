@@ -1,4 +1,5 @@
 import { $, component$, useStore } from "@builder.io/qwik";
+import { useNavigate } from "@builder.io/qwik-city";
 import { Button, Container, FormField, Section } from "~/components";
 import Icon from "~/components/icon/icon";
 import SectionTitle from "~/components/section/section.title";
@@ -17,47 +18,43 @@ const Contact = component$(() => {
     message: "",
     submitting: false,
   });
+  const nav = useNavigate();
 
   /**
    * Handles form submission
    */
-  const handleSubmit = $((event: SubmitEvent) => {
+  const handleSubmit = $(async (event: SubmitEvent) => {
     event.preventDefault();
 
     if (state.submitting) return;
     state.submitting = true;
 
-    const formData = new FormData(event.target as HTMLFormElement);
-
-    fetch("https://formsubmit.co/ajax/chylik.lukas@gmail.com", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to submit form");
-        }
-        return response.json();
-      })
-      .then(() => {
-        state.fullname = "";
-        state.email = "";
-        state.subject = "";
-        state.message = "";
-
-        const url = new URL(window.location.href);
-        url.search = "";
-        url.searchParams.set("formSubmitted", "true");
-        window.location.href = url.toString();
-      })
-      .catch((error) => {
-        console.error("Form submission error:", error);
-        state.submitting = false;
-        alert("Odoslanie správy zlyhalo. Skúste to znova, prosím.");
-      })
-      .finally(() => {
-        state.submitting = false;
+    try {
+      const formData = new FormData(event.target as HTMLFormElement);
+      const response = await fetch("https://formsubmit.co/ajax/chylik.lukas@gmail.com", {
+        method: "POST",
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+      await response.json();
+
+      state.fullname = "";
+      state.email = "";
+      state.subject = "";
+      state.message = "";
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("formSubmitted", "true");
+      await nav(url.pathname + "?" + url.searchParams.toString());
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Odoslanie správy zlyhalo. Skúste to znova, prosím.");
+    } finally {
+      state.submitting = false;
+    }
   });
 
   /**
