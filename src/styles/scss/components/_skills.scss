@@ -3,11 +3,6 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-skills {
-  section#about-me {
-    view-timeline: --about-view block;
-    view-timeline-inset: -50svb;
-  }
-
   .skills {
     max-width: 100svi;
     mask: linear-gradient(
@@ -29,10 +24,6 @@
     &__scroller {
       animation: scroll-skills linear;
       animation-timeline: scroll(root);
-
-      @include mq-responsive(tablet){
-        animation-timeline: --about-view;
-      }
 
       &:nth-of-type(2) {
         animation-direction: reverse;
