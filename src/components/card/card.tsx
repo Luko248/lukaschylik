@@ -32,9 +32,8 @@ const Card = component$(
             "py-3 sm:py-6 px-6 sm:px-8",
             "border-b-2 border-b-black dark:border-b-white text-black dark:text-white",
             "text-transparent",
-            "uppercase overflow-clip"
-          )}
-        >
+            "uppercase overflow-clip",
+          )}>
           {title}
         </h3>
         <div
@@ -45,31 +44,28 @@ const Card = component$(
             "text-base lg:text-xl font-mono",
             "leading-relaxed font-light",
             "text-black dark:text-white",
-            "content-start"
-          )}
-        >
+            "content-start",
+          )}>
           <Slot />
         </div>
         <div
           class={cls(
             "flex justify-between flex-col 2xl:flex-row",
             "gap-5 p-6 sm:p-8",
-            "items-stretch 2xl:items-center"
-          )}
-        >
+            "items-stretch 2xl:items-center",
+          )}>
           <strong
             class={cls(
               "inline-block",
               "text-center 2xl:text-start",
               "font-bold whitespace-nowrap",
-              "text-2xl sm:text-3xl 3xl:text-4xl"
-            )}
-          >
+              "text-2xl sm:text-3xl 3xl:text-4xl",
+            )}>
             {priceLabel
               ? priceLabel
               : price != null
-              ? `${formatPrice(price)} Kč`
-              : "Na mieru"}
+                ? `${formatPrice(price)} Kč`
+                : "Na mieru"}
             {priceNote && (
               <small class="block text-xs sm:text-sm font-light opacity-80">
                 {priceNote}
@@ -82,8 +78,7 @@ const Card = component$(
             ariaLabel={available ? `Mám záujem` : "Nedostupné"}
             title={available ? `Mám záujem` : "Nedostupné"}
             disabled={!available}
-            onClick$={onClick$}
-          >
+            onClick$={onClick$}>
             {available ? `Mám záujem` : "Nedostupné"}
           </Button>
         </div>
@@ -99,13 +94,12 @@ const Card = component$(
           "border-2 border-black dark:border-white rounded-lg",
           "text-black dark:text-white",
           "bg-white dark:bg-black",
-          "transition-colors duration-200 ease-in-out hover:border-transparent"
-        )}
-      >
+          "transition-colors duration-200 ease-in-out hover:border-transparent",
+        )}>
         {CardContent}
       </div>
     );
-  }
+  },
 );
 
 export default Card;

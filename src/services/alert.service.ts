@@ -55,7 +55,11 @@ export const checkUrlForAlerts = (
       "subject",
       "message",
     ].forEach((p) => url.searchParams.delete(p));
-    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+    window.history.replaceState(
+      {},
+      document.title,
+      url.pathname + url.search + url.hash,
+    );
   }
 
   // Newsletter subscription

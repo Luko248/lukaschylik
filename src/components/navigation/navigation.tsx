@@ -57,10 +57,9 @@ const Navigation = component$<NavigationProps>(({ links }) => {
           "md:backdrop-blur-sm",
           "bg-white dark:bg-black md:bg-white dark:md:bg-black/80",
           "w-full z-[200] h-[56px] md:h-[76px]",
-          state.isOpen && "nav--open"
+          state.isOpen && "nav--open",
         )}
-        aria-label="Main navigation"
-      >
+        aria-label="Main navigation">
         <a
           href="/"
           role="menuitem"
@@ -71,9 +70,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "flex items-center",
             "no-underline",
             "transition-opacity duration-200",
-            "opacity-100 hover:opacity-80"
-          )}
-        >
+            "opacity-100 hover:opacity-80",
+          )}>
           <Logo
             class="w-full max-w-full"
             role="img"
@@ -92,9 +90,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             "backdrop-blur-md md:backdrop-blur-none bg-white/70 dark:bg-black/70 md:bg-transparent dark:md:bg-transparent",
             "list-none m-0",
             !isHydrated.value && "invisible md:visible",
-            state.isOpen ? "grid" : "hidden md:flex"
-          )}
-        >
+            state.isOpen ? "grid" : "hidden md:flex",
+          )}>
           {links?.map((link: NavigationLinkProps) => {
             const isActive = link.href === "/blog" && isBlogPage;
 
@@ -113,9 +110,8 @@ const Navigation = component$<NavigationProps>(({ links }) => {
                     "text-black dark:text-white",
                     "decoration-secondary decoration-3 underline-offset-8",
                     "no-underline hover:underline",
-                    isActive && "underline"
-                  )}
-                >
+                    isActive && "underline",
+                  )}>
                   {link.text}
                   {link.icon && <Icon name={link.icon} size="1.25rem" />}
                 </Link>
@@ -130,8 +126,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             size="sm"
             title="Rezervácia"
             className="relative"
-            onClick$={dialogContext.showDialog}
-          >
+            onClick$={dialogContext.showDialog}>
             Rezervácia
           </Button>
           <button
@@ -140,14 +135,13 @@ const Navigation = component$<NavigationProps>(({ links }) => {
               "nav__toggler relative",
               "w-10 h-10",
               "text-white cursor-pointer grid md:hidden",
-              state.isOpen && "nav__toggler--open"
+              state.isOpen && "nav__toggler--open",
             )}
             aria-label={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
             aria-expanded={state.isOpen ? "true" : "false"}
             aria-controls="navigation-menu"
             title={state.isOpen ? "Zavrieť menu" : "Otvoriť menu"}
-            onClick$={toggleMenu}
-          ></button>
+            onClick$={toggleMenu}></button>
         </div>
       </nav>
     </>

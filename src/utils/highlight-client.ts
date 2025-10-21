@@ -15,9 +15,9 @@ async function initClientHighlighter() {
   if (highlighter) {
     return highlighter;
   }
-  
+
   if (!highlighterPromise && typeof window !== "undefined") {
-    highlighterPromise = createHighlighter(SHIKI_CONFIG).then(hl => {
+    highlighterPromise = createHighlighter(SHIKI_CONFIG).then((hl) => {
       highlighter = hl;
       return hl;
     });

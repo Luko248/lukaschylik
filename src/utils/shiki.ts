@@ -8,7 +8,9 @@ import { SHIKI_CONFIG } from "./shiki-config";
 
 let highlighter: HighlighterGeneric<BundledLanguage, BundledTheme> | null =
   null;
-let highlighterPromise: Promise<HighlighterGeneric<BundledLanguage, BundledTheme>> | null = null;
+let highlighterPromise: Promise<
+  HighlighterGeneric<BundledLanguage, BundledTheme>
+> | null = null;
 
 /**
  * Initialize Shiki highlighter with GitHub themes
@@ -17,14 +19,14 @@ export const initHighlighter = async () => {
   if (highlighter) {
     return highlighter;
   }
-  
+
   if (!highlighterPromise) {
-    highlighterPromise = createHighlighter(SHIKI_CONFIG).then(hl => {
+    highlighterPromise = createHighlighter(SHIKI_CONFIG).then((hl) => {
       highlighter = hl;
       return hl;
     });
   }
-  
+
   return highlighterPromise;
 };
 

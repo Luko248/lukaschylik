@@ -19,9 +19,8 @@ const Footer = component$(() => {
                 "flex items-center",
                 "no-underline",
                 "transition-opacity duration-200",
-                "opacity-100 hover:opacity-80"
-              )}
-            >
+                "opacity-100 hover:opacity-80",
+              )}>
               <Logo
                 class="w-full h-full max-w-full"
                 role="img"

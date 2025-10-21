@@ -11,28 +11,40 @@ const About = component$(() => {
           <div
             class={cls(
               "grid grid-cols-1 items-start",
-              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]"
-            )}
-          >
+              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
+            )}>
             <SectionTitle
               text="Niečo o mne"
               className="about-title lg:row-start-1 lg:col-span-2 lg:col-start-1"
             />
             <div class="content-fade-in">
               <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                Som frontend developer s <strong>veľkým presahom do UX/UI</strong>.
-                Za posledných 10 rokov som pracoval na projektoch od prezentačných webov po PWA a informačné systémy.
-                <strong>Technické SEO a prístupnosť</strong> sú samozrejmosťou. Venujem sa implementácii
-                <strong> dizajnových systémov</strong> aj <strong>efektívnemu využívaniu AI vo vývoji</strong>.
+                Som frontend developer s{" "}
+                <strong>veľkým presahom do UX/UI</strong>. Za posledných 10
+                rokov som pracoval na projektoch od prezentačných webov po PWA a
+                informačné systémy.
+                <strong>Technické SEO a prístupnosť</strong> sú samozrejmosťou.
+                Venujem sa implementácii
+                <strong> dizajnových systémov</strong> aj{" "}
+                <strong>efektívnemu využívaniu AI vo vývoji</strong>.
               </p>
               <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                Pomáham tímom <strong>efektívne využívať AI</strong> s dôrazom na produktivitu a kvalitu kódu.
-                Skúsenosti odovzdávam cez konzultácie, workshopy a školenia.
+                Pomáham tímom <strong>efektívne využívať AI</strong> s dôrazom
+                na produktivitu a kvalitu kódu. Skúsenosti odovzdávam cez
+                konzultácie, workshopy a školenia.
               </p>
               <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
-                Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a konferenciách.
-                Zároveň sa podieľam na spoluorganizácii pravidelných meetupov v Brne pod záštitou spolku
-                <a class="underline" href="https://www.frontendisti.cz/" target="_blank" rel="noopener noreferrer">Frontendisti</a>.
+                Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a
+                konferenciách. Zároveň sa podieľam na spoluorganizácii
+                pravidelných meetupov v Brne pod záštitou spolku
+                <a
+                  class="underline"
+                  href="https://www.frontendisti.cz/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Frontendisti
+                </a>
+                .
               </p>
             </div>
             <div class="lg:row-start-1 lg:row-span-2 lg:col-start-2">

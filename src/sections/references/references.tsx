@@ -23,21 +23,28 @@ const References = component$(() => {
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-4 md:mb-8 text-gray-800 dark:text-gray-300 font-mono">
                   V spolupráci so spoločnosťou Riganti som sa podieľal na
                   realizácii viacerých webových projektov. Pre Update Conference
-                  som pripravil viacero webových stránok a prispel k vývoju UI kitu
-                  pre framework DotVVM.
+                  som pripravil viacero webových stránok a prispel k vývoju UI
+                  kitu pre framework DotVVM.
                 </p>
 
                 <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-8 md:mb-16 text-gray-800 dark:text-gray-300 font-mono">
-                  Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a konferenciách.
-                  Zároveň sa podieľam na spoluorganizácii meetupov pod záštitou spolku
-                  <a class="underline" href="https://www.frontendisti.cz/" target="_blank" rel="noopener noreferrer">Frontendisti</a>.
+                  Okrem vývoja sa venujem aj prednášaniu na rôznych meetupoch a
+                  konferenciách. Zároveň sa podieľam na spoluorganizácii
+                  meetupov pod záštitou spolku
+                  <a
+                    class="underline"
+                    href="https://www.frontendisti.cz/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Frontendisti
+                  </a>
+                  .
                 </p>
                 <Button
                   variant="secondary"
                   ariaLabel="Služby a spoupráca"
                   title="Služby a spoupráca"
-                  href="#services"
-                >
+                  href="#services">
                   Služby a spoupráca
                 </Button>
                 <div
@@ -49,25 +56,32 @@ const References = component$(() => {
                     [scrollbar-width:none] [-ms-overflow-style:'none'] [&::-webkit-scrollbar]:hidden
                     [&>*]:min-w-0 [&>*]:snap-center [&>*]:snap-always">
                   <iframe
-                    class="w-full aspect-video block rounded-l overflow-clip"
+                    class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
+                    loading="lazy"
+                    width="560"
+                    src="https://www.youtube.com/embed/ITDfqStMym0?si=sWTLYIfZVc-OusDf"
+                    title="YouTube video Lukáš Chylík - CSS scroll driven animations"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullscreen></iframe>
+                  <iframe
+                    class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
                     width="560"
                     src="https://www.youtube.com/embed/hwhuSdO5fU0?si=ZckQ-cJlCGZpJExv"
-                    title="YouTube video Lukáš Chylík - Frontendové novinky"
+                    title="YouTube video Lukáš Chylík - Frontendové novinky Máj 2025"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen
-                  ></iframe>
+                    allowFullscreen></iframe>
                   <iframe
-                    class="w-full aspect-video block rounded-l overflow-clip"
+                    class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
                     width="560"
                     src="https://www.youtube.com/embed/p8sQyt4YFdk?si=WDxTC4029EeFecKk"
-                    title="YouTube video Lukáš Chylík - Pozicování pomocí CSS anchor"
+                    title="YouTube video Lukáš Chylík - CSS anchor positioning"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen
-                  ></iframe>
+                    allowFullscreen></iframe>
                 </div>
               </div>
             </div>

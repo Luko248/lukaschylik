@@ -52,24 +52,21 @@ const Alert = component$<AlertProps>(
           "top-auto bottom-4 left-0.5 right-0.5",
           "lg:top-auto lg:bottom-8 lg:left-[50%] lg:-translate-x-[50%]",
           "z-[500]",
-          className
-        )}
-      >
+          className,
+        )}>
         <div
           class="alert-progress absolute top-0 left-0 h-1 bg-green-900 origin-left w-full"
-          style={`--alert_duration: ${animationDuration}`}
-        ></div>
+          style={`--alert_duration: ${animationDuration}`}></div>
         <div class="pr-6">{message}</div>
         <button
           onClick$={handleClose}
           class=" text-white scale-100 hover:scale-110 focus:outline-none cursor-pointer transition-transform duration-250 ease-in-out"
-          aria-label="Close alert"
-        >
+          aria-label="Close alert">
           <Icon name="close" cls={"w-4"} />
         </button>
       </div>
     );
-  }
+  },
 );
 
 export default Alert;
