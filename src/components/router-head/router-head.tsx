@@ -11,7 +11,7 @@ export const RouterHead = component$(() => {
 
   const defaultTitle = "Lukáš Chylík | Frontend, UX/UI, AI workshopy";
   const defaultDescription =
-    "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.";
+    "Frontend developer s presahom do UX/UI, zameraný na Design Systémy a AI vo vývoji.";
 
   // Custom override mechanism - handle title and description from routes
   const title = head.title || defaultTitle;
