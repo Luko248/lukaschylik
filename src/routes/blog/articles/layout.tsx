@@ -73,7 +73,8 @@ export default component$(() => {
       <Container size="blog">
         <Link
           href="/blog"
-          class="inline-flex items-center text-gray-800 dark:text-gray-300 mb-6 underline">
+          class="inline-flex items-center text-gray-800 dark:text-gray-300 mb-6 underline underline-offset-4"
+        >
           ← Späť na zoznam článkov
         </Link>
 
@@ -88,7 +89,8 @@ export default component$(() => {
                 <div class="flex gap-2 items-center text-sm text-gray-800 dark:text-gray-300">
                   <time
                     dateTime={post.value.date}
-                    class="text-gray-800 dark:text-gray-300">
+                    class="text-gray-800 dark:text-gray-300"
+                  >
                     {new Date(post.value.date).toLocaleDateString("cs-CZ")}
                   </time>
                   <span class="text-yellow-500 text-2xl">•</span>
@@ -96,7 +98,10 @@ export default component$(() => {
                   <span class="text-yellow-500 text-2xl">•</span>
                   <span
                     class="flex items-center gap-2"
-                    title={`Čas pre prečítanie článku: ${getReadingTime(post.value.content)} min`}>
+                    title={`Čas pre prečítanie článku: ${getReadingTime(
+                      post.value.content
+                    )} min`}
+                  >
                     <Icon name="book" cls="w-4 h-4 sm:w-5 sm:h-5" />
                     {getReadingTime(post.value.content)} min
                   </span>
@@ -107,7 +112,8 @@ export default component$(() => {
                     href={post.value.podcastUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Prehrať Podcast na Spotify">
+                    aria-label="Prehrať Podcast na Spotify"
+                  >
                     <Icon name="spotify" size="2.5rem" />
                   </a>
                 )}

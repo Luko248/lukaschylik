@@ -34,7 +34,7 @@ export default component$(() => {
     return posts.value.filter(
       (post) =>
         post.title.toLowerCase().includes(query) ||
-        post.subtitle.toLowerCase().includes(query),
+        post.subtitle.toLowerCase().includes(query)
     );
   });
 
@@ -47,8 +47,9 @@ export default component$(() => {
             "sticky pb-8 md:pb-12",
             "top-[var(--nav_height)]",
             "bg-gradient-to-b from-white from-65% to-transparent",
-            "dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10",
-          )}>
+            "dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10"
+          )}
+        >
           <input
             type="search"
             placeholder="Vyhľadať článok..."
@@ -58,7 +59,7 @@ export default component$(() => {
               "rounded-lg",
               "text-black dark:text-white",
               "placeholder-gray-500 dark:placeholder-gray-400",
-              "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent",
+              "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
             )}
             value={searchQuery.value}
             onInput$={(_, el) => {
@@ -71,8 +72,9 @@ export default component$(() => {
           class={cls(
             "grid gap-6 md:gap-8",
             "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "grid-rows-[repeat(auto-fill,auto_1fr_auto)]",
-          )}>
+            "grid-rows-[repeat(auto-fill,auto_1fr_auto)]"
+          )}
+        >
           {filteredPosts.value.length > 0 ? (
             filteredPosts.value.map((post) => (
               <BlogCard key={post.slug} post={post} />
@@ -85,8 +87,9 @@ export default component$(() => {
                 "gap-4 md:gap-6",
                 "text-center text-xl",
                 "text-gray-800 dark:text-gray-300",
-                "py-16",
-              )}>
+                "py-16"
+              )}
+            >
               <Icon
                 name="sad-face"
                 cls="w-[50px] h-[50px] md:w-[100px] md:h-[100px]"

@@ -13,6 +13,7 @@ import { Alert, Navigation, ReservationDialog } from "~/components";
 import Social from "~/components/social/social";
 import { Footer, Header } from "~/sections";
 import { checkUrlForAlerts } from "~/services";
+import CookieConsent from "~/components/cookie-consent/cookie-consent";
 import { AlertContext, type AlertMessage, DialogContext } from "~/utils";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -28,6 +29,18 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
  */
 export const head: DocumentHead = {
   scripts: [
+    {
+      key: "consent-defaults",
+      script:
+        "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:1000});",
+      props: {
+        async: true,
+      },
+    },
+    {
+      key: "consent-restore",
+      script: `try{var k='cookie-consent-v1';var raw=localStorage.getItem(k);if(raw){var parsed=JSON.parse(raw);var granted=!!parsed.analytics;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};gtag('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:granted?'granted':'denied'});}}catch(e){}`,
+    },
     {
       key: "gtm",
       script: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -68,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@id": "#website",
       "url": "https://lukaschylik.dev/",
       "name": "Lukáš Chylík | Frontend, UX/UI, AI workshopy",
-      "description": "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.",
+      "description": "Frontend developer s presahom do UX/UI, zameraný na Design Systémy a AI vo vývoji.",
       "publisher": {
         "@id": "#person"
       }
@@ -78,7 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@id": "#webpage",
       "url": "https://lukaschylik.dev/",
       "name": "Lukáš Chylík | Frontend, UX/UI, AI workshopy",
-      "description": "Frontend developer s presahom do UX/UI. Design Systémy a AI vo vývoji: workshopy a školenia — spec‑driven dev, custom agenti, AI workflow.",
+      "description": "Frontend developer s presahom do UX/UI, zameraný na Design Systémy a AI vo vývoji.",
       "about": {
         "@id": "#person"
       },
@@ -164,6 +177,7 @@ export default component$(() => {
 
   return (
     <>
+      <CookieConsent />
       <Navigation
         links={[
           {

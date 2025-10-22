@@ -11,9 +11,7 @@
   }
 
   nav{
-    // When the #about-me section is targeted, highlight the matching nav link.
-    // Use ends-with selector to match both "#about-me" and "/#about-me" hrefs.
-    &:has(~ main > section#about-me:target) > ul > li > a[href$="#about-me"] {
+    &:has(~ main > section#about-me:target) > ul > li > a[href="#about-me"] {
       background-color: red !important;
     }
   }

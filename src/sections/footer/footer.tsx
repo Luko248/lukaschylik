@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Container } from "~/components";
+import { Container, Icon } from "~/components";
 import { cls } from "~/utils";
 import Logo from "~/images/logos/logo-footer.svg?jsx";
 
@@ -56,9 +56,21 @@ const Footer = component$(() => {
           </div>
         </div>
 
-        <div class="mt-8 flex items-center justify-center text-center gap-2 text-xs text-neutral-400">
+        <div class="mt-8 flex flex-wrap items-center justify-center text-center gap-3 text-xs text-neutral-400">
           <small class="font-mono">
             ©{new Date().getFullYear()} Všetky práva vyhradené.
+          </small>
+          <span class="opacity-30">•</span>
+          <small class="flex items-center gap-1">
+            <Icon name="cookie" cls="w-3" />
+            <button
+              type="button"
+              onClick$={() =>
+                window.dispatchEvent(new CustomEvent("open-cookie-preferences"))
+              }
+              class="underline underline-offset-2 hover:text-neutral-200">
+              Nastavenia cookies
+            </button>
           </small>
         </div>
       </Container>
