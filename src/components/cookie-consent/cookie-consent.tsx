@@ -27,7 +27,7 @@ const persistPrefs = (prefs: ConsentPrefs) => {
   try {
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ ...prefs, ts: Date.now() }),
+      JSON.stringify({ ...prefs, ts: Date.now() })
     );
   } catch {}
 };
@@ -79,29 +79,32 @@ export default component$(() => {
     prefsDialogRef.value?.close();
   });
 
-  useVisibleTask$(() => {
-    const stored = readPrefs();
-    if (stored) {
-      analytics.value = stored.analytics;
-      // Re-apply consent on hydration (no-op if already applied)
-      applyConsent(stored);
-      showBanner.value = false;
-    } else {
-      showBanner.value = true;
-    }
+  useVisibleTask$(
+    () => {
+      const stored = readPrefs();
+      if (stored) {
+        analytics.value = stored.analytics;
+        // Re-apply consent on hydration (no-op if already applied)
+        applyConsent(stored);
+        showBanner.value = false;
+      } else {
+        showBanner.value = true;
+      }
 
-    const listener = () => {
-      prefsDialogRef.value?.showModal();
-    };
-    window.addEventListener("open-cookie-preferences", listener);
-    return () =>
-      window.removeEventListener("open-cookie-preferences", listener);
-  }, { strategy: "document-ready" });
+      const listener = () => {
+        prefsDialogRef.value?.showModal();
+      };
+      window.addEventListener("open-cookie-preferences", listener);
+      return () =>
+        window.removeEventListener("open-cookie-preferences", listener);
+    },
+    { strategy: "document-ready" }
+  );
 
   return (
     <>
       {showBanner.value && (
-        <div class="fixed inset-x-0 bottom-0 z-50">
+        <div class="fixed inset-x-0 bottom-0 z-[300]">
           <div class="relative bg-neutral-900/95 border-t border-neutral-800 text-neutral-100">
             <Container size="md" className="py-4">
               <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -116,19 +119,22 @@ export default component$(() => {
                   <button
                     type="button"
                     onClick$={denyAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
+                  >
                     Odmietnuť
                   </button>
                   <button
                     type="button"
                     onClick$={() => prefsDialogRef.value?.showModal()}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
+                  >
                     Nastavenia
                   </button>
                   <button
                     type="button"
                     onClick$={acceptAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md bg-white text-black hover:bg-neutral-200">
+                    class="px-3 py-2 text-xs md:text-sm rounded-md bg-white text-black hover:bg-neutral-200"
+                  >
                     Prijať všetko
                   </button>
                 </div>
@@ -140,7 +146,8 @@ export default component$(() => {
 
       <dialog
         ref={prefsDialogRef}
-        class="bg-neutral-900 text-neutral-100 w-[min(92vw,640px)] max-w-[92vw] md:max-w-[640px] rounded-xl border border-neutral-800 p-0 mx-auto my-auto">
+        class="bg-neutral-900 text-neutral-100 w-[min(92vw,640px)] max-w-[92vw] md:max-w-[640px] rounded-xl border border-neutral-800 p-0 mx-auto my-auto"
+      >
         <div class="p-5 md:p-6 border-b border-neutral-800">
           <h2 class="text-lg font-semibold">Nastavenia súborov cookie</h2>
           <p class="mt-1 text-sm text-neutral-300">
@@ -182,8 +189,7 @@ export default component$(() => {
                 Analytické (Google Analytics)
               </label>
               <p class="text-neutral-300">
-                Pomáhajú pochopiť, ako je web používaný. Bez reklamných
-                cookies.
+                Pomáhajú pochopiť, ako je web používaný. Bez reklamných cookies.
               </p>
             </div>
           </div>
@@ -192,19 +198,22 @@ export default component$(() => {
           <button
             type="button"
             onClick$={() => prefsDialogRef.value?.close()}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
+          >
             Zatvoriť
           </button>
           <button
             type="button"
             onClick$={denyAll}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
+          >
             Odmietnuť všetko
           </button>
           <button
             type="button"
             onClick$={savePrefs}
-            class="px-3 py-2 text-sm rounded-md bg-white text-black hover:bg-neutral-200">
+            class="px-3 py-2 text-sm rounded-md bg-white text-black hover:bg-neutral-200"
+          >
             Uložiť nastavenia
           </button>
         </div>
