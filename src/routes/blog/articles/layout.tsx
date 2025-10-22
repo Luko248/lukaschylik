@@ -8,6 +8,19 @@ import { getAllPosts } from "~/utils/markdown.server";
 import "~/styles/css/shiki.css";
 
 /**
+ * Estimate reading time in minutes based on content length (1.5x factor)
+ */
+const getReadingTime = (content: string): number => {
+  const text = content
+    .replace(/```[\s\S]*?```/g, " ") // remove fenced code
+    .replace(/<[^>]+>/g, " ") // remove HTML tags
+    .replace(/[^\w\p{L}\s]+/gu, " ") // remove punctuation
+    .trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  return Math.max(1, Math.ceil((words / 220) * 1.5));
+};
+
+/**
  * Route loader to fetch the current blog post data based on the URL slug
  * Follows Qwik's pattern for efficient data loading and resumability
  * @returns {BlogPost | null} The current blog post data or null if not found
@@ -80,6 +93,13 @@ export default component$(() => {
                   </time>
                   <span class="text-yellow-500 text-2xl">•</span>
                   <span>{post.value.author}</span>
+                  <span class="text-yellow-500 text-2xl">•</span>
+                  <span
+                    class="flex items-center gap-2"
+                    title={`Čas pre prečítanie článku: ${getReadingTime(post.value.content)} min`}>
+                    <Icon name="book" cls="w-4 h-4 sm:w-5 sm:h-5" />
+                    {getReadingTime(post.value.content)} min
+                  </span>
                 </div>
                 {post.value.podcastUrl && (
                   <a

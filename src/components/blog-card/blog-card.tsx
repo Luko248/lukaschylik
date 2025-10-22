@@ -59,7 +59,12 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
             width={1600}
             height={900}
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            class={cls("absolute inset-0 w-full h-full object-cover")}
+            class={cls(
+              "absolute inset-0 w-full h-full object-cover",
+              // Smooth scale on card hover (group)
+              "transition-transform duration-[1000ms] ease-in-out will-change-transform",
+              "group-hover:scale-[1.2]",
+            )}
           />
         )}
       </div>
