@@ -10,9 +10,12 @@
     touch-action: none;
   }
 
-  nav{
-    &:has(~ main > section#about-me:target) > ul > li > a[href="#about-me"] {
-      background-color: red !important;
+  $targets: about-me, references, services, contact;
+
+  @each $id in $targets {
+    body:has(main > section##{$id}:target) nav .nav__list a[href$="##{$id}"] {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
     }
   }
 

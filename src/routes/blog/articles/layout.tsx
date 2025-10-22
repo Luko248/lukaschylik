@@ -157,17 +157,6 @@ export const head: DocumentHead = ({ head, resolveValue }) => {
         property: "og:type",
         content: "article",
       } as any,
-      imageAbs
-        ? ({ property: "og:image", content: imageAbs } as any)
-        : undefined,
-      // Twitter card
-      {
-        name: "twitter:card",
-        content: imageAbs ? "summary_large_image" : "summary",
-      },
-      imageAbs
-        ? ({ name: "twitter:image", content: imageAbs } as any)
-        : undefined,
       // Article metadata
       post?.date
         ? ({ property: "article:published_time", content: post.date } as any)
