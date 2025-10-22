@@ -1,11 +1,13 @@
 import { component$, useSignal, useComputed$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { Link, routeLoader$ } from "@builder.io/qwik-city";
+import { routeLoader$ } from "@builder.io/qwik-city";
 import Container from "~/components/container/container";
 import Section from "~/components/section/section";
 import SectionTitle from "~/components/section/section.title";
+import { BlogCard } from "~/components/blog-card";
 import { getAllPosts } from "~/utils/markdown.server";
 import { cls } from "~/utils";
+import Icon from "~/components/icon/icon";
 
 export const useBlogPosts = routeLoader$(async () => {
   const posts = getAllPosts();
@@ -59,71 +61,41 @@ export default component$(() => {
               "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent",
             )}
             value={searchQuery.value}
-            onInput$={(e) => {
-              searchQuery.value = (e.target as HTMLInputElement).value;
+            onInput$={(_, el) => {
+              searchQuery.value = el.value;
             }}
           />
         </div>
 
-        <div class="grid">
+        <div
+          class={cls(
+            "grid gap-6 md:gap-8",
+            "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+            "grid-rows-[repeat(auto-fill,auto_1fr_auto)]",
+          )}>
           {filteredPosts.value.length > 0 ? (
             filteredPosts.value.map((post) => (
-              <>
-                <Link
-                  key={post.slug}
-                  href={`/blog/articles/${post.slug}`}
-                  class={cls("text-black dark:text-white", "group")}>
-                  <strong
-                    class={cls(
-                      "text-2xl sm:text-4xl md:text-6xl",
-                      "block mb-1 md:mb-2",
-                      "group-hover:text-yellow-500",
-                      "transition-colors duration-200",
-                    )}>
-                    {post.title}
-                  </strong>
-                  <small
-                    class={cls(
-                      "block",
-                      "text-gray-800 dark:text-gray-300",
-                      "text-l sm:text-2xl md:text-3xl",
-                    )}>
-                    {post.subtitle}
-                  </small>
-                  <p class={cls("block", "text-l md:text-xl", "my-4 md:my-8")}>
-                    {post.description}
-                  </p>
-                  <div
-                    class={cls(
-                      "flex gap-2 items-center",
-                      "text-sm",
-                      "text-gray-800 dark:text-gray-300",
-                    )}>
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString("cs-CZ")}
-                    </time>
-                    <span class={cls("text-yellow-500", "text-2xl")}>•</span>
-                    <span>{post.author}</span>
-                  </div>
-                </Link>
-                <hr
-                  class={cls(
-                    "border-black/20 dark:border-white/20",
-                    "my-4 md:my-8",
-                  )}
-                />
-              </>
+              <BlogCard key={post.slug} post={post} />
             ))
           ) : (
             <div
               class={cls(
                 "col-span-full",
+                "flex flex-col items-center justify-center",
+                "gap-4 md:gap-6",
                 "text-center text-xl",
                 "text-gray-800 dark:text-gray-300",
+                "py-16",
               )}>
-              {searchQuery.value.trim()
-                ? "Žiadne články sa nenašli."
-                : "Žiadne články zatiaľ nie sú k dispozícii."}
+              <Icon
+                name="sad-face"
+                cls="w-[50px] h-[50px] md:w-[100px] md:h-[100px]"
+              />
+              <div>
+                {searchQuery.value.trim()
+                  ? "Žiadne články sa nenašli."
+                  : "Žiadne články zatiaľ nie sú k dispozícii."}
+              </div>
             </div>
           )}
         </div>

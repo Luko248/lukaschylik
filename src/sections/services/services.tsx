@@ -22,15 +22,7 @@ const References = component$(() => {
             kľudný spánok.
           </p>
         </div>
-        <div
-          class="services grid text-white xl:gap-8
-            grid-flow-col [grid-auto-columns:calc(100%-2rem)] gap-4
-            overflow-x-auto overscroll-x-contain scroll-smooth
-            snap-x snap-mandatory [scroll-padding-inline:1rem]
-            [scrollbar-width:none] [-ms-overflow-style:'none'] [&::-webkit-scrollbar]:hidden
-            [&>*]:min-w-0 [&>*]:snap-center [&>*]:snap-always
-            w-full max-w-full
-            lg:grid-flow-row lg:grid-cols-3">
+        <div class="services grid text-white xl:gap-8">
           <Card
             title="Konzultácie a Mentoring"
             price={1200}

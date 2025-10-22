@@ -7,9 +7,8 @@
     --carousel-size: 100%;
     grid-template-columns: var(--col-template, 1fr 1fr 1fr);
     transition: all $trans-time;
-    overflow: clip;
     container-size: size;
-    overflow-clip-margin: .5rem;
+    overflow-clip-margin: $card-clip-margin;
     scroll-behavior: smooth;
     scroll-marker-group: after;
 

@@ -11,13 +11,12 @@
 
   .card {
     transition: border-color .25s ease-in-out;
-    overflow-clip-margin: 0.5rem;
+    overflow-clip-margin: $card-clip-margin;
 
     @include mq-hover {
       --card-before_trans-y: -100%;
       --card-after_trans-y: 0;
       --card-after_opacity: 1;
-      border-color: transparent !important;
     }
 
     &:not(:hover) {
@@ -29,7 +28,7 @@
     &:after {
       content: "";
       position: absolute;
-      inset: -0.4rem;
+      inset: num-neg($card-clip-margin);
       background-image: conic-gradient(
         from var(--gradient-angle),
         var(--color-turquoise-300),

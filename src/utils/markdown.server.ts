@@ -20,6 +20,8 @@ export interface BlogPost {
   author: string;
   /** Podcast URL of the blog post */
   podcastUrl?: string;
+  /** Optional path to card image displayed on blog list */
+  cardImg?: string;
   /** Raw Markdown content of the blog post */
   content: string;
 }
@@ -62,6 +64,7 @@ const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
           : data.date,
       author: data.author,
       podcastUrl: data.podcastUrl,
+      cardImg: data.cardImg,
       content,
     };
   } catch (error) {

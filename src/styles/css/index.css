@@ -7,11 +7,11 @@
 }
 :root {
   color-scheme: light dark;
-  --nav_height: 76px;
+  --nav_height: 4.75rem;
 }
 @media screen and (width <= 768px) {
   :root {
-    --nav_height: 56px;
+    --nav_height: 2.75rem;
   }
 }
 
@@ -238,20 +238,19 @@ strong {
   }
   .card {
     transition: border-color 0.25s ease-in-out;
-    overflow-clip-margin: 0.5rem;
+    overflow-clip-margin: 0.8rem;
   }
   @media (hover: hover) {
     .card:hover {
       --card-before_trans-y: -100%;
       --card-after_trans-y: 0;
       --card-after_opacity: 1;
-      border-color: transparent !important;
     }
   }
   .card:after {
     content: "";
     position: absolute;
-    inset: -0.4rem;
+    inset: -0.8rem;
     background-image: conic-gradient(from var(--gradient-angle), var(--color-turquoise-300), var(--color-turquoise-500), var(--color-purple-300), var(--color-purple-500), var(--color-purple-700), var(--color-purple-500), var(--color-purple-300), var(--color-turquoise-500), var(--color-turquoise-300));
     opacity: var(--card-after_opacity, 0);
     animation: rotateGradient 3s linear infinite;
@@ -372,6 +371,9 @@ strong {
     overscroll-behavior: none;
     scrollbar-gutter: stable;
     touch-action: none;
+  }
+  nav:has(~ main > section#about-me:target) > ul > li > a[href$="#about-me"] {
+    background-color: red !important;
   }
   .nav {
     max-inline-size: 100lvi;
@@ -1162,9 +1164,8 @@ strong {
     --carousel-size: 100%;
     grid-template-columns: var(--col-template, 1fr 1fr 1fr);
     transition: all 0.2s;
-    overflow: clip;
     container-size: size;
-    overflow-clip-margin: 0.5rem;
+    overflow-clip-margin: 0.8rem;
     scroll-behavior: smooth;
     scroll-marker-group: after;
   }
