@@ -30,6 +30,24 @@ export const RouterHead = component$(() => {
   const defaultOpenGraphImage = "/images/meta/meta-large.webp";
   const defaultTwitterImage = "/images/meta/meta-small.webp";
 
+  // Resolve route-provided images (og/twitter) if any
+  const findMeta = (nameOrProp: string) =>
+    head.meta.find((m) => m.name === nameOrProp || (m as any).property === nameOrProp);
+
+  const routeOgImage = findMeta("og:image")?.content || findMeta("image")?.content;
+  const routeTwitterImage = findMeta("twitter:image")?.content;
+
+  const toAbsolute = (url?: string) =>
+    !url ? undefined : /^https?:\/\//i.test(url) ? url : new URL(url, loc.url.origin).href;
+
+  const ogImage = toAbsolute(routeOgImage) || defaultOpenGraphImage;
+  const twitterImage = toAbsolute(routeTwitterImage) || toAbsolute(routeOgImage) || defaultTwitterImage;
+
+  const hasOgImage = !!findMeta("og:image");
+  const hasTwitterImage = !!findMeta("twitter:image");
+  const hasTwitterCard = !!head.meta.find((m) => m.name === "twitter:card");
+  const hasOgType = !!findMeta("og:type");
+
   return (
     <>
       {/* Only render title tag if not already defined in route */}
@@ -78,22 +96,20 @@ export const RouterHead = component$(() => {
       {/* Schema.org markup */}
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />
-      <meta itemProp="image" content={defaultOpenGraphImage} />
+      <meta itemProp="image" content={ogImage} />
 
       {/* Open Graph meta tags */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={loc.url.href} />
-      <meta property="og:image" content={defaultOpenGraphImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:type" content="website" />
+      {!hasOgImage && <meta property="og:image" content={ogImage} />}
+      {!hasOgType && <meta property="og:type" content="website" />}
 
       {/* Twitter Card meta tags */}
-      <meta name="twitter:card" content="summary" />
+      {!hasTwitterCard && <meta name="twitter:card" content="summary" />}
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={defaultTwitterImage} />
+      {!hasTwitterImage && <meta name="twitter:image" content={twitterImage} />}
 
       {/* Dynamic meta tags from routes (only those not handled above) */}
       {head.meta

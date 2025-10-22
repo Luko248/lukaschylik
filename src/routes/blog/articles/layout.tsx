@@ -135,6 +135,15 @@ export default component$(() => {
  */
 export const head: DocumentHead = ({ head, resolveValue }) => {
   const post = resolveValue(useCurrentPost);
+  const site = "https://lukaschylik.dev";
+  const canonicalUrl = post?.slug
+    ? `${site}/blog/articles/${post.slug}/`
+    : `${site}/blog/articles/`;
+  const imageAbs = post?.cardImg
+    ? /^https?:\/\//i.test(post.cardImg)
+      ? post.cardImg
+      : `${site}${post.cardImg}`
+    : undefined;
 
   return {
     title: `${post?.title} | Blog | Lukáš Chylík`,
@@ -143,6 +152,50 @@ export const head: DocumentHead = ({ head, resolveValue }) => {
         name: "description",
         content: post?.description,
       },
-    ],
+      // Open Graph article specifics
+      {
+        property: "og:type",
+        content: "article",
+      } as any,
+      imageAbs
+        ? ({ property: "og:image", content: imageAbs } as any)
+        : undefined,
+      // Twitter card
+      {
+        name: "twitter:card",
+        content: imageAbs ? "summary_large_image" : "summary",
+      },
+      imageAbs
+        ? ({ name: "twitter:image", content: imageAbs } as any)
+        : undefined,
+      // Article metadata
+      post?.date
+        ? ({ property: "article:published_time", content: post.date } as any)
+        : undefined,
+      post?.author
+        ? ({ property: "article:author", content: post.author } as any)
+        : undefined,
+    ].filter(Boolean) as any,
+    // Canonical is set globally by RouterHead using current URL
+    scripts: imageAbs
+      ? [
+          {
+            key: "blog-structured-data",
+            script: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post?.title,
+              description: post?.description,
+              image: [imageAbs],
+              author: { "@type": "Person", name: post?.author },
+              datePublished: post?.date,
+              dateModified: post?.date,
+              mainEntityOfPage: canonicalUrl,
+              publisher: { "@type": "Person", name: "Lukáš Chylík" },
+            }),
+            props: { type: "application/ld+json" },
+          },
+        ]
+      : [],
   };
 };
