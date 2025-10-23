@@ -13,9 +13,11 @@
   $targets: about-me, references, services, contact;
 
   @each $id in $targets {
-    body:has(main > section##{$id}:target) nav .nav__list a[href$="##{$id}"] {
-      text-decoration: underline;
-      text-underline-offset: 0.25em;
+    nav:has(~ main > section##{$id}:target) .nav__list a[href$="##{$id}"] {
+      text-decoration-color: var(--color-secondary) !important;
+      text-decoration-line: underline !important;
+      text-decoration-thickness: $border-width-3 !important;
+      text-underline-offset: $gap-space-8 !important;
     }
   }
 

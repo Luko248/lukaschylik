@@ -51,7 +51,7 @@ const References = component$(() => {
                 </Button>
                 <div
                   class="video-carousel relative
-                    grid grid-flow-col [grid-auto-columns:calc(100%-2rem)] gap-4
+                    grid grid-flow-col [grid-auto-columns:calc(100%-2rem)] gap-2 md:gap-4
                     mt-10 md:mt-20 max-w-full md:max-w-[560px]
                     overflow-x-auto overscroll-x-contain scroll-smooth
                     snap-x snap-mandatory [scroll-padding-inline:1rem]

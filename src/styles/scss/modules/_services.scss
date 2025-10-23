@@ -15,9 +15,8 @@
     @include mq-responsive("desktop-s", max) {
       --col-template: none;
       display: grid !important;
-      gap: $gap-space-16;
       grid-auto-flow: column;
-      grid-auto-columns: calc(100% - (2 * #{$gap-space-24}));
+      grid-auto-columns: calc(100% - #{$gap-space-24});
       padding-inline: 0;
       overflow-x: auto;
       overscroll-behavior-x: contain;

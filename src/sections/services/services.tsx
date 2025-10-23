@@ -22,12 +22,13 @@ const References = component$(() => {
             kľudný spánok.
           </p>
         </div>
-        <div class="services grid text-white xl:gap-8">
+        <div class="services grid text-white gap-2 md:gap-4 xl:gap-8">
           <Card
             title="Konzultácie a Mentoring"
             price={1200}
             priceNote="Cena za 1 hod"
-            onClick$={dialogContext.showDialog}>
+            onClick$={dialogContext.showDialog}
+          >
             <p class="text-sm text-gray-800 dark:text-gray-300">
               Riešim<strong>konkrétne technické problémy</strong> a posúvam
               developerov vpred prostredníctvom{" "}
@@ -52,7 +53,8 @@ const References = component$(() => {
             title="Technologický audit"
             price={1700}
             priceNote="Cena za 1 hod"
-            onClick$={dialogContext.showDialog}>
+            onClick$={dialogContext.showDialog}
+          >
             <p class="text-sm text-gray-800 dark:text-gray-300">
               Analyzujem váš kód a technické riešenia, identifikujem{" "}
               <strong>slabiny</strong> a navrhujem optimalizácie
@@ -76,7 +78,8 @@ const References = component$(() => {
           <Card
             title="AI workshopy a školenia"
             priceLabel="Dohodou"
-            available={true}>
+            available={true}
+          >
             <p class="text-sm text-gray-800 dark:text-gray-300">
               AI workshopy a školenia zamerané na prax a produktivitu.
             </p>
