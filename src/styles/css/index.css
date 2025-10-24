@@ -372,8 +372,29 @@ strong {
     scrollbar-gutter: stable;
     touch-action: none;
   }
-  nav:has(~ main > section#about-me:target) > ul > li > a[href$="#about-me"] {
-    background-color: red !important;
+  nav:has(~ main > section#about-me:target) .nav__list a[href$="#about-me"] {
+    text-decoration-color: var(--color-secondary) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 0.5rem !important;
+  }
+  nav:has(~ main > section#references:target) .nav__list a[href$="#references"] {
+    text-decoration-color: var(--color-secondary) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 0.5rem !important;
+  }
+  nav:has(~ main > section#services:target) .nav__list a[href$="#services"] {
+    text-decoration-color: var(--color-secondary) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 0.5rem !important;
+  }
+  nav:has(~ main > section#contact:target) .nav__list a[href$="#contact"] {
+    text-decoration-color: var(--color-secondary) !important;
+    text-decoration-line: underline !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 0.5rem !important;
   }
   .nav {
     max-inline-size: 100lvi;
@@ -1173,9 +1194,8 @@ strong {
     .services {
       --col-template: none;
       display: grid !important;
-      gap: 1rem;
       grid-auto-flow: column;
-      grid-auto-columns: calc(100% - 2 * 1.5rem);
+      grid-auto-columns: calc(100% - 1.5rem);
       padding-inline: 0;
       overflow-x: auto;
       overscroll-behavior-x: contain;
@@ -1223,6 +1243,26 @@ strong {
   .services > div::scroll-marker:target-current {
     --marker-bg: var(--color-yellow-500);
     scale: 1.2;
+  }
+  section#gdpr .blog h1 {
+    color: light-dark(hsl(0, 0%, 0%), hsl(0, 0%, 100%));
+    text-decoration: none;
+    font-weight: 700;
+  }
+  section#gdpr .blog :is(h1) > :is(a) {
+    display: contents;
+    color: inherit !important;
+    text-decoration: none !important;
+    font-weight: inherit !important;
+  }
+  section#gdpr .blog a:not(.podcast-link) {
+    color: hsl(0, 0%, 100%);
+    text-decoration: underline;
+    font-weight: 300;
+  }
+  section#gdpr .blog a:not(.podcast-link):hover, section#gdpr .blog a:not(.podcast-link):focus-visible {
+    color: oklch(92% 0 0deg);
+    text-decoration-thickness: from-font;
   }
 }
 @layer _utils {

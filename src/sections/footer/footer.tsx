@@ -56,11 +56,8 @@ const Footer = component$(() => {
           </div>
         </div>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center text-center gap-3 text-xs text-neutral-400">
-          <small class="font-mono">
-            ©{new Date().getFullYear()} Všetky práva vyhradené.
-          </small>
-          <span class="opacity-30">•</span>
+        <div class="mt-8 flex flex-col md:flex-row flex-wrap items-center justify-center text-center gap-2 md:gap-3 text-xs text-neutral-400">
+          {/* Cookies link-like button */}
           <small class="flex items-center gap-1">
             <Icon name="cookie" cls="w-3" />
             <button
@@ -68,9 +65,25 @@ const Footer = component$(() => {
               onClick$={() =>
                 window.dispatchEvent(new CustomEvent("open-cookie-preferences"))
               }
-              class="underline underline-offset-2 hover:text-neutral-200">
+              class="text-white underline underline-offset-2 font-normal hover:text-neutral-200">
               Nastavenia cookies
             </button>
+          </small>
+          <span class="opacity-30 hidden md:inline">•</span>
+
+          {/* GDPR link */}
+          <small>
+            <a
+              href="/gdpr"
+              class="text-white underline underline-offset-2 font-normal hover:text-neutral-200">
+              Ochrana osobných údajov
+            </a>
+          </small>
+          <span class="opacity-30 hidden md:inline">•</span>
+
+          {/* Copyright last */}
+          <small class="font-mono">
+            ©{new Date().getFullYear()} Všetky práva vyhradené.
           </small>
         </div>
       </Container>

@@ -32,16 +32,26 @@ export const RouterHead = component$(() => {
 
   // Resolve route-provided images (og/twitter) if any
   const findMeta = (nameOrProp: string) =>
-    head.meta.find((m) => m.name === nameOrProp || (m as any).property === nameOrProp);
+    head.meta.find(
+      (m) => m.name === nameOrProp || (m as any).property === nameOrProp,
+    );
 
-  const routeOgImage = findMeta("og:image")?.content || findMeta("image")?.content;
+  const routeOgImage =
+    findMeta("og:image")?.content || findMeta("image")?.content;
   const routeTwitterImage = findMeta("twitter:image")?.content;
 
   const toAbsolute = (url?: string) =>
-    !url ? undefined : /^https?:\/\//i.test(url) ? url : new URL(url, loc.url.origin).href;
+    !url
+      ? undefined
+      : /^https?:\/\//i.test(url)
+        ? url
+        : new URL(url, loc.url.origin).href;
 
   const ogImage = toAbsolute(routeOgImage) || defaultOpenGraphImage;
-  const twitterImage = toAbsolute(routeTwitterImage) || toAbsolute(routeOgImage) || defaultTwitterImage;
+  const twitterImage =
+    toAbsolute(routeTwitterImage) ||
+    toAbsolute(routeOgImage) ||
+    defaultTwitterImage;
 
   const hasOgImage = !!findMeta("og:image");
   const hasTwitterImage = !!findMeta("twitter:image");

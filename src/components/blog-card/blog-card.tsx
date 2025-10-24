@@ -41,17 +41,15 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
         "grid grid-rows-subgrid row-span-4 gap-6 sm:gap-8",
         "border-2 border-black dark:border-white rounded-lg",
         "text-black dark:text-white",
-        "bg-white dark:bg-black"
-      )}
-    >
+        "bg-white dark:bg-black",
+      )}>
       <div
         class={cls(
           "relative aspect-[2/1] overflow-hidden",
           "border-b-2 border-b-black dark:border-b-white",
           "rounded-t-[inherit]",
-          "bg-black"
-        )}
-      >
+          "bg-black",
+        )}>
         {post.cardImg && (
           <img
             src={post.cardImg}
@@ -65,7 +63,7 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
               "absolute inset-0 w-full h-full object-cover",
               // Smooth scale on card hover (group)
               "transition-transform duration-[1000ms] ease-in-out will-change-transform",
-              "group-hover:scale-[1.2]"
+              "group-hover:scale-[1.2]",
             )}
           />
         )}
@@ -79,9 +77,8 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
           "text-base lg:text-xl font-mono",
           "leading-relaxed font-light",
           "text-black dark:text-white",
-          "content-start"
-        )}
-      >
+          "content-start",
+        )}>
         <div>
           <strong class={cls("block", "text-xl", "mb-2", "line-clamp-2")}>
             {post.title}
@@ -89,9 +86,8 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
           <p
             class={cls(
               "text-sm sm:text-base lg:text-sm",
-              "text-gray-700 dark:text-gray-300"
-            )}
-          >
+              "text-gray-700 dark:text-gray-300",
+            )}>
             {post.subtitle}
           </p>
         </div>
@@ -101,16 +97,14 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
             "flex items-center justify-between",
             "text-xs sm:text-sm",
             "text-gray-500 dark:text-gray-400",
-            "mt-auto"
-          )}
-        >
+            "mt-auto",
+          )}>
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("cs-CZ")}
           </time>
           <span
             class={cls("flex items-center gap-2")}
-            title={`Čas pre prečítanie článku: ${minutes} min`}
-          >
+            title={`Čas pre prečítanie článku: ${minutes} min`}>
             <Icon name="book" cls="w-4 h-4 sm:w-5 sm:h-5" />
             {minutes} min
           </span>

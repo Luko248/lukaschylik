@@ -27,7 +27,7 @@ const persistPrefs = (prefs: ConsentPrefs) => {
   try {
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ ...prefs, ts: Date.now() })
+      JSON.stringify({ ...prefs, ts: Date.now() }),
     );
   } catch {}
 };
@@ -98,7 +98,7 @@ export default component$(() => {
       return () =>
         window.removeEventListener("open-cookie-preferences", listener);
     },
-    { strategy: "document-ready" }
+    { strategy: "document-ready" },
   );
 
   return (
@@ -119,22 +119,19 @@ export default component$(() => {
                   <button
                     type="button"
                     onClick$={denyAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
-                  >
+                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
                     Odmietnuť
                   </button>
                   <button
                     type="button"
                     onClick$={() => prefsDialogRef.value?.showModal()}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
-                  >
+                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
                     Nastavenia
                   </button>
                   <button
                     type="button"
                     onClick$={acceptAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md bg-white text-black hover:bg-neutral-200"
-                  >
+                    class="px-3 py-2 text-xs md:text-sm rounded-md bg-white text-black hover:bg-neutral-200">
                     Prijať všetko
                   </button>
                 </div>
@@ -146,8 +143,7 @@ export default component$(() => {
 
       <dialog
         ref={prefsDialogRef}
-        class="bg-neutral-900 text-neutral-100 w-[min(92vw,640px)] max-w-[92vw] md:max-w-[640px] rounded-xl border border-neutral-800 p-0 mx-auto my-auto"
-      >
+        class="bg-neutral-900 text-neutral-100 w-[min(92vw,640px)] max-w-[92vw] md:max-w-[640px] rounded-xl border border-neutral-800 p-0 mx-auto my-auto">
         <div class="p-5 md:p-6 border-b border-neutral-800">
           <h2 class="text-lg font-semibold">Nastavenia súborov cookie</h2>
           <p class="mt-1 text-sm text-neutral-300">
@@ -198,22 +194,19 @@ export default component$(() => {
           <button
             type="button"
             onClick$={() => prefsDialogRef.value?.close()}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
-          >
+            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
             Zatvoriť
           </button>
           <button
             type="button"
             onClick$={denyAll}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800"
-          >
+            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
             Odmietnuť všetko
           </button>
           <button
             type="button"
             onClick$={savePrefs}
-            class="px-3 py-2 text-sm rounded-md bg-white text-black hover:bg-neutral-200"
-          >
+            class="px-3 py-2 text-sm rounded-md bg-white text-black hover:bg-neutral-200">
             Uložiť nastavenia
           </button>
         </div>

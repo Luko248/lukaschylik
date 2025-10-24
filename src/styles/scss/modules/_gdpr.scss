@@ -1,0 +1,32 @@
+@use "../abstracts/variables/_index" as *;
+
+@mixin create-gdpr {
+  section#gdpr {
+    .blog {
+      h1 {
+        font-weight: 700;
+        color: light-dark(#{$color-black}, #{$color-white});
+        text-decoration: none;
+      }
+
+      :is(h1) > :is(a) {
+        display: contents;
+        font-weight: inherit !important;
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+
+      a:not(.podcast-link) {
+        font-weight: 300;
+        color: #{$color-white};
+        text-decoration: underline;
+
+        &:hover,
+        &:focus-visible {
+          color: oklch(92% 0 0);
+          text-decoration-thickness: from-font;
+        }
+      }
+    }
+  }
+}
