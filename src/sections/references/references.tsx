@@ -109,7 +109,7 @@ const References = component$(() => {
                 type="Design System"
               />
               <Reference
-                title="VIGo (Kooperativa & CPP)"
+                title="VIGo"
                 webURL="https://vig.cz/"
                 website="vig.cz"
                 type="Design System"
