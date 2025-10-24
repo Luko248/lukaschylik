@@ -106,13 +106,13 @@ const References = component$(() => {
                 title="Vertice"
                 webURL="https://vertice.one/"
                 website="vertice.one"
-                type="Design Systém"
+                type="Design System"
               />
               <Reference
                 title="VIGo (Kooperativa & CPP)"
                 webURL="https://vig.cz/"
                 website="vig.cz"
-                type="Design Systém"
+                type="Design System"
               />
               <Reference
                 title="Riganti"
