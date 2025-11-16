@@ -1,0 +1,338 @@
+---
+title: "CSS Cascade Layers, @scope a moderné selektory"
+subtitle: "Ako vrstvy, scope a nové pseudo-classy menia pravidlá kaskády"
+description: "Specificita bola vždy základným kameňom CSS. Dnes k nej pribúdajú cascade layers, @scope a moderné selektory ako :has() či :where(), ktoré zásadne menia spôsob, akým skladáme štýly."
+date: 2025-11-16
+author: Lukáš Chylík
+cardImg: /images/blog/specificity.avif
+---
+
+## Specificita dnes
+
+CSS sa dlhé roky opieralo o jednoduché pravidlo: **najprv poradie, potom specificita**. Autor verzus používateľ verzus prehliadač. Dnes k tejto osi pribúdajú nové mechanizmy, ktoré dávajú autorom viac kontroly a zároveň znižujú potrebu „špinavých“ hackov.
+
+V tomto článku sa pozrieme na historické vrstvy kaskády, moderné Cascade Layers, novú špecifikáciu `@scope` a selektory, ktoré otvárajú nové možnosti práce so specificitou.
+
+## Vrstvy tu boli vždy
+
+CSS malo vždy tri oficiálne origins:
+
+1. **User-agent (UA) styles** – natívne štýly prehliadača
+2. **User styles** – štýly, ktoré si môže nastaviť používateľ
+3. **Author styles** – štýly, ktoré píšu autori stránok (teda my)
+
+V praxi riešime najmä dve:
+
+### User-agent layer (UA styles)
+
+Najspodnejšia vrstva. Obsahuje defaultné štýly HTML prvkov a štýly internal Shadow DOM (formulárové prvky, `<video>` a pod.). Shadow DOM komponenty nie sú samostatná vrstva – stále patria do UA vrstvy.
+
+### Author layer (author styles)
+
+Všetko, čo píšeme my:
+
+- externé `.css` súbory
+- `<style>` v `<head>`
+- `style=""` inline
+
+Historicky bola táto vrstva jedna veľká „placka“. Až **CSS Cascade Layers** ju rozdelili na logické podvrstvy s predvídateľným poradím.
+
+## CSS Cascade Layers — poradie, význam a správanie
+
+Kľúčová myšlienka: **Najprv rozhodne vrstva, až potom specificita.** Vrstvy rozdeľujú author vrstvu na menšie časti s pevne daným poradím.
+
+### Príklad bez úvodnej deklarácie vrstiev
+
+```css
+@layer base {
+  h1 { font-size: 2rem; }
+}
+
+@layer components {
+  .card { padding: 1rem; }
+}
+
+@layer utilities {
+  .text-center { text-align: center; }
+}
+```
+
+Ak vrstvy nedefinujeme vopred, poradie určuje to, v akom poradí sa `@layer` bloky vyskytnú v CSS. Vrstva, ktorá sa objaví neskôr, má vyššiu prioritu. Stačí teda presunúť `@layer utilities` na začiatok a jej priorita klesne.
+
+### Deklarácia všetkých vrstiev na jednom riadku
+
+Poradie môžeme zafixovať na začiatku súboru:
+
+```css
+@layer base, components, utilities;
+
+@layer utilities {
+  .text-center { text-align: center; }
+}
+
+@layer base {
+  h1 { font-size: 2rem; }
+}
+
+@layer components {
+  .card { padding: 1rem; }
+}
+```
+
+Stále platí: `utilities > components > base`, pretože poradie definuje úvodný riadok bez ohľadu na fyzické umiestnenie blokov.
+
+### Custom vrstvy v praxi
+
+Typické členenie:
+
+```css
+@layer reset, defaults, layout, components, utilities, overrides;
+
+@layer reset {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .btn { padding: .5rem 1rem; }
+}
+
+@layer overrides {
+  .btn { color: red; }
+}
+```
+
+- prehľadná štruktúra
+- predvídateľné poradie
+- utility majú posledné slovo (pokiaľ nepríde `overrides`)
+
+### !important vo vrstvách
+
+`!important` ignoruje poradie vrstiev, ale stále rešpektuje vrstvenie medzi dôležitými pravidlami.
+
+```css
+@layer base {
+  .box { color: red !important; }
+}
+
+@layer components {
+  .box { color: blue; } /* nevyhrá */
+}
+
+@layer utilities {
+  .box { color: black !important; } /* vyhrá */
+}
+```
+
+### Vrstvy vo vrstvách
+
+`@layer` môže obsahovať ďalšie podvrstvy. Pomáha to pri väčších systémoch, kde chcete mať napríklad komponenty rozdelené na „base“ a „states“ bez miešania s inými vrstvami.
+
+```css
+@layer components {
+  @layer base {
+    .btn { padding: 0.75rem 1rem; }
+  }
+
+  @layer states {
+    .btn:focus-visible { outline: 2px solid $color-yellow; }
+  }
+}
+```
+
+Poradie bude: `reset → defaults → layout → components(base → states) → utilities → overrides`. Vnorené vrstvy rešpektujú poradie v rámci svojho rodiča, takže viete detailnejšie kontrolovať precedence aj vnútri jednej vyššej vrstvy.
+
+## @scope: lokálny kontext bez boja so specificitou
+
+`@scope` je nové CSS pravidlo, ktoré obmedzí platnosť štýlov na konkrétny podstrom. Má dva selektory:
+
+- **root (povinný)** – odkiaľ scoped štýly začínajú platiť (root aj jeho deti)
+- **limit (voliteľný)** – kde scoped štýly prestanú platiť (čo je za limitom, ostáva nedotknuté)
+
+### Kontrastný problém bez `@scope`
+
+Globálne prepísanie odkazov cez triedu na rodičovi:
+
+```css
+@layer reset, layout;
+
+.light { background: #ccc; }
+.dark  { background: #333; }
+.light a { color: black; }
+.dark a { color: white; }
+```
+
+Linky sú ovplyvnené všade, čo môže viesť ku kontrastným problémom pri miešaní motívov.
+
+<iframe height="550" style="width: 100%;" scrolling="no" title="Contrast issue without @scope" src="https://codepen.io/web-dot-dev/embed/eYbLpQw?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/web-dot-dev/pen/eYbLpQw">
+  Contrast issue without @scope</a> on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### Riešenie s `@scope` (root + limit)
+
+```css
+@layer reset, layout;
+
+@scope (.light) {
+  :scope { background: #ccc; }
+  a { color: black; }
+}
+
+@scope (.dark) {
+  :scope { background: #333; }
+  a { color: white; }
+}
+```
+
+- **root = `.light` / `.dark`** – scoped štýly platia len pre príslušný blok.
+- **limit nie je použitý** – scope sa končí na konci podstromu rootu.
+
+Scoped zápis drží specificitu nízko a izoluje motívové farby na konkrétne bloky bez ovplyvnenia zvyšku stránky.
+
+<iframe height="550" style="width: 100%;" scrolling="no" title="Contrast fix with @scope" src="https://codepen.io/web-dot-dev/embed/MWZqazx?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/web-dot-dev/pen/MWZqazx">
+  Contrast fix with @scope</a> on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### Vzťah k specificite
+
+Podľa dokumentácie Chrome sa `@scope` správa, akoby vytváral novú úroveň nad specificitou:
+
+- scoped pravidlá s rovnakou specificitou vyhrávajú nad globálnymi
+- dá sa nimi riešiť override bez umelého zvyšovania specificity (reťazením class selektorov alebo `id`)
+
+Výsledkom je čistejšie, komponentové CSS, ktoré sa menej spolieha na hacky.
+
+## Moderné selektory a ich specificita
+
+Klasická specificita:
+
+<table class="w-full border-collapse border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left">
+  <thead class="bg-gray-200 dark:bg-gray-800/70">
+    <tr>
+      <th class="px-4 py-3 border-b border-gray-300 dark:border-gray-700">Typ selektora</th>
+      <th class="px-4 py-3 border-b border-gray-300 dark:border-gray-700">Váha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">ID</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">1,0,0</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Class, pseudo-class</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">0,1,0</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Element, pseudo-element</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">0,0,1</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3">*</td>
+      <td class="px-4 py-3">0,0,0</td>
+    </tr>
+  </tbody>
+</table>
+
+Pozrime sa, čo prinášajú nové selektory.
+
+### :is()
+
+Berie najvyššiu specificitu zo zoznamu vo vnútri:
+
+```css
+:is(header, .box, #id) { ... } /* specificita = 1,0,0 (kvôli #id) */
+```
+
+### :not()
+
+Správa sa rovnako ako `:is()`:
+
+```css
+:not(.active, #hero) { ... } /* specificita = 1,0,0 */
+```
+
+### :where()
+
+Bez ohľadu na to, čo obsahuje, má vždy specificitu `0,0,0`:
+
+```css
+:where(.nav .item .link) { ... } /* specificita = 0,0,0 */
+```
+
+Ideálne na „mäkké“ štýly, ktoré chceme mať jednoduché na override.
+
+### :has()
+
+Najsilnejší selektor v CSS – z pohľadu možností aj specificity. Berie najvyššiu specificitu zo svojho obsahu:
+
+```css
+.card:has(img) { ... }     /* 0,1,0 */
+section:has(#hero) { ... } /* 1,0,0 */
+```
+
+Umožňuje smerovať štýly na elementy na základe ich potomkov alebo susedov bez nutnosti meniť HTML.
+
+### Kompozícia: keď sa nové selektory stretnú s vrstvami
+
+Najsilnejšie výsledky prichádzajú, keď moderné selektory použijeme v rámci vrstiev a scope:
+
+```css
+@layer components {
+  @scope (.hero) {
+    h2:where(:not(.muted)) {
+      color: oklch(55% 0.2 240);
+    }
+
+    .hero__cta:has(> .icon) {
+      padding-inline: clamp(1.25rem, 3svi, 1.5rem);
+    }
+  }
+}
+```
+
+`:where()` udrží specificitu na nule, `:has()` pridá logiku bez zvyšovania váhy celého selektora a vrstva `components` zabezpečí, že overrides zostanú predvídateľné.
+
+## Praktické postupy pre vrstvy a scope
+
+### Poradie vrstiev pre reálne projekty
+
+- reset → defaults → layout → components → utilities → overrides – osvedčená kostra, ktorú možno rozšíriť o `themes` alebo `experiments`
+- deklarujte všetky vrstvy na jednom riadku v core súbore, aby importy a lazy načítanie nenarušili poradie
+- pre tretie strany použite `@layer vendor` a zaraďte ju pred vlastné komponenty
+
+### Typický `@scope` príklad pre komponent
+
+```css
+@layer components {
+  @scope (.card) to (.card__footer) {
+    h3 { font-size: 1.25rem; }
+    p { color: light-dark(var(--color-gray-700), var(--color-gray-200)); }
+    .btn {
+      margin-block-start: 0.5rem;
+      color: inherit;
+    }
+  }
+}
+```
+
+`root` drží title a obsah karty, `limit` uzatvára scope pred sekundárnymi prvkami za footerom (napríklad „related“ blokmi). Specificita zostáva nízka, overrides ostávajú čisté a čitateľné.
+
+### Layerované utility vs. overrides
+
+- Utility patria do samostatnej vrstvy (`utilities`), aby mali stabilnú prioritu.
+- Pre jednorazové zásahy použite `overrides` vrstvu namiesto `!important` – je to čitateľnejšie a rešpektuje poradie.
+- Ak potrebujete „núdzové“ pravidlo, kombinujte `@scope` + `overrides` vrstvu, nie `!important` priamo v strede komponenty.
+
+## Záver
+
+Moderná kaskáda už nestojí len na specificite. **Cascade Layers** dávajú poriadok do autorových štýlov, **`@scope`** izoluje komponenty bez preháňania specificity a selektory ako `:is()`, `:where()` či `:has()` ponúkajú jemnejšiu kontrolu. Kombinácia týchto nástrojov vedie k čistejšiemu, predvídateľnému CSS, kde má override jasné pravidlá a menej prekvapení.
+
+## Zdroje a ďalšie čítanie
+
+- [@scope – Chrome Developers](https://developer.chrome.com/docs/css-ui/at-scope)
+- [Cascade layers – MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers)
+- [@scope – MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope)

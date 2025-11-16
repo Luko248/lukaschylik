@@ -170,14 +170,12 @@ section:has(.blog) {
 
     .link,
     a:not(.podcast-link) {
-      color: $color-yellow;
-      text-decoration: none;
-      transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-
-      &:hover,
-      &:focus {
-        color: $color-yellow;
-      }
+      color: light-dark($color-secondary, $color-primary);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.18em;
+      transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
     }
 
     ul,
@@ -221,10 +219,7 @@ section:has(.blog) {
       display: block;
       margin: clamp(1.5em, 4svi, 2em) 0;
       padding: clamp(1em, 3svi, 1.5em);
-      background-color: light-dark(
-        var(--color-gray-200),
-        var(--color-gray-800)
-      );
+      background-color: light-dark($color-grey-200, $color-black-800);
       border-radius: clamp(3px, 0.8svi, 4px);
       font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);
@@ -236,9 +231,17 @@ section:has(.blog) {
 
     code {
       padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
+      background-color: light-dark($color-grey-200, $color-black-800); border: 1px solid light-dark($color-grey-200, $color-grey-800);
       border-radius: clamp(2px, 0.6svi, 3px);
       font-family: "Fira Code", Consolas, monospace;
       font-size: clamp(0.85em, 2svi, 0.9em);
+      color: light-dark($color-secondary, $color-primary);
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      border: none;
     }
   }
 
