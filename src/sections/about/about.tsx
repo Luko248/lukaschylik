@@ -11,9 +11,8 @@ const About = component$(() => {
           <div
             class={cls(
               "grid grid-cols-1 items-start",
-              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]"
-            )}
-          >
+              "lg:grid-cols-[5fr_8fr] lg:grid-rows-[auto_1fr]",
+            )}>
             <SectionTitle
               text="Niečo o mne"
               className="about-title lg:row-start-1 lg:col-span-2 lg:col-start-1"

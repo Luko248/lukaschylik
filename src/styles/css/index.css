@@ -11,7 +11,7 @@
 }
 @media screen and (width <= 768px) {
   :root {
-    --nav_height: 2.75rem;
+    --nav_height: 3.5rem;
   }
 }
 
@@ -815,14 +815,12 @@ strong {
   }
   .blog .link,
   .blog a:not(.podcast-link) {
-    color: hsl(51, 100%, 53%);
-    text-decoration: none;
-    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-  .blog .link:hover, .blog .link:focus,
-  .blog a:not(.podcast-link):hover,
-  .blog a:not(.podcast-link):focus {
-    color: hsl(51, 100%, 53%);
+    color: light-dark(hsl(0, 0%, 0%), hsl(0, 0%, 100%));
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
   }
   .blog ul,
   .blog ol {
@@ -860,7 +858,7 @@ strong {
     display: block;
     margin: clamp(1.5em, 4svi, 2em) 0;
     padding: clamp(1em, 3svi, 1.5em);
-    background-color: light-dark(var(--color-gray-200), var(--color-gray-800));
+    background-color: light-dark(hsl(0, 0%, 85%), hsl(0, 0%, 8%));
     border-radius: clamp(3px, 0.8svi, 4px);
     font-family: "Fira Code", Consolas, monospace;
     font-size: clamp(0.85em, 2svi, 0.9em);
@@ -871,9 +869,17 @@ strong {
   }
   .blog code {
     padding: clamp(0.15em, 0.5svi, 0.2em) clamp(0.3em, 0.8svi, 0.4em);
+    background-color: light-dark(hsl(0, 0%, 85%), hsl(0, 0%, 8%));
+    border: 1px solid light-dark(hsl(0, 0%, 85%), hsl(0, 0%, 20%));
     border-radius: clamp(2px, 0.6svi, 3px);
     font-family: "Fira Code", Consolas, monospace;
     font-size: clamp(0.85em, 2svi, 0.9em);
+    color: light-dark(hsl(0, 0%, 0%), hsl(0, 0%, 100%));
+  }
+  .blog pre code {
+    padding: 0;
+    background: transparent;
+    border: none;
   }
   @keyframes article-progress {
     to {
@@ -1245,20 +1251,20 @@ strong {
     scale: 1.2;
   }
   section#gdpr .blog h1 {
+    font-weight: 700;
     color: light-dark(hsl(0, 0%, 0%), hsl(0, 0%, 100%));
     text-decoration: none;
-    font-weight: 700;
   }
   section#gdpr .blog :is(h1) > :is(a) {
     display: contents;
+    font-weight: inherit !important;
     color: inherit !important;
     text-decoration: none !important;
-    font-weight: inherit !important;
   }
   section#gdpr .blog a:not(.podcast-link) {
+    font-weight: 300;
     color: hsl(0, 0%, 100%);
     text-decoration: underline;
-    font-weight: 300;
   }
   section#gdpr .blog a:not(.podcast-link):hover, section#gdpr .blog a:not(.podcast-link):focus-visible {
     color: oklch(92% 0 0deg);

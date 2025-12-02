@@ -172,10 +172,10 @@ section:has(.blog) {
     a:not(.podcast-link) {
       color: light-dark($color-secondary, $color-primary);
       text-decoration: underline;
+      transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
       text-decoration-color: currentColor;
       text-decoration-thickness: 2px;
       text-underline-offset: 0.18em;
-      transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
     }
 
     ul,

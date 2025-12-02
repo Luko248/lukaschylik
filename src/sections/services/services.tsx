@@ -29,7 +29,7 @@ const References = component$(() => {
             priceNote="Cena za 1 hod"
             onClick$={dialogContext.showDialog}>
             <p class="text-sm text-gray-800 dark:text-gray-300">
-              Riešim<strong>konkrétne technické problémy</strong> a posúvam
+              Riešim <strong>konkrétne technické problémy</strong> a posúvam
               developerov vpred prostredníctvom{" "}
               <strong>personalizovaného mentoringu</strong>.
             </p>
