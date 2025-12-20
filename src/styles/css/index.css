@@ -610,7 +610,7 @@ strong {
     animation-timeline: scroll(root);
   }
   .skills__scroller:nth-of-type(2) {
-    animation-direction: reverse;
+    animation-name: scroll-skills-reverse;
   }
   @media (prefers-reduced-motion: reduce) {
     .skills__scroller {
@@ -624,6 +624,11 @@ strong {
   @keyframes scroll-skills {
     to {
       translate: calc(-20% - 1rem) 0;
+    }
+  }
+  @keyframes scroll-skills-reverse {
+    to {
+      translate: calc(20% + 1rem) 0;
     }
   }
   .social {

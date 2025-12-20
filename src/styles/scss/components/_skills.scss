@@ -26,7 +26,7 @@
       animation-timeline: scroll(root);
 
       &:nth-of-type(2) {
-        animation-direction: reverse;
+        animation-name: scroll-skills-reverse;
       }
 
       @include mq-reduce-motion {
@@ -43,6 +43,12 @@
   @keyframes scroll-skills {
     to {
       translate: calc(-20% - $gap-space-16) 0;
+    }
+  }
+
+  @keyframes scroll-skills-reverse {
+    to {
+      translate: calc(20% + $gap-space-16) 0;
     }
   }
 }
