@@ -1,7 +1,7 @@
-import { component$ } from "@builder.io/qwik";
-import { Container, Icon } from "~/components";
-import { cls } from "~/utils";
-import Logo from "~/images/logos/logo-footer.svg?jsx";
+import { component$ } from '@builder.io/qwik'
+import { Container, Icon } from '~/components'
+import Logo from '~/images/logos/logo-footer.svg?jsx'
+import { cls } from '~/utils'
 
 const Footer = component$(() => {
   return (
@@ -14,12 +14,12 @@ const Footer = component$(() => {
             <a
               href="/"
               class={cls(
-                "relative",
-                "w-[120px] h-[60px]",
-                "flex items-center",
-                "no-underline",
-                "transition-opacity duration-200",
-                "opacity-100 hover:opacity-80",
+                'relative',
+                'w-[120px] h-[60px]',
+                'flex items-center',
+                'no-underline',
+                'transition-opacity duration-200',
+                'opacity-100 hover:opacity-80',
               )}>
               <Logo
                 class="w-full h-full max-w-full"
@@ -47,7 +47,7 @@ const Footer = component$(() => {
                 <strong>IČO:</strong> 05483247
               </span>
               <span class="block">
-                <strong>Email:</strong>{" "}
+                <strong>Email:</strong>{' '}
                 <a class="hover:underline" href="mailto:chylik.lukas@gmail.com">
                   chylik.lukas@gmail.com
                 </a>
@@ -63,7 +63,7 @@ const Footer = component$(() => {
             <button
               type="button"
               onClick$={() =>
-                window.dispatchEvent(new CustomEvent("open-cookie-preferences"))
+                window.dispatchEvent(new CustomEvent('open-cookie-preferences'))
               }
               class="text-white underline underline-offset-2 font-normal hover:text-neutral-200">
               Nastavenia cookies
@@ -88,7 +88,7 @@ const Footer = component$(() => {
         </div>
       </Container>
     </footer>
-  );
-});
+  )
+})
 
-export default Footer;
+export default Footer

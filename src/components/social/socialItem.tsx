@@ -1,6 +1,6 @@
-import { component$ } from "@builder.io/qwik";
-import Icon from "../icon/icon";
-import type { SocialItemProps } from "./socialItem.types";
+import { component$ } from '@builder.io/qwik'
+import Icon from '../icon/icon'
+import type { SocialItemProps } from './socialItem.types'
 
 const SocialItem = component$<SocialItemProps>(({ href, label, icon, key }) => {
   return (
@@ -16,7 +16,7 @@ const SocialItem = component$<SocialItemProps>(({ href, label, icon, key }) => {
         <Icon name={icon} cls="w-6 xl:w-8 text-white" />
       </a>
     </li>
-  );
-});
+  )
+})
 
-export default SocialItem;
+export default SocialItem

@@ -18,17 +18,17 @@
  * @returns {void}
  */
 export function initializeHeaderFlag(element: Element | undefined) {
-  if (typeof window === "undefined" || !element) return;
+  if (typeof window === 'undefined' || !element) return
 
   const timeoutId = setTimeout(() => {
     requestAnimationFrame(() => {
-      element.setAttribute("data-initialize", "true");
-    });
-  }, 1000);
+      element.setAttribute('data-initialize', 'true')
+    })
+  }, 1000)
 
   return () => {
-    clearTimeout(timeoutId);
-  };
+    clearTimeout(timeoutId)
+  }
 }
 
 // ... existing code ...

@@ -2,22 +2,22 @@
  * Base Vite configuration for Qwik application with SSR support
  */
 
-import { qwikVite } from "@builder.io/qwik/optimizer";
-import { qwikCity } from "@builder.io/qwik-city/vite";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { defineConfig, type UserConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import { rehypeShiki } from "./src/utils/rehype-shiki";
-import pkg from "./package.json";
+import { qwikVite } from '@builder.io/qwik/optimizer'
+import { qwikCity } from '@builder.io/qwik-city/vite'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { defineConfig, type UserConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import pkg from './package.json'
+import { rehypeShiki } from './src/utils/rehype-shiki'
 
 interface PackageJson {
-  dependencies?: Record<string, string>;
-  devDependencies?: Record<string, string>;
-  [key: string]: unknown;
+  dependencies?: Record<string, string>
+  devDependencies?: Record<string, string>
+  [key: string]: unknown
 }
 
-const { dependencies = {}, devDependencies = {} } = pkg as PackageJson;
-errorOnDuplicatesPkgDeps(devDependencies, dependencies);
+const { dependencies = {}, devDependencies = {} } = pkg as PackageJson
+errorOnDuplicatesPkgDeps(devDependencies, dependencies)
 
 export default defineConfig((): UserConfig => {
   return {
@@ -34,9 +34,9 @@ export default defineConfig((): UserConfig => {
             [
               rehypeAutolinkHeadings,
               {
-                behavior: "wrap",
+                behavior: 'wrap',
                 properties: {
-                  className: ["heading-anchor"],
+                  className: ['heading-anchor'],
                   tabIndex: 0,
                 },
               },
@@ -49,36 +49,34 @@ export default defineConfig((): UserConfig => {
     ],
     css: {
       preprocessorOptions: {
-        scss: {
-          api: "modern-compiler",
-        },
+        scss: {},
       },
     },
     optimizeDeps: {
       exclude: [],
     },
     build: {
-      target: "esnext",
+      target: 'esnext',
       rollupOptions: {
         output: {
-          assetFileNames: "assets/[name]-[hash][extname]",
-          chunkFileNames: "assets/[name]-[hash].js",
-          entryFileNames: "assets/[name]-[hash].js",
+          assetFileNames: 'assets/[name]-[hash][extname]',
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
         },
       },
     },
     server: {
       headers: {
-        "Cache-Control": "public, max-age=0",
+        'Cache-Control': 'public, max-age=0',
       },
     },
     preview: {
       headers: {
-        "Cache-Control": "public, max-age=600",
+        'Cache-Control': 'public, max-age=600',
       },
     },
-  };
-});
+  }
+})
 
 /**
  * Validates that dependencies are not duplicated between devDependencies and dependencies
@@ -89,28 +87,28 @@ function errorOnDuplicatesPkgDeps(
   devDependencies: Record<string, string>,
   dependencies: Record<string, string>,
 ) {
-  let msg = "";
+  let msg = ''
 
   const duplicateDeps = Object.keys(devDependencies).filter(
     (dep) => dependencies[dep],
-  );
+  )
 
   const qwikPkg = Object.keys(dependencies).filter((value) =>
     /qwik/i.test(value),
-  );
+  )
 
-  msg = `Move qwik packages ${qwikPkg.join(", ")} to devDependencies`;
+  msg = `Move qwik packages ${qwikPkg.join(', ')} to devDependencies`
 
   if (qwikPkg.length > 0) {
-    throw new Error(msg);
+    throw new Error(msg)
   }
 
   msg = `
-    Warning: The dependency "${duplicateDeps.join(", ")}" is listed in both "devDependencies" and "dependencies".
+    Warning: The dependency "${duplicateDeps.join(', ')}" is listed in both "devDependencies" and "dependencies".
     Please move the duplicated dependencies to "devDependencies" only and remove it from "dependencies"
-  `;
+  `
 
   if (duplicateDeps.length > 0) {
-    throw new Error(msg);
+    throw new Error(msg)
   }
 }

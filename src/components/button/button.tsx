@@ -1,7 +1,7 @@
-import { component$, Slot } from "@builder.io/qwik";
-import { Icon } from "../icon";
-import type { ButtonProps } from "./button.types";
-import { buttonVariants } from "./button.variants";
+import { component$, Slot } from '@builder.io/qwik'
+import { Icon } from '../icon'
+import type { ButtonProps } from './button.types'
+import { buttonVariants } from './button.variants'
 
 /**
  * Button component with multiple variants and sizes using tailwind-variants
@@ -9,8 +9,8 @@ import { buttonVariants } from "./button.variants";
  */
 const Button = component$<ButtonProps>(
   ({
-    size = "md",
-    variant = "primary",
+    size = 'md',
+    variant = 'primary',
     iconOnly = false,
     onClick$,
     disabled,
@@ -20,7 +20,7 @@ const Button = component$<ButtonProps>(
     href,
     rel,
     target,
-    type = "button",
+    type = 'button',
     icon,
     command,
     commandfor,
@@ -30,46 +30,46 @@ const Button = component$<ButtonProps>(
       size,
       iconOnly,
       class: className,
-    });
+    })
 
     const commonProps = {
       class: buttonClasses,
-      "aria-label": ariaLabel,
+      'aria-label': ariaLabel,
       title,
-      "data-variant": variant,
-    };
+      'data-variant': variant,
+    }
 
     const buttonProps = {
       ...commonProps,
       onClick$,
       disabled,
-      "aria-disabled": disabled,
+      'aria-disabled': disabled,
       type,
       ...(command && { command }),
       ...(commandfor && { commandfor }),
-    };
+    }
 
     const linkProps = {
       ...commonProps,
       href,
       rel,
       target,
-      "aria-disabled": disabled,
-    };
+      'aria-disabled': disabled,
+    }
 
     const content = (
       <>
         <Slot />
         {icon && <Icon name={icon} size="1rem" />}
       </>
-    );
+    )
 
     return href ? (
       <a {...linkProps}>{content}</a>
     ) : (
       <button {...buttonProps}>{content}</button>
-    );
+    )
   },
-);
+)
 
-export default Button;
+export default Button

@@ -1,13 +1,13 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { Button, Icon } from "~/components";
-import type { ReservationDialogProps } from "./reservationDialog.types";
+import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { Button, Icon } from '~/components'
+import type { ReservationDialogProps } from './reservationDialog.types'
 
 const loadCalcomScript = () => {
-  if (window.Cal?.loaded) return null;
+  if (window.Cal?.loaded) return null
 
-  const script = document.createElement("script");
-  script.type = "text/javascript";
-  script.async = true;
+  const script = document.createElement('script')
+  script.type = 'text/javascript'
+  script.async = true
   script.innerHTML = `
     (function (C, A, L) { 
       let p = function (a, ar) { a.q.push(ar); }; 
@@ -48,11 +48,11 @@ const loadCalcomScript = () => {
     
     // Configure UI
     Cal.ns["60-min-meeting"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-  `;
+  `
 
-  document.head.appendChild(script);
-  return script;
-};
+  document.head.appendChild(script)
+  return script
+}
 
 /**
  * ReservationDialog component for handling booking appointments
@@ -60,21 +60,21 @@ const loadCalcomScript = () => {
  */
 export const ReservationDialog = component$<ReservationDialogProps>(
   ({ dialogRef: externalDialogRef }) => {
-    const internalDialogRef = useSignal<HTMLDialogElement>();
-    const dialogRef = externalDialogRef || internalDialogRef;
+    const internalDialogRef = useSignal<HTMLDialogElement>()
+    const dialogRef = externalDialogRef || internalDialogRef
 
     useVisibleTask$(
       ({ cleanup }) => {
-        const script = loadCalcomScript();
+        const script = loadCalcomScript()
 
         cleanup(() => {
           if (script && document.head.contains(script)) {
-            document.head.removeChild(script);
+            document.head.removeChild(script)
           }
-        });
+        })
       },
-      { strategy: "document-ready" },
-    );
+      { strategy: 'document-ready' },
+    )
 
     return (
       <dialog
@@ -101,13 +101,13 @@ export const ReservationDialog = component$<ReservationDialogProps>(
           id="my-cal-inline"
           class="min-h-[570px] max-w-full overflow-clip"
           style={{
-            "--cal-brand": "#2563eb",
-            "--cal-brand-emphasis": "#1e40af",
-            "--cal-brand-text": "#ffffff",
-            "--cal-brand-subtle": "#dbeafe",
+            '--cal-brand': '#2563eb',
+            '--cal-brand-emphasis': '#1e40af',
+            '--cal-brand-text': '#ffffff',
+            '--cal-brand-subtle': '#dbeafe',
           }}
         />
       </dialog>
-    );
+    )
   },
-);
+)

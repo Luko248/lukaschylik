@@ -1,3 +1,3 @@
 export interface SkillItemProps {
-  text: string;
+  text: string
 }

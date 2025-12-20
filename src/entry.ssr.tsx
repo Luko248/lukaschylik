@@ -13,24 +13,24 @@
 import {
   type RenderToStreamOptions,
   renderToStream,
-} from "@builder.io/qwik/server";
-import { manifest } from "@qwik-client-manifest";
-import Root from "./root";
+} from '@builder.io/qwik/server'
+import { manifest } from '@qwik-client-manifest'
+import Root from './root'
 
 export default function (opts: RenderToStreamOptions) {
   // Create a new options object with all the properties
   const options: RenderToStreamOptions = {
     manifest,
     containerAttributes: {
-      lang: "en-us",
+      lang: 'en-us',
       ...(opts.containerAttributes || {}),
     },
     serverData: {
       ...(opts.serverData || {}),
     },
     ...opts,
-  };
+  }
 
   // Pass the single options object to renderToStream
-  return renderToStream(<Root />, options);
+  return renderToStream(<Root />, options)
 }

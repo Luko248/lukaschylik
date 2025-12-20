@@ -1,12 +1,12 @@
-import { component$, useContext } from "@builder.io/qwik";
-import { Card, ListItem } from "~/components";
-import Container from "~/components/container/container";
-import Section from "~/components/section/section";
-import SectionTitle from "~/components/section/section.title";
-import { DialogContext } from "~/utils";
+import { component$, useContext } from '@builder.io/qwik'
+import { Card, ListItem } from '~/components'
+import Container from '~/components/container/container'
+import Section from '~/components/section/section'
+import SectionTitle from '~/components/section/section.title'
+import { DialogContext } from '~/utils'
 
 const References = component$(() => {
-  const dialogContext = useContext(DialogContext);
+  const dialogContext = useContext(DialogContext)
 
   return (
     <Section id="services">
@@ -14,10 +14,10 @@ const References = component$(() => {
         <SectionTitle text="Služby" />
         <div class="content-fade-in">
           <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-18 text-gray-800 dark:text-gray-300 font-mono">
-            Zistenie, že ste pre váš projekt zvolili{" "}
-            <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{" "}
+            Zistenie, že ste pre váš projekt zvolili{' '}
+            <strong>nesprávne technológie</strong> v pokročilom štádiu vývoja,{' '}
             <strong> vždy zabolí</strong>. Takémuto problému a mnohým ďalším Vám
-            pomôžem predísť. Ušetríte <strong>čas</strong>,{" "}
+            pomôžem predísť. Ušetríte <strong>čas</strong>,{' '}
             <strong>peniaze</strong>, a ako bonus budete mať Vy aj Váš tým
             kľudný spánok.
           </p>
@@ -30,7 +30,7 @@ const References = component$(() => {
             onClick$={dialogContext.showDialog}>
             <p class="text-sm text-gray-800 dark:text-gray-300">
               Riešim <strong>konkrétne technické problémy</strong> a posúvam
-              developerov vpred prostredníctvom{" "}
+              developerov vpred prostredníctvom{' '}
               <strong>personalizovaného mentoringu</strong>.
             </p>
             <ul class="grid gap-2 content-start">
@@ -54,7 +54,7 @@ const References = component$(() => {
             priceNote="Cena za 1 hod"
             onClick$={dialogContext.showDialog}>
             <p class="text-sm text-gray-800 dark:text-gray-300">
-              Analyzujem váš kód a technické riešenia, identifikujem{" "}
+              Analyzujem váš kód a technické riešenia, identifikujem{' '}
               <strong>slabiny</strong> a navrhujem optimalizácie
               <strong> pre lepší výkon</strong>.
             </p>
@@ -98,7 +98,7 @@ const References = component$(() => {
         </div>
       </Container>
     </Section>
-  );
-});
+  )
+})
 
-export default References;
+export default References

@@ -1,47 +1,52 @@
-import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
-import { cls } from "~/utils";
-import { SOCIAL_LINKS } from "~/constants/socialLinks";
-import Icon from "../icon/icon";
-import SocialItem from "./socialItem";
+import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik'
+import { SOCIAL_LINKS } from '~/constants/socialLinks'
+import { cls } from '~/utils'
+import Icon from '../icon/icon'
+import SocialItem from './socialItem'
 
 const Social = component$(() => {
-  const isOpen = useSignal(false);
-  const menuRef = useSignal<HTMLDivElement>();
-  const buttonRef = useSignal<HTMLButtonElement>();
+  const isOpen = useSignal(false)
+  const menuRef = useSignal<HTMLDivElement>()
+  const buttonRef = useSignal<HTMLButtonElement>()
 
-  const closeMenu = $(() => (isOpen.value = false));
-  const toggleMenu = $(() => (isOpen.value = !isOpen.value));
+  const closeMenu = $(() => {
+    isOpen.value = false
+  })
+
+  const toggleMenu = $(() => {
+    isOpen.value = !isOpen.value
+  })
 
   // Close when clicking outside
   useOnDocument(
-    "click",
+    'click',
     $((event) => {
-      if (!isOpen.value) return;
+      if (!isOpen.value) return
 
-      const target = event.target as Node;
+      const target = event.target as Node
       const clickedOutside =
         menuRef.value &&
         !menuRef.value.contains(target) &&
-        !buttonRef.value?.contains(target);
+        !buttonRef.value?.contains(target)
 
-      if (clickedOutside) closeMenu();
+      if (clickedOutside) closeMenu()
     }),
-  );
+  )
 
   // Close on Escape key
   useOnDocument(
-    "keydown",
+    'keydown',
     $((event) => {
-      if (event.key === "Escape" && isOpen.value) closeMenu();
+      if (event.key === 'Escape' && isOpen.value) closeMenu()
     }),
-  );
+  )
 
   return (
     <div
       ref={menuRef}
       class={cls(
-        "social fixed bottom-4 right-2 z-[200] grid place-items-center w-10 h-10 ratio-1/1",
-        "md:bottom-8 md:right-4 lg:right-8 mix-blend-difference",
+        'social fixed bottom-4 right-2 z-[200] grid place-items-center w-10 h-10 ratio-1/1',
+        'md:bottom-8 md:right-4 lg:right-8 mix-blend-difference',
       )}
       data-open={isOpen.value}>
       <ul
@@ -57,29 +62,29 @@ const Social = component$(() => {
         id="menuButton"
         onClick$={toggleMenu}
         aria-label={
-          isOpen.value ? "Zavrieť sociálne siete" : "Otvoriť sociálne siete"
+          isOpen.value ? 'Zavrieť sociálne siete' : 'Otvoriť sociálne siete'
         }
         aria-expanded={isOpen.value}
         aria-controls="socialMenu"
         class={cls(
-          "absolute w-10 h-10",
-          "group grid place-items-center",
-          "m-0 cursor-pointer z-10",
-          "bg-white text-black",
-          "rounded-full",
-          "transition-colors duration-200 focus:outline-none",
+          'absolute w-10 h-10',
+          'group grid place-items-center',
+          'm-0 cursor-pointer z-10',
+          'bg-white text-black',
+          'rounded-full',
+          'transition-colors duration-200 focus:outline-none',
         )}>
         <Icon
           name="share"
           cls={cls(
-            "w-4 md:w-5",
-            "transition-transform duration-250 ease-in-out group-hover:scale-110",
-            isOpen.value && "scale-110",
+            'w-4 md:w-5',
+            'transition-transform duration-250 ease-in-out group-hover:scale-110',
+            isOpen.value && 'scale-110',
           )}
         />
       </button>
     </div>
-  );
-});
+  )
+})
 
-export default Social;
+export default Social

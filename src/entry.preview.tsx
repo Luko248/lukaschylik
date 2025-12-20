@@ -10,10 +10,10 @@
  * - https://vitejs.dev/config/preview-options.html#preview-options
  *
  */
-import { createQwikCity } from "@builder.io/qwik-city/middleware/node";
-import qwikCityPlan from "@qwik-city-plan";
+import { createQwikCity } from '@builder.io/qwik-city/middleware/node'
+import qwikCityPlan from '@qwik-city-plan'
 // make sure qwikCityPlan is imported before entry
-import render from "./entry.ssr";
+import render from './entry.ssr'
 
 /**
  * The default export is the QwikCity adapter used by Vite preview.
@@ -22,7 +22,7 @@ import render from "./entry.ssr";
 const qwikCityOptions = {
   render,
   qwikCityPlan,
-};
+}
 
 // Pass the single options object to createQwikCity
-export default createQwikCity(qwikCityOptions);
+export default createQwikCity(qwikCityOptions)

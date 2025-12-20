@@ -4,52 +4,52 @@ import {
   useSignal,
   useStore,
   useVisibleTask$,
-} from "@builder.io/qwik";
-import { Button, Container, FormField, Section } from "~/components";
-import SectionTitle from "~/components/section/section.title";
+} from '@builder.io/qwik'
+import { Button, Container, FormField, Section } from '~/components'
+import SectionTitle from '~/components/section/section.title'
 
 const Newsletter = component$(() => {
-  const email = useSignal("");
+  const email = useSignal('')
   const formState = useStore({
     submitting: false,
-    error: "",
+    error: '',
     alreadySubscribed: false,
-  });
+  })
 
   // Check if user has already subscribed
   useVisibleTask$(() => {
-    const subscribed = localStorage.getItem("newsletter_subscribed") === "true";
+    const subscribed = localStorage.getItem('newsletter_subscribed') === 'true'
     if (subscribed) {
-      formState.alreadySubscribed = true;
-      email.value = localStorage.getItem("newsletter_email") || "";
+      formState.alreadySubscribed = true
+      email.value = localStorage.getItem('newsletter_email') || ''
     }
-  });
+  })
 
   const handleSubmit = $((event: SubmitEvent) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    if (!email.value || formState.submitting) return;
+    if (!email.value || formState.submitting) return
 
-    formState.submitting = true;
-    formState.error = "";
+    formState.submitting = true
+    formState.error = ''
 
     // Store in localStorage as a backup/fallback
-    localStorage.setItem("newsletter_subscribed", "true");
-    localStorage.setItem("newsletter_email", email.value);
+    localStorage.setItem('newsletter_subscribed', 'true')
+    localStorage.setItem('newsletter_email', email.value)
 
     // Use the provided Google Apps Script URL
     const googleScriptUrl =
-      "https://script.google.com/macros/s/AKfycbwIGzmIRjtsm5K5xtgcsRS99kEGgwxJjqjcps7umTuJwyW2d8o87v_AtPQVp4VcWY3g/exec";
+      'https://script.google.com/macros/s/AKfycbwIGzmIRjtsm5K5xtgcsRS99kEGgwxJjqjcps7umTuJwyW2d8o87v_AtPQVp4VcWY3g/exec'
 
     fetch(googleScriptUrl, {
-      method: "POST",
-      mode: "no-cors", // Important for cross-origin requests to Google Scripts
+      method: 'POST',
+      mode: 'no-cors', // Important for cross-origin requests to Google Scripts
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: email.value,
-        source: "Website Newsletter",
+        source: 'Website Newsletter',
         timestamp: new Date().toISOString(),
       }),
     })
@@ -58,23 +58,23 @@ const Newsletter = component$(() => {
         // Just assume success and show the success message
 
         // Clear the form field
-        email.value = "";
+        email.value = ''
 
         // Add URL parameter to show success message and redirect
-        window.location.href = `${window.location.pathname}?newsletterSubscribed=true`;
+        window.location.href = `${window.location.pathname}?newsletterSubscribed=true`
       })
       .catch((error) => {
-        console.error("Subscription error:", error);
+        console.error('Subscription error:', error)
         formState.error =
-          "Nepodarilo sa prihlásiť na odber. Skúste to prosím znova.";
+          'Nepodarilo sa prihlásiť na odber. Skúste to prosím znova.'
 
         // Even if there's an error, store that they attempted to subscribe
-        localStorage.setItem("newsletter_attempted", "true");
+        localStorage.setItem('newsletter_attempted', 'true')
       })
       .finally(() => {
-        formState.submitting = false;
-      });
-  });
+        formState.submitting = false
+      })
+  })
 
   return (
     <Section id="contact" className="bg-white" fullHeight={false}>
@@ -92,10 +92,10 @@ const Newsletter = component$(() => {
               title=" Odhlásiť sa z odberu"
               variant="primary"
               onClick$={() => {
-                localStorage.removeItem("newsletter_subscribed");
-                localStorage.removeItem("newsletter_email");
-                formState.alreadySubscribed = false;
-                email.value = "";
+                localStorage.removeItem('newsletter_subscribed')
+                localStorage.removeItem('newsletter_email')
+                formState.alreadySubscribed = false
+                email.value = ''
               }}>
               Odhlásiť sa z odberu
             </Button>
@@ -114,7 +114,7 @@ const Newsletter = component$(() => {
                 placeholder="john.doe@email.com"
                 value={email.value}
                 onInput$={(e: any) => {
-                  email.value = e.target.value;
+                  email.value = e.target.value
                 }}
                 required
               />
@@ -123,7 +123,7 @@ const Newsletter = component$(() => {
                 title="Odoberať"
                 variant="primary"
                 disabled={formState.submitting}>
-                {formState.submitting ? "Odosielam..." : "Odoberať"}
+                {formState.submitting ? 'Odosielam...' : 'Odoberať'}
               </Button>
             </form>
             {formState.error && (
@@ -137,7 +137,7 @@ const Newsletter = component$(() => {
         </small>
       </Container>
     </Section>
-  );
-});
+  )
+})
 
-export default Newsletter;
+export default Newsletter

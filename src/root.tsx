@@ -1,13 +1,13 @@
-import { component$ } from "@builder.io/qwik";
-import { isDev } from "@builder.io/qwik/build";
+import { component$ } from '@builder.io/qwik'
+import { isDev } from '@builder.io/qwik/build'
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
-} from "@builder.io/qwik-city";
-import { RouterHead } from "./components/router-head/router-head";
-import "./styles/scss/index.scss";
-import "./styles/css/tailwind.css";
+} from '@builder.io/qwik-city'
+import { RouterHead } from './components/router-head/router-head'
+import './styles/scss/index.scss'
+import './styles/css/tailwind.css'
 export default component$(() => {
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -36,11 +36,11 @@ export default component$(() => {
             height="0"
             width="0"
             title="Google Tag Manager"
-            style={{ display: "none", visibility: "hidden" }}></iframe>
+            style={{ display: 'none', visibility: 'hidden' }}></iframe>
         </noscript>
         <RouterOutlet />
         {!isDev && <ServiceWorkerRegister />}
       </body>
     </QwikCityProvider>
-  );
-});
+  )
+})

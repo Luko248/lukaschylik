@@ -1,3 +1,3 @@
-import { ReservationDialog } from "./reservationDialog";
+import { ReservationDialog } from './reservationDialog'
 
-export { ReservationDialog };
+export { ReservationDialog }

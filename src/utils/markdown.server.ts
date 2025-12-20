@@ -1,38 +1,38 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
+import fs from 'node:fs'
+import path from 'node:path'
+import matter from 'gray-matter'
 
 /**
  * Represents a blog post with metadata and content
  */
 export interface BlogPost {
   /** Unique slug identifier for the blog post */
-  slug: string;
+  slug: string
   /** Title of the blog post */
-  title: string;
+  title: string
   /** Subtitle of the blog post */
-  subtitle: string;
+  subtitle: string
   /** Short description or excerpt of the blog post */
-  description: string;
+  description: string
   /** Publication date in ISO format (YYYY-MM-DD) */
-  date: string;
+  date: string
   /** Author of the blog post */
-  author: string;
+  author: string
   /** Podcast URL of the blog post */
-  podcastUrl?: string;
+  podcastUrl?: string
   /** Optional path to card image displayed on blog list */
-  cardImg?: string;
+  cardImg?: string
   /** Raw Markdown content of the blog post */
-  content: string;
+  content: string
 }
 
 const postsDirectory = path.join(
   process.cwd(),
-  "src",
-  "routes",
-  "blog",
-  "articles",
-);
+  'src',
+  'routes',
+  'blog',
+  'articles',
+)
 
 /**
  * Reads and parses a markdown file at the given path
@@ -42,15 +42,15 @@ const postsDirectory = path.join(
 const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
   try {
     if (!fs.existsSync(filePath)) {
-      return null;
+      return null
     }
 
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    const { data, content } = matter(fileContents)
 
     if (!data.title || !data.description || !data.date || !data.author) {
-      console.error(`Missing required metadata in ${filePath}`);
-      return null;
+      console.error(`Missing required metadata in ${filePath}`)
+      return null
     }
 
     return {
@@ -60,18 +60,18 @@ const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
       description: data.description,
       date:
         data.date instanceof Date
-          ? data.date.toISOString().split("T")[0]
+          ? data.date.toISOString().split('T')[0]
           : data.date,
       author: data.author,
       podcastUrl: data.podcastUrl,
       cardImg: data.cardImg,
       content,
-    };
+    }
   } catch (error) {
-    console.error(`Error reading markdown file ${filePath}:`, error);
-    return null;
+    console.error(`Error reading markdown file ${filePath}:`, error)
+    return null
   }
-};
+}
 
 /**
  * Finds the markdown file for a blog post by checking both .mdx and .md extensions
@@ -79,15 +79,15 @@ const readMarkdownFile = (filePath: string, slug: string): BlogPost | null => {
  * @returns {BlogPost | null} The blog post data or null if not found
  */
 const findPostBySlug = (slug: string): BlogPost | null => {
-  const mdxPath = path.join(postsDirectory, slug, "index.mdx");
-  const mdxPost = readMarkdownFile(mdxPath, slug);
+  const mdxPath = path.join(postsDirectory, slug, 'index.mdx')
+  const mdxPost = readMarkdownFile(mdxPath, slug)
   if (mdxPost) {
-    return mdxPost;
+    return mdxPost
   }
 
-  const mdPath = path.join(postsDirectory, slug, "index.md");
-  return readMarkdownFile(mdPath, slug);
-};
+  const mdPath = path.join(postsDirectory, slug, 'index.md')
+  return readMarkdownFile(mdPath, slug)
+}
 
 /**
  * Gets all blog posts from the articles directory
@@ -98,17 +98,17 @@ export const getAllPosts = (): BlogPost[] => {
     const slugs = fs
       .readdirSync(postsDirectory, { withFileTypes: true })
       .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => dirent.name);
+      .map((dirent) => dirent.name)
 
     const allPostsData = slugs
       .map(findPostBySlug)
-      .filter((post): post is BlogPost => post !== null);
+      .filter((post): post is BlogPost => post !== null)
 
     return allPostsData.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
+    )
   } catch (error) {
-    console.error("Error reading blog posts directory:", error);
-    return [];
+    console.error('Error reading blog posts directory:', error)
+    return []
   }
-};
+}

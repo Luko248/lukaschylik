@@ -1,4 +1,4 @@
-import type { PropFunction } from "@builder.io/qwik";
+import type { PropFunction } from '@builder.io/qwik'
 
 /**
  * Props interface for the Card component
@@ -8,11 +8,11 @@ import type { PropFunction } from "@builder.io/qwik";
  * @property {string} [src] - Optional image source URL for the card
  */
 export interface CardProps {
-  title: string;
-  path?: string;
-  price?: number;
-  priceLabel?: string; // when provided, overrides numeric price display
-  priceNote?: string; // small note under price (e.g., Cena za 1 hod)
-  available?: boolean; // controls button disabled state
-  onClick$?: PropFunction<() => void>;
+  title: string
+  path?: string
+  price?: number
+  priceLabel?: string // when provided, overrides numeric price display
+  priceNote?: string // small note under price (e.g., Cena za 1 hod)
+  available?: boolean // controls button disabled state
+  onClick$?: PropFunction<() => void>
 }

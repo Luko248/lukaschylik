@@ -1,22 +1,22 @@
-import { component$, useSignal, useComputed$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import { routeLoader$ } from "@builder.io/qwik-city";
-import Container from "~/components/container/container";
-import Section from "~/components/section/section";
-import SectionTitle from "~/components/section/section.title";
-import { BlogCard } from "~/components/blog-card";
-import { getAllPosts } from "~/utils/markdown.server";
-import { cls } from "~/utils";
-import Icon from "~/components/icon/icon";
+import { component$, useComputed$, useSignal } from '@builder.io/qwik'
+import type { DocumentHead } from '@builder.io/qwik-city'
+import { routeLoader$ } from '@builder.io/qwik-city'
+import { BlogCard } from '~/components/blog-card'
+import Container from '~/components/container/container'
+import Icon from '~/components/icon/icon'
+import Section from '~/components/section/section'
+import SectionTitle from '~/components/section/section.title'
+import { cls } from '~/utils'
+import { getAllPosts } from '~/utils/markdown.server'
 
 export const useBlogPosts = routeLoader$(async () => {
-  const posts = getAllPosts();
-  return posts;
-});
+  const posts = getAllPosts()
+  return posts
+})
 
 export default component$(() => {
-  const posts = useBlogPosts();
-  const searchQuery = useSignal("");
+  const posts = useBlogPosts()
+  const searchQuery = useSignal('')
 
   /**
    * Filters blog posts based on search query.
@@ -27,16 +27,16 @@ export default component$(() => {
    */
   const filteredPosts = useComputed$(() => {
     if (!searchQuery.value.trim()) {
-      return posts.value;
+      return posts.value
     }
 
-    const query = searchQuery.value.toLowerCase();
+    const query = searchQuery.value.toLowerCase()
     return posts.value.filter(
       (post) =>
         post.title.toLowerCase().includes(query) ||
         post.subtitle.toLowerCase().includes(query),
-    );
-  });
+    )
+  })
 
   return (
     <Section id="blog" centerContent={false}>
@@ -44,34 +44,34 @@ export default component$(() => {
         <SectionTitle text="Blog" />
         <div
           class={cls(
-            "sticky pb-8 md:pb-12",
-            "top-[var(--nav_height)]",
-            "bg-gradient-to-b from-white from-65% to-transparent",
-            "dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10",
+            'sticky pb-8 md:pb-12',
+            'top-[var(--nav_height)]',
+            'bg-gradient-to-b from-white from-65% to-transparent',
+            'dark:from-black dark:from-65% dark:to-transparent isolation-auto z-10',
           )}>
           <input
             type="search"
             placeholder="Vyhľadať článok..."
             class={cls(
-              "w-full px-4 py-3 text-lg",
-              "border border-box border-gray-300 dark:border-gray-400",
-              "rounded-lg",
-              "text-black dark:text-white",
-              "placeholder-gray-500 dark:placeholder-gray-400",
-              "focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent",
+              'w-full px-4 py-3 text-lg',
+              'border border-box border-gray-300 dark:border-gray-400',
+              'rounded-lg',
+              'text-black dark:text-white',
+              'placeholder-gray-500 dark:placeholder-gray-400',
+              'focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent',
             )}
             value={searchQuery.value}
             onInput$={(_, el) => {
-              searchQuery.value = el.value;
+              searchQuery.value = el.value
             }}
           />
         </div>
 
         <div
           class={cls(
-            "grid gap-6 md:gap-8",
-            "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "grid-rows-[repeat(auto-fill,auto_1fr_auto)]",
+            'grid gap-6 md:gap-8',
+            'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+            'grid-rows-[repeat(auto-fill,auto_1fr_auto)]',
           )}>
           {filteredPosts.value.length > 0 ? (
             filteredPosts.value.map((post) => (
@@ -80,12 +80,12 @@ export default component$(() => {
           ) : (
             <div
               class={cls(
-                "col-span-full",
-                "flex flex-col items-center justify-center",
-                "gap-4 md:gap-6",
-                "text-center text-xl",
-                "text-gray-800 dark:text-gray-300",
-                "py-16",
+                'col-span-full',
+                'flex flex-col items-center justify-center',
+                'gap-4 md:gap-6',
+                'text-center text-xl',
+                'text-gray-800 dark:text-gray-300',
+                'py-16',
               )}>
               <Icon
                 name="sad-face"
@@ -93,24 +93,24 @@ export default component$(() => {
               />
               <div>
                 {searchQuery.value.trim()
-                  ? "Žiadne články sa nenašli."
-                  : "Žiadne články zatiaľ nie sú k dispozícii."}
+                  ? 'Žiadne články sa nenašli.'
+                  : 'Žiadne články zatiaľ nie sú k dispozícii.'}
               </div>
             </div>
           )}
         </div>
       </Container>
     </Section>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
-  title: "Blog | Lukáš Chylík",
+  title: 'Blog | Lukáš Chylík',
   meta: [
     {
-      name: "description",
+      name: 'description',
       content:
-        "Prečítajte si moje najnovšie články o webovom vývoji, dizajne a technológiách.",
+        'Prečítajte si moje najnovšie články o webovom vývoji, dizajne a technológiách.',
     },
   ],
-};
+}

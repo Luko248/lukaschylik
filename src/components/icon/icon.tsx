@@ -1,25 +1,25 @@
-import { component$ } from "@builder.io/qwik";
-import type { IconProps } from "./icon.types";
-import portfolioData from "./portfolio.json";
+import { component$ } from '@builder.io/qwik'
+import type { IconProps } from './icon.types'
+import portfolioData from './portfolio.json'
 
 /**
  * Interface for the portfolio JSON structure
  */
 interface PortfolioIcon {
-  paths: string[];
-  tags: string[];
-  grid: number;
+  paths: string[]
+  tags: string[]
+  grid: number
 }
 
 interface PortfolioSelection {
-  order: number;
-  name: string;
-  prevSize: number;
+  order: number
+  name: string
+  prevSize: number
 }
 
 interface PortfolioData {
-  selection: PortfolioSelection[];
-  icons: PortfolioIcon[];
+  selection: PortfolioSelection[]
+  icons: PortfolioIcon[]
 }
 
 /**
@@ -30,25 +30,25 @@ interface PortfolioData {
 const parsePortfolioIcons = (
   portfolioData: PortfolioData,
 ): Record<string, string> => {
-  const iconPaths: Record<string, string> = {};
+  const iconPaths: Record<string, string> = {}
 
   portfolioData.selection.forEach((selection, index) => {
-    const iconData = portfolioData.icons[index];
+    const iconData = portfolioData.icons[index]
     if (iconData && iconData.paths.length > 0) {
-      const paths = iconData.paths.join(" ");
-      iconPaths[selection.name] = paths;
+      const paths = iconData.paths.join(' ')
+      iconPaths[selection.name] = paths
     }
-  });
+  })
 
-  return iconPaths;
-};
+  return iconPaths
+}
 
 /**
  * Icon definitions map containing SVG paths for each icon
  */
 const iconPaths: Record<string, string> = parsePortfolioIcons(
   portfolioData as PortfolioData,
-);
+)
 
 /**
  * Icon component that renders inline SVG icons.
@@ -66,41 +66,43 @@ const iconPaths: Record<string, string> = parsePortfolioIcons(
 const Icon = component$<IconProps>(({ name, cls, size, color }) => {
   const classes = [
     `icon icon-${name}`,
-    "aspect-square",
-    "transition-colors duration-200",
+    'aspect-square',
+    'transition-colors duration-200',
     cls,
   ]
     .filter(Boolean)
-    .join(" ");
+    .join(' ')
 
-  const iconPath = name ? iconPaths[name] : undefined;
+  const iconPath = name ? iconPaths[name] : undefined
 
-  const hasTailwindWidth = cls && /\b(w-\d+|w-\d+\/\d+)\b/.test(cls);
+  const hasTailwindWidth = cls && /\b(w-\d+|w-\d+\/\d+)\b/.test(cls)
 
   if (!name || !iconPath) {
-    console.warn(`Icon "${name}" not found`);
+    console.warn(`Icon "${name}" not found`)
     return (
       <div
         class={classes}
         style={{
-          "--icon_size": !hasTailwindWidth ? size : undefined,
-          "--icon_color": color,
+          '--icon_size': !hasTailwindWidth ? size : undefined,
+          '--icon_color': color,
         }}
       />
-    );
+    )
   }
 
   return (
     <svg
       class={classes}
       viewBox="0 0 1024 1024"
+      role="img"
+      aria-label={name}
       style={{
-        "--icon_size": !hasTailwindWidth ? size : undefined,
-        "--icon_color": color,
+        '--icon_size': !hasTailwindWidth ? size : undefined,
+        '--icon_color': color,
       }}>
       <path d={iconPath} />
     </svg>
-  );
-});
+  )
+})
 
-export default Icon;
+export default Icon

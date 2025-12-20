@@ -1,105 +1,104 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { Container } from "~/components";
+import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { Container } from '~/components'
 
 type ConsentPrefs = {
-  analytics: boolean;
-};
+  analytics: boolean
+}
 
-const STORAGE_KEY = "cookie-consent-v1";
+const STORAGE_KEY = 'cookie-consent-v1'
 
 const readPrefs = (): ConsentPrefs | null => {
-  if (typeof window === "undefined") return null;
+  if (typeof window === 'undefined') return null
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (typeof parsed?.analytics === "boolean") {
-      return { analytics: parsed.analytics } as ConsentPrefs;
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    if (typeof parsed?.analytics === 'boolean') {
+      return { analytics: parsed.analytics } as ConsentPrefs
     }
-    return null;
+    return null
   } catch {
-    return null;
+    return null
   }
-};
+}
 
 const persistPrefs = (prefs: ConsentPrefs) => {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return
   try {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({ ...prefs, ts: Date.now() }),
-    );
+    )
   } catch {}
-};
+}
 
 export default component$(() => {
-  const showBanner = useSignal(false);
-  const prefsDialogRef = useSignal<HTMLDialogElement>();
-  const analytics = useSignal(false);
+  const showBanner = useSignal(false)
+  const prefsDialogRef = useSignal<HTMLDialogElement>()
+  const analytics = useSignal(false)
 
   const applyConsent = $((prefs: ConsentPrefs) => {
-    if (typeof window === "undefined") return;
-    const w = window as any;
-    const gtag =
-      w.gtag || ((...args: any[]) => w.dataLayer && w.dataLayer.push(args));
+    if (typeof window === 'undefined') return
+    const w = window as any
+    const gtag = w.gtag || ((...args: any[]) => w.dataLayer?.push(args))
     const update = {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: prefs.analytics ? "granted" : "denied",
-    } as const;
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: prefs.analytics ? 'granted' : 'denied',
+    } as const
     try {
-      gtag("consent", "update", update);
+      gtag('consent', 'update', update)
     } catch {}
-  });
+  })
 
   const acceptAll = $(async () => {
-    analytics.value = true;
-    const prefs = { analytics: true };
-    persistPrefs(prefs);
-    await applyConsent(prefs);
-    showBanner.value = false;
-    prefsDialogRef.value?.close();
-  });
+    analytics.value = true
+    const prefs = { analytics: true }
+    persistPrefs(prefs)
+    await applyConsent(prefs)
+    showBanner.value = false
+    prefsDialogRef.value?.close()
+  })
 
   const denyAll = $(async () => {
-    analytics.value = false;
-    const prefs = { analytics: false };
-    persistPrefs(prefs);
-    await applyConsent(prefs);
-    showBanner.value = false;
-    prefsDialogRef.value?.close();
-  });
+    analytics.value = false
+    const prefs = { analytics: false }
+    persistPrefs(prefs)
+    await applyConsent(prefs)
+    showBanner.value = false
+    prefsDialogRef.value?.close()
+  })
 
   const savePrefs = $(async () => {
-    const prefs = { analytics: analytics.value };
-    persistPrefs(prefs);
-    await applyConsent(prefs);
-    showBanner.value = false;
-    prefsDialogRef.value?.close();
-  });
+    const prefs = { analytics: analytics.value }
+    persistPrefs(prefs)
+    await applyConsent(prefs)
+    showBanner.value = false
+    prefsDialogRef.value?.close()
+  })
 
   useVisibleTask$(
     () => {
-      const stored = readPrefs();
+      const stored = readPrefs()
       if (stored) {
-        analytics.value = stored.analytics;
+        analytics.value = stored.analytics
         // Re-apply consent on hydration (no-op if already applied)
-        applyConsent(stored);
-        showBanner.value = false;
+        applyConsent(stored)
+        showBanner.value = false
       } else {
-        showBanner.value = true;
+        showBanner.value = true
       }
 
       const listener = () => {
-        prefsDialogRef.value?.showModal();
-      };
-      window.addEventListener("open-cookie-preferences", listener);
+        prefsDialogRef.value?.showModal()
+      }
+      window.addEventListener('open-cookie-preferences', listener)
       return () =>
-        window.removeEventListener("open-cookie-preferences", listener);
+        window.removeEventListener('open-cookie-preferences', listener)
     },
-    { strategy: "document-ready" },
-  );
+    { strategy: 'document-ready' },
+  )
 
   return (
     <>
@@ -175,9 +174,9 @@ export default component$(() => {
               id="analytics"
               type="checkbox"
               checked={analytics.value}
-              onInput$={(e, t) =>
-                (analytics.value = (e.target as HTMLInputElement).checked)
-              }
+              onInput$={(event) => {
+                analytics.value = (event.target as HTMLInputElement).checked
+              }}
               class="mt-1 h-4 w-4 rounded border-neutral-600 bg-neutral-800"
             />
             <div class="text-sm">
@@ -212,5 +211,5 @@ export default component$(() => {
         </div>
       </dialog>
     </>
-  );
-});
+  )
+})

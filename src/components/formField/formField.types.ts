@@ -1,29 +1,29 @@
-import type { PropFunction } from "@builder.io/qwik";
+import type { PropFunction } from '@builder.io/qwik'
 
 /**
  * Props for the FormField component.
  */
 export interface FormFieldProps {
   /** The label for the form field */
-  label?: string;
+  label?: string
   /** The type of the input field */
-  type: "text" | "email" | "password" | "number" | "tel" | "url" | "textarea";
+  type: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'textarea'
   /** The name attribute for the input field */
-  name: string;
+  name: string
   /** The value of the input field */
-  value: string;
+  value: string
   /** The onInput event handler */
-  onInput$: PropFunction<(e: Event) => void>;
+  onInput$: PropFunction<(e: Event) => void>
   /** Whether the input field is required */
-  required?: boolean;
+  required?: boolean
   /** Custom class name for the input field */
-  className?: string;
+  className?: string
   /** Whether the input field is disabled */
-  disabled?: boolean;
+  disabled?: boolean
   /** Whether the input field is read-only */
-  readOnly?: boolean;
+  readOnly?: boolean
   /** The placeholder for the input field */
-  placeholder?: string;
+  placeholder?: string
   /** The autocomplete attribute for the input field */
-  autocomplete?: string;
+  autocomplete?: string
 }

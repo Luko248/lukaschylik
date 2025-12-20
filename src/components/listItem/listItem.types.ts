@@ -1,4 +1,4 @@
 export interface ListItemProps {
-  marker?: string;
-  className?: string;
+  marker?: string
+  className?: string
 }

@@ -1,6 +1,6 @@
-import { component$ } from "@builder.io/qwik";
-import { cls } from "~/utils";
-import type { ReferenceProps } from "./reference.types";
+import { component$ } from '@builder.io/qwik'
+import { cls } from '~/utils'
+import type { ReferenceProps } from './reference.types'
 
 const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
   return (
@@ -12,11 +12,11 @@ const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
         class="reference group flex just justify-between items-center gap-4 py-2 no-underline w-full min-w-0">
         <strong
           class={cls(
-            "relative",
-            "flex w-full lg:w-auto justify-between gap-2 md:gap-4 min-w-0",
-            "text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-xl 2xl:text-2xl 3xl:text-4xl",
-            "font-medium leading-normal tracking-wide uppercase whitespace-normal 3xl:whitespace-nowrap",
-            "overflow-hidden z-20",
+            'relative',
+            'flex w-full lg:w-auto justify-between gap-2 md:gap-4 min-w-0',
+            'text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-xl 2xl:text-2xl 3xl:text-4xl',
+            'font-medium leading-normal tracking-wide uppercase whitespace-normal 3xl:whitespace-nowrap',
+            'overflow-hidden z-20',
           )}>
           <span
             class="relative text-transparent duration-300 ease-in-out"
@@ -29,7 +29,7 @@ const Reference = component$<ReferenceProps>(({ title, webURL, type }) => {
         </strong>
       </a>
     </li>
-  );
-});
+  )
+})
 
-export default Reference;
+export default Reference

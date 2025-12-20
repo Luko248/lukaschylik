@@ -1,62 +1,62 @@
-import { component$ } from "@builder.io/qwik";
-import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
+import { component$ } from '@builder.io/qwik'
+import { useDocumentHead, useLocation } from '@builder.io/qwik-city'
 
 /**
  * RouterHead component for managing document head metadata
  * Handles default values and dynamic meta tags for SEO optimization
  */
 export const RouterHead = component$(() => {
-  const head = useDocumentHead();
-  const loc = useLocation();
+  const head = useDocumentHead()
+  const loc = useLocation()
 
-  const defaultTitle = "Lukáš Chylík | Frontend, UX/UI, AI workshopy";
+  const defaultTitle = 'Lukáš Chylík | Frontend, UX/UI, AI workshopy'
   const defaultDescription =
-    "Frontend developer s presahom do UX/UI, zameraný na Design Systémy a AI vo vývoji.";
+    'Frontend developer s presahom do UX/UI, zameraný na Design Systémy a AI vo vývoji.'
 
   // Custom override mechanism - handle title and description from routes
-  const title = head.title || defaultTitle;
+  const title = head.title || defaultTitle
 
   // For description: look in meta array, then use default
   const descriptionFromMeta = head.meta.find(
-    (m) => m.name === "description",
-  )?.content;
-  const description = descriptionFromMeta || defaultDescription;
+    (m) => m.name === 'description',
+  )?.content
+  const description = descriptionFromMeta || defaultDescription
 
   // Check if title and description are already defined in route to avoid duplication
-  const hasTitle = !!head.title;
-  const hasDescriptionMeta = head.meta.some((m) => m.name === "description");
+  const hasTitle = !!head.title
+  const hasDescriptionMeta = head.meta.some((m) => m.name === 'description')
 
   // Default meta images (not overridable)
-  const defaultOpenGraphImage = "/images/meta/meta-large.webp";
-  const defaultTwitterImage = "/images/meta/meta-small.webp";
+  const defaultOpenGraphImage = '/images/meta/meta-large.webp'
+  const defaultTwitterImage = '/images/meta/meta-small.webp'
 
   // Resolve route-provided images (og/twitter) if any
   const findMeta = (nameOrProp: string) =>
     head.meta.find(
       (m) => m.name === nameOrProp || (m as any).property === nameOrProp,
-    );
+    )
 
   const routeOgImage =
-    findMeta("og:image")?.content || findMeta("image")?.content;
-  const routeTwitterImage = findMeta("twitter:image")?.content;
+    findMeta('og:image')?.content || findMeta('image')?.content
+  const routeTwitterImage = findMeta('twitter:image')?.content
 
   const toAbsolute = (url?: string) =>
     !url
       ? undefined
       : /^https?:\/\//i.test(url)
         ? url
-        : new URL(url, loc.url.origin).href;
+        : new URL(url, loc.url.origin).href
 
-  const ogImage = toAbsolute(routeOgImage) || defaultOpenGraphImage;
+  const ogImage = toAbsolute(routeOgImage) || defaultOpenGraphImage
   const twitterImage =
     toAbsolute(routeTwitterImage) ||
     toAbsolute(routeOgImage) ||
-    defaultTwitterImage;
+    defaultTwitterImage
 
-  const hasOgImage = !!findMeta("og:image");
-  const hasTwitterImage = !!findMeta("twitter:image");
-  const hasTwitterCard = !!head.meta.find((m) => m.name === "twitter:card");
-  const hasOgType = !!findMeta("og:type");
+  const hasOgImage = !!findMeta('og:image')
+  const hasTwitterImage = !!findMeta('twitter:image')
+  const hasTwitterCard = !!head.meta.find((m) => m.name === 'twitter:card')
+  const hasOgType = !!findMeta('og:type')
 
   return (
     <>
@@ -123,7 +123,7 @@ export const RouterHead = component$(() => {
 
       {/* Dynamic meta tags from routes (only those not handled above) */}
       {head.meta
-        .filter((m) => m.name !== "description") // Skip description as it's handled conditionally above
+        .filter((m) => m.name !== 'description') // Skip description as it's handled conditionally above
         .map((m) => (
           <meta key={m.key} {...m} />
         ))}
@@ -155,5 +155,5 @@ export const RouterHead = component$(() => {
         />
       ))}
     </>
-  );
-});
+  )
+})

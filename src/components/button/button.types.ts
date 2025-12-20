@@ -1,4 +1,4 @@
-import type { PropFunction } from "@builder.io/qwik";
+import type { PropFunction } from '@builder.io/qwik'
 
 /**
  * Extends the HTMLButtonElement to include custom command attributes
@@ -10,11 +10,11 @@ import type { PropFunction } from "@builder.io/qwik";
 declare global {
   interface NewHTMLButtonElement {
     /** Command to execute when the button is clicked */
-    command?: string;
+    command?: string
     /** ID of the target element the command should affect */
-    commandfor?: string;
+    commandfor?: string
     /** Close command for dialog elements */
-    close?: string;
+    close?: string
   }
 }
 
@@ -26,41 +26,41 @@ declare global {
  */
 export interface ButtonProps extends NewHTMLButtonElement {
   /** Click event handler */
-  onClick$?: PropFunction<() => void>;
+  onClick$?: PropFunction<() => void>
 
   /** Whether the button is disabled */
-  disabled?: boolean;
+  disabled?: boolean
 
   /** Name of the icon to display (from the icon set) */
-  icon?: string;
+  icon?: string
 
   /** Title attribute (shown on hover) */
-  title?: string;
+  title?: string
 
   /** Accessible label for screen readers */
-  ariaLabel?: string;
+  ariaLabel?: string
 
   /** Additional CSS class names */
-  className?: string;
+  className?: string
 
   /** If provided, renders an anchor tag with this href */
-  href?: string;
+  href?: string
 
   /** Relationship of the linked URL (for anchor tags) */
-  rel?: string;
+  rel?: string
 
   /** Type of the button */
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset'
 
   /** Where to display the linked URL (for anchor tags) */
-  target?: "_blank" | "_self" | "_parent" | "_top";
+  target?: '_blank' | '_self' | '_parent' | '_top'
 
   /** Button variant style */
-  variant?: "primary" | "secondary" | "plain";
+  variant?: 'primary' | 'secondary' | 'plain'
 
   /** Button size */
-  size?: "sm" | "md";
+  size?: 'sm' | 'md'
 
   /** Whether the button contains only an icon */
-  iconOnly?: boolean;
+  iconOnly?: boolean
 }
