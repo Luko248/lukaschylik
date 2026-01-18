@@ -70,9 +70,17 @@ export const checkUrlForAlerts = (
   if (location.searchParams.has('newsletterSubscribed')) {
     trigger('Úspešne ste sa prihlásili na odber noviniek.')
 
-    // Clean URL parameters
     const url = new URL(window.location.href)
     url.searchParams.delete('newsletterSubscribed')
+    window.history.replaceState({}, document.title, url.toString())
+  }
+
+  // Newsletter unsubscription
+  if (location.searchParams.has('newsletterUnsubscribed')) {
+    trigger('Boli ste odhlásený z odberu noviniek.')
+
+    const url = new URL(window.location.href)
+    url.searchParams.delete('newsletterUnsubscribed')
     window.history.replaceState({}, document.title, url.toString())
   }
 }

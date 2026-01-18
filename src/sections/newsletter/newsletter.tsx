@@ -1,143 +1,176 @@
-import {
-  $,
-  component$,
-  useSignal,
-  useStore,
-  useVisibleTask$,
-} from '@builder.io/qwik'
-import { Button, Container, FormField, Section } from '~/components'
-import SectionTitle from '~/components/section/section.title'
+import { $, component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
+import { useNavigate } from "@builder.io/qwik-city";
+import { Button, Container, FormField, Section } from "~/components";
+import SectionTitle from "~/components/section/section.title";
+import { cls } from "~/utils";
 
+const MAILCHIMP_STORAGE_KEY = "newsletter_subscribed";
+const MAILCHIMP_EMAIL_KEY = "newsletter_email";
+const MAILCHIMP_FORM_URL = "YOUR_MAILCHIMP_FORM_URL";
+
+/**
+ * Newsletter subscription component
+ * Handles subscribe/unsubscribe with localStorage persistence
+ */
 const Newsletter = component$(() => {
-  const email = useSignal('')
-  const formState = useStore({
+  const nav = useNavigate();
+  const state = useStore({
+    email: "",
+    subscribedEmail: "",
+    isSubscribed: false,
     submitting: false,
-    error: '',
-    alreadySubscribed: false,
-  })
+    error: "",
+  });
 
-  // Check if user has already subscribed
+  /**
+   * Check localStorage for existing subscription on mount
+   */
   useVisibleTask$(() => {
-    const subscribed = localStorage.getItem('newsletter_subscribed') === 'true'
-    if (subscribed) {
-      formState.alreadySubscribed = true
-      email.value = localStorage.getItem('newsletter_email') || ''
+    const subscribed = localStorage.getItem(MAILCHIMP_STORAGE_KEY) === "true";
+    const savedEmail = localStorage.getItem(MAILCHIMP_EMAIL_KEY) || "";
+
+    if (subscribed && savedEmail) {
+      state.isSubscribed = true;
+      state.subscribedEmail = savedEmail;
     }
-  })
+  });
 
-  const handleSubmit = $((event: SubmitEvent) => {
-    event.preventDefault()
+  /**
+   * Handles email input change
+   */
+  const handleEmailInput = $((e: Event) => {
+    state.email = (e.target as HTMLInputElement).value;
+  });
 
-    if (!email.value || formState.submitting) return
+  /**
+   * Handles newsletter subscription
+   */
+  const handleSubscribe = $(async (event: SubmitEvent) => {
+    event.preventDefault();
 
-    formState.submitting = true
-    formState.error = ''
+    if (!state.email || state.submitting) return;
 
-    // Store in localStorage as a backup/fallback
-    localStorage.setItem('newsletter_subscribed', 'true')
-    localStorage.setItem('newsletter_email', email.value)
+    state.submitting = true;
+    state.error = "";
 
-    // Use the provided Google Apps Script URL
-    const googleScriptUrl =
-      'https://script.google.com/macros/s/AKfycbwIGzmIRjtsm5K5xtgcsRS99kEGgwxJjqjcps7umTuJwyW2d8o87v_AtPQVp4VcWY3g/exec'
+    try {
+      const formData = new FormData();
+      formData.append("EMAIL", state.email);
 
-    fetch(googleScriptUrl, {
-      method: 'POST',
-      mode: 'no-cors', // Important for cross-origin requests to Google Scripts
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email.value,
-        source: 'Website Newsletter',
-        timestamp: new Date().toISOString(),
-      }),
-    })
-      .then(() => {
-        // Because we're using no-cors, we can't actually check the response
-        // Just assume success and show the success message
+      await fetch(MAILCHIMP_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
 
-        // Clear the form field
-        email.value = ''
+      localStorage.setItem(MAILCHIMP_STORAGE_KEY, "true");
+      localStorage.setItem(MAILCHIMP_EMAIL_KEY, state.email);
 
-        // Add URL parameter to show success message and redirect
-        window.location.href = `${window.location.pathname}?newsletterSubscribed=true`
-      })
-      .catch((error) => {
-        console.error('Subscription error:', error)
-        formState.error =
-          'Nepodarilo sa prihlásiť na odber. Skúste to prosím znova.'
+      state.email = "";
 
-        // Even if there's an error, store that they attempted to subscribe
-        localStorage.setItem('newsletter_attempted', 'true')
-      })
-      .finally(() => {
-        formState.submitting = false
-      })
-  })
+      const url = new URL(window.location.href);
+      url.searchParams.set("newsletterSubscribed", "true");
+      await nav(`${url.pathname}?${url.searchParams.toString()}`);
+
+      state.isSubscribed = true;
+      state.subscribedEmail = localStorage.getItem(MAILCHIMP_EMAIL_KEY) || "";
+    } catch (error) {
+      console.error("Subscription error:", error);
+      state.error = "Nepodarilo sa prihlásiť na odber. Skúste to prosím znova.";
+    } finally {
+      state.submitting = false;
+    }
+  });
+
+  /**
+   * Handles newsletter unsubscription
+   */
+  const handleUnsubscribe = $(async () => {
+    localStorage.removeItem(MAILCHIMP_STORAGE_KEY);
+    localStorage.removeItem(MAILCHIMP_EMAIL_KEY);
+
+    state.isSubscribed = false;
+    state.subscribedEmail = "";
+    state.email = "";
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("newsletterUnsubscribed", "true");
+    await nav(`${url.pathname}?${url.searchParams.toString()}`);
+  });
 
   return (
-    <Section id="contact" className="bg-white" fullHeight={false}>
+    <Section id="newsletter" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
-        <SectionTitle text="Newsletter" size="sm" center dark />
+        <SectionTitle text="Newsletter" size="sm" center />
 
-        {formState.alreadySubscribed ? (
+        {state.isSubscribed ? (
           <div class="text-center">
-            <p class="text-green-600 font-medium mb-2">
+            <p
+              class={cls(
+                "font-medium mb-2",
+                "text-green-600 dark:text-green-400"
+              )}
+            >
               Už ste prihlásený na odber noviniek.
             </p>
-            <p class="text-sm mb-4">Email: {email.value}</p>
+            <p class={cls("text-sm mb-6", "text-gray-600 dark:text-gray-400")}>
+              Email: <strong>{state.subscribedEmail}</strong>
+            </p>
             <Button
               type="button"
-              title=" Odhlásiť sa z odberu"
-              variant="primary"
-              onClick$={() => {
-                localStorage.removeItem('newsletter_subscribed')
-                localStorage.removeItem('newsletter_email')
-                formState.alreadySubscribed = false
-                email.value = ''
-              }}>
+              title="Odhlásiť sa z odberu"
+              variant="secondary"
+              onClick$={handleUnsubscribe}
+            >
               Odhlásiť sa z odberu
             </Button>
           </div>
         ) : (
           <>
             <form
-              onSubmit$={handleSubmit}
+              preventdefault:submit
+              onSubmit$={handleSubscribe}
               method="post"
-              class="flex flex-row gap-4 sm:gap-6 items-end">
+              class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-end"
+            >
               <FormField
                 className="flex-1"
                 label="Váš email"
                 type="email"
                 name="newsletter_email"
                 placeholder="john.doe@email.com"
-                value={email.value}
-                onInput$={(e: any) => {
-                  email.value = e.target.value
-                }}
+                value={state.email}
+                onInput$={handleEmailInput}
                 required
               />
               <Button
                 type="submit"
                 title="Odoberať"
-                variant="primary"
-                disabled={formState.submitting}>
-                {formState.submitting ? 'Odosielam...' : 'Odoberať'}
+                variant="secondary"
+                disabled={state.submitting}
+              >
+                {state.submitting ? "Odosielam..." : "Odoberať"}
               </Button>
             </form>
-            {formState.error && (
-              <p class="mt-2 text-red-500 text-sm">{formState.error}</p>
+            {state.error && (
+              <p class="mt-2 text-red-500 dark:text-red-400 text-sm">
+                {state.error}
+              </p>
             )}
           </>
         )}
 
-        <small className="mt-4 text-center block">
-          Stay updated with our newsletter!
+        <small
+          class={cls(
+            "mt-6 text-center block",
+            "text-gray-500 dark:text-gray-400"
+          )}
+        >
+          Buďte informovaní o novinkách a článkoch!
         </small>
       </Container>
     </Section>
-  )
-})
+  );
+});
 
-export default Newsletter
+export default Newsletter;
