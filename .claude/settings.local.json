@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun update:*)",
+      "Bash(npx update-browserslist-db:*)",
+      "Bash(bun add:*)",
+      "Bash(bun run:*)"
+    ],
+    "deny": []
+  }
+}

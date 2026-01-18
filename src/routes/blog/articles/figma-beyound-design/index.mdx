@@ -1,0 +1,589 @@
+---
+title: Figma beyond design
+subtitle: API, variables a automatizácia
+description: Ako využiť Figma API, Variable Code Syntax, Code Connect a MCP server na automatizáciu design tokenov a generovanie production-ready komponent.
+date: 2026-01-02
+author: Lukáš Chylík
+podcastUrl:
+cardImg: /images/blog/figma-beyound-design.avif
+---
+
+Ak ste doteraz mysleli, že Figma je len nástroj pre dizajnérov, mám pre vás dobrú správu – Figma je plnohodnotná platforma s API, pluginmi a automatizáciou, ktorá dokáže výrazne zefektívniť váš design-to-code workflow! V tomto článku sa pozrieme na to, ako pomocou Figma API a Variable Code Syntax automatizovať export design tokenov, ako Code Connect prepája dizajn s kódom a ako MCP server spolu s AI dokáže generovať production-ready komponenty.
+
+## Variable Code Syntax: Mostík medzi dizajnom a kódom
+
+Pravdepodobne každý frontend vývojár má skúsenosť s Figmou na nejakej úrovni. Dizajnéri vytvárajú design systém s premennými ako `color/primary/500`, `spacing/md` alebo `typography/heading/h1`. Ale keď sa tieto premenné dostanú k vývojárom, používame úplne inú konvenciu: `--colorPrimary500`, `--spacingMd` alebo `--typographyHeadingH1`.
+
+Tu prichádza na scénu **Variable Code Syntax** – natívna Figma funkcia, ktorá umožňuje nastaviť, ako sa budú premenné zobrazovať vo Figma Dev Mode pre rôzne platformy (Web, Android, iOS).
+
+### Ako to funguje?
+
+Figma API poskytuje metódu `setVariableCodeSyntax()`, ktorá vám umožní definovať, ako sa má premenná zobraziť v kóde:
+```javascript
+const collection = await figma.variables.getLocalVariableCollectionsAsync();
+
+collection.variableIds.forEach(async (id) => {
+  const variable = await figma.variables.getVariableByIdAsync(id);
+  
+  // Konverzia z "color/primary/500" na "var(--colorPrimary500)"
+  variable.setVariableCodeSyntax(
+    "WEB",
+    `var(--${variable.name.replace(/\//g, "-").toLowerCase()})`
+  );
+});
+```
+
+### Praktický príklad
+
+Predstavte si, že máte vo Figme premennú `color/primary/500` s hodnotou `#3B82F6`. Bez Variable Code Syntax by vývojár vo Figma Dev Mode videl:
+```
+color/primary/500
+```
+
+Po nastavení Variable Code Syntax uvidí:
+```css
+var(--color-primary-500)
+```
+
+A toto je presne to, čo môže copy-paste do svojho kódu! Žiadne manuálne konverzie, žiadne chyby v názvoch premenných.
+
+### Multi-platform podpora
+
+Čo je super, Variable Code Syntax podporuje rôzne platformy:
+```javascript
+// Web (CSS Custom Properties)
+variable.setVariableCodeSyntax("WEB", `var(--${cssName})`);
+
+// Android (XML Resources)
+variable.setVariableCodeSyntax("ANDROID", `@color/${androidName}`);
+
+// iOS (Swift)
+variable.setVariableCodeSyntax("iOS", `Color.${swiftName}`);
+```
+
+Tým pádom dizajnéri aj vývojári hovoria rovnakým jazykom naprieč celým stackom!
+
+## Export design tokenov: Od Figmy do Git repozitára
+
+Variable Code Syntax je skvelý prvý krok, ale čo keď chceme design tokeny skutočne exportovať do našej codebase? Tu prichádza na rad **automatizácia pomocou Figma API**.
+
+### Načítanie variables cez API
+
+Figma poskytuje robustné API pre prácu s premennými:
+```javascript
+// Načítanie všetkých kolekcií
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+
+// Iterácia cez kolekcie
+for (const collection of collections) {
+  console.log(`Collection: ${collection.name}`);
+  
+  // Načítanie premenných
+  for (const variableId of collection.variableIds) {
+    const variable = await figma.variables.getVariableByIdAsync(variableId);
+    console.log(`   ${variable.name}: ${variable.resolvedType}`);
+  }
+}
+```
+
+### Konverzia do CSS formátu
+
+Kľúčová časť je konverzia Figma hodnôt do CSS syntaxe. Tu je niekoľko tipov:
+
+**Farby – používajte OKLCH!**, s tým vám pomôže balík `colorizr`:
+```javascript
+import Colorizr from "colorizr";
+
+function convertColorToOKLCH(rgbaValue) {
+  const r = Math.round(rgbaValue.r * 255);
+  const g = Math.round(rgbaValue.g * 255);
+  const b = Math.round(rgbaValue.b * 255);
+  const alpha = rgbaValue.a || 1;
+  
+  const color = new Colorizr({ r, g, b, alpha });
+  const oklch = color.oklch();
+  
+  // Format: oklch(l c h / a) s medzerami, bez čiarok
+  if (alpha < 1) {
+    return `oklch(${oklch.l} ${oklch.c} ${oklch.h} / ${alpha})`;
+  }
+  
+  return `oklch(${oklch.l} ${oklch.c} ${oklch.h})`;
+}
+```
+
+Prečo OKLCH? Má lepšiu perceptuálnu uniformitu ako HSL – farby s rovnakou lightness skutočne vyzerajú rovnako jasné!
+
+**Spacing a sizing – rem units**
+```javascript
+const BASE_FONT_SIZE = 16;
+
+function pxToRem(px) {
+  const rem = px / BASE_FONT_SIZE;
+  return `${rem}rem`;
+}
+
+// Príklad: 24px → 1.5rem
+const spacing = pxToRem(24); // "1.5rem"
+```
+
+### Multi-theme export
+
+Moderné design systémy často používajú viacero tém (light, dark, high-contrast). Figma to podporuje cez **modes**:
+```javascript
+// Každá kolekcia môže mať viacero módov
+collection.modes.forEach(mode => {
+  console.log(`Theme: ${mode.name}`);
+  
+  // Generuj CSS súbor pre tento theme
+  generateCSSFile(mode.name, cssVariables);
+});
+```
+
+Výsledná štruktúra:
+```
+tokens/
+  ├── dark/
+  │   └── variables.css
+  ├── light/
+  │   └── variables.css
+  └── high-contrast/
+      └── variables.css
+```
+
+### Výstupný CSS formát
+
+CSS súbor by mal byť prehľadne organizovaný:
+```css
+/*
+ * Design tokens exported from Figma
+ * Exported at: 2025-01-03T14:30:00.000Z
+ * Theme: dark
+ */
+:root {
+  /* Colors */
+  --colorPrimary: oklch(0.65 0.2 250);
+  --colorSurface: oklch(0.15 0.01 240 / 0.95);
+  
+  /* Fonts */
+  --fontFamilyBase: "Inter";
+  --fontWeightBold: 600;
+  --fontSizeH1: 2rem;
+  
+  /* Measures */
+  --spacing8: 0.5rem;
+  --spacing16: 1rem;
+  --radiusMd: 0.5rem;
+}
+```
+
+Všimnite si:
+- ✅ Premenné zoskupené podľa typu
+- ✅ OKLCH pre farby s modernou syntaxou (medzery namiesto čiarok)
+- ✅ Rem units pre spacing
+- ✅ Jasný timestamp pre tracking zmien
+
+## Custom Figma Plugin: Automatizácia na jeden klik
+
+Teraz, keď vieme ako načítať variables a konvertovať ich, môžeme si vytvoriť **vlastný Figma plugin**, ktorý celý proces automatizuje a výsledok pošle priamo do Git repozitára.
+
+### Manifest a konfigurácia
+
+Každý Figma plugin začína súborom `manifest.json`:
+```json
+{
+  "name": "CSS Variables Converter & Exporter",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "capabilities": ["codegen"],
+  "networkAccess": {
+    "allowedDomains": ["https://api.github.com"]
+  }
+}
+```
+
+### Core konverzia
+
+Hlavný conversion service orchestruje celý proces:
+```typescript
+export async function convertVariablesToCSS(): Promise<ConversionResult> {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const variablesByTheme: VariablesByTheme = {};
+  
+  // Process variables v batch-och (performance optimization)
+  for (const collection of collections) {
+    for (const variableId of collection.variableIds) {
+      const variable = await figma.variables.getVariableByIdAsync(variableId);
+      const cssName = generateCSSVariableName(variable.name);
+      const cssValue = await generateCSSValue(variable);
+      
+      // Pridaj do správneho theme
+      variablesByTheme[themeName].push({
+        name: cssName,
+        value: cssValue,
+        type: detectVariableType(variable.name)
+      });
+    }
+  }
+  
+  return { variablesByTheme, themes: Object.keys(variablesByTheme) };
+}
+```
+
+### GitHub integrácia
+
+Plugin automaticky pushne výsledky do Git repozitára:
+```typescript
+export async function pushToGitHub(themeFiles: ThemeCssOutput) {
+  // 1. Vytvor feature branch s timestampom
+  const branch = `feat/figma-variables-${timestamp}`;
+  await createBranch(branch, baseSha);
+  
+  // 2. Commitni všetky theme súbory naraz
+  const commitMessage = `feat(figma-variables): New version exported ${timestamp}`;
+  await createCommit(commitMessage, themeFiles);
+  
+  // 3. ✅ Hotovo!
+  console.log(`✅ Pushed ${Object.keys(themeFiles).length} themes to ${branch}`);
+}
+```
+
+### Výsledný workflow
+
+1. Dizajnér upraví variables vo Figme
+2. Klikne v plugine na "Convert Variables"
+3. Plugin skonvertuje values do CSS formátu (OKLCH, rem units)
+4. Klikne na "Export to GitHub"
+5. Plugin vytvorí feature branch a commitne CSS súbory
+6. ✅ Design tokeny sú v repozitári!
+
+Celý proces trvá pár sekúnd a eliminuje manuálne copy-paste chyby.
+
+👉 **Plugin je dostupný na:** [Figma Community](https://www.figma.com/community/plugin/1580865604483451262)
+
+## Code Connect: Prepojenie komponentov s kódom
+
+Variable Code Syntax je výborný pre design tokeny, ale čo komplexné komponenty? Tu vstupuje do hry **Figma Code Connect** – framework, ktorý prepája Figma komponenty s reálnym kódom vo vašej codebase.
+
+### Čo rieši?
+
+Bez Code Connect:
+- Dizajnér nevie, ako sa Button používa v kóde
+- Vývojár nevie, ktorý Figma komponent zodpovedá jeho `Button.tsx`
+- Manuálna synchronizácia plná chýb
+
+S Code Connect:
+- ✅ Automatické prepojenie dizajn ↔ kód
+- ✅ Dizajnér vidí real-world príklady použitia
+- ✅ Vývojár má jasný mapping na Figma komponenty
+
+### Ako to funguje?
+
+Code Connect vytvorí prepojenie pomocou deklaratívneho mapping súboru:
+```typescript
+// Button.figma.tsx
+import figma from "@figma/code-connect";
+import { Button } from "./Button";
+
+figma.connect(
+  Button,
+  "https://www.figma.com/file/ABC123?node-id=1:2",
+  {
+    props: {
+      variant: figma.enum("Variant", {
+        Primary: "primary",
+        Secondary: "secondary",
+      }),
+      label: figma.string("Label")
+    },
+    example: (props) => (
+      <Button variant={props.variant}>
+        {props.label}
+      </Button>
+    )
+  }
+);
+```
+
+### Benefits
+
+**Pre dizajnérov:**
+- Vidia priamo vo Figme, ako sa komponent používa v kóde
+- Majú real-world príklady použitia
+- Vedia, ktoré props sú dostupné
+
+**Pre vývojárov:**
+- Automatické prepojenie medzi dizajnom a implementáciou
+- Documentation priamo v Figme
+- Jasná source of truth
+
+### Príklad: Card komponent
+```typescript
+figma.connect(Card, figmaUrl, {
+  props: {
+    title: figma.string("Title"),
+    description: figma.string("Description"),
+    image: figma.instance("Image"),
+    actions: figma.children("Actions")
+  },
+  example: (props) => (
+    <Card>
+      {props.image && <Card.Image src={props.image} />}
+      <Card.Content>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Description>{props.description}</Card.Description>
+      </Card.Content>
+      {props.actions && <Card.Actions>{props.actions}</Card.Actions>}
+    </Card>
+  )
+});
+```
+
+Code Connect je výborné riešenie pre **dokumentáciu komponentov**, **onboarding nových členov** a **synchronizáciu dizajnu s kódom**. Je to most medzi svetom dizajnu a kódu, ktorý funguje v oboch smeroch!
+
+## MCP Server: AI-powered code generation
+
+Čo keby AI dokázalo vygenerovať production-ready kód priamo z Figma dizajnu? To je presne účel **Figma MCP Servera** (Model Context Protocol).
+
+### Čo je MCP?
+
+**Model Context Protocol** je open-source štandard od Anthropic, ktorý umožňuje AI modelom (ako Claude) pristupovať k externým zdrojom dát. Figma MCP Server sprístupňuje dizajny z Figmy ako kontext pre AI, čo znamená, že Claude môže:
+
+- Čítať štruktúru Figma súborov
+- Rozpoznávať komponenty a ich vlastnosti
+- Využívať Code Connect mappingy
+- Generovať kód na základe dizajnu
+
+### Setup
+```bash
+# 1. Nainštaluj Figma MCP Server
+npm install -g @figma/mcp-server-figma
+
+# 2. Nakonfiguruj Claude Desktop
+# ~/Library/Application Support/Claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "figma": {
+      "command": "mcp-server-figma",
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "figd_xxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+### Príklad: Generovanie Button komponenty
+
+**Prompt pre Claude:**
+
+> Vygeneruj React TypeScript komponent pre tento Figma Button:
+> https://figma.com/file/ABC123/Design-System?node-id=10:42
+> 
+> Použi Tailwind CSS, zahrň všetky varianty.
+
+**Claude vygeneruje:**
+```typescript
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'destructive';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  children,
+  onClick
+}: ButtonProps) {
+  const variants = {
+    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
+    destructive: 'bg-red-600 text-white hover:bg-red-700'
+  };
+  
+  const sizes = {
+    sm: 'h-8 px-3 text-sm',
+    md: 'h-10 px-4',
+    lg: 'h-12 px-6 text-base'
+  };
+  
+  return (
+    <button
+      className={`inline-flex items-center justify-center rounded-lg font-medium transition-colors ${variants[variant]} ${sizes[size]}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### MCP + Code Connect: Production-ready kód
+
+Kombinovaním MCP s Code Connect dosiahneš skutočnú **automatizáciu**. Ak máte Code Connect mappingy pre všetky komponenty v design systéme, Claude vie presne, ktoré komponenty má použiť!
+
+**Prompt:**
+
+> Vytvor Landing Page na základe tohto Figma dizajnu:
+> https://figma.com/file/LANDING/Homepage?node-id=1:1
+> 
+> Použi iba komponenty z nášho design systému.
+
+**Claude vygeneruje kód využívajúci existujúce komponenty:**
+```tsx
+import { Hero } from '@/components/Hero';
+import { FeatureGrid } from '@/components/FeatureGrid';
+import { CTASection } from '@/components/CTASection';
+
+export function HomePage() {
+  return (
+    <div className="min-h-screen">
+      <Hero
+        title="Build better products faster"
+        subtitle="Design-to-code automation powered by AI"
+        primaryAction={{ label: "Get Started", href: "/signup" }}
+      />
+      
+      <FeatureGrid
+        features={[
+          { icon: "Design", title: "Design System Integration" },
+          { icon: "Speed", title: "Lightning Fast" },
+          { icon: "Security", title: "Type Safe" }
+        ]}
+      />
+      
+      <CTASection
+        title="Ready to ship faster?"
+        action={{ label: "Start Free Trial", href: "/signup" }}
+      />
+    </div>
+  );
+}
+```
+
+### Prečo je to gamechanger?
+
+**Bez MCP + Code Connect:**
+- Dizajnér pošle Figma link
+- Vývojár manuálne analyzuje dizajn
+- Píše kód 30-60 minút
+- Review a iterácia
+
+**S MCP + Code Connect:**
+- Dizajnér pošle Figma link
+- Vývojár ho pastne do Claude
+- Claude vygeneruje kód **využívajúc správne komponenty**
+- Vývojár skontroluje a upraví (5-10 minút)
+- ✅ Hotovo
+
+**Benefit:**
+- **5-10x rýchlejší development**
+- ✅ **Garantovaná konzistencia** s design systemom
+- **Production-ready kód** od začiatku
+
+## Praktické tipy a best practices
+
+### Workflow Integration
+
+**Design System ako Single Source of Truth:**
+```
+Figma Variables → Plugin → Git → Build → Production
+```
+
+**Continuous Sync:**
+```bash
+# Git hook pre automatický export
+# .git/hooks/pre-commit
+if git diff --cached --name-only | grep -q "tokens/"; then
+  npm run build:tokens
+fi
+```
+
+### Type Safety
+
+Generuj TypeScript types z Figma variables:
+```typescript
+export type ColorToken = 'colorPrimary' | 'colorSecondary' | 'colorSurface';
+export type SpacingToken = 'spacing8' | 'spacing16' | 'spacing24';
+
+interface ButtonProps {
+  color: ColorToken;
+  padding: SpacingToken;
+}
+
+// Type-safe! ✅
+<Button color="colorPrimary" padding="spacing16" />
+```
+
+### Testing & Validation
+
+**Token Validation:**
+```typescript
+describe('Design Tokens', () => {
+  it('should have valid OKLCH format', () => {
+    const colorRegex = /oklch\([\d.]+ [\d.]+ [\d.]+( \/ [\d.]+)?\)/;
+    tokens.colors.forEach(color => {
+      expect(color.value).toMatch(colorRegex);
+    });
+  });
+  
+  it('should use rem units', () => {
+    tokens.spacing.forEach(space => {
+      expect(space.value).toMatch(/^\d+(\.\d+)?rem$/);
+    });
+  });
+});
+```
+
+**Contrast Ratio Validation:**
+```typescript
+import { contrast } from 'wcag-contrast';
+
+function validateContrast(fg: string, bg: string) {
+  const ratio = contrast.ratio(fg, bg);
+  if (ratio < 4.5) {
+    console.warn(`Fails WCAG AA: ${ratio.toFixed(2)}`);
+  }
+}
+```
+
+## Záver
+
+Figma API, Variable Code Syntax, Code Connect a MCP Server spoločne vytvárajú **kompletný design-to-code ecosystem**, ktorý výrazne zrýchľuje development a zabezpečuje konzistenciu medzi dizajnom a implementáciou.
+
+**Čo sme sa naučili:**
+
+✅ **Variable Code Syntax** – Prepája Figma premenné s produkčným kódom
+
+✅ **Export Automation** – Plugin exportuje design tokeny do Git repozitára
+
+✅ **Code Connect** – Prepája Figma komponenty s kódom v codebase
+
+✅ **MCP Server** – AI generuje production-ready kód z dizajnu
+
+**Budúcnosť:**
+
+S rastúcou adopciou AI a automatizácie sa design-to-code proces bude ešte viac zefektívňovať. Predstavte si budúcnosť, kde:
+
+- AI automaticky deteguje zmeny v dizajne a generuje pull requesty
+- Design systém sa self-updates na základe použitia v produkcii
+- Vývojári sa môžu sústrediť na business logiku namiesto styling-u
+
+**Gamechanger?** Absolútne! Kombinácia Figma API, pluginov a AI-powered nástrojov otvára úplne nové možnosti pre moderný frontend workflow. A kto vie – možno o rok bude každý projekt mať svoj vlastný Figma → Git → Production pipeline bežať automaticky!
+
+Takže nečakajte a vyskúšajte si vytvoriť svoj prvý Figma plugin, nakonfigurujte Code Connect pre váš design systém alebo experimentujte s MCP serverom. Či už pôjde o jednoduchý token exporter alebo AI-powered code generator – **nápadom sa medze nekladú**!
+
+## Zdroje a ďalšie čítanie
+
+- [Figma Plugin API](https://www.figma.com/plugin-docs/) – Kompletná dokumentácia
+- [Figma Variables API](https://www.figma.com/plugin-docs/api/variables/) – API pre prácu s premennými
+- [Code Connect Documentation](https://www.figma.com/developers/code-connect) – Framework guide
+- [Figma MCP Server](https://github.com/figma/mcp-server-figma) – Model Context Protocol
+- [Variable Code Syntax Tutorial](https://www.youtube.com/watch?v=...) – Video guide
+- [Figma CSS Variables Plugin](https://www.figma.com/community/plugin/1580865604483451262) – Plugin z článku
