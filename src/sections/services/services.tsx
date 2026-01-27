@@ -76,7 +76,7 @@ const References = component$(() => {
               </ListItem>
             </ul>
           </Card>
-          <Card title="Speaker" priceLabel="Free" available={true}>
+          <Card title="Keynote Speaker" priceLabel="Free" available={true}>
             <p class="text-sm text-gray-800 dark:text-gray-300">
               Prednášam na meetupoch a konferenciách o Design systémoch, CSS, AI
               a frontend workflows.
