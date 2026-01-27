@@ -78,8 +78,8 @@ const References = component$(() => {
           </Card>
           <Card title="Speaker" priceLabel="Free" available={true}>
             <p class="text-sm text-gray-800 dark:text-gray-300">
-              Prednášam na meetupoch a konferenciách o UI, CSS, AI a frontend
-              workflowe.
+              Prednášam na meetupoch a konferenciách o Design systémoch, CSS, AI
+              a frontend workflows.
             </p>
             <ul class="grid gap-2 content-start">
               <ListItem className="text-xs sm:text-sm md:text-sm">
