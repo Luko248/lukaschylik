@@ -97,7 +97,14 @@ const Stats = component$(() => {
               )}
             >
               <div class="grid gap-4 place-items-center text-center">
-                <div class="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono tracking-wide text-yellow-500 text-pretty">
+                <div
+                  class={cls(
+                    "text-4xl sm:text-5xl lg:text-6xl font-bold font-mono tracking-wide text-pretty",
+                    stat.glowing
+                      ? "text-yellow-500"
+                      : "text-black dark:text-white",
+                  )}
+                >
                   {state.values[index]}
                   {stat.suffix}
                 </div>
