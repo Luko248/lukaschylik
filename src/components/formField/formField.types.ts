@@ -18,6 +18,8 @@ export interface FormFieldProps {
   required?: boolean
   /** Custom class name for the input field */
   className?: string
+  /** Custom class name for the input/textarea element */
+  inputClassName?: string
   /** Whether the input field is disabled */
   disabled?: boolean
   /** Whether the input field is read-only */

@@ -40,7 +40,7 @@ const FormField = component$<FormFieldProps>(
       .join(" ");
 
     const labelClass = [
-      "text-black dark:text-white grid gap-2 text-sm sm:text-md md:text-lg font-mono",
+      "text-black grid gap-2 text-sm sm:text-md md:text-lg font-mono",
       className,
     ]
       .filter(Boolean)
@@ -83,7 +83,7 @@ const FormField = component$<FormFieldProps>(
         )}
       </label>
     );
-  }
+  },
 );
 
 export default FormField;
