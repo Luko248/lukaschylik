@@ -83,7 +83,7 @@ const Stats = component$(() => {
       <Container size="sm" className="relative z-10 isolate">
         <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6">
           {STATS.map((stat, index) => (
-            <div class="content-fade-in content-fade-in--entry">
+            <div class="content-fade-in content-fade-in--entry content-center">
               <div
                 key={stat.label}
                 class={cls(
