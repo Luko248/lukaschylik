@@ -8,8 +8,7 @@ const MAILCHIMP_STORAGE_KEY = "newsletter_subscribed";
 const MAILCHIMP_EMAIL_KEY = "newsletter_email";
 const MAILCHIMP_FORM_URL =
   "https://lukaschylik.us6.list-manage.com/subscribe/post?u=e4c1b2f028f9fc3c28ad28630&id=90b3c6481a&f_id=00d309e3f0";
-const MAILCHIMP_HONEYPOT_FIELD =
-  "b_e4c1b2f028f9fc3c28ad28630_90b3c6481a";
+const MAILCHIMP_HONEYPOT_FIELD = "b_e4c1b2f028f9fc3c28ad28630_90b3c6481a";
 
 /**
  * Newsletter subscription component
@@ -113,7 +112,7 @@ const Newsletter = component$(() => {
             <p
               class={cls(
                 "font-medium mb-2",
-                "text-green-600 dark:text-green-400"
+                "text-green-600 dark:text-green-400",
               )}
             >
               Už ste prihlásený na odber noviniek.
@@ -159,7 +158,7 @@ const Newsletter = component$(() => {
               <Button
                 type="submit"
                 title="Odoberať"
-                variant="secondary"
+                variant="primary"
                 disabled={state.submitting}
               >
                 {state.submitting ? "Odosielam..." : "Odoberať"}
@@ -176,7 +175,7 @@ const Newsletter = component$(() => {
         <small
           class={cls(
             "mt-6 text-center block",
-            "text-gray-500 dark:text-gray-400"
+            "text-gray-500 dark:text-gray-400",
           )}
         >
           Buďte informovaní o novinkách a článkoch!
