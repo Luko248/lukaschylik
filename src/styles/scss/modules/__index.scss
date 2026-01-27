@@ -2,6 +2,7 @@
 @use "./blog" as *;
 @use "./reservation" as *;
 @use "./services" as *;
+@use "./stats" as *;
 @use "./gdpr" as *;
 
 @mixin create-modules {
@@ -9,5 +10,6 @@
   @include create-header;
   @include create-reservation;
   @include create-services;
+  @include create-stats;
   @include create-gdpr;
 }

@@ -5,6 +5,7 @@
 import { qwikVite } from '@builder.io/qwik/optimizer'
 import { qwikCity } from '@builder.io/qwik-city/vite'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { fileURLToPath } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import pkg from './package.json'
@@ -47,6 +48,11 @@ export default defineConfig((): UserConfig => {
       qwikVite(),
       tsconfigPaths(),
     ],
+    resolve: {
+      alias: {
+        '~': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
     css: {
       preprocessorOptions: {
         scss: {},

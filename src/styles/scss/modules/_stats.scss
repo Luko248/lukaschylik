@@ -1,0 +1,11 @@
+@use "../abstracts/variables/_index" as *;
+
+@mixin create-stats {
+  .stats {
+    .stat-card--glow {
+      --card-after_opacity: 1;
+      --card-glow-opacity: 0.85;
+      --anim-state: running;
+    }
+  }
+}
