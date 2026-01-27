@@ -6,7 +6,10 @@ import { cls } from "~/utils";
 
 const MAILCHIMP_STORAGE_KEY = "newsletter_subscribed";
 const MAILCHIMP_EMAIL_KEY = "newsletter_email";
-const MAILCHIMP_FORM_URL = "YOUR_MAILCHIMP_FORM_URL";
+const MAILCHIMP_FORM_URL =
+  "https://lukaschylik.us6.list-manage.com/subscribe/post?u=e4c1b2f028f9fc3c28ad28630&id=90b3c6481a&f_id=00d309e3f0";
+const MAILCHIMP_HONEYPOT_FIELD =
+  "b_e4c1b2f028f9fc3c28ad28630_90b3c6481a";
 
 /**
  * Newsletter subscription component
@@ -56,6 +59,8 @@ const Newsletter = component$(() => {
     try {
       const formData = new FormData();
       formData.append("EMAIL", state.email);
+      // Bot trap required by Mailchimp.
+      formData.append(MAILCHIMP_HONEYPOT_FIELD, "");
 
       await fetch(MAILCHIMP_FORM_URL, {
         method: "POST",
@@ -133,6 +138,14 @@ const Newsletter = component$(() => {
               method="post"
               class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-end"
             >
+              <div aria-hidden="true" style="position:absolute; left:-5000px;">
+                <input
+                  type="text"
+                  name={MAILCHIMP_HONEYPOT_FIELD}
+                  tabIndex={-1}
+                  defaultValue=""
+                />
+              </div>
               <FormField
                 className="flex-1"
                 label="Váš email"
