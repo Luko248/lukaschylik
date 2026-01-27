@@ -81,36 +81,38 @@ const Stats = component$(() => {
   return (
     <Section id="stats" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
-        <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6 content-fade-in content-fade-in--entry">
+        <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6">
           {STATS.map((stat, index) => (
-            <div
-              key={stat.label}
-              class={cls(
-                "stat-card overflow-clip",
-                "group relative",
-                "grid place-items-center",
-                "border-2 border-black dark:border-white rounded-lg",
-                "text-black dark:text-white",
-                "bg-white dark:bg-black",
-                "p-8 sm:p-10",
-                stat.glowing && "card stat-card--glow",
-              )}
-            >
-              <div class="grid gap-4 place-items-center text-center">
-                <div
-                  class={cls(
-                    "text-4xl sm:text-5xl lg:text-6xl font-bold font-mono tracking-wide text-pretty",
-                    stat.glowing
-                      ? "text-yellow-500"
-                      : "text-black dark:text-white",
-                  )}
-                >
-                  {state.values[index]}
-                  {stat.suffix}
+            <div class="content-fade-in content-fade-in--entry">
+              <div
+                key={stat.label}
+                class={cls(
+                  "stat-card overflow-clip",
+                  "group relative",
+                  "grid place-items-center",
+                  "border-2 border-black dark:border-white rounded-lg",
+                  "text-black dark:text-white",
+                  "bg-white dark:bg-black",
+                  "p-8 sm:p-10",
+                  stat.glowing && "card stat-card--glow",
+                )}
+              >
+                <div class="grid gap-4 place-items-center text-center">
+                  <div
+                    class={cls(
+                      "text-4xl sm:text-5xl lg:text-6xl font-bold font-mono tracking-wide text-pretty",
+                      stat.glowing
+                        ? "text-yellow-500"
+                        : "text-black dark:text-white",
+                    )}
+                  >
+                    {state.values[index]}
+                    {stat.suffix}
+                  </div>
+                  <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light text-gray-800 dark:text-gray-300 font-mono">
+                    {stat.label}
+                  </p>
                 </div>
-                <p class="text-sm lg:text-base 3xl:text-lg leading-relaxed font-light text-gray-800 dark:text-gray-300 font-mono">
-                  {stat.label}
-                </p>
               </div>
             </div>
           ))}
