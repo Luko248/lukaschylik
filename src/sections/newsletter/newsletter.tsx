@@ -97,6 +97,7 @@ const Newsletter = component$(() => {
             name="newsletter_email"
             placeholder="john.doe@email.com"
             value={state.email}
+            inputClassName="text-black dark:text-white"
             onInput$={handleEmailInput}
             disabled={state.submitting}
             required

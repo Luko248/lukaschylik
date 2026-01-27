@@ -27,6 +27,7 @@ const FormField = component$<FormFieldProps>(
     onInput$,
     required,
     className,
+    inputClassName,
     disabled,
     readOnly,
     placeholder,
@@ -35,6 +36,7 @@ const FormField = component$<FormFieldProps>(
     const inputClass = [
       type === "textarea" ? "field-sizing-content min-h-40" : "",
       "block w-full bg-transparent border-gray-600 dark:border-gray-400 border-b-1 px-2 md:px-6 py-2 md:py-4 user-invalid:border-red-500 user-valid:border-green-400 text-base text-black placeholder-gray-500 dark:placeholder-gray-400",
+      inputClassName,
     ]
       .filter(Boolean)
       .join(" ");
