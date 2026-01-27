@@ -79,7 +79,7 @@
       transition: --icon_color $trans-time $trans-fnc;
     }
 
-    &:is([type="submit"]) {
+    &[type="submit"][data-variant="primary"] {
       border-color: var(--color-black) !important;
       --btn_gradient: linear-gradient(
         160deg,

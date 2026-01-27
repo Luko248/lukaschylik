@@ -55,7 +55,6 @@ const Newsletter = component$(() => {
       const url = new URL(window.location.href);
       url.searchParams.set("newsletterSubscribed", "true");
       await nav(`${url.pathname}?${url.searchParams.toString()}`);
-
     } catch (error) {
       console.error("Subscription error:", error);
       state.error = "Nepodarilo sa prihlásiť na odber. Skúste to prosím znova.";
@@ -68,6 +67,14 @@ const Newsletter = component$(() => {
     <Section id="newsletter" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
         <SectionTitle text="Newsletter" size="sm" center />
+        <p
+          class={cls(
+            "text-center mx-auto text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-6 font-mono",
+            "text-gray-800 dark:text-gray-300",
+          )}
+        >
+          Buďte informovaní o novinkách a článkoch!
+        </p>
 
         <form
           preventdefault:submit
@@ -97,7 +104,7 @@ const Newsletter = component$(() => {
           <Button
             type="submit"
             title="Odoberať"
-            variant="primary"
+            variant="secondary"
             disabled={state.submitting || !state.email}
           >
             {state.submitting ? "Odosielam..." : "Odoberať"}
@@ -115,7 +122,14 @@ const Newsletter = component$(() => {
             "text-gray-500 dark:text-gray-400",
           )}
         >
-          Buďte informovaní o novinkách a článkoch!
+          Vaše údaje spracúvam v súlade s{" "}
+          <a
+            href="/gdpr"
+            class="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300"
+          >
+            GDPR
+          </a>
+          .
         </small>
       </Container>
     </Section>
