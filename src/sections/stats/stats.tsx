@@ -81,7 +81,7 @@ const Stats = component$(() => {
   return (
     <Section id="stats" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
-        <div class="stats services grid text-white gap-2 md:gap-4 xl:gap-8 content-fade-in content-fade-in--entry">
+        <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6 content-fade-in content-fade-in--entry">
           {STATS.map((stat, index) => (
             <div
               key={stat.label}
