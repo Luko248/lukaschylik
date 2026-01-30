@@ -1,9 +1,9 @@
 import {
   $,
   component$,
+  useOn,
   useOnWindow,
   useSignal,
-  useVisibleTask$,
 } from '@builder.io/qwik'
 import { supportsScrollTimeline } from '~/utils'
 
@@ -18,9 +18,12 @@ export const BlogProgress = component$(() => {
   const ticking = useSignal(false)
 
   // Check if browser supports scroll timeline on component mount
-  useVisibleTask$(() => {
-    needsFallback.value = !supportsScrollTimeline()
-  })
+  useOn(
+    'qvisible',
+    $(() => {
+      needsFallback.value = !supportsScrollTimeline()
+    }),
+  )
 
   // Optimized scroll handler with requestAnimationFrame for better performance
   useOnWindow(

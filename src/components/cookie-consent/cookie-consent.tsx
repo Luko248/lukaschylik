@@ -1,4 +1,10 @@
-import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import {
+  $,
+  component$,
+  useOn,
+  useOnWindow,
+  useSignal,
+} from '@builder.io/qwik'
 import { Container } from '~/components'
 
 type ConsentPrefs = {
@@ -78,8 +84,9 @@ export default component$(() => {
     prefsDialogRef.value?.close()
   })
 
-  useVisibleTask$(
-    () => {
+  useOn(
+    'qvisible',
+    $(() => {
       const stored = readPrefs()
       if (stored) {
         analytics.value = stored.analytics
@@ -89,15 +96,14 @@ export default component$(() => {
       } else {
         showBanner.value = true
       }
+    }),
+  )
 
-      const listener = () => {
-        prefsDialogRef.value?.showModal()
-      }
-      window.addEventListener('open-cookie-preferences', listener)
-      return () =>
-        window.removeEventListener('open-cookie-preferences', listener)
-    },
-    { strategy: 'document-ready' },
+  useOnWindow(
+    'open-cookie-preferences',
+    $(() => {
+      prefsDialogRef.value?.showModal()
+    }),
   )
 
   return (

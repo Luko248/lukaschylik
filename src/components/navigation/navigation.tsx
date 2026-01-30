@@ -2,9 +2,9 @@ import {
   $,
   component$,
   useContext,
+  useOn,
   useSignal,
   useStore,
-  useVisibleTask$,
 } from '@builder.io/qwik'
 import { Link, useLocation } from '@builder.io/qwik-city'
 import Logo from '~/images/logos/logo.svg?jsx'
@@ -25,9 +25,12 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   const dialogContext = useContext(DialogContext)
 
   // Ensure proper hydration
-  useVisibleTask$(() => {
-    isHydrated.value = true
-  })
+  useOn(
+    'qvisible',
+    $(() => {
+      isHydrated.value = true
+    }),
+  )
 
   const toggleMenu = $(() => {
     state.isOpen = !state.isOpen
@@ -45,21 +48,20 @@ const Navigation = component$<NavigationProps>(({ links }) => {
   const isBlogPage = location.url.pathname.startsWith('/blog')
 
   return (
-    <>
-      <nav
-        class={cls(
-          'nav',
-          'sticky inset-x-0 top-0',
-          'flex justify-between items-center',
-          'md:grid md:grid-cols-[auto_1fr_auto] justify-between items-stretch',
-          'text-center',
-          'py-2 md:py-0 px-4 md:px-18',
-          'md:backdrop-blur-sm',
-          'bg-white dark:bg-black md:bg-white dark:md:bg-black/80',
-          'w-full z-[200] h-[56px] md:h-[76px]',
-          state.isOpen && 'nav--open',
-        )}
-        aria-label="Main navigation">
+    <nav
+      class={cls(
+        'nav',
+        'sticky inset-x-0 top-0',
+        'flex justify-between items-center',
+        'md:grid md:grid-cols-[auto_1fr_auto] justify-between items-stretch',
+        'text-center',
+        'py-2 md:py-0 px-4 md:px-18',
+        'md:backdrop-blur-sm',
+        'bg-white dark:bg-black md:bg-white dark:md:bg-black/80',
+        'w-full z-[200] h-[56px] md:h-[76px]',
+        state.isOpen && 'nav--open',
+      )}
+      aria-label="Main navigation">
         <a
           href="/"
           role="menuitem"
@@ -165,8 +167,7 @@ const Navigation = component$<NavigationProps>(({ links }) => {
             title={state.isOpen ? 'Zavrieť menu' : 'Otvoriť menu'}
             onClick$={toggleMenu}></button>
         </div>
-      </nav>
-    </>
+    </nav>
   )
 })
 

@@ -1,4 +1,4 @@
-import { component$, Slot, useVisibleTask$ } from '@builder.io/qwik'
+import { $, component$, Slot, useOn } from '@builder.io/qwik'
 import { type DocumentHead, Link, routeLoader$ } from '@builder.io/qwik-city'
 import { Icon } from '~/components'
 import { BlogProgress } from '~/components/blog/BlogProgress'
@@ -60,10 +60,15 @@ export default component$(() => {
   const post = useCurrentPost()
 
   // Initialize Shiki theme observer when component becomes visible
-  useVisibleTask$(async () => {
-    const { setupShikiThemeObserver } = await import('~/utils/highlight-client')
-    setupShikiThemeObserver()
-  })
+  useOn(
+    'qvisible',
+    $(async () => {
+      const { setupShikiThemeObserver } = await import(
+        '~/utils/highlight-client'
+      )
+      setupShikiThemeObserver()
+    }),
+  )
 
   return (
     <Section id="blog-detail" className=" dark:bg-black-800">

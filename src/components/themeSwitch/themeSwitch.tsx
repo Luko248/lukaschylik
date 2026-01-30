@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, component$, useOn, useSignal } from '@builder.io/qwik'
 import { updateShikiTheme } from '../../utils/highlight-client'
 import { Button } from '../button'
 import { Icon } from '../icon'
@@ -32,7 +32,9 @@ const ThemeSwitch = component$(() => {
   /**
    * Initialize theme on page load
    */
-  useVisibleTask$(() => {
+  useOn(
+    'qvisible',
+    $(() => {
     if (typeof window === 'undefined') return
 
     const html = document.querySelector('html')
@@ -54,7 +56,8 @@ const ThemeSwitch = component$(() => {
 
     // Update Shiki code blocks to match initial theme
     updateShikiTheme()
-  })
+    }),
+  )
 
   /**
    * Handles theme toggle on button click

@@ -1,9 +1,9 @@
 import {
   $,
   component$,
+  isBrowser,
   useSignal,
   useTask$,
-  useVisibleTask$,
 } from '@builder.io/qwik'
 import { cls } from '~/utils'
 import { Icon } from '../icon'
@@ -22,8 +22,9 @@ const Alert = component$<AlertProps>(
     })
 
     // Auto-hide when becoming visible
-    useVisibleTask$(({ track, cleanup }) => {
+    useTask$(({ track, cleanup }) => {
       track(() => isVisible.value)
+      if (!isBrowser) return
       if (isVisible.value) {
         const timer = setTimeout(() => {
           isVisible.value = false

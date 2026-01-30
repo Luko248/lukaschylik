@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { $, component$, useOn, useSignal, useTask$ } from '@builder.io/qwik'
 import { Button, Icon } from '~/components'
 import type { ReservationDialogProps } from './reservationDialog.types'
 
@@ -62,19 +62,25 @@ export const ReservationDialog = component$<ReservationDialogProps>(
   ({ dialogRef: externalDialogRef }) => {
     const internalDialogRef = useSignal<HTMLDialogElement>()
     const dialogRef = externalDialogRef || internalDialogRef
+    const scriptRef = useSignal<HTMLScriptElement | null>(null)
 
-    useVisibleTask$(
-      ({ cleanup }) => {
-        const script = loadCalcomScript()
-
-        cleanup(() => {
-          if (script && document.head.contains(script)) {
-            document.head.removeChild(script)
-          }
-        })
-      },
-      { strategy: 'document-ready' },
+    useOn(
+      'qvisible',
+      $(() => {
+        scriptRef.value = loadCalcomScript()
+      }),
     )
+
+    useTask$(({ track, cleanup }) => {
+      track(() => scriptRef.value)
+      if (!scriptRef.value) return
+
+      cleanup(() => {
+        if (scriptRef.value && document.head.contains(scriptRef.value)) {
+          document.head.removeChild(scriptRef.value)
+        }
+      })
+    })
 
     return (
       <dialog

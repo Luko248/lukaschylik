@@ -3,9 +3,10 @@ import {
   component$,
   Slot,
   useContextProvider,
+  useOn,
   useSignal,
   useStore,
-  useVisibleTask$,
+  useTask$,
 } from '@builder.io/qwik'
 import type { DocumentHead, RequestHandler } from '@builder.io/qwik-city'
 import { useLocation } from '@builder.io/qwik-city'
@@ -123,6 +124,7 @@ export default component$(() => {
 
   // Create dialog ref for global reservation dialog
   const dialogRef = useSignal<HTMLDialogElement>()
+  const clientReady = useSignal(false)
 
   // Provide alert context
   useContextProvider(AlertContext, {
@@ -147,10 +149,19 @@ export default component$(() => {
     }),
   })
 
+  useOn(
+    'qvisible',
+    $(() => {
+      clientReady.value = true
+    }),
+  )
+
   // Check for URL parameters on initial load
-  useVisibleTask$(({ track, cleanup }) => {
+  useTask$(({ track }) => {
     // React to URL changes (e.g., query params added by client-side navigation)
     track(() => location.url.href)
+    track(() => clientReady.value)
+    if (!clientReady.value) return
 
     // Use the alert service to check for URL parameters and show appropriate alerts
     const showAlertFn = $((message: string) => {
@@ -159,9 +170,6 @@ export default component$(() => {
     })
 
     checkUrlForAlerts(location.url, showAlertFn)
-
-    // No cleanup needed
-    cleanup(() => {})
   })
 
   // Check if we're on the homepage

@@ -1,4 +1,11 @@
-import { component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useOn,
+  useSignal,
+  useStore,
+  useTask$,
+} from "@builder.io/qwik";
 import { Container, Section } from "~/components";
 import { cls } from "~/utils";
 
@@ -18,8 +25,19 @@ const Stats = component$(() => {
     values: STATS.map(() => 0),
     hasAnimated: false,
   });
+  const startAnimation = useSignal(false);
 
-  useVisibleTask$(({ cleanup }) => {
+  useOn(
+    "qvisible",
+    $(() => {
+      startAnimation.value = true;
+    }),
+  );
+
+  useTask$(({ track, cleanup }) => {
+    track(() => startAnimation.value);
+    if (!startAnimation.value) return;
+
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -43,7 +61,7 @@ const Stats = component$(() => {
 
       const step = (now: number) => {
         const progress = Math.min((now - start) / durationMs, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - (1 - progress) ** 3;
 
         STATS.forEach((stat, index) => {
           state.values[index] = Math.round(stat.value * eased);
@@ -83,9 +101,11 @@ const Stats = component$(() => {
       <Container size="sm" className="relative z-10 isolate">
         <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6">
           {STATS.map((stat, index) => (
-            <div class="content-fade-in content-fade-in--entry content-center">
+            <div
+              key={stat.label}
+              class="content-fade-in content-fade-in--entry content-center"
+            >
               <div
-                key={stat.label}
                 class={cls(
                   "stat-card overflow-clip",
                   "group relative",
