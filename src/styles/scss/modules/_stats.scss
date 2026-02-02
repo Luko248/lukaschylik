@@ -2,6 +2,10 @@
 
 @mixin create-stats {
   .stats {
+    .content-fade-in {
+      --content_scale: 1;
+    }
+
     .stat-card--glow {
       --card-after_opacity: 1;
       --card-glow-opacity: 0.85;
