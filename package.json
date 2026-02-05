@@ -83,11 +83,12 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "@toolwind/anchors": "^1.0.10",
+    "caniuse-lite": "^1.0.30001762",
     "gray-matter": "^4.0.3",
     "hast-util-from-html": "^2.0.3",
     "rehype-autolink-headings": "^7.1.0",
     "shiki": "^3.20.0",
-    "tailwind-merge": "^3.0.2",
+    "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
     "unist-util-visit": "^5.0.0"
   },
