@@ -24,7 +24,12 @@
   }
 
   body {
+    overflow-x: clip;
     min-block-size: 100svb;
+
+    @supports not (overflow: clip) {
+      overflow-x: hidden;
+    }
   }
 
   dialog {

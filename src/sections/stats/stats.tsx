@@ -121,7 +121,7 @@ const Stats = component$(() => {
                 <div class="grid gap-4 place-items-center text-center">
                   <div
                     class={cls(
-                      "text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-mono tracking-wide text-pretty",
+                      "text-6xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-8xl font-bold font-mono tracking-wide text-pretty",
                       stat.glowing
                         ? "text-yellow-500"
                         : "text-black dark:text-white",
@@ -130,7 +130,7 @@ const Stats = component$(() => {
                     {state.values[index]}
                     {stat.suffix}
                   </div>
-                  <p class="text-sm md:text-base lg:text-lg 2xl:text-xl 3xl:text-2xl leading-relaxed font-light text-gray-800 dark:text-gray-300 font-mono">
+                  <p class="text-lg md:text-xl lg:text-2xl 2xl:text-2xl 3xl:text-3xl leading-relaxed font-light text-gray-800 dark:text-gray-300 font-mono">
                     {stat.label}
                   </p>
                 </div>
