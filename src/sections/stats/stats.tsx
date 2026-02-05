@@ -99,7 +99,7 @@ const Stats = component$(() => {
   return (
     <Section id="stats" fullHeight={false}>
       <Container size="full" className="relative z-10 isolate">
-        <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6">
+        <div class="stats grid grid-cols-1 md:grid-cols-3 text-white gap-6 md:gap-12">
           {STATS.map((stat, index) => (
             <div
               key={stat.label}
