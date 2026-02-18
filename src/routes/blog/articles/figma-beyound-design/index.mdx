@@ -4,7 +4,7 @@ subtitle: API, variables a automatizácia
 description: Ako využiť Figma API, Variable Code Syntax, Code Connect a MCP server na automatizáciu design tokenov a generovanie production-ready komponent.
 date: 2026-02-05
 author: Lukáš Chylík
-podcastUrl:
+podcastUrl: https://open.spotify.com/episode/053yvGxs7NSChv904gD951?si=3bb7734d0ba440ea
 cardImg: /images/blog/figma-beyound-design.avif
 ---
 
@@ -488,6 +488,61 @@ export function HomePage() {
 - **Production-ready kód** od začiatku
 
 ## Praktické tipy a best practices
+
+## Agent SKILLS pre komponenty
+
+Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, oplatí sa mať pre každú komponentu v design systéme vlastný Agent `SKILL.md`. Takýto skill je krátky, ale veľmi praktický: popisuje najčastejšie prípady použitia, prečo sa niektoré veci správajú tak, ako sa správajú (napr. že ide o feature kvôli business logike), a obsahuje aj UX writing a typické UX správanie. Výsledok? AI má jasné pravidlá a pri generovaní kódu sa správa konzistentne s vaším produktom.
+
+Čo v takomto skille typicky nechýba:
+1. Najčastejšie scenáre použitia komponenty.
+2. Výnimky a dôvody správania (napr. business logika, regulácie, security).
+3. UX writing: texty, tón, presné formulácie a zakázané varianty.
+4. UX správanie: pozícia, timing, animácie, interakčné pravidlá.
+5. Edge cases a fallbacky.
+
+Príklad, ako vyzerá Agent `SKILL.md` pre jednu komponentu (štruktúra + placeholdery):
+
+```md
+---
+name: toast-crud
+description: Guide how to implement CRUD operations using the Toast component.
+---
+
+# Toast (CRUD)
+
+## Purpose
+Feedback after CRUD actions in the app (create, update, delete).
+
+## When to Use
+<!-- Add the most common scenarios -->
+...
+
+## When NOT to Use
+<!-- Add explicit exclusions -->
+...
+
+## Default Behavior
+<!-- Position, timing, queueing, interaction rules -->
+...
+
+## UX Writing
+<!-- Exact copy and forbidden variants -->
+...
+
+## Business Rules
+<!-- Business logic constraints -->
+...
+
+## Accessibility
+<!-- Roles, aria, keyboard behavior -->
+...
+
+## Do / Don't
+<!-- Short do/don't list -->
+...
+```
+
+Toto je extrémne dôležité najmä pri AI generovaní screenov a aplikácií, kde aj malé odchýlky v UX writingu alebo správaní komponenty vedia spôsobiť nekompatibilitu s produktom.
 
 ### Workflow Integration
 
