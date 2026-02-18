@@ -1,7 +1,7 @@
 ---
 title: Figma beyond design
 subtitle: API, variables a automatizácia
-description: Ako využiť Figma API, Variable Code Syntax, Code Connect a MCP server na automatizáciu design tokenov a generovanie production-ready komponent.
+description: Figma API, Variable Code Syntax, Code Connect a MCP server ako nástroje na automatizáciu design-to-code workflow.
 date: 2026-02-05
 author: Lukáš Chylík
 podcastUrl: https://open.spotify.com/episode/053yvGxs7NSChv904gD951?si=3bb7734d0ba440ea
@@ -87,7 +87,7 @@ for (const collection of collections) {
 
 Kľúčová časť je konverzia Figma hodnôt do CSS syntaxe. Tu je niekoľko tipov:
 
-**Farby – používajte farebný formátOKLCH!**, s tým vám pomôže balík `colorizr`:
+**Farby – používajte farebný formátOKLCH!**, s tým vám pomôže NPM balík `colorizr`:
 ```javascript
 import Colorizr from "colorizr";
 
@@ -260,7 +260,7 @@ Celý proces trvá pár sekúnd a eliminuje manuálne copy-paste chyby.
 No a presne takýto plugin som pre komunitu vytvoril a môžete ho vyskúšať tu 👉 **Plugin je dostupný na:** [Figma Community](https://www.figma.com/community/plugin/1580865604483451262)
 Tu je odkaz na zdrojový kód na GitHube: [figma-variables-converter-and-exporter](https://github.com/Luko248/figma-variables-converter-and-exporter)
 
-## Code Connect: Prepojenie komponentov s kódom
+## Code Connect: Prepojenie komponent s kódom
 
 Variable Code Syntax je výborný pre design tokeny, ale čo komplexné komponenty? Tu vstupuje do hry **Figma Code Connect** – NPM balík, ktorý prepája Figma komponenty s reálnym kódom vo vašej codebase.
 
@@ -338,7 +338,7 @@ figma.connect(Card, figmaUrl, {
 });
 ```
 
-Code Connect je výborné riešenie pre **dokumentáciu komponentov**, **onboarding nových členov** a **synchronizáciu dizajnu s kódom**. Je to most medzi svetom dizajnu a kódu, ktorý funguje v oboch smeroch!
+Code Connect je výborné riešenie pre **dokumentáciu komponent**, **onboarding nových členov** a **synchronizáciu dizajnu s kódom**. Je to most medzi svetom dizajnu a kódu, ktorý funguje v oboch smeroch!
 
 ## MCP Server: AI-powered code generation
 
@@ -487,7 +487,7 @@ export function HomePage() {
 
 ## Agent SKILLS pre komponenty
 
-Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, oplatí sa mať v design systéme vytvorené Agent `SKILL.md` pre skupiny komponentov (napríklad formulárové prvky, panely, tlačidlá). Takýto skill je krátky, ale veľmi praktický: popisuje najčastejšie prípady použitia, prečo sa niektoré veci správajú tak, ako sa správajú (napr. že ide o feature kvôli business logike), a obsahuje aj UX writing a typické UX správanie. Výsledok? AI má jasné pravidlá a pri generovaní kódu sa správa konzistentne s vaším produktom.
+Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, oplatí sa mať v design systéme vytvorené Agent `SKILL.md` pre skupiny komponent (napríklad formulárové prvky, panely, tlačidlá). Takýto skill je krátky, ale veľmi praktický: popisuje najčastejšie prípady použitia, prečo sa niektoré veci správajú tak, ako sa správajú (napr. že ide o feature kvôli business logike), a obsahuje aj UX writing a typické UX správanie. Výsledok? AI má jasné pravidlá a pri generovaní kódu sa správa konzistentne s vaším produktom.
 
 Čo v takomto skille typicky nechýba:
 1. Najčastejšie scenáre použitia komponenty.
@@ -496,7 +496,7 @@ Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, op
 4. UX správanie: pozícia, timing, animácie, interakčné pravidlá.
 5. Edge cases a fallbacky.
 
-Príklad, ako môže vyzerať Agent `SKILL.md` pre skupinu komponentov (štruktúra + placeholdery):
+Príklad, ako môže vyzerať Agent `SKILL.md` pre skupinu komponent (štruktúra + placeholdery):
 
 ```
 ---
