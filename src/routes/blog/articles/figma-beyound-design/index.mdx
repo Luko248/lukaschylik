@@ -45,7 +45,7 @@ Po nastavení Variable Code Syntax uvidí:
 var(--color-primary-500)
 ```
 
-A toto je presne to, čo môže copy-paste do svojho kódu! Žiadne manuálne konverzie, žiadne chyby v názvoch premenných.
+A toto je presne to, čo môžete rovno copy-pastenúť do svojho kódu! Žiadne manuálne konverzie, žiadne chyby v názvoch premenných.
 
 ### Multi-platform podpora
 
@@ -76,12 +76,9 @@ const collections = await figma.variables.getLocalVariableCollectionsAsync();
 
 // Iterácia cez kolekcie
 for (const collection of collections) {
-  console.log(`Collection: ${collection.name}`);
-  
   // Načítanie premenných
   for (const variableId of collection.variableIds) {
     const variable = await figma.variables.getVariableByIdAsync(variableId);
-    console.log(`   ${variable.name}: ${variable.resolvedType}`);
   }
 }
 ```
@@ -90,7 +87,7 @@ for (const collection of collections) {
 
 Kľúčová časť je konverzia Figma hodnôt do CSS syntaxe. Tu je niekoľko tipov:
 
-**Farby – používajte OKLCH!**, s tým vám pomôže balík `colorizr`:
+**Farby – používajte farebný formátOKLCH!**, s tým vám pomôže balík `colorizr`:
 ```javascript
 import Colorizr from "colorizr";
 
@@ -113,8 +110,10 @@ function convertColorToOKLCH(rgbaValue) {
 ```
 
 Prečo OKLCH? Má lepšiu perceptuálnu uniformitu ako HSL – farby s rovnakou lightness skutočne vyzerajú rovnako jasné!
+Pokiaľ vás táto téma zaujíma viac, prečítajte si aj môj starší článok: [Farby na webe v roku 2025](https://lukaschylik.dev/blog/articles/farby-na-webe-v-roku-2025/).
 
-**Spacing a sizing – rem units**
+**Spacing a sizing –**
+Best practice pri implementácii pre web je konvertovať pixely na `rem` jednotky, pretože výsledok je potom jednoduchšie škálovateľný z pohľadu veľkosti obsahu.
 ```javascript
 const BASE_FONT_SIZE = 16;
 
@@ -133,8 +132,6 @@ Moderné design systémy často používajú viacero tém (light, dark, high-con
 ```javascript
 // Každá kolekcia môže mať viacero módov
 collection.modes.forEach(mode => {
-  console.log(`Theme: ${mode.name}`);
-  
   // Generuj CSS súbor pre tento theme
   generateCSSFile(mode.name, cssVariables);
 });
@@ -151,9 +148,10 @@ tokens/
       └── variables.css
 ```
 
-### Výstupný CSS formát
+### Výstupný formát
 
-CSS súbor by mal byť prehľadne organizovaný:
+V tomto článku sa venujem čisto surovému CSS, ale tokeny bez problémov viete exportovať aj ako SCSS premenné, Tailwind config alebo ľubovoľné CSS-in-JS riešenie. Je na vás, aký výstupný formát zvolíte, no vždy dbajte na to, aby bol dobre čitateľný a prehľadný.
+Príklad výstupu v CSS:
 ```css
 /*
  * Design tokens exported from Figma
@@ -245,7 +243,6 @@ export async function pushToGitHub(themeFiles: ThemeCssOutput) {
   await createCommit(commitMessage, themeFiles);
   
   // 3. ✅ Hotovo!
-  console.log(`✅ Pushed ${Object.keys(themeFiles).length} themes to ${branch}`);
 }
 ```
 
@@ -260,11 +257,12 @@ export async function pushToGitHub(themeFiles: ThemeCssOutput) {
 
 Celý proces trvá pár sekúnd a eliminuje manuálne copy-paste chyby.
 
-👉 **Plugin je dostupný na:** [Figma Community](https://www.figma.com/community/plugin/1580865604483451262)
+No a presne takýto plugin som pre komunitu vytvoril a môžete ho vyskúšať tu 👉 **Plugin je dostupný na:** [Figma Community](https://www.figma.com/community/plugin/1580865604483451262)
+Tu je odkaz na zdrojový kód na GitHube: [figma-variables-converter-and-exporter](https://github.com/Luko248/figma-variables-converter-and-exporter)
 
 ## Code Connect: Prepojenie komponentov s kódom
 
-Variable Code Syntax je výborný pre design tokeny, ale čo komplexné komponenty? Tu vstupuje do hry **Figma Code Connect** – framework, ktorý prepája Figma komponenty s reálnym kódom vo vašej codebase.
+Variable Code Syntax je výborný pre design tokeny, ale čo komplexné komponenty? Tu vstupuje do hry **Figma Code Connect** – NPM balík, ktorý prepája Figma komponenty s reálnym kódom vo vašej codebase.
 
 ### Čo rieši?
 
@@ -306,7 +304,7 @@ figma.connect(
 );
 ```
 
-### Benefits
+### Benefity
 
 **Pre dizajnérov:**
 - Vidia priamo vo Figme, ako sa komponent používa v kóde
@@ -315,7 +313,7 @@ figma.connect(
 
 **Pre vývojárov:**
 - Automatické prepojenie medzi dizajnom a implementáciou
-- Documentation priamo v Figme
+- Dokumentácia priamo vo Figme
 - Jasná source of truth
 
 ### Príklad: Card komponent
@@ -348,7 +346,7 @@ Code Connect je výborné riešenie pre **dokumentáciu komponentov**, **onboard
 
 ### Čo je MCP?
 
-**Model Context Protocol** je open-source štandard od Anthropic, ktorý umožňuje AI modelom (ako Claude) pristupovať k externým zdrojom dát. Figma MCP Server sprístupňuje dizajny z Figmy ako kontext pre AI, čo znamená, že Claude môže:
+**Model Context Protocol** je open-source štandard od spoločnosti Anthropic, ktorý umožňuje AI modelom (ako Claude) pristupovať k externým zdrojom dát. Figma MCP Server sprístupňuje dizajny z Figmy ako kontext pre AI, čo znamená, že Claude môže:
 
 - Čítať štruktúru Figma súborov
 - Rozpoznávať komponenty a ich vlastnosti
@@ -383,7 +381,7 @@ npm install -g @figma/mcp-server-figma
 > 
 > Použi Tailwind CSS, zahrň všetky varianty.
 
-**Claude vygeneruje:**
+**AI agent vygeneruje:**
 ```typescript
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'destructive';
@@ -424,9 +422,9 @@ export function Button({
 }
 ```
 
-### MCP + Code Connect: Production-ready kód
+### MCP + Code Connect = Production-ready kód
 
-Kombinovaním MCP s Code Connect dosiahneš skutočnú **automatizáciu**. Ak máte Code Connect mappingy pre všetky komponenty v design systéme, Claude vie presne, ktoré komponenty má použiť!
+Kombinovaním MCP s Code Connect dosiahneš skutočnú **automatizáciu**. Ak máte Code Connect mappingy pre všetky komponenty v design systéme, AI agent vie presne, ktoré komponenty má použiť!
 
 **Prompt:**
 
@@ -477,21 +475,19 @@ export function HomePage() {
 
 **S MCP + Code Connect:**
 - Dizajnér pošle Figma link
-- Vývojár ho pastne do Claude
-- Claude vygeneruje kód **využívajúc správne komponenty**
+- Vývojár ho pastne AI agentovi
+- AI agent vygeneruje kód **využívajúc správne komponenty**
 - Vývojár skontroluje a upraví (5-10 minút)
 - ✅ Hotovo
 
 **Benefit:**
 - **5-10x rýchlejší development**
-- ✅ **Garantovaná konzistencia** s design systemom
+- ✅ **Garantovaná konzistencia** s Design Systémom
 - **Production-ready kód** od začiatku
-
-## Praktické tipy a best practices
 
 ## Agent SKILLS pre komponenty
 
-Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, oplatí sa mať pre každú komponentu v design systéme vlastný Agent `SKILL.md`. Takýto skill je krátky, ale veľmi praktický: popisuje najčastejšie prípady použitia, prečo sa niektoré veci správajú tak, ako sa správajú (napr. že ide o feature kvôli business logike), a obsahuje aj UX writing a typické UX správanie. Výsledok? AI má jasné pravidlá a pri generovaní kódu sa správa konzistentne s vaším produktom.
+Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, oplatí sa mať v design systéme vytvorené Agent `SKILL.md` pre skupiny komponentov (napríklad formulárové prvky, panely, tlačidlá). Takýto skill je krátky, ale veľmi praktický: popisuje najčastejšie prípady použitia, prečo sa niektoré veci správajú tak, ako sa správajú (napr. že ide o feature kvôli business logike), a obsahuje aj UX writing a typické UX správanie. Výsledok? AI má jasné pravidlá a pri generovaní kódu sa správa konzistentne s vaším produktom.
 
 Čo v takomto skille typicky nechýba:
 1. Najčastejšie scenáre použitia komponenty.
@@ -500,9 +496,9 @@ Ak chcete **maximalizovať kvalitu AI výstupu pri generovaní aplikácií**, op
 4. UX správanie: pozícia, timing, animácie, interakčné pravidlá.
 5. Edge cases a fallbacky.
 
-Príklad, ako vyzerá Agent `SKILL.md` pre jednu komponentu (štruktúra + placeholdery):
+Príklad, ako môže vyzerať Agent `SKILL.md` pre skupinu komponentov (štruktúra + placeholdery):
 
-```md
+```
 ---
 name: toast-crud
 description: Guide how to implement CRUD operations using the Toast component.
@@ -544,70 +540,6 @@ Feedback after CRUD actions in the app (create, update, delete).
 
 Toto je extrémne dôležité najmä pri AI generovaní screenov a aplikácií, kde aj malé odchýlky v UX writingu alebo správaní komponenty vedia spôsobiť nekompatibilitu s produktom.
 
-### Workflow Integration
-
-**Design System ako Single Source of Truth:**
-```
-Figma Variables → Plugin → Git → Build → Production
-```
-
-**Continuous Sync:**
-```bash
-# Git hook pre automatický export
-# .git/hooks/pre-commit
-if git diff --cached --name-only | grep -q "tokens/"; then
-  npm run build:tokens
-fi
-```
-
-### Type Safety
-
-Generuj TypeScript types z Figma variables:
-```typescript
-export type ColorToken = 'colorPrimary' | 'colorSecondary' | 'colorSurface';
-export type SpacingToken = 'spacing8' | 'spacing16' | 'spacing24';
-
-interface ButtonProps {
-  color: ColorToken;
-  padding: SpacingToken;
-}
-
-// Type-safe! ✅
-<Button color="colorPrimary" padding="spacing16" />
-```
-
-### Testing & Validation
-
-**Token Validation:**
-```typescript
-describe('Design Tokens', () => {
-  it('should have valid OKLCH format', () => {
-    const colorRegex = /oklch\([\d.]+ [\d.]+ [\d.]+( \/ [\d.]+)?\)/;
-    tokens.colors.forEach(color => {
-      expect(color.value).toMatch(colorRegex);
-    });
-  });
-  
-  it('should use rem units', () => {
-    tokens.spacing.forEach(space => {
-      expect(space.value).toMatch(/^\d+(\.\d+)?rem$/);
-    });
-  });
-});
-```
-
-**Contrast Ratio Validation:**
-```typescript
-import { contrast } from 'wcag-contrast';
-
-function validateContrast(fg: string, bg: string) {
-  const ratio = contrast.ratio(fg, bg);
-  if (ratio < 4.5) {
-    console.warn(`Fails WCAG AA: ${ratio.toFixed(2)}`);
-  }
-}
-```
-
 ## Záver
 
 Figma API, Variable Code Syntax, Code Connect a MCP Server spoločne vytvárajú **kompletný design-to-code ecosystem**, ktorý výrazne zrýchľuje development a zabezpečuje konzistenciu medzi dizajnom a implementáciou.
@@ -627,12 +559,12 @@ Figma API, Variable Code Syntax, Code Connect a MCP Server spoločne vytvárajú
 S rastúcou adopciou AI a automatizácie sa design-to-code proces bude ešte viac zefektívňovať. Predstavte si budúcnosť, kde:
 
 - AI automaticky deteguje zmeny v dizajne a generuje pull requesty
-- Design systém sa self-updates na základe použitia v produkcii
+- Design systém sa priebežne zlepšuje na základe reálneho použitia v produkcii
 - Vývojári sa môžu sústrediť na business logiku namiesto styling-u
 
-**Gamechanger?** Absolútne! Kombinácia Figma API, pluginov a AI-powered nástrojov otvára úplne nové možnosti pre moderný frontend workflow. A kto vie – možno o rok bude každý projekt mať svoj vlastný Figma → Git → Production pipeline bežať automaticky!
+**Gamechanger?** Absolútne! Kombinácia Figma API, pluginov a AI-powered nástrojov otvára úplne nové možnosti pre moderný frontend workflow. A kto vie, možno o rok bude mať každý projekt vlastný Figma → Git → Production pipeline, ktorý pobeží automaticky.
 
-Takže nečakajte a vyskúšajte si vytvoriť svoj prvý Figma plugin, nakonfigurujte Code Connect pre váš design systém alebo experimentujte s MCP serverom. Či už pôjde o jednoduchý token exporter alebo AI-powered code generator – **nápadom sa medze nekladú**!
+Takže nečakajte a vyskúšajte si vytvoriť svoj prvý Figma plugin, nakonfigurujte Code Connect pre váš design systém alebo experimentujte s MCP serverom. Ako odrazový mostík môžete využiť aj môj plugin. Či už pôjde o jednoduchý token exporter alebo AI-powered code generator – **nápadom sa medze nekladú**!
 
 ## Zdroje a ďalšie čítanie
 
@@ -641,4 +573,5 @@ Takže nečakajte a vyskúšajte si vytvoriť svoj prvý Figma plugin, nakonfigu
 - [Code Connect Documentation](https://www.figma.com/developers/code-connect) – Framework guide
 - [Figma MCP Server](https://github.com/figma/mcp-server-figma) – Model Context Protocol
 - [Variable Code Syntax Tutorial](https://www.youtube.com/watch?v=...) – Video guide
-- [Figma CSS Variables Plugin](https://www.figma.com/community/plugin/1580865604483451262) – Plugin z článku
+- [Figma CSS Variables Converter & Exporter](https://www.figma.com/community/plugin/1580865604483451262) – Plugin z článku
+- [Figma CSS Variables Converter & Exporter (GitHub)](https://github.com/Luko248/figma-variables-converter-and-exporter) – Zdrojový kód pluginu
