@@ -1,9 +1,9 @@
-import { component$ } from '@builder.io/qwik'
-import { Button } from '~/components'
-import Container from '~/components/container/container'
-import Reference from '~/components/reference/reference'
-import Section from '~/components/section/section'
-import SectionTitle from '~/components/section/section.title'
+import { component$ } from "@builder.io/qwik";
+import { Button } from "~/components";
+import Container from "~/components/container/container";
+import Reference from "~/components/reference/reference";
+import Section from "~/components/section/section";
+import SectionTitle from "~/components/section/section.title";
 
 const References = component$(() => {
   return (
@@ -35,7 +35,8 @@ const References = component$(() => {
                     class="underline"
                     href="https://www.frontendisti.cz/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     Frontendisti
                   </a>
                   .
@@ -44,7 +45,8 @@ const References = component$(() => {
                   variant="secondary"
                   ariaLabel="Služby a spoupráca"
                   title="Služby a spoupráca"
-                  href="#services">
+                  href="#services"
+                >
                   Služby a spoupráca
                 </Button>
                 <div
@@ -54,7 +56,28 @@ const References = component$(() => {
                     overflow-x-auto overscroll-x-contain scroll-smooth
                     snap-x snap-mandatory [scroll-padding-inline:1rem]
                     [scrollbar-width:none] [-ms-overflow-style:'none'] [&::-webkit-scrollbar]:hidden
-                    [&>*]:min-w-0 [&>*]:snap-center [&>*]:snap-always">
+                    [&>*]:min-w-0 [&>*]:snap-center [&>*]:snap-always"
+                >
+                  <iframe
+                    class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
+                    loading="lazy"
+                    width="560"
+                    src="https://www.youtube.com/embed/MCVuRMBOXUU?si=MC5Ah5u53jbdbfYZ"
+                    title="YouTube video Lukáš Chylík - Figma Beyond Design: Automatizácia design-to-code workflow"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullscreen
+                  ></iframe>
+                  <iframe
+                    class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
+                    loading="lazy"
+                    width="560"
+                    src="https://www.youtube.com/embed/FAbaIpGWmR4?si=0_zKp6MHe_-_n6P8"
+                    title="YouTube video Lukáš Chylík - Konzistentné AI agentic workflow naprieč vývojovými tímami"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullscreen
+                  ></iframe>
                   <iframe
                     class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
@@ -63,7 +86,8 @@ const References = component$(() => {
                     title="YouTube video Lukáš Chylík - CSS scroll-state container queries"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen></iframe>
+                    allowFullscreen
+                  ></iframe>
                   <iframe
                     class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
@@ -72,7 +96,8 @@ const References = component$(() => {
                     title="YouTube video Lukáš Chylík - CSS scroll driven animations"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen></iframe>
+                    allowFullscreen
+                  ></iframe>
                   <iframe
                     class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
@@ -81,7 +106,8 @@ const References = component$(() => {
                     title="YouTube video Lukáš Chylík - Frontendové novinky Máj 2025"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen></iframe>
+                    allowFullscreen
+                  ></iframe>
                   <iframe
                     class="w-full aspect-video block rounded-lg overflow-clip border-2 border-black dark:border-white"
                     loading="lazy"
@@ -90,7 +116,8 @@ const References = component$(() => {
                     title="YouTube video Lukáš Chylík - CSS anchor positioning"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullscreen></iframe>
+                    allowFullscreen
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -197,7 +224,7 @@ const References = component$(() => {
         </div>
       </Container>
     </Section>
-  )
-})
+  );
+});
 
-export default References
+export default References;
