@@ -17,11 +17,12 @@ import { Footer, Header } from '~/sections'
 import { checkUrlForAlerts } from '~/services'
 import { AlertContext, type AlertMessage, DialogContext } from '~/utils'
 
-export const onGet: RequestHandler = async ({ cacheControl }) => {
+export const onGet: RequestHandler = async ({ cacheControl, headers }) => {
   cacheControl({
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     maxAge: 5,
   })
+  headers.set('Permissions-Policy', 'picture-in-picture=*, fullscreen=*')
 }
 
 /**
