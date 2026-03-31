@@ -1,9 +1,10 @@
-import { $, component$, Slot, useOn } from '@builder.io/qwik'
+import { component$, Slot } from '@builder.io/qwik'
 import { type DocumentHead, Link, routeLoader$ } from '@builder.io/qwik-city'
 import { Icon } from '~/components'
 import { BlogProgress } from '~/components/blog/BlogProgress'
 import Container from '~/components/container/container'
 import Section from '~/components/section/section'
+import Newsletter from '~/sections/newsletter/newsletter'
 import { getAllPosts } from '~/utils/markdown.server'
 import '~/styles/css/shiki.css'
 
@@ -59,70 +60,77 @@ export const useCurrentPost = routeLoader$(async ({ status, url }) => {
 export default component$(() => {
   const post = useCurrentPost()
 
-  // Initialize Shiki theme observer when component becomes visible
-  useOn(
-    'qvisible',
-    $(async () => {
-      const { setupShikiThemeObserver } = await import(
-        '~/utils/highlight-client'
-      )
-      setupShikiThemeObserver()
-    }),
-  )
-
   return (
-    <Section id="blog-detail" className=" dark:bg-black-800">
-      <BlogProgress />
-      <Container size="blog">
-        <Link
-          href="/blog"
-          class="inline-flex items-center text-gray-800 dark:text-gray-300 mb-6 underline underline-offset-4">
-          ← Späť na zoznam článkov
-        </Link>
+    <>
+      <Section id="blog-detail" className=" dark:bg-black-800">
+        <BlogProgress />
+        <Container size="blog">
+          <Link
+            href="/blog"
+            class="inline-flex items-center text-gray-800 dark:text-gray-300 mb-6 underline underline-offset-4">
+            ← Späť na zoznam článkov
+          </Link>
 
-        <article class="blog dark:bg-gray-900 bg-gray-100">
-          {post.value && (
-            <header class="mb-8">
-              <h1 class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-800 dark:text-gray-300 leading-tight md:leading-tight lg:leading-tight">
-                {post.value.title}
-                <small class="mt-2 block">{post.value.subtitle}</small>
-              </h1>
-              <div class="flex items-center justify-between gap-2">
-                <div class="flex gap-2 items-center text-sm text-gray-800 dark:text-gray-300">
-                  <time
-                    dateTime={post.value.date}
-                    class="text-gray-800 dark:text-gray-300">
-                    {new Date(post.value.date).toLocaleDateString('cs-CZ')}
-                  </time>
-                  <span class="text-yellow-500 text-2xl">•</span>
-                  <span>{post.value.author}</span>
-                  <span class="text-yellow-500 text-2xl">•</span>
-                  <span
-                    class="flex items-center gap-2"
-                    title={`Čas pre prečítanie článku: ${getReadingTime(
-                      post.value.content,
-                    )} min`}>
-                    <Icon name="book" cls="w-4 h-4 sm:w-5 sm:h-5" />
-                    {getReadingTime(post.value.content)} min
-                  </span>
-                </div>
-                {post.value.podcastUrl && (
-                  <a
-                    class="podcast-link grid place-items-center ratio-1/1 border-0 text-black dark:text-white bg-transparent hover:text-[#1DB954] transition-colors duration-200 rounded-full"
-                    href={post.value.podcastUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Prehrať Podcast na Spotify">
-                    <Icon name="spotify" size="2.5rem" />
-                  </a>
+          <article class="blog dark:bg-gray-900 bg-gray-100">
+            {post.value && (
+              <header class="mb-8">
+                {post.value.cardImg && (
+                  <div
+                    class="relative aspect-[2/1] overflow-hidden rounded-t-lg -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 md:-mx-10 md:-mt-10 mb-8"
+                    style={{ viewTransitionName: `blog-img-${post.value.slug}` }}>
+                    <img
+                      src={post.value.cardImg}
+                      alt={`Ilustračný obrázok k článku: ${post.value.title}`}
+                      width={1600}
+                      height={900}
+                      class="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
                 )}
-              </div>
-            </header>
-          )}
-          <Slot />
-        </article>
-      </Container>
-    </Section>
+                <h1
+                  class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-800 dark:text-gray-300 leading-tight md:leading-tight lg:leading-tight"
+                  style={{ viewTransitionName: `blog-title-${post.value.slug}` }}>
+                  {post.value.title}
+                  <small class="mt-2 block">{post.value.subtitle}</small>
+                </h1>
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex gap-2 items-center text-sm text-gray-800 dark:text-gray-300">
+                    <time
+                      dateTime={post.value.date}
+                      class="text-gray-800 dark:text-gray-300">
+                      {new Date(post.value.date).toLocaleDateString('cs-CZ')}
+                    </time>
+                    <span class="text-yellow-500 text-2xl">•</span>
+                    <span>{post.value.author}</span>
+                    <span class="text-yellow-500 text-2xl">•</span>
+                    <span
+                      class="flex items-center gap-2"
+                      title={`Čas pre prečítanie článku: ${getReadingTime(
+                        post.value.content,
+                      )} min`}>
+                      <Icon name="book" cls="w-4 h-4 sm:w-5 sm:h-5" />
+                      {getReadingTime(post.value.content)} min
+                    </span>
+                  </div>
+                  {post.value.podcastUrl && (
+                    <a
+                      class="podcast-link grid place-items-center ratio-1/1 border-0 text-black dark:text-white bg-transparent hover:text-[#1DB954] transition-colors duration-200 rounded-full"
+                      href={post.value.podcastUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Prehrať Podcast na Spotify">
+                      <Icon name="spotify" size="2.5rem" />
+                    </a>
+                  )}
+                </div>
+              </header>
+            )}
+            <Slot />
+          </article>
+        </Container>
+      </Section>
+      <Newsletter />
+    </>
   )
 })
 

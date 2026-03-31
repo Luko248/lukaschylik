@@ -1,0 +1,704 @@
+---
+title: CSS View Transitions
+subtitle: Od základov v CSS až po element-scoped transitions
+description: View Transitions API prináša natívne animácie prechodov medzi stavmi stránky. Od CSS-only MPA prechodov po JavaScript riadené SPA animácie a nové element-scoped transitions v Chrome 147+.
+date: 2026-03-29
+author: Lukáš Chylík
+cardImg: /images/blog/view-transitions.avif
+---
+
+## Prechody medzi stavmi stránky natívne v prehliadači
+
+Dlhé roky boli animované prechody medzi stránkami doménou JavaScript frameworkov — Barba.js, Swup, GSAP. Vždy to znamenalo extra kód, komplexnú logiku a problémy s prístupnosťou. CSS View Transitions API toto zásadne mení.
+
+Prehliadač teraz dokáže sám zachytiť starý stav, aplikovať DOM zmeny a animovať prechod na nový stav. Buď čisto v CSS pri navigácii medzi stránkami (MPA), alebo s minimálnym JavaScriptom pri zmenách v rámci jednej stránky (SPA).
+
+## Ako View Transitions fungujú pod kapotou
+
+Celý mechanizmus je založený na koncepte **snapshotov**:
+
+1. Prehliadač zachytí **starý stav** (old snapshot)
+2. Vykoná sa zmena DOM (navigácia alebo mutácia)
+3. Prehliadač zachytí **nový stav** (new snapshot)
+4. Oba snapshoty sa vykreslia ako pseudo-elementy a prehliadač medzi nimi animuje prechod
+
+Počas animácie sú snapshoty umiestnené vo **view transition overlay** nad celým obsahom stránky.
+
+## Pseudo-elementy: Strom view transition
+
+View Transitions API generuje špeciálny strom pseudo-elementov:
+
+```
+::view-transition
+└── ::view-transition-group(name)
+    └── ::view-transition-image-pair(name)
+        ├── ::view-transition-old(name)
+        └── ::view-transition-new(name)
+```
+
+### Syntax selektorov
+
+Všetky pseudo-elementy (okrem `::view-transition`) prijímajú parameter:
+
+```css
+::view-transition-group(hero-image) { }       /* Podľa view-transition-name */
+::view-transition-group(*.card) { }            /* Podľa view-transition-class */
+::view-transition-group(hero-image.featured) { } /* Kombinácia */
+::view-transition-group(*) { }                 /* Wildcard — všetky */
+::view-transition-group(root) { }              /* Predvolená root skupina */
+```
+
+### ::view-transition
+
+Koreňový kontajner celého overlay. Pokrýva celý viewport (fixne pozicionovaný cez `inset: 0`). Môžeme ho štýlovať:
+
+```css
+::view-transition {
+  background-color: oklch(0% 0 0 / 0.25);
+}
+```
+
+### ::view-transition-group()
+
+Obaľuje konkrétny pomenovaný prechod. **Animuje pozíciu, veľkosť a transform** medzi starým a novým stavom. Predvolená `animation-duration` je `0.25s`. Prehliadač dynamicky generuje animácie pre `width`, `height` a `transform` na základe rozdielov medzi stavmi.
+
+### ::view-transition-image-pair()
+
+Kontajner pre starý a nový snapshot. Nastavuje `isolation: isolate`, aby `mix-blend-mode` potomkov neovplyvňoval zvyšok stránky. Predvolený `mix-blend-mode` je `plus-lighter` — zabezpečuje, že cross-fade nevyzerá "vymyte".
+
+```css
+/* Ak chcete štandardné blendovanie: */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+```
+
+### ::view-transition-old() a ::view-transition-new()
+
+Oba sú **replaced elementy** (ako `<img>`) — možno použiť `object-fit` a `object-position`. Kľúčový rozdiel: `old` je statický screenshot, `new` je živá reprezentácia aktuálneho DOM.
+
+Predvolené animácie: `old` — fade-out (opacity 1 → 0), `new` — fade-in (opacity 0 → 1).
+
+```css
+::view-transition-old(hero),
+::view-transition-new(hero) {
+  object-fit: cover;
+}
+```
+
+### Príklad štýlovania:
+
+```css
+::view-transition-group(*) {
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(root) {
+  animation: slide-out-up 0.4s ease-in-out forwards;
+}
+
+::view-transition-new(root) {
+  animation: slide-in-up 0.4s ease-in-out forwards;
+}
+
+@keyframes slide-out-up {
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes slide-in-up {
+  from { transform: translateY(100%); opacity: 0; }
+}
+```
+
+## CSS vlastnosti pre View Transitions
+
+### view-transition-name
+
+Najdôležitejšia vlastnosť. Priraďuje elementu identifikátor, podľa ktorého prehliadač vie, že starý a nový element patria k sebe.
+
+```css
+view-transition-name: none;            /* Predvolená — element sa nezúčastňuje */
+view-transition-name: hero-image;      /* Vlastný identifikátor */
+view-transition-name: match-element;   /* Automatické párovanie podľa DOM identity */
+```
+
+**Dôležité:** Každý `view-transition-name` musí byť v rámci scope unikátny! Duplicita spôsobí odmietnutie `ViewTransition.ready` promise. Element s nenulovou hodnotou automaticky vytvára **stacking context**.
+
+#### Hodnota `match-element`
+
+Automaticky páruje elementy na základe identity DOM uzla. Ideálna pre zoznamy, kde sa menia pozície:
+
+```css
+.list-item {
+  view-transition-name: match-element;
+}
+```
+
+**Obmedzenie:** Funguje len pri SPA transitions, nie pri cross-document navigácii.
+
+### view-transition-class
+
+Zoskupuje prechody pod jednu triedu pre spoločné animácie. Element stále potrebuje vlastný unikátny `view-transition-name` — class je len **štýlovací hook**:
+
+```css
+.card {
+  view-transition-name: card-1;
+  view-transition-class: card;
+}
+
+.card:nth-child(2) {
+  view-transition-name: card-2;
+  view-transition-class: card;
+}
+
+/* Spoločná animácia pre všetky karty */
+::view-transition-group(*.card) {
+  animation-duration: 0.3s;
+}
+
+::view-transition-old(*.card) {
+  animation: shrink-out 0.3s ease-out both;
+}
+
+::view-transition-new(*.card) {
+  animation: grow-in 0.3s ease-out both;
+}
+```
+
+### view-transition-group
+
+Kontroluje, kam sa `::view-transition-group()` zaradí v strome pseudo-elementov:
+
+```css
+view-transition-group: normal;          /* Priamy potomok ::view-transition */
+view-transition-group: nearest;         /* Vnorí sa do najbližšieho predka */
+view-transition-group: contain;         /* Element sa stáva kontajnerom */
+view-transition-group: hero-container;  /* Vnorí sa do konkrétneho predka */
+```
+
+#### Príklad hierarchického vnorenia:
+
+```css
+.container {
+  view-transition-name: container;
+  view-transition-group: contain;
+}
+
+.container .item {
+  view-transition-name: item-1;
+  view-transition-group: nearest;
+}
+```
+
+Výsledný strom:
+
+```
+::view-transition
+└── ::view-transition-group(container)
+    ├── ::view-transition-image-pair(container)
+    │   ├── ::view-transition-old(container)
+    │   └── ::view-transition-new(container)
+    └── ::view-transition-group-children(container)
+        └── ::view-transition-group(item-1)
+            └── ::view-transition-image-pair(item-1)
+                ├── ::view-transition-old(item-1)
+                └── ::view-transition-new(item-1)
+```
+
+Užitočné keď chcete, aby sa potomky animovali **relatívne voči rodičovskému kontajneru**.
+
+### view-transition-scope
+
+Kontroluje viditeľnosť `view-transition-name` v rámci stromu:
+
+```css
+view-transition-scope: none;  /* Predvolená — normálne správanie */
+view-transition-scope: all;   /* Izolovaný — vonkajšie transitions ho preskočia */
+```
+
+## CSS-only View Transitions: @view-transition (MPA)
+
+Najzaujímavejšia časť pre tých, ktorí chcú prechody **bez jediného riadku JavaScriptu**:
+
+```css
+@view-transition {
+  navigation: auto;
+}
+```
+
+Toto je všetko, čo potrebujete na oboch stránkach. Predvolená animácia je cross-fade.
+
+### Deskriptor `navigation`
+
+Hodnota `auto` aktivuje prechod za týchto podmienok:
+
+- Navigácia je **same-origin** bez cross-origin presmerovaní
+- Typ navigácie je `traverse`, `push` alebo `replace`
+- Pri `push`/`replace` musí byť navigácia iniciovaná používateľom
+
+### Deskriptor `types`
+
+Typy umožňujú rôzne animácie pre rôzne typy navigácie:
+
+```css
+@view-transition {
+  navigation: auto;
+  types: slide, fade;
+}
+```
+
+Cielenie cez pseudo-triedu `:active-view-transition-type()`:
+
+```css
+:active-view-transition-type(slide) {
+  &::view-transition-old(root) {
+    animation: slide-out 0.4s ease-in-out both;
+  }
+
+  &::view-transition-new(root) {
+    animation: slide-in 0.4s ease-in-out both;
+  }
+}
+```
+
+### Pseudo-trieda `:active-view-transition`
+
+Cieli na koreňový element počas aktívneho prechodu:
+
+```css
+:active-view-transition {
+  overflow: hidden; /* skryť scrollbar počas prechodu */
+}
+
+:active-view-transition-type(slide) {
+  /* špecifické štýly pre slide typ */
+}
+```
+
+### Kompletný MPA príklad (čisto CSS)
+
+```css
+/* === Obe stránky === */
+@view-transition {
+  navigation: auto;
+}
+
+/* Zdrojová stránka */
+.hero-image { view-transition-name: hero; }
+.page-title { view-transition-name: title; }
+
+/* Cieľová stránka */
+.detail-image { view-transition-name: hero; }
+.detail-title { view-transition-name: title; }
+
+/* Spoločné animácie */
+::view-transition-old(root) {
+  animation: fade-out 0.3s ease-out both;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.3s ease-out both;
+}
+
+::view-transition-group(hero) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } }
+```
+
+Hero obrázok sa plynule presunie a zmení veľkosť, titulok urobí to isté. **Žiadny JavaScript. Čisté CSS.**
+
+## Kedy je CSS dostatočné a kedy potrebujete JavaScript?
+
+### CSS stačí (MPA prechody) keď:
+
+- Animujete prechody pri **klasickej navigácii** medzi stránkami
+- Používate **predvolené alebo vlastné** CSS animácie
+- Potrebujete **párovacie prechody** (hero image, titulky)
+- Chcete **rôzne typy animácií** podľa kontextu navigácie
+
+### JavaScript je nutný keď:
+
+- Meníte DOM **v rámci jednej stránky** (SPA) — filtrovanie, triedenie, prepínanie tabov
+- Potrebujete **programaticky preskočiť** prechod (`skipTransition()`)
+- Chcete **reagovať na fázy prechodu** (snapshot hotový, animácia pripravená)
+- Chcete spúšťať **viacero nezávislých prechodov** súčasne (element-scoped)
+- Potrebujete **prispôsobiť MPA prechod** cez `pagereveal` event
+
+## JavaScript API: document.startViewTransition() (SPA)
+
+```javascript
+const transition = document.startViewTransition(() => {
+  updateContent()
+})
+```
+
+### Objekt ViewTransition
+
+Metóda vracia objekt s tromi promise vlastnosťami:
+
+```javascript
+const transition = document.startViewTransition(() => updateDOM())
+
+transition.updateCallbackDone.then(() => console.log('DOM update hotový'))
+transition.ready.then(() => console.log('Animácia pripravená'))
+transition.finished.then(() => console.log('Prechod dokončený'))
+```
+
+### Preskočenie prechodu
+
+```javascript
+const transition = document.startViewTransition(() => updateDOM())
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  transition.skipTransition()
+}
+```
+
+### Vlastné animácie cez Web Animations API
+
+Promise `ready` umožňuje nahradiť CSS animácie vlastnými cez JavaScript:
+
+```javascript
+const transition = document.startViewTransition(() => toggleDarkMode())
+
+transition.ready.then(() => {
+  document.documentElement.animate(
+    {
+      clipPath: [
+        `circle(0% at ${x}px ${y}px)`,
+        `circle(150% at ${x}px ${y}px)`,
+      ],
+    },
+    {
+      duration: 500,
+      easing: 'ease-in-out',
+      pseudoElement: '::view-transition-new(root)',
+    }
+  )
+})
+```
+
+### SPA príklad: Filtrovanie zoznamu
+
+```html
+<ul class="items-grid" id="grid">
+  <li class="item" data-category="design" style="view-transition-name: item-1">Dizajn systém</li>
+  <li class="item" data-category="dev" style="view-transition-name: item-2">API architektúra</li>
+</ul>
+```
+
+```javascript
+function filterItems(category) {
+  document.startViewTransition(() => {
+    document.querySelectorAll('.item').forEach(item => {
+      item.style.display =
+        category === 'all' || item.dataset.category === category ? '' : 'none'
+    })
+  })
+}
+```
+
+```css
+.item { view-transition-class: grid-item; }
+
+::view-transition-group(*.grid-item) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+```
+
+## MPA udalosti: pageswap a pagereveal
+
+Pre cross-document navigáciu existujú dva eventy:
+
+### pageswap (zdrojová stránka)
+
+```javascript
+window.addEventListener('pageswap', (event) => {
+  if (event.viewTransition) {
+    console.log('Navigácia s prechodom prebiehá')
+  }
+})
+```
+
+### pagereveal (cieľová stránka)
+
+```javascript
+window.addEventListener('pagereveal', (event) => {
+  if (event.viewTransition) {
+    event.viewTransition.ready.then(() => {
+      // Prispôsobenie animácie na základe kontextu
+    })
+  }
+})
+```
+
+### Typy za behu (ViewTransitionTypeSet)
+
+```javascript
+window.addEventListener('pagereveal', (event) => {
+  if (event.viewTransition) {
+    const fromUrl = new URL(navigation.activation.from)
+    const toUrl = new URL(navigation.activation.entry.url)
+
+    if (isForwardNavigation(fromUrl, toUrl)) {
+      event.viewTransition.types.add('slide-forward')
+    } else {
+      event.viewTransition.types.add('slide-backward')
+    }
+  }
+})
+```
+
+## Element-Scoped View Transitions (Chrome 147+)
+
+### Problém s document-scoped transitions
+
+`document.startViewTransition()` má obmedzenia: len jeden prechod naraz, stránka je neinteraktívna, problémy s `position: fixed`.
+
+### Riešenie: Element.startViewTransition()
+
+```javascript
+element.startViewTransition({
+  callback: () => {
+    // DOM mutácie obmedzené na subtree tohto elementu
+  }
+})
+```
+
+Element sa stáva **scope root** — snapshotuje sa len jeho podstrom a zvyšok stránky zostáva plne interaktívny.
+
+### Súčasné prechody
+
+Viacero neprekrývajúcich sa DOM podstromov môže mať vlastný view transition **v rovnakom čase**:
+
+```javascript
+sidebar.startViewTransition({ callback: () => updateFilters() })
+grid.startViewTransition({ callback: () => reorderItems() })
+detailPanel.startViewTransition({ callback: () => showDetail(itemId) })
+```
+
+### Znovupoužitie view-transition-name naprieč scope-mi
+
+Rovnaký názov môže existovať vo viacerých scope-och bez konfliktu:
+
+```css
+#list-a li {
+  view-transition-name: match-element;
+  view-transition-class: album;
+}
+
+#list-b li {
+  view-transition-name: match-element;
+  view-transition-class: album;
+}
+```
+
+### Automatické správanie scope root-u
+
+Prehliadač automaticky aplikuje na scope root:
+
+| Správanie | Popis |
+|---|---|
+| `contain: layout` | Interné zmeny neovplyvnia zvyšok stránky |
+| `view-transition-scope: all` | Prevencia kolízií názvov |
+| `view-transition-name: root` | Scope root sa automaticky zúčastňuje |
+| `view-transition-group: contain` | Vnorené skupiny sú obsiahnuté v rámci scope-u |
+
+### Nový pseudo-element: ::view-transition-group-children()
+
+```
+element (scope root)
+└── ::view-transition
+    └── ::view-transition-group(root)
+        ├── ::view-transition-group-children(root)
+        │   └── [potomkovské skupiny pre pomenované elementy]
+        └── ::view-transition-image-pair(root)
+            ├── ::view-transition-old(root)
+            └── ::view-transition-new(root)
+```
+
+Automaticky **clipuje overflow**, ak scope root má `overflow: hidden/scroll/clip`.
+
+### Praktický príklad: Presúvanie položiek medzi zoznamami
+
+```css
+.column ul li {
+  view-transition-name: match-element;
+  view-transition-class: task-card;
+}
+
+::view-transition-group(*.task-card) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+```
+
+```javascript
+function moveTask(taskElement, targetColumnId) {
+  const sourceColumn = taskElement.closest('.column')
+  const targetColumn = document.getElementById(targetColumnId)
+
+  sourceColumn.querySelector('ul').startViewTransition({
+    callback: () => taskElement.remove()
+  })
+
+  targetColumn.querySelector('ul').startViewTransition({
+    callback: () => targetColumn.querySelector('ul').appendChild(taskElement)
+  })
+}
+```
+
+## Rozdiely medzi ::view-transition-old a ::view-transition-new
+
+| Vlastnosť | `::view-transition-old()` | `::view-transition-new()` |
+|---|---|---|
+| Typ obsahu | Statický screenshot | Živá reprezentácia |
+| Aktualizácia | Nikdy sa nemení | Reflektuje aktuálny DOM |
+| Predvolená animácia | Fade-out (opacity 1 → 0) | Fade-in (opacity 0 → 1) |
+
+Cross-fade používa `mix-blend-mode: plus-lighter` — vizuálne korektný prechod bez stmavnutia. Zároveň `::view-transition-group()` interpoluje pozíciu a veľkosť.
+
+```css
+::view-transition-old(figure-caption) {
+  animation: 0.25s linear both shrink-x;
+  transform-origin: right center;
+}
+
+::view-transition-new(figure-caption) {
+  animation: 0.25s 0.25s linear both grow-x;
+  transform-origin: right center;
+}
+
+@keyframes shrink-x { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+```
+
+## Prístupnosť a prefers-reduced-motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
+}
+```
+
+Alternatívne v JavaScripte:
+
+```javascript
+function safeStartTransition(callback) {
+  if (
+    !document.startViewTransition ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    callback()
+    return
+  }
+
+  document.startViewTransition(callback)
+}
+```
+
+## Výkon a Core Web Vitals
+
+Poškodzujú view transitions výkon stránky? Nie, ak ich používate správne.
+
+### CLS (Cumulative Layout Shift)
+
+View transitions **neovplyvňujú CLS**. Prechodové pseudo-elementy sa renderujú v top-layer overlaji, oddelene od document flow. DOM zmena prebehne s potlačeným renderingom — layout shift je neviditeľný.
+
+### LCP (Largest Contentful Paint)
+
+Reálne testy na 120 000 mobilných navigáciách ukázali, že view transitions pridávajú približne **70 ms k LCP na mobile**. Na desktope je overhead zanedbateľný (~5 ms). Kombinácia so **Speculation Rules API** (prerendering cieľových stránok) eliminuje LCP overhead úplne.
+
+### INP (Interaction to Next Paint)
+
+View transitions **priamo neovplyvňujú INP**. Prechod beží ako CSS animácia na kompozitných vrstvách. Ak callback vykonáva náročné DOM mutácie, môže nepriamo zvýšiť INP — udržujte update callback ľahký.
+
+### GPU akcelerácia
+
+Predvolená cross-fade používa `transform` a `opacity` — plne kompozitné a GPU-akcelerované vlastnosti. Chrome berie snapshot dáta priamo z compositor layeru bez dodatočných layout/repaint krokov.
+
+### Hlavné riziká
+
+- **`blocking="render"`** — oneskoruje FCP aj LCP. Používajte len s aktívnym meraním dopadu.
+- **Náročné DOM mutácie** v callbacku — presúvajte ťažkú prácu mimo callback.
+
+### Odporúčanie
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+```
+
+## Podpora v prehliadačoch
+
+| Funkcia | Chrome | Firefox | Safari |
+|---|---|---|---|
+| `document.startViewTransition()` (SPA) | 111+ | 132+ | 18+ |
+| `@view-transition` (MPA) | 126+ | - | 18.2+ |
+| `view-transition-class` | 125+ | - | 18+ |
+| `view-transition-group: nearest` | 130+ | - | - |
+| `:active-view-transition-type()` | 126+ | - | 18.2+ |
+| `Element.startViewTransition()` (scoped) | 147+ | - | - |
+
+**Poznámka:** Element-scoped transitions sú momentálne podporované len v Chrome 147+.
+
+### Progresívne vylepšenie
+
+View Transitions sú navrhnuté pre progresívne vylepšenie. Ak prehliadač nepodporuje API, DOM zmena sa vykoná okamžite bez animácie:
+
+```javascript
+if (document.startViewTransition) {
+  document.startViewTransition(() => updateDOM())
+} else {
+  updateDOM()
+}
+
+// Element-scoped s fallbackom
+if (element.startViewTransition) {
+  element.startViewTransition({ callback: () => updateDOM() })
+} else {
+  updateDOM()
+}
+```
+
+## Prehľad: CSS vs JavaScript
+
+| Scenár | CSS | JavaScript |
+|---|---|---|
+| MPA navigácia medzi stránkami | `@view-transition { navigation: auto }` | Netreba |
+| Párovacie animácie (hero image) | `view-transition-name` na oboch stránkach | Netreba |
+| Rôzne animácie podľa typu | `@view-transition { types: ... }` + `:active-view-transition-type()` | Netreba |
+| Štýlovanie pseudo-elementov | `::view-transition-old/new` + `@keyframes` | Netreba |
+| Zmena DOM v rámci SPA | - | `document.startViewTransition(callback)` |
+| Filtrovanie, triedenie, prepínanie tabov | - | `document.startViewTransition(callback)` |
+| Preskočenie animácie | - | `transition.skipTransition()` |
+| Reagovanie na fázy prechodu | - | `transition.ready`, `.finished` |
+| Vlastné JS animácie (clip-path, atď.) | - | Web Animations API + `transition.ready` |
+| Súčasné nezávislé prechody | - | `element.startViewTransition()` |
+
+## Záver
+
+View Transitions API je jedným z najvýznamnejších CSS/JS prírastkov posledných rokov. CSS-only MPA prechody cez `@view-transition` umožňujú pridať plynulé animácie bez JavaScriptu. Pre SPA `document.startViewTransition()` poskytuje elegantné riešenie s minimálnym kódom. A element-scoped transitions v Chrome 147+ posúvajú možnosti ďalej — viacero súčasných animácií, znovupoužiteľné názvy a plná interaktivita počas prechodov.
+
+Celé API je navrhnuté pre progresívne vylepšenie. Bez podpory stránka funguje normálne — len bez animácií. Žiadne chyby, žiadne zlomené layouty. Preto nie je dôvod čakať — view transitions môžete začať používať už dnes.
+
+#### Poznámka pre používateľov Firefoxu
+
+Firefox od verzie 132 podporuje základné SPA view transitions (`document.startViewTransition()`). Cross-document (MPA) transitions a element-scoped transitions zatiaľ nie sú podporované.
+
+#### Poznámka pre používateľov Safari
+
+Safari 18+ podporuje základné SPA aj MPA view transitions. Element-scoped transitions zatiaľ nie sú podporované.

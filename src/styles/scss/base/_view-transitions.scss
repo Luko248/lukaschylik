@@ -2,31 +2,60 @@
 @use "../abstracts/mixins/_index" as *;
 
 @mixin create-view-transitions {
-  @view-transition {
-    navigation: auto;
-  }
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
 
-  ::view-transition-group(root) {
-    animation-duration: 2s;
-  }
+    /* Default page cross-fade */
+    ::view-transition-old(root) {
+      animation: vt-fade-out 250ms ease both;
+    }
 
-  ::view-transition-old(root) {
-    animation-name: scaleOut;
-  }
+    ::view-transition-new(root) {
+      animation: vt-fade-in 350ms ease 100ms both;
+    }
 
-  ::view-transition-new(root) {
-    animation-name: scaleIn;
-  }
+    /* Blog card image → article hero image */
+    ::view-transition-group(blog-img-*) {
+      animation-duration: 400ms;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  @keyframes scaleIn {
-    from {
-      scale: 0;
+    ::view-transition-old(blog-img-*) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-new(blog-img-*) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    /* Blog card title → article h1 */
+    ::view-transition-group(blog-title-*) {
+      animation-duration: 350ms;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    ::view-transition-old(blog-title-*) {
+      animation: vt-fade-out 150ms ease both;
+    }
+
+    ::view-transition-new(blog-title-*) {
+      animation: vt-fade-in 200ms ease 150ms both;
     }
   }
 
-  @keyframes scaleOut {
+  @keyframes vt-fade-out {
     to {
-      scale: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes vt-fade-in {
+    from {
+      opacity: 0;
     }
   }
 }

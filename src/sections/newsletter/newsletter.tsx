@@ -66,7 +66,12 @@ const Newsletter = component$(() => {
   return (
     <Section id="newsletter" fullHeight={false}>
       <Container size="sm" className="relative z-10 isolate">
-        <SectionTitle text="Newsletter" size="sm" center />
+        <SectionTitle
+          text="Newsletter"
+          size="sm"
+          className="text-black dark:text-white"
+          center
+        />
         <p
           class={cls(
             "text-center mx-auto text-sm lg:text-base 3xl:text-lg leading-relaxed font-light mb-6 font-mono",

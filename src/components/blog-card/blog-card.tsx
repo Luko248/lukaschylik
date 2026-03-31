@@ -49,7 +49,8 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
           'border-b-2 border-b-black dark:border-b-white',
           'rounded-t-[inherit]',
           'bg-black',
-        )}>
+        )}
+        style={{ viewTransitionName: `blog-img-${post.slug}` }}>
         {post.cardImg && (
           <img
             src={post.cardImg}
@@ -61,7 +62,6 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             class={cls(
               'absolute inset-0 w-full h-full object-cover',
-              // Smooth scale on card hover (group)
               'transition-transform duration-[1000ms] ease-in-out will-change-transform',
               'group-hover:scale-[1.2]',
             )}
@@ -80,7 +80,9 @@ const BlogCard = component$(({ post }: BlogCardProps) => {
           'content-start',
         )}>
         <div>
-          <strong class={cls('block', 'text-xl', 'mb-2', 'line-clamp-2')}>
+          <strong
+            class={cls('block', 'text-xl', 'mb-2', 'line-clamp-2')}
+            style={{ viewTransitionName: `blog-title-${post.slug}` }}>
             {post.title}
           </strong>
           <p

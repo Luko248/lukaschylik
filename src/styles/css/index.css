@@ -15,6 +15,52 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  /* Default page cross-fade */
+  ::view-transition-old(root) {
+    animation: vt-fade-out 250ms ease both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-fade-in 350ms ease 100ms both;
+  }
+  /* Blog card image → article hero image */
+  ::view-transition-group(blog-img-*) {
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  ::view-transition-old(blog-img-*) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-new(blog-img-*) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  /* Blog card title → article h1 */
+  ::view-transition-group(blog-title-*) {
+    animation-duration: 350ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  ::view-transition-old(blog-title-*) {
+    animation: vt-fade-out 150ms ease both;
+  }
+  ::view-transition-new(blog-title-*) {
+    animation: vt-fade-in 200ms ease 150ms both;
+  }
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
 *,
 *::before,
 *::after {
@@ -51,8 +97,13 @@ html:has(dialog[open]) {
 }
 
 body {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="hsl(51 100% 53%)"/></svg>') 12 12, auto !important;
+  overflow-x: clip;
   min-block-size: 100svb;
+}
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 dialog::-webkit-scrollbar {
@@ -145,11 +196,9 @@ strong {
   @keyframes content-fade-in {
     0%, 20% {
       opacity: 0;
-      scale: 0.95;
     }
     50%, 100% {
       opacity: 1;
-      scale: 1;
     }
   }
   @property --btn_gradient-length {
@@ -209,7 +258,7 @@ strong {
     --icon_color: var(--btn-icon_color);
     transition: --icon_color 0.2s ease-in-out;
   }
-  .btn:is([type=submit]) {
+  .btn[type=submit][data-variant=primary] {
     border-color: var(--color-black) !important;
     --btn_gradient: linear-gradient(
       160deg,
@@ -224,7 +273,7 @@ strong {
     --btn-icon_color: var(--color-white);
   }
   @media (hover: hover) {
-    .btn:is([type=submit]):hover {
+    .btn[type=submit][data-variant=primary]:hover {
       --btn-icon_color: var(--color-black);
     }
   }
@@ -594,8 +643,11 @@ strong {
     -webkit-text-stroke: 0.035em hsl(0, 0%, 0%);
   }
   .skills {
-    max-width: 100svi;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
     mask: linear-gradient(90deg, hsla(0, 0%, 0%, 0), hsl(0, 0%, 0%) 10%, hsl(0, 0%, 0%) 90%, hsla(0, 0%, 0%, 0));
+    max-inline-size: 100svi;
   }
   .skills:hover li:not(:hover) {
     opacity: 0.5;
@@ -606,11 +658,12 @@ strong {
     }
   }
   .skills__scroller {
+    max-width: 100%;
     animation: scroll-skills linear;
     animation-timeline: scroll(root);
   }
   .skills__scroller:nth-of-type(2) {
-    animation-name: scroll-skills-reverse;
+    animation-direction: reverse;
   }
   @media (prefers-reduced-motion: reduce) {
     .skills__scroller {
@@ -624,11 +677,6 @@ strong {
   @keyframes scroll-skills {
     to {
       translate: calc(-20% - 1rem) 0;
-    }
-  }
-  @keyframes scroll-skills-reverse {
-    to {
-      translate: calc(20% + 1rem) 0;
     }
   }
   .social {
@@ -1254,6 +1302,14 @@ strong {
   .services > div::scroll-marker:target-current {
     --marker-bg: var(--color-yellow-500);
     scale: 1.2;
+  }
+  .stats .content-fade-in {
+    --content_scale: 1;
+  }
+  .stats .stat-card--glow {
+    --card-after_opacity: 1;
+    --card-glow-opacity: 0.85;
+    --anim-state: running;
   }
   section#gdpr .blog h1 {
     font-weight: 700;

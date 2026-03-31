@@ -1,4 +1,42 @@
-/* Shiki syntax highlighting styles with GitHub themes */
+/* Shiki syntax highlighting styles with dual themes */
+
+/* Dual-theme color mapping — Shiki outputs --shiki-light / --shiki-dark CSS vars */
+@media (prefers-color-scheme: light) {
+  .shiki {
+    background-color: var(--shiki-light-bg);
+  }
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .shiki {
+    background-color: var(--shiki-dark-bg);
+  }
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark);
+  }
+}
+
+/* Manual color-scheme override via html style attribute */
+:root[style*="color-scheme: light"] .shiki {
+  background-color: var(--shiki-light-bg);
+}
+:root[style*="color-scheme: light"] .shiki,
+:root[style*="color-scheme: light"] .shiki span {
+  color: var(--shiki-light);
+}
+
+:root[style*="color-scheme: dark"] .shiki {
+  background-color: var(--shiki-dark-bg);
+}
+:root[style*="color-scheme: dark"] .shiki,
+:root[style*="color-scheme: dark"] .shiki span {
+  color: var(--shiki-dark);
+}
 
 /* Base styles for all themes */
 .shiki {
@@ -14,12 +52,6 @@
   word-break: normal;
   hyphens: none;
   tab-size: 2;
-}
-
-/* Theme-switchable code blocks */
-.shiki-theme-switchable {
-  margin: 1rem 0;
-  transition: opacity 0.2s ease;
 }
 
 /* Ensure proper spacing for code lines */

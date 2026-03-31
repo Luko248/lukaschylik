@@ -9,6 +9,7 @@
 @import "../css/env.css";
 
 @include create-root;
+@include create-view-transitions;
 
 @include reset;
 @layer base, _components, _modules, _utils;
