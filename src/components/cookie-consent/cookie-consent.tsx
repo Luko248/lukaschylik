@@ -1,10 +1,4 @@
-import {
-  $,
-  component$,
-  useOn,
-  useOnWindow,
-  useSignal,
-} from '@builder.io/qwik'
+import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik'
 import { Container } from '~/components'
 
 type ConsentPrefs = {
@@ -84,25 +78,27 @@ export default component$(() => {
     prefsDialogRef.value?.close()
   })
 
-  useOn(
-    'qvisible',
+  useOnDocument(
+    'qinit',
     $(() => {
+      ;(window as any).__openCookiePreferences = () => {
+        const stored = readPrefs()
+        if (!stored) {
+          showBanner.value = true
+        }
+        prefsDialogRef.value?.showModal()
+      }
+
       const stored = readPrefs()
       if (stored) {
         analytics.value = stored.analytics
         // Re-apply consent on hydration (no-op if already applied)
-        applyConsent(stored)
+        void applyConsent(stored)
         showBanner.value = false
-      } else {
-        showBanner.value = true
+        return
       }
-    }),
-  )
 
-  useOnWindow(
-    'open-cookie-preferences',
-    $(() => {
-      prefsDialogRef.value?.showModal()
+      showBanner.value = true
     }),
   )
 
@@ -129,7 +125,13 @@ export default component$(() => {
                   </button>
                   <button
                     type="button"
-                    onClick$={() => prefsDialogRef.value?.showModal()}
+                    onClick$={() => {
+                      const stored = readPrefs()
+                      if (!stored) {
+                        showBanner.value = true
+                      }
+                      prefsDialogRef.value?.showModal()
+                    }}
                     class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
                     Nastavenia
                   </button>
