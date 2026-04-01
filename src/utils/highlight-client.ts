@@ -4,6 +4,7 @@
 
 import { createHighlighter } from 'shiki'
 import { SHIKI_CONFIG } from './shiki-config'
+import { getDocumentTheme } from './theme'
 
 let highlighter: any = null
 let highlighterPromise: Promise<any> | null = null
@@ -34,11 +35,8 @@ export async function updateShikiTheme() {
   try {
     const hl = await initClientHighlighter()
     const codeBlocks = document.querySelectorAll('.shiki-theme-switchable')
-
-    const isDarkMode =
-      document.documentElement.style.getPropertyValue('color-scheme') === 'dark'
-
-    const theme = isDarkMode ? 'github-dark' : 'github-light'
+    const theme =
+      getDocumentTheme(document) === 'dark' ? 'github-dark' : 'github-light'
 
     for (const block of codeBlocks) {
       const pre = block as HTMLElement
@@ -101,7 +99,7 @@ export function setupShikiThemeObserver() {
 
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['style'],
+    attributeFilter: ['data-theme'],
   })
 
   return observer

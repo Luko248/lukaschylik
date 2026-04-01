@@ -1,7 +1,7 @@
 @import "@toolwind/anchors";
 @import "tailwindcss";
 
-@custom-variant dark (&:where([style="color-scheme: dark;"], [style="color-scheme: dark;"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
   --color-black: hsl(0deg 0% 0%);

@@ -6,6 +6,7 @@ import {
   ServiceWorkerRegister,
 } from '@builder.io/qwik-city'
 import { RouterHead } from './components/router-head/router-head'
+import { THEME_INIT_SCRIPT } from './utils'
 import './styles/scss/index.scss'
 import './styles/css/tailwind.css'
 export default component$(() => {
@@ -20,6 +21,10 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
+        <RouterHead />
+        <script
+          id="theme-init"
+          dangerouslySetInnerHTML={THEME_INIT_SCRIPT}></script>
         <link rel="stylesheet" href="/src/styles/css/tailwind.css" />
         {!isDev && (
           <link
@@ -27,7 +32,6 @@ export default component$(() => {
             href={`${import.meta.env.BASE_URL}manifest.json`}
           />
         )}
-        <RouterHead />
       </head>
       <body class="bg-black-900" lang="sk">
         <noscript>

@@ -1,64 +1,24 @@
-import { $, component$, useOn, useSignal } from '@builder.io/qwik'
+import { $, component$ } from '@builder.io/qwik'
+import { applyTheme, getDocumentTheme, storeTheme } from '~/utils'
 import { Button } from '../button'
 import { Icon } from '../icon'
 
-type Theme = 'light' | 'dark'
-
 /**
- * Theme toggle button component with simplified logic
+ * Theme toggle button component.
  * @returns JSX button element
  */
 const ThemeSwitch = component$(() => {
-  const currentTheme = useSignal<Theme>('light')
-
   /**
-   * Applies theme to HTML element
-   */
-  const toggleTheme = $(() => {
-    if (typeof document === 'undefined') return
-
-    const html = document.querySelector('html')
-    if (!html) return
-
-    currentTheme.value === 'dark'
-      ? html.style.setProperty('color-scheme', 'dark')
-      : html.style.setProperty('color-scheme', 'light')
-  })
-
-  /**
-   * Initialize theme on page load
-   */
-  useOn(
-    'qvisible',
-    $(() => {
-    if (typeof window === 'undefined') return
-
-    const html = document.querySelector('html')
-    if (!html) return
-
-    const storedTheme = localStorage.getItem('theme') as Theme | null
-    let themeToApply: Theme
-
-    if (!storedTheme) {
-      themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-    } else {
-      themeToApply = storedTheme
-    }
-
-    currentTheme.value = themeToApply
-    html.style.setProperty('color-scheme', themeToApply)
-    }),
-  )
-
-  /**
-   * Handles theme toggle on button click
+   * Handles theme toggle on button click.
    */
   const handleToggle = $(() => {
-    currentTheme.value = currentTheme.value === 'dark' ? 'light' : 'dark'
-    localStorage.setItem('theme', currentTheme.value)
-    toggleTheme()
+    if (typeof document === 'undefined' || typeof window === 'undefined') return
+
+    const currentTheme = getDocumentTheme(document) ?? 'light'
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark'
+
+    applyTheme(nextTheme, document)
+    storeTheme(nextTheme, window.localStorage)
   })
 
   return (
@@ -67,13 +27,14 @@ const ThemeSwitch = component$(() => {
       className="text-black dark:text-white p-0"
       onClick$={handleToggle}
       variant="plain"
-      aria-label={`Zvolená téma: ${currentTheme.value}. Kliknite pre prepnutie.`}
-      title={`Prepni na ${currentTheme.value === 'dark' ? 'svetlú' : 'tmavú'} tému`}>
-      <Icon
-        name={currentTheme.value === 'dark' ? 'moon' : 'sun'}
-        size="1.5rem"
-        color="currentColor"
-      />
+      ariaLabel="Prepnutie témy"
+      title="Prepnutie témy">
+      <span class="inline-flex dark:hidden" aria-hidden="true">
+        <Icon name="sun" size="1.5rem" color="currentColor" />
+      </span>
+      <span class="hidden dark:inline-flex" aria-hidden="true">
+        <Icon name="moon" size="1.5rem" color="currentColor" />
+      </span>
     </Button>
   )
 })
