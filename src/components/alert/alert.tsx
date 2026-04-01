@@ -1,10 +1,4 @@
-import {
-  $,
-  component$,
-  isBrowser,
-  useSignal,
-  useTask$,
-} from '@builder.io/qwik'
+import { $, component$, isBrowser, useSignal, useTask$ } from '@builder.io/qwik'
 import { cls } from '~/utils'
 import { Icon } from '../icon'
 import type { AlertProps } from './alert.types'
@@ -47,22 +41,27 @@ const Alert = component$<AlertProps>(
       <div
         class={cls(
           'fixed overflow-hidden',
-          'flex gap-8 items-center justify-between',
-          'p-4 rounded-md',
-          'backdrop-blur-md bg-green-500/70 text-white',
-          'top-auto bottom-4 left-0.5 right-0.5',
-          'lg:top-auto lg:bottom-8 lg:left-[50%] lg:-translate-x-[50%]',
+          'flex items-start gap-3',
+          'w-[min(calc(100vw-2rem),20rem)] max-w-[320px]',
+          'p-4 pr-3 rounded-xl',
+          'border border-white/15',
+          'backdrop-blur-xl bg-green-600/72 text-white',
+          'shadow-2xl shadow-black/25',
+          'bottom-4 right-4',
+          'sm:bottom-6 sm:right-6',
           'z-[500]',
           className,
         )}>
         <div
-          class="alert-progress absolute top-0 left-0 h-1 bg-green-900 origin-left w-full"
+          class="alert-progress absolute top-0 left-0 h-1 bg-green-950/80 origin-left w-full"
           style={`--alert_duration: ${animationDuration}`}></div>
-        <div class="pr-6">{message}</div>
+        <div class="min-w-0 flex-1 text-sm leading-relaxed text-white/95">
+          {message}
+        </div>
         <button
           type="button"
           onClick$={handleClose}
-          class=" text-white scale-100 hover:scale-110 focus:outline-none cursor-pointer transition-transform duration-250 ease-in-out"
+          class="mt-0.5 shrink-0 rounded-full p-1 text-white/90 hover:bg-white/10 hover:text-white focus:outline-none cursor-pointer transition-colors duration-200"
           aria-label="Close alert">
           <Icon name="close" cls={'w-4'} />
         </button>

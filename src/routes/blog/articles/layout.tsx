@@ -1,10 +1,11 @@
-import { component$, Slot } from '@builder.io/qwik'
+import { $, component$, Slot, useContext } from '@builder.io/qwik'
 import { type DocumentHead, Link, routeLoader$ } from '@builder.io/qwik-city'
 import { Icon } from '~/components'
 import { BlogProgress } from '~/components/blog/BlogProgress'
 import Container from '~/components/container/container'
 import Section from '~/components/section/section'
 import Newsletter from '~/sections/newsletter/newsletter'
+import { AlertContext } from '~/utils'
 import { getAllPosts } from '~/utils/markdown.server'
 import '~/styles/css/shiki.css'
 
@@ -59,6 +60,52 @@ export const useCurrentPost = routeLoader$(async ({ status, url }) => {
  */
 export default component$(() => {
   const post = useCurrentPost()
+  const alertContext = useContext(AlertContext)
+
+  /**
+   * Handles delegated clicks on generated heading copy links.
+   */
+  const handleHeadingCopy = $(async (event: Event) => {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+      return
+    }
+
+    const eventTarget = event.target
+    if (!(eventTarget instanceof Element)) {
+      return
+    }
+
+    const copyLink = eventTarget.closest<HTMLAnchorElement>(
+      '[data-copy-heading]',
+    )
+    if (!copyLink) {
+      return
+    }
+
+    event.preventDefault()
+
+    if (!navigator.clipboard?.writeText) {
+      alertContext.showAlert('Kopírovanie odkazu nie je podporované.')
+      return
+    }
+
+    const headingHash = copyLink.getAttribute('href')
+    if (!headingHash) {
+      return
+    }
+
+    const sectionUrl = new URL(window.location.href)
+    sectionUrl.hash = headingHash
+
+    try {
+      await navigator.clipboard.writeText(sectionUrl.toString())
+      window.history.replaceState({}, document.title, sectionUrl.toString())
+      alertContext.showAlert('Odkaz na sekciu bol skopírovaný.')
+    } catch (error) {
+      console.error('Failed to copy blog heading URL:', error)
+      alertContext.showAlert('Nepodarilo sa skopírovať odkaz na sekciu.')
+    }
+  })
 
   return (
     <>
@@ -71,13 +118,17 @@ export default component$(() => {
             ← Späť na zoznam článkov
           </Link>
 
-          <article class="blog dark:bg-gray-900 bg-gray-100">
+          <article
+            class="blog dark:bg-gray-900 bg-gray-100"
+            onClick$={handleHeadingCopy}>
             {post.value && (
               <header class="mb-8">
                 {post.value.cardImg && (
                   <div
                     class="relative aspect-[2/1] overflow-hidden rounded-t-lg -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 md:-mx-10 md:-mt-10 mb-8"
-                    style={{ viewTransitionName: `blog-img-${post.value.slug}` }}>
+                    style={{
+                      viewTransitionName: `blog-img-${post.value.slug}`,
+                    }}>
                     <img
                       src={post.value.cardImg}
                       alt={`Ilustračný obrázok k článku: ${post.value.title}`}
@@ -89,7 +140,9 @@ export default component$(() => {
                 )}
                 <h1
                   class="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-gray-800 dark:text-gray-300 leading-tight md:leading-tight lg:leading-tight"
-                  style={{ viewTransitionName: `blog-title-${post.value.slug}` }}>
+                  style={{
+                    viewTransitionName: `blog-title-${post.value.slug}`,
+                  }}>
                   {post.value.title}
                   <small class="mt-2 block">{post.value.subtitle}</small>
                 </h1>

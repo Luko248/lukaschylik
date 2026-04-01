@@ -1,9 +1,9 @@
 import { qwikVite } from '@builder.io/qwik/optimizer'
 import { staticAdapter } from '@builder.io/qwik-city/adapters/static/vite'
 import { qwikCity } from '@builder.io/qwik-city/vite'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { rehypeHeadingAnchor } from '../../src/utils/rehype-heading-anchor'
 import { rehypeShiki } from '../../src/utils/rehype-shiki'
 
 export default defineConfig({
@@ -15,19 +15,7 @@ export default defineConfig({
         rehypeAutolinkHeadings: false,
       },
       mdx: {
-        rehypePlugins: [
-          rehypeShiki,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: 'wrap',
-              properties: {
-                className: ['heading-anchor'],
-                tabIndex: 0,
-              },
-            },
-          ],
-        ],
+        rehypePlugins: [rehypeShiki, rehypeHeadingAnchor],
       },
     }),
     qwikVite(),

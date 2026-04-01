@@ -79,10 +79,50 @@ section:has(.blog) {
       }
     }
 
-    :is(h2, h3, h4, h5, h6) > :is(a) { 
-        display: contents;
-        color: inherit !important;
-        text-decoration: none;
+    :is(h2, h3, h4, h5, h6).heading-with-anchor {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp($gap-space-8, 1.5svi, $gap-space-16);
+      scroll-margin-block-start: calc(#{$gap-space-16} + var(--nav_height));
+    }
+
+    .heading-anchor__text {
+      flex: 1 1 auto;
+      min-inline-size: 0;
+    }
+
+    .heading-anchor-copy {
+      display: inline-flex;
+      flex: 0 0 auto;
+      justify-content: center;
+      align-items: center;
+      align-self: flex-start;
+      margin-block-start: 0.12em;
+      margin-inline-start: auto;
+      opacity: 0;
+      color: light-dark(var(--color-gray-800), var(--color-gray-300)) !important;
+      text-decoration: none !important;
+      translate: .35rem 0;
+      transition: opacity 0.2s ease-in-out, translate 0.2s ease-in-out, color 0.2s ease-in-out;
+      block-size: clamp(1.1rem, 2svi, 1.5rem);
+      inline-size: clamp(1.1rem, 2svi, 1.5rem);
+
+      &__icon {
+        display: block;
+        block-size: 100%;
+        inline-size: 100%;
+      }
+    }
+
+    :is(h2, h3, h4, h5, h6).heading-with-anchor:hover .heading-anchor-copy,
+    :is(h2, h3, h4, h5, h6).heading-with-anchor:focus-within .heading-anchor-copy {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    .heading-anchor-copy:hover,
+    .heading-anchor-copy:focus-visible {
+      color: light-dark($color-secondary, $color-primary) !important;
     }
 
     h1 {
@@ -108,8 +148,6 @@ section:has(.blog) {
     }
 
     h2 {
-      display: flex;
-      align-items: center;
       margin-top: clamp(1.8em, 5svi, 2.5em);
       margin-bottom: clamp(0.6em, 1.5svi, 0.8em);
       padding-inline-start: clamp(.5rem, 2svi, 1rem);
@@ -118,10 +156,7 @@ section:has(.blog) {
       font-weight: 500;
       line-height: 1.3;
       color: light-dark(var(--color-gray-800), var(--color-gray-300));
-      scroll-margin-block-start: calc(#{$gap-space-16} + var(--nav_height));
       text-box: trim-both ex alphabetic;
-
-
       @include mq-responsive(tablet, max) {
         margin-top: clamp(1.5em, 4svi, 2em);
         font-size: clamp(1.75rem, 4.5svi, 2rem);
@@ -130,10 +165,6 @@ section:has(.blog) {
       @include mq-responsive(mobile, max) {
         margin-top: clamp(1.2em, 3.5svi, 1.8em);
         font-size: clamp(1.5rem, 4svi, 1.75rem);
-      }
-
-      > a:has(>span.icon.icon-link) {
-        display: none;
       }
     }
 
@@ -169,7 +200,7 @@ section:has(.blog) {
     }
 
     .link,
-    a:not(.podcast-link) {
+    a:not(.podcast-link):not(.heading-anchor-copy) {
       color: light-dark($color-secondary, $color-primary);
       text-decoration: underline;
       transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;

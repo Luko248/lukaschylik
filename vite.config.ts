@@ -2,13 +2,13 @@
  * Base Vite configuration for Qwik application with SSR support
  */
 
+import { fileURLToPath } from 'node:url'
 import { qwikVite } from '@builder.io/qwik/optimizer'
 import { qwikCity } from '@builder.io/qwik-city/vite'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import { fileURLToPath } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import pkg from './package.json'
+import { rehypeHeadingAnchor } from './src/utils/rehype-heading-anchor'
 import { rehypeShiki } from './src/utils/rehype-shiki'
 
 interface PackageJson {
@@ -30,19 +30,7 @@ export default defineConfig((): UserConfig => {
           rehypeAutolinkHeadings: false,
         },
         mdx: {
-          rehypePlugins: [
-            rehypeShiki,
-            [
-              rehypeAutolinkHeadings,
-              {
-                behavior: 'wrap',
-                properties: {
-                  className: ['heading-anchor'],
-                  tabIndex: 0,
-                },
-              },
-            ],
-          ],
+          rehypePlugins: [rehypeShiki, rehypeHeadingAnchor],
         },
       }),
       qwikVite(),
