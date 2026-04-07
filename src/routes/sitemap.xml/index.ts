@@ -65,6 +65,11 @@ export const onGet: RequestHandler = async ({ headers, send }) => {
       lastmod: generatedAt,
       priority: "0.80",
     },
+    {
+      loc: `${SITE_URL}/gdpr/`,
+      lastmod: generatedAt,
+      priority: "0.50",
+    },
     ...posts.map((post) => ({
       loc: `${SITE_URL}/blog/articles/${post.slug}/`,
       lastmod: toIsoDate(post.date),
@@ -72,13 +77,10 @@ export const onGet: RequestHandler = async ({ headers, send }) => {
     })),
   ]
 
-  const xmlBody = [
-    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
-    "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">",
-    ...urls.map((url) => createUrlEntry(url)),
-    "</urlset>",
-    "",
-  ].join("\n")
+  const xmlBody = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map((url) => createUrlEntry(url)).join("\n")}
+</urlset>`
 
   headers.set("Content-Type", "application/xml; charset=utf-8")
   send(200, xmlBody)
