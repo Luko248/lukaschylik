@@ -55,12 +55,11 @@ section:has(.blog) {
       z-index: 1000;
       animation-timeline: scroll(block);
       block-size: clamp(2px, 1svi, $gap-space-4);
+      will-change: scale;
 
       &--fallback {
         animation: none;
-        scale: none;
-        transform: scaleX(0);
-        will-change: transform;
+        scale: 0 1;
       }
     }
 
@@ -243,6 +242,25 @@ section:has(.blog) {
 
       li {
         counter-increment: item;
+      }
+    }
+
+    table {
+      display: block;
+      overflow: auto;
+      overflow-x: auto;
+      max-inline-size: 100%;
+
+      :is(th, td) code {
+        white-space: nowrap;
+      }
+
+      @include mq-responsive(mobile, max) {
+        :is(th, td):nth-child(2) {
+          inline-size: 250px;
+          max-inline-size: 250px;
+          min-inline-size: 250px;
+        }
       }
     }
 

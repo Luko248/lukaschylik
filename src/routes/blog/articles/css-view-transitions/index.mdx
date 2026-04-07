@@ -2,8 +2,9 @@
 title: CSS View Transitions
 subtitle: Od základov v CSS až po element-scoped transitions
 description: View Transitions API prináša natívne animácie prechodov medzi stavmi stránky. Od CSS-only MPA prechodov po JavaScript riadené SPA animácie a nové element-scoped transitions v Chrome 147+.
-date: 2026-03-29
+date: 2026-04-07
 author: Lukáš Chylík
+podcastUrl: https://open.spotify.com/episode/2lvjOWYXTNpw2KrY0DEvDn?si=b2df5b3c94414cf0
 cardImg: /images/blog/view-transitions.avif
 ---
 
@@ -251,15 +252,26 @@ Toto je všetko, čo potrebujete na oboch stránkach (zdrojovej aj cieľovej), a
 
 ### Deskriptor `navigation`
 
-Hodnota `auto` aktivuje prechod za týchto podmienok:
+Najpraktickejšia hodnota je `auto`:
 
-- Navigácia je **same-origin** (rovnaký pôvod) bez cross-origin presmerovaní
-- Typ navigácie je `traverse` (späť/vpred), `push` alebo `replace`
-- Pri `push`/`replace` musí byť navigácia iniciovaná používateľom
+```css
+@view-transition {
+  navigation: auto;
+}
+```
+
+Neznamená to však, že sa prechod spustí pri každej navigácii. Prehliadač ho aktivuje len vtedy, keď sú splnené tieto podmienky:
+
+- Navigácia musí byť **same-origin**: obe stránky sú na rovnakom pôvode a medzi nimi nie je cross-origin presmerovanie.
+- Typ navigácie musí byť jeden z týchto:
+  - `traverse` = pohyb v histórii (späť/vpred)
+  - `push` = pridanie nového záznamu do histórie (napr. klik na odkaz)
+  - `replace` = nahradenie aktuálneho záznamu bez pridania nového
+- Pri `push` a `replace` musí navigáciu vyvolať používateľ (klik, Enter, tap). Ak URL zmení skript na pozadí bez interakcie používateľa, prechod sa nespustí.
 
 ### Deskriptor `types`
 
-Typy umožňujú definovať rôzne animácie pre rôzne typy navigácie:
+Deskriptor `types` funguje ako sada štítkov pre konkrétny druh prechodu. Vďaka nim môžete jednej navigácii priradiť napríklad `slide` a inej `fade`, a následne pre každý typ napísať inú animáciu:
 
 ```css
 @view-transition {
@@ -267,6 +279,8 @@ Typy umožňujú definovať rôzne animácie pre rôzne typy navigácie:
   types: slide, fade;
 }
 ```
+
+Samotné `types` prechod nezapínajú. Len dávajú CSS informáciu, aký variant animácie sa má použiť.
 
 Typy sa potom dajú cieliť pomocou pseudo-triedy `:active-view-transition-type()`:
 
@@ -555,31 +569,79 @@ Toto je obrovské ergonomické zlepšenie. Predtým musel byť každý `view-tra
 
 ### Automatické správanie scope root-u
 
-Keď sa spustí element-scoped transition, prehliadač automaticky aplikuje na scope root:
+Keď sa spustí element-scoped transition, prehliadač automaticky nastaví na scope root niekoľko pravidiel. V praxi to znamená:
 
-| Správanie | Popis |
-|---|---|
-| `contain: layout` | Layoutová izolácia — interné zmeny neovplyvnia zvyšok stránky |
-| `view-transition-scope: all` | Prevencia kolízií názvov naprieč súčasnými scope-mi |
-| `view-transition-name: root` | Scope root sa automaticky zúčastňuje vlastného prechodu |
-| `view-transition-group: contain` | Vnorené skupiny sú automaticky obsiahnuté v rámci scope-u |
+<table class="w-full border-collapse border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left">
+  <thead class="bg-gray-200 dark:bg-gray-800/70 border-b border-gray-200 dark:border-gray-800">
+    <tr>
+      <th class="px-4 py-3">Automaticky aplikované pravidlo</th>
+      <th class="px-4 py-3">Praktický efekt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>contain: layout</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Layoutová izolácia — interné zmeny neovplyvnia zvyšok stránky</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>view-transition-scope: all</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Prevencia kolízií názvov naprieč súčasnými scope-mi</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>view-transition-name: root</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Scope root sa automaticky zúčastňuje vlastného prechodu</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3"><code>view-transition-group: contain</code></td>
+      <td class="px-4 py-3">Vnorené skupiny sú automaticky obsiahnuté v rámci scope-u</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Nový pseudo-element: ::view-transition-group-children()
 
-Element-scoped transitions prinášajú nový pseudo-element v strome:
+Element-scoped transitions prinášajú nový pseudo-element v strome. Namiesto stromového zápisu si to môžete predstaviť takto:
 
-```
-element (scope root)
-└── ::view-transition
-    └── ::view-transition-group(root)
-        ├── ::view-transition-group-children(root)
-        │   └── [children skupiny pre pomenované elementy]
-        └── ::view-transition-image-pair(root)
-            ├── ::view-transition-old(root)
-            └── ::view-transition-new(root)
-```
+<table class="w-full border-collapse border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left">
+  <thead class="bg-gray-200 dark:bg-gray-800/70 border-b border-gray-200 dark:border-gray-800">
+    <tr>
+      <th class="px-4 py-3">Vrstva</th>
+      <th class="px-4 py-3">Úloha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>element</code> (scope root)</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Koreň scope-u, z ktorého sa vytvára snapshot</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>::view-transition</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Hlavný kontajner pre celý prechod</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>::view-transition-group(root)</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Skupina pre scope root</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>::view-transition-group-children(root)</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Kontajner pre vnorené pomenované skupiny v scope-e</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>::view-transition-image-pair(root)</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Dvojica snapshotov scope root-u</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800"><code>::view-transition-old(root)</code></td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Pôvodný stav scope root-u pred zmenou</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3"><code>::view-transition-new(root)</code></td>
+      <td class="px-4 py-3">Nový stav scope root-u po zmene</td>
+    </tr>
+  </tbody>
+</table>
 
-`::view-transition-group-children()` slúži ako kontajner pre vnorené transition skupiny. Automaticky **clipuje overflow**, ak scope root má nastavený `overflow: hidden`, `scroll` alebo `clip`.
+ `::view-transition-group-children()` slúži ako kontajner pre vnorené transition skupiny. Automaticky **clipuje overflow**, ak scope root má nastavený `overflow: hidden`, `scroll` alebo `clip`.
 
 ### Praktický príklad: Presúvanie položiek medzi zoznamami
 
@@ -615,12 +677,37 @@ function moveTask(taskElement, targetColumnId) {
 
 Je dôležité pochopiť, že tieto dva pseudo-elementy majú rozdielnu povahu:
 
-| Vlastnosť | `::view-transition-old()` | `::view-transition-new()` |
-|---|---|---|
-| Typ obsahu | Statický screenshot | Živá reprezentácia |
-| Aktualizácia | Nikdy sa nemení | Reflektuje aktuálny DOM |
-| Replaced element | Áno (`object-fit`, `object-position`) | Áno (`object-fit`, `object-position`) |
-| Predvolená animácia | Fade-out (opacity 1 → 0) | Fade-in (opacity 0 → 1) |
+<table class="w-full border-collapse border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left">
+  <thead class="bg-gray-200 dark:bg-gray-800/70 border-b border-gray-200 dark:border-gray-800">
+    <tr>
+      <th class="px-4 py-3">Vlastnosť</th>
+      <th class="px-4 py-3"><code>::view-transition-old()</code></th>
+      <th class="px-4 py-3"><code>::view-transition-new()</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Typ obsahu</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Statický screenshot</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Živá reprezentácia</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Aktualizácia</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Nikdy sa nemení</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Reflektuje aktuálny DOM</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Replaced element</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Áno (<code>object-fit</code>, <code>object-position</code>)</td>
+      <td class="px-4 py-3 border-b border-gray-200 dark:border-gray-800">Áno (<code>object-fit</code>, <code>object-position</code>)</td>
+    </tr>
+    <tr class="odd:bg-gray-50 dark:odd:bg-gray-900 even:bg-gray-100 dark:even:bg-gray-800/70">
+      <td class="px-4 py-3">Predvolená animácia</td>
+      <td class="px-4 py-3">Fade-out (opacity 1 → 0)</td>
+      <td class="px-4 py-3">Fade-in (opacity 0 → 1)</td>
+    </tr>
+  </tbody>
+</table>
 
 Predvolená animácia medzi nimi je cross-fade s `mix-blend-mode: plus-lighter`, čo zabezpečuje vizuálne korektný prechod bez stmavnutia. Zároveň `::view-transition-group()` interpoluje pozíciu a veľkosť.
 
@@ -722,21 +809,6 @@ if (document.startViewTransition) {
   updateDOM()
 }
 ```
-
-## Prehľad: CSS vs JavaScript
-
-| Scenár | CSS | JavaScript |
-|---|---|---|
-| MPA navigácia medzi stránkami | `@view-transition { navigation: auto }` | Netreba (voliteľne `pagereveal`/`pageswap`) |
-| Párovacie animácie (hero image) | `view-transition-name` na oboch stránkach | Netreba |
-| Rôzne animácie podľa typu navigácie | `@view-transition { types: ... }` + `:active-view-transition-type()` | Netreba (voliteľne dynamické typy) |
-| Štýlovanie pseudo-elementov | `::view-transition-old/new` + `@keyframes` | Netreba |
-| Zmena DOM v rámci SPA | - | `document.startViewTransition(callback)` |
-| Filtrovanie, triedenie, prepínanie tabov | - | `document.startViewTransition(callback)` |
-| Preskočenie animácie | - | `transition.skipTransition()` |
-| Reagovanie na fázy prechodu | - | `transition.ready`, `.finished` |
-| Vlastné JS animácie (clip-path, atď.) | - | Web Animations API + `transition.ready` |
-| Súčasné nezávislé prechody | - | `element.startViewTransition()` |
 
 ## Záver
 
