@@ -1,5 +1,6 @@
-import type { RequestHandler } from "@builder.io/qwik-city"
-import { getAllPosts } from "~/utils/markdown.server"
+import { writeFileSync } from "node:fs"
+import { join } from "node:path"
+import { getAllPosts } from "../src/utils/markdown.server"
 
 const SITE_URL = "https://lukaschylik.dev"
 
@@ -9,9 +10,6 @@ interface SitemapUrl {
   priority: string
 }
 
-/**
- * Converts a date-like string to a valid ISO string.
- */
 const toIsoDate = (value: string): string => {
   const parsedDate = new Date(value)
 
@@ -22,9 +20,6 @@ const toIsoDate = (value: string): string => {
   return parsedDate.toISOString()
 }
 
-/**
- * Escapes XML entities in dynamic values.
- */
 const escapeXml = (value: string): string => {
   return value
     .replaceAll("&", "&amp;")
@@ -34,9 +29,6 @@ const escapeXml = (value: string): string => {
     .replaceAll("'", "&apos;")
 }
 
-/**
- * Creates one sitemap <url> entry.
- */
 const createUrlEntry = ({ loc, lastmod, priority }: SitemapUrl): string => {
   return [
     "<url>",
@@ -47,10 +39,7 @@ const createUrlEntry = ({ loc, lastmod, priority }: SitemapUrl): string => {
   ].join("\n")
 }
 
-/**
- * Generates sitemap XML response.
- */
-export const onGet: RequestHandler = async ({ headers, send }) => {
+const generateSitemap = (): void => {
   const posts = getAllPosts()
   const generatedAt = new Date().toISOString()
 
@@ -82,6 +71,10 @@ export const onGet: RequestHandler = async ({ headers, send }) => {
 ${urls.map((url) => createUrlEntry(url)).join("\n")}
 </urlset>`
 
-  headers.set("Content-Type", "application/xml; charset=utf-8")
-  send(200, xmlBody)
+  const distPath = join(process.cwd(), "dist", "sitemap.xml")
+  writeFileSync(distPath, xmlBody, "utf-8")
+
+  console.log(`✓ Generated sitemap.xml with ${urls.length} URLs`)
 }
+
+generateSitemap()
