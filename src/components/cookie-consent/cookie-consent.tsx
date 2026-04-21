@@ -1,5 +1,5 @@
 import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik'
-import { Container } from '~/components'
+import { Button, Container } from '~/components'
 
 type ConsentPrefs = {
   analytics: boolean
@@ -41,11 +41,12 @@ export default component$(() => {
     if (typeof window === 'undefined') return
     const w = window as any
     const gtag = w.gtag || ((...args: any[]) => w.dataLayer?.push(args))
+    const value = prefs.analytics ? 'granted' : 'denied'
     const update = {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: prefs.analytics ? 'granted' : 'denied',
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+      analytics_storage: value,
     } as const
     try {
       gtag('consent', 'update', update)
@@ -117,30 +118,24 @@ export default component$(() => {
                   alebo upraviť nastavenia.
                 </div>
                 <div class="flex gap-2 shrink-0">
-                  <button
-                    type="button"
-                    onClick$={denyAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+                  <Button size="sm" variant="primary" onClick$={denyAll}>
                     Odmietnuť
-                  </button>
-                  <button
-                    type="button"
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="secondary"
                     onClick$={() => {
                       const stored = readPrefs()
                       if (!stored) {
                         showBanner.value = true
                       }
                       prefsDialogRef.value?.showModal()
-                    }}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+                    }}>
                     Nastavenia
-                  </button>
-                  <button
-                    type="button"
-                    onClick$={acceptAll}
-                    class="px-3 py-2 text-xs md:text-sm rounded-md bg-white text-black hover:bg-neutral-200">
+                  </Button>
+                  <Button size="sm" variant="primary" onClick$={acceptAll}>
                     Prijať všetko
-                  </button>
+                  </Button>
                 </div>
               </div>
             </Container>
@@ -198,24 +193,18 @@ export default component$(() => {
           </div>
         </div>
         <div class="p-5 md:p-6 flex items-center justify-end gap-2 border-t border-neutral-800">
-          <button
-            type="button"
-            onClick$={() => prefsDialogRef.value?.close()}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick$={() => prefsDialogRef.value?.close()}>
             Zatvoriť
-          </button>
-          <button
-            type="button"
-            onClick$={denyAll}
-            class="px-3 py-2 text-sm rounded-md border border-neutral-700 text-neutral-200 hover:bg-neutral-800">
+          </Button>
+          <Button size="sm" variant="primary" onClick$={denyAll}>
             Odmietnuť všetko
-          </button>
-          <button
-            type="button"
-            onClick$={savePrefs}
-            class="px-3 py-2 text-sm rounded-md bg-white text-black hover:bg-neutral-200">
+          </Button>
+          <Button size="sm" variant="primary" onClick$={savePrefs}>
             Uložiť nastavenia
-          </button>
+          </Button>
         </div>
       </dialog>
     </>

@@ -42,7 +42,7 @@ export const head: DocumentHead = {
     },
     {
       key: "consent-restore",
-      script: `try{var k='cookie-consent-v1';var raw=localStorage.getItem(k);if(raw){var parsed=JSON.parse(raw);var granted=!!parsed.analytics;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};gtag('consent','update',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:granted?'granted':'denied'});}}catch(e){}`,
+      script: `try{var k='cookie-consent-v1';var raw=localStorage.getItem(k);if(raw){var parsed=JSON.parse(raw);var v=parsed.analytics?'granted':'denied';window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};gtag('consent','update',{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v});}}catch(e){}`,
     },
     {
       key: "gtm",
